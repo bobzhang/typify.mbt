@@ -77,21 +77,37 @@ pub fn format_f64(d : Double) -> String {
     return buf.to_string()
   }
   let (digits, k) = shortest_digits(abs)
+  write_layout(buf, digits, k, min_kk=-4, max_kk=16)
+  buf.to_string()
+}
+
+///|
+/// Lay out `digits * 10^k` like zmij (serde_json's float writer). With
+/// `kk` the number of integer digits (`10^(kk-1) <= value < 10^kk`), plain
+/// decimal notation is used when `min_kk <= kk <= max_kk`, i.e. zmij's
+/// `FIXED_DEC_EXP` shifted by one (f64: -5..=15, f32: -6..=12).
+fn write_layout(
+  buf : StringBuilder,
+  digits : String,
+  k : Int,
+  min_kk~ : Int,
+  max_kk~ : Int,
+) -> Unit {
   let length = digits.length()
   let kk = length + k // 10^(kk-1) <= abs < 10^kk
-  if 0 <= k && kk <= 16 {
+  if 0 <= k && kk <= max_kk {
     // 1234e7 -> 12340000000.0
     buf.write_string(digits)
     for _ in 0..<k {
       buf.write_char('0')
     }
     buf.write_string(".0")
-  } else if 0 < kk && kk <= 16 {
+  } else if 0 < kk && kk <= max_kk {
     // 1234e-2 -> 12.34
     buf.write_string(digits.unsafe_substring(start=0, end=kk))
     buf.write_char('.')
     buf.write_string(digits.unsafe_substring(start=kk, end=length))
-  } else if -5 < kk && kk <= 0 {
+  } else if min_kk <= kk && kk <= 0 {
     // 1234e-6 -> 0.001234
     buf.write_string("0.")
     for _ in 0..<-kk {
@@ -109,5 +125,4 @@ pub fn format_f64(d : Double) -> String {
     buf.write_string(digits.unsafe_substring(start=1, end=length))
     write_exponent(buf, kk - 1)
   }
-  buf.to_string()
 }

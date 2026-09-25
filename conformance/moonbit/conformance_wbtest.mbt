@@ -9,7 +9,7 @@ test "generated MoonBit agrees with serde on every conformance case" {
     )
     if o.agree_canonical != o.total {
       bad += 1
-      for f in o.failures[:o.failures.length().min(8)] {
+      for f in o.failures[:o.failures.length().min(20)] {
         report.push("  \{f}")
       }
     }

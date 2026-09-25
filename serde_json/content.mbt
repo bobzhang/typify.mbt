@@ -12,6 +12,10 @@ pub(all) enum Content {
   /// A value whose error serde_json reports only when the value is visited
   /// (produced by lenient parsing; skipped values are accepted).
   Invalid(ParseError)
+  /// A serialized `f32`: written with the shortest `f32` digits, like
+  /// serde_json's `serialize_f32`. As a `Value` it widens to `f64`, like
+  /// `serde_json::to_value`.
+  Float32(Float)
 } derive(Debug, Eq)
 
 ///|
@@ -31,6 +35,11 @@ pub(all) struct Entry {
 pub fn Content::to_value(self : Content) -> Value raise ParseError {
   match self {
     Invalid(e) => raise e
+    Float32(f) =>
+      match Number::from_f64(f.to_double()) {
+        Some(n) => Number(n)
+        None => Null
+      }
     Null => Null
     Bool(b) => Bool(b)
     Number(n) => Number(n)
@@ -99,6 +108,14 @@ fn write_content(buf : StringBuilder, c : Content) -> Unit {
     Null => buf.write_string("null")
     Bool(b) => buf.write_string(if b { "true" } else { "false" })
     Number(n) => buf.write_string(n.to_string())
+    Float32(f) =>
+      buf.write_string(
+        if f.is_nan() || f.is_inf() {
+          "null"
+        } else {
+          format_f32(f)
+        },
+      )
     String(s) => write_escaped_str(buf, s)
     Array(xs) => {
       buf.write_char('[')

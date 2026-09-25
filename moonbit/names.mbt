@@ -6,21 +6,23 @@ let moonbit_keywords : Array[String] = [
   "as", "else", "extern", "fn", "if", "let", "const", "match", "using", "mut", "type",
   "struct", "enum", "trait", "derive", "while", "break", "continue", "import", "return",
   "throw", "raise", "try", "catch", "pub", "priv", "readonly", "true", "false", "test",
-  "loop", "for", "in", "impl", "with", "guard", "async", "is", "suberror", "and", "letrec",
-  "noraise", "defer", "lexmatch", "where", "nobreak", "declare", "extenum", "module", "move",
-  "ref", "static", "super", "unsafe", "use", "await", "dyn", "abstract", "do", "final",
-  "macro", "override", "typeof", "virtual", "yield", "local", "method", "alias", "assert",
-  "package", "recur", "extend", "lazy", "constructor", "self", "Self", "enumview", "var",
+  "loop", "for", "in", "impl", "with", "guard", "async", "is", "suberror", "and",
+  "letrec", "noraise", "defer", "lexmatch", "where", "nobreak", "declare", "extenum",
+  "module", "move", "ref", "static", "super", "unsafe", "use", "await", "dyn", "abstract",
+  "do", "final", "macro", "override", "typeof", "virtual", "yield", "local", "method",
+  "alias", "assert", "package", "recur", "extend", "lazy", "constructor", "self",
+  "Self", "enumview", "var",
 ]
 
 ///|
 /// Prelude types a generated type must not shadow.
 let reserved_type_names : Array[String] = [
-  "Array", "ArrayView", "BigInt", "Bool", "Buffer", "Byte", "Bytes", "BytesView", "Char",
-  "Compare", "Debug", "Default", "Double", "Eq", "Error", "Failure", "FixedArray", "Float",
-  "FromJson", "Hash", "Hasher", "Int", "Int16", "Int64", "Iter", "Iter2", "Json", "Logger",
-  "Map", "Option", "ReadOnlyArray", "Ref", "Repr", "Result", "Set", "Show", "SourceLoc",
-  "String", "StringBuilder", "StringView", "ToJson", "UInt", "UInt16", "UInt64", "Unit",
+  "Array", "ArrayView", "BigInt", "Bool", "Buffer", "Byte", "Bytes", "BytesView",
+  "Char", "Compare", "Debug", "Default", "Double", "Eq", "Error", "Failure", "FixedArray",
+  "Float", "FromJson", "Hash", "Hasher", "Int", "Int16", "Int64", "Iter", "Iter2",
+  "Json", "Logger", "Map", "Option", "ReadOnlyArray", "Ref", "Repr", "Result", "Set",
+  "Show", "SourceLoc", "String", "StringBuilder", "StringView", "ToJson", "UInt",
+  "UInt16", "UInt64", "Unit",
 ]
 
 ///|
@@ -35,7 +37,7 @@ priv struct Scope {
 
 ///|
 fn Scope::new() -> Scope {
-  { used: Map([]) }
+  { used: Map([]), }
 }
 
 ///|

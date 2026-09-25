@@ -73,6 +73,7 @@ fn content_unexpected(c : @serde_json.Content) -> String {
     Bool(b) => "boolean `\{b}`"
     Number(Float(_) as n) => "floating point `\{n}`"
     Number(n) => "integer `\{n}`"
+    Float32(f) => "floating point `\{@serde_json.format_f64(f.to_double())}`"
     String(s) => {
       let buf = StringBuilder()
       @serde_json.write_escaped_str(buf, s)
@@ -158,11 +159,18 @@ pub fn de_bool(d : De) -> Bool raise DeError {
 
 ///|
 pub fn de_string(d : De) -> String raise DeError {
+  de_string_expecting(d, "a string")
+}
+
+///|
+/// A string (`deserialize_str`); `expecting` is the visitor's description
+/// used in invalid-type errors.
+pub fn de_string_expecting(d : De, expecting : String) -> String raise DeError {
   match d {
     Value(String(s), _) => s
     Value(c, _) => {
       check_valid(c)
-      raise invalid_type_error(c, "a string")
+      raise invalid_type_error(c, expecting)
     }
     MapKey(k, _) => k
     Flat(_) => raise flatten_error()
@@ -246,7 +254,13 @@ pub fn de_i8(d : De) -> Int raise DeError {
 
 ///|
 pub fn de_u8(d : De) -> Byte raise DeError {
-  de_int_in(d, "u8", 0L, 255UL).to_byte()
+  de_u8_expecting(d, "u8")
+}
+
+///|
+/// `de_u8` with the visitor description `expecting` (e.g. `NonZero`).
+pub fn de_u8_expecting(d : De, expecting : String) -> Byte raise DeError {
+  de_int_in(d, expecting, 0L, 255UL).to_byte()
 }
 
 ///|
@@ -256,7 +270,13 @@ pub fn de_i16(d : De) -> Int16 raise DeError {
 
 ///|
 pub fn de_u16(d : De) -> UInt16 raise DeError {
-  de_int_in(d, "u16", 0L, 65535UL).to_int().to_uint16()
+  de_u16_expecting(d, "u16")
+}
+
+///|
+/// `de_u16` with the visitor description `expecting` (e.g. `NonZero`).
+pub fn de_u16_expecting(d : De, expecting : String) -> UInt16 raise DeError {
+  de_int_in(d, expecting, 0L, 65535UL).to_int().to_uint16()
 }
 
 ///|
@@ -266,7 +286,13 @@ pub fn de_i32(d : De) -> Int raise DeError {
 
 ///|
 pub fn de_u32(d : De) -> UInt raise DeError {
-  de_int_in(d, "u32", 0L, 4294967295UL).reinterpret_as_uint64().to_uint()
+  de_u32_expecting(d, "u32")
+}
+
+///|
+/// `de_u32` with the visitor description `expecting` (e.g. `NonZero`).
+pub fn de_u32_expecting(d : De, expecting : String) -> UInt raise DeError {
+  de_int_in(d, expecting, 0L, 4294967295UL).reinterpret_as_uint64().to_uint()
 }
 
 ///|
@@ -276,11 +302,18 @@ pub fn de_i64(d : De) -> Int64 raise DeError {
 
 ///|
 pub fn de_u64(d : De) -> UInt64 raise DeError {
-  let (n, c) = de_number(d, "u64")
+  de_u64_expecting(d, "u64")
+}
+
+///|
+/// `de_u64` with the visitor description `expecting` (e.g. `NonZero`).
+pub fn de_u64_expecting(d : De, expecting : String) -> UInt64 raise DeError {
+  let (n, c) = de_number(d, expecting)
   match n {
     PosInt(u) => u
-    NegInt(i) => raise DeError("invalid value: integer `\{i}`, expected u64")
-    Float(_) => raise invalid_type_error(c, "u64")
+    NegInt(i) =>
+      raise DeError("invalid value: integer `\{i}`, expected \{expecting}")
+    Float(_) => raise invalid_type_error(c, expecting)
   }
 }
 
@@ -671,9 +704,8 @@ pub fn de_enum(
   match d {
     Value(String(s), _) => (variant_index(s, variants), UnitOnly)
     Value(Object(entries), Direct) => {
-      guard entries is [first, .. rest] else {
-        raise DeError("invalid type: map, expected enum \{name}")
-      }
+      // `{}`: the variant identifier peeks `}`.
+      guard entries is [first, .. rest] else { raise DeError("expected value") }
       if first.key_error is Some(err) {
         raise DeError(parse_error_message(err))
       }
@@ -701,10 +733,14 @@ pub fn de_enum(
         }
         _ => raise DeError("invalid value: map, expected map with a single key")
       }
-    Value(c, Direct) => {
-      check_valid(c)
-      raise invalid_type_error(c, "enum \{name}")
-    }
+    // serde_json's `deserialize_enum` peeks: anything but a string or an
+    // object is `expected value`, without parsing the value. (A too-deep
+    // array would also be `expected value`; only objects are recursion errors
+    // there, which a deferred `Invalid` node cannot tell apart.)
+    Value(Invalid(ParseError(message="number out of range", ..)), Direct) =>
+      raise DeError("expected value")
+    Value(Invalid(e), Direct) => raise DeError(parse_error_message(e))
+    Value(_, Direct) => raise DeError("expected value")
     Value(c, _) => {
       check_valid(c)
       raise invalid_type_error(c, "string or map")

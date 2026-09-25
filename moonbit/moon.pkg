@@ -1,5 +1,5 @@
 import {
-  "bobzhang/typify" @typify,
+  "bobzhang/typify",
   "bobzhang/typify/serde_json",
 }
 

@@ -2,6 +2,8 @@ import {
   "bobzhang/typify/serde_json",
   "bobzhang/typify/collections",
   "bobzhang/typify/regex",
+  "moonbitlang/core/encoding/utf8",
+  "moonbitlang/core/int64",
 }
 
 import {

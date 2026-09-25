@@ -1,6 +1,8 @@
 import {
   "bobzhang/typify/collections",
   "moonbitlang/core/encoding/utf8",
+  "moonbitlang/core/bigint",
+  "moonbitlang/core/math",
 }
 
 import {

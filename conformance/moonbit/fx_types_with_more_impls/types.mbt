@@ -12,7 +12,9 @@ let pattern_string_pattern : @typify_rt.Regex = @typify_rt.regex("xx")
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn PatternString::new(value : String) -> PatternString raise @typify_rt.ConversionError {
+pub fn PatternString::new(
+  value : String,
+) -> PatternString raise @typify_rt.ConversionError {
   if !pattern_string_pattern.is_match(value) {
     raise @typify_rt.ConversionError("doesn't match pattern \"xx\"")
   }
@@ -21,7 +23,9 @@ pub fn PatternString::new(value : String) -> PatternString raise @typify_rt.Conv
 }
 
 ///|
-pub fn PatternString::deserialize(d : @typify_rt.De) -> PatternString raise @typify_rt.DeError {
+pub fn PatternString::deserialize(
+  d : @typify_rt.De,
+) -> PatternString raise @typify_rt.DeError {
   let value = @typify_rt.de_string(d)
   PatternString::new(value) catch {
     @typify_rt.ConversionError(msg) => raise @typify_rt.DeError(msg)
@@ -29,31 +33,39 @@ pub fn PatternString::deserialize(d : @typify_rt.De) -> PatternString raise @typ
 }
 
 ///|
-pub fn PatternString::serialize(self : PatternString) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn PatternString::serialize(
+  self : PatternString,
+) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_string(self.0)
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn PatternString::from_json_str(text : StringView) -> PatternString raise @typify_rt.DeError {
+pub fn PatternString::from_json_str(
+  text : StringView,
+) -> PatternString raise @typify_rt.DeError {
   PatternString::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn PatternString::to_json_string(self : PatternString) -> String raise @typify_rt.SerError {
+pub fn PatternString::to_json_string(
+  self : PatternString,
+) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn PatternString::from_json(json : Json) -> PatternString raise @typify_rt.DeError {
+pub fn PatternString::from_json(
+  json : Json,
+) -> PatternString raise @typify_rt.DeError {
   PatternString::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for PatternString with to_json(self) {
+pub impl ToJson for PatternString with fn to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("PatternString::to_json: \{e}")
   }
@@ -72,8 +84,12 @@ let sub10_primes_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn Sub10Primes::new(value : UInt) -> Sub10Primes raise @typify_rt.ConversionError {
-  let serialized = (@typify_rt.ser_uint(value)) catch { _ => @typify_rt.ser_null() }
+pub fn Sub10Primes::new(
+  value : UInt,
+) -> Sub10Primes raise @typify_rt.ConversionError {
+  let serialized = @typify_rt.ser_uint(value) catch {
+    _ => @typify_rt.ser_null()
+  }
   if !@typify_rt.contains_value(sub10_primes_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -82,7 +98,9 @@ pub fn Sub10Primes::new(value : UInt) -> Sub10Primes raise @typify_rt.Conversion
 }
 
 ///|
-pub fn Sub10Primes::deserialize(d : @typify_rt.De) -> Sub10Primes raise @typify_rt.DeError {
+pub fn Sub10Primes::deserialize(
+  d : @typify_rt.De,
+) -> Sub10Primes raise @typify_rt.DeError {
   let value = @typify_rt.de_u32(d)
   Sub10Primes::new(value) catch {
     @typify_rt.ConversionError(msg) => raise @typify_rt.DeError(msg)
@@ -90,33 +108,40 @@ pub fn Sub10Primes::deserialize(d : @typify_rt.De) -> Sub10Primes raise @typify_
 }
 
 ///|
-pub fn Sub10Primes::serialize(self : Sub10Primes) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn Sub10Primes::serialize(
+  self : Sub10Primes,
+) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_uint(self.0)
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn Sub10Primes::from_json_str(text : StringView) -> Sub10Primes raise @typify_rt.DeError {
+pub fn Sub10Primes::from_json_str(
+  text : StringView,
+) -> Sub10Primes raise @typify_rt.DeError {
   Sub10Primes::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn Sub10Primes::to_json_string(self : Sub10Primes) -> String raise @typify_rt.SerError {
+pub fn Sub10Primes::to_json_string(
+  self : Sub10Primes,
+) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn Sub10Primes::from_json(json : Json) -> Sub10Primes raise @typify_rt.DeError {
+pub fn Sub10Primes::from_json(
+  json : Json,
+) -> Sub10Primes raise @typify_rt.DeError {
   Sub10Primes::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for Sub10Primes with to_json(self) {
+pub impl ToJson for Sub10Primes with fn to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("Sub10Primes::to_json: \{e}")
   }
 }
-

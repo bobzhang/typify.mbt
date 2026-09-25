@@ -7,35 +7,35 @@ pub(all) suberror ConversionError {
 } derive(Debug, Eq)
 
 ///|
-pub impl Show for ConversionError with output(self, logger) {
+pub impl Show for ConversionError with fn output(self, logger) {
   let ConversionError(msg) = self
   logger.write_string(msg)
 }
 
 ///|
 pub fn de_nonzero_u8(d : De) -> Byte raise DeError {
-  let v = de_u8(d)
+  let v = de_u8_expecting(d, "a nonzero u8")
   nonzero(v == 0, "a nonzero u8")
   v
 }
 
 ///|
 pub fn de_nonzero_u16(d : De) -> UInt16 raise DeError {
-  let v = de_u16(d)
+  let v = de_u16_expecting(d, "a nonzero u16")
   nonzero(v == 0, "a nonzero u16")
   v
 }
 
 ///|
 pub fn de_nonzero_u32(d : De) -> UInt raise DeError {
-  let v = de_u32(d)
+  let v = de_u32_expecting(d, "a nonzero u32")
   nonzero(v == 0, "a nonzero u32")
   v
 }
 
 ///|
 pub fn de_nonzero_u64(d : De) -> UInt64 raise DeError {
-  let v = de_u64(d)
+  let v = de_u64_expecting(d, "a nonzero u64")
   nonzero(v == 0, "a nonzero u64")
   v
 }
@@ -59,7 +59,10 @@ pub fn content_to_json(c : Content) -> Json raise SerError {
 /// Decode a default value from its JSON text. Upstream constructs defaults
 /// with `.expect(..)`/`.unwrap()`, so failures are panics; they are raised
 /// as a `DeError` starting with "panic:".
-pub fn[T] default_value(text : String, f : (De) -> T raise DeError) -> T raise DeError {
+pub fn[T] default_value(
+  text : String,
+  f : (De) -> T raise DeError,
+) -> T raise DeError {
   f(De::from_str(text)) catch {
     DeError(msg) => raise DeError("panic: invalid default provided: \{msg}")
   }
@@ -74,8 +77,12 @@ pub fn[T] enum_values(
   ser : (T) -> Content raise SerError,
 ) -> Array[Content] {
   texts.map(t => {
-    let v = de(De::from_str(t)) catch { e => abort("invalid enumerated value \{t}: \{e}") }
-    ser(v) catch { e => abort("invalid enumerated value \{t}: \{e}") }
+    let v = de(De::from_str(t)) catch {
+      e => abort("invalid enumerated value \{t}: \{e}")
+    }
+    ser(v) catch {
+      e => abort("invalid enumerated value \{t}: \{e}")
+    }
   })
 }
 
@@ -84,7 +91,9 @@ pub fn[T] enum_values(
 /// the inner type: numbers by value within their class, maps unordered).
 pub fn contains_value(allowed : Array[Content], c : Content) -> Bool {
   let target = c.to_value() catch { _ => return false }
-  allowed.iter().any(a => (try a.to_value() catch { _ => @serde_json.Value::Null }) == target)
+  allowed
+  .iter()
+  .any(a => (a.to_value() catch { _ => @serde_json.Value::Null }) == target)
 }
 
 ///|
@@ -94,7 +103,7 @@ pub fn char_count(s : String) -> Int {
 }
 
 ///|
-pub using @regex { type Regex }
+pub using @regex {type Regex}
 
 ///|
 /// Compile a pattern that is known to be valid.
@@ -113,27 +122,39 @@ pub fn compare_keys(a : String, b : String) -> Int {
 ///|
 /// `{key: value}`.
 pub fn single_entry(key : String, value : Content) -> Content {
-  Object([{ key, key_escaped: false, key_error: None, value }])
+  Object([{ key, key_escaped: false, key_error: None, value, }])
 }
 
 ///|
 /// An internally tagged variant: the tag first, then the payload's entries.
-pub fn tagged(tag : String, name : String, payload : Content) -> Content raise SerError {
+pub fn tagged(
+  tag : String,
+  name : String,
+  payload : Content,
+) -> Content raise SerError {
   let o = ObjectBuilder::new()
   o.field(tag, String(name))
   match payload {
     Object(_) | Null => o.flatten(payload)
-    _ => raise SerError("cannot serialize tagged newtype variant containing a non-map value")
+    _ =>
+      raise SerError(
+        "cannot serialize tagged newtype variant containing a non-map value",
+      )
   }
   o.build()
 }
 
 ///|
 /// An adjacently tagged variant `{tag: name, content: payload}`.
-pub fn adjacent(tag : String, name : String, content : String, payload : Content) -> Content {
+pub fn adjacent(
+  tag : String,
+  name : String,
+  content : String,
+  payload : Content,
+) -> Content {
   Object([
-    { key: tag, key_escaped: false, key_error: None, value: String(name) },
-    { key: content, key_escaped: false, key_error: None, value: payload },
+    { key: tag, key_escaped: false, key_error: None, value: String(name), },
+    { key: content, key_escaped: false, key_error: None, value: payload, },
   ])
 }
 

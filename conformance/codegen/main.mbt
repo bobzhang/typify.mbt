@@ -3,11 +3,15 @@
 
 ///|
 fn read(path : String) -> String {
-  @fs.read_file_to_string(path) catch { e => abort("read \{path}: \{Repr(e)}") }
+  @fs.read_file_to_string(path) catch {
+    e => abort("read \{path}: \{Repr(e)}")
+  }
 }
 
 ///|
-fn schemas_settings(settings : @typify.TypeSpaceSettings) -> @typify.TypeSpaceSettings {
+fn schemas_settings(
+  settings : @typify.TypeSpaceSettings,
+) -> @typify.TypeSpaceSettings {
   guard (try? @serde_json.parse("{\"enum\": [1, \"one\"]}")) is Ok(Object(o)) else {
     abort("bad schema")
   }
@@ -36,17 +40,33 @@ fn fixtures() -> Array[(String, String, @typify.TypeSpaceSettings, Bool)] {
     "untyped-enum-with-null", "various-enums", "x-rust-type",
   ]
   let out = names.map(n => {
-    (n, "tests/upstream/schemas/\{n}.json", schemas_settings(@typify.TypeSpaceSettings::default()), false)
+    (
+      n,
+      "tests/upstream/schemas/\{n}.json",
+      schemas_settings(@typify.TypeSpaceSettings::default()),
+      false,
+    )
   })
   out.push(
     (
       "maps_custom",
       "tests/upstream/schemas/maps.json",
-      schemas_settings(@typify.TypeSpaceSettings::default().with_map_type("std::collections::BTreeMap")),
+      schemas_settings(
+        @typify.TypeSpaceSettings::default().with_map_type(
+          "std::collections::BTreeMap",
+        ),
+      ),
       false,
     ),
   )
-  out.push(("github", "tests/upstream/impl/github.json", @typify.TypeSpaceSettings::default(), true))
+  out.push(
+    (
+      "github",
+      "tests/upstream/impl/github.json",
+      @typify.TypeSpaceSettings::default(),
+      true,
+    ),
+  )
   out
 }
 
@@ -64,10 +84,18 @@ fn main {
   let imports = []
   for f in fixtures() {
     let (name, path, settings, everything) = f
-    let root = @schema.RootSchema::from_json_str(read(path)) catch { e => abort("\{name}: \{e}") }
+    let root = @schema.RootSchema::from_json_str(read(path)) catch {
+      e => abort("\{name}: \{e}")
+    }
     let root = if everything {
       let metadata = root.schema.metadata.unwrap_or(@schema.Metadata::default())
-      { ..root, schema: { ..root.schema, metadata: Some({ ..metadata, title: Some("Everything") }) } }
+      {
+        ..root,
+        schema: {
+          ..root.schema,
+          metadata: Some({ ..metadata, title: Some("Everything"), }),
+        },
+      }
     } else {
       root
     }
@@ -76,12 +104,18 @@ fn main {
     let code = @moonbit.generate(space)
     let pkg = package_name(name)
     let dir = "conformance/moonbit/\{pkg}"
-    @fs.create_dir(dir) catch { _ => () }
-    @fs.write_string_to_file("\{dir}/types.mbt", code) catch { e => abort("write: \{Repr(e)}") }
+    @fs.create_dir(dir) catch {
+      _ => ()
+    }
+    @fs.write_string_to_file("\{dir}/types.mbt", code) catch {
+      e => abort("write: \{Repr(e)}")
+    }
     @fs.write_string_to_file(
       "\{dir}/moon.pkg",
       "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n}\n\nwarnings = \"-unused_value\"\n",
-    ) catch { e => abort("write: \{Repr(e)}") }
+    ) catch {
+      e => abort("write: \{Repr(e)}")
+    }
     imports.push("  \"bobzhang/typify/conformance/moonbit/\{pkg}\",")
     for pair in space.entries() {
       let rust_name = match pair.1.details {
@@ -98,11 +132,16 @@ fn main {
     }
   }
   dispatch.write_string("    _ => \"NOTYPE\"\n  }\n}\n")
-  @fs.write_string_to_file("conformance/moonbit/dispatch.mbt", dispatch.to_string()) catch {
+  @fs.write_string_to_file(
+    "conformance/moonbit/dispatch.mbt",
+    dispatch.to_string(),
+  ) catch {
     e => abort("write: \{Repr(e)}")
   }
   @fs.write_string_to_file(
     "conformance/moonbit/moon.pkg",
     "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/x/fs\",\n\{imports.join("\n")}\n}\n",
-  ) catch { e => abort("write: \{Repr(e)}") }
+  ) catch {
+    e => abort("write: \{Repr(e)}")
+  }
 }

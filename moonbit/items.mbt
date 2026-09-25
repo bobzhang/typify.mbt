@@ -96,7 +96,9 @@ fn Gen::struct_decode(
   build : String,
 ) -> String {
   let has_flatten = props.iter().any(p => p.rename is Flatten)
-  let named = props.mapi((i, p) => (i, p)).filter(p => json_name(p.1) is Some(_))
+  let named = props
+    .mapi((i, p) => (i, p))
+    .filter(p => json_name(p.1) is Some(_))
   let known = named.map(p => json_name(p.1).unwrap())
   let buf = StringBuilder()
   buf.write_string(
@@ -111,13 +113,17 @@ fn Gen::struct_decode(
         Some("\{self.default_fn(out, owner, p.name, p.type_id, v)}()")
       _ => None
     }
-    let missing_expr = match (default_expr, p.state, entry(self.space, p.type_id).details) {
+    let missing_expr = match
+      (default_expr, p.state, entry(self.space, p.type_id).details) {
       (Some(e), _, _) => e
       // `deserialize_with = Option::deserialize` reports absence itself.
       (None, Required, Option(_)) =>
         "raise @typify_rt.missing_field_error(\{str_lit(known_name(p))})"
       (None, _, _) =>
-        self.de_expr(p.type_id, "@typify_rt.De::Missing(\{str_lit(known_name(p))})")
+        self.de_expr(
+          p.type_id,
+          "@typify_rt.De::Missing(\{str_lit(known_name(p))})",
+        )
     }
     ignore(i)
     (default_expr, missing_expr)
@@ -376,7 +382,9 @@ fn Gen::output_newtype(
   let check = match d.constraints {
     NoConstraints => ""
     EnumValue(values) | DenyValue(values) => {
-      let allowed = self.globals.alloc(lower_ident(@typify.sanitize("\{d.name}_values", Snake)))
+      let allowed = self.globals.alloc(
+        lower_ident(@typify.sanitize("\{d.name}_values", Snake)),
+      )
       out.write_string(
         (
           $|///|
@@ -405,7 +413,9 @@ fn Gen::output_newtype(
         )
       }
       if pattern is Some(p) {
-        let re = self.globals.alloc(lower_ident(@typify.sanitize("\{d.name}_pattern", Snake)))
+        let re = self.globals.alloc(
+          lower_ident(@typify.sanitize("\{d.name}_pattern", Snake)),
+        )
         out.write_string(
           "///|\nlet \{re} : @typify_rt.Regex = @typify_rt.regex(\{str_lit(p)})\n\n",
         )
@@ -467,7 +477,12 @@ fn Gen::output_newtype(
 // Enums
 
 ///|
-fn Gen::variant_decl(self : Gen, id : @typify.TypeId, i : Int, v : @typify.Variant) -> String {
+fn Gen::variant_decl(
+  self : Gen,
+  id : @typify.TypeId,
+  i : Int,
+  v : @typify.Variant,
+) -> String {
   let ctor = self.ctors.get(id.0).unwrap()[i]
   match v.details {
     Simple => ctor
@@ -523,10 +538,7 @@ fn Gen::variant_payload_decode(
 ///|
 /// Serialization of a variant's payload (`None` for unit variants); the
 /// payload fields are bound as `p0`, `p1`, ...
-fn Gen::variant_payload_encode(
-  self : Gen,
-  v : @typify.Variant,
-) -> String? {
+fn Gen::variant_payload_encode(self : Gen, v : @typify.Variant) -> String? {
   match v.details {
     Simple => None
     Item(t) => Some(self.ser_expr(t, "p0"))
@@ -542,7 +554,12 @@ fn Gen::variant_payload_encode(
 }
 
 ///|
-fn Gen::variant_pattern(self : Gen, id : @typify.TypeId, i : Int, v : @typify.Variant) -> String {
+fn Gen::variant_pattern(
+  self : Gen,
+  id : @typify.TypeId,
+  i : Int,
+  v : @typify.Variant,
+) -> String {
   let ctor = self.ctors.get(id.0).unwrap()[i]
   match v.details {
     Simple => ctor
@@ -619,7 +636,14 @@ fn Gen::output_enum(
             "{ @typify_rt.internal_unit(rest, \{str_lit(d.name)}, \{str_lit(v.raw_name)}); \{name}::\{self.ctors.get(id.0).unwrap()[i]} }"
           _ =>
             self.variant_payload_decode(
-              out, id, d.name, i, v, "rest", true, d.deny_unknown_fields,
+              out,
+              id,
+              d.name,
+              i,
+              v,
+              "rest",
+              true,
+              d.deny_unknown_fields,
             )
         }
         arms.write_string("  \{i} => \{indent(code, 2).trim_start()}\n")
@@ -635,7 +659,8 @@ fn Gen::output_enum(
     Adjacent(tag~, content~) => {
       for i, v in d.variants {
         let code = match v.details {
-          Simple => "{ @typify_rt.variant_unit(payload); \{name}::\{self.ctors.get(id.0).unwrap()[i]} }"
+          Simple =>
+            "{ @typify_rt.variant_unit(payload); \{name}::\{self.ctors.get(id.0).unwrap()[i]} }"
           _ =>
             self.variant_payload_decode(
               out,
@@ -662,7 +687,14 @@ fn Gen::output_enum(
       let tries = StringBuilder()
       for i, v in d.variants {
         let code = self.variant_payload_decode(
-          out, id, d.name, i, v, "c", false, d.deny_unknown_fields,
+          out,
+          id,
+          d.name,
+          i,
+          v,
+          "c",
+          false,
+          d.deny_unknown_fields,
         )
         tries.write_string(
           "try {\n\{indent(code, 2)}\n} catch {\n  @typify_rt.DeError(msg) if !msg.has_prefix(\"panic:\") => ()\n  e => raise e\n} noraise {\n  v => return v\n}\n",
@@ -693,15 +725,20 @@ fn Gen::output_enum(
     let expr = match (d.tag_type, payload) {
       (External, None) => "@typify_rt.ser_string(\{raw})"
       (External, Some(p)) => "@typify_rt.single_entry(\{raw}, \{p})"
-      (Internal(tag~), None) => "@typify_rt.single_entry(\{str_lit(tag)}, @typify_rt.ser_string(\{raw}))"
-      (Internal(tag~), Some(p)) => "@typify_rt.tagged(\{str_lit(tag)}, \{raw}, \{p})"
-      (Adjacent(tag~, ..), None) => "@typify_rt.single_entry(\{str_lit(tag)}, @typify_rt.ser_string(\{raw}))"
+      (Internal(tag~), None) =>
+        "@typify_rt.single_entry(\{str_lit(tag)}, @typify_rt.ser_string(\{raw}))"
+      (Internal(tag~), Some(p)) =>
+        "@typify_rt.tagged(\{str_lit(tag)}, \{raw}, \{p})"
+      (Adjacent(tag~, ..), None) =>
+        "@typify_rt.single_entry(\{str_lit(tag)}, @typify_rt.ser_string(\{raw}))"
       (Adjacent(tag~, content~), Some(p)) =>
         "@typify_rt.adjacent(\{str_lit(tag)}, \{raw}, \{str_lit(content)}, \{p})"
       (Untagged, None) => "@typify_rt.ser_unit()"
       (Untagged, Some(p)) => p
     }
-    enc.write_string("  \{self.variant_pattern(id, i, v)} => \{indent(expr, 2).trim_start()}\n")
+    enc.write_string(
+      "  \{self.variant_pattern(id, i, v)} => \{indent(expr, 2).trim_start()}\n",
+    )
   }
   let enc_body = if d.variants.is_empty() {
     "  _ => abort(\"uninhabited\")\n"
@@ -721,9 +758,19 @@ fn Gen::output_enum(
     ),
   )
   if all_simple && !d.variants.is_empty() {
-    let idx_arms = d.variants.mapi((i, _) => "    \{self.ctors.get(id.0).unwrap()[i]} => \{i}").join("\n")
-    let str_arms = d.variants.mapi((i, v) => "    \{self.ctors.get(id.0).unwrap()[i]} => \{str_lit(v.raw_name)}").join("\n")
-    let parse_arms = d.variants.mapi((i, v) => "    \{str_lit(v.raw_name)} => \{self.ctors.get(id.0).unwrap()[i]}").join("\n")
+    let idx_arms = d.variants
+      .mapi((i, _) => "    \{self.ctors.get(id.0).unwrap()[i]} => \{i}")
+      .join("\n")
+    let str_arms = d.variants
+      .mapi((i, v) => {
+        "    \{self.ctors.get(id.0).unwrap()[i]} => \{str_lit(v.raw_name)}"
+      })
+      .join("\n")
+    let parse_arms = d.variants
+      .mapi((i, v) => {
+        "    \{str_lit(v.raw_name)} => \{self.ctors.get(id.0).unwrap()[i]}"
+      })
+      .join("\n")
     out.write_string(
       (
         $|///|

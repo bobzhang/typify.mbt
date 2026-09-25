@@ -76,21 +76,13 @@ pub fn ser_f64(d : Double) -> Content {
 }
 
 ///|
-/// `f32` values are printed with the shortest `f32` digits (ryu `f32`).
+/// `f32` values are printed with the shortest `f32` digits, like
+/// serde_json's `serialize_f32` (non-finite values print as `null`).
 pub fn ser_f32(f : Float) -> Content {
-  let d = f.to_double()
-  if d.is_nan() || d.is_inf() {
+  if f.is_nan() || f.is_inf() {
     return Null
   }
-  // The shortest decimal that round-trips as an f32, as a Double.
-  let text = f.to_string()
-  let shortest = @serde_json.parse(text) catch {
-    _ => return Number(@serde_json.Number::Float(d))
-  }
-  match shortest {
-    Number(n) => Number(@serde_json.Number::Float(n.as_f64()))
-    _ => Number(@serde_json.Number::Float(d))
-  }
+  Float32(f)
 }
 
 ///|
@@ -207,7 +199,7 @@ pub fn ObjectBuilder::flatten(
     Null => ()
     Bool(_) =>
       raise SerError("can only flatten structs and maps (got a boolean)")
-    Number(Float(_)) =>
+    Number(Float(_)) | Float32(_) =>
       raise SerError("can only flatten structs and maps (got a float)")
     Number(_) =>
       raise SerError("can only flatten structs and maps (got an integer)")

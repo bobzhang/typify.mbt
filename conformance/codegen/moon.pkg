@@ -1,5 +1,5 @@
 import {
-  "bobzhang/typify" @typify,
+  "bobzhang/typify",
   "bobzhang/typify/moonbit",
   "bobzhang/typify/schema",
   "bobzhang/typify/serde_json",
@@ -7,6 +7,4 @@ import {
   "moonbitlang/x/fs",
 }
 
-options(
-  "is-main": true,
-)
+pkgtype(kind: "executable")

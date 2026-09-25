@@ -11,19 +11,17 @@ pub(all) enum IdOrName {
 } derive(Debug, Eq)
 
 ///|
-pub fn IdOrName::deserialize(d : @typify_rt.De) -> IdOrName raise @typify_rt.DeError {
+pub fn IdOrName::deserialize(
+  d : @typify_rt.De,
+) -> IdOrName raise @typify_rt.DeError {
   let c = @typify_rt.de_untagged(d)
-  try {
-    IdOrName::Id(@typify_rt.Uuid::deserialize(c))
-  } catch {
+  try IdOrName::Id(@typify_rt.Uuid::deserialize(c)) catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try {
-    IdOrName::Name(Name::deserialize(c))
-  } catch {
+  try IdOrName::Name(Name::deserialize(c)) catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -33,7 +31,9 @@ pub fn IdOrName::deserialize(d : @typify_rt.De) -> IdOrName raise @typify_rt.DeE
 }
 
 ///|
-pub fn IdOrName::serialize(self : IdOrName) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn IdOrName::serialize(
+  self : IdOrName,
+) -> @typify_rt.Content raise @typify_rt.SerError {
   match self {
     Id(p0) => @typify_rt.Uuid::serialize(p0)
     Name(p0) => Name::serialize(p0)
@@ -42,13 +42,17 @@ pub fn IdOrName::serialize(self : IdOrName) -> @typify_rt.Content raise @typify_
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn IdOrName::from_json_str(text : StringView) -> IdOrName raise @typify_rt.DeError {
+pub fn IdOrName::from_json_str(
+  text : StringView,
+) -> IdOrName raise @typify_rt.DeError {
   IdOrName::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn IdOrName::to_json_string(self : IdOrName) -> String raise @typify_rt.SerError {
+pub fn IdOrName::to_json_string(
+  self : IdOrName,
+) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -60,7 +64,7 @@ pub fn IdOrName::from_json(json : Json) -> IdOrName raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for IdOrName with to_json(self) {
+pub impl ToJson for IdOrName with fn to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("IdOrName::to_json: \{e}")
   }
@@ -74,19 +78,17 @@ pub(all) enum IdOrNameRedundant {
 } derive(Debug, Eq)
 
 ///|
-pub fn IdOrNameRedundant::deserialize(d : @typify_rt.De) -> IdOrNameRedundant raise @typify_rt.DeError {
+pub fn IdOrNameRedundant::deserialize(
+  d : @typify_rt.De,
+) -> IdOrNameRedundant raise @typify_rt.DeError {
   let c = @typify_rt.de_untagged(d)
-  try {
-    IdOrNameRedundant::Uuid(@typify_rt.Uuid::deserialize(c))
-  } catch {
+  try IdOrNameRedundant::Uuid(@typify_rt.Uuid::deserialize(c)) catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try {
-    IdOrNameRedundant::String(Name::deserialize(c))
-  } catch {
+  try IdOrNameRedundant::String(Name::deserialize(c)) catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -96,7 +98,9 @@ pub fn IdOrNameRedundant::deserialize(d : @typify_rt.De) -> IdOrNameRedundant ra
 }
 
 ///|
-pub fn IdOrNameRedundant::serialize(self : IdOrNameRedundant) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn IdOrNameRedundant::serialize(
+  self : IdOrNameRedundant,
+) -> @typify_rt.Content raise @typify_rt.SerError {
   match self {
     Uuid(p0) => @typify_rt.Uuid::serialize(p0)
     String(p0) => Name::serialize(p0)
@@ -105,25 +109,31 @@ pub fn IdOrNameRedundant::serialize(self : IdOrNameRedundant) -> @typify_rt.Cont
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn IdOrNameRedundant::from_json_str(text : StringView) -> IdOrNameRedundant raise @typify_rt.DeError {
+pub fn IdOrNameRedundant::from_json_str(
+  text : StringView,
+) -> IdOrNameRedundant raise @typify_rt.DeError {
   IdOrNameRedundant::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn IdOrNameRedundant::to_json_string(self : IdOrNameRedundant) -> String raise @typify_rt.SerError {
+pub fn IdOrNameRedundant::to_json_string(
+  self : IdOrNameRedundant,
+) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn IdOrNameRedundant::from_json(json : Json) -> IdOrNameRedundant raise @typify_rt.DeError {
+pub fn IdOrNameRedundant::from_json(
+  json : Json,
+) -> IdOrNameRedundant raise @typify_rt.DeError {
   IdOrNameRedundant::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for IdOrNameRedundant with to_json(self) {
+pub impl ToJson for IdOrNameRedundant with fn to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("IdOrNameRedundant::to_json: \{e}")
   }
@@ -137,19 +147,17 @@ pub(all) enum IdOrYolo {
 } derive(Debug, Eq)
 
 ///|
-pub fn IdOrYolo::deserialize(d : @typify_rt.De) -> IdOrYolo raise @typify_rt.DeError {
+pub fn IdOrYolo::deserialize(
+  d : @typify_rt.De,
+) -> IdOrYolo raise @typify_rt.DeError {
   let c = @typify_rt.de_untagged(d)
-  try {
-    IdOrYolo::Id(@typify_rt.Uuid::deserialize(c))
-  } catch {
+  try IdOrYolo::Id(@typify_rt.Uuid::deserialize(c)) catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try {
-    IdOrYolo::Yolo(IdOrYoloYolo::deserialize(c))
-  } catch {
+  try IdOrYolo::Yolo(IdOrYoloYolo::deserialize(c)) catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -159,7 +167,9 @@ pub fn IdOrYolo::deserialize(d : @typify_rt.De) -> IdOrYolo raise @typify_rt.DeE
 }
 
 ///|
-pub fn IdOrYolo::serialize(self : IdOrYolo) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn IdOrYolo::serialize(
+  self : IdOrYolo,
+) -> @typify_rt.Content raise @typify_rt.SerError {
   match self {
     Id(p0) => @typify_rt.Uuid::serialize(p0)
     Yolo(p0) => IdOrYoloYolo::serialize(p0)
@@ -168,13 +178,17 @@ pub fn IdOrYolo::serialize(self : IdOrYolo) -> @typify_rt.Content raise @typify_
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn IdOrYolo::from_json_str(text : StringView) -> IdOrYolo raise @typify_rt.DeError {
+pub fn IdOrYolo::from_json_str(
+  text : StringView,
+) -> IdOrYolo raise @typify_rt.DeError {
   IdOrYolo::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn IdOrYolo::to_json_string(self : IdOrYolo) -> String raise @typify_rt.SerError {
+pub fn IdOrYolo::to_json_string(
+  self : IdOrYolo,
+) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -186,7 +200,7 @@ pub fn IdOrYolo::from_json(json : Json) -> IdOrYolo raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for IdOrYolo with to_json(self) {
+pub impl ToJson for IdOrYolo with fn to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("IdOrYolo::to_json: \{e}")
   }
@@ -197,7 +211,9 @@ pub impl ToJson for IdOrYolo with to_json(self) {
 pub(all) struct Name(String) derive(Debug, Eq, Hash)
 
 ///|
-let name_pattern : @typify_rt.Regex = @typify_rt.regex("^(?![0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)^[a-z][a-z0-9-]*[a-zA-Z0-9]$")
+let name_pattern : @typify_rt.Regex = @typify_rt.regex(
+  "^(?![0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)^[a-z][a-z0-9-]*[a-zA-Z0-9]$",
+)
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
@@ -206,7 +222,9 @@ pub fn Name::new(value : String) -> Name raise @typify_rt.ConversionError {
     raise @typify_rt.ConversionError("longer than 63 characters")
   }
   if !name_pattern.is_match(value) {
-    raise @typify_rt.ConversionError("doesn't match pattern \"^(?![0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)^[a-z][a-z0-9-]*[a-zA-Z0-9]$\"")
+    raise @typify_rt.ConversionError(
+      "doesn't match pattern \"^(?![0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)^[a-z][a-z0-9-]*[a-zA-Z0-9]$\"",
+    )
   }
 
   Name(value)
@@ -221,7 +239,9 @@ pub fn Name::deserialize(d : @typify_rt.De) -> Name raise @typify_rt.DeError {
 }
 
 ///|
-pub fn Name::serialize(self : Name) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn Name::serialize(
+  self : Name,
+) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_string(self.0)
 }
 
@@ -245,7 +265,7 @@ pub fn Name::from_json(json : Json) -> Name raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for Name with to_json(self) {
+pub impl ToJson for Name with fn to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("Name::to_json: \{e}")
   }
@@ -260,7 +280,9 @@ let id_or_yolo_yolo_pattern : @typify_rt.Regex = @typify_rt.regex(".*")
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn IdOrYoloYolo::new(value : String) -> IdOrYoloYolo raise @typify_rt.ConversionError {
+pub fn IdOrYoloYolo::new(
+  value : String,
+) -> IdOrYoloYolo raise @typify_rt.ConversionError {
   if !id_or_yolo_yolo_pattern.is_match(value) {
     raise @typify_rt.ConversionError("doesn't match pattern \".*\"")
   }
@@ -269,7 +291,9 @@ pub fn IdOrYoloYolo::new(value : String) -> IdOrYoloYolo raise @typify_rt.Conver
 }
 
 ///|
-pub fn IdOrYoloYolo::deserialize(d : @typify_rt.De) -> IdOrYoloYolo raise @typify_rt.DeError {
+pub fn IdOrYoloYolo::deserialize(
+  d : @typify_rt.De,
+) -> IdOrYoloYolo raise @typify_rt.DeError {
   let value = @typify_rt.de_string(d)
   IdOrYoloYolo::new(value) catch {
     @typify_rt.ConversionError(msg) => raise @typify_rt.DeError(msg)
@@ -277,33 +301,40 @@ pub fn IdOrYoloYolo::deserialize(d : @typify_rt.De) -> IdOrYoloYolo raise @typif
 }
 
 ///|
-pub fn IdOrYoloYolo::serialize(self : IdOrYoloYolo) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn IdOrYoloYolo::serialize(
+  self : IdOrYoloYolo,
+) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_string(self.0)
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn IdOrYoloYolo::from_json_str(text : StringView) -> IdOrYoloYolo raise @typify_rt.DeError {
+pub fn IdOrYoloYolo::from_json_str(
+  text : StringView,
+) -> IdOrYoloYolo raise @typify_rt.DeError {
   IdOrYoloYolo::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn IdOrYoloYolo::to_json_string(self : IdOrYoloYolo) -> String raise @typify_rt.SerError {
+pub fn IdOrYoloYolo::to_json_string(
+  self : IdOrYoloYolo,
+) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn IdOrYoloYolo::from_json(json : Json) -> IdOrYoloYolo raise @typify_rt.DeError {
+pub fn IdOrYoloYolo::from_json(
+  json : Json,
+) -> IdOrYoloYolo raise @typify_rt.DeError {
   IdOrYoloYolo::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for IdOrYoloYolo with to_json(self) {
+pub impl ToJson for IdOrYoloYolo with fn to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("IdOrYoloYolo::to_json: \{e}")
   }
 }
-

@@ -139,7 +139,8 @@ fn Gen::de_fn(self : Gen, id : @typify.TypeId) -> String {
         NIpv6 => "@typify_rt.Ipv6Addr::deserialize"
         NString => "@typify_rt.de_string"
         NJson | NUnknown(_) => "@typify_rt.de_json"
-        NOption(p) => "(d : @typify_rt.De) => @typify_rt.de_option(d, \{self.de_fn(p)})"
+        NOption(p) =>
+          "(d : @typify_rt.De) => @typify_rt.de_option(d, \{self.de_fn(p)})"
       }
     _ => "(d : @typify_rt.De) => \{self.de_expr(id, "d")}"
   }
@@ -157,8 +158,7 @@ fn Gen::de_expr(self : Gen, id : @typify.TypeId, d : String) -> String {
         _ => "@typify_rt.de_option(\{d}, \{self.de_fn(inner)})"
       }
     Vec(inner) | Set(inner) => "@typify_rt.de_vec(\{d}, \{self.de_fn(inner)})"
-    Map(k, v) =>
-      "@typify_rt.de_map(\{d}, \{self.de_fn(k)}, \{self.de_fn(v)})"
+    Map(k, v) => "@typify_rt.de_map(\{d}, \{self.de_fn(k)}, \{self.de_fn(v)})"
     Tuple(ids) => {
       let elems = ids.mapi((i, t) => "let t\{i} = \{self.de_fn(t)}(s.next())")
       let result = match ids {
@@ -229,7 +229,8 @@ fn Gen::ser_callee(self : Gen, id : @typify.TypeId) -> String {
         NIpv6 => "@typify_rt.Ipv6Addr::serialize"
         NString => "@typify_rt.ser_string"
         NJson | NUnknown(_) => "@typify_rt.ser_json"
-        NOption(p) => "(v : \{self.mbt_type(id)}) => @typify_rt.ser_option(v, \{self.ser_fn(p)})"
+        NOption(p) =>
+          "(v : \{self.mbt_type(id)}) => @typify_rt.ser_option(v, \{self.ser_fn(p)})"
       }
     _ => "(v : \{self.mbt_type(id)}) => \{self.ser_expr(id, "v")}"
   }
@@ -249,7 +250,9 @@ fn Gen::ser_expr(self : Gen, id : @typify.TypeId, v : String) -> String {
     Vec(inner) | Set(inner) => "@typify_rt.ser_vec(\{v}, \{self.ser_fn(inner)})"
     Map(k, val) => {
       let key = "(k : \{self.mbt_type(k)}) => @typify_rt.map_key(\{self.ser_expr(k, "k")})"
-      if self.sorted_maps && !(entry(self.space, k).details is String && entry(self.space, val).details is JsonValue) {
+      if self.sorted_maps &&
+        !(entry(self.space, k).details is String &&
+        entry(self.space, val).details is JsonValue) {
         "@typify_rt.ser_sorted_map(\{v}, \{self.key_cmp(k)}, \{key}, \{self.ser_fn(val)})"
       } else if entry(self.space, k).details is String &&
         entry(self.space, val).details is JsonValue {
@@ -276,8 +279,11 @@ fn Gen::ser_expr(self : Gen, id : @typify.TypeId, v : String) -> String {
 /// The ordering of map keys for `BTreeMap` output (the Rust key type's `Ord`).
 fn Gen::key_cmp(self : Gen, k : @typify.TypeId) -> String {
   match entry(self.space, k).details {
-    Enum(_) => "(a : \{self.type_name(k)}, b : \{self.type_name(k)}) => a.variant_index().compare(b.variant_index())"
-    Newtype(_) => "(a : \{self.type_name(k)}, b : \{self.type_name(k)}) => @typify_rt.compare_keys(a.0.to_string(), b.0.to_string())"
-    _ => "(a : \{self.mbt_type(k)}, b : \{self.mbt_type(k)}) => @typify_rt.compare_keys(a.to_string(), b.to_string())"
+    Enum(_) =>
+      "(a : \{self.type_name(k)}, b : \{self.type_name(k)}) => a.variant_index().compare(b.variant_index())"
+    Newtype(_) =>
+      "(a : \{self.type_name(k)}, b : \{self.type_name(k)}) => @typify_rt.compare_keys(a.0.to_string(), b.0.to_string())"
+    _ =>
+      "(a : \{self.mbt_type(k)}, b : \{self.mbt_type(k)}) => @typify_rt.compare_keys(a.to_string(), b.to_string())"
   }
 }

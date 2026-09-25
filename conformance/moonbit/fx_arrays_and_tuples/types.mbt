@@ -8,36 +8,46 @@
 pub(all) struct ArraySansItems(Array[Json]) derive(Debug, Eq)
 
 ///|
-pub fn ArraySansItems::deserialize(d : @typify_rt.De) -> ArraySansItems raise @typify_rt.DeError {
+pub fn ArraySansItems::deserialize(
+  d : @typify_rt.De,
+) -> ArraySansItems raise @typify_rt.DeError {
   ArraySansItems(@typify_rt.de_vec(d, @typify_rt.de_json))
 }
 
 ///|
-pub fn ArraySansItems::serialize(self : ArraySansItems) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn ArraySansItems::serialize(
+  self : ArraySansItems,
+) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_vec(self.0, (v : Json) => @typify_rt.ser_json(v))
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn ArraySansItems::from_json_str(text : StringView) -> ArraySansItems raise @typify_rt.DeError {
+pub fn ArraySansItems::from_json_str(
+  text : StringView,
+) -> ArraySansItems raise @typify_rt.DeError {
   ArraySansItems::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn ArraySansItems::to_json_string(self : ArraySansItems) -> String raise @typify_rt.SerError {
+pub fn ArraySansItems::to_json_string(
+  self : ArraySansItems,
+) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn ArraySansItems::from_json(json : Json) -> ArraySansItems raise @typify_rt.DeError {
+pub fn ArraySansItems::from_json(
+  json : Json,
+) -> ArraySansItems raise @typify_rt.DeError {
   ArraySansItems::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for ArraySansItems with to_json(self) {
+pub impl ToJson for ArraySansItems with fn to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("ArraySansItems::to_json: \{e}")
   }
@@ -48,36 +58,57 @@ pub impl ToJson for ArraySansItems with to_json(self) {
 pub(all) struct LessSimpleTwoTuple((String, String)) derive(Debug, Eq)
 
 ///|
-pub fn LessSimpleTwoTuple::deserialize(d : @typify_rt.De) -> LessSimpleTwoTuple raise @typify_rt.DeError {
-  LessSimpleTwoTuple({ let s = @typify_rt.de_tuple(d, 2); let t0 = @typify_rt.de_string(s.next()); let t1 = @typify_rt.de_string(s.next()); s.finish(); (t0, t1) })
+pub fn LessSimpleTwoTuple::deserialize(
+  d : @typify_rt.De,
+) -> LessSimpleTwoTuple raise @typify_rt.DeError {
+  LessSimpleTwoTuple(
+    {
+      let s = @typify_rt.de_tuple(d, 2)
+      let t0 = @typify_rt.de_string(s.next())
+      let t1 = @typify_rt.de_string(s.next())
+      s.finish()
+      (t0, t1)
+    },
+  )
 }
 
 ///|
-pub fn LessSimpleTwoTuple::serialize(self : LessSimpleTwoTuple) -> @typify_rt.Content raise @typify_rt.SerError {
-  @typify_rt.Content::Array([@typify_rt.ser_string(self.0.0), @typify_rt.ser_string(self.0.1)])
+pub fn LessSimpleTwoTuple::serialize(
+  self : LessSimpleTwoTuple,
+) -> @typify_rt.Content raise @typify_rt.SerError {
+  @typify_rt.Content::Array([
+    @typify_rt.ser_string(self.0.0),
+    @typify_rt.ser_string(self.0.1),
+  ])
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn LessSimpleTwoTuple::from_json_str(text : StringView) -> LessSimpleTwoTuple raise @typify_rt.DeError {
+pub fn LessSimpleTwoTuple::from_json_str(
+  text : StringView,
+) -> LessSimpleTwoTuple raise @typify_rt.DeError {
   LessSimpleTwoTuple::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn LessSimpleTwoTuple::to_json_string(self : LessSimpleTwoTuple) -> String raise @typify_rt.SerError {
+pub fn LessSimpleTwoTuple::to_json_string(
+  self : LessSimpleTwoTuple,
+) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn LessSimpleTwoTuple::from_json(json : Json) -> LessSimpleTwoTuple raise @typify_rt.DeError {
+pub fn LessSimpleTwoTuple::from_json(
+  json : Json,
+) -> LessSimpleTwoTuple raise @typify_rt.DeError {
   LessSimpleTwoTuple::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for LessSimpleTwoTuple with to_json(self) {
+pub impl ToJson for LessSimpleTwoTuple with fn to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("LessSimpleTwoTuple::to_json: \{e}")
   }
@@ -88,36 +119,46 @@ pub impl ToJson for LessSimpleTwoTuple with to_json(self) {
 pub(all) struct SetAvecItem(Array[String]) derive(Debug, Eq)
 
 ///|
-pub fn SetAvecItem::deserialize(d : @typify_rt.De) -> SetAvecItem raise @typify_rt.DeError {
+pub fn SetAvecItem::deserialize(
+  d : @typify_rt.De,
+) -> SetAvecItem raise @typify_rt.DeError {
   SetAvecItem(@typify_rt.de_vec(d, @typify_rt.de_string))
 }
 
 ///|
-pub fn SetAvecItem::serialize(self : SetAvecItem) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn SetAvecItem::serialize(
+  self : SetAvecItem,
+) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_vec(self.0, (v : String) => @typify_rt.ser_string(v))
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn SetAvecItem::from_json_str(text : StringView) -> SetAvecItem raise @typify_rt.DeError {
+pub fn SetAvecItem::from_json_str(
+  text : StringView,
+) -> SetAvecItem raise @typify_rt.DeError {
   SetAvecItem::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn SetAvecItem::to_json_string(self : SetAvecItem) -> String raise @typify_rt.SerError {
+pub fn SetAvecItem::to_json_string(
+  self : SetAvecItem,
+) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn SetAvecItem::from_json(json : Json) -> SetAvecItem raise @typify_rt.DeError {
+pub fn SetAvecItem::from_json(
+  json : Json,
+) -> SetAvecItem raise @typify_rt.DeError {
   SetAvecItem::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for SetAvecItem with to_json(self) {
+pub impl ToJson for SetAvecItem with fn to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("SetAvecItem::to_json: \{e}")
   }
@@ -128,36 +169,56 @@ pub impl ToJson for SetAvecItem with to_json(self) {
 pub(all) struct SimpleTwoArray(FixedArray[String]) derive(Debug, Eq)
 
 ///|
-pub fn SimpleTwoArray::deserialize(d : @typify_rt.De) -> SimpleTwoArray raise @typify_rt.DeError {
-  SimpleTwoArray({ let s = @typify_rt.de_fixed(d, 2); let xs = []; for _ in 0..<2 { xs.push(@typify_rt.de_string(s.next())) }; s.finish(); FixedArray::from_array(xs) })
+pub fn SimpleTwoArray::deserialize(
+  d : @typify_rt.De,
+) -> SimpleTwoArray raise @typify_rt.DeError {
+  SimpleTwoArray(
+    {
+      let s = @typify_rt.de_fixed(d, 2)
+      let xs = []
+      for _ in 0..<2 {
+        xs.push(@typify_rt.de_string(s.next()))
+      }
+      s.finish()
+      FixedArray::from_array(xs)
+    },
+  )
 }
 
 ///|
-pub fn SimpleTwoArray::serialize(self : SimpleTwoArray) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn SimpleTwoArray::serialize(
+  self : SimpleTwoArray,
+) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_vec(self.0[:], (v : String) => @typify_rt.ser_string(v))
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn SimpleTwoArray::from_json_str(text : StringView) -> SimpleTwoArray raise @typify_rt.DeError {
+pub fn SimpleTwoArray::from_json_str(
+  text : StringView,
+) -> SimpleTwoArray raise @typify_rt.DeError {
   SimpleTwoArray::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn SimpleTwoArray::to_json_string(self : SimpleTwoArray) -> String raise @typify_rt.SerError {
+pub fn SimpleTwoArray::to_json_string(
+  self : SimpleTwoArray,
+) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn SimpleTwoArray::from_json(json : Json) -> SimpleTwoArray raise @typify_rt.DeError {
+pub fn SimpleTwoArray::from_json(
+  json : Json,
+) -> SimpleTwoArray raise @typify_rt.DeError {
   SimpleTwoArray::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for SimpleTwoArray with to_json(self) {
+pub impl ToJson for SimpleTwoArray with fn to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("SimpleTwoArray::to_json: \{e}")
   }
@@ -168,36 +229,57 @@ pub impl ToJson for SimpleTwoArray with to_json(self) {
 pub(all) struct SimpleTwoTuple((String, String)) derive(Debug, Eq)
 
 ///|
-pub fn SimpleTwoTuple::deserialize(d : @typify_rt.De) -> SimpleTwoTuple raise @typify_rt.DeError {
-  SimpleTwoTuple({ let s = @typify_rt.de_tuple(d, 2); let t0 = @typify_rt.de_string(s.next()); let t1 = @typify_rt.de_string(s.next()); s.finish(); (t0, t1) })
+pub fn SimpleTwoTuple::deserialize(
+  d : @typify_rt.De,
+) -> SimpleTwoTuple raise @typify_rt.DeError {
+  SimpleTwoTuple(
+    {
+      let s = @typify_rt.de_tuple(d, 2)
+      let t0 = @typify_rt.de_string(s.next())
+      let t1 = @typify_rt.de_string(s.next())
+      s.finish()
+      (t0, t1)
+    },
+  )
 }
 
 ///|
-pub fn SimpleTwoTuple::serialize(self : SimpleTwoTuple) -> @typify_rt.Content raise @typify_rt.SerError {
-  @typify_rt.Content::Array([@typify_rt.ser_string(self.0.0), @typify_rt.ser_string(self.0.1)])
+pub fn SimpleTwoTuple::serialize(
+  self : SimpleTwoTuple,
+) -> @typify_rt.Content raise @typify_rt.SerError {
+  @typify_rt.Content::Array([
+    @typify_rt.ser_string(self.0.0),
+    @typify_rt.ser_string(self.0.1),
+  ])
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn SimpleTwoTuple::from_json_str(text : StringView) -> SimpleTwoTuple raise @typify_rt.DeError {
+pub fn SimpleTwoTuple::from_json_str(
+  text : StringView,
+) -> SimpleTwoTuple raise @typify_rt.DeError {
   SimpleTwoTuple::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn SimpleTwoTuple::to_json_string(self : SimpleTwoTuple) -> String raise @typify_rt.SerError {
+pub fn SimpleTwoTuple::to_json_string(
+  self : SimpleTwoTuple,
+) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn SimpleTwoTuple::from_json(json : Json) -> SimpleTwoTuple raise @typify_rt.DeError {
+pub fn SimpleTwoTuple::from_json(
+  json : Json,
+) -> SimpleTwoTuple raise @typify_rt.DeError {
   SimpleTwoTuple::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for SimpleTwoTuple with to_json(self) {
+pub impl ToJson for SimpleTwoTuple with fn to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("SimpleTwoTuple::to_json: \{e}")
   }
@@ -208,36 +290,57 @@ pub impl ToJson for SimpleTwoTuple with to_json(self) {
 pub(all) struct UnsimpleTwoTuple((String, String)) derive(Debug, Eq)
 
 ///|
-pub fn UnsimpleTwoTuple::deserialize(d : @typify_rt.De) -> UnsimpleTwoTuple raise @typify_rt.DeError {
-  UnsimpleTwoTuple({ let s = @typify_rt.de_tuple(d, 2); let t0 = @typify_rt.de_string(s.next()); let t1 = @typify_rt.de_string(s.next()); s.finish(); (t0, t1) })
+pub fn UnsimpleTwoTuple::deserialize(
+  d : @typify_rt.De,
+) -> UnsimpleTwoTuple raise @typify_rt.DeError {
+  UnsimpleTwoTuple(
+    {
+      let s = @typify_rt.de_tuple(d, 2)
+      let t0 = @typify_rt.de_string(s.next())
+      let t1 = @typify_rt.de_string(s.next())
+      s.finish()
+      (t0, t1)
+    },
+  )
 }
 
 ///|
-pub fn UnsimpleTwoTuple::serialize(self : UnsimpleTwoTuple) -> @typify_rt.Content raise @typify_rt.SerError {
-  @typify_rt.Content::Array([@typify_rt.ser_string(self.0.0), @typify_rt.ser_string(self.0.1)])
+pub fn UnsimpleTwoTuple::serialize(
+  self : UnsimpleTwoTuple,
+) -> @typify_rt.Content raise @typify_rt.SerError {
+  @typify_rt.Content::Array([
+    @typify_rt.ser_string(self.0.0),
+    @typify_rt.ser_string(self.0.1),
+  ])
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn UnsimpleTwoTuple::from_json_str(text : StringView) -> UnsimpleTwoTuple raise @typify_rt.DeError {
+pub fn UnsimpleTwoTuple::from_json_str(
+  text : StringView,
+) -> UnsimpleTwoTuple raise @typify_rt.DeError {
   UnsimpleTwoTuple::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn UnsimpleTwoTuple::to_json_string(self : UnsimpleTwoTuple) -> String raise @typify_rt.SerError {
+pub fn UnsimpleTwoTuple::to_json_string(
+  self : UnsimpleTwoTuple,
+) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn UnsimpleTwoTuple::from_json(json : Json) -> UnsimpleTwoTuple raise @typify_rt.DeError {
+pub fn UnsimpleTwoTuple::from_json(
+  json : Json,
+) -> UnsimpleTwoTuple raise @typify_rt.DeError {
   UnsimpleTwoTuple::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for UnsimpleTwoTuple with to_json(self) {
+pub impl ToJson for UnsimpleTwoTuple with fn to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("UnsimpleTwoTuple::to_json: \{e}")
   }
@@ -248,38 +351,57 @@ pub impl ToJson for UnsimpleTwoTuple with to_json(self) {
 pub(all) struct YoloTwoArray(FixedArray[Json]) derive(Debug, Eq)
 
 ///|
-pub fn YoloTwoArray::deserialize(d : @typify_rt.De) -> YoloTwoArray raise @typify_rt.DeError {
-  YoloTwoArray({ let s = @typify_rt.de_fixed(d, 2); let xs = []; for _ in 0..<2 { xs.push(@typify_rt.de_json(s.next())) }; s.finish(); FixedArray::from_array(xs) })
+pub fn YoloTwoArray::deserialize(
+  d : @typify_rt.De,
+) -> YoloTwoArray raise @typify_rt.DeError {
+  YoloTwoArray(
+    {
+      let s = @typify_rt.de_fixed(d, 2)
+      let xs = []
+      for _ in 0..<2 {
+        xs.push(@typify_rt.de_json(s.next()))
+      }
+      s.finish()
+      FixedArray::from_array(xs)
+    },
+  )
 }
 
 ///|
-pub fn YoloTwoArray::serialize(self : YoloTwoArray) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn YoloTwoArray::serialize(
+  self : YoloTwoArray,
+) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_vec(self.0[:], (v : Json) => @typify_rt.ser_json(v))
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn YoloTwoArray::from_json_str(text : StringView) -> YoloTwoArray raise @typify_rt.DeError {
+pub fn YoloTwoArray::from_json_str(
+  text : StringView,
+) -> YoloTwoArray raise @typify_rt.DeError {
   YoloTwoArray::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn YoloTwoArray::to_json_string(self : YoloTwoArray) -> String raise @typify_rt.SerError {
+pub fn YoloTwoArray::to_json_string(
+  self : YoloTwoArray,
+) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn YoloTwoArray::from_json(json : Json) -> YoloTwoArray raise @typify_rt.DeError {
+pub fn YoloTwoArray::from_json(
+  json : Json,
+) -> YoloTwoArray raise @typify_rt.DeError {
   YoloTwoArray::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for YoloTwoArray with to_json(self) {
+pub impl ToJson for YoloTwoArray with fn to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("YoloTwoArray::to_json: \{e}")
   }
 }
-
