@@ -1,5 +1,7 @@
 use std::path::{Path, PathBuf};
 
+mod random;
+
 use schemars::schema::RootSchema;
 use typify_impl::{CrateVers, TypeSpace, TypeSpaceImpl, TypeSpacePatch, TypeSpaceSettings};
 
@@ -49,6 +51,15 @@ fn run(out_dir: &Path, name: &str, settings: &TypeSpaceSettings, root: RootSchem
 }
 
 fn main() {
+    if std::env::args().nth(1).as_deref() == Some("one") {
+        random::one(&std::env::args().nth(2).unwrap());
+        return;
+    }
+    if std::env::args().nth(1).as_deref() == Some("random") {
+        let n = std::env::args().nth(2).map_or(400, |s| s.parse().unwrap());
+        random::main(n);
+        return;
+    }
     let root = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..");
     let out_dir = root.join("tests/oracle/typify");
     std::fs::create_dir_all(&out_dir).unwrap();

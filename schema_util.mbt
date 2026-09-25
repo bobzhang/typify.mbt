@@ -279,7 +279,8 @@ fn resolve(
 ) -> @schema.Schema raise TypifyError {
   match schema {
     Bool(_) => schema
-    Object(o) if shape(o, some=F_REF) => {
+    // Metadata is ignored, as in upstream's pattern (`metadata: _`).
+    Object(o) if shape(o, some=F_REF, any=F_META) => {
       let key = ref_key(o.reference.unwrap())
       match defs.get(key) {
         Some(s) => s
