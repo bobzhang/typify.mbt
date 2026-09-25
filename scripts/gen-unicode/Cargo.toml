@@ -1,0 +1,10 @@
+[package]
+name = "gen-unicode"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+unicode-ident = "=1.0.26"
+
+[workspace]

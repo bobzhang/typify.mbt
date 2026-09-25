@@ -17,3 +17,5 @@ import {
 }
 
 preferred_target = "wasm"
+
+warnings = "-implicit_impl_as_method"

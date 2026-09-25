@@ -1,0 +1,16 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/schema"
+
+// Values
+
+// Errors
+
+// Types and methods
+pub struct RootSchema {
+  raw : Json
+}
+pub fn RootSchema::parse(String) -> Self raise
+
+// Type aliases
+
+// Traits

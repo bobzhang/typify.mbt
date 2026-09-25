@@ -1,0 +1,21 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify"
+
+import {
+  "bobzhang/typify/schema",
+}
+
+// Values
+pub fn generate(@schema.RootSchema, lang~ : Lang) -> String
+
+// Errors
+
+// Types and methods
+pub(all) enum Lang {
+  Rust
+  MoonBit
+}
+
+// Type aliases
+
+// Traits
