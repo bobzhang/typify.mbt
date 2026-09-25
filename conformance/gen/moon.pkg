@@ -1,0 +1,12 @@
+import {
+  "bobzhang/typify/schema",
+  "bobzhang/typify/serde_json",
+  "bobzhang/typify/collections",
+  "moonbitlang/core/quickcheck/splitmix",
+  "moonbitlang/x/fs",
+  "moonbitlang/core/env",
+}
+
+options(
+  "is-main": true,
+)

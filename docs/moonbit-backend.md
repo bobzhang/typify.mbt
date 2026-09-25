@@ -1,5 +1,44 @@
 # MoonBit backend design
 
+> **Revision after review** (see `moonbit-backend-review.md`, Codex, 2026-09-26). The decisions
+> below supersede the sections that follow wherever they conflict.
+>
+> 1. **Ordered document instead of builtin `Json`.** Decoding and encoding use
+>    `@typify_rt.Content`, mirroring serde's `Content`: object entries are an ordered array that
+>    keeps duplicate keys. Each entry records whether its key text contained escapes, and numbers
+>    keep serde_json's `PosInt`/`NegInt`/`Float` class. Text is parsed by the serde_json port
+>    directly into `Content`. Output goes through a serde_json-exact writer, so duplicate keys
+>    produced by flatten are preserved.
+> 2. **Two decoding contexts, as in serde.** `Direct` behaves like `serde_json::Deserializer`
+>    (numeric map keys are parsed from the raw key text; `"01"`, `"+1"` and escaped digits are
+>    rejected). `Buffered` behaves like `ContentRefDeserializer`: it is used inside untagged enums
+>    and flatten, and a numeric map key there is an invalid-type error.
+> 3. **Flatten is ported from serde.** Named fields are matched first. A flattened plain struct
+>    claims (removes) the entries it recognises before decoding them. A flattened `Option<T>`
+>    turns a decode error into `None`, but the entries stay claimed. Flattened maps take the
+>    remaining entries without claiming them. Declaration order is kept.
+>    `deny_unknown_fields` checks leftovers.
+> 4. **All codecs are generated per IR type**, including inside collections. Core
+>    `ToJson`/`FromJson` instances are never delegated to. The generated types also implement
+>    `ToJson`/`FromJson` as documented, lossy conveniences (duplicate keys and
+>    number classes don't survive `Json`). The exact API is `T::from_json_str` /
+>    `T::to_json_string` (plus `from_content` / `to_content`).
+> 5. **Struct input forms follow serde_derive:**
+>    - positional arrays for structs without flatten (missing trailing default fields are
+>      defaulted, otherwise `invalid length`);
+>    - internal tagging accepts `[tag, ...]`;
+>    - adjacent tagging accepts `[tag, content]`;
+>    - internal unit variants ignore extra fields;
+>    - external unit variants accept `"V"` and `{"V": null}`, and always serialize as `"V"`.
+> 6. **Defaults:** `#[serde(default)]` applies only to absent keys and uses the type's Rust
+>    `Default` (intrinsic values for the types typify uses it for). Custom defaults are
+>    generated functions that decode the schema's JSON default once.
+> 7. **Identifiers** are re-sanitized for MoonBit with scope-aware collision allocation (type
+>    names, constructor names per enum, field names per struct).
+> 8. **Tests** compare accept/reject, exact output text and the chosen variant identity (the
+>    harnesses print a variant path) against the Rust harness, and include duplicate keys, key
+>    permutations, sequence forms and invalid inputs.
+
 Goal: for every type the Rust backend emits, emit a MoonBit type whose JSON
 encoding and decoding behave exactly like the serde-derived Rust type:
 
