@@ -17,3 +17,4 @@ serde_json/f32_oracle_test.mbt
 regex/oracle_test.mbt
 runtime/formats_oracle_test.mbt
 internal/heck/oracle_test.mbt
+rust/random_oracle_test.mbt

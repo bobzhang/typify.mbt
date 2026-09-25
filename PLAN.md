@@ -1,5 +1,22 @@
 # typify.mbt: detailed porting plan
 
+## Status (v0.1.0)
+
+All milestones below are done. The verification is summarised in README.md ("How it
+is verified"):
+
+- **Rust output:** the IR and tokens match upstream on every fixture and on
+  thousands of random schemas.
+- **MoonBit output:** it agrees exactly with serde, including error texts:
+  - about 5k fixture instances (26k in stress runs);
+  - about 35k instances over 1,020 random schemas.
+
+Known limitations:
+
+- The CLI prints Rust as an unformatted token stream (pipe it through rustfmt).
+- Rust types without a MoonBit equivalent are represented as `Json`: user
+  conversions, replacements and `x-rust-type`.
+
 ## 1. Goal and non-goals
 
 **Goal.** A pure-MoonBit port of [oxidecomputer/typify](https://github.com/oxidecomputer/typify)
