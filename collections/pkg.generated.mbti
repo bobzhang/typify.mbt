@@ -34,6 +34,25 @@ pub fn[V] StrMap::values(Self[V]) -> Array[V]
 pub impl[V : Eq] Eq for StrMap[V]
 pub impl[V : @debug.Debug] @debug.Debug for StrMap[V]
 
+pub struct StrSet {
+  // private fields
+}
+pub fn StrSet::add(Self, String) -> Unit
+pub fn StrSet::contains(Self, StringView) -> Bool
+pub fn StrSet::copy(Self) -> Self
+pub fn StrSet::from_array(ArrayView[String]) -> Self
+pub fn StrSet::insert(Self, String) -> Bool
+pub fn StrSet::is_empty(Self) -> Bool
+pub fn StrSet::is_subset(Self, Self) -> Bool
+pub fn StrSet::iter(Self) -> Iter[String]
+pub fn StrSet::length(Self) -> Int
+pub fn StrSet::new() -> Self
+pub fn StrSet::remove(Self, StringView) -> Bool
+pub fn StrSet::to_array(Self) -> Array[String]
+pub fn StrSet::union(Self, Self) -> Self
+pub impl Eq for StrSet
+pub impl @debug.Debug for StrSet
+
 // Type aliases
 
 // Traits

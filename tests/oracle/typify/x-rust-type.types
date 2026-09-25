@@ -1,0 +1,6 @@
+1: struct AllTheThings
+2: enum Marker
+3: ::std::option::Option
+4: ::std::path::PathBuf
+5: option 3
+6: option 4

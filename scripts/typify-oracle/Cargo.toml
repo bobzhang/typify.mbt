@@ -1,0 +1,14 @@
+[package]
+name = "typify-oracle"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# Runs upstream typify (the checkout in .repos/typify) on the fixtures and
+# writes its raw token output and type descriptions to tests/oracle/typify.
+[dependencies]
+typify-impl = { path = "../../.repos/typify/typify-impl" }
+schemars = "0.8.22"
+serde_json = "1"
+
+[workspace]

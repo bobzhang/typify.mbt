@@ -1,0 +1,4 @@
+1: struct TestGrammarForPatternProperties
+2: string
+3: newtype TestGrammarForPatternPropertiesRulesKey 2
+4: map 3 2

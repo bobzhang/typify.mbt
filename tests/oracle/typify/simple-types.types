@@ -1,0 +1,10 @@
+1: struct AnythingWorks
+2: struct FloatsArentTerribleImTold
+3: newtype JustOne 8
+4: struct UintMinimumAndMaximum
+5: json value
+6: f32
+7: option 6
+8: string
+9: u64
+10: ::std::num::NonZeroU64

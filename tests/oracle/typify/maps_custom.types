@@ -1,0 +1,14 @@
+1: newtype Eh 7
+2: newtype MapWithDateKeys 9
+3: newtype MapWithDateTimeKeys 11
+4: newtype MapWithKeys 12
+5: newtype Value 7
+6: newtype DeadSimple 14
+7: string
+8: ::chrono::naive::NaiveDate
+9: map 8 5
+10: ::chrono::DateTime<::chrono::offset::Utc>
+11: map 10 5
+12: map 1 5
+13: json value
+14: map 7 13

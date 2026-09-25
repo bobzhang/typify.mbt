@@ -1,0 +1,9 @@
+1: struct ObjectWithNoExtra
+2: struct ObjectWithOkExtra
+3: struct ObjectWithStringExtra
+4: struct ObjectWithWhichExtra
+5: struct ObjectWithYesExtra
+6: string
+7: map 6 6
+8: json value
+9: map 6 8

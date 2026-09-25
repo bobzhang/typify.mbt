@@ -1,0 +1,13 @@
+1: enum IntOrStr
+2: enum OneOfSeveral
+3: newtype ReallyJustNull 12
+4: newtype SeriouslyAnything 9
+5: enum YesNoMaybe
+6: i64
+7: string
+8: bool
+9: json value
+10: vec 9
+11: map 7 9
+12: ()
+13: option 7

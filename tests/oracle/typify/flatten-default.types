@@ -1,0 +1,6 @@
+1: struct Container
+2: string
+3: option 2
+4: map 2 2
+5: struct ContainerThing
+6: option 5

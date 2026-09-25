@@ -1,0 +1,39 @@
+1: struct BarProp
+2: struct CommentedTypeMerged
+3: enum HereAndThere
+4: struct JsonResponseBase
+5: struct JsonSuccess
+6: struct JsonSuccessBase
+7: struct OrderDependentMerge
+8: newtype TriplePattern 29
+9: enum Unresolvable
+10: struct ButNotThat
+11: struct MergeEmpty
+12: newtype MergeNumberBounds 34
+13: newtype MergeStringBounds 29
+14: newtype NarrowNumber 35
+15: struct Pickingone
+16: struct PickingoneInstallation
+17: struct PickingoneUser
+18: struct TrimFat
+19: struct UnchangedByMerge
+20: enum Unsatisfiable1
+21: enum Unsatisfiable2
+22: enum Unsatisfiable3
+23: struct Unsatisfiable3A
+24: enum Unsatisfiable3B
+25: enum Unsatisfiable3C
+26: enum WeirdEnum
+27: json value
+28: option 27
+29: string
+30: option 29
+31: enum JsonSuccessResult
+32: enum JsonSuccessBaseResult
+33: bool
+34: f64
+35: ::std::num::NonZeroU64
+36: struct PickingoneSuspendedBy
+37: option 17
+38: enum UnchangedByMergeTag
+39: option 25

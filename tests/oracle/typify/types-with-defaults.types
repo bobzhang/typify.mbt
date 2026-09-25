@@ -1,0 +1,19 @@
+1: struct Doodad
+2: struct MrDefaultNumbers
+3: struct OuterThing
+4: struct TestBed
+5: newtype UInt 19
+6: struct UIntContainer
+7: ::chrono::DateTime<::chrono::offset::Utc>
+8: ::std::num::NonZeroU64
+9: option 8
+10: ::std::num::NonZeroU16
+11: ::std::num::NonZeroU8
+12: string
+13: option 12
+14: struct ThingWithDefaults
+15: option 14
+16: json value
+17: vec 16
+18: ::uuid::Uuid
+19: i64

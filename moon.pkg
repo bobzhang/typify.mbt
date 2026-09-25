@@ -1,3 +1,15 @@
 import {
+  "bobzhang/typify/collections",
+  "bobzhang/typify/internal/heck",
+  "bobzhang/typify/internal/semver",
+  "bobzhang/typify/internal/unicode",
+  "bobzhang/typify/regex",
   "bobzhang/typify/schema",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/sorted_map",
 }
+
+import {
+  "moonbitlang/core/quickcheck",
+  "moonbitlang/x/fs",
+} for "test"

@@ -1,0 +1,32 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/internal/semver"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+pub suberror SemverError {
+  SemverError(String)
+} derive(@debug.Debug)
+
+// Types and methods
+pub struct Version {
+  major : UInt64
+  minor : UInt64
+  patch : UInt64
+  pre : String
+} derive(Eq, @debug.Debug)
+pub fn Version::parse(String) -> Self raise SemverError
+
+pub struct VersionReq {
+  // private fields
+}
+pub fn VersionReq::matches(Self, Version) -> Bool
+pub fn VersionReq::parse(String) -> Self raise SemverError
+
+// Type aliases
+
+// Traits

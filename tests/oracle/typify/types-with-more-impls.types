@@ -1,0 +1,4 @@
+1: newtype PatternString 3
+2: newtype Sub10Primes 4
+3: string
+4: u32

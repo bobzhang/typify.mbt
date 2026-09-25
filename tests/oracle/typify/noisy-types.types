@@ -1,0 +1,7 @@
+1: newtype ArrayBs 5
+2: newtype IntegerBs 6
+3: struct ObjectBs
+4: bool
+5: vec 4
+6: u64
+7: option 4

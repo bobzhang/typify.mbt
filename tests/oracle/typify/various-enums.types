@@ -1,0 +1,48 @@
+1: enum AlternativeEnum
+2: enum AnyOfNoStrings
+3: enum AnyOfNothing
+4: newtype BlockSize 32
+5: struct DiskAttachment
+6: struct EmptyObject
+7: enum IpNet
+8: newtype Ipv4Net 34
+9: newtype Ipv6Net 34
+10: enum JankNames
+11: enum Never
+12: enum NeverEver
+13: enum NeverEverForever
+14: newtype NotBlockSize 41
+15: newtype NullStringEnumWithUnknownFormat 43
+16: newtype ReferenceDef 34
+17: enum References
+18: enum ShouldBeExclusive
+19: newtype StringVersion 34
+20: enum CommentedVariants
+21: enum EnumAndConstant
+22: enum OneOfMissingTitle
+23: enum OneOfRawType
+24: enum OneOfTypes
+25: newtype OptionAnyofConst 47
+26: newtype OptionAnyofEnum 47
+27: newtype OptionAnyofNull 47
+28: newtype OptionOneofConst 47
+29: newtype OptionOneofEnum 47
+30: newtype OptionOneofNull 47
+31: enum VariantsDifferByPunct
+32: i64
+33: enum DiskAttachmentState
+34: string
+35: json value
+36: map 34 35
+37: newtype EmptyObjectProp 36
+38: option 37
+39: map 34 34
+40: map 34 32
+41: f64
+42: enum NullStringEnumWithUnknownFormatInner
+43: option 42
+44: vec 34
+45: enum ReferencesObjectValue
+46: map 34 45
+47: option 34
+48: option 32

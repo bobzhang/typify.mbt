@@ -2,19 +2,277 @@
 package "bobzhang/typify"
 
 import {
+  "bobzhang/typify/collections",
+  "bobzhang/typify/internal/semver",
   "bobzhang/typify/schema",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+  "moonbitlang/core/sorted_map",
 }
 
 // Values
-pub fn generate(@schema.RootSchema, lang~ : Lang) -> String
+pub fn accept_as_ident(String) -> Bool
+
+pub fn recase(String, Case) -> (String, String?)
+
+pub fn sanitize(String, Case) -> String
+
+pub let std_num_nonzero_prefix : String
 
 // Errors
+pub(all) suberror TypifyError {
+  BadValue(String, @serde_json.Value)
+  InvalidTypeId
+  InvalidValue
+  InvalidSchema(type_name~ : String?, reason~ : String)
+  Panic(String)
+} derive(@debug.Debug)
+pub impl Show for TypifyError
 
 // Types and methods
-pub(all) enum Lang {
-  Rust
-  MoonBit
+pub(all) enum Case {
+  Pascal
+  Snake
 }
+
+pub(all) enum CrateVers {
+  Version(@semver.Version)
+  Any
+  Never
+} derive(@debug.Debug)
+pub fn CrateVers::parse(String) -> Self?
+
+pub(all) enum DefaultImpl {
+  Boolean
+  I64
+  U64
+  NZU64
+} derive(Compare, Eq, @debug.Debug)
+pub fn DefaultImpl::fn_name(Self) -> String
+
+pub(all) enum DefaultKind {
+  Intrinsic
+  Specific
+  Generic(DefaultImpl)
+} derive(@debug.Debug)
+
+pub(all) enum EnumTagType {
+  External
+  Internal(tag~ : String)
+  Adjacent(tag~ : String, content~ : String)
+  Untagged
+} derive(Eq, @debug.Debug)
+
+pub(all) enum Name {
+  Required(String)
+  Suggested(String)
+  Unknown
+} derive(Eq, @debug.Debug)
+pub fn Name::append(Self, String) -> Self
+pub fn Name::into_option(Self) -> String?
+
+pub(all) enum RefKey {
+  Root
+  Def(String)
+} derive(Eq, Hash, @debug.Debug)
+
+pub(all) struct StructProperty {
+  name : String
+  rename : StructPropertyRename
+  state : StructPropertyState
+  description : String?
+  type_id : TypeId
+} derive(Eq, @debug.Debug)
+
+pub(all) enum StructPropertyRename {
+  NoRename
+  Rename(String)
+  Flatten
+} derive(Eq, @debug.Debug)
+
+pub(all) enum StructPropertyState {
+  Required
+  Optional
+  Default(@serde_json.Value)
+} derive(Eq, @debug.Debug)
+
+pub(all) struct TypeEntry {
+  details : TypeEntryDetails
+  extra_derives : @collections.StrSet
+  extra_attrs : @collections.StrSet
+} derive(Eq, @debug.Debug)
+pub fn TypeEntry::describe(Self) -> String
+pub fn TypeEntry::from_details(TypeEntryDetails) -> Self
+pub fn TypeEntry::has_impl(Self, TypeSpace, TypeSpaceImpl) -> Bool raise TypifyError
+pub fn TypeEntry::name(Self) -> String?
+pub fn TypeEntry::new_float(String) -> Self
+pub fn TypeEntry::new_integer(String) -> Self
+pub fn TypeEntry::new_native(String, Array[TypeSpaceImpl]) -> Self
+pub fn TypeEntry::new_native_params(String, Array[TypeId]) -> Self
+pub fn TypeEntry::validate_value(Self, TypeSpace, @serde_json.Value) -> DefaultKind raise TypifyError
+
+pub(all) enum TypeEntryDetails {
+  Enum(TypeEntryEnum)
+  Struct(TypeEntryStruct)
+  Newtype(TypeEntryNewtype)
+  Native(TypeEntryNative)
+  Option(TypeId)
+  Box(TypeId)
+  Vec(TypeId)
+  Map(TypeId, TypeId)
+  Set(TypeId)
+  Array(TypeId, Int)
+  Tuple(Array[TypeId])
+  Unit
+  Boolean
+  Integer(String)
+  Float(String)
+  String
+  JsonValue
+  Reference(TypeId)
+} derive(Eq, @debug.Debug)
+
+pub(all) struct TypeEntryEnum {
+  name : String
+  rename : String?
+  description : String?
+  default : @serde_json.Value?
+  tag_type : EnumTagType
+  variants : Array[Variant]
+  deny_unknown_fields : Bool
+  bespoke_impls : Array[TypeEntryEnumImpl]
+  schema : @schema.Schema
+} derive(Eq, @debug.Debug)
+
+pub(all) enum TypeEntryEnumImpl {
+  AllSimpleVariants
+  UntaggedFromStr
+  UntaggedDisplay
+  UntaggedFromStringIrrefutable
+} derive(Compare, Eq, @debug.Debug)
+
+pub(all) struct TypeEntryNative {
+  type_name : String
+  impls : Array[TypeSpaceImpl]
+  parameters : Array[TypeId]
+} derive(Eq, @debug.Debug)
+pub fn TypeEntryNative::name_match(Self, Name) -> Bool
+
+pub(all) struct TypeEntryNewtype {
+  name : String
+  rename : String?
+  description : String?
+  default : @serde_json.Value?
+  type_id : TypeId
+  constraints : TypeEntryNewtypeConstraints
+  schema : @schema.Schema
+} derive(Eq, @debug.Debug)
+
+pub(all) enum TypeEntryNewtypeConstraints {
+  NoConstraints
+  EnumValue(Array[@serde_json.Value])
+  DenyValue(Array[@serde_json.Value])
+  String(max_length~ : UInt?, min_length~ : UInt?, pattern~ : String?)
+} derive(Eq, @debug.Debug)
+
+pub(all) struct TypeEntryStruct {
+  name : String
+  rename : String?
+  description : String?
+  default : @serde_json.Value?
+  properties : Array[StructProperty]
+  deny_unknown_fields : Bool
+  schema : @schema.Schema
+} derive(Eq, @debug.Debug)
+
+pub(all) struct TypeId(Int) derive(Compare, Eq, Hash, @debug.Debug)
+pub impl Show for TypeId
+
+pub struct TypeSpace {
+  id_to_entry : @sorted_map.SortedMap[TypeId, TypeEntry]
+  mut uses_chrono : Bool
+  mut uses_uuid : Bool
+  mut uses_serde_json : Bool
+  mut uses_regress : Bool
+  settings : TypeSpaceSettings
+  defaults : Array[DefaultImpl]
+  // private fields
+}
+pub fn TypeSpace::add_ref_types(Self, Array[(String, @schema.Schema)]) -> Unit raise TypifyError
+pub fn TypeSpace::add_root_schema(Self, @schema.RootSchema) -> TypeId? raise TypifyError
+pub fn TypeSpace::add_type(Self, @schema.Schema) -> TypeId raise TypifyError
+pub fn TypeSpace::add_type_with_name(Self, @schema.Schema, String?) -> TypeId raise TypifyError
+pub fn TypeSpace::entries(Self) -> Array[(TypeId, TypeEntry)]
+pub fn TypeSpace::entry(Self, TypeId) -> TypeEntry raise TypifyError
+pub fn TypeSpace::new(TypeSpaceSettings) -> Self
+pub fn TypeSpace::type_count(Self) -> Int
+
+pub(all) enum TypeSpaceImpl {
+  FromStr
+  FromStringIrrefutable
+  Display
+  Default
+} derive(Compare, Eq, Hash, @debug.Debug)
+pub fn TypeSpaceImpl::parse(String) -> Self raise TypifyError
+
+pub struct TypeSpacePatch {
+  mut rename : String?
+  derives : Array[String]
+  attrs : Array[String]
+} derive(@debug.Debug)
+pub fn TypeSpacePatch::new() -> Self
+pub fn TypeSpacePatch::with_attr(Self, String) -> Self
+pub fn TypeSpacePatch::with_derive(Self, String) -> Self
+pub fn TypeSpacePatch::with_rename(Self, String) -> Self
+
+pub(all) struct TypeSpaceReplace {
+  replace_type : String
+  impls : Array[TypeSpaceImpl]
+} derive(@debug.Debug)
+
+pub struct TypeSpaceSettings {
+  mut type_mod : String?
+  extra_derives : Array[String]
+  extra_attrs : Array[String]
+  mut struct_builder : Bool
+  mut unknown_crates : UnknownPolicy
+  mut map_type : String
+  patch : Map[String, TypeSpacePatch]
+  replace : Map[String, TypeSpaceReplace]
+  // private fields
+}
+pub fn TypeSpaceSettings::default() -> Self
+pub fn TypeSpaceSettings::with_attr(Self, String) -> Self
+pub fn TypeSpaceSettings::with_conversion(Self, @schema.SchemaObject, String, Array[TypeSpaceImpl]) -> Self
+pub fn TypeSpaceSettings::with_crate(Self, String, CrateVers, rename? : String) -> Self
+pub fn TypeSpaceSettings::with_derive(Self, String) -> Self
+pub fn TypeSpaceSettings::with_map_type(Self, String) -> Self
+pub fn TypeSpaceSettings::with_patch(Self, String, TypeSpacePatch) -> Self
+pub fn TypeSpaceSettings::with_replacement(Self, String, String, Array[TypeSpaceImpl]) -> Self
+pub fn TypeSpaceSettings::with_struct_builder(Self, Bool) -> Self
+pub fn TypeSpaceSettings::with_type_mod(Self, String) -> Self
+pub fn TypeSpaceSettings::with_unknown_crates(Self, UnknownPolicy) -> Self
+
+pub(all) enum UnknownPolicy {
+  Generate
+  Allow
+  Deny
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Variant {
+  raw_name : String
+  ident_name : String?
+  description : String?
+  details : VariantDetails
+} derive(Eq, @debug.Debug)
+pub fn Variant::new(String, String?, VariantDetails) -> Self
+
+pub(all) enum VariantDetails {
+  Simple
+  Item(TypeId)
+  Tuple(Array[TypeId])
+  Struct(Array[StructProperty])
+} derive(Eq, @debug.Debug)
 
 // Type aliases
 

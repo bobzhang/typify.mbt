@@ -1,0 +1,7 @@
+1: enum IdOrName
+2: enum IdOrNameRedundant
+3: enum IdOrYolo
+4: newtype Name 6
+5: ::uuid::Uuid
+6: string
+7: newtype IdOrYoloYolo 6

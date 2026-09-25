@@ -1,0 +1,43 @@
+1: struct Box
+2: struct Copy
+3: struct DoubleOptionCollision
+4: struct Drop
+5: struct FlattenedKeywords
+6: enum KeywordFieldsEnum
+7: struct MapOfKeywords
+8: struct NestedTypeCollisions
+9: struct Option
+10: struct Pin
+11: struct RustKeywordMonster
+12: struct Send
+13: struct String
+14: enum StringEnum
+15: newtype StringNewtype 22
+16: struct Sync
+17: struct TypeWithOptionField
+18: struct Vec
+19: enum FormatCollision
+20: struct Std
+21: newtype TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords 43
+22: string
+23: i64
+24: option 22
+25: struct DoubleOptionCollisionOption
+26: option 25
+27: bool
+28: map 22 22
+29: array 22; 2
+30: enum MapOfKeywordsKeywordMapValue
+31: map 22 30
+32: struct NestedTypeCollisionsOptionType
+33: option 32
+34: vec 17
+35: vec 22
+36: struct StdBoxed
+37: struct StdConvert
+38: struct StdFmt
+39: struct StdOption
+40: struct StdResult
+41: struct StdStr
+42: struct StdString
+43: json value

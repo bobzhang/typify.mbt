@@ -1,0 +1,3 @@
+1: struct TestType
+2: enum TestTypeValue
+3: option 2

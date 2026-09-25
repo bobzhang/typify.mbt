@@ -1,0 +1,14 @@
+1: newtype ArraySansItems 9
+2: newtype LessSimpleTwoTuple 11
+3: newtype SetAvecItem 12
+4: newtype SimpleTwoArray 13
+5: newtype SimpleTwoTuple 11
+6: newtype UnsimpleTwoTuple 11
+7: newtype YoloTwoArray 14
+8: json value
+9: vec 8
+10: string
+11: tuple (10, 10)
+12: set 10
+13: array 10; 2
+14: array 8; 2

@@ -1,0 +1,6 @@
+1: String
+2: newtype TypeThatHasMoreDerives 5
+3: struct TestType
+4: string
+5: map 4 4
+6: serde_json::Value

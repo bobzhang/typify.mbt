@@ -6,7 +6,7 @@ let usage : String =
 fn main {
   // argv[0] is the program path.
   let args = @env.args()[1:]
-  let mut lang = @gen.Lang::Rust
+  let mut lang = "rust"
   let mut output : String? = None
   let mut input : String? = None
   let mut i = 0
@@ -14,8 +14,8 @@ fn main {
     match args[i] {
       "--lang" | "-l" if i + 1 < args.length() => {
         lang = match args[i + 1] {
-          "rust" | "rs" => Rust
-          "moonbit" | "mbt" => MoonBit
+          "rust" | "rs" => "rust"
+          "moonbit" | "mbt" => "moonbit"
           other => abort("unknown language: \{other}\n\{usage}")
         }
         i += 2
@@ -37,7 +37,10 @@ fn main {
   guard input is Some(path) else { abort(usage) }
   let code = try {
     let text = @fs.read_file_to_string(path)
-    @gen.generate(@schema.RootSchema::from_json_str(text), lang~)
+    let root = @schema.RootSchema::from_json_str(text)
+    let space = @gen.TypeSpace::new(@gen.TypeSpaceSettings::default())
+    ignore(space.add_root_schema(root))
+    "// TODO: \{lang} backend (\{space.type_count()} types)\n"
   } catch {
     e => abort("typify: \{Repr(e)}")
   }

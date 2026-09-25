@@ -1,0 +1,4 @@
+1: struct TestType
+2: string
+3: newtype TestTypeWhereNot 2
+4: newtype TestTypeWhyNot 2
