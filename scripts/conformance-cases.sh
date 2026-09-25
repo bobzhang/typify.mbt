@@ -21,7 +21,7 @@ for name in $(ls tests/oracle/typify/*.tokens | xargs -n1 basename | sed 's/\.to
     *) src=tests/upstream/schemas/$name.json ;;
   esac
   n=$per_type
-  [ "$name" = github ] && n=4
+  [ "$name" = github ] && n=${GITHUB_PER_TYPE:-4}
   moonrun "$gen" -- "$src" "$name" "conformance/cases/$name.tsv" "$n"
   "$harness" < "conformance/cases/$name.tsv" > "conformance/cases/$name.expected"
   total=$(wc -l < "conformance/cases/$name.tsv")

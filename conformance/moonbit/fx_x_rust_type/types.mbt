@@ -28,7 +28,7 @@ pub fn AllTheThings::deserialize(d : @typify_rt.De) -> AllTheThings raise @typif
             if f1 is Some(_) {
               raise @typify_rt.duplicate_field_error("path")
             }
-            f1 = Some(@typify_rt.de_option(e.1, @typify_rt.de_string))
+            f1 = Some(@typify_rt.de_option(e.1, @typify_rt.de_path))
           }
           _ => ()
         }
@@ -39,7 +39,7 @@ pub fn AllTheThings::deserialize(d : @typify_rt.De) -> AllTheThings raise @typif
       }
       let v1 = match f1 {
         Some(v) => v
-        None => @typify_rt.de_option(@typify_rt.De::Missing("path"), @typify_rt.de_string)
+        None => @typify_rt.de_option(@typify_rt.De::Missing("path"), @typify_rt.de_path)
       }
       AllTheThings::{ option_marker: v0, path: v1 }
     }
@@ -49,7 +49,7 @@ pub fn AllTheThings::deserialize(d : @typify_rt.De) -> AllTheThings raise @typif
         None => raise s.invalid_length()
       }
       let v1 = match s.next_opt() {
-        Some(d) => @typify_rt.de_option(d, @typify_rt.de_string)
+        Some(d) => @typify_rt.de_option(d, @typify_rt.de_path)
         None => raise s.invalid_length()
       }
       s.finish()

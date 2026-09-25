@@ -138,6 +138,7 @@ fn Gen::de_fn(self : Gen, id : @typify.TypeId) -> String {
         NIpv4 => "@typify_rt.Ipv4Addr::deserialize"
         NIpv6 => "@typify_rt.Ipv6Addr::deserialize"
         NString => "@typify_rt.de_string"
+        NPath => "@typify_rt.de_path"
         NJson | NUnknown(_) => "@typify_rt.de_json"
         NOption(p) =>
           "(d : @typify_rt.De) => @typify_rt.de_option(d, \{self.de_fn(p)})"
@@ -227,7 +228,7 @@ fn Gen::ser_callee(self : Gen, id : @typify.TypeId) -> String {
         NIpAddr => "@typify_rt.IpAddr::serialize"
         NIpv4 => "@typify_rt.Ipv4Addr::serialize"
         NIpv6 => "@typify_rt.Ipv6Addr::serialize"
-        NString => "@typify_rt.ser_string"
+        NString | NPath => "@typify_rt.ser_string"
         NJson | NUnknown(_) => "@typify_rt.ser_json"
         NOption(p) =>
           "(v : \{self.mbt_type(id)}) => @typify_rt.ser_option(v, \{self.ser_fn(p)})"

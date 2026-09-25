@@ -163,6 +163,12 @@ pub fn de_string(d : De) -> String raise DeError {
 }
 
 ///|
+/// `std::path::PathBuf`.
+pub fn de_path(d : De) -> String raise DeError {
+  de_string_expecting(d, "path string")
+}
+
+///|
 /// A string (`deserialize_str`); `expecting` is the visitor's description
 /// used in invalid-type errors.
 pub fn de_string_expecting(d : De, expecting : String) -> String raise DeError {

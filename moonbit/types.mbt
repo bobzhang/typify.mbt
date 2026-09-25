@@ -65,6 +65,8 @@ priv enum NativeKind {
   NIpv4
   NIpv6
   NString
+  /// `std::path::PathBuf`: a `String` with its own visitor description.
+  NPath
   NJson
   /// `Option<T>` via x-rust-type.
   NOption(@typify.TypeId)
@@ -81,7 +83,8 @@ fn native_kind(native : @typify.TypeEntryNative) -> NativeKind {
     "::std::net::IpAddr" => NIpAddr
     "::std::net::Ipv4Addr" => NIpv4
     "::std::net::Ipv6Addr" => NIpv6
-    "String" | "::std::string::String" | "::std::path::PathBuf" => NString
+    "String" | "::std::string::String" => NString
+    "::std::path::PathBuf" => NPath
     "serde_json::Value" | "::serde_json::Value" => NJson
     "::std::option::Option" =>
       match native.parameters {
@@ -129,7 +132,7 @@ fn Gen::mbt_type(self : Gen, id : @typify.TypeId) -> String {
         NIpAddr => "@typify_rt.IpAddr"
         NIpv4 => "@typify_rt.Ipv4Addr"
         NIpv6 => "@typify_rt.Ipv6Addr"
-        NString => "String"
+        NString | NPath => "String"
         NJson | NUnknown(_) => "Json"
         NOption(p) => "\{self.mbt_type(p)}?"
       }
