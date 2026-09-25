@@ -1,0 +1,5 @@
+import {
+  "bobzhang/typify/runtime" @typify_rt,
+}
+
+warnings = "-unused_value"

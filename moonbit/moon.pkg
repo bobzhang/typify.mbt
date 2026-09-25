@@ -1,0 +1,10 @@
+import {
+  "bobzhang/typify" @typify,
+  "bobzhang/typify/serde_json",
+}
+
+import {
+  "moonbitlang/x/fs",
+  "bobzhang/typify/schema",
+  "bobzhang/typify/internal/semver",
+} for "test"

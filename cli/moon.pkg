@@ -1,6 +1,7 @@
 import {
   "bobzhang/typify",
   "bobzhang/typify/rust",
+  "bobzhang/typify/moonbit",
   "bobzhang/typify/schema",
 }
 

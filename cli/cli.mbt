@@ -325,6 +325,6 @@ pub fn convert(args : CliArgs, schema_text : String) -> String raise {
   )
   match args.lang {
     Rust => "\{rust_intro}\n\{@rust.to_stream(space)}"
-    MoonBit => raise CliError("the MoonBit backend is not available yet")
+    MoonBit => @moonbit.generate(space)
   }
 }
