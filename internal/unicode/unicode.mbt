@@ -108,3 +108,25 @@ pub fn to_uppercase(c : Char) -> String {
     None => c.to_string()
   }
 }
+
+///|
+/// All code points whose `to_lowercase` or `to_uppercase` differs from
+/// themselves (ASCII letters included), sorted and deduplicated.
+pub fn case_mapped_code_points() -> Array[Int] {
+  let out = []
+  for c in 'A'.to_int()..<='Z'.to_int() {
+    out.push(c)
+  }
+  for c in 'a'.to_int()..<='z'.to_int() {
+    out.push(c)
+  }
+  for k in lower_map_keys {
+    out.push(k)
+  }
+  for k in upper_map_keys {
+    out.push(k)
+  }
+  out.sort()
+  out.dedup()
+  out
+}

@@ -1,0 +1,32 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/regex"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+pub(all) suberror RegexError {
+  RegexError(String)
+} derive(Eq, @debug.Debug)
+pub impl Show for RegexError
+
+// Types and methods
+pub(all) struct Match {
+  start : Int
+  end : Int
+} derive(Eq, @debug.Debug)
+
+pub struct Regex {
+  // private fields
+}
+pub fn Regex::as_str(Self) -> String
+pub fn Regex::find(Self, StringView) -> Match?
+pub fn Regex::is_match(Self, StringView) -> Bool
+pub fn Regex::new(StringView) -> Self raise RegexError
+
+// Type aliases
+
+// Traits

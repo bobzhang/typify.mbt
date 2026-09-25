@@ -2,6 +2,8 @@
 package "bobzhang/typify/internal/unicode"
 
 // Values
+pub fn case_mapped_code_points() -> Array[Int]
+
 pub fn is_alphanumeric(Char) -> Bool
 
 pub fn is_lowercase(Char) -> Bool
