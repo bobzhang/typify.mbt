@@ -24,10 +24,12 @@ It ships as a MoonBit CLI runnable with `moonx bobzhang/typify/cmd/typify` (wasm
 | Fact | Consequence |
 |---|---|
 | `moonx` runs on the linear-memory `wasm` backend. `@env.args()` works (argv[0] = wasm path), and `moonbitlang/x/fs` can read and write files. | The CLI can be pure wasm. `moon.mod` sets `preferred-target: wasm`. |
-| `Json::Number(Double, repr~ : String?)` keeps the original number text. | u64/i64 defaults and values keep full precision if we read `repr`. |
+| `Json::Number(Double, repr~ : String?)` keeps the lexeme only for some numbers; `1`, `1.0`, `1e0` become indistinguishable. | **Not usable.** We ship our own lossless `serde_json` port (`PosInt`/`NegInt`/`Float`, serde_json 1.0.151 parse rules without `float_roundtrip`, ryu printing, BTreeMap key order). |
 | `moonbitlang/core/sorted_map` exists. | It replaces `BTreeMap` wherever iteration order is observable. |
-| Core has no XID_Start / XID_Continue predicates. | We generate Unicode tables ourselves (§5.1). |
-| `moonbitlang/regexp@0.3.5` is a Thompson-VM engine with no lookahead. | Merged patterns `(?=a)(?=b)` can't be compiled directly (§5.6). |
+| Core has no XID_Start / XID_Continue predicates. | We generate tables from Rust 1.97.1 `char` + unicode-ident 1.0.26 (Unicode 18 XID). |
+| MoonBit `String::compare` orders by length first. | `collections.compare_str` / `StrMap` give Rust `BTreeMap<String,_>` order. |
+| Core `ToJson` encodes `Int64`/`UInt64` as strings and `Some(x)` as `[x]`. | Generated MoonBit codecs never delegate to core instances; they're emitted per IR type. |
+| `moonbitlang/regexp@0.3.5` is a Thompson-VM engine with no lookaround/backrefs. | We write our own backtracking ECMAScript engine matching `regress` 0.12 (§5.6), needed from M3 on. |
 | Rust 1.89 is installed with rustfmt; upstream pins 1.97.1 through rustup. | The oracle and conformance harnesses can run locally. |
 
 ## 3. Architecture
@@ -47,7 +49,10 @@ It ships as a MoonBit CLI runnable with `moonx bobzhang/typify/cmd/typify` (wasm
 |---|---|---|
 | `internal/unicode` | XID_Start/XID_Continue tables (generated) | `unicode-ident` |
 | `internal/heck` | heck 0.5 word splitting; Pascal/snake/kebab | `heck` |
-| `internal/ecma_regex` | pattern syntax check + lookahead-conjunction splitter (§5.6) | `regress` (subset) |
+| `collections` | `compare_str`, `StrMap` (BTreeMap<String,_>) | `std::collections` |
+| `serde_json` | lossless `Value`/`Number`, parser, compact+pretty writer | `serde_json` 1.0.151 |
+| `regex` | backtracking ECMAScript regex (lookaround, backrefs) | `regress` 0.12 |
+| `runtime` | support for generated MoonBit: codec helpers, flatten buffer, uuid/date/datetime/ip, ConversionError | serde/chrono/uuid/std::net behaviour |
 | `schema` | Schema ADT + decoder from `Json` | `schemars::schema` 0.8 |
 | root `bobzhang/typify` | `TypeSpace`, `TypeSpaceSettings`, IR, conversion, `Type`/`TypeDetails` views | `typify-impl/src/*` minus emission |
 | `rust` | Rust emitter + `OutputSpace` | `type_entry.rs` output_*, `value.rs`, `output.rs`, `rust_extension.rs`, `defaults.rs` default_fn |
@@ -65,11 +70,14 @@ It ships as a MoonBit CLI runnable with `moonx bobzhang/typify/cmd/typify` (wasm
   - `Native(NativeType)` where `NativeType = Uuid | Date | DateTime | Ip | Ipv4 | Ipv6 |
     Path(String, Array[TypeId]) | Replacement(String)`. The last two exist for x-rust-type and
     settings.
-- **Structural dedup** (`type_to_id`): keyed by a canonical string of `TypeEntryDetails`. Like
-  upstream `Ord`, the key ignores `WrappedValue` and `SchemaWrapper`. This avoids deriving
-  `Hash`/`Compare` over the whole IR.
-- **Cycle breaking**: `get_child_ids` returns `(path, child)` pairs; `break_cycles` rewrites by
-  path in a second pass. This replaces upstream's in-place `&mut TypeId`.
+- **Dedup parity** (lib.rs:995): named types dedup by *name only* (first wins, no structural
+  check); unnamed types dedup structurally via `type_to_id`. The canonical key replicates upstream
+  derived `Ord` exactly: `WrappedValue`/`SchemaWrapper` compare Equal, but `Option<WrappedValue>`
+  still distinguishes `None`/`Some`, vector lengths still count, and native params/impls are
+  included.
+- **Cycle breaking parity** (cycles.rs:20–144): same root order, same (reverse) child traversal,
+  *immediate* mutation, and Box id reuse. `get_child_ids` returns `(child, setter)` pairs where
+  `setter` writes the replacement id into the owning IR node at once.
 - **Metadata lifetimes**: `convert_*` returns `(TypeEntry, Metadata?)` by value.
 - **Errors**: `suberror TypifyError { BadValue(String, Json); InvalidTypeId; InvalidValue;
   InvalidSchema(type_name~ : String?, reason~ : String); Unsupported(String) }`. Upstream
@@ -90,19 +98,27 @@ commits. There are no big-bang commits.
 - [ ] `scripts/` for golden diffs (§6.1), `README.md`, CI-ready `moon test`.
 - [ ] Decide the answers to §9.
 
-### M1: Leaf libraries
+### M1: Leaf libraries (done: unicode, heck, collections; in progress: serde_json)
 
 1. `internal/unicode`: generate tables from `DerivedCoreProperties.txt` (Unicode 16, matching
    `unicode-ident`) with a script under `scripts/`. Check the generated file in.
 2. `internal/heck`: port heck 0.5 `transform`/word boundaries. Tests: heck's own test cases plus
    `util.rs:1133+` cases (`Ipv6Net`, `urn:…:2.0:user_`, …).
-3. `sanitize`, `recase`, `accept_as_ident` (Rust keywords). The MoonBit keyword list lives in the
+3. `serde_json`: lossless port with a differential oracle against the real crate (numbers,
+   escapes, errors, recursion limit 128, duplicate keys = last wins).
+4. `regex`: backtracking ECMAScript engine with `regress` 0.12 flags/semantics; differential
+   oracle against `regress` (match/no-match and match position on generated corpora).
+5. `sanitize`, `recase`, `accept_as_ident` (Rust keywords). The MoonBit keyword list lives in the
    `moonbit` backend, not here, because upstream sanitizes names once in the IR (§5.3).
 
 Accepted when: all ported `util.rs` naming tests pass.
 
 ### M2: Schema model
 
+- Decoding follows serde exactly for schemars' derive: `#[serde(default)]`, flattened
+  sub-structs that *consume* recognised keys from a shared buffer, `skip_if_default` (a
+  validation block equal to its default becomes `None`, which matters for the dispatch arms),
+  `allow_null` for `const`/`default`, untagged `Schema`/`SingleOrVec`.
 - ADT: `Schema = Bool(Bool) | Object(SchemaObject)`. `SchemaObject`, `Metadata`, `InstanceType`,
   `SingleOrVec`, and `Subschema`/`Number`/`String`/`Array`/`ObjectValidation` as in schemars 0.8.
   Unknown keys go to `extensions : SortedMap[String, Json]`.
@@ -113,7 +129,8 @@ Accepted when: all ported `util.rs` naming tests pass.
   - `required` becomes a sorted set.
   - `properties`/`patternProperties` become sorted maps (schemars without `preserve_order`).
   - `examples`, `readOnly`, `writeOnly`, `deprecated`, `$id` go into `Metadata`.
-- `ref_key`: last `/` segment with `~1`/`~0` decoding.
+- `ref_key` (util.rs:557): `"#"` → `RefKey::Root`; otherwise last `/` segment with `~1`/`~0`
+  decoding.
 - Round-trip test: decode every schema in `.repos/typify/typify/tests/schemas/*.json`,
   `github.json` and `vega.json` without error.
 
@@ -122,6 +139,9 @@ Accepted when: all ported `util.rs` naming tests pass.
 Port in dependency order, each with its upstream unit tests (about 102 `#[test]`s, rewritten as
 `moon test` snapshots of an IR dump):
 
+0. Settings, `SchemaCache` (`conversions.rs`), replacement and `x-rust-type` hooks first, since
+   `convert_schema` consults them before dispatch (convert.rs:24–58). `validate.rs` early, since
+   merge filtering uses it.
 1. `type_entry.rs` data types, `TypeSpace` store, `assign_type`, `id_for_schema`,
    `add_ref_types` (3-pass), `add_root_schema`, `add_type[_with_name]`.
 2. `convert.rs` dispatch. Port **arm by arm in the same order** (lines 58–792), with one predicate
@@ -176,7 +196,8 @@ Type mapping (proposal, see §9 Q2):
 | Array(T, n) | `FixedArray[T]` + length check |
 | Tuple | `(A, B, …)` ↔ JSON array |
 | Map(K, V) | `Map[K, V]`; serialize keys sorted, like `serde_json::Map` |
-| Uuid / Date / DateTime / Ip* | `String` (§9 Q3) |
+| Uuid / Date / DateTime / Ip* | runtime newtypes (`@runtime.Uuid`, `NaiveDate`, `DateTimeUtc`, `IpAddr`…) that validate and normalise exactly like uuid/chrono/std::net serde impls |
+| Replacement / x-rust-type natives | require an explicit MoonBit mapping in settings; otherwise `Json` with a documented warning |
 | Struct | `pub(all) struct` + manual `ToJson`/`FromJson` |
 | Enum | `pub(all) enum`; struct variants use labeled fields `V(a~ : T)` |
 | Newtype | `pub(all) struct N(T)`; constrained → `N::new(..) -> N raise ConversionError` with a private field |
@@ -189,10 +210,12 @@ Serde semantics to reproduce in generated `from_json`/`to_json`:
    `fn default_<type>_<prop>()`.
 4. `deserialize_with = Option::deserialize` (Required + Option): the key must be present but may be
    `null`.
-5. `deny_unknown_fields`, except that serde ignores it when a `flatten` field exists.
-6. `flatten` on a Map (`extra`): collect the leftover keys.
-7. `flatten` on an `Option<T>` subtype (anyOf struct): try decoding `T` from the same object, and on
-   serialize merge the objects.
+5. `deny_unknown_fields` exactly as serde_derive (struct_.rs:347 checks leftovers after flattened
+   decoding), and as typify emits it (structs.rs:94 disables it in some paths).
+6. `flatten` via a shared entry buffer: each flattened struct *consumes* the keys it recognises;
+   a flattened Map takes the leftovers; `Option<T>` flatten yields `None` on failure. Serialize
+   by concatenating entries (duplicate keys are possible and must be preserved in the writer).
+7. Nested `Option<Option<T>>` collapse (type_entry.rs:1751).
 8. Enums:
    - external `{"V": payload}` or `"V"`;
    - internal: the tag merged into the struct fields;
@@ -204,8 +227,9 @@ Serde semantics to reproduce in generated `from_json`/`to_json`:
     enum/deny lists. Error messages must match upstream.
 12. Integer range checks for every integer kind. Read `Number(_, repr~)` so values above 2^53 are
     exact.
-13. Map and struct key order on output: struct fields in declaration order (upstream sorts them by
-    Rust name), maps sorted by key.
+13. Struct fields in declaration order (upstream sorts them by Rust name). Typed maps are
+    `HashMap` upstream (unordered), so conformance compares maps order-insensitively; MoonBit keeps
+    insertion order. `serde_json::Map` (String→Json) is sorted.
 
 Generated support code: a small runtime (decode helpers, `ConversionError`, `JsonPath`
 bookkeeping). Emitted inline or as a dependency package (§9 Q1).
@@ -233,6 +257,10 @@ Accepted when: generated MoonBit for every test schema passes `moon check`, and 
   accept/reject and on the canonical output.
 - Extra fixtures for gaps with no upstream golden: adjacent tagging (enums.rs:922),
   `default_u64` / `default_i64` (defaults.rs:851+), and custom `HashMap` map type.
+- Differential checks cover acceptance, *which untagged variant was chosen*, and serialization
+  (not just roundtrip equality); raw duplicate-key fixtures; numeric categories.
+- A minimal version of this harness is brought up during M4 (not after M5), so codec semantics
+  are tested as soon as the first MoonBit output exists.
 
 ### M7: Validation, polish, release
 
@@ -255,18 +283,20 @@ Accepted when: generated MoonBit for every test schema passes `moon check`, and 
    `merged-schemas.json`.
 5. **Float math for integer bounds** (f64 comparisons, int64/uint64 edge values): reproduce upstream
    comparisons literally, using `Double`, and test the edge values.
-6. **Regex**:
-   - Generator side: upstream only needs "does it compile" plus enum filtering. v1 uses a hand
-     ECMAScript-syntax validator plus `moonbitlang/regexp` for matching when the pattern has no
-     lookaround. Otherwise the enum value is kept, with a warning.
-   - Generated MoonBit side: split top-level lookahead conjunctions `(?=a)(?=b)` produced by
-     `merge_so_string` into a list of patterns that must all match (unanchored search).
-   - Semantic differences between ECMAScript and `moonbitlang/regexp` are recorded as a known risk
-     and covered by conformance tests.
+6. **Regex**: `(?=a)(?=b)` requires both assertions at the *same* position, so splitting into
+   independent searches is wrong. We implement a backtracking ECMAScript engine with regress
+   0.12's default flags (lookahead/lookbehind, backrefs, classes, Unicode escapes), used both by
+   the generator (pattern validity, enum filtering via `find`) and by generated MoonBit code via
+   `runtime`. Differentially tested against regress.
 7. **Struct field order and map order** affect serialized output. Tests compare canonical JSON with
    sorted keys, plus one strict-order test for struct fields.
 
 ## 6. Testing strategy
+
+Unit tests (ported upstream `#[test]`s plus our own) and property tests
+(`moonbitlang/core/quickcheck`) are written from M1 on: properties for leaf libraries
+(ordering, parse/print roundtrips), bounded random schemas (conversion never crashes, generated
+code type-checks), naming-collision generators, and random instances for codec agreement.
 
 ### 6.1 Rust golden oracle (`scripts/check-rust-goldens.sh`)
 
@@ -322,8 +352,8 @@ feature upstream's CLI lacks.
    dependency)? *Proposal: runtime package.*
 2. **Integer mapping**: map `i8`/`i16`/`u16` to precise MoonBit types (`Int16`, `UInt16`, `Byte`)
    or to `Int` with range checks? *Proposal: precise types where MoonBit has them.*
-3. **Formats** (`uuid`, `date`, `date-time`, `ip`): `String`, or validated newtypes? *Proposal:
-   `String` in v1.*
+3. **Formats** (`uuid`, `date`, `date-time`, `ip`): validated runtime newtypes matching the Rust
+   crates' serde behaviour (decided after review: plain `String` would break wire parity).
 4. **Builders in MoonBit**: skip them in favor of labeled/optional constructor args? *Proposal:
    yes.*
 5. **Module name** `bobzhang/typify` (from the mooncakes credentials): OK?
