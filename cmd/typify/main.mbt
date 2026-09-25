@@ -37,7 +37,7 @@ fn main {
   guard input is Some(path) else { abort(usage) }
   let code = try {
     let text = @fs.read_file_to_string(path)
-    @gen.generate(@schema.RootSchema::parse(text), lang~)
+    @gen.generate(@schema.RootSchema::from_json_str(text), lang~)
   } catch {
     e => abort("typify: \{Repr(e)}")
   }

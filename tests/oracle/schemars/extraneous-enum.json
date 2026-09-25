@@ -1,0 +1,1 @@
+{"properties":{"letter":{"enum":["a","b","cee"],"maxLength":2,"type":"string"}},"title":"LetterBox","type":"object"}

@@ -1,3 +1,8 @@
 import {
-  "moonbitlang/core/json",
+  "bobzhang/typify/collections",
+  "bobzhang/typify/serde_json",
 }
+
+import {
+  "moonbitlang/x/fs",
+} for "test"

@@ -1,0 +1,1 @@
+{"$schema":"http://json-schema.org/draft-04/schema#","definitions":{"PatternString":{"pattern":"xx","type":"string"},"Sub10Primes":{"enum":[2,3,5,7],"format":"uint","type":"integer"}}}
