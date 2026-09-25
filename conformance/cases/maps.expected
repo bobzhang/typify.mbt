@@ -14,6 +14,14 @@ OK "UPPER"
 OK "abc"
 OK "with \"quotes\""
 ERR invalid type: sequence, expected a string
+OK "true"
+OK "a-b_c"
+OK "a"
+ERR invalid type: map, expected a string
+OK "a"
+OK "0x10"
+OK "a"
+ERR invalid type: null, expected a string
 OK {}
 ERR input contains invalid characters
 ERR input contains invalid characters
@@ -33,6 +41,14 @@ ERR invalid type: null, expected a map
 ERR input contains invalid characters
 ERR input contains invalid characters
 ERR input contains invalid characters
+ERR invalid type: sequence, expected a map
+OK {}
+ERR input contains invalid characters
+ERR input contains invalid characters
+ERR input contains invalid characters
+ERR input contains invalid characters
+ERR input contains invalid characters
+ERR input contains invalid characters
 ERR invalid type: null, expected a map
 OK {}
 ERR input contains invalid characters
@@ -46,6 +62,14 @@ ERR input contains invalid characters
 ERR input contains invalid characters
 OK {}
 OK {}
+OK {}
+OK {}
+ERR input contains invalid characters
+ERR invalid type: sequence, expected a map
+OK {}
+ERR input contains invalid characters
+OK {}
+ERR input contains invalid characters
 OK {"extra_key":"a-b_c"}
 OK {}
 OK {"extra_key":"a"}
@@ -62,6 +86,14 @@ OK {}
 OK {"extra_key":"abc"}
 OK {"extra_key":"UPPER"}
 ERR invalid type: null, expected a string
+OK {"extra_key":"é中文"}
+ERR invalid type: sequence, expected a string
+OK {"extra_key":"UPPER"}
+OK {}
+OK {}
+OK {}
+OK {}
+ERR invalid type: map, expected a string
 OK "Hello, World"
 OK "with \"quotes\""
 OK "with \"quotes\""
@@ -77,6 +109,14 @@ ERR invalid type: map, expected a string
 OK "0x10"
 OK "abc"
 OK "with \"quotes\""
+ERR invalid type: map, expected a string
+OK "abc"
+OK "é中文"
+OK "😀"
+ERR invalid type: map, expected a string
+OK "true"
+OK "a"
+OK "😀"
 ERR invalid type: map, expected a string
 OK {"key":"x y"}
 OK {}
@@ -94,3 +134,11 @@ OK {"key":true}
 OK {"key":"abc"}
 OK {"key":false}
 OK {"key":"1234"}
+OK {"key":1.5}
+OK {}
+OK {"key":"true"}
+OK {"key":null}
+OK {}
+OK {}
+OK {"key":true}
+OK {"key":"x y"}

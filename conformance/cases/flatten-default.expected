@@ -14,3 +14,11 @@ OK {"thing":{"id":"x y","extra_key":"ok"}}
 OK {"thing":{}}
 OK {"thing":{"id":"a-b_c","extra_key":"ok"}}
 OK {"thing":{"id":"abc","extra_key":"UPPER"}}
+OK {"thing":{"id":"é中文"}}
+ERR duplicate field `thing`
+OK {"thing":{"id":"Hello, World"}}
+OK {}
+ERR invalid type: boolean `true`, expected a string
+OK {"thing":{"id":"with \"quotes\"","extra_key":"é中文"}}
+OK {"thing":{}}
+ERR invalid type: null, expected struct Container

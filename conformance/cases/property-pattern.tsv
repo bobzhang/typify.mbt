@@ -14,3 +14,11 @@ property-pattern	TestGrammarForPatternProperties	{"rules":{}}
 property-pattern	TestGrammarForPatternProperties	{"rules":{"abc":"with \"quotes\""}}
 property-pattern	TestGrammarForPatternProperties	{"rules":{}}
 property-pattern	TestGrammarForPatternProperties	{"rules":{"abc":"a"},"unexpected_field":"Hello, World"}
+property-pattern	TestGrammarForPatternProperties	[{}]
+property-pattern	TestGrammarForPatternProperties	{"rules":{"abc":"Hello, World"}}
+property-pattern	TestGrammarForPatternProperties	{"rules":{ "abc":-0.0,"abc":"é中文"}}
+property-pattern	TestGrammarForPatternProperties	{"rules":null}
+property-pattern	TestGrammarForPatternProperties	{"rules":{"abc":"a"}}
+property-pattern	TestGrammarForPatternProperties	{"rules":{"abc":"é中文"}}
+property-pattern	TestGrammarForPatternProperties	{"rules": {"abc":"é中文"	}}
+property-pattern	TestGrammarForPatternProperties	{"\u0072\u0075\u006Ces":{"abc":"é中文","unexpected_field":"a"}}

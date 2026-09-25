@@ -8,32 +8,24 @@
 pub(all) struct ArrayBs(Array[Bool]) derive(Debug, Eq)
 
 ///|
-pub fn ArrayBs::deserialize(
-  d : @typify_rt.De,
-) -> ArrayBs raise @typify_rt.DeError {
+pub fn ArrayBs::deserialize(d : @typify_rt.De) -> ArrayBs raise @typify_rt.DeError {
   ArrayBs(@typify_rt.de_vec(d, @typify_rt.de_bool))
 }
 
 ///|
-pub fn ArrayBs::serialize(
-  self : ArrayBs,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn ArrayBs::serialize(self : ArrayBs) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_vec(self.0, (v : Bool) => @typify_rt.ser_bool(v))
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn ArrayBs::from_json_str(
-  text : StringView,
-) -> ArrayBs raise @typify_rt.DeError {
+pub fn ArrayBs::from_json_str(text : StringView) -> ArrayBs raise @typify_rt.DeError {
   ArrayBs::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn ArrayBs::to_json_string(
-  self : ArrayBs,
-) -> String raise @typify_rt.SerError {
+pub fn ArrayBs::to_json_string(self : ArrayBs) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -45,7 +37,7 @@ pub fn ArrayBs::from_json(json : Json) -> ArrayBs raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for ArrayBs with fn to_json(self) {
+pub impl ToJson for ArrayBs with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("ArrayBs::to_json: \{e}")
   }
@@ -56,32 +48,24 @@ pub impl ToJson for ArrayBs with fn to_json(self) {
 pub(all) struct IntegerBs(UInt64) derive(Debug, Eq)
 
 ///|
-pub fn IntegerBs::deserialize(
-  d : @typify_rt.De,
-) -> IntegerBs raise @typify_rt.DeError {
+pub fn IntegerBs::deserialize(d : @typify_rt.De) -> IntegerBs raise @typify_rt.DeError {
   IntegerBs(@typify_rt.de_u64(d))
 }
 
 ///|
-pub fn IntegerBs::serialize(
-  self : IntegerBs,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn IntegerBs::serialize(self : IntegerBs) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_u64(self.0)
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn IntegerBs::from_json_str(
-  text : StringView,
-) -> IntegerBs raise @typify_rt.DeError {
+pub fn IntegerBs::from_json_str(text : StringView) -> IntegerBs raise @typify_rt.DeError {
   IntegerBs::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn IntegerBs::to_json_string(
-  self : IntegerBs,
-) -> String raise @typify_rt.SerError {
+pub fn IntegerBs::to_json_string(self : IntegerBs) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -93,7 +77,7 @@ pub fn IntegerBs::from_json(json : Json) -> IntegerBs raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for IntegerBs with fn to_json(self) {
+pub impl ToJson for IntegerBs with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("IntegerBs::to_json: \{e}")
   }
@@ -106,9 +90,7 @@ pub(all) struct ObjectBs {
 } derive(Debug, Eq)
 
 ///|
-pub fn ObjectBs::deserialize(
-  d : @typify_rt.De,
-) -> ObjectBs raise @typify_rt.DeError {
+pub fn ObjectBs::deserialize(d : @typify_rt.De) -> ObjectBs raise @typify_rt.DeError {
   match @typify_rt.de_struct(d, "struct ObjectBs", ["ok"], false) {
     Entries(entries) => {
       let mut f0 : Bool?? = None
@@ -125,10 +107,9 @@ pub fn ObjectBs::deserialize(
       }
       let v0 = match f0 {
         Some(v) => v
-        None =>
-          @typify_rt.de_option(@typify_rt.De::Missing("ok"), @typify_rt.de_bool)
+        None => @typify_rt.de_option(@typify_rt.De::Missing("ok"), @typify_rt.de_bool)
       }
-      ObjectBs::{ ok: v0, }
+      ObjectBs::{ ok: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -136,21 +117,16 @@ pub fn ObjectBs::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      ObjectBs::{ ok: v0, }
+      ObjectBs::{ ok: v0 }
     }
   }
 }
 
 ///|
-pub fn ObjectBs::serialize(
-  self : ObjectBs,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn ObjectBs::serialize(self : ObjectBs) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   if self.ok is Some(_) {
-    o.field(
-      "ok",
-      @typify_rt.ser_option(self.ok, (v : Bool) => @typify_rt.ser_bool(v)),
-    )
+    o.field("ok", @typify_rt.ser_option(self.ok, (v : Bool) => @typify_rt.ser_bool(v)))
   }
 
   o.build()
@@ -158,17 +134,13 @@ pub fn ObjectBs::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn ObjectBs::from_json_str(
-  text : StringView,
-) -> ObjectBs raise @typify_rt.DeError {
+pub fn ObjectBs::from_json_str(text : StringView) -> ObjectBs raise @typify_rt.DeError {
   ObjectBs::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn ObjectBs::to_json_string(
-  self : ObjectBs,
-) -> String raise @typify_rt.SerError {
+pub fn ObjectBs::to_json_string(self : ObjectBs) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -180,8 +152,9 @@ pub fn ObjectBs::from_json(json : Json) -> ObjectBs raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for ObjectBs with fn to_json(self) {
+pub impl ToJson for ObjectBs with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("ObjectBs::to_json: \{e}")
   }
 }
+

@@ -14,6 +14,14 @@ ERR data did not match any variant of untagged enum IdOrName
 ERR data did not match any variant of untagged enum IdOrName
 OK "67e55044-10b1-426f-9247-bb680e5fe0c8"
 ERR data did not match any variant of untagged enum IdOrName
+OK "67e55044-10b1-426f-9247-bb680e5fe0c8"
+OK "ok"
+ERR data did not match any variant of untagged enum IdOrName
+ERR data did not match any variant of untagged enum IdOrName
+OK "67e55044-10b1-426f-9247-bb680e5fe0c8"
+ERR data did not match any variant of untagged enum IdOrName
+ERR data did not match any variant of untagged enum IdOrName
+ERR data did not match any variant of untagged enum IdOrName
 ERR data did not match any variant of untagged enum IdOrNameRedundant
 OK "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ERR data did not match any variant of untagged enum IdOrNameRedundant
@@ -24,6 +32,14 @@ OK "67e55044-10b1-426f-9247-bb680e5fe0c8"
 ERR data did not match any variant of untagged enum IdOrNameRedundant
 OK "67e55044-10b1-426f-9247-bb680e5fe0c8"
 OK "ok"
+OK "67e55044-10b1-426f-9247-bb680e5fe0c8"
+ERR data did not match any variant of untagged enum IdOrNameRedundant
+ERR data did not match any variant of untagged enum IdOrNameRedundant
+ERR data did not match any variant of untagged enum IdOrNameRedundant
+OK "67e55044-10b1-426f-9247-bb680e5fe0c8"
+ERR data did not match any variant of untagged enum IdOrNameRedundant
+OK "67e55044-10b1-426f-9247-bb680e5fe0c8"
+ERR data did not match any variant of untagged enum IdOrNameRedundant
 OK "67e55044-10b1-426f-9247-bb680e5fe0c8"
 ERR data did not match any variant of untagged enum IdOrNameRedundant
 ERR data did not match any variant of untagged enum IdOrNameRedundant
@@ -46,6 +62,14 @@ OK ""
 OK "67e55044-10b1-426f-9247-bb680e5fe0c8"
 OK "ok"
 ERR data did not match any variant of untagged enum IdOrYolo
+OK "67e55044-10b1-426f-9247-bb680e5fe0c8"
+OK "null"
+OK "67e55044-10b1-426f-9247-bb680e5fe0c8"
+ERR data did not match any variant of untagged enum IdOrYolo
+OK "a"
+OK "67e55044-10b1-426f-9247-bb680e5fe0c8"
+OK "67e55044-10b1-426f-9247-bb680e5fe0c8"
+ERR data did not match any variant of untagged enum IdOrYolo
 OK "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 OK "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 OK "ok"
@@ -61,4 +85,12 @@ ERR invalid type: sequence, expected a string
 ERR longer than 63 characters
 OK "null"
 ERR doesn't match pattern "^(?![0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)^[a-z][a-z0-9-]*[a-zA-Z0-9]$"
+ERR invalid type: sequence, expected a string
+ERR doesn't match pattern "^(?![0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)^[a-z][a-z0-9-]*[a-zA-Z0-9]$"
+ERR doesn't match pattern "^(?![0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)^[a-z][a-z0-9-]*[a-zA-Z0-9]$"
+ERR doesn't match pattern "^(?![0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)^[a-z][a-z0-9-]*[a-zA-Z0-9]$"
+ERR invalid type: sequence, expected a string
+OK "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+OK "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+ERR longer than 63 characters
 ERR invalid type: sequence, expected a string

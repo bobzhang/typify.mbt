@@ -14,6 +14,14 @@ OK {"foo":"UPPER"}
 OK {"foo":"UPPER"}
 OK {"foo":"a-b_c"}
 ERR invalid type: null, expected a string
+OK {"foo":""}
+OK {"foo":"é中文"}
+OK {"foo":"with \"quotes\""}
+ERR invalid type: null, expected a string
+OK {"foo":"a"}
+OK {"foo":"a-b_c"}
+OK {"foo":"x y"}
+ERR unknown field `unexpected_field`, expected `foo`
 OK {"foo":"abc"}
 OK {"foo":"UPPER"}
 OK {"foo":"null"}
@@ -30,6 +38,14 @@ OK {"foo":"Hello, World"}
 OK {"foo":""}
 OK {"foo":"null"}
 OK {"foo":"ok"}
+OK {"foo":"Hello, World"}
+OK {"foo":"x y"}
+OK {"foo":""}
+ERR invalid type: integer `1`, expected a string
+OK {"foo":"ok"}
+OK {"foo":"ok"}
+OK {"foo":"with \"quotes\""}
+OK {"foo":"😀"}
 OK {"foo":"x y","extra_key":"abc"}
 OK {"foo":"a","extra_key":"x y"}
 OK {"foo":"abc"}
@@ -46,6 +62,14 @@ OK {"foo":"abc","extra_key":"true"}
 OK {"foo":"a","extra_key":"😀"}
 OK {"foo":"é中文","extra_key":"x y"}
 ERR invalid type: boolean `true`, expected a string
+OK {"foo":"ok"}
+OK {"foo":"1234"}
+OK {"foo":"é中文","extra_key":"1234"}
+ERR invalid type: null, expected a string
+ERR invalid type: sequence, expected struct ObjectWithStringExtra
+OK {"foo":"0x10"}
+ERR duplicate field `foo`
+ERR invalid type: sequence, expected a string
 OK {"foo":"","extra_key":["0x10"]}
 OK {"foo":"","extra_key":"UPPER"}
 OK {"foo":"Hello, World"}
@@ -62,6 +86,14 @@ OK {"foo":"with \"quotes\""}
 OK {"foo":"null","extra_key":[null,null]}
 OK {"foo":"","extra_key":[]}
 OK {"foo":"0x10","extra_key":true}
+OK {"foo":"a-b_c"}
+OK {"foo":""}
+OK {"foo":"abc"}
+ERR invalid type: null, expected a string
+ERR recursion limit exceeded
+OK {"foo":"UPPER","extra_key":[]}
+OK {"foo":"Hello, World","extra_key":"ok"}
+ERR missing field `foo`
 OK {"foo":"UPPER"}
 OK {"foo":"a"}
 OK {"foo":"a-b_c"}
@@ -78,3 +110,11 @@ OK {"foo":"with \"quotes\""}
 OK {"foo":"Hello, World"}
 OK {"foo":"a-b_c"}
 OK {"foo":""}
+OK {"foo":"1234"}
+OK {"foo":"ok"}
+OK {"foo":"a-b_c"}
+ERR invalid type: null, expected a string
+OK {"foo":"Hello, World"}
+OK {"foo":"1234"}
+OK {"foo":"Hello, World"}
+ERR invalid type: null, expected a string

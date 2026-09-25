@@ -14,3 +14,11 @@ string-enum-with-default	TestEnum	"skipped"
 string-enum-with-default	TestEnum	"skipped"
 string-enum-with-default	TestEnum	"success"
 string-enum-with-default	TestEnum	["failure"]
+string-enum-with-default	TestEnum	"skipped"
+string-enum-with-default	TestEnum	"skipped"
+string-enum-with-default	TestEnum	"failure"
+string-enum-with-default	TestEnum	["success"]
+string-enum-with-default	TestEnum	"success"
+string-enum-with-default	TestEnum	"skipped"
+string-enum-with-default	TestEnum	"s\u006b\u0069pped"
+string-enum-with-default	TestEnum	"Hello, World"

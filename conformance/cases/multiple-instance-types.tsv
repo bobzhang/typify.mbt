@@ -14,6 +14,14 @@ multiple-instance-types	IntOrStr	"a"
 multiple-instance-types	IntOrStr	-128
 multiple-instance-types	IntOrStr	"UPPER"
 multiple-instance-types	IntOrStr	null
+multiple-instance-types	IntOrStr	0
+multiple-instance-types	IntOrStr	123456789012345678901234567890
+multiple-instance-types	IntOrStr	1.8446744073709552e+19
+multiple-instance-types	IntOrStr	[127]
+multiple-instance-types	IntOrStr	2147483648
+multiple-instance-types	IntOrStr	-32769
+multiple-instance-types	IntOrStr	1.8446744073709552e+19
+multiple-instance-types	IntOrStr	null
 multiple-instance-types	OneOfSeveral	[["with \"quotes\"","Hello, World"],null]
 multiple-instance-types	OneOfSeveral	null
 multiple-instance-types	OneOfSeveral	true
@@ -30,6 +38,14 @@ multiple-instance-types	OneOfSeveral	{"key":true}
 multiple-instance-types	OneOfSeveral	[-0.0]
 multiple-instance-types	OneOfSeveral	true
 multiple-instance-types	OneOfSeveral	{}
+multiple-instance-types	OneOfSeveral	"Hello, World"
+multiple-instance-types	OneOfSeveral	null
+multiple-instance-types	OneOfSeveral	{"key":[null],"zz_deep":[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]}
+multiple-instance-types	OneOfSeveral	{"\u0077\u0072apped":false}
+multiple-instance-types	OneOfSeveral	null
+multiple-instance-types	OneOfSeveral	4294967296
+multiple-instance-types	OneOfSeveral	true
+multiple-instance-types	OneOfSeveral	[true]
 multiple-instance-types	ReallyJustNull	null
 multiple-instance-types	ReallyJustNull	null
 multiple-instance-types	ReallyJustNull	null
@@ -46,6 +62,14 @@ multiple-instance-types	ReallyJustNull	null
 multiple-instance-types	ReallyJustNull	null
 multiple-instance-types	ReallyJustNull	null
 multiple-instance-types	ReallyJustNull	null
+multiple-instance-types	ReallyJustNull	null
+multiple-instance-types	ReallyJustNull	null
+multiple-instance-types	ReallyJustNull	null
+multiple-instance-types	ReallyJustNull	"😀"
+multiple-instance-types	ReallyJustNull	null
+multiple-instance-types	ReallyJustNull	null
+multiple-instance-types	ReallyJustNull	null
+multiple-instance-types	ReallyJustNull	 ["UPPER",0]
 multiple-instance-types	SeriouslyAnything	"Hello, World"
 multiple-instance-types	SeriouslyAnything	1.0
 multiple-instance-types	SeriouslyAnything	0.1
@@ -62,6 +86,14 @@ multiple-instance-types	SeriouslyAnything	18446744073709551615
 multiple-instance-types	SeriouslyAnything	true
 multiple-instance-types	SeriouslyAnything	1
 multiple-instance-types	SeriouslyAnything	null
+multiple-instance-types	SeriouslyAnything	10000000000.0
+multiple-instance-types	SeriouslyAnything	255
+multiple-instance-types	SeriouslyAnything	1.0
+multiple-instance-types	SeriouslyAnything	{"wrapped":"ok"}
+multiple-instance-types	SeriouslyAnything	0
+multiple-instance-types	SeriouslyAnything	18446744073709551615E+0
+multiple-instance-types	SeriouslyAnything		[]
+multiple-instance-types	SeriouslyAnything	{"wrapped":"abc"}
 multiple-instance-types	YesNoMaybe	{"value":"ok"}
 multiple-instance-types	YesNoMaybe	true
 multiple-instance-types	YesNoMaybe	{"value":"0x10"}
@@ -78,3 +110,11 @@ multiple-instance-types	YesNoMaybe	{"value":"x y"}
 multiple-instance-types	YesNoMaybe	false
 multiple-instance-types	YesNoMaybe	false
 multiple-instance-types	YesNoMaybe	"null"
+multiple-instance-types	YesNoMaybe	false
+multiple-instance-types	YesNoMaybe	true
+multiple-instance-types	YesNoMaybe	true
+multiple-instance-types	YesNoMaybe	null
+multiple-instance-types	YesNoMaybe	true
+multiple-instance-types	YesNoMaybe	{"value":"null"}
+multiple-instance-types	YesNoMaybe	{}
+multiple-instance-types	YesNoMaybe	[true ]

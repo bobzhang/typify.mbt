@@ -39,13 +39,9 @@ pub fn Node::deserialize(d : @typify_rt.De) -> Node raise @typify_rt.DeError {
       }
       let v1 = match f1 {
         Some(v) => v
-        None =>
-          @typify_rt.de_option(
-            @typify_rt.De::Missing("value"),
-            @typify_rt.de_i64,
-          )
+        None => @typify_rt.de_option(@typify_rt.De::Missing("value"), @typify_rt.de_i64)
       }
-      Node::{ children: v0, value: v1, }
+      Node::{ children: v0, value: v1 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -57,24 +53,19 @@ pub fn Node::deserialize(d : @typify_rt.De) -> Node raise @typify_rt.DeError {
         None => raise s.invalid_length()
       }
       s.finish()
-      Node::{ children: v0, value: v1, }
+      Node::{ children: v0, value: v1 }
     }
   }
 }
 
 ///|
-pub fn Node::serialize(
-  self : Node,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn Node::serialize(self : Node) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   if !self.children.is_empty() {
     o.field("children", @typify_rt.ser_vec(self.children, Node::serialize))
   }
   if self.value is Some(_) {
-    o.field(
-      "value",
-      @typify_rt.ser_option(self.value, (v : Int64) => @typify_rt.ser_i64(v)),
-    )
+    o.field("value", @typify_rt.ser_option(self.value, (v : Int64) => @typify_rt.ser_i64(v)))
   }
 
   o.build()
@@ -100,8 +91,9 @@ pub fn Node::from_json(json : Json) -> Node raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for Node with fn to_json(self) {
+pub impl ToJson for Node with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("Node::to_json: \{e}")
   }
 }
+

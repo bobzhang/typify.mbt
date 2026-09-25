@@ -405,6 +405,46 @@ pub struct SeqReader {
 }
 
 ///|
+/// serde_derive's sequence visitor description: `<expecting> with N elements`.
+fn with_elements(expecting : String, n : Int) -> String {
+  if n == 1 {
+    "\{expecting} with 1 element"
+  } else {
+    "\{expecting} with \{n} elements"
+  }
+}
+
+///|
+/// The payload of a tuple variant (`expecting` is `tuple variant E::V`);
+/// `external`: an externally tagged variant, whose buffered form reports
+/// serde's generic `tuple variant`.
+pub fn de_tuple_variant(
+  d : De,
+  expecting : String,
+  n : Int,
+  external : Bool,
+) -> SeqReader raise DeError {
+  match d {
+    Value(Array(xs), mode) =>
+      { items: xs, mode, pos: 0, expected: with_elements(expecting, n) }
+    Value(c, mode) => {
+      check_valid(c)
+      raise invalid_type_error(
+        c,
+        if external && !(mode is Direct) {
+          "tuple variant"
+        } else {
+          expecting
+        },
+      )
+    }
+    MapKey(k, _) => raise invalid_type_error(String(k), expecting)
+    Flat(_) => raise flatten_error()
+    Missing(n) => raise missing_error(n)
+  }
+}
+
+///|
 pub fn de_tuple(d : De, n : Int) -> SeqReader raise DeError {
   let expected = "a tuple of size \{n}"
   let (xs, mode) = seq_elements(d, expected)
@@ -437,7 +477,7 @@ pub fn SeqReader::finish(self : SeqReader) -> Unit raise DeError {
       Direct => raise DeError("trailing characters")
       _ =>
         raise DeError(
-          "invalid length \{self.items.length()}, expected \{self.pos} elements in sequence",
+          "invalid length \{self.items.length()}, expected \{self.pos} element\{if self.pos == 1 { "" } else { "s" }} in sequence",
         )
     }
   }
@@ -533,11 +573,15 @@ pub(all) enum StructInput {
 ///|
 /// `deserialize_struct` (or `deserialize_map` for structs with flattened
 /// fields, which also reject positional arrays).
+///
+/// `external_variant`: the payload of an externally tagged struct variant,
+/// whose buffered form reports serde's generic `struct variant`.
 pub fn de_struct(
   d : De,
   expecting : String,
   fields : Array[String],
   has_flatten : Bool,
+  external_variant? : Bool = false,
 ) -> StructInput raise DeError {
   match d {
     Value(Object(entries), mode) => {
@@ -551,20 +595,27 @@ pub fn de_struct(
       Entries(out)
     }
     Value(Array(xs), mode) if !has_flatten =>
-      Elements({ items: xs, mode, pos: 0, expected: expecting, })
-    Value(c, _) => {
+      Elements({
+        items: xs,
+        mode,
+        pos: 0,
+        expected: with_elements(expecting, fields.length()),
+      })
+    // A struct with flatten fields is read as a map: its visitor has no
+    // sequence form.
+    Value(Array(_) as c, _) => raise invalid_type_error(c, expecting)
+    Value(c, mode) => {
       check_valid(c)
-      raise invalid_type_error(c, if has_flatten { "a map" } else { expecting })
-    }
-    MapKey(k, _) =>
       raise invalid_type_error(
-        String(k),
-        if has_flatten {
-          "a map"
+        c,
+        if external_variant && !(mode is Direct) {
+          "struct variant"
         } else {
           expecting
         },
       )
+    }
+    MapKey(k, _) => raise invalid_type_error(String(k), expecting)
     Flat(buf) =>
       if has_flatten {
         // deserialize_map: all remaining entries, not claimed.
@@ -767,7 +818,8 @@ pub fn de_enum(
 /// has been read.
 pub fn end_enum_map(d : De) -> Unit raise DeError {
   if d is Value(Object(entries), Direct) && entries.length() > 1 {
-    raise DeError("trailing comma")
+    // serde_json expects the closing brace after the payload.
+    raise DeError("expected value")
   }
 }
 

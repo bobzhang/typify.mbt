@@ -14,3 +14,11 @@ reflexive	Node	{"value":7}
 reflexive	Node	{"children":["Hello, World",false],"value":255}
 reflexive	Node	{"children":[false]}
 reflexive	Node	{}
+reflexive	Node	{"children":  ["0x10","UPPER","Hello, World"],"v\u0061\u006c\u0075\u0065":9223372036854775807}
+reflexive	Node	{"children":[-0.0,true,"Hello, World",null],"value":18446744073709551615}
+reflexive	Node	{"children":["😀"],"value":9007199254740993}
+reflexive	Node	{"children":  null}
+reflexive	Node	{"children":[false,"",null	],"value":128}
+reflexive	Node	{"value":32768}
+reflexive	Node	{"children":[0,"UPPER",null],"value":7}
+reflexive	Node	{"children":null}

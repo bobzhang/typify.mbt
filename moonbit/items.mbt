@@ -94,6 +94,7 @@ fn Gen::struct_decode(
   allow_seq : Bool,
   d : String,
   build : String,
+  external_variant? : Bool = false,
 ) -> String {
   let has_flatten = props.iter().any(p => p.rename is Flatten)
   let named = props
@@ -102,7 +103,7 @@ fn Gen::struct_decode(
   let known = named.map(p => json_name(p.1).unwrap())
   let buf = StringBuilder()
   buf.write_string(
-    "match @typify_rt.de_struct(\{d}, \{str_lit(expecting)}, \{str_array(known)}, \{has_flatten}) {\n",
+    "match @typify_rt.de_struct(\{d}, \{str_lit(expecting)}, \{str_array(known)}, \{has_flatten}\{if external_variant { ", external_variant=true" } else { "" }}) {\n",
   )
   // Missing-field and default expressions.
   let missing = props.mapi((i, p) => {
@@ -507,6 +508,7 @@ fn Gen::variant_payload_decode(
   d : String,
   allow_seq : Bool,
   deny : Bool,
+  external : Bool,
 ) -> String {
   let type_name = self.type_name(id)
   let ctor = "\{type_name}::\{self.ctors.get(id.0).unwrap()[i]}"
@@ -515,7 +517,10 @@ fn Gen::variant_payload_decode(
     Item(t) => "\{ctor}(\{self.de_expr(t, d)})"
     Tuple(ts) => {
       let elems = ts.mapi((j, t) => "let t\{j} = \{self.de_fn(t)}(s.next())")
-      "{ let s = @typify_rt.de_tuple(\{d}, \{ts.length()}); \{elems.join("; ")}; s.finish(); \{ctor}(\{ts.mapi((j, _) => "t\{j}").join(", ")}) }"
+      let expecting = str_lit(
+        "tuple variant \{enum_name}::\{v.ident_name.unwrap()}",
+      )
+      "{ let s = @typify_rt.de_tuple_variant(\{d}, \{expecting}, \{ts.length()}, \{external}); \{elems.join("; ")}; s.finish(); \{ctor}(\{ts.mapi((j, _) => "t\{j}").join(", ")}) }"
     }
     Struct(props) => {
       let labels = self.fields.get("\{id.0}/\{i}").unwrap()
@@ -530,6 +535,7 @@ fn Gen::variant_payload_decode(
         allow_seq,
         d,
         build,
+        external_variant=external,
       )
     }
   }
@@ -615,6 +621,7 @@ fn Gen::output_enum(
               "@typify_rt.variant_payload(payload, \{str_lit(payload_kind)})",
               true,
               d.deny_unknown_fields,
+              true,
             )
         }
         arms.write_string("  \{i} => \{indent(code, 2).trim_start()}\n")
@@ -644,6 +651,7 @@ fn Gen::output_enum(
               "rest",
               true,
               d.deny_unknown_fields,
+              false,
             )
         }
         arms.write_string("  \{i} => \{indent(code, 2).trim_start()}\n")
@@ -671,6 +679,7 @@ fn Gen::output_enum(
               "@typify_rt.variant_payload(payload, \"variant content\")",
               true,
               d.deny_unknown_fields,
+              false,
             )
         }
         arms.write_string("  \{i} => \{indent(code, 2).trim_start()}\n")
@@ -695,6 +704,7 @@ fn Gen::output_enum(
           "c",
           false,
           d.deny_unknown_fields,
+          false,
         )
         tries.write_string(
           "try {\n\{indent(code, 2)}\n} catch {\n  @typify_rt.DeError(msg) if !msg.has_prefix(\"panic:\") => ()\n  e => raise e\n} noraise {\n  v => return v\n}\n",

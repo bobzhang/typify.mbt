@@ -14,6 +14,14 @@ ERR premature end of input
 OK {"when":"2024-02-29T12:34:56Z"}
 OK {"when":"2024-02-29T12:34:56Z"}
 ERR invalid type: map, expected an RFC 3339 formatted date and time string
+OK {"when":"2024-02-29T12:34:56.123456789Z"}
+OK {"when":"1970-01-01T00:00:00Z"}
+ERR premature end of input
+ERR invalid type: boolean `false`, expected an RFC 3339 formatted date and time string
+OK {"when":"1970-01-01T00:00:00Z"}
+ERR duplicate field `when`
+OK {"when":"2024-02-29T12:34:60Z"}
+ERR invalid type: null, expected an RFC 3339 formatted date and time string
 ERR invalid type: floating point `1.8446744073709552e+19`, expected a nonzero u64
 OK {"big_nullable":null,"little_u16":7,"little_u8":7}
 OK {"big_nullable":2147483648,"little_u16":1,"little_u8":2}
@@ -30,6 +38,14 @@ ERR invalid value: integer `2147483648`, expected a nonzero u16
 ERR invalid type: floating point `-9.223372036854776e+18`, expected a nonzero u64
 ERR invalid type: floating point `2.5`, expected a nonzero u16
 ERR invalid type: null, expected a nonzero u16
+OK {"big_nullable":null,"little_u16":3,"little_u8":2}
+OK {"big_nullable":1,"little_u16":256,"little_u8":2}
+ERR invalid type: floating point `2.5`, expected a nonzero u8
+ERR invalid type: boolean `true`, expected struct MrDefaultNumbers
+OK {"big_nullable":1,"little_u16":3,"little_u8":2}
+ERR invalid value: integer `256`, expected a nonzero u8
+OK {"big_nullable":1,"little_u16":2,"little_u8":1}
+ERR invalid value: integer `-9223372036854775808`, expected a nonzero u8
 OK {}
 OK {}
 OK {"thing":{}}
@@ -46,6 +62,14 @@ OK {"thing":{"a":"true","type":"Hello, World"}}
 OK {}
 OK {"thing":{"a":"true","type":"ok"}}
 OK {}
+OK {"thing":{"a":"a","type":"a"}}
+OK {"thing":{"a":"😀","type":"Hello, World"}}
+OK {}
+OK {}
+OK {}
+OK {}
+OK {"thing":{"a":"x y","type":"1234"}}
+ERR invalid type: string "UPPER", expected struct OuterThing
 OK {"any":[],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
 OK {"any":[[8,6,7],[5,3,0,9]],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
 PANIC
@@ -62,6 +86,14 @@ PANIC
 PANIC
 OK {"any":[false,true],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
 OK {"any":[[8,6,7],[5,3,0,9]],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
+PANIC
+OK {"any":[[8,6,7],[5,3,0,9]],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
+PANIC
+ERR invalid type: null, expected struct TestBed
+PANIC
+OK {"any":[[8,6,7],[5,3,0,9]],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
+OK {"any":["true",123456789.125,1e+300],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
+PANIC
 ERR invalid type: floating point `1.8446744073709552e+19`, expected i64
 OK 127
 OK -128
@@ -78,6 +110,14 @@ OK 2147483648
 ERR invalid type: floating point `1.0`, expected i64
 OK -129
 ERR invalid type: sequence, expected i64
+OK 65536
+OK -9223372036854775808
+OK 255
+ERR invalid type: sequence, expected i64
+ERR invalid type: floating point `-9.223372036854776e+18`, expected i64
+OK 2
+ERR invalid value: integer `18446744073709551615`, expected i64
+ERR invalid type: null, expected i64
 OK {"max_path":-128}
 OK {"max_path":1}
 OK {"max_path":0}
@@ -94,3 +134,11 @@ OK {"max_path":256}
 OK {"max_path":256}
 OK {"max_path":2147483647}
 ERR invalid type: boolean `true`, expected i64
+OK {"max_path":256}
+OK {"max_path":127}
+OK {"max_path":2147483647}
+ERR invalid type: null, expected i64
+ERR invalid type: floating point `2.5`, expected i64
+OK {"max_path":2147483648}
+OK {"max_path":1}
+ERR invalid type: null, expected i64

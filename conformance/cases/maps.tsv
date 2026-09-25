@@ -14,6 +14,14 @@ maps	Eh	"UPPER"
 maps	Eh	"abc"
 maps	Eh	"with \"quotes\""
 maps	Eh	["x y"]
+maps	Eh	"true"
+maps	Eh	"a-b_c"
+maps	Eh	"a"
+maps	Eh	{"wrapped":"UPPER"}
+maps	Eh	"a"
+maps	Eh	"0x10"
+maps	Eh	"a"
+maps	Eh	null
 maps	MapWithDateKeys	{}
 maps	MapWithDateKeys	{"extra_key":"true"}
 maps	MapWithDateKeys	{"extra_key":"a-b_c"}
@@ -30,6 +38,14 @@ maps	MapWithDateKeys	{"extra_key":"ok"}
 maps	MapWithDateKeys	{"extra_key":"abc"}
 maps	MapWithDateKeys	{}
 maps	MapWithDateKeys	null
+maps	MapWithDateKeys	{	"extra_key" :"a-b_c"}
+maps	MapWithDateKeys	{"extra_key"  :1.5,"extra_key":"a-b_c"}
+maps	MapWithDateKeys	{"zz_deep":[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]}
+maps	MapWithDateKeys	[{}]
+maps	MapWithDateKeys	{}
+maps	MapWithDateKeys	{"extra_key":"ok"}
+maps	MapWithDateKeys	{"extra_key":"with \"quotes\""}
+maps	MapWithDateKeys	{"extra_key":"null","unexpected_field":""}
 maps	MapWithDateTimeKeys	{"extra_key":"😀"}
 maps	MapWithDateTimeKeys	{"extra_key":"null"}
 maps	MapWithDateTimeKeys	{"extra_key":"with \"quotes\""}
@@ -46,6 +62,14 @@ maps	MapWithDateTimeKeys	{"extra_key":"0x10"}
 maps	MapWithDateTimeKeys	{"extra_key":"with \"quotes\""}
 maps	MapWithDateTimeKeys	{}
 maps	MapWithDateTimeKeys	{}
+maps	MapWithDateTimeKeys	{}
+maps	MapWithDateTimeKeys	{}
+maps	MapWithDateTimeKeys	{"extra_key":"0x10"}
+maps	MapWithDateTimeKeys	["null","true"]
+maps	MapWithDateTimeKeys	{}
+maps	MapWithDateTimeKeys	{"extra_key":"ok"  }
+maps	MapWithDateTimeKeys	{}
+maps	MapWithDateTimeKeys	{"extra_key":"null","unexpected_field":	true}
 maps	MapWithKeys	{"extra_key":"a-b_c"}
 maps	MapWithKeys	{}
 maps	MapWithKeys	{"extra_key":"a"}
@@ -62,6 +86,14 @@ maps	MapWithKeys	{}
 maps	MapWithKeys	{"extra_key":"abc"}
 maps	MapWithKeys	{"extra_key":"UPPER"}
 maps	MapWithKeys	{"extra_key":null}
+maps	MapWithKeys	{"extra_key":"é中文"}
+maps	MapWithKeys	{"extra_key":"1234","zz_deep":[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]}
+maps	MapWithKeys	{"extra_key":"UPPER"}
+maps	MapWithKeys	{}
+maps	MapWithKeys	{}
+maps	MapWithKeys	{}
+maps	MapWithKeys	{}
+maps	MapWithKeys	{ "extra_key":{"wrapped"  :"UPPER","wrapped":"UPPER"}}
 maps	Value	"Hello, World"
 maps	Value	"with \"quotes\""
 maps	Value	"with \"quotes\""
@@ -78,6 +110,14 @@ maps	Value	"0x10"
 maps	Value	"abc"
 maps	Value	"with \"quotes\""
 maps	Value	{"wrapped":"x y"}
+maps	Value	"abc"
+maps	Value	"\u00E9\u4E2D\u6587"
+maps	Value	"😀"
+maps	Value	{"wrapped":"abc"}
+maps	Value	"\u0074\u0072\u0075\u0065"
+maps	Value	"a"
+maps	Value	"😀"
+maps	Value	{"wrapped":"é中文"}
 maps	DeadSimple	{"key":"x y"}
 maps	DeadSimple	{}
 maps	DeadSimple	{}
@@ -94,3 +134,11 @@ maps	DeadSimple	{"key":true}
 maps	DeadSimple	{"key":"abc"}
 maps	DeadSimple	{"key":false}
 maps	DeadSimple	{"key":"1234"}
+maps	DeadSimple	{"key":1.5}
+maps	DeadSimple	{}
+maps	DeadSimple	{"key":"true"}
+maps	DeadSimple	{"key":null}
+maps	DeadSimple	{}
+maps	DeadSimple	{}
+maps	DeadSimple	{"key":true}
+maps	DeadSimple	{"key":"x y"}

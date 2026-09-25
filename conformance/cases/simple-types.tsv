@@ -14,6 +14,14 @@ simple-types	AnythingWorks	{"value":""}
 simple-types	AnythingWorks	{"value":"Hello, World"}
 simple-types	AnythingWorks	{"value":{}}
 simple-types	AnythingWorks	{"value":null}
+simple-types	AnythingWorks	{"value":[null]}
+simple-types	AnythingWorks	{"value":false}
+simple-types	AnythingWorks	{"value":[]}
+simple-types	AnythingWorks	{"value":10000000000.0}
+simple-types	AnythingWorks	{"value":-0.0 }
+simple-types	AnythingWorks	 {"value" :"null"}
+simple-types	AnythingWorks	{"value":{}}
+simple-types	AnythingWorks	{"value":null}
 simple-types	FloatsArentTerribleImTold	{"flush_timeout":1.5}
 simple-types	FloatsArentTerribleImTold	{}
 simple-types	FloatsArentTerribleImTold	{"flush_timeout":-2.25}
@@ -30,6 +38,14 @@ simple-types	FloatsArentTerribleImTold	{"flush_timeout":1}
 simple-types	FloatsArentTerribleImTold	{"flush_timeout":123456789.125}
 simple-types	FloatsArentTerribleImTold	{"flush_timeout":123456789.125}
 simple-types	FloatsArentTerribleImTold	{"flush_timeout":{"k0":true}}
+simple-types	FloatsArentTerribleImTold	{}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":1}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":1.5}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":null}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":0.1}
+simple-types	FloatsArentTerribleImTold	{"zz_deep":[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":-1}
+simple-types	FloatsArentTerribleImTold	{"flus\u0068_t\u0069\u006D\u0065ou\u0074":-2.25,"unexpected_field":"\u0061"}
 simple-types	JustOne	"ok"
 simple-types	JustOne	"UPPER"
 simple-types	JustOne	"null"
@@ -46,6 +62,14 @@ simple-types	JustOne	"é中文"
 simple-types	JustOne	"😀"
 simple-types	JustOne	"1234"
 simple-types	JustOne	{"wrapped":"😀"}
+simple-types	JustOne	"😀"
+simple-types	JustOne	"ok"
+simple-types	JustOne	""
+simple-types	JustOne	null
+simple-types	JustOne	"x y"
+simple-types	JustOne	"UPPER"
+simple-types	JustOne	"0x10"
+simple-types	JustOne	["true"]
 simple-types	UintMinimumAndMaximum	{"max":9223372036854775807,"min":2,"min_and_max":-128,"min_non_zero":1,"min_uint_non_zero":1,"no_bounds":9223372036854775807}
 simple-types	UintMinimumAndMaximum	{"max":-9.223372036854776e+18,"min":-1,"min_and_max":65536,"min_non_zero":1,"min_uint_non_zero":128,"no_bounds":2.5}
 simple-types	UintMinimumAndMaximum	{"max":7,"min":128,"min_and_max":65536,"min_non_zero":0,"min_uint_non_zero":-128,"no_bounds":127}
@@ -62,3 +86,11 @@ simple-types	UintMinimumAndMaximum	{"max":255,"min":127,"min_and_max":4294967295
 simple-types	UintMinimumAndMaximum	{"max":-128,"min":2.5,"min_and_max":-128,"min_non_zero":2,"min_uint_non_zero":2,"no_bounds":-128}
 simple-types	UintMinimumAndMaximum	{"max":255,"min":7,"min_and_max":2,"min_non_zero":2.5,"min_uint_non_zero":-32769,"no_bounds":2.5}
 simple-types	UintMinimumAndMaximum	{"min":256,"min_and_max":0,"min_non_zero":2147483648,"min_uint_non_zero":1,"no_bounds":2.5}
+simple-types	UintMinimumAndMaximum	{"min_non_zero":2,"no_bounds":2147483647,"min_uint_non_zero":2147483648,"max":-32769,"min":128,"min_and_max":18446744073709551615}
+simple-types	UintMinimumAndMaximum	{"max":4294967295,"min":1,"min_and_max":65536,"min_non_zero":0,"min_uint_non_zero":-9223372036854775808,"no_bounds":2147483647}
+simple-types	UintMinimumAndMaximum	{"max"	:-1,"min" :2147483647,"mi\u006E\u005F\u0061n\u0064_m\u0061x":257,"min_non_zero":1.8446744073709552e+19,"min_non_zero":1.8446744073709552e+19,"min_uint_non_zero":1,"no_bounds":255}
+simple-types	UintMinimumAndMaximum	{"min_and_max":255,"min":-128,"min_non_zero":256,"no_bounds":9223372036854775808,"max":1}
+simple-types	UintMinimumAndMaximum	{"min_non_zero":256,"min_uint_non_zero":32768,"min":1,"min_and_max":255,"no_bounds":2,"max":256}
+simple-types	UintMinimumAndMaximum	{"min_and_max":-0,  "max":0,"min_non_zero" :1,"min":18446744073709551615,"min_uint_non_zero":0.30000000000000004,"no_bounds":-9.223372036854776e+18}
+simple-types	UintMinimumAndMaximum	{"max":18446744073709551615,"no_bounds":2147483648,"min_non_zero":7,"min":4294967295,"min_uint_non_zero":1,"min_and_max":9007199254740993}
+simple-types	UintMinimumAndMaximum	{"max":256,"\u006d\u0069n": 2147483648,"min_and_max":null,"min_non_zero":256,"min_uint_non_zero":1,"no_bounds":-1}

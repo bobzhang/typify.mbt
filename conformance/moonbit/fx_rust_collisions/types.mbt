@@ -29,7 +29,7 @@ pub fn Box::deserialize(d : @typify_rt.De) -> Box raise @typify_rt.DeError {
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("data"))
       }
-      Box::{ data: v0, }
+      Box::{ data: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -37,15 +37,13 @@ pub fn Box::deserialize(d : @typify_rt.De) -> Box raise @typify_rt.DeError {
         None => raise s.invalid_length()
       }
       s.finish()
-      Box::{ data: v0, }
+      Box::{ data: v0 }
     }
   }
 }
 
 ///|
-pub fn Box::serialize(
-  self : Box,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn Box::serialize(self : Box) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("data", @typify_rt.ser_string(self.data))
 
@@ -72,7 +70,7 @@ pub fn Box::from_json(json : Json) -> Box raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for Box with fn to_json(self) {
+pub impl ToJson for Box with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("Box::to_json: \{e}")
   }
@@ -104,7 +102,7 @@ pub fn Copy::deserialize(d : @typify_rt.De) -> Copy raise @typify_rt.DeError {
         Some(v) => v
         None => @typify_rt.de_i64(@typify_rt.De::Missing("value"))
       }
-      Copy::{ value: v0, }
+      Copy::{ value: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -112,15 +110,13 @@ pub fn Copy::deserialize(d : @typify_rt.De) -> Copy raise @typify_rt.DeError {
         None => raise s.invalid_length()
       }
       s.finish()
-      Copy::{ value: v0, }
+      Copy::{ value: v0 }
     }
   }
 }
 
 ///|
-pub fn Copy::serialize(
-  self : Copy,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn Copy::serialize(self : Copy) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_i64(self.value))
 
@@ -147,7 +143,7 @@ pub fn Copy::from_json(json : Json) -> Copy raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for Copy with fn to_json(self) {
+pub impl ToJson for Copy with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("Copy::to_json: \{e}")
   }
@@ -160,11 +156,8 @@ pub(all) struct DoubleOptionCollision {
 } derive(Debug, Eq)
 
 ///|
-pub fn DoubleOptionCollision::deserialize(
-  d : @typify_rt.De,
-) -> DoubleOptionCollision raise @typify_rt.DeError {
-  match
-    @typify_rt.de_struct(d, "struct DoubleOptionCollision", ["option"], false) {
+pub fn DoubleOptionCollision::deserialize(d : @typify_rt.De) -> DoubleOptionCollision raise @typify_rt.DeError {
+  match @typify_rt.de_struct(d, "struct DoubleOptionCollision", ["option"], false) {
     Entries(entries) => {
       let mut f0 : DoubleOptionCollisionOption?? = None
       for e in entries {
@@ -173,48 +166,33 @@ pub fn DoubleOptionCollision::deserialize(
             if f0 is Some(_) {
               raise @typify_rt.duplicate_field_error("option")
             }
-            f0 = Some(
-              @typify_rt.de_option(
-                e.1,
-                DoubleOptionCollisionOption::deserialize,
-              ),
-            )
+            f0 = Some(@typify_rt.de_option(e.1, DoubleOptionCollisionOption::deserialize))
           }
           _ => ()
         }
       }
       let v0 = match f0 {
         Some(v) => v
-        None =>
-          @typify_rt.de_option(
-            @typify_rt.De::Missing("option"),
-            DoubleOptionCollisionOption::deserialize,
-          )
+        None => @typify_rt.de_option(@typify_rt.De::Missing("option"), DoubleOptionCollisionOption::deserialize)
       }
-      DoubleOptionCollision::{ option: v0, }
+      DoubleOptionCollision::{ option: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
-        Some(d) =>
-          @typify_rt.de_option(d, DoubleOptionCollisionOption::deserialize)
+        Some(d) => @typify_rt.de_option(d, DoubleOptionCollisionOption::deserialize)
         None => raise s.invalid_length()
       }
       s.finish()
-      DoubleOptionCollision::{ option: v0, }
+      DoubleOptionCollision::{ option: v0 }
     }
   }
 }
 
 ///|
-pub fn DoubleOptionCollision::serialize(
-  self : DoubleOptionCollision,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn DoubleOptionCollision::serialize(self : DoubleOptionCollision) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   if self.option is Some(_) {
-    o.field(
-      "option",
-      @typify_rt.ser_option(self.option, DoubleOptionCollisionOption::serialize),
-    )
+    o.field("option", @typify_rt.ser_option(self.option, DoubleOptionCollisionOption::serialize))
   }
 
   o.build()
@@ -222,31 +200,25 @@ pub fn DoubleOptionCollision::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn DoubleOptionCollision::from_json_str(
-  text : StringView,
-) -> DoubleOptionCollision raise @typify_rt.DeError {
+pub fn DoubleOptionCollision::from_json_str(text : StringView) -> DoubleOptionCollision raise @typify_rt.DeError {
   DoubleOptionCollision::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn DoubleOptionCollision::to_json_string(
-  self : DoubleOptionCollision,
-) -> String raise @typify_rt.SerError {
+pub fn DoubleOptionCollision::to_json_string(self : DoubleOptionCollision) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn DoubleOptionCollision::from_json(
-  json : Json,
-) -> DoubleOptionCollision raise @typify_rt.DeError {
+pub fn DoubleOptionCollision::from_json(json : Json) -> DoubleOptionCollision raise @typify_rt.DeError {
   DoubleOptionCollision::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for DoubleOptionCollision with fn to_json(self) {
+pub impl ToJson for DoubleOptionCollision with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("DoubleOptionCollision::to_json: \{e}")
   }
@@ -278,7 +250,7 @@ pub fn Drop::deserialize(d : @typify_rt.De) -> Drop raise @typify_rt.DeError {
         Some(v) => v
         None => @typify_rt.de_bool(@typify_rt.De::Missing("cleanup"))
       }
-      Drop::{ cleanup: v0, }
+      Drop::{ cleanup: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -286,15 +258,13 @@ pub fn Drop::deserialize(d : @typify_rt.De) -> Drop raise @typify_rt.DeError {
         None => raise s.invalid_length()
       }
       s.finish()
-      Drop::{ cleanup: v0, }
+      Drop::{ cleanup: v0 }
     }
   }
 }
 
 ///|
-pub fn Drop::serialize(
-  self : Drop,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn Drop::serialize(self : Drop) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("cleanup", @typify_rt.ser_bool(self.cleanup))
 
@@ -321,7 +291,7 @@ pub fn Drop::from_json(json : Json) -> Drop raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for Drop with fn to_json(self) {
+pub impl ToJson for Drop with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("Drop::to_json: \{e}")
   }
@@ -335,9 +305,7 @@ pub(all) struct FlattenedKeywords {
 } derive(Debug, Eq)
 
 ///|
-pub fn FlattenedKeywords::deserialize(
-  d : @typify_rt.De,
-) -> FlattenedKeywords raise @typify_rt.DeError {
+pub fn FlattenedKeywords::deserialize(d : @typify_rt.De) -> FlattenedKeywords raise @typify_rt.DeError {
   match @typify_rt.de_struct(d, "struct FlattenedKeywords", ["normal"], true) {
     Entries(entries) => {
       let mut f0 : String? = None
@@ -357,64 +325,43 @@ pub fn FlattenedKeywords::deserialize(
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("normal"))
       }
-      let v1 = @typify_rt.de_map(
-        @typify_rt.De::Flat(buf),
-        @typify_rt.de_string,
-        @typify_rt.de_string,
-      )
-      FlattenedKeywords::{ normal: v0, extra: v1, }
+      let v1 = @typify_rt.de_map(@typify_rt.De::Flat(buf), @typify_rt.de_string, @typify_rt.de_string)
+      FlattenedKeywords::{ normal: v0, extra: v1 }
     }
-    Elements(_) =>
-      raise @typify_rt.DeError(
-        "invalid type: sequence, expected struct FlattenedKeywords",
-      )
+    Elements(_) => raise @typify_rt.DeError("invalid type: sequence, expected struct FlattenedKeywords")
   }
 }
 
 ///|
-pub fn FlattenedKeywords::serialize(
-  self : FlattenedKeywords,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn FlattenedKeywords::serialize(self : FlattenedKeywords) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("normal", @typify_rt.ser_string(self.normal))
-  o.flatten(
-    @typify_rt.ser_map(
-      self.extra,
-      (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-      (v : String) => @typify_rt.ser_string(v),
-    ),
-  )
+  o.flatten(@typify_rt.ser_map(self.extra, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : String) => @typify_rt.ser_string(v)))
 
   o.build()
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn FlattenedKeywords::from_json_str(
-  text : StringView,
-) -> FlattenedKeywords raise @typify_rt.DeError {
+pub fn FlattenedKeywords::from_json_str(text : StringView) -> FlattenedKeywords raise @typify_rt.DeError {
   FlattenedKeywords::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn FlattenedKeywords::to_json_string(
-  self : FlattenedKeywords,
-) -> String raise @typify_rt.SerError {
+pub fn FlattenedKeywords::to_json_string(self : FlattenedKeywords) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn FlattenedKeywords::from_json(
-  json : Json,
-) -> FlattenedKeywords raise @typify_rt.DeError {
+pub fn FlattenedKeywords::from_json(json : Json) -> FlattenedKeywords raise @typify_rt.DeError {
   FlattenedKeywords::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for FlattenedKeywords with fn to_json(self) {
+pub impl ToJson for FlattenedKeywords with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("FlattenedKeywords::to_json: \{e}")
   }
@@ -428,18 +375,10 @@ pub(all) enum KeywordFieldsEnum {
 } derive(Debug, Eq)
 
 ///|
-pub fn KeywordFieldsEnum::deserialize(
-  d : @typify_rt.De,
-) -> KeywordFieldsEnum raise @typify_rt.DeError {
+pub fn KeywordFieldsEnum::deserialize(d : @typify_rt.De) -> KeywordFieldsEnum raise @typify_rt.DeError {
   let c = @typify_rt.de_untagged(d)
   try {
-    match
-      @typify_rt.de_struct(
-        c,
-        "struct variant KeywordFieldsEnum::Object",
-        ["impl", "match", "ref", "type"],
-        false,
-      ) {
+    match @typify_rt.de_struct(c, "struct variant KeywordFieldsEnum::Object", ["impl", "match", "ref", "type"], false) {
       Entries(entries) => {
         let mut f0 : String? = None
         let mut f1 : Int64? = None
@@ -492,10 +431,7 @@ pub fn KeywordFieldsEnum::deserialize(
         }
         KeywordFieldsEnum::Object(impl_=v0, match_=v1, ref_=v2, type_=v3)
       }
-      Elements(_) =>
-        raise @typify_rt.DeError(
-          "invalid type: sequence, expected struct variant KeywordFieldsEnum::Object",
-        )
+      Elements(_) => raise @typify_rt.DeError("invalid type: sequence, expected struct variant KeywordFieldsEnum::Object")
     }
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
@@ -503,19 +439,9 @@ pub fn KeywordFieldsEnum::deserialize(
   } noraise {
     v => return v
   }
-  try
-    KeywordFieldsEnum::Array(
-      {
-        let s = @typify_rt.de_fixed(c, 2)
-        let xs = []
-        for _ in 0..<2 {
-          xs.push(@typify_rt.de_string(s.next()))
-        }
-        s.finish()
-        FixedArray::from_array(xs)
-      },
-    )
-  catch {
+  try {
+    KeywordFieldsEnum::Array({ let s = @typify_rt.de_fixed(c, 2); let xs = []; for _ in 0..<2 { xs.push(@typify_rt.de_string(s.next())) }; s.finish(); FixedArray::from_array(xs) })
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -525,9 +451,7 @@ pub fn KeywordFieldsEnum::deserialize(
 }
 
 ///|
-pub fn KeywordFieldsEnum::serialize(
-  self : KeywordFieldsEnum,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn KeywordFieldsEnum::serialize(self : KeywordFieldsEnum) -> @typify_rt.Content raise @typify_rt.SerError {
   match self {
     Object(impl_=p0, match_=p1, ref_=p2, type_=p3) => {
       let o = @typify_rt.ObjectBuilder::new()
@@ -537,38 +461,31 @@ pub fn KeywordFieldsEnum::serialize(
       o.field("type", @typify_rt.ser_string(p3))
       o.build()
     }
-    Array(p0) =>
-      @typify_rt.ser_vec(p0[:], (v : String) => @typify_rt.ser_string(v))
+    Array(p0) => @typify_rt.ser_vec(p0[:], (v : String) => @typify_rt.ser_string(v))
   }
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn KeywordFieldsEnum::from_json_str(
-  text : StringView,
-) -> KeywordFieldsEnum raise @typify_rt.DeError {
+pub fn KeywordFieldsEnum::from_json_str(text : StringView) -> KeywordFieldsEnum raise @typify_rt.DeError {
   KeywordFieldsEnum::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn KeywordFieldsEnum::to_json_string(
-  self : KeywordFieldsEnum,
-) -> String raise @typify_rt.SerError {
+pub fn KeywordFieldsEnum::to_json_string(self : KeywordFieldsEnum) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn KeywordFieldsEnum::from_json(
-  json : Json,
-) -> KeywordFieldsEnum raise @typify_rt.DeError {
+pub fn KeywordFieldsEnum::from_json(json : Json) -> KeywordFieldsEnum raise @typify_rt.DeError {
   KeywordFieldsEnum::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for KeywordFieldsEnum with fn to_json(self) {
+pub impl ToJson for KeywordFieldsEnum with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("KeywordFieldsEnum::to_json: \{e}")
   }
@@ -581,11 +498,8 @@ pub(all) struct MapOfKeywords {
 } derive(Debug, Eq)
 
 ///|
-pub fn MapOfKeywords::deserialize(
-  d : @typify_rt.De,
-) -> MapOfKeywords raise @typify_rt.DeError {
-  match
-    @typify_rt.de_struct(d, "struct MapOfKeywords", ["keyword_map"], false) {
+pub fn MapOfKeywords::deserialize(d : @typify_rt.De) -> MapOfKeywords raise @typify_rt.DeError {
+  match @typify_rt.de_struct(d, "struct MapOfKeywords", ["keyword_map"], false) {
     Entries(entries) => {
       let mut f0 : Map[String, MapOfKeywordsKeywordMapValue]? = None
       for e in entries {
@@ -594,88 +508,57 @@ pub fn MapOfKeywords::deserialize(
             if f0 is Some(_) {
               raise @typify_rt.duplicate_field_error("keyword_map")
             }
-            f0 = Some(
-              @typify_rt.de_map(
-                e.1,
-                @typify_rt.de_string,
-                MapOfKeywordsKeywordMapValue::deserialize,
-              ),
-            )
+            f0 = Some(@typify_rt.de_map(e.1, @typify_rt.de_string, MapOfKeywordsKeywordMapValue::deserialize))
           }
           _ => ()
         }
       }
       let v0 = match f0 {
         Some(v) => v
-        None =>
-          @typify_rt.de_map(
-            @typify_rt.De::Missing("keyword_map"),
-            @typify_rt.de_string,
-            MapOfKeywordsKeywordMapValue::deserialize,
-          )
+        None => @typify_rt.de_map(@typify_rt.De::Missing("keyword_map"), @typify_rt.de_string, MapOfKeywordsKeywordMapValue::deserialize)
       }
-      MapOfKeywords::{ keyword_map: v0, }
+      MapOfKeywords::{ keyword_map: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
-        Some(d) =>
-          @typify_rt.de_map(
-            d,
-            @typify_rt.de_string,
-            MapOfKeywordsKeywordMapValue::deserialize,
-          )
+        Some(d) => @typify_rt.de_map(d, @typify_rt.de_string, MapOfKeywordsKeywordMapValue::deserialize)
         None => raise s.invalid_length()
       }
       s.finish()
-      MapOfKeywords::{ keyword_map: v0, }
+      MapOfKeywords::{ keyword_map: v0 }
     }
   }
 }
 
 ///|
-pub fn MapOfKeywords::serialize(
-  self : MapOfKeywords,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn MapOfKeywords::serialize(self : MapOfKeywords) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
-  o.field(
-    "keyword_map",
-    @typify_rt.ser_map(
-      self.keyword_map,
-      (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-      MapOfKeywordsKeywordMapValue::serialize,
-    ),
-  )
+  o.field("keyword_map", @typify_rt.ser_map(self.keyword_map, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), MapOfKeywordsKeywordMapValue::serialize))
 
   o.build()
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn MapOfKeywords::from_json_str(
-  text : StringView,
-) -> MapOfKeywords raise @typify_rt.DeError {
+pub fn MapOfKeywords::from_json_str(text : StringView) -> MapOfKeywords raise @typify_rt.DeError {
   MapOfKeywords::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn MapOfKeywords::to_json_string(
-  self : MapOfKeywords,
-) -> String raise @typify_rt.SerError {
+pub fn MapOfKeywords::to_json_string(self : MapOfKeywords) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn MapOfKeywords::from_json(
-  json : Json,
-) -> MapOfKeywords raise @typify_rt.DeError {
+pub fn MapOfKeywords::from_json(json : Json) -> MapOfKeywords raise @typify_rt.DeError {
   MapOfKeywords::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for MapOfKeywords with fn to_json(self) {
+pub impl ToJson for MapOfKeywords with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("MapOfKeywords::to_json: \{e}")
   }
@@ -690,16 +573,8 @@ pub(all) struct NestedTypeCollisions {
 } derive(Debug, Eq)
 
 ///|
-pub fn NestedTypeCollisions::deserialize(
-  d : @typify_rt.De,
-) -> NestedTypeCollisions raise @typify_rt.DeError {
-  match
-    @typify_rt.de_struct(
-      d,
-      "struct NestedTypeCollisions",
-      ["option_type", "type", "types"],
-      false,
-    ) {
+pub fn NestedTypeCollisions::deserialize(d : @typify_rt.De) -> NestedTypeCollisions raise @typify_rt.DeError {
+  match @typify_rt.de_struct(d, "struct NestedTypeCollisions", ["option_type", "type", "types"], false) {
     Entries(entries) => {
       let mut f0 : NestedTypeCollisionsOptionType?? = None
       let mut f1 : TypeWithOptionField? = None
@@ -710,12 +585,7 @@ pub fn NestedTypeCollisions::deserialize(
             if f0 is Some(_) {
               raise @typify_rt.duplicate_field_error("option_type")
             }
-            f0 = Some(
-              @typify_rt.de_option(
-                e.1,
-                NestedTypeCollisionsOptionType::deserialize,
-              ),
-            )
+            f0 = Some(@typify_rt.de_option(e.1, NestedTypeCollisionsOptionType::deserialize))
           }
           "type" => {
             if f1 is Some(_) {
@@ -734,11 +604,7 @@ pub fn NestedTypeCollisions::deserialize(
       }
       let v0 = match f0 {
         Some(v) => v
-        None =>
-          @typify_rt.de_option(
-            @typify_rt.De::Missing("option_type"),
-            NestedTypeCollisionsOptionType::deserialize,
-          )
+        None => @typify_rt.de_option(@typify_rt.De::Missing("option_type"), NestedTypeCollisionsOptionType::deserialize)
       }
       let v1 = match f1 {
         Some(v) => v
@@ -746,18 +612,13 @@ pub fn NestedTypeCollisions::deserialize(
       }
       let v2 = match f2 {
         Some(v) => v
-        None =>
-          @typify_rt.de_vec(
-            @typify_rt.De::Missing("types"),
-            TypeWithOptionField::deserialize,
-          )
+        None => @typify_rt.de_vec(@typify_rt.De::Missing("types"), TypeWithOptionField::deserialize)
       }
-      NestedTypeCollisions::{ option_type: v0, type_: v1, types: v2, }
+      NestedTypeCollisions::{ option_type: v0, type_: v1, types: v2 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
-        Some(d) =>
-          @typify_rt.de_option(d, NestedTypeCollisionsOptionType::deserialize)
+        Some(d) => @typify_rt.de_option(d, NestedTypeCollisionsOptionType::deserialize)
         None => raise s.invalid_length()
       }
       let v1 = match s.next_opt() {
@@ -769,61 +630,44 @@ pub fn NestedTypeCollisions::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      NestedTypeCollisions::{ option_type: v0, type_: v1, types: v2, }
+      NestedTypeCollisions::{ option_type: v0, type_: v1, types: v2 }
     }
   }
 }
 
 ///|
-pub fn NestedTypeCollisions::serialize(
-  self : NestedTypeCollisions,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn NestedTypeCollisions::serialize(self : NestedTypeCollisions) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   if self.option_type is Some(_) {
-    o.field(
-      "option_type",
-      @typify_rt.ser_option(
-        self.option_type,
-        NestedTypeCollisionsOptionType::serialize,
-      ),
-    )
+    o.field("option_type", @typify_rt.ser_option(self.option_type, NestedTypeCollisionsOptionType::serialize))
   }
   o.field("type", TypeWithOptionField::serialize(self.type_))
-  o.field(
-    "types",
-    @typify_rt.ser_vec(self.types, TypeWithOptionField::serialize),
-  )
+  o.field("types", @typify_rt.ser_vec(self.types, TypeWithOptionField::serialize))
 
   o.build()
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn NestedTypeCollisions::from_json_str(
-  text : StringView,
-) -> NestedTypeCollisions raise @typify_rt.DeError {
+pub fn NestedTypeCollisions::from_json_str(text : StringView) -> NestedTypeCollisions raise @typify_rt.DeError {
   NestedTypeCollisions::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn NestedTypeCollisions::to_json_string(
-  self : NestedTypeCollisions,
-) -> String raise @typify_rt.SerError {
+pub fn NestedTypeCollisions::to_json_string(self : NestedTypeCollisions) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn NestedTypeCollisions::from_json(
-  json : Json,
-) -> NestedTypeCollisions raise @typify_rt.DeError {
+pub fn NestedTypeCollisions::from_json(json : Json) -> NestedTypeCollisions raise @typify_rt.DeError {
   NestedTypeCollisions::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for NestedTypeCollisions with fn to_json(self) {
+pub impl ToJson for NestedTypeCollisions with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("NestedTypeCollisions::to_json: \{e}")
   }
@@ -836,9 +680,7 @@ pub(all) struct Option_ {
 } derive(Debug, Eq)
 
 ///|
-pub fn Option_::deserialize(
-  d : @typify_rt.De,
-) -> Option_ raise @typify_rt.DeError {
+pub fn Option_::deserialize(d : @typify_rt.De) -> Option_ raise @typify_rt.DeError {
   match @typify_rt.de_struct(d, "struct Option", ["maybe"], false) {
     Entries(entries) => {
       let mut f0 : String? = None
@@ -857,7 +699,7 @@ pub fn Option_::deserialize(
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("maybe"))
       }
-      Option_::{ maybe: v0, }
+      Option_::{ maybe: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -865,15 +707,13 @@ pub fn Option_::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      Option_::{ maybe: v0, }
+      Option_::{ maybe: v0 }
     }
   }
 }
 
 ///|
-pub fn Option_::serialize(
-  self : Option_,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn Option_::serialize(self : Option_) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("maybe", @typify_rt.ser_string(self.maybe))
 
@@ -882,17 +722,13 @@ pub fn Option_::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn Option_::from_json_str(
-  text : StringView,
-) -> Option_ raise @typify_rt.DeError {
+pub fn Option_::from_json_str(text : StringView) -> Option_ raise @typify_rt.DeError {
   Option_::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn Option_::to_json_string(
-  self : Option_,
-) -> String raise @typify_rt.SerError {
+pub fn Option_::to_json_string(self : Option_) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -904,7 +740,7 @@ pub fn Option_::from_json(json : Json) -> Option_ raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for Option_ with fn to_json(self) {
+pub impl ToJson for Option_ with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("Option_::to_json: \{e}")
   }
@@ -936,7 +772,7 @@ pub fn Pin::deserialize(d : @typify_rt.De) -> Pin raise @typify_rt.DeError {
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("pointer"))
       }
-      Pin::{ pointer: v0, }
+      Pin::{ pointer: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -944,15 +780,13 @@ pub fn Pin::deserialize(d : @typify_rt.De) -> Pin raise @typify_rt.DeError {
         None => raise s.invalid_length()
       }
       s.finish()
-      Pin::{ pointer: v0, }
+      Pin::{ pointer: v0 }
     }
   }
 }
 
 ///|
-pub fn Pin::serialize(
-  self : Pin,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn Pin::serialize(self : Pin) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("pointer", @typify_rt.ser_string(self.pointer))
 
@@ -979,7 +813,7 @@ pub fn Pin::from_json(json : Json) -> Pin raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for Pin with fn to_json(self) {
+pub impl ToJson for Pin with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("Pin::to_json: \{e}")
   }
@@ -1042,23 +876,8 @@ pub(all) struct RustKeywordMonster {
 } derive(Debug, Eq)
 
 ///|
-pub fn RustKeywordMonster::deserialize(
-  d : @typify_rt.De,
-) -> RustKeywordMonster raise @typify_rt.DeError {
-  match
-    @typify_rt.de_struct(
-      d,
-      "struct RustKeywordMonster",
-      [
-        "abstract", "as", "async", "await", "become", "box", "break", "const", "continue",
-        "crate", "do", "dyn", "else", "enum", "extern", "false", "final", "fn", "for",
-        "gen", "if", "impl", "in", "let", "loop", "macro", "match", "mod", "move",
-        "mut", "override", "priv", "pub", "ref", "return", "self", "static", "struct",
-        "super", "trait", "true", "try", "type", "typeof", "unsafe", "unsized", "use",
-        "virtual", "where", "while", "yield",
-      ],
-      false,
-    ) {
+pub fn RustKeywordMonster::deserialize(d : @typify_rt.De) -> RustKeywordMonster raise @typify_rt.DeError {
+  match @typify_rt.de_struct(d, "struct RustKeywordMonster", ["abstract", "as", "async", "await", "become", "box", "break", "const", "continue", "crate", "do", "dyn", "else", "enum", "extern", "false", "final", "fn", "for", "gen", "if", "impl", "in", "let", "loop", "macro", "match", "mod", "move", "mut", "override", "priv", "pub", "ref", "return", "self", "static", "struct", "super", "trait", "true", "try", "type", "typeof", "unsafe", "unsized", "use", "virtual", "where", "while", "yield"], false) {
     Entries(entries) => {
       let mut f0 : String? = None
       let mut f1 : String? = None
@@ -1626,59 +1445,7 @@ pub fn RustKeywordMonster::deserialize(
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("yield"))
       }
-      RustKeywordMonster::{
-        abstract_: v0,
-        as_: v1,
-        async_: v2,
-        await_: v3,
-        become_: v4,
-        box_: v5,
-        break_: v6,
-        const_: v7,
-        continue_: v8,
-        crate_: v9,
-        do_: v10,
-        dyn_: v11,
-        else_: v12,
-        enum_: v13,
-        extern_: v14,
-        false_: v15,
-        final_: v16,
-        fn_: v17,
-        for_: v18,
-        gen_: v19,
-        if_: v20,
-        impl_: v21,
-        in_: v22,
-        let_: v23,
-        loop_: v24,
-        macro_: v25,
-        match_: v26,
-        mod_: v27,
-        move_: v28,
-        mut_: v29,
-        override_: v30,
-        priv_: v31,
-        pub_: v32,
-        ref_: v33,
-        return_: v34,
-        self_: v35,
-        static_: v36,
-        struct_: v37,
-        super_: v38,
-        trait_: v39,
-        true_: v40,
-        try_: v41,
-        type_: v42,
-        typeof_: v43,
-        unsafe_: v44,
-        unsized_: v45,
-        use_: v46,
-        virtual_: v47,
-        where_: v48,
-        while_: v49,
-        yield_: v50,
-      }
+      RustKeywordMonster::{ abstract_: v0, as_: v1, async_: v2, await_: v3, become_: v4, box_: v5, break_: v6, const_: v7, continue_: v8, crate_: v9, do_: v10, dyn_: v11, else_: v12, enum_: v13, extern_: v14, false_: v15, final_: v16, fn_: v17, for_: v18, gen_: v19, if_: v20, impl_: v21, in_: v22, let_: v23, loop_: v24, macro_: v25, match_: v26, mod_: v27, move_: v28, mut_: v29, override_: v30, priv_: v31, pub_: v32, ref_: v33, return_: v34, self_: v35, static_: v36, struct_: v37, super_: v38, trait_: v39, true_: v40, try_: v41, type_: v42, typeof_: v43, unsafe_: v44, unsized_: v45, use_: v46, virtual_: v47, where_: v48, while_: v49, yield_: v50 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -1886,67 +1653,13 @@ pub fn RustKeywordMonster::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      RustKeywordMonster::{
-        abstract_: v0,
-        as_: v1,
-        async_: v2,
-        await_: v3,
-        become_: v4,
-        box_: v5,
-        break_: v6,
-        const_: v7,
-        continue_: v8,
-        crate_: v9,
-        do_: v10,
-        dyn_: v11,
-        else_: v12,
-        enum_: v13,
-        extern_: v14,
-        false_: v15,
-        final_: v16,
-        fn_: v17,
-        for_: v18,
-        gen_: v19,
-        if_: v20,
-        impl_: v21,
-        in_: v22,
-        let_: v23,
-        loop_: v24,
-        macro_: v25,
-        match_: v26,
-        mod_: v27,
-        move_: v28,
-        mut_: v29,
-        override_: v30,
-        priv_: v31,
-        pub_: v32,
-        ref_: v33,
-        return_: v34,
-        self_: v35,
-        static_: v36,
-        struct_: v37,
-        super_: v38,
-        trait_: v39,
-        true_: v40,
-        try_: v41,
-        type_: v42,
-        typeof_: v43,
-        unsafe_: v44,
-        unsized_: v45,
-        use_: v46,
-        virtual_: v47,
-        where_: v48,
-        while_: v49,
-        yield_: v50,
-      }
+      RustKeywordMonster::{ abstract_: v0, as_: v1, async_: v2, await_: v3, become_: v4, box_: v5, break_: v6, const_: v7, continue_: v8, crate_: v9, do_: v10, dyn_: v11, else_: v12, enum_: v13, extern_: v14, false_: v15, final_: v16, fn_: v17, for_: v18, gen_: v19, if_: v20, impl_: v21, in_: v22, let_: v23, loop_: v24, macro_: v25, match_: v26, mod_: v27, move_: v28, mut_: v29, override_: v30, priv_: v31, pub_: v32, ref_: v33, return_: v34, self_: v35, static_: v36, struct_: v37, super_: v38, trait_: v39, true_: v40, try_: v41, type_: v42, typeof_: v43, unsafe_: v44, unsized_: v45, use_: v46, virtual_: v47, where_: v48, while_: v49, yield_: v50 }
     }
   }
 }
 
 ///|
-pub fn RustKeywordMonster::serialize(
-  self : RustKeywordMonster,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn RustKeywordMonster::serialize(self : RustKeywordMonster) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("abstract", @typify_rt.ser_string(self.abstract_))
   o.field("as", @typify_rt.ser_string(self.as_))
@@ -2005,31 +1718,25 @@ pub fn RustKeywordMonster::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn RustKeywordMonster::from_json_str(
-  text : StringView,
-) -> RustKeywordMonster raise @typify_rt.DeError {
+pub fn RustKeywordMonster::from_json_str(text : StringView) -> RustKeywordMonster raise @typify_rt.DeError {
   RustKeywordMonster::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn RustKeywordMonster::to_json_string(
-  self : RustKeywordMonster,
-) -> String raise @typify_rt.SerError {
+pub fn RustKeywordMonster::to_json_string(self : RustKeywordMonster) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn RustKeywordMonster::from_json(
-  json : Json,
-) -> RustKeywordMonster raise @typify_rt.DeError {
+pub fn RustKeywordMonster::from_json(json : Json) -> RustKeywordMonster raise @typify_rt.DeError {
   RustKeywordMonster::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for RustKeywordMonster with fn to_json(self) {
+pub impl ToJson for RustKeywordMonster with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("RustKeywordMonster::to_json: \{e}")
   }
@@ -2061,7 +1768,7 @@ pub fn Send::deserialize(d : @typify_rt.De) -> Send raise @typify_rt.DeError {
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("message"))
       }
-      Send::{ message: v0, }
+      Send::{ message: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -2069,15 +1776,13 @@ pub fn Send::deserialize(d : @typify_rt.De) -> Send raise @typify_rt.DeError {
         None => raise s.invalid_length()
       }
       s.finish()
-      Send::{ message: v0, }
+      Send::{ message: v0 }
     }
   }
 }
 
 ///|
-pub fn Send::serialize(
-  self : Send,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn Send::serialize(self : Send) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("message", @typify_rt.ser_string(self.message))
 
@@ -2104,7 +1809,7 @@ pub fn Send::from_json(json : Json) -> Send raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for Send with fn to_json(self) {
+pub impl ToJson for Send with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("Send::to_json: \{e}")
   }
@@ -2117,9 +1822,7 @@ pub(all) struct String_ {
 } derive(Debug, Eq)
 
 ///|
-pub fn String_::deserialize(
-  d : @typify_rt.De,
-) -> String_ raise @typify_rt.DeError {
+pub fn String_::deserialize(d : @typify_rt.De) -> String_ raise @typify_rt.DeError {
   match @typify_rt.de_struct(d, "struct String", ["text"], false) {
     Entries(entries) => {
       let mut f0 : String? = None
@@ -2138,7 +1841,7 @@ pub fn String_::deserialize(
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("text"))
       }
-      String_::{ text: v0, }
+      String_::{ text: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -2146,15 +1849,13 @@ pub fn String_::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      String_::{ text: v0, }
+      String_::{ text: v0 }
     }
   }
 }
 
 ///|
-pub fn String_::serialize(
-  self : String_,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn String_::serialize(self : String_) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("text", @typify_rt.ser_string(self.text))
 
@@ -2163,17 +1864,13 @@ pub fn String_::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn String_::from_json_str(
-  text : StringView,
-) -> String_ raise @typify_rt.DeError {
+pub fn String_::from_json_str(text : StringView) -> String_ raise @typify_rt.DeError {
   String_::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn String_::to_json_string(
-  self : String_,
-) -> String raise @typify_rt.SerError {
+pub fn String_::to_json_string(self : String_) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -2185,7 +1882,7 @@ pub fn String_::from_json(json : Json) -> String_ raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for String_ with fn to_json(self) {
+pub impl ToJson for String_ with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("String_::to_json: \{e}")
   }
@@ -2200,25 +1897,12 @@ pub(all) enum StringEnum {
 } derive(Debug, Eq, Hash)
 
 ///|
-pub fn StringEnum::deserialize(
-  d : @typify_rt.De,
-) -> StringEnum raise @typify_rt.DeError {
-  let (idx, payload) = @typify_rt.de_enum(d, "StringEnum", [
-    "one", "two", "three",
-  ])
+pub fn StringEnum::deserialize(d : @typify_rt.De) -> StringEnum raise @typify_rt.DeError {
+  let (idx, payload) = @typify_rt.de_enum(d, "StringEnum", ["one", "two", "three"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      StringEnum::One
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      StringEnum::Two
-    }
-    2 => {
-      @typify_rt.variant_unit(payload)
-      StringEnum::Three
-    }
+    0 => { @typify_rt.variant_unit(payload); StringEnum::One }
+    1 => { @typify_rt.variant_unit(payload); StringEnum::Two }
+    2 => { @typify_rt.variant_unit(payload); StringEnum::Three }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -2226,9 +1910,7 @@ pub fn StringEnum::deserialize(
 }
 
 ///|
-pub fn StringEnum::serialize(
-  self : StringEnum,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn StringEnum::serialize(self : StringEnum) -> @typify_rt.Content raise @typify_rt.SerError {
   match self {
     One => @typify_rt.ser_string("one")
     Two => @typify_rt.ser_string("two")
@@ -2258,9 +1940,7 @@ pub fn StringEnum::to_string(self : StringEnum) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn StringEnum::parse(
-  value : StringView,
-) -> StringEnum raise @typify_rt.ConversionError {
+pub fn StringEnum::parse(value : StringView) -> StringEnum raise @typify_rt.ConversionError {
   match value {
     "one" => One
     "two" => Two
@@ -2271,31 +1951,25 @@ pub fn StringEnum::parse(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn StringEnum::from_json_str(
-  text : StringView,
-) -> StringEnum raise @typify_rt.DeError {
+pub fn StringEnum::from_json_str(text : StringView) -> StringEnum raise @typify_rt.DeError {
   StringEnum::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn StringEnum::to_json_string(
-  self : StringEnum,
-) -> String raise @typify_rt.SerError {
+pub fn StringEnum::to_json_string(self : StringEnum) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn StringEnum::from_json(
-  json : Json,
-) -> StringEnum raise @typify_rt.DeError {
+pub fn StringEnum::from_json(json : Json) -> StringEnum raise @typify_rt.DeError {
   StringEnum::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for StringEnum with fn to_json(self) {
+pub impl ToJson for StringEnum with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("StringEnum::to_json: \{e}")
   }
@@ -2307,9 +1981,7 @@ pub(all) struct StringNewtype(String) derive(Debug, Eq, Hash)
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn StringNewtype::new(
-  value : String,
-) -> StringNewtype raise @typify_rt.ConversionError {
+pub fn StringNewtype::new(value : String) -> StringNewtype raise @typify_rt.ConversionError {
   if @typify_rt.char_count(value) > 100 {
     raise @typify_rt.ConversionError("longer than 100 characters")
   }
@@ -2321,9 +1993,7 @@ pub fn StringNewtype::new(
 }
 
 ///|
-pub fn StringNewtype::deserialize(
-  d : @typify_rt.De,
-) -> StringNewtype raise @typify_rt.DeError {
+pub fn StringNewtype::deserialize(d : @typify_rt.De) -> StringNewtype raise @typify_rt.DeError {
   let value = @typify_rt.de_string(d)
   StringNewtype::new(value) catch {
     @typify_rt.ConversionError(msg) => raise @typify_rt.DeError(msg)
@@ -2331,39 +2001,31 @@ pub fn StringNewtype::deserialize(
 }
 
 ///|
-pub fn StringNewtype::serialize(
-  self : StringNewtype,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn StringNewtype::serialize(self : StringNewtype) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_string(self.0)
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn StringNewtype::from_json_str(
-  text : StringView,
-) -> StringNewtype raise @typify_rt.DeError {
+pub fn StringNewtype::from_json_str(text : StringView) -> StringNewtype raise @typify_rt.DeError {
   StringNewtype::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn StringNewtype::to_json_string(
-  self : StringNewtype,
-) -> String raise @typify_rt.SerError {
+pub fn StringNewtype::to_json_string(self : StringNewtype) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn StringNewtype::from_json(
-  json : Json,
-) -> StringNewtype raise @typify_rt.DeError {
+pub fn StringNewtype::from_json(json : Json) -> StringNewtype raise @typify_rt.DeError {
   StringNewtype::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for StringNewtype with fn to_json(self) {
+pub impl ToJson for StringNewtype with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("StringNewtype::to_json: \{e}")
   }
@@ -2395,7 +2057,7 @@ pub fn Sync::deserialize(d : @typify_rt.De) -> Sync raise @typify_rt.DeError {
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("data"))
       }
-      Sync::{ data: v0, }
+      Sync::{ data: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -2403,15 +2065,13 @@ pub fn Sync::deserialize(d : @typify_rt.De) -> Sync raise @typify_rt.DeError {
         None => raise s.invalid_length()
       }
       s.finish()
-      Sync::{ data: v0, }
+      Sync::{ data: v0 }
     }
   }
 }
 
 ///|
-pub fn Sync::serialize(
-  self : Sync,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn Sync::serialize(self : Sync) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("data", @typify_rt.ser_string(self.data))
 
@@ -2438,7 +2098,7 @@ pub fn Sync::from_json(json : Json) -> Sync raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for Sync with fn to_json(self) {
+pub impl ToJson for Sync with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("Sync::to_json: \{e}")
   }
@@ -2452,16 +2112,8 @@ pub(all) struct TypeWithOptionField {
 } derive(Debug, Eq)
 
 ///|
-pub fn TypeWithOptionField::deserialize(
-  d : @typify_rt.De,
-) -> TypeWithOptionField raise @typify_rt.DeError {
-  match
-    @typify_rt.de_struct(
-      d,
-      "struct TypeWithOptionField",
-      ["boxed_field", "optional_field"],
-      false,
-    ) {
+pub fn TypeWithOptionField::deserialize(d : @typify_rt.De) -> TypeWithOptionField raise @typify_rt.DeError {
+  match @typify_rt.de_struct(d, "struct TypeWithOptionField", ["boxed_field", "optional_field"], false) {
     Entries(entries) => {
       let mut f0 : Box? = None
       let mut f1 : String?? = None
@@ -2488,13 +2140,9 @@ pub fn TypeWithOptionField::deserialize(
       }
       let v1 = match f1 {
         Some(v) => v
-        None =>
-          @typify_rt.de_option(
-            @typify_rt.De::Missing("optional_field"),
-            @typify_rt.de_string,
-          )
+        None => @typify_rt.de_option(@typify_rt.De::Missing("optional_field"), @typify_rt.de_string)
       }
-      TypeWithOptionField::{ boxed_field: v0, optional_field: v1, }
+      TypeWithOptionField::{ boxed_field: v0, optional_field: v1 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -2506,24 +2154,17 @@ pub fn TypeWithOptionField::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      TypeWithOptionField::{ boxed_field: v0, optional_field: v1, }
+      TypeWithOptionField::{ boxed_field: v0, optional_field: v1 }
     }
   }
 }
 
 ///|
-pub fn TypeWithOptionField::serialize(
-  self : TypeWithOptionField,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn TypeWithOptionField::serialize(self : TypeWithOptionField) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("boxed_field", Box::serialize(self.boxed_field))
   if self.optional_field is Some(_) {
-    o.field(
-      "optional_field",
-      @typify_rt.ser_option(self.optional_field, (v : String) => {
-        @typify_rt.ser_string(v)
-      }),
-    )
+    o.field("optional_field", @typify_rt.ser_option(self.optional_field, (v : String) => @typify_rt.ser_string(v)))
   }
 
   o.build()
@@ -2531,31 +2172,25 @@ pub fn TypeWithOptionField::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn TypeWithOptionField::from_json_str(
-  text : StringView,
-) -> TypeWithOptionField raise @typify_rt.DeError {
+pub fn TypeWithOptionField::from_json_str(text : StringView) -> TypeWithOptionField raise @typify_rt.DeError {
   TypeWithOptionField::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn TypeWithOptionField::to_json_string(
-  self : TypeWithOptionField,
-) -> String raise @typify_rt.SerError {
+pub fn TypeWithOptionField::to_json_string(self : TypeWithOptionField) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn TypeWithOptionField::from_json(
-  json : Json,
-) -> TypeWithOptionField raise @typify_rt.DeError {
+pub fn TypeWithOptionField::from_json(json : Json) -> TypeWithOptionField raise @typify_rt.DeError {
   TypeWithOptionField::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for TypeWithOptionField with fn to_json(self) {
+pub impl ToJson for TypeWithOptionField with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("TypeWithOptionField::to_json: \{e}")
   }
@@ -2585,13 +2220,9 @@ pub fn Vec::deserialize(d : @typify_rt.De) -> Vec raise @typify_rt.DeError {
       }
       let v0 = match f0 {
         Some(v) => v
-        None =>
-          @typify_rt.de_vec(
-            @typify_rt.De::Missing("items"),
-            @typify_rt.de_string,
-          )
+        None => @typify_rt.de_vec(@typify_rt.De::Missing("items"), @typify_rt.de_string)
       }
-      Vec::{ items: v0, }
+      Vec::{ items: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -2599,20 +2230,15 @@ pub fn Vec::deserialize(d : @typify_rt.De) -> Vec raise @typify_rt.DeError {
         None => raise s.invalid_length()
       }
       s.finish()
-      Vec::{ items: v0, }
+      Vec::{ items: v0 }
     }
   }
 }
 
 ///|
-pub fn Vec::serialize(
-  self : Vec,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn Vec::serialize(self : Vec) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
-  o.field(
-    "items",
-    @typify_rt.ser_vec(self.items, (v : String) => @typify_rt.ser_string(v)),
-  )
+  o.field("items", @typify_rt.ser_vec(self.items, (v : String) => @typify_rt.ser_string(v)))
 
   o.build()
 }
@@ -2637,7 +2263,7 @@ pub fn Vec::from_json(json : Json) -> Vec raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for Vec with fn to_json(self) {
+pub impl ToJson for Vec with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("Vec::to_json: \{e}")
   }
@@ -2654,33 +2280,14 @@ pub(all) enum FormatCollision {
 } derive(Debug, Eq, Hash)
 
 ///|
-pub fn FormatCollision::deserialize(
-  d : @typify_rt.De,
-) -> FormatCollision raise @typify_rt.DeError {
-  let (idx, payload) = @typify_rt.de_enum(d, "FormatCollision", [
-    "{abc}def", "{http://example.com/Foo}Thing", "{self}", "quote\"unquote", "xyz",
-  ])
+pub fn FormatCollision::deserialize(d : @typify_rt.De) -> FormatCollision raise @typify_rt.DeError {
+  let (idx, payload) = @typify_rt.de_enum(d, "FormatCollision", ["{abc}def", "{http://example.com/Foo}Thing", "{self}", "quote\"unquote", "xyz"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      FormatCollision::AbcDef
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      FormatCollision::HttpExampleComFooThing
-    }
-    2 => {
-      @typify_rt.variant_unit(payload)
-      FormatCollision::Self_
-    }
-    3 => {
-      @typify_rt.variant_unit(payload)
-      FormatCollision::QuoteUnquote
-    }
-    4 => {
-      @typify_rt.variant_unit(payload)
-      FormatCollision::Xyz
-    }
+    0 => { @typify_rt.variant_unit(payload); FormatCollision::AbcDef }
+    1 => { @typify_rt.variant_unit(payload); FormatCollision::HttpExampleComFooThing }
+    2 => { @typify_rt.variant_unit(payload); FormatCollision::Self_ }
+    3 => { @typify_rt.variant_unit(payload); FormatCollision::QuoteUnquote }
+    4 => { @typify_rt.variant_unit(payload); FormatCollision::Xyz }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -2688,13 +2295,10 @@ pub fn FormatCollision::deserialize(
 }
 
 ///|
-pub fn FormatCollision::serialize(
-  self : FormatCollision,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn FormatCollision::serialize(self : FormatCollision) -> @typify_rt.Content raise @typify_rt.SerError {
   match self {
     AbcDef => @typify_rt.ser_string("{abc}def")
-    HttpExampleComFooThing =>
-      @typify_rt.ser_string("{http://example.com/Foo}Thing")
+    HttpExampleComFooThing => @typify_rt.ser_string("{http://example.com/Foo}Thing")
     Self_ => @typify_rt.ser_string("{self}")
     QuoteUnquote => @typify_rt.ser_string("quote\"unquote")
     Xyz => @typify_rt.ser_string("xyz")
@@ -2727,9 +2331,7 @@ pub fn FormatCollision::to_string(self : FormatCollision) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn FormatCollision::parse(
-  value : StringView,
-) -> FormatCollision raise @typify_rt.ConversionError {
+pub fn FormatCollision::parse(value : StringView) -> FormatCollision raise @typify_rt.ConversionError {
   match value {
     "{abc}def" => AbcDef
     "{http://example.com/Foo}Thing" => HttpExampleComFooThing
@@ -2742,31 +2344,25 @@ pub fn FormatCollision::parse(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn FormatCollision::from_json_str(
-  text : StringView,
-) -> FormatCollision raise @typify_rt.DeError {
+pub fn FormatCollision::from_json_str(text : StringView) -> FormatCollision raise @typify_rt.DeError {
   FormatCollision::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn FormatCollision::to_json_string(
-  self : FormatCollision,
-) -> String raise @typify_rt.SerError {
+pub fn FormatCollision::to_json_string(self : FormatCollision) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn FormatCollision::from_json(
-  json : Json,
-) -> FormatCollision raise @typify_rt.DeError {
+pub fn FormatCollision::from_json(json : Json) -> FormatCollision raise @typify_rt.DeError {
   FormatCollision::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for FormatCollision with fn to_json(self) {
+pub impl ToJson for FormatCollision with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("FormatCollision::to_json: \{e}")
   }
@@ -2786,13 +2382,7 @@ pub(all) struct Std {
 
 ///|
 pub fn Std::deserialize(d : @typify_rt.De) -> Std raise @typify_rt.DeError {
-  match
-    @typify_rt.de_struct(
-      d,
-      "struct Std",
-      ["boxed", "convert", "fmt", "option", "result", "str", "string"],
-      false,
-    ) {
+  match @typify_rt.de_struct(d, "struct Std", ["boxed", "convert", "fmt", "option", "result", "str", "string"], false) {
     Entries(entries) => {
       let mut f0 : StdBoxed? = None
       let mut f1 : StdConvert? = None
@@ -2876,15 +2466,7 @@ pub fn Std::deserialize(d : @typify_rt.De) -> Std raise @typify_rt.DeError {
         Some(v) => v
         None => StdString::deserialize(@typify_rt.De::Missing("string"))
       }
-      Std::{
-        boxed: v0,
-        convert: v1,
-        fmt: v2,
-        option: v3,
-        result: v4,
-        str: v5,
-        string: v6,
-      }
+      Std::{ boxed: v0, convert: v1, fmt: v2, option: v3, result: v4, str: v5, string: v6 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -2916,23 +2498,13 @@ pub fn Std::deserialize(d : @typify_rt.De) -> Std raise @typify_rt.DeError {
         None => raise s.invalid_length()
       }
       s.finish()
-      Std::{
-        boxed: v0,
-        convert: v1,
-        fmt: v2,
-        option: v3,
-        result: v4,
-        str: v5,
-        string: v6,
-      }
+      Std::{ boxed: v0, convert: v1, fmt: v2, option: v3, result: v4, str: v5, string: v6 }
     }
   }
 }
 
 ///|
-pub fn Std::serialize(
-  self : Std,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn Std::serialize(self : Std) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("boxed", StdBoxed::serialize(self.boxed))
   o.field("convert", StdConvert::serialize(self.convert))
@@ -2965,7 +2537,7 @@ pub fn Std::from_json(json : Json) -> Std raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for Std with fn to_json(self) {
+pub impl ToJson for Std with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("Std::to_json: \{e}")
   }
@@ -2973,64 +2545,41 @@ pub impl ToJson for Std with fn to_json(self) {
 
 ///|
 /// `TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords`
-pub(all) struct TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords(
-  Json
-) derive(Debug, Eq)
+pub(all) struct TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords(Json) derive(Debug, Eq)
 
 ///|
-pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::deserialize(
-  d : @typify_rt.De,
-) -> TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords raise @typify_rt.DeError {
-  TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords(
-    @typify_rt.de_json(d),
-  )
+pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::deserialize(d : @typify_rt.De) -> TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords raise @typify_rt.DeError {
+  TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords(@typify_rt.de_json(d))
 }
 
 ///|
-pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::serialize(
-  self : TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::serialize(self : TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_json(self.0)
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::from_json_str(
-  text : StringView,
-) -> TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords raise @typify_rt.DeError {
-  TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::deserialize(
-    @typify_rt.De::from_str(text),
-  )
+pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::from_json_str(text : StringView) -> TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords raise @typify_rt.DeError {
+  TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::to_json_string(
-  self : TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords,
-) -> String raise @typify_rt.SerError {
+pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::to_json_string(self : TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::from_json(
-  json : Json,
-) -> TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords raise @typify_rt.DeError {
-  TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::deserialize(
-    @typify_rt.De::from_json(json),
-  )
+pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::from_json(json : Json) -> TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords raise @typify_rt.DeError {
+  TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords with fn to_json(
-  self,
-) {
+pub impl ToJson for TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
-    e =>
-      abort(
-        "TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::to_json: \{e}",
-      )
+    e => abort("TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::to_json: \{e}")
   }
 }
 
@@ -3041,16 +2590,8 @@ pub(all) struct DoubleOptionCollisionOption {
 } derive(Debug, Eq)
 
 ///|
-pub fn DoubleOptionCollisionOption::deserialize(
-  d : @typify_rt.De,
-) -> DoubleOptionCollisionOption raise @typify_rt.DeError {
-  match
-    @typify_rt.de_struct(
-      d,
-      "struct DoubleOptionCollisionOption",
-      ["option"],
-      false,
-    ) {
+pub fn DoubleOptionCollisionOption::deserialize(d : @typify_rt.De) -> DoubleOptionCollisionOption raise @typify_rt.DeError {
+  match @typify_rt.de_struct(d, "struct DoubleOptionCollisionOption", ["option"], false) {
     Entries(entries) => {
       let mut f0 : String?? = None
       for e in entries {
@@ -3066,13 +2607,9 @@ pub fn DoubleOptionCollisionOption::deserialize(
       }
       let v0 = match f0 {
         Some(v) => v
-        None =>
-          @typify_rt.de_option(
-            @typify_rt.De::Missing("option"),
-            @typify_rt.de_string,
-          )
+        None => @typify_rt.de_option(@typify_rt.De::Missing("option"), @typify_rt.de_string)
       }
-      DoubleOptionCollisionOption::{ option: v0, }
+      DoubleOptionCollisionOption::{ option: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -3080,23 +2617,16 @@ pub fn DoubleOptionCollisionOption::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      DoubleOptionCollisionOption::{ option: v0, }
+      DoubleOptionCollisionOption::{ option: v0 }
     }
   }
 }
 
 ///|
-pub fn DoubleOptionCollisionOption::serialize(
-  self : DoubleOptionCollisionOption,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn DoubleOptionCollisionOption::serialize(self : DoubleOptionCollisionOption) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   if self.option is Some(_) {
-    o.field(
-      "option",
-      @typify_rt.ser_option(self.option, (v : String) => {
-        @typify_rt.ser_string(v)
-      }),
-    )
+    o.field("option", @typify_rt.ser_option(self.option, (v : String) => @typify_rt.ser_string(v)))
   }
 
   o.build()
@@ -3104,31 +2634,25 @@ pub fn DoubleOptionCollisionOption::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn DoubleOptionCollisionOption::from_json_str(
-  text : StringView,
-) -> DoubleOptionCollisionOption raise @typify_rt.DeError {
+pub fn DoubleOptionCollisionOption::from_json_str(text : StringView) -> DoubleOptionCollisionOption raise @typify_rt.DeError {
   DoubleOptionCollisionOption::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn DoubleOptionCollisionOption::to_json_string(
-  self : DoubleOptionCollisionOption,
-) -> String raise @typify_rt.SerError {
+pub fn DoubleOptionCollisionOption::to_json_string(self : DoubleOptionCollisionOption) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn DoubleOptionCollisionOption::from_json(
-  json : Json,
-) -> DoubleOptionCollisionOption raise @typify_rt.DeError {
+pub fn DoubleOptionCollisionOption::from_json(json : Json) -> DoubleOptionCollisionOption raise @typify_rt.DeError {
   DoubleOptionCollisionOption::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for DoubleOptionCollisionOption with fn to_json(self) {
+pub impl ToJson for DoubleOptionCollisionOption with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("DoubleOptionCollisionOption::to_json: \{e}")
   }
@@ -3154,70 +2678,23 @@ pub(all) enum MapOfKeywordsKeywordMapValue {
 } derive(Debug, Eq, Hash)
 
 ///|
-pub fn MapOfKeywordsKeywordMapValue::deserialize(
-  d : @typify_rt.De,
-) -> MapOfKeywordsKeywordMapValue raise @typify_rt.DeError {
-  let (idx, payload) = @typify_rt.de_enum(d, "MapOfKeywordsKeywordMapValue", [
-    "type", "impl", "fn", "let", "match", "mod", "move", "pub", "ref", "self", "super",
-    "trait", "use", "where",
-  ])
+pub fn MapOfKeywordsKeywordMapValue::deserialize(d : @typify_rt.De) -> MapOfKeywordsKeywordMapValue raise @typify_rt.DeError {
+  let (idx, payload) = @typify_rt.de_enum(d, "MapOfKeywordsKeywordMapValue", ["type", "impl", "fn", "let", "match", "mod", "move", "pub", "ref", "self", "super", "trait", "use", "where"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Type
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Impl
-    }
-    2 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Fn
-    }
-    3 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Let
-    }
-    4 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Match
-    }
-    5 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Mod
-    }
-    6 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Move
-    }
-    7 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Pub
-    }
-    8 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Ref
-    }
-    9 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Self_
-    }
-    10 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Super
-    }
-    11 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Trait
-    }
-    12 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Use
-    }
-    13 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Where
-    }
+    0 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Type }
+    1 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Impl }
+    2 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Fn }
+    3 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Let }
+    4 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Match }
+    5 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Mod }
+    6 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Move }
+    7 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Pub }
+    8 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Ref }
+    9 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Self_ }
+    10 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Super }
+    11 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Trait }
+    12 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Use }
+    13 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Where }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -3225,9 +2702,7 @@ pub fn MapOfKeywordsKeywordMapValue::deserialize(
 }
 
 ///|
-pub fn MapOfKeywordsKeywordMapValue::serialize(
-  self : MapOfKeywordsKeywordMapValue,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn MapOfKeywordsKeywordMapValue::serialize(self : MapOfKeywordsKeywordMapValue) -> @typify_rt.Content raise @typify_rt.SerError {
   match self {
     Type => @typify_rt.ser_string("type")
     Impl => @typify_rt.ser_string("impl")
@@ -3248,9 +2723,7 @@ pub fn MapOfKeywordsKeywordMapValue::serialize(
 
 ///|
 /// The variant's position in declaration order.
-pub fn MapOfKeywordsKeywordMapValue::variant_index(
-  self : MapOfKeywordsKeywordMapValue,
-) -> Int {
+pub fn MapOfKeywordsKeywordMapValue::variant_index(self : MapOfKeywordsKeywordMapValue) -> Int {
   match self {
     Type => 0
     Impl => 1
@@ -3271,9 +2744,7 @@ pub fn MapOfKeywordsKeywordMapValue::variant_index(
 
 ///|
 /// The serialized name (upstream `Display`).
-pub fn MapOfKeywordsKeywordMapValue::to_string(
-  self : MapOfKeywordsKeywordMapValue,
-) -> String {
+pub fn MapOfKeywordsKeywordMapValue::to_string(self : MapOfKeywordsKeywordMapValue) -> String {
   match self {
     Type => "type"
     Impl => "impl"
@@ -3294,9 +2765,7 @@ pub fn MapOfKeywordsKeywordMapValue::to_string(
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn MapOfKeywordsKeywordMapValue::parse(
-  value : StringView,
-) -> MapOfKeywordsKeywordMapValue raise @typify_rt.ConversionError {
+pub fn MapOfKeywordsKeywordMapValue::parse(value : StringView) -> MapOfKeywordsKeywordMapValue raise @typify_rt.ConversionError {
   match value {
     "type" => Type
     "impl" => Impl
@@ -3318,31 +2787,25 @@ pub fn MapOfKeywordsKeywordMapValue::parse(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn MapOfKeywordsKeywordMapValue::from_json_str(
-  text : StringView,
-) -> MapOfKeywordsKeywordMapValue raise @typify_rt.DeError {
+pub fn MapOfKeywordsKeywordMapValue::from_json_str(text : StringView) -> MapOfKeywordsKeywordMapValue raise @typify_rt.DeError {
   MapOfKeywordsKeywordMapValue::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn MapOfKeywordsKeywordMapValue::to_json_string(
-  self : MapOfKeywordsKeywordMapValue,
-) -> String raise @typify_rt.SerError {
+pub fn MapOfKeywordsKeywordMapValue::to_json_string(self : MapOfKeywordsKeywordMapValue) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn MapOfKeywordsKeywordMapValue::from_json(
-  json : Json,
-) -> MapOfKeywordsKeywordMapValue raise @typify_rt.DeError {
+pub fn MapOfKeywordsKeywordMapValue::from_json(json : Json) -> MapOfKeywordsKeywordMapValue raise @typify_rt.DeError {
   MapOfKeywordsKeywordMapValue::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for MapOfKeywordsKeywordMapValue with fn to_json(self) {
+pub impl ToJson for MapOfKeywordsKeywordMapValue with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("MapOfKeywordsKeywordMapValue::to_json: \{e}")
   }
@@ -3355,16 +2818,8 @@ pub(all) struct NestedTypeCollisionsOptionType {
 } derive(Debug, Eq)
 
 ///|
-pub fn NestedTypeCollisionsOptionType::deserialize(
-  d : @typify_rt.De,
-) -> NestedTypeCollisionsOptionType raise @typify_rt.DeError {
-  match
-    @typify_rt.de_struct(
-      d,
-      "struct NestedTypeCollisionsOptionType",
-      ["type"],
-      false,
-    ) {
+pub fn NestedTypeCollisionsOptionType::deserialize(d : @typify_rt.De) -> NestedTypeCollisionsOptionType raise @typify_rt.DeError {
+  match @typify_rt.de_struct(d, "struct NestedTypeCollisionsOptionType", ["type"], false) {
     Entries(entries) => {
       let mut f0 : String?? = None
       for e in entries {
@@ -3380,13 +2835,9 @@ pub fn NestedTypeCollisionsOptionType::deserialize(
       }
       let v0 = match f0 {
         Some(v) => v
-        None =>
-          @typify_rt.de_option(
-            @typify_rt.De::Missing("type"),
-            @typify_rt.de_string,
-          )
+        None => @typify_rt.de_option(@typify_rt.De::Missing("type"), @typify_rt.de_string)
       }
-      NestedTypeCollisionsOptionType::{ type_: v0, }
+      NestedTypeCollisionsOptionType::{ type_: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -3394,21 +2845,16 @@ pub fn NestedTypeCollisionsOptionType::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      NestedTypeCollisionsOptionType::{ type_: v0, }
+      NestedTypeCollisionsOptionType::{ type_: v0 }
     }
   }
 }
 
 ///|
-pub fn NestedTypeCollisionsOptionType::serialize(
-  self : NestedTypeCollisionsOptionType,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn NestedTypeCollisionsOptionType::serialize(self : NestedTypeCollisionsOptionType) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   if self.type_ is Some(_) {
-    o.field(
-      "type",
-      @typify_rt.ser_option(self.type_, (v : String) => @typify_rt.ser_string(v)),
-    )
+    o.field("type", @typify_rt.ser_option(self.type_, (v : String) => @typify_rt.ser_string(v)))
   }
 
   o.build()
@@ -3416,31 +2862,25 @@ pub fn NestedTypeCollisionsOptionType::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn NestedTypeCollisionsOptionType::from_json_str(
-  text : StringView,
-) -> NestedTypeCollisionsOptionType raise @typify_rt.DeError {
+pub fn NestedTypeCollisionsOptionType::from_json_str(text : StringView) -> NestedTypeCollisionsOptionType raise @typify_rt.DeError {
   NestedTypeCollisionsOptionType::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn NestedTypeCollisionsOptionType::to_json_string(
-  self : NestedTypeCollisionsOptionType,
-) -> String raise @typify_rt.SerError {
+pub fn NestedTypeCollisionsOptionType::to_json_string(self : NestedTypeCollisionsOptionType) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn NestedTypeCollisionsOptionType::from_json(
-  json : Json,
-) -> NestedTypeCollisionsOptionType raise @typify_rt.DeError {
+pub fn NestedTypeCollisionsOptionType::from_json(json : Json) -> NestedTypeCollisionsOptionType raise @typify_rt.DeError {
   NestedTypeCollisionsOptionType::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for NestedTypeCollisionsOptionType with fn to_json(self) {
+pub impl ToJson for NestedTypeCollisionsOptionType with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("NestedTypeCollisionsOptionType::to_json: \{e}")
   }
@@ -3453,9 +2893,7 @@ pub(all) struct StdBoxed {
 } derive(Debug, Eq)
 
 ///|
-pub fn StdBoxed::deserialize(
-  d : @typify_rt.De,
-) -> StdBoxed raise @typify_rt.DeError {
+pub fn StdBoxed::deserialize(d : @typify_rt.De) -> StdBoxed raise @typify_rt.DeError {
   match @typify_rt.de_struct(d, "struct StdBoxed", ["value"], false) {
     Entries(entries) => {
       let mut f0 : String? = None
@@ -3474,7 +2912,7 @@ pub fn StdBoxed::deserialize(
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("value"))
       }
-      StdBoxed::{ value: v0, }
+      StdBoxed::{ value: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -3482,15 +2920,13 @@ pub fn StdBoxed::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      StdBoxed::{ value: v0, }
+      StdBoxed::{ value: v0 }
     }
   }
 }
 
 ///|
-pub fn StdBoxed::serialize(
-  self : StdBoxed,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn StdBoxed::serialize(self : StdBoxed) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_string(self.value))
 
@@ -3499,17 +2935,13 @@ pub fn StdBoxed::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn StdBoxed::from_json_str(
-  text : StringView,
-) -> StdBoxed raise @typify_rt.DeError {
+pub fn StdBoxed::from_json_str(text : StringView) -> StdBoxed raise @typify_rt.DeError {
   StdBoxed::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn StdBoxed::to_json_string(
-  self : StdBoxed,
-) -> String raise @typify_rt.SerError {
+pub fn StdBoxed::to_json_string(self : StdBoxed) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -3521,7 +2953,7 @@ pub fn StdBoxed::from_json(json : Json) -> StdBoxed raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for StdBoxed with fn to_json(self) {
+pub impl ToJson for StdBoxed with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("StdBoxed::to_json: \{e}")
   }
@@ -3534,9 +2966,7 @@ pub(all) struct StdConvert {
 } derive(Debug, Eq)
 
 ///|
-pub fn StdConvert::deserialize(
-  d : @typify_rt.De,
-) -> StdConvert raise @typify_rt.DeError {
+pub fn StdConvert::deserialize(d : @typify_rt.De) -> StdConvert raise @typify_rt.DeError {
   match @typify_rt.de_struct(d, "struct StdConvert", ["value"], false) {
     Entries(entries) => {
       let mut f0 : String? = None
@@ -3555,7 +2985,7 @@ pub fn StdConvert::deserialize(
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("value"))
       }
-      StdConvert::{ value: v0, }
+      StdConvert::{ value: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -3563,15 +2993,13 @@ pub fn StdConvert::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      StdConvert::{ value: v0, }
+      StdConvert::{ value: v0 }
     }
   }
 }
 
 ///|
-pub fn StdConvert::serialize(
-  self : StdConvert,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn StdConvert::serialize(self : StdConvert) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_string(self.value))
 
@@ -3580,31 +3008,25 @@ pub fn StdConvert::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn StdConvert::from_json_str(
-  text : StringView,
-) -> StdConvert raise @typify_rt.DeError {
+pub fn StdConvert::from_json_str(text : StringView) -> StdConvert raise @typify_rt.DeError {
   StdConvert::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn StdConvert::to_json_string(
-  self : StdConvert,
-) -> String raise @typify_rt.SerError {
+pub fn StdConvert::to_json_string(self : StdConvert) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn StdConvert::from_json(
-  json : Json,
-) -> StdConvert raise @typify_rt.DeError {
+pub fn StdConvert::from_json(json : Json) -> StdConvert raise @typify_rt.DeError {
   StdConvert::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for StdConvert with fn to_json(self) {
+pub impl ToJson for StdConvert with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("StdConvert::to_json: \{e}")
   }
@@ -3617,9 +3039,7 @@ pub(all) struct StdFmt {
 } derive(Debug, Eq)
 
 ///|
-pub fn StdFmt::deserialize(
-  d : @typify_rt.De,
-) -> StdFmt raise @typify_rt.DeError {
+pub fn StdFmt::deserialize(d : @typify_rt.De) -> StdFmt raise @typify_rt.DeError {
   match @typify_rt.de_struct(d, "struct StdFmt", ["value"], false) {
     Entries(entries) => {
       let mut f0 : String? = None
@@ -3638,7 +3058,7 @@ pub fn StdFmt::deserialize(
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("value"))
       }
-      StdFmt::{ value: v0, }
+      StdFmt::{ value: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -3646,15 +3066,13 @@ pub fn StdFmt::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      StdFmt::{ value: v0, }
+      StdFmt::{ value: v0 }
     }
   }
 }
 
 ///|
-pub fn StdFmt::serialize(
-  self : StdFmt,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn StdFmt::serialize(self : StdFmt) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_string(self.value))
 
@@ -3663,17 +3081,13 @@ pub fn StdFmt::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn StdFmt::from_json_str(
-  text : StringView,
-) -> StdFmt raise @typify_rt.DeError {
+pub fn StdFmt::from_json_str(text : StringView) -> StdFmt raise @typify_rt.DeError {
   StdFmt::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn StdFmt::to_json_string(
-  self : StdFmt,
-) -> String raise @typify_rt.SerError {
+pub fn StdFmt::to_json_string(self : StdFmt) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -3685,7 +3099,7 @@ pub fn StdFmt::from_json(json : Json) -> StdFmt raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for StdFmt with fn to_json(self) {
+pub impl ToJson for StdFmt with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("StdFmt::to_json: \{e}")
   }
@@ -3698,9 +3112,7 @@ pub(all) struct StdOption {
 } derive(Debug, Eq)
 
 ///|
-pub fn StdOption::deserialize(
-  d : @typify_rt.De,
-) -> StdOption raise @typify_rt.DeError {
+pub fn StdOption::deserialize(d : @typify_rt.De) -> StdOption raise @typify_rt.DeError {
   match @typify_rt.de_struct(d, "struct StdOption", ["value"], false) {
     Entries(entries) => {
       let mut f0 : String? = None
@@ -3719,7 +3131,7 @@ pub fn StdOption::deserialize(
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("value"))
       }
-      StdOption::{ value: v0, }
+      StdOption::{ value: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -3727,15 +3139,13 @@ pub fn StdOption::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      StdOption::{ value: v0, }
+      StdOption::{ value: v0 }
     }
   }
 }
 
 ///|
-pub fn StdOption::serialize(
-  self : StdOption,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn StdOption::serialize(self : StdOption) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_string(self.value))
 
@@ -3744,17 +3154,13 @@ pub fn StdOption::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn StdOption::from_json_str(
-  text : StringView,
-) -> StdOption raise @typify_rt.DeError {
+pub fn StdOption::from_json_str(text : StringView) -> StdOption raise @typify_rt.DeError {
   StdOption::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn StdOption::to_json_string(
-  self : StdOption,
-) -> String raise @typify_rt.SerError {
+pub fn StdOption::to_json_string(self : StdOption) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -3766,7 +3172,7 @@ pub fn StdOption::from_json(json : Json) -> StdOption raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for StdOption with fn to_json(self) {
+pub impl ToJson for StdOption with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("StdOption::to_json: \{e}")
   }
@@ -3779,9 +3185,7 @@ pub(all) struct StdResult {
 } derive(Debug, Eq)
 
 ///|
-pub fn StdResult::deserialize(
-  d : @typify_rt.De,
-) -> StdResult raise @typify_rt.DeError {
+pub fn StdResult::deserialize(d : @typify_rt.De) -> StdResult raise @typify_rt.DeError {
   match @typify_rt.de_struct(d, "struct StdResult", ["value"], false) {
     Entries(entries) => {
       let mut f0 : String? = None
@@ -3800,7 +3204,7 @@ pub fn StdResult::deserialize(
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("value"))
       }
-      StdResult::{ value: v0, }
+      StdResult::{ value: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -3808,15 +3212,13 @@ pub fn StdResult::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      StdResult::{ value: v0, }
+      StdResult::{ value: v0 }
     }
   }
 }
 
 ///|
-pub fn StdResult::serialize(
-  self : StdResult,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn StdResult::serialize(self : StdResult) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_string(self.value))
 
@@ -3825,17 +3227,13 @@ pub fn StdResult::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn StdResult::from_json_str(
-  text : StringView,
-) -> StdResult raise @typify_rt.DeError {
+pub fn StdResult::from_json_str(text : StringView) -> StdResult raise @typify_rt.DeError {
   StdResult::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn StdResult::to_json_string(
-  self : StdResult,
-) -> String raise @typify_rt.SerError {
+pub fn StdResult::to_json_string(self : StdResult) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -3847,7 +3245,7 @@ pub fn StdResult::from_json(json : Json) -> StdResult raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for StdResult with fn to_json(self) {
+pub impl ToJson for StdResult with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("StdResult::to_json: \{e}")
   }
@@ -3860,9 +3258,7 @@ pub(all) struct StdStr {
 } derive(Debug, Eq)
 
 ///|
-pub fn StdStr::deserialize(
-  d : @typify_rt.De,
-) -> StdStr raise @typify_rt.DeError {
+pub fn StdStr::deserialize(d : @typify_rt.De) -> StdStr raise @typify_rt.DeError {
   match @typify_rt.de_struct(d, "struct StdStr", ["value"], false) {
     Entries(entries) => {
       let mut f0 : String? = None
@@ -3881,7 +3277,7 @@ pub fn StdStr::deserialize(
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("value"))
       }
-      StdStr::{ value: v0, }
+      StdStr::{ value: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -3889,15 +3285,13 @@ pub fn StdStr::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      StdStr::{ value: v0, }
+      StdStr::{ value: v0 }
     }
   }
 }
 
 ///|
-pub fn StdStr::serialize(
-  self : StdStr,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn StdStr::serialize(self : StdStr) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_string(self.value))
 
@@ -3906,17 +3300,13 @@ pub fn StdStr::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn StdStr::from_json_str(
-  text : StringView,
-) -> StdStr raise @typify_rt.DeError {
+pub fn StdStr::from_json_str(text : StringView) -> StdStr raise @typify_rt.DeError {
   StdStr::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn StdStr::to_json_string(
-  self : StdStr,
-) -> String raise @typify_rt.SerError {
+pub fn StdStr::to_json_string(self : StdStr) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -3928,7 +3318,7 @@ pub fn StdStr::from_json(json : Json) -> StdStr raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for StdStr with fn to_json(self) {
+pub impl ToJson for StdStr with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("StdStr::to_json: \{e}")
   }
@@ -3941,9 +3331,7 @@ pub(all) struct StdString {
 } derive(Debug, Eq)
 
 ///|
-pub fn StdString::deserialize(
-  d : @typify_rt.De,
-) -> StdString raise @typify_rt.DeError {
+pub fn StdString::deserialize(d : @typify_rt.De) -> StdString raise @typify_rt.DeError {
   match @typify_rt.de_struct(d, "struct StdString", ["value"], false) {
     Entries(entries) => {
       let mut f0 : String? = None
@@ -3962,7 +3350,7 @@ pub fn StdString::deserialize(
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("value"))
       }
-      StdString::{ value: v0, }
+      StdString::{ value: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -3970,15 +3358,13 @@ pub fn StdString::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      StdString::{ value: v0, }
+      StdString::{ value: v0 }
     }
   }
 }
 
 ///|
-pub fn StdString::serialize(
-  self : StdString,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn StdString::serialize(self : StdString) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_string(self.value))
 
@@ -3987,17 +3373,13 @@ pub fn StdString::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn StdString::from_json_str(
-  text : StringView,
-) -> StdString raise @typify_rt.DeError {
+pub fn StdString::from_json_str(text : StringView) -> StdString raise @typify_rt.DeError {
   StdString::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn StdString::to_json_string(
-  self : StdString,
-) -> String raise @typify_rt.SerError {
+pub fn StdString::to_json_string(self : StdString) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -4009,8 +3391,9 @@ pub fn StdString::from_json(json : Json) -> StdString raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for StdString with fn to_json(self) {
+pub impl ToJson for StdString with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("StdString::to_json: \{e}")
   }
 }
+

@@ -390,12 +390,23 @@ fn main {
     .iter()
     .fold(init=0x9E3779B97F4A7C15UL, (h, c) => h * 31UL + c.to_int().to_uint64())
   let gen : Gen = { rng: @splitmix.new(seed~), defs: root.definitions, }
+  // Text-level variants use their own stream so that the plain instances
+  // stay stable.
+  let wild : Gen = {
+    rng: @splitmix.new(seed=seed ^ 0x5DEECE66DUL),
+    defs: root.definitions,
+  }
   let lines = []
   let emit = (ty : String, schema : @schema.Schema) => {
     for i in 0..<per_type {
       let v = gen.value(schema, 0)
       let v = if i % 4 == 3 { gen.mutate(v) } else { v }
       lines.push("\{name}\t\{ty}\t\{v.to_string()}")
+    }
+    for i in 0..<(per_type / 2) {
+      let v = wild.value(schema, 0)
+      let v = if i % 4 == 3 { wild.mutate(v) } else { v }
+      lines.push("\{name}\t\{ty}\t\{wild.render_text(v)}")
     }
   }
   for def, schema in root.definitions {

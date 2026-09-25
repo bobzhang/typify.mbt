@@ -14,3 +14,11 @@ OK {"value":"middle"}
 OK {"value":"start"}
 OK {"value":"end"}
 OK {"value":"start"}
+OK {"value":"start"}
+OK {"value":null}
+OK {"value":null}
+ERR expected value
+OK {"value":"end"}
+OK {"value":null}
+OK {"value":null}
+ERR unknown variant `wrapped`, expected one of `start`, `middle`, `end`

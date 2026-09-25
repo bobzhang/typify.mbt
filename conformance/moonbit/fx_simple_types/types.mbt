@@ -10,9 +10,7 @@ pub(all) struct AnythingWorks {
 } derive(Debug, Eq)
 
 ///|
-pub fn AnythingWorks::deserialize(
-  d : @typify_rt.De,
-) -> AnythingWorks raise @typify_rt.DeError {
+pub fn AnythingWorks::deserialize(d : @typify_rt.De) -> AnythingWorks raise @typify_rt.DeError {
   match @typify_rt.de_struct(d, "struct AnythingWorks", ["value"], false) {
     Entries(entries) => {
       let mut f0 : Json? = None
@@ -31,7 +29,7 @@ pub fn AnythingWorks::deserialize(
         Some(v) => v
         None => @typify_rt.de_json(@typify_rt.De::Missing("value"))
       }
-      AnythingWorks::{ value: v0, }
+      AnythingWorks::{ value: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -39,15 +37,13 @@ pub fn AnythingWorks::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      AnythingWorks::{ value: v0, }
+      AnythingWorks::{ value: v0 }
     }
   }
 }
 
 ///|
-pub fn AnythingWorks::serialize(
-  self : AnythingWorks,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn AnythingWorks::serialize(self : AnythingWorks) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_json(self.value))
 
@@ -56,31 +52,25 @@ pub fn AnythingWorks::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn AnythingWorks::from_json_str(
-  text : StringView,
-) -> AnythingWorks raise @typify_rt.DeError {
+pub fn AnythingWorks::from_json_str(text : StringView) -> AnythingWorks raise @typify_rt.DeError {
   AnythingWorks::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn AnythingWorks::to_json_string(
-  self : AnythingWorks,
-) -> String raise @typify_rt.SerError {
+pub fn AnythingWorks::to_json_string(self : AnythingWorks) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn AnythingWorks::from_json(
-  json : Json,
-) -> AnythingWorks raise @typify_rt.DeError {
+pub fn AnythingWorks::from_json(json : Json) -> AnythingWorks raise @typify_rt.DeError {
   AnythingWorks::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for AnythingWorks with fn to_json(self) {
+pub impl ToJson for AnythingWorks with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("AnythingWorks::to_json: \{e}")
   }
@@ -93,16 +83,8 @@ pub(all) struct FloatsArentTerribleImTold {
 } derive(Debug, Eq)
 
 ///|
-pub fn FloatsArentTerribleImTold::deserialize(
-  d : @typify_rt.De,
-) -> FloatsArentTerribleImTold raise @typify_rt.DeError {
-  match
-    @typify_rt.de_struct(
-      d,
-      "struct FloatsArentTerribleImTold",
-      ["flush_timeout"],
-      false,
-    ) {
+pub fn FloatsArentTerribleImTold::deserialize(d : @typify_rt.De) -> FloatsArentTerribleImTold raise @typify_rt.DeError {
+  match @typify_rt.de_struct(d, "struct FloatsArentTerribleImTold", ["flush_timeout"], false) {
     Entries(entries) => {
       let mut f0 : Float?? = None
       for e in entries {
@@ -118,13 +100,9 @@ pub fn FloatsArentTerribleImTold::deserialize(
       }
       let v0 = match f0 {
         Some(v) => v
-        None =>
-          @typify_rt.de_option(
-            @typify_rt.De::Missing("flush_timeout"),
-            @typify_rt.de_f32,
-          )
+        None => @typify_rt.de_option(@typify_rt.De::Missing("flush_timeout"), @typify_rt.de_f32)
       }
-      FloatsArentTerribleImTold::{ flush_timeout: v0, }
+      FloatsArentTerribleImTold::{ flush_timeout: v0 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -132,23 +110,16 @@ pub fn FloatsArentTerribleImTold::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      FloatsArentTerribleImTold::{ flush_timeout: v0, }
+      FloatsArentTerribleImTold::{ flush_timeout: v0 }
     }
   }
 }
 
 ///|
-pub fn FloatsArentTerribleImTold::serialize(
-  self : FloatsArentTerribleImTold,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn FloatsArentTerribleImTold::serialize(self : FloatsArentTerribleImTold) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   if self.flush_timeout is Some(_) {
-    o.field(
-      "flush_timeout",
-      @typify_rt.ser_option(self.flush_timeout, (v : Float) => {
-        @typify_rt.ser_f32(v)
-      }),
-    )
+    o.field("flush_timeout", @typify_rt.ser_option(self.flush_timeout, (v : Float) => @typify_rt.ser_f32(v)))
   }
 
   o.build()
@@ -156,31 +127,25 @@ pub fn FloatsArentTerribleImTold::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn FloatsArentTerribleImTold::from_json_str(
-  text : StringView,
-) -> FloatsArentTerribleImTold raise @typify_rt.DeError {
+pub fn FloatsArentTerribleImTold::from_json_str(text : StringView) -> FloatsArentTerribleImTold raise @typify_rt.DeError {
   FloatsArentTerribleImTold::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn FloatsArentTerribleImTold::to_json_string(
-  self : FloatsArentTerribleImTold,
-) -> String raise @typify_rt.SerError {
+pub fn FloatsArentTerribleImTold::to_json_string(self : FloatsArentTerribleImTold) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn FloatsArentTerribleImTold::from_json(
-  json : Json,
-) -> FloatsArentTerribleImTold raise @typify_rt.DeError {
+pub fn FloatsArentTerribleImTold::from_json(json : Json) -> FloatsArentTerribleImTold raise @typify_rt.DeError {
   FloatsArentTerribleImTold::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for FloatsArentTerribleImTold with fn to_json(self) {
+pub impl ToJson for FloatsArentTerribleImTold with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("FloatsArentTerribleImTold::to_json: \{e}")
   }
@@ -191,32 +156,24 @@ pub impl ToJson for FloatsArentTerribleImTold with fn to_json(self) {
 pub(all) struct JustOne(String) derive(Debug, Eq, Hash)
 
 ///|
-pub fn JustOne::deserialize(
-  d : @typify_rt.De,
-) -> JustOne raise @typify_rt.DeError {
+pub fn JustOne::deserialize(d : @typify_rt.De) -> JustOne raise @typify_rt.DeError {
   JustOne(@typify_rt.de_string(d))
 }
 
 ///|
-pub fn JustOne::serialize(
-  self : JustOne,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn JustOne::serialize(self : JustOne) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_string(self.0)
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn JustOne::from_json_str(
-  text : StringView,
-) -> JustOne raise @typify_rt.DeError {
+pub fn JustOne::from_json_str(text : StringView) -> JustOne raise @typify_rt.DeError {
   JustOne::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn JustOne::to_json_string(
-  self : JustOne,
-) -> String raise @typify_rt.SerError {
+pub fn JustOne::to_json_string(self : JustOne) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -228,7 +185,7 @@ pub fn JustOne::from_json(json : Json) -> JustOne raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for JustOne with fn to_json(self) {
+pub impl ToJson for JustOne with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("JustOne::to_json: \{e}")
   }
@@ -246,18 +203,8 @@ pub(all) struct UintMinimumAndMaximum {
 } derive(Debug, Eq)
 
 ///|
-pub fn UintMinimumAndMaximum::deserialize(
-  d : @typify_rt.De,
-) -> UintMinimumAndMaximum raise @typify_rt.DeError {
-  match
-    @typify_rt.de_struct(
-      d,
-      "struct UintMinimumAndMaximum",
-      [
-        "max", "min", "min_and_max", "min_non_zero", "min_uint_non_zero", "no_bounds",
-      ],
-      false,
-    ) {
+pub fn UintMinimumAndMaximum::deserialize(d : @typify_rt.De) -> UintMinimumAndMaximum raise @typify_rt.DeError {
+  match @typify_rt.de_struct(d, "struct UintMinimumAndMaximum", ["max", "min", "min_and_max", "min_non_zero", "min_uint_non_zero", "no_bounds"], false) {
     Entries(entries) => {
       let mut f0 : UInt64? = None
       let mut f1 : UInt64? = None
@@ -320,26 +267,17 @@ pub fn UintMinimumAndMaximum::deserialize(
       }
       let v3 = match f3 {
         Some(v) => v
-        None =>
-          @typify_rt.de_nonzero_u64(@typify_rt.De::Missing("min_non_zero"))
+        None => @typify_rt.de_nonzero_u64(@typify_rt.De::Missing("min_non_zero"))
       }
       let v4 = match f4 {
         Some(v) => v
-        None =>
-          @typify_rt.de_nonzero_u64(@typify_rt.De::Missing("min_uint_non_zero"))
+        None => @typify_rt.de_nonzero_u64(@typify_rt.De::Missing("min_uint_non_zero"))
       }
       let v5 = match f5 {
         Some(v) => v
         None => @typify_rt.de_u64(@typify_rt.De::Missing("no_bounds"))
       }
-      UintMinimumAndMaximum::{
-        max: v0,
-        min: v1,
-        min_and_max: v2,
-        min_non_zero: v3,
-        min_uint_non_zero: v4,
-        no_bounds: v5,
-      }
+      UintMinimumAndMaximum::{ max: v0, min: v1, min_and_max: v2, min_non_zero: v3, min_uint_non_zero: v4, no_bounds: v5 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -367,22 +305,13 @@ pub fn UintMinimumAndMaximum::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      UintMinimumAndMaximum::{
-        max: v0,
-        min: v1,
-        min_and_max: v2,
-        min_non_zero: v3,
-        min_uint_non_zero: v4,
-        no_bounds: v5,
-      }
+      UintMinimumAndMaximum::{ max: v0, min: v1, min_and_max: v2, min_non_zero: v3, min_uint_non_zero: v4, no_bounds: v5 }
     }
   }
 }
 
 ///|
-pub fn UintMinimumAndMaximum::serialize(
-  self : UintMinimumAndMaximum,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn UintMinimumAndMaximum::serialize(self : UintMinimumAndMaximum) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("max", @typify_rt.ser_u64(self.max))
   o.field("min", @typify_rt.ser_u64(self.min))
@@ -396,32 +325,27 @@ pub fn UintMinimumAndMaximum::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn UintMinimumAndMaximum::from_json_str(
-  text : StringView,
-) -> UintMinimumAndMaximum raise @typify_rt.DeError {
+pub fn UintMinimumAndMaximum::from_json_str(text : StringView) -> UintMinimumAndMaximum raise @typify_rt.DeError {
   UintMinimumAndMaximum::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn UintMinimumAndMaximum::to_json_string(
-  self : UintMinimumAndMaximum,
-) -> String raise @typify_rt.SerError {
+pub fn UintMinimumAndMaximum::to_json_string(self : UintMinimumAndMaximum) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn UintMinimumAndMaximum::from_json(
-  json : Json,
-) -> UintMinimumAndMaximum raise @typify_rt.DeError {
+pub fn UintMinimumAndMaximum::from_json(json : Json) -> UintMinimumAndMaximum raise @typify_rt.DeError {
   UintMinimumAndMaximum::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for UintMinimumAndMaximum with fn to_json(self) {
+pub impl ToJson for UintMinimumAndMaximum with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("UintMinimumAndMaximum::to_json: \{e}")
   }
 }
+

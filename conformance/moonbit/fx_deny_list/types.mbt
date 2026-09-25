@@ -11,11 +11,8 @@ pub(all) struct TestType {
 } derive(Debug, Eq)
 
 ///|
-pub fn TestType::deserialize(
-  d : @typify_rt.De,
-) -> TestType raise @typify_rt.DeError {
-  match
-    @typify_rt.de_struct(d, "struct TestType", ["where_not", "why_not"], false) {
+pub fn TestType::deserialize(d : @typify_rt.De) -> TestType raise @typify_rt.DeError {
+  match @typify_rt.de_struct(d, "struct TestType", ["where_not", "why_not"], false) {
     Entries(entries) => {
       let mut f0 : TestTypeWhereNot? = None
       let mut f1 : TestTypeWhyNot? = None
@@ -38,14 +35,13 @@ pub fn TestType::deserialize(
       }
       let v0 = match f0 {
         Some(v) => v
-        None =>
-          TestTypeWhereNot::deserialize(@typify_rt.De::Missing("where_not"))
+        None => TestTypeWhereNot::deserialize(@typify_rt.De::Missing("where_not"))
       }
       let v1 = match f1 {
         Some(v) => v
         None => TestTypeWhyNot::deserialize(@typify_rt.De::Missing("why_not"))
       }
-      TestType::{ where_not: v0, why_not: v1, }
+      TestType::{ where_not: v0, why_not: v1 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -57,15 +53,13 @@ pub fn TestType::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      TestType::{ where_not: v0, why_not: v1, }
+      TestType::{ where_not: v0, why_not: v1 }
     }
   }
 }
 
 ///|
-pub fn TestType::serialize(
-  self : TestType,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn TestType::serialize(self : TestType) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("where_not", TestTypeWhereNot::serialize(self.where_not))
   o.field("why_not", TestTypeWhyNot::serialize(self.why_not))
@@ -75,17 +69,13 @@ pub fn TestType::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn TestType::from_json_str(
-  text : StringView,
-) -> TestType raise @typify_rt.DeError {
+pub fn TestType::from_json_str(text : StringView) -> TestType raise @typify_rt.DeError {
   TestType::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn TestType::to_json_string(
-  self : TestType,
-) -> String raise @typify_rt.SerError {
+pub fn TestType::to_json_string(self : TestType) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -97,7 +87,7 @@ pub fn TestType::from_json(json : Json) -> TestType raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for TestType with fn to_json(self) {
+pub impl ToJson for TestType with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("TestType::to_json: \{e}")
   }
@@ -116,12 +106,8 @@ let test_type_where_not_values : Array[@typify_rt.Content] = @typify_rt.enum_val
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn TestTypeWhereNot::new(
-  value : String,
-) -> TestTypeWhereNot raise @typify_rt.ConversionError {
-  let serialized = @typify_rt.ser_string(value) catch {
-    _ => @typify_rt.ser_null()
-  }
+pub fn TestTypeWhereNot::new(value : String) -> TestTypeWhereNot raise @typify_rt.ConversionError {
+  let serialized = (@typify_rt.ser_string(value)) catch { _ => @typify_rt.ser_null() }
   if @typify_rt.contains_value(test_type_where_not_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -130,9 +116,7 @@ pub fn TestTypeWhereNot::new(
 }
 
 ///|
-pub fn TestTypeWhereNot::deserialize(
-  d : @typify_rt.De,
-) -> TestTypeWhereNot raise @typify_rt.DeError {
+pub fn TestTypeWhereNot::deserialize(d : @typify_rt.De) -> TestTypeWhereNot raise @typify_rt.DeError {
   let value = @typify_rt.de_string(d)
   TestTypeWhereNot::new(value) catch {
     @typify_rt.ConversionError(msg) => raise @typify_rt.DeError(msg)
@@ -140,39 +124,31 @@ pub fn TestTypeWhereNot::deserialize(
 }
 
 ///|
-pub fn TestTypeWhereNot::serialize(
-  self : TestTypeWhereNot,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn TestTypeWhereNot::serialize(self : TestTypeWhereNot) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_string(self.0)
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn TestTypeWhereNot::from_json_str(
-  text : StringView,
-) -> TestTypeWhereNot raise @typify_rt.DeError {
+pub fn TestTypeWhereNot::from_json_str(text : StringView) -> TestTypeWhereNot raise @typify_rt.DeError {
   TestTypeWhereNot::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn TestTypeWhereNot::to_json_string(
-  self : TestTypeWhereNot,
-) -> String raise @typify_rt.SerError {
+pub fn TestTypeWhereNot::to_json_string(self : TestTypeWhereNot) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn TestTypeWhereNot::from_json(
-  json : Json,
-) -> TestTypeWhereNot raise @typify_rt.DeError {
+pub fn TestTypeWhereNot::from_json(json : Json) -> TestTypeWhereNot raise @typify_rt.DeError {
   TestTypeWhereNot::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for TestTypeWhereNot with fn to_json(self) {
+pub impl ToJson for TestTypeWhereNot with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("TestTypeWhereNot::to_json: \{e}")
   }
@@ -191,12 +167,8 @@ let test_type_why_not_values : Array[@typify_rt.Content] = @typify_rt.enum_value
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn TestTypeWhyNot::new(
-  value : String,
-) -> TestTypeWhyNot raise @typify_rt.ConversionError {
-  let serialized = @typify_rt.ser_string(value) catch {
-    _ => @typify_rt.ser_null()
-  }
+pub fn TestTypeWhyNot::new(value : String) -> TestTypeWhyNot raise @typify_rt.ConversionError {
+  let serialized = (@typify_rt.ser_string(value)) catch { _ => @typify_rt.ser_null() }
   if @typify_rt.contains_value(test_type_why_not_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -205,9 +177,7 @@ pub fn TestTypeWhyNot::new(
 }
 
 ///|
-pub fn TestTypeWhyNot::deserialize(
-  d : @typify_rt.De,
-) -> TestTypeWhyNot raise @typify_rt.DeError {
+pub fn TestTypeWhyNot::deserialize(d : @typify_rt.De) -> TestTypeWhyNot raise @typify_rt.DeError {
   let value = @typify_rt.de_string(d)
   TestTypeWhyNot::new(value) catch {
     @typify_rt.ConversionError(msg) => raise @typify_rt.DeError(msg)
@@ -215,40 +185,33 @@ pub fn TestTypeWhyNot::deserialize(
 }
 
 ///|
-pub fn TestTypeWhyNot::serialize(
-  self : TestTypeWhyNot,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn TestTypeWhyNot::serialize(self : TestTypeWhyNot) -> @typify_rt.Content raise @typify_rt.SerError {
   @typify_rt.ser_string(self.0)
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn TestTypeWhyNot::from_json_str(
-  text : StringView,
-) -> TestTypeWhyNot raise @typify_rt.DeError {
+pub fn TestTypeWhyNot::from_json_str(text : StringView) -> TestTypeWhyNot raise @typify_rt.DeError {
   TestTypeWhyNot::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn TestTypeWhyNot::to_json_string(
-  self : TestTypeWhyNot,
-) -> String raise @typify_rt.SerError {
+pub fn TestTypeWhyNot::to_json_string(self : TestTypeWhyNot) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn TestTypeWhyNot::from_json(
-  json : Json,
-) -> TestTypeWhyNot raise @typify_rt.DeError {
+pub fn TestTypeWhyNot::from_json(json : Json) -> TestTypeWhyNot raise @typify_rt.DeError {
   TestTypeWhyNot::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for TestTypeWhyNot with fn to_json(self) {
+pub impl ToJson for TestTypeWhyNot with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("TestTypeWhyNot::to_json: \{e}")
   }
 }
+

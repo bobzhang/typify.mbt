@@ -14,3 +14,11 @@ OK "skipped"
 OK "skipped"
 OK "success"
 ERR expected value
+OK "skipped"
+OK "skipped"
+OK "failure"
+ERR expected value
+OK "success"
+OK "skipped"
+OK "skipped"
+ERR unknown variant `Hello, World`, expected one of `failure`, `skipped`, `success`

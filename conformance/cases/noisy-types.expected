@@ -14,6 +14,14 @@ OK [true,false]
 OK [true,true,true]
 OK [false,false]
 ERR invalid type: boolean `true`, expected a sequence
+OK [false]
+OK [false,true]
+OK [true]
+ERR invalid type: map, expected a boolean
+OK [false,true,false]
+OK [false,false]
+OK [false,true]
+ERR invalid type: map, expected a sequence
 ERR invalid type: floating point `-9.223372036854776e+18`, expected u64
 OK 255
 OK 1
@@ -29,6 +37,14 @@ ERR invalid type: sequence, expected u64
 OK 0
 OK 0
 ERR invalid type: floating point `-9.223372036854776e+18`, expected u64
+ERR invalid type: null, expected u64
+OK 7
+ERR invalid type: floating point `-9.223372036854776e+18`, expected u64
+ERR invalid value: integer `-1`, expected u64
+ERR invalid type: null, expected u64
+OK 1
+ERR invalid value: integer `-1`, expected u64
+OK 0
 ERR invalid type: null, expected u64
 OK {}
 OK {"ok":true}
@@ -46,3 +62,11 @@ OK {"ok":false}
 OK {}
 OK {}
 OK {}
+OK {}
+OK {"ok":true}
+OK {"ok":true}
+OK {}
+OK {"ok":false}
+OK {"ok":false}
+OK {}
+ERR invalid type: floating point `0.1`, expected a boolean

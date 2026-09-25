@@ -14,6 +14,14 @@ maps_custom	Eh	"abc"
 maps_custom	Eh	"null"
 maps_custom	Eh	"true"
 maps_custom	Eh	"true"
+maps_custom	Eh	  "😀"
+maps_custom	Eh	"a-b_c"
+maps_custom	Eh	 "true"
+maps_custom	Eh	{"wrapped":"null"}
+maps_custom	Eh	"Hello, World"
+maps_custom	Eh	"😀"
+maps_custom	Eh	"😀"
+maps_custom	Eh	{"k0":"abc"}
 maps_custom	MapWithDateKeys	{"extra_key":"1234"}
 maps_custom	MapWithDateKeys	{}
 maps_custom	MapWithDateKeys	{"extra_key":"😀"}
@@ -30,6 +38,14 @@ maps_custom	MapWithDateKeys	{"extra_key":"😀"}
 maps_custom	MapWithDateKeys	{}
 maps_custom	MapWithDateKeys	{"extra_key":"1234"}
 maps_custom	MapWithDateKeys	[{}]
+maps_custom	MapWithDateKeys	{"extra_key"	:	"abc"}
+maps_custom	MapWithDateKeys	{"extra_key":"😀"}
+maps_custom	MapWithDateKeys	{"extra_key":"true"}
+maps_custom	MapWithDateKeys	{"extra_key":"0x10"}
+maps_custom	MapWithDateKeys	{}
+maps_custom	MapWithDateKeys	{}
+maps_custom	MapWithDateKeys	["Hello, World"]
+maps_custom	MapWithDateKeys	{"wrapped":{} }
 maps_custom	MapWithDateTimeKeys	{"extra_key":"a-b_c"}
 maps_custom	MapWithDateTimeKeys	{}
 maps_custom	MapWithDateTimeKeys	{"extra_key":"true"}
@@ -46,6 +62,14 @@ maps_custom	MapWithDateTimeKeys	{}
 maps_custom	MapWithDateTimeKeys	{"extra_key":"Hello, World"}
 maps_custom	MapWithDateTimeKeys	{"extra_key":"null"}
 maps_custom	MapWithDateTimeKeys	{"extra_key":1e+300}
+maps_custom	MapWithDateTimeKeys	{}
+maps_custom	MapWithDateTimeKeys	{"extra_key":"ok"}
+maps_custom	MapWithDateTimeKeys	{}
+maps_custom	MapWithDateTimeKeys	null
+maps_custom	MapWithDateTimeKeys	{"extra_key":"null"}
+maps_custom	MapWithDateTimeKeys	{}
+maps_custom	MapWithDateTimeKeys	{"extra_key":"0x10","extra_key":"0x10"}
+maps_custom	MapWithDateTimeKeys	{"e\u0078t\u0072\u0061\u005Fke\u0079":null}
 maps_custom	MapWithKeys	{"extra_key":"x y"}
 maps_custom	MapWithKeys	{"extra_key":"UPPER"}
 maps_custom	MapWithKeys	{"extra_key":"abc"}
@@ -62,6 +86,14 @@ maps_custom	MapWithKeys	{"extra_key":"a-b_c"}
 maps_custom	MapWithKeys	{}
 maps_custom	MapWithKeys	{"extra_key":""}
 maps_custom	MapWithKeys	{"extra_key":{"wrapped":"ok"}}
+maps_custom	MapWithKeys	{"extra_key":"true"}
+maps_custom	MapWithKeys	{	"\u0065xt\u0072a\u005f\u006B\u0065y": "true"}
+maps_custom	MapWithKeys	{}
+maps_custom	MapWithKeys	{"wrapped":{}}
+maps_custom	MapWithKeys	{}
+maps_custom	MapWithKeys	{}
+maps_custom	MapWithKeys	 {"ex\u0074ra\u005f\u006b\u0065y":	"null"}
+maps_custom	MapWithKeys	{"extra_key":{"wrapped":"a-b_c" }}
 maps_custom	Value	"😀"
 maps_custom	Value	"0x10"
 maps_custom	Value	"a"
@@ -78,6 +110,14 @@ maps_custom	Value	"a"
 maps_custom	Value	"Hello, World"
 maps_custom	Value	"null"
 maps_custom	Value	-2.25
+maps_custom	Value	"1234"
+maps_custom	Value	"null"
+maps_custom	Value	"null"
+maps_custom	Value	null
+maps_custom	Value	"null"
+maps_custom	Value	"true"
+maps_custom	Value	"a"
+maps_custom	Value	["abc"]
 maps_custom	DeadSimple	{}
 maps_custom	DeadSimple	{"key":[]}
 maps_custom	DeadSimple	{"key":null}
@@ -94,3 +134,11 @@ maps_custom	DeadSimple	{"key":["a-b_c"]}
 maps_custom	DeadSimple	{}
 maps_custom	DeadSimple	{}
 maps_custom	DeadSimple	{"wrapped":{}}
+maps_custom	DeadSimple	{"key":true}
+maps_custom	DeadSimple	{}
+maps_custom	DeadSimple	{}
+maps_custom	DeadSimple	{}
+maps_custom	DeadSimple	{}
+maps_custom	DeadSimple	{}
+maps_custom	DeadSimple	{}
+maps_custom	DeadSimple	{"key":false}

@@ -14,6 +14,14 @@ OK [null,"UPPER"]
 OK []
 OK []
 OK [{"wrapped":true}]
+OK [null,["ok"]]
+OK [[]]
+OK ["ok"]
+ERR invalid type: null, expected a sequence
+OK []
+OK [null,[]]
+OK [3]
+ERR invalid type: map, expected a sequence
 ERR trailing characters
 ERR trailing characters
 ERR trailing characters
@@ -30,6 +38,14 @@ ERR trailing characters
 ERR trailing characters
 ERR trailing characters
 ERR invalid type: map, expected a tuple of size 2
+OK ["","é中文"]
+ERR trailing characters
+ERR trailing characters
+ERR invalid type: sequence, expected a string
+ERR trailing characters
+ERR trailing characters
+OK ["a","Hello, World"]
+ERR invalid type: string "ok", expected a tuple of size 2
 OK ["1234"]
 OK ["a","null","😀","ok"]
 OK ["0x10","x y","é中文","with \"quotes\""]
@@ -46,6 +62,14 @@ OK ["1234","UPPER","Hello, World"]
 OK ["0x10"]
 OK ["null","with \"quotes\"","😀"]
 ERR invalid type: map, expected a string
+OK ["a-b_c"]
+OK ["UPPER"]
+OK ["é中文"]
+ERR invalid type: null, expected a sequence
+OK ["ok","Hello, World"]
+OK ["1234","with \"quotes\""]
+OK ["é中文"]
+ERR invalid type: null, expected a string
 OK ["é中文","ok"]
 OK ["abc","1234"]
 OK ["true","with \"quotes\""]
@@ -62,6 +86,14 @@ OK ["é中文","a"]
 OK ["😀","Hello, World"]
 OK ["😀","a"]
 ERR invalid type: null, expected an array of length 2
+OK ["a","x y"]
+OK ["true","true"]
+OK ["Hello, World","a-b_c"]
+ERR invalid type: sequence, expected a string
+ERR trailing characters
+OK ["null","null"]
+OK ["x y","1234"]
+ERR invalid type: null, expected a string
 ERR trailing characters
 ERR trailing characters
 ERR invalid length 1, expected a tuple of size 2
@@ -77,6 +109,14 @@ ERR trailing characters
 OK ["ok","a"]
 ERR invalid length 1, expected a tuple of size 2
 OK ["x y","é中文"]
+ERR invalid type: sequence, expected a string
+OK ["a-b_c","a-b_c"]
+OK ["UPPER","a-b_c"]
+OK ["UPPER","0x10"]
+ERR invalid type: map, expected a tuple of size 2
+OK ["a","x y"]
+ERR invalid length 1, expected a tuple of size 2
+OK ["UPPER","x y"]
 ERR invalid type: sequence, expected a string
 ERR invalid length 1, expected a tuple of size 2
 ERR invalid length 1, expected a tuple of size 2
@@ -94,6 +134,14 @@ ERR invalid length 1, expected a tuple of size 2
 ERR invalid length 1, expected a tuple of size 2
 ERR invalid length 1, expected a tuple of size 2
 ERR invalid length 1, expected a tuple of size 2
+ERR invalid length 1, expected a tuple of size 2
+ERR invalid length 1, expected a tuple of size 2
+ERR invalid length 1, expected a tuple of size 2
+ERR invalid type: null, expected a string
+ERR invalid length 0, expected a tuple of size 2
+ERR invalid length 0, expected a tuple of size 2
+ERR invalid length 1, expected a tuple of size 2
+ERR invalid type: null, expected a tuple of size 2
 ERR invalid length 1, expected an array of length 2
 ERR invalid length 0, expected an array of length 2
 OK [true,true]
@@ -110,3 +158,11 @@ ERR invalid length 1, expected an array of length 2
 ERR invalid length 0, expected an array of length 2
 ERR invalid length 1, expected an array of length 2
 ERR invalid type: map, expected an array of length 2
+ERR invalid length 0, expected an array of length 2
+OK ["",false]
+ERR invalid length 0, expected an array of length 2
+ERR invalid type: null, expected an array of length 2
+OK [{"k0":"0x10","k1":"with \"quotes\""},"abc"]
+OK ["a",{}]
+ERR invalid length 1, expected an array of length 2
+ERR invalid length 1, expected an array of length 2

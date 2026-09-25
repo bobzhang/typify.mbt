@@ -14,3 +14,11 @@ OK {"value":7}
 ERR invalid type: string "Hello, World", expected struct Node
 ERR invalid type: boolean `false`, expected struct Node
 OK {}
+ERR invalid type: string "0x10", expected struct Node
+ERR invalid type: floating point `-0.0`, expected struct Node
+ERR invalid type: string "😀", expected struct Node
+ERR invalid type: null, expected a sequence
+ERR invalid type: boolean `false`, expected struct Node
+OK {"value":32768}
+ERR invalid type: integer `0`, expected struct Node
+ERR invalid type: null, expected a sequence

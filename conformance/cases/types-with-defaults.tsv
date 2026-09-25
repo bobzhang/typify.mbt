@@ -14,6 +14,14 @@ types-with-defaults	Doodad	{"when":"2024-02-29T12:34:56"}
 types-with-defaults	Doodad	{"when":"2024-02-29t12:34:56z"}
 types-with-defaults	Doodad	{"when":"2024-02-29 12:34:56Z"}
 types-with-defaults	Doodad	{"when":{"wrapped":"2024-02-29t12:34:56z"}}
+types-with-defaults	Doodad	{"when":"2\u003024\u002d02-29T1\u0032:34\u003A56.12\u0033\u00345\u00367\u00389\u002D\u0030\u0030:\u00300"}
+types-with-defaults	Doodad	{}
+types-with-defaults	Doodad	{"when":"2024-02-29T12:34:56"}
+types-with-defaults	Doodad	{"when":false}
+types-with-defaults	Doodad	{}
+types-with-defaults	Doodad	{"w\u0068\u0065n"  :"2024-02-29T12:34:56.123Z","when":"😀"}
+types-with-defaults	Doodad	{"when":"2024-02-29T12:34:60Z"}
+types-with-defaults	Doodad	{"when":null}
 types-with-defaults	MrDefaultNumbers	{"big_nullable":1.8446744073709552e+19,"little_u16":-1}
 types-with-defaults	MrDefaultNumbers	{"big_nullable":null,"little_u16":7,"little_u8":7}
 types-with-defaults	MrDefaultNumbers	{"big_nullable":2147483648,"little_u16":1}
@@ -30,6 +38,14 @@ types-with-defaults	MrDefaultNumbers	{"little_u16":2147483648}
 types-with-defaults	MrDefaultNumbers	{"big_nullable":-9.223372036854776e+18,"little_u8":-9223372036854775808}
 types-with-defaults	MrDefaultNumbers	{"big_nullable":1,"little_u16":2.5}
 types-with-defaults	MrDefaultNumbers	{"little_u16":null,"little_u8":32767}
+types-with-defaults	MrDefaultNumbers	{"big_nullable":null  }
+types-with-defaults	MrDefaultNumbers		{"big_nullable":1,"little_u16":256  }
+types-with-defaults	MrDefaultNumbers	{"big_nullable":9223372036854775808,"little_u8":2.5}
+types-with-defaults	MrDefaultNumbers	true
+types-with-defaults	MrDefaultNumbers	{}
+types-with-defaults	MrDefaultNumbers	{"little_u8":256}
+types-with-defaults	MrDefaultNumbers	{"little_u16":2,"little_u8":1}
+types-with-defaults	MrDefaultNumbers	{"big_nullable":2,"little_u8":-9223372036854775808}
 types-with-defaults	OuterThing	{}
 types-with-defaults	OuterThing	{}
 types-with-defaults	OuterThing	{"thing":{}}
@@ -46,6 +62,14 @@ types-with-defaults	OuterThing	{"thing":{"a":"true","type":"Hello, World"}}
 types-with-defaults	OuterThing	{}
 types-with-defaults	OuterThing	{"thing":{"a":"true","type":"ok"}}
 types-with-defaults	OuterThing	{"thing":null}
+types-with-defaults	OuterThing	{"thing":{	"a":"a","type":"a"}}
+types-with-defaults	OuterThing	{"thing":{"a":"😀","type":"Hello, World"}}
+types-with-defaults	OuterThing	{}
+types-with-defaults	OuterThing	{}
+types-with-defaults	OuterThing	{}
+types-with-defaults	OuterThing	{}
+types-with-defaults	OuterThing	{"thing":{"a":"x y","type":"1234"}}
+types-with-defaults	OuterThing	"UPPER"
 types-with-defaults	TestBed	{"any":[],"id":"urn:uuid:67e55044-10b1-426f-9247-bb680e5fe0c8"}
 types-with-defaults	TestBed	{"id":"67E55044-10B1-426F-9247-BB680E5FE0C8"}
 types-with-defaults	TestBed	{"any":[null,"0x10"]}
@@ -62,6 +86,14 @@ types-with-defaults	TestBed	{}
 types-with-defaults	TestBed	{"any":[123456789.125,"UPPER",null]}
 types-with-defaults	TestBed	{"any":[false,true],"id":"{67e55044-10b1-426f-9247-bb680e5fe0c8}"}
 types-with-defaults	TestBed	{"id":"{67e55044-10b1-426f-9247-bb680e5fe0c8}","unexpected_field":1.0}
+types-with-defaults	TestBed	{"any":[-0.0,false]}
+types-with-defaults	TestBed	{"id":"{67e55044-10b1-426f-9247-bb680e5fe0c8}"}
+types-with-defaults	TestBed	{"any":	[]}
+types-with-defaults	TestBed	null
+types-with-defaults	TestBed	{"any":[true]}
+types-with-defaults	TestBed	{"id":"67e5504410b1426f9247bb680e5fe0c8"}
+types-with-defaults	TestBed	{"any":["true",123456789.125,1e+300],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
+types-with-defaults	TestBed	{}
 types-with-defaults	UInt	1.8446744073709552e+19
 types-with-defaults	UInt	127
 types-with-defaults	UInt	-128
@@ -78,6 +110,14 @@ types-with-defaults	UInt	2147483648
 types-with-defaults	UInt	1.0
 types-with-defaults	UInt	-129
 types-with-defaults	UInt	[9223372036854775808]
+types-with-defaults	UInt	65536
+types-with-defaults	UInt	-9223372036854775808
+types-with-defaults	UInt	255
+types-with-defaults	UInt	[2147483648]
+types-with-defaults	UInt	-9.223372036854776e+18
+types-with-defaults	UInt	2
+types-with-defaults	UInt	18446744073709551615
+types-with-defaults	UInt	null
 types-with-defaults	UIntContainer	{"max_path":-128}
 types-with-defaults	UIntContainer	{}
 types-with-defaults	UIntContainer	{"max_path":0}
@@ -94,3 +134,11 @@ types-with-defaults	UIntContainer	{"max_path":256}
 types-with-defaults	UIntContainer	{"max_path":256}
 types-with-defaults	UIntContainer	{"max_path":2147483647}
 types-with-defaults	UIntContainer	{"max_path":true}
+types-with-defaults	UIntContainer	{"max_path":256}
+types-with-defaults	UIntContainer	{"max_path":127}
+types-with-defaults	UIntContainer	{"max_path":2147483647}
+types-with-defaults	UIntContainer	{"max_path"	:null}
+types-with-defaults	UIntContainer	[2.5]
+types-with-defaults	UIntContainer	{"max_path":2147483648}
+types-with-defaults	UIntContainer	{}
+types-with-defaults	UIntContainer	{"max_path":null}

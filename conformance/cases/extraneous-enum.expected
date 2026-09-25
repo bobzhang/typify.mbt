@@ -14,3 +14,11 @@ ERR unknown variant `cee`, expected `a` or `b`
 OK {}
 OK {"letter":"a"}
 ERR invalid type: null, expected struct LetterBox
+ERR unknown variant `cee`, expected `a` or `b`
+ERR unknown variant `cee`, expected `a` or `b`
+OK {"letter":"b"}
+OK {"letter":"a"}
+OK {"letter":"b"}
+OK {"letter":"b"}
+OK {}
+OK {"letter":"a"}

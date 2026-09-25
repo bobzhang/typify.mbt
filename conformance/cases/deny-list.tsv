@@ -14,3 +14,11 @@ deny-list	TestType	{"where_not":{},"why_not":["null","true"]}
 deny-list	TestType	{"where_not":["x y"],"why_not":{"k0":null,"k1":1.0}}
 deny-list	TestType	{"where_not":true,"why_not":"null"}
 deny-list	TestType	{"where_not":null,"why_not":false}
+deny-list	TestType	{"why_not":false,"where_not":["ok",null],"why_not":false}
+deny-list	TestType	{"where_not":"0x10","\u0077hy\u005f\u006Eo\u0074":[10000000000.0,"é中文"]}
+deny-list	TestType	{"where_not":"abc","why_not":"with \"quotes\""}
+deny-list	TestType	{"where_not"	:[],"why_not":"ok"}
+deny-list	TestType	{"\u0077\u0068ere_\u006e\u006Ft":true,"why_not":{"k1":null,"k0":""}}
+deny-list	TestType	{"where_not":{"k0":null,"k1":false},"\u0077hy_\u006Eo\u0074":["with \"quotes\""]}
+deny-list	TestType	 {"where_not":{	},"why_not":"UPPER"}
+deny-list	TestType	{"where_not":[],"unexpected_field":"abc","why_not":123456789.125}

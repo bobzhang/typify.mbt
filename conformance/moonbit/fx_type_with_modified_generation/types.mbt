@@ -8,52 +8,36 @@
 pub(all) struct TypeThatHasMoreDerives(Map[String, String]) derive(Debug, Eq)
 
 ///|
-pub fn TypeThatHasMoreDerives::deserialize(
-  d : @typify_rt.De,
-) -> TypeThatHasMoreDerives raise @typify_rt.DeError {
-  TypeThatHasMoreDerives(
-    @typify_rt.de_map(d, @typify_rt.de_string, @typify_rt.de_string),
-  )
+pub fn TypeThatHasMoreDerives::deserialize(d : @typify_rt.De) -> TypeThatHasMoreDerives raise @typify_rt.DeError {
+  TypeThatHasMoreDerives(@typify_rt.de_map(d, @typify_rt.de_string, @typify_rt.de_string))
 }
 
 ///|
-pub fn TypeThatHasMoreDerives::serialize(
-  self : TypeThatHasMoreDerives,
-) -> @typify_rt.Content raise @typify_rt.SerError {
-  @typify_rt.ser_map(
-    self.0,
-    (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-    (v : String) => @typify_rt.ser_string(v),
-  )
+pub fn TypeThatHasMoreDerives::serialize(self : TypeThatHasMoreDerives) -> @typify_rt.Content raise @typify_rt.SerError {
+  @typify_rt.ser_map(self.0, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : String) => @typify_rt.ser_string(v))
 }
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn TypeThatHasMoreDerives::from_json_str(
-  text : StringView,
-) -> TypeThatHasMoreDerives raise @typify_rt.DeError {
+pub fn TypeThatHasMoreDerives::from_json_str(text : StringView) -> TypeThatHasMoreDerives raise @typify_rt.DeError {
   TypeThatHasMoreDerives::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn TypeThatHasMoreDerives::to_json_string(
-  self : TypeThatHasMoreDerives,
-) -> String raise @typify_rt.SerError {
+pub fn TypeThatHasMoreDerives::to_json_string(self : TypeThatHasMoreDerives) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
 ///|
 /// Decode from a builtin `Json` value (duplicate keys and number
 /// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn TypeThatHasMoreDerives::from_json(
-  json : Json,
-) -> TypeThatHasMoreDerives raise @typify_rt.DeError {
+pub fn TypeThatHasMoreDerives::from_json(json : Json) -> TypeThatHasMoreDerives raise @typify_rt.DeError {
   TypeThatHasMoreDerives::deserialize(@typify_rt.De::from_json(json))
 }
 
 ///|
-pub impl ToJson for TypeThatHasMoreDerives with fn to_json(self) {
+pub impl ToJson for TypeThatHasMoreDerives with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("TypeThatHasMoreDerives::to_json: \{e}")
   }
@@ -68,16 +52,8 @@ pub(all) struct TestType {
 } derive(Debug, Eq)
 
 ///|
-pub fn TestType::deserialize(
-  d : @typify_rt.De,
-) -> TestType raise @typify_rt.DeError {
-  match
-    @typify_rt.de_struct(
-      d,
-      "struct TestType",
-      ["converted_type", "patched_type", "replaced_type"],
-      false,
-    ) {
+pub fn TestType::deserialize(d : @typify_rt.De) -> TestType raise @typify_rt.DeError {
+  match @typify_rt.de_struct(d, "struct TestType", ["converted_type", "patched_type", "replaced_type"], false) {
     Entries(entries) => {
       let mut f0 : Json? = None
       let mut f1 : TypeThatHasMoreDerives? = None
@@ -111,16 +87,13 @@ pub fn TestType::deserialize(
       }
       let v1 = match f1 {
         Some(v) => v
-        None =>
-          TypeThatHasMoreDerives::deserialize(
-            @typify_rt.De::Missing("patched_type"),
-          )
+        None => TypeThatHasMoreDerives::deserialize(@typify_rt.De::Missing("patched_type"))
       }
       let v2 = match f2 {
         Some(v) => v
         None => @typify_rt.de_string(@typify_rt.De::Missing("replaced_type"))
       }
-      TestType::{ converted_type: v0, patched_type: v1, replaced_type: v2, }
+      TestType::{ converted_type: v0, patched_type: v1, replaced_type: v2 }
     }
     Elements(s) => {
       let v0 = match s.next_opt() {
@@ -136,15 +109,13 @@ pub fn TestType::deserialize(
         None => raise s.invalid_length()
       }
       s.finish()
-      TestType::{ converted_type: v0, patched_type: v1, replaced_type: v2, }
+      TestType::{ converted_type: v0, patched_type: v1, replaced_type: v2 }
     }
   }
 }
 
 ///|
-pub fn TestType::serialize(
-  self : TestType,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn TestType::serialize(self : TestType) -> @typify_rt.Content raise @typify_rt.SerError {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("converted_type", @typify_rt.ser_json(self.converted_type))
   o.field("patched_type", TypeThatHasMoreDerives::serialize(self.patched_type))
@@ -155,17 +126,13 @@ pub fn TestType::serialize(
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn TestType::from_json_str(
-  text : StringView,
-) -> TestType raise @typify_rt.DeError {
+pub fn TestType::from_json_str(text : StringView) -> TestType raise @typify_rt.DeError {
   TestType::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn TestType::to_json_string(
-  self : TestType,
-) -> String raise @typify_rt.SerError {
+pub fn TestType::to_json_string(self : TestType) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -177,8 +144,9 @@ pub fn TestType::from_json(json : Json) -> TestType raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for TestType with fn to_json(self) {
+pub impl ToJson for TestType with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("TestType::to_json: \{e}")
   }
 }
+

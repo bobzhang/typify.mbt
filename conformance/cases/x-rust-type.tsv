@@ -14,6 +14,14 @@ x-rust-type	AllTheThings	{"option_marker":null}
 x-rust-type	AllTheThings	{"option_marker":null,"path":"null"}
 x-rust-type	AllTheThings	{"option_marker":null}
 x-rust-type	AllTheThings	{"option_marker":null,"unexpected_field":-2.25}
+x-rust-type	AllTheThings	{"option_marker":null,"path":"Hello, World"}
+x-rust-type	AllTheThings	{"path":"x y"}
+x-rust-type	AllTheThings	{"option_marker":null}
+x-rust-type	AllTheThings	{"option_marker":null,"unexpected_field":"1234","path":"UPPER"}
+x-rust-type	AllTheThings	{"path":"with \"quotes\""}
+x-rust-type	AllTheThings	{"path":	"x y"}
+x-rust-type	AllTheThings	{}
+x-rust-type	AllTheThings	{}
 x-rust-type	Marker	"null"
 x-rust-type	Marker	"true"
 x-rust-type	Marker	{}
@@ -30,6 +38,14 @@ x-rust-type	Marker	false
 x-rust-type	Marker	true
 x-rust-type	Marker	{"k0":["Hello, World"]}
 x-rust-type	Marker	null
+x-rust-type	Marker	1.5
+x-rust-type	Marker	null
+x-rust-type	Marker	"a"
+x-rust-type	Marker	1.5
+x-rust-type	Marker	false
+x-rust-type	Marker	null
+x-rust-type	Marker	null
+x-rust-type	Marker	{"wrapped":[]}
 x-rust-type	OptionMarker	null
 x-rust-type	OptionMarker	null
 x-rust-type	OptionMarker	null
@@ -46,6 +62,14 @@ x-rust-type	OptionMarker	null
 x-rust-type	OptionMarker	null
 x-rust-type	OptionMarker	null
 x-rust-type	OptionMarker	{"wrapped":null}
+x-rust-type	OptionMarker	null
+x-rust-type	OptionMarker	null
+x-rust-type	OptionMarker	null
+x-rust-type	OptionMarker	null
+x-rust-type	OptionMarker	null
+x-rust-type	OptionMarker	null
+x-rust-type	OptionMarker	null
+x-rust-type	OptionMarker	[]
 x-rust-type	PathBuf	""
 x-rust-type	PathBuf	"0x10"
 x-rust-type	PathBuf	"with \"quotes\""
@@ -62,3 +86,11 @@ x-rust-type	PathBuf	"abc"
 x-rust-type	PathBuf	"abc"
 x-rust-type	PathBuf	"a"
 x-rust-type	PathBuf	null
+x-rust-type	PathBuf	"x y"
+x-rust-type	PathBuf	"é中文"
+x-rust-type	PathBuf	"ok"
+x-rust-type	PathBuf	"null"
+x-rust-type	PathBuf		"abc"
+x-rust-type	PathBuf	  "é中文"
+x-rust-type	PathBuf	"null"
+x-rust-type	PathBuf	["ok"]

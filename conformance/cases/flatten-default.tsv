@@ -14,3 +14,11 @@ flatten-default	Container	{"thing":{"extra_key":"ok","id":"x y"}}
 flatten-default	Container	{"thing":{}}
 flatten-default	Container	{"thing":{"extra_key":"ok","id":"a-b_c"}}
 flatten-default	Container	{"thing":{"extra_key":"UPPER","id":"abc"},"unexpected_field":"Hello, World"}
+flatten-default	Container	{"thing":{"id":"é中文"}}
+flatten-default	Container	{"thing":{},	"thing":{}}
+flatten-default	Container	{"thing":{"id":"Hello, World"},"zz_deep":[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]}
+flatten-default	Container	{"wrapped":{}}
+flatten-default	Container	{"thing":{"extra_key":  true,"extra_key":"a"}}
+flatten-default	Container	{"thing":{"id":"with \"quotes\"","extra_key":"é中文"}}
+flatten-default	Container	{"thing":{}}
+flatten-default	Container	null

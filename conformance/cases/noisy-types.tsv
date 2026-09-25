@@ -14,6 +14,14 @@ noisy-types	ArrayBs	[true,false]
 noisy-types	ArrayBs	[true,true,true]
 noisy-types	ArrayBs	[false,false]
 noisy-types	ArrayBs	true
+noisy-types	ArrayBs	[false]
+noisy-types	ArrayBs	[false,true]
+noisy-types	ArrayBs	[true]
+noisy-types	ArrayBs	[{"wrapped":false}]
+noisy-types	ArrayBs	[false,true,false]
+noisy-types	ArrayBs	[  false,false]
+noisy-types	ArrayBs	[false,true]
+noisy-types	ArrayBs	{"wrapped":[true,true],"wrapped":  10000000000.0}
 noisy-types	IntegerBs	-9.223372036854776e+18
 noisy-types	IntegerBs	255
 noisy-types	IntegerBs	1
@@ -29,6 +37,14 @@ noisy-types	IntegerBs	[-9.223372036854776e+18]
 noisy-types	IntegerBs	0
 noisy-types	IntegerBs	0
 noisy-types	IntegerBs	-9.223372036854776e+18
+noisy-types	IntegerBs	null
+noisy-types	IntegerBs	7
+noisy-types	IntegerBs	-9.223372036854776e+18
+noisy-types	IntegerBs	-1
+noisy-types	IntegerBs	null
+noisy-types	IntegerBs	1
+noisy-types	IntegerBs	-1
+noisy-types	IntegerBs	0
 noisy-types	IntegerBs	null
 noisy-types	ObjectBs	{}
 noisy-types	ObjectBs	{"ok":true}
@@ -46,3 +62,11 @@ noisy-types	ObjectBs	{"ok":false}
 noisy-types	ObjectBs	{}
 noisy-types	ObjectBs	{}
 noisy-types	ObjectBs	{"wrapped":{}}
+noisy-types	ObjectBs	{}
+noisy-types	ObjectBs	{"ok":true}
+noisy-types	ObjectBs	{"ok":true}
+noisy-types	ObjectBs	{}
+noisy-types	ObjectBs	{  "ok":false}
+noisy-types	ObjectBs	{"ok":false}
+noisy-types	ObjectBs	{}
+noisy-types	ObjectBs	{"ok":0.1}

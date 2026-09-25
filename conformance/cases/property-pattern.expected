@@ -14,3 +14,11 @@ OK {"rules":{}}
 OK {"rules":{"abc":"with \"quotes\""}}
 OK {"rules":{}}
 ERR unknown field `unexpected_field`, expected `rules`
+OK {"rules":{}}
+OK {"rules":{"abc":"Hello, World"}}
+ERR invalid type: floating point `-0.0`, expected a string
+ERR invalid type: null, expected a map
+OK {"rules":{"abc":"a"}}
+OK {"rules":{"abc":"é中文"}}
+OK {"rules":{"abc":"é中文"}}
+OK {"rules":{"unexpected_field":"a","abc":"é中文"}}

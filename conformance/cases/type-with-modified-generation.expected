@@ -14,6 +14,14 @@ NOTYPE
 NOTYPE
 NOTYPE
 NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
 OK {"extra_key":"1234"}
 OK {"extra_key":"Hello, World"}
 OK {"extra_key":"😀"}
@@ -30,6 +38,14 @@ OK {"extra_key":"abc"}
 OK {"extra_key":"Hello, World"}
 OK {"extra_key":"null"}
 ERR invalid type: sequence, expected a map
+OK {}
+OK {"extra_key":""}
+OK {"extra_key":"a"}
+OK {"extra_key":"Hello, World","unexpected_field":""}
+OK {}
+OK {}
+OK {}
+ERR invalid type: null, expected a string
 OK {"converted_type":1,"patched_type":{},"replaced_type":"Hello, World"}
 ERR invalid type: integer `3`, expected a string
 ERR invalid type: integer `-1`, expected a string
@@ -46,3 +62,11 @@ ERR invalid type: integer `-1`, expected a string
 ERR invalid type: boolean `false`, expected a string
 OK {"converted_type":"one","patched_type":{"extra_key":"with \"quotes\""},"replaced_type":"0x10"}
 OK {"converted_type":1,"patched_type":{},"replaced_type":"1234"}
+ERR invalid type: sequence, expected a string
+OK {"converted_type":1,"patched_type":{},"replaced_type":"0x10"}
+OK {"converted_type":1,"patched_type":{},"replaced_type":"a"}
+ERR invalid type: null, expected a string
+ERR invalid type: floating point `1.5`, expected a string
+ERR invalid type: floating point `1.0`, expected a string
+ERR invalid type: boolean `true`, expected a string
+ERR invalid type: null, expected a string

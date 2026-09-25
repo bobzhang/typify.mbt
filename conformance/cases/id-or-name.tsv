@@ -14,6 +14,14 @@ id-or-name	IdOrName	"a"
 id-or-name	IdOrName	"Hello, World"
 id-or-name	IdOrName	"{67e55044-10b1-426f-9247-bb680e5fe0c8}"
 id-or-name	IdOrName	["xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"]
+id-or-name	IdOrName	"{67e55044-10b1-426f-9247-bb680e5fe0c8}"
+id-or-name	IdOrName	"ok"
+id-or-name	IdOrName	"1234"
+id-or-name	IdOrName	null
+id-or-name	IdOrName	  "67e55044-10b1-426f-9247-bb680e5fe0c8"
+id-or-name	IdOrName	"Hello, World"
+id-or-name	IdOrName	"é中文"
+id-or-name	IdOrName	["67E55044-10B1-426F-9247-BB680E5FE0C8"]
 id-or-name	IdOrNameRedundant	"UPPER"
 id-or-name	IdOrNameRedundant	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 id-or-name	IdOrNameRedundant	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -30,6 +38,14 @@ id-or-name	IdOrNameRedundant	"x y"
 id-or-name	IdOrNameRedundant	"Hello, World"
 id-or-name	IdOrNameRedundant	"{67e55044-10b1-426f-9247-bb680e5fe0c8}"
 id-or-name	IdOrNameRedundant	null
+id-or-name	IdOrNameRedundant	"67e5504410b1426f9247bb680e5fe0c8"
+id-or-name	IdOrNameRedundant	""
+id-or-name	IdOrNameRedundant	"{67e55044-10b1-426f-9247-bb680e5fe0c8}"
+id-or-name	IdOrNameRedundant	10000000000.0
+id-or-name	IdOrNameRedundant	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+id-or-name	IdOrNameRedundant	"a-b_c"
+id-or-name	IdOrNameRedundant	"67e55044-10b1-426f-9247-bb680e5fe0c8"
+id-or-name	IdOrNameRedundant	 ["xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"]
 id-or-name	IdOrYolo	"1234"
 id-or-name	IdOrYolo	"not-a-uuid"
 id-or-name	IdOrYolo	"Hello, World"
@@ -46,6 +62,14 @@ id-or-name	IdOrYolo	""
 id-or-name	IdOrYolo	"67e55044-10b1-426f-9247-bb680e5fe0c8"
 id-or-name	IdOrYolo	"ok"
 id-or-name	IdOrYolo	["urn:uuid:67e55044-10b1-426f-9247-bb680e5fe0c8"]
+id-or-name	IdOrYolo	"67e5504410b1426f9247bb680e5fe0c8"
+id-or-name	IdOrYolo	"null"
+id-or-name	IdOrYolo	"{67e55044-10b1-426f-9247-bb680e5fe0c8}"
+id-or-name	IdOrYolo	["a-b_c"]
+id-or-name	IdOrYolo	"a"
+id-or-name	IdOrYolo	"67\u006555\u003044\u00310\u00621426f\u003924\u0037bb\u003680e5f\u0065\u0030\u0063\u0038"
+id-or-name	IdOrYolo	"67E55044-10B1-426F-9247-BB680E5FE0C8"
+id-or-name	IdOrYolo	null
 id-or-name	Name	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 id-or-name	Name	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 id-or-name	Name	"ok"
@@ -62,3 +86,11 @@ id-or-name	Name	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 id-or-name	Name	"null"
 id-or-name	Name	""
 id-or-name	Name	["abc"]
+id-or-name	Name	"0x10"
+id-or-name	Name	"a"
+id-or-name	Name	 "UPPER"
+id-or-name	Name	[null]
+id-or-name	Name	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+id-or-name	Name	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+id-or-name	Name	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+id-or-name	Name	["null"]

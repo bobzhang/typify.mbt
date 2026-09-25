@@ -14,6 +14,14 @@ various-enums	AlternativeEnum	"Choice1"
 various-enums	AlternativeEnum	"Choice3"
 various-enums	AlternativeEnum	"Choice2"
 various-enums	AlternativeEnum	{"wrapped":"Choice2"}
+various-enums	AlternativeEnum	"Choic\u00652"
+various-enums	AlternativeEnum	"Choice1"
+various-enums	AlternativeEnum	"Choice3"
+various-enums	AlternativeEnum	{"wrapped":"Choice2"}
+various-enums	AlternativeEnum	"Choice3"
+various-enums	AlternativeEnum	"Choice2"
+various-enums	AlternativeEnum	"Choice3"
+various-enums	AlternativeEnum	"1234"
 various-enums	AnyOfNoStrings	"😀"
 various-enums	AnyOfNoStrings	"null"
 various-enums	AnyOfNoStrings	"true"
@@ -30,6 +38,14 @@ various-enums	AnyOfNoStrings	"a-b_c"
 various-enums	AnyOfNoStrings	"ok"
 various-enums	AnyOfNoStrings	"1234"
 various-enums	AnyOfNoStrings	{"wrapped":"with \"quotes\""}
+various-enums	AnyOfNoStrings	"x y"
+various-enums	AnyOfNoStrings	"with \"quotes\""
+various-enums	AnyOfNoStrings	"\u0061"
+various-enums	AnyOfNoStrings	null
+various-enums	AnyOfNoStrings	"abc"
+various-enums	AnyOfNoStrings	"with \"quotes\""
+various-enums	AnyOfNoStrings	"a-b_c"
+various-enums	AnyOfNoStrings	"a-b_c"
 various-enums	AnyOfNothing	null
 various-enums	AnyOfNothing	"abc"
 various-enums	AnyOfNothing	false
@@ -45,6 +61,14 @@ various-enums	AnyOfNothing	{"k0":"with \"quotes\"","k1":null}
 various-enums	AnyOfNothing	false
 various-enums	AnyOfNothing	{"k0":-1}
 various-enums	AnyOfNothing	true
+various-enums	AnyOfNothing	null
+various-enums	AnyOfNothing	[]
+various-enums	AnyOfNothing	[{"k0":"😀"},10000000000.0]
+various-enums	AnyOfNothing	[true]
+various-enums	AnyOfNothing	[null]
+various-enums	AnyOfNothing	[1.5]
+various-enums	AnyOfNothing	[]
+various-enums	AnyOfNothing	[]
 various-enums	AnyOfNothing	null
 various-enums	BlockSize	2048
 various-enums	BlockSize	512
@@ -62,6 +86,14 @@ various-enums	BlockSize	2048
 various-enums	BlockSize	4096
 various-enums	BlockSize	512
 various-enums	BlockSize	{}
+various-enums	BlockSize	 512.00
+various-enums	BlockSize	2048
+various-enums	BlockSize	512
+various-enums	BlockSize	[4096]
+various-enums	BlockSize	512
+various-enums	BlockSize	2048
+various-enums	BlockSize	4096
+various-enums	BlockSize	[512]
 various-enums	DiskAttachment	{"alternate":"Choice1","state":"Detached"}
 various-enums	DiskAttachment	{"alternate":"Choice1","state":"Destroyed"}
 various-enums	DiskAttachment	{"alternate":"Choice2","state":"Faulted"}
@@ -77,6 +109,14 @@ various-enums	DiskAttachment	{"alternate":["Choice2"],"state":"Detached"}
 various-enums	DiskAttachment	{"alternate":"Choice3","state":"Destroyed"}
 various-enums	DiskAttachment	{"alternate":"Choice2","state":"Faulted"}
 various-enums	DiskAttachment	{"alternate":"Choice2","state":"Destroyed"}
+various-enums	DiskAttachment	{"alternate":"Choice2"}
+various-enums	DiskAttachment	{"alternate":"Choice1","state":"Faulted"}
+various-enums	DiskAttachment	["Choice2","Faulted"]
+various-enums	DiskAttachment	{  "alternate":"Choice3","alternate":10000000000.0,"state":"Destroyed"}
+various-enums	DiskAttachment	{"state":"UPPER","alternate":"Choice1"}
+various-enums	DiskAttachment	{"alternate":"Choice3",  "state":"Destroyed"  }
+various-enums	DiskAttachment	{"state":"Dest\u0072o\u0079ed","alternate":"Choice2","zz_deep":[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]}
+various-enums	DiskAttachment	 {"alternate":"Choice1","state":"Faulted"}
 various-enums	DiskAttachment	{"alternate":"Choice2"}
 various-enums	EmptyObject	{}
 various-enums	EmptyObject	{"prop":{}}
@@ -94,6 +134,14 @@ various-enums	EmptyObject	{"prop":{}}
 various-enums	EmptyObject	{}
 various-enums	EmptyObject	{"prop":{}}
 various-enums	EmptyObject	{"prop":null}
+various-enums	EmptyObject	{"prop":{}}
+various-enums	EmptyObject	{"prop":{}  }
+various-enums	EmptyObject	{"prop":{}}
+various-enums	EmptyObject	{"prop":{},"unexpected_field":true}
+various-enums	EmptyObject	{"prop":{}}
+various-enums	EmptyObject	{ "prop":{}}
+various-enums	EmptyObject	{}
+various-enums	EmptyObject	{"prop":{"wrapped":{}},"prop":{"wrapped":{}}}
 various-enums	IpNet	"abc"
 various-enums	IpNet	"a"
 various-enums	IpNet	"true"
@@ -110,6 +158,14 @@ various-enums	IpNet	"true"
 various-enums	IpNet	"0x10"
 various-enums	IpNet	"Hello, World"
 various-enums	IpNet	"1234"
+various-enums	IpNet	"abc"
+various-enums	IpNet	"1234"
+various-enums	IpNet	"é中文"
+various-enums	IpNet	null
+various-enums	IpNet	"with \"quotes\""
+various-enums	IpNet	"ok"
+various-enums	IpNet	"a-b_c"
+various-enums	IpNet	null
 various-enums	Ipv4Net	"0x10"
 various-enums	Ipv4Net	"1234"
 various-enums	Ipv4Net	"1234"
@@ -126,6 +182,14 @@ various-enums	Ipv4Net	"true"
 various-enums	Ipv4Net	"ok"
 various-enums	Ipv4Net	"x y"
 various-enums	Ipv4Net	{"wrapped":"😀"}
+various-enums	Ipv4Net	"Hello, World"
+various-enums	Ipv4Net	"a-b_c"
+various-enums	Ipv4Net	"0x10"
+various-enums	Ipv4Net	{}
+various-enums	Ipv4Net	"é中文"
+various-enums	Ipv4Net	"é中文"
+various-enums	Ipv4Net	"a-b_c"
+various-enums	Ipv4Net	{"k0":null,"k0":"abc","k1":true}
 various-enums	Ipv6Net	"null"
 various-enums	Ipv6Net	"a-b_c"
 various-enums	Ipv6Net	"with \"quotes\""
@@ -142,6 +206,14 @@ various-enums	Ipv6Net	"a"
 various-enums	Ipv6Net	""
 various-enums	Ipv6Net	"UPPER"
 various-enums	Ipv6Net	[""]
+various-enums	Ipv6Net	"0x10"
+various-enums	Ipv6Net	"a"
+various-enums	Ipv6Net	"with \"quotes\""
+various-enums	Ipv6Net	["ok"]
+various-enums	Ipv6Net	 "a-b_c"
+various-enums	Ipv6Net	"UPPER"
+various-enums	Ipv6Net	"1234"
+various-enums	Ipv6Net	null
 various-enums	JankNames	{}
 various-enums	JankNames	{"extra_key":2147483647}
 various-enums	JankNames	"0x10"
@@ -158,6 +230,14 @@ various-enums	JankNames	"null"
 various-enums	JankNames	{}
 various-enums	JankNames	{"extra_key":-9.223372036854776e+18}
 various-enums	JankNames	{"extra_key":"a-b_c","unexpected_field":null}
+various-enums	JankNames	"abc"
+various-enums	JankNames	"0x10"
+various-enums	JankNames	{}
+various-enums	JankNames	null
+various-enums	JankNames	{	"extra_key"	:-32769}
+various-enums	JankNames	"a-b_c"
+various-enums	JankNames	"null"
+various-enums	JankNames	["with \"quotes\""]
 various-enums	Never	-0.0
 various-enums	Never	{"k0":"UPPER","k1":"UPPER"}
 various-enums	Never	{}
@@ -174,6 +254,14 @@ various-enums	Never	null
 various-enums	Never	[]
 various-enums	Never	null
 various-enums	Never	[]
+various-enums	Never	{"k0":[null],"k0":null}
+various-enums	Never	3
+various-enums	Never	"true"
+various-enums	Never	[{"wrapped":"Hello, World"},[]]
+various-enums	Never	"a-b_c"
+various-enums	Never	false
+various-enums	Never	{"k0":"x y"}
+various-enums	Never	[false]
 various-enums	NeverEver	null
 various-enums	NeverEver	"abc"
 various-enums	NeverEver	null
@@ -190,6 +278,14 @@ various-enums	NeverEver	10000000000.0
 various-enums	NeverEver	"UPPER"
 various-enums	NeverEver	true
 various-enums	NeverEver	[false]
+various-enums	NeverEver	  "nu\u006c\u006c"
+various-enums	NeverEver	""
+various-enums	NeverEver	{}
+various-enums	NeverEver	255
+various-enums	NeverEver	false
+various-enums	NeverEver	1.5
+various-enums	NeverEver	false
+various-enums	NeverEver	null
 various-enums	NeverEverForever	"ok"
 various-enums	NeverEverForever	[null,"Hello, World"]
 various-enums	NeverEverForever	null
@@ -206,6 +302,14 @@ various-enums	NeverEverForever	"é中文"
 various-enums	NeverEverForever	null
 various-enums	NeverEverForever	"with \"quotes\""
 various-enums	NeverEverForever	{"k0":false,"k1":true}
+various-enums	NeverEverForever	[[1,"é中文"]]
+various-enums	NeverEverForever	null
+various-enums	NeverEverForever	["",true]
+various-enums	NeverEverForever	null
+various-enums	NeverEverForever	10000000000.0
+various-enums	NeverEverForever	"0x10"
+various-enums	NeverEverForever	{}
+various-enums	NeverEverForever	{"wrapped":null,"wrapped":1.0}
 various-enums	NotBlockSize	-128
 various-enums	NotBlockSize	1
 various-enums	NotBlockSize	4294967295
@@ -222,6 +326,14 @@ various-enums	NotBlockSize	9007199254740993
 various-enums	NotBlockSize	4294967295
 various-enums	NotBlockSize	2147483648
 various-enums	NotBlockSize	null
+various-enums	NotBlockSize	65535
+various-enums	NotBlockSize	2147483648
+various-enums	NotBlockSize	65536
+various-enums	NotBlockSize	[0]
+various-enums	NotBlockSize	127
+various-enums	NotBlockSize	2147483647
+various-enums	NotBlockSize	-128
+various-enums	NotBlockSize	[1.7976931348623157e308]
 various-enums	NullStringEnumWithUnknownFormat	"a"
 various-enums	NullStringEnumWithUnknownFormat	"b"
 various-enums	NullStringEnumWithUnknownFormat	"a"
@@ -238,6 +350,14 @@ various-enums	NullStringEnumWithUnknownFormat	"c"
 various-enums	NullStringEnumWithUnknownFormat	"b"
 various-enums	NullStringEnumWithUnknownFormat	"a"
 various-enums	NullStringEnumWithUnknownFormat	["b"]
+various-enums	NullStringEnumWithUnknownFormat	"a"
+various-enums	NullStringEnumWithUnknownFormat	"a"
+various-enums	NullStringEnumWithUnknownFormat	"a"
+various-enums	NullStringEnumWithUnknownFormat	["b"]
+various-enums	NullStringEnumWithUnknownFormat	"b"
+various-enums	NullStringEnumWithUnknownFormat	 "c"
+various-enums	NullStringEnumWithUnknownFormat	"b"
+various-enums	NullStringEnumWithUnknownFormat	null
 various-enums	ReferenceDef	"abc"
 various-enums	ReferenceDef	"true"
 various-enums	ReferenceDef	"ok"
@@ -254,6 +374,14 @@ various-enums	ReferenceDef	"UPPER"
 various-enums	ReferenceDef	"é中文"
 various-enums	ReferenceDef	"0x10"
 various-enums	ReferenceDef	["😀"]
+various-enums	ReferenceDef	"UPPE\u0052"
+various-enums	ReferenceDef	"with \"quotes\""
+various-enums	ReferenceDef	"é中文"
+various-enums	ReferenceDef	["true"]
+various-enums	ReferenceDef	"ok"
+various-enums	ReferenceDef	"é中文"
+various-enums	ReferenceDef	 "a"
+various-enums	ReferenceDef	["0x10"]
 various-enums	References	{}
 various-enums	References	{"extra_key":"1234"}
 various-enums	References	{}
@@ -270,6 +398,14 @@ various-enums	References	["with \"quotes\""]
 various-enums	References	{"extra_key":"😀"}
 various-enums	References	{}
 various-enums	References	{}
+various-enums	References	["a-b_c"]
+various-enums	References	[ "null"]
+various-enums	References	{"extra_key":  ""}
+various-enums	References	null
+various-enums	References	["é中文","UPPER",""]
+various-enums	References	[]
+various-enums	References	{"extra_key":false,"extra_key":"é中文"}
+various-enums	References	[{}]
 various-enums	ShouldBeExclusive	{"reference":"abc"}
 various-enums	ShouldBeExclusive	{"reference":"a"}
 various-enums	ShouldBeExclusive	{"reference":"x y"}
@@ -286,6 +422,14 @@ various-enums	ShouldBeExclusive	{"id":null}
 various-enums	ShouldBeExclusive	{"id":"ok"}
 various-enums	ShouldBeExclusive	{"id":null}
 various-enums	ShouldBeExclusive	{"reference":null,"unexpected_field":1.5}
+various-enums	ShouldBeExclusive	{"reference":"1234"}
+various-enums	ShouldBeExclusive	{"ref\u0065\u0072enc\u0065":1}
+various-enums	ShouldBeExclusive	{"reference"  :null,"reference":0}
+various-enums	ShouldBeExclusive	{"reference":1e+300, "unexpected_field":false}
+various-enums	ShouldBeExclusive	{"reference":  null}
+various-enums	ShouldBeExclusive	{"reference":1.5}
+various-enums	ShouldBeExclusive	{ "r\u0065ference":"null"}
+various-enums	ShouldBeExclusive	{}
 various-enums	StringVersion	"a"
 various-enums	StringVersion	"a-b_c"
 various-enums	StringVersion	"x y"
@@ -302,6 +446,14 @@ various-enums	StringVersion	"abc"
 various-enums	StringVersion	"😀"
 various-enums	StringVersion	"true"
 various-enums	StringVersion	["é中文"]
+various-enums	StringVersion	"0x10"
+various-enums	StringVersion	"😀"
+various-enums	StringVersion	"UPPER"
+various-enums	StringVersion	{"wrapped":"😀"}
+various-enums	StringVersion	"abc"
+various-enums	StringVersion	"a-b_c"
+various-enums	StringVersion	"a-b_c"
+various-enums	StringVersion	""
 various-enums	CommentedVariants	"C"
 various-enums	CommentedVariants	"C"
 various-enums	CommentedVariants	"B"
@@ -318,6 +470,14 @@ various-enums	CommentedVariants	"B"
 various-enums	CommentedVariants	"C"
 various-enums	CommentedVariants	"A"
 various-enums	CommentedVariants	"😀"
+various-enums	CommentedVariants	"B"
+various-enums	CommentedVariants	"A"
+various-enums	CommentedVariants	"B"
+various-enums	CommentedVariants	["A"]
+various-enums	CommentedVariants	"A"
+various-enums	CommentedVariants	"A"
+various-enums	CommentedVariants	"C"
+various-enums	CommentedVariants	null
 various-enums	EnumAndConstant	{"petType":"cat","purr":""}
 various-enums	EnumAndConstant	{"help":"with \"quotes\"","petType":"monkey"}
 various-enums	EnumAndConstant	{"bark":"x y","petType":"dog"}
@@ -334,6 +494,14 @@ various-enums	EnumAndConstant	{"petType":"cat","purr":"with \"quotes\""}
 various-enums	EnumAndConstant	{"bark":"abc","petType":"dog"}
 various-enums	EnumAndConstant	{"petType":"cat","purr":"😀"}
 various-enums	EnumAndConstant	{"float":"a-b_c","petType":null}
+various-enums	EnumAndConstant	{"float":"Hello, World","petType":"fish"}
+various-enums	EnumAndConstant	{"help":"0x10","petType":"monkey"}
+various-enums	EnumAndConstant	{"bark":"","petType":"dog"  }
+various-enums	EnumAndConstant	{"petT\u0079\u0070\u0065":	"cat"}
+various-enums	EnumAndConstant	{"bark":"0x10","petType":"dog"}
+various-enums	EnumAndConstant	{"petType":true,"petType":"cat","purr":"1234"}
+various-enums	EnumAndConstant	{"petType":"cat","purr":"x y"}
+various-enums	EnumAndConstant	{"float":"1234","petTyp\u0065":"fish"}
 various-enums	OneOfMissingTitle	{"bar":-129}
 various-enums	OneOfMissingTitle	{"baz":2}
 various-enums	OneOfMissingTitle	{"foo":"1234"}
@@ -350,6 +518,14 @@ various-enums	OneOfMissingTitle	{"foo":"with \"quotes\""}
 various-enums	OneOfMissingTitle	{}
 various-enums	OneOfMissingTitle	{"bar":4294967295}
 various-enums	OneOfMissingTitle	{"foo":null}
+various-enums	OneOfMissingTitle	{"bar":127}
+various-enums	OneOfMissingTitle	{"bar":9007199254740993}
+various-enums	OneOfMissingTitle	[1.0]
+various-enums	OneOfMissingTitle	{}
+various-enums	OneOfMissingTitle	{}
+various-enums	OneOfMissingTitle	{"bar":127,"baz": 7}
+various-enums	OneOfMissingTitle	{}
+various-enums	OneOfMissingTitle	{}
 various-enums	OneOfRawType	"true"
 various-enums	OneOfRawType	"Hello, World"
 various-enums	OneOfRawType	32767
@@ -365,6 +541,14 @@ various-enums	OneOfRawType	null
 various-enums	OneOfRawType	"Hello, World"
 various-enums	OneOfRawType	""
 various-enums	OneOfRawType	-129
+various-enums	OneOfRawType	null
+various-enums	OneOfRawType	2147483648
+various-enums	OneOfRawType	-129
+various-enums	OneOfRawType	32768
+various-enums	OneOfRawType	{"wrapped":"é中文"}
+various-enums	OneOfRawType	"with \"quotes\""
+various-enums	OneOfRawType	1
+various-enums	OneOfRawType	  4294967295
 various-enums	OneOfRawType	null
 various-enums	OneOfTypes	{"bar":-32769}
 various-enums	OneOfTypes	{"bar":1.0}
@@ -382,6 +566,14 @@ various-enums	OneOfTypes	{"foo":"0x10"}
 various-enums	OneOfTypes	{"foo":"Hello, World"}
 various-enums	OneOfTypes	{"foo":"😀"}
 various-enums	OneOfTypes	{"bar":1e+300}
+various-enums	OneOfTypes	{"foo":"true","foo":"abc"}
+various-enums	OneOfTypes	{"bar":18446744073709551615}
+various-enums	OneOfTypes	{"bar" :9223372036854775807}
+various-enums	OneOfTypes	{"bar":[127],"zz_deep":[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]}
+various-enums	OneOfTypes	{"foo":"😀"}
+various-enums	OneOfTypes	{"bar":7}
+various-enums	OneOfTypes	{"bar":65535}
+various-enums	OneOfTypes	{}
 various-enums	OptionAnyofConst	""
 various-enums	OptionAnyofConst	"abc"
 various-enums	OptionAnyofConst	null
@@ -398,6 +590,14 @@ various-enums	OptionAnyofConst	null
 various-enums	OptionAnyofConst	null
 various-enums	OptionAnyofConst	null
 various-enums	OptionAnyofConst	false
+various-enums	OptionAnyofConst	"é中文"
+various-enums	OptionAnyofConst	 null
+various-enums	OptionAnyofConst		null
+various-enums	OptionAnyofConst	{"wrapped":null}
+various-enums	OptionAnyofConst	"x y"
+various-enums	OptionAnyofConst	null
+various-enums	OptionAnyofConst	null
+various-enums	OptionAnyofConst	["ok"]
 various-enums	OptionAnyofEnum	null
 various-enums	OptionAnyofEnum	null
 various-enums	OptionAnyofEnum	null
@@ -413,6 +613,14 @@ various-enums	OptionAnyofEnum	""
 various-enums	OptionAnyofEnum	null
 various-enums	OptionAnyofEnum	"x y"
 various-enums	OptionAnyofEnum	"ok"
+various-enums	OptionAnyofEnum	null
+various-enums	OptionAnyofEnum	"1234"
+various-enums	OptionAnyofEnum	"true"
+various-enums	OptionAnyofEnum	null
+various-enums	OptionAnyofEnum	10000000000.0
+various-enums	OptionAnyofEnum	"1234"
+various-enums	OptionAnyofEnum	"ok"
+various-enums	OptionAnyofEnum	null
 various-enums	OptionAnyofEnum	null
 various-enums	OptionAnyofNull	"true"
 various-enums	OptionAnyofNull	null
@@ -430,6 +638,14 @@ various-enums	OptionAnyofNull	"with \"quotes\""
 various-enums	OptionAnyofNull	"😀"
 various-enums	OptionAnyofNull	null
 various-enums	OptionAnyofNull	{"wrapped":null}
+various-enums	OptionAnyofNull	"😀"
+various-enums	OptionAnyofNull	null
+various-enums	OptionAnyofNull	"true"
+various-enums	OptionAnyofNull	false
+various-enums	OptionAnyofNull	"é中文"
+various-enums	OptionAnyofNull	"\ud83d\ude00"
+various-enums	OptionAnyofNull	"UPPER"
+various-enums	OptionAnyofNull	{}
 various-enums	OptionOneofConst	"true"
 various-enums	OptionOneofConst	null
 various-enums	OptionOneofConst	null
@@ -446,6 +662,14 @@ various-enums	OptionOneofConst	"0x10"
 various-enums	OptionOneofConst	"Hello, World"
 various-enums	OptionOneofConst	"a-b_c"
 various-enums	OptionOneofConst	"a-b_c"
+various-enums	OptionOneofConst	null
+various-enums	OptionOneofConst	null
+various-enums	OptionOneofConst	"a-b_c"
+various-enums	OptionOneofConst	{"wrapped":"with \"quotes\"" }
+various-enums	OptionOneofConst	"with \"quotes\""
+various-enums	OptionOneofConst	"x y"
+various-enums	OptionOneofConst	"U\u0050PER"
+various-enums	OptionOneofConst	[null]
 various-enums	OptionOneofEnum	"abc"
 various-enums	OptionOneofEnum	null
 various-enums	OptionOneofEnum	null
@@ -462,6 +686,14 @@ various-enums	OptionOneofEnum	null
 various-enums	OptionOneofEnum	null
 various-enums	OptionOneofEnum	null
 various-enums	OptionOneofEnum	true
+various-enums	OptionOneofEnum		null
+various-enums	OptionOneofEnum	null
+various-enums	OptionOneofEnum	null
+various-enums	OptionOneofEnum	"a"
+various-enums	OptionOneofEnum	null
+various-enums	OptionOneofEnum	null
+various-enums	OptionOneofEnum	"null"
+various-enums	OptionOneofEnum	["true"]
 various-enums	OptionOneofNull	"with \"quotes\""
 various-enums	OptionOneofNull	"é中文"
 various-enums	OptionOneofNull	null
@@ -478,6 +710,14 @@ various-enums	OptionOneofNull	null
 various-enums	OptionOneofNull	null
 various-enums	OptionOneofNull	null
 various-enums	OptionOneofNull	"Hello, World"
+various-enums	OptionOneofNull	null
+various-enums	OptionOneofNull	"UPPER"
+various-enums	OptionOneofNull	"a"
+various-enums	OptionOneofNull	{"wrapped":null}
+various-enums	OptionOneofNull	null
+various-enums	OptionOneofNull	""
+various-enums	OptionOneofNull	"true"
+various-enums	OptionOneofNull	[null]
 various-enums	VariantsDifferByPunct	"2.5GBASE-T"
 various-enums	VariantsDifferByPunct	"2.5GBASE-T"
 various-enums	VariantsDifferByPunct	"25GBASE-T"
@@ -494,3 +734,11 @@ various-enums	VariantsDifferByPunct	"25GBASE-T"
 various-enums	VariantsDifferByPunct	"25GBASE-T"
 various-enums	VariantsDifferByPunct	"2,5,GBASE,T"
 various-enums	VariantsDifferByPunct	null
+various-enums	VariantsDifferByPunct	"2.5GBASE-T"
+various-enums	VariantsDifferByPunct	"2,5,GBASE,T"
+various-enums	VariantsDifferByPunct	"25GBASE-T"
+various-enums	VariantsDifferByPunct	["25GBASE-T"]
+various-enums	VariantsDifferByPunct	  "2.5GBASE-T"
+various-enums	VariantsDifferByPunct	"2,5,GBASE,T"
+various-enums	VariantsDifferByPunct	"2,5,GBASE,T"
+various-enums	VariantsDifferByPunct	["25GBASE-T"]

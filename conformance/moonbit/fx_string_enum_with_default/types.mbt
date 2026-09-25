@@ -12,25 +12,12 @@ pub(all) enum TestEnum {
 } derive(Debug, Eq, Hash)
 
 ///|
-pub fn TestEnum::deserialize(
-  d : @typify_rt.De,
-) -> TestEnum raise @typify_rt.DeError {
-  let (idx, payload) = @typify_rt.de_enum(d, "TestEnum", [
-    "failure", "skipped", "success",
-  ])
+pub fn TestEnum::deserialize(d : @typify_rt.De) -> TestEnum raise @typify_rt.DeError {
+  let (idx, payload) = @typify_rt.de_enum(d, "TestEnum", ["failure", "skipped", "success"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      TestEnum::Failure
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      TestEnum::Skipped
-    }
-    2 => {
-      @typify_rt.variant_unit(payload)
-      TestEnum::Success
-    }
+    0 => { @typify_rt.variant_unit(payload); TestEnum::Failure }
+    1 => { @typify_rt.variant_unit(payload); TestEnum::Skipped }
+    2 => { @typify_rt.variant_unit(payload); TestEnum::Success }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -38,9 +25,7 @@ pub fn TestEnum::deserialize(
 }
 
 ///|
-pub fn TestEnum::serialize(
-  self : TestEnum,
-) -> @typify_rt.Content raise @typify_rt.SerError {
+pub fn TestEnum::serialize(self : TestEnum) -> @typify_rt.Content raise @typify_rt.SerError {
   match self {
     Failure => @typify_rt.ser_string("failure")
     Skipped => @typify_rt.ser_string("skipped")
@@ -70,9 +55,7 @@ pub fn TestEnum::to_string(self : TestEnum) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn TestEnum::parse(
-  value : StringView,
-) -> TestEnum raise @typify_rt.ConversionError {
+pub fn TestEnum::parse(value : StringView) -> TestEnum raise @typify_rt.ConversionError {
   match value {
     "failure" => Failure
     "skipped" => Skipped
@@ -91,17 +74,13 @@ pub fn TestEnum::default() -> TestEnum {
 
 ///|
 /// Decode from JSON text, like `serde_json::from_str`.
-pub fn TestEnum::from_json_str(
-  text : StringView,
-) -> TestEnum raise @typify_rt.DeError {
+pub fn TestEnum::from_json_str(text : StringView) -> TestEnum raise @typify_rt.DeError {
   TestEnum::deserialize(@typify_rt.De::from_str(text))
 }
 
 ///|
 /// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn TestEnum::to_json_string(
-  self : TestEnum,
-) -> String raise @typify_rt.SerError {
+pub fn TestEnum::to_json_string(self : TestEnum) -> String raise @typify_rt.SerError {
   @typify_rt.to_json_string(self.serialize())
 }
 
@@ -113,8 +92,9 @@ pub fn TestEnum::from_json(json : Json) -> TestEnum raise @typify_rt.DeError {
 }
 
 ///|
-pub impl ToJson for TestEnum with fn to_json(self) {
+pub impl ToJson for TestEnum with to_json(self) {
   @typify_rt.content_to_json(self.serialize()) catch {
     e => abort("TestEnum::to_json: \{e}")
   }
 }
+

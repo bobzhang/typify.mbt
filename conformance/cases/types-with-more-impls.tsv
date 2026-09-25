@@ -14,6 +14,14 @@ types-with-more-impls	PatternString	"abc"
 types-with-more-impls	PatternString	"abc"
 types-with-more-impls	PatternString	"a-b_c"
 types-with-more-impls	PatternString	{"wrapped":"abc"}
+types-with-more-impls	PatternString	"1234"
+types-with-more-impls	PatternString	"a"
+types-with-more-impls	PatternString	"😀"
+types-with-more-impls	PatternString	true
+types-with-more-impls	PatternString	"true"
+types-with-more-impls	PatternString	"\u0078 y"
+types-with-more-impls	PatternString	"abc"
+types-with-more-impls	PatternString	["😀"]
 types-with-more-impls	Sub10Primes	2
 types-with-more-impls	Sub10Primes	3
 types-with-more-impls	Sub10Primes	2
@@ -30,3 +38,11 @@ types-with-more-impls	Sub10Primes	2
 types-with-more-impls	Sub10Primes	7
 types-with-more-impls	Sub10Primes	5
 types-with-more-impls	Sub10Primes	true
+types-with-more-impls	Sub10Primes	5
+types-with-more-impls	Sub10Primes	7
+types-with-more-impls	Sub10Primes	2
+types-with-more-impls	Sub10Primes	null
+types-with-more-impls	Sub10Primes	3
+types-with-more-impls	Sub10Primes	2
+types-with-more-impls	Sub10Primes	5
+types-with-more-impls	Sub10Primes	""
