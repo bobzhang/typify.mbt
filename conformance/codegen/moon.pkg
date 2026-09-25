@@ -5,6 +5,8 @@ import {
   "bobzhang/typify/serde_json",
   "bobzhang/typify/internal/semver",
   "moonbitlang/x/fs",
+  "moonbitlang/core/env",
+  "moonbitlang/core/string",
 }
 
 pkgtype(kind: "executable")

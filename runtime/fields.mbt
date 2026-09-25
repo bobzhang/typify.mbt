@@ -64,6 +64,21 @@ pub fn de_fields(
 ) -> FieldsInput raise DeError {
   let input = de_struct(d, expecting, fields.names, flatten, external_variant~)
   match input {
+    Claiming(entries) => {
+      // A flattened struct reading its fields from the parent's buffer:
+      // only recognised keys, each claimed right before it is decoded.
+      let seen = FixedArray::make(fields.names.length(), false)
+      for e in entries {
+        let (key, value) = claim_entry(e)
+        guard fields.index.get(key) is Some(i) else { continue }
+        if seen[i] {
+          raise duplicate_field_error(key)
+        }
+        seen[i] = true
+        on_field(i, value)
+      }
+      { fields, form: Named(None), }
+    }
     Entries(entries) => {
       let seen = FixedArray::make(fields.names.length(), false)
       let buf = if flatten { Some(FlatBuf::new()) } else { None }

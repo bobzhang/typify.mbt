@@ -159,58 +159,86 @@ pub fn adjacent(
 }
 
 ///|
-/// Adjacently tagged enums (serde's `AdjacentlyTagged` visitor): the variant
-/// and how its content is provided.
-pub fn de_adjacent(
+/// Adjacently tagged enums (serde's `AdjacentlyTagged` visitor): finds the
+/// variant and calls `decode(variant, content)` as serde's visitor does:
+/// content after the tag is decoded as soon as it is read (in the current
+/// mode), content before the tag is buffered and decoded once the tag is
+/// known; entries after that are still checked for duplicates.
+pub fn[T] de_adjacent(
   d : De,
   name : String,
   tag : String,
   content : String,
   variants : Array[String],
   deny : Bool,
-) -> (Int, VariantInput) raise DeError {
+  decode : (Int, VariantInput) -> T raise DeError,
+) -> T raise DeError {
   let fields = [tag, content]
-  match de_struct(d, "adjacently tagged enum \{name}", fields, false) {
-    Entries(entries) => {
-      let mut idx : Int? = None
-      let mut payload : De? = None
-      for e in entries {
-        if e.0 == tag {
-          if idx is Some(_) {
-            raise duplicate_field_error(tag)
-          }
-          // The tag is decoded like an enum: "V" or {"V": null}.
-          let (i, v) = de_enum(e.1, name, variants)
-          variant_unit(v)
-          idx = Some(i)
-        } else if e.0 == content {
-          if payload is Some(_) {
-            raise duplicate_field_error(content)
-          }
-          // Content before the tag is buffered and read as owned content.
-          payload = Some(
-            match (idx, e.1) {
-              (None, Value(c, _)) => Value(validated(c), Owned)
-              _ => e.1
+  let expecting = "adjacently tagged enum \{name}"
+  let entries : Array[() -> (String, De)] = match
+    de_struct(d, expecting, fields, false) {
+    Entries(es) => es.map(e => () => e)
+    // Flattened: only the tag and content entries, claimed as they are read.
+    Claiming(es) => es.map(e => () => claim_entry(e))
+    Elements(s) => {
+      // `[tag, content]`: the tag is a variant identifier.
+      let t = match s.next_opt() {
+        Some(t) => t
+        None => raise DeError("invalid length 0, expected \{expecting}")
+      }
+      let i = match t {
+        Value(c, mode) => tag_identifier(c, variants, !(mode is Direct))
+        _ => raise DeError("invalid type, expected variant identifier")
+      }
+      let c = match s.next_opt() {
+        Some(c) => c
+        None => raise DeError("invalid length 1, expected \{expecting}")
+      }
+      let r = decode(i, Payload(c))
+      s.finish()
+      return r
+    }
+  }
+  let mut idx : Int? = None
+  let mut buffered : De? = None
+  let mut result : T? = None
+  let mut seen_content = false
+  for get in entries {
+    let (key, value) = get()
+    if key == tag {
+      if idx is Some(_) {
+        raise duplicate_field_error(tag)
+      }
+      // The tag is decoded like an enum: "V" or {"V": null}.
+      let (i, v) = de_enum(value, name, variants)
+      variant_unit(v)
+      idx = Some(i)
+      if buffered is Some(c) {
+        result = Some(decode(i, Payload(c)))
+      }
+    } else if key == content {
+      if seen_content {
+        raise duplicate_field_error(content)
+      }
+      seen_content = true
+      match idx {
+        Some(i) => result = Some(decode(i, Payload(value)))
+        // Content before the tag is buffered and read as owned content.
+        None =>
+          buffered = Some(
+            match value {
+              Value(c, _) => Value(validated(c), Owned)
+              other => other
             },
           )
-        } else if deny {
-          raise unknown_field_error(e.0, fields)
-        }
       }
-      guard idx is Some(i) else { raise missing_field_error(tag) }
-      match payload {
-        Some(p) => (i, Payload(p))
-        None => (i, NoPayload)
-      }
+    } else if deny {
+      raise unknown_field_error(key, fields)
     }
-    Elements(s) => {
-      let t = s.next()
-      let (i, v) = de_enum(t, name, variants)
-      variant_unit(v)
-      let c = s.next()
-      s.finish()
-      (i, Payload(c))
-    }
+  }
+  guard idx is Some(i) else { raise missing_field_error(tag) }
+  match result {
+    Some(r) => r
+    None => decode(i, NoPayload)
   }
 }

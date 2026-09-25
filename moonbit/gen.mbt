@@ -161,7 +161,9 @@ fn Gen::de_expr(self : Gen, id : @typify.TypeId, d : String) -> String {
     Vec(inner) | Set(inner) => "@typify_rt.de_vec(\{d}, \{self.de_fn(inner)})"
     Map(k, v) => "@typify_rt.de_map(\{d}, \{self.de_fn(k)}, \{self.de_fn(v)})"
     Tuple(ids) => {
-      let elems = ids.mapi((i, t) => "let t\{i} = \{self.de_fn(t)}(s.next())")
+      let elems = ids.mapi((i, t) => {
+        "let t\{i} = \{self.de_expr(t, "s.next()")}"
+      })
       let result = match ids {
         [_] => "t0"
         _ => "(\{ids.mapi((i, _) => "t\{i}").join(", ")})"
@@ -169,8 +171,19 @@ fn Gen::de_expr(self : Gen, id : @typify.TypeId, d : String) -> String {
       "{ let s = @typify_rt.de_tuple(\{d}, \{ids.length()}); \{elems.join("; ")}; s.finish(); \{result} }"
     }
     Array(inner, n) =>
-      "{ let s = @typify_rt.de_fixed(\{d}, \{n}); let xs = []; for _ in 0..<\{n} { xs.push(\{self.de_fn(inner)}(s.next())) }; s.finish(); FixedArray::from_array(xs) }"
-    _ => "\{self.de_fn(id)}(\{d})"
+      "{ let s = @typify_rt.de_fixed(\{d}, \{n}); let xs = []; for _ in 0..<\{n} { xs.push(\{self.de_expr(inner, "s.next()")}) }; s.finish(); FixedArray::from_array(xs) }"
+    Box(inner) => self.de_expr(inner, d)
+    Native(n) if native_kind(n) is NOption(p) =>
+      "@typify_rt.de_option(\{d}, \{self.de_fn(p)})"
+    _ => {
+      let f = self.de_fn(id)
+      // A lambda must be parenthesized to be applied.
+      if f.has_prefix("(") {
+        "(\{f})(\{d})"
+      } else {
+        "\{f}(\{d})"
+      }
+    }
   }
 }
 
@@ -272,7 +285,18 @@ fn Gen::ser_expr(self : Gen, id : @typify.TypeId, v : String) -> String {
         }
       }
     Array(inner, _) => "@typify_rt.ser_vec(\{v}[:], \{self.ser_fn(inner)})"
-    _ => "\{self.ser_callee(id)}(\{v})"
+    Box(inner) => self.ser_expr(inner, v)
+    Native(n) if native_kind(n) is NOption(p) =>
+      "@typify_rt.ser_option(\{v}, \{self.ser_fn(p)})"
+    _ => {
+      let f = self.ser_callee(id)
+      // A lambda must be parenthesized to be applied.
+      if f.has_prefix("(") {
+        "(\{f})(\{v})"
+      } else {
+        "\{f}(\{v})"
+      }
+    }
   }
 }
 

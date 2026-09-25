@@ -25,10 +25,10 @@ pub struct FlatBuf {
 }
 
 ///|
-priv struct FlatEntry {
-  key : String
-  value : @serde_json.Content
-  mut taken : Bool
+pub struct FlatEntry {
+  priv key : String
+  priv value : @serde_json.Content
+  priv mut taken : Bool
 }
 
 ///|
@@ -574,6 +574,19 @@ pub(all) enum StructInput {
   /// Keys (already decoded strings) and value deserializers, in order.
   Entries(Array[(String, De)])
   Elements(SeqReader)
+  /// The recognised entries of a flattened struct's buffer. serde's
+  /// `FlatStructAccess` claims each entry right before decoding it, so the
+  /// entries after a failing value stay available to later flattened
+  /// fields: consumers call `claim_entry` before decoding each value.
+  Claiming(Array[FlatEntry])
+}
+
+///|
+/// Claim a buffered entry (see `StructInput::Claiming`) and return its key
+/// and value deserializer.
+pub fn claim_entry(e : FlatEntry) -> (String, De) {
+  e.taken = true
+  (e.key, Value(e.value, Owned))
 }
 
 ///|
@@ -631,15 +644,9 @@ pub fn de_struct(
           .map(e => (e.key, De::Value(e.value, Borrowed))),
         )
       } else {
-        // FlatStructAccess: claim recognised fields before decoding.
-        let out = []
-        for e in buf.entries {
-          if !e.taken && fields.contains(e.key) {
-            e.taken = true
-            out.push((e.key, De::Value(e.value, Owned)))
-          }
-        }
-        Entries(out)
+        // FlatStructAccess: recognised fields, each claimed just before
+        // its value is decoded (see `StructInput::Claiming`).
+        Claiming(buf.entries.filter(e => !e.taken && fields.contains(e.key)))
       }
     Missing(n) => raise missing_error(n)
   }

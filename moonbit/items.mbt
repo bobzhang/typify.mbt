@@ -432,10 +432,13 @@ fn Gen::variant_decl(
   match v.details {
     Simple => ctor
     Item(t) => "\{ctor}(\{self.mbt_type(t)})"
-    Tuple(ts) => "\{ctor}(\{ts.map(t => self.mbt_type(t)).join(", ")})"
+    Tuple(ts) => ctor_app(ctor, ts.map(t => self.mbt_type(t)))
     Struct(props) => {
       let labels = self.fields.get("\{id.0}/\{i}").unwrap()
-      "\{ctor}(\{props.mapi((j, p) => "\{labels[j]}~ : \{self.mbt_type(p.type_id)}").join(", ")})"
+      ctor_app(
+        ctor,
+        props.mapi((j, p) => "\{labels[j]}~ : \{self.mbt_type(p.type_id)}"),
+      )
     }
   }
 }
@@ -460,7 +463,7 @@ fn Gen::variant_payload_decode(
     Simple => "{ @typify_rt.de_unit(\{d}); \{ctor} }"
     Item(t) => "\{ctor}(\{self.de_expr(t, d)})"
     Tuple(ts) => {
-      let elems = ts.mapi((j, t) => "let t\{j} = \{self.de_fn(t)}(s.next())")
+      let elems = ts.mapi((j, t) => "let t\{j} = \{self.de_expr(t, "s.next()")}")
       let expecting = str_lit(
         "tuple variant \{enum_name}::\{v.ident_name.unwrap()}",
       )
@@ -468,7 +471,7 @@ fn Gen::variant_payload_decode(
     }
     Struct(props) => {
       let labels = self.fields.get("\{id.0}/\{i}").unwrap()
-      let build = "\{ctor}(\{labels.mapi((j, l) => "\{l}=v\{j}").join(", ")})"
+      let build = ctor_app(ctor, labels.mapi((j, l) => "\{l}=v\{j}"))
       let code = self.struct_decode(
         out,
         enum_name + v.ident_name.unwrap(),
@@ -514,10 +517,10 @@ fn Gen::variant_pattern(
   match v.details {
     Simple => ctor
     Item(_) => "\{ctor}(p0)"
-    Tuple(ts) => "\{ctor}(\{ts.mapi((j, _) => "p\{j}").join(", ")})"
+    Tuple(ts) => ctor_app(ctor, ts.mapi((j, _) => "p\{j}"))
     Struct(props) => {
       let labels = self.fields.get("\{id.0}/\{i}").unwrap()
-      "\{ctor}(\{props.mapi((j, _) => "\{labels[j]}=p\{j}").join(", ")})"
+      ctor_app(ctor, props.mapi((j, _) => "\{labels[j]}=p\{j}"))
     }
   }
 }
@@ -629,11 +632,10 @@ fn Gen::output_enum(
         arms.write_string("  \{i} => \{indent(code, 2).trim_start()}\n")
       }
       (
-        $|let (idx, payload) = @typify_rt.de_adjacent(d, \{str_lit(d.name)}, \{str_lit(tag)}, \{str_lit(content)}, \{str_array(raw_names)}, \{d.deny_unknown_fields})
-        $|match idx {
+        $|@typify_rt.de_adjacent(d, \{str_lit(d.name)}, \{str_lit(tag)}, \{str_lit(content)}, \{str_array(raw_names)}, \{d.deny_unknown_fields}, (idx, payload) => match idx {
         $|\{arms.to_string().trim_end()}
         $|  _ => abort("unreachable")
-        $|}
+        $|})
       )
     }
     Untagged => {
@@ -793,4 +795,15 @@ pub fn generate(space : @typify.TypeSpace) -> String {
 /// The MoonBit name generated for a named type.
 pub fn type_name_of(space : @typify.TypeSpace, id : @typify.TypeId) -> String {
   Gen::new(space).type_name(id)
+}
+
+///|
+/// A constructor with arguments; one without fields is a constant
+/// constructor (a Rust `V {}` or `V()` variant).
+fn ctor_app(ctor : String, args : Array[String]) -> String {
+  if args.is_empty() {
+    ctor
+  } else {
+    "\{ctor}(\{args.join(", ")})"
+  }
 }
