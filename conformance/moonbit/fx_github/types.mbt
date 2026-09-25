@@ -8191,7 +8191,7 @@ pub(all) struct MemberAdded {
   changes : MemberAddedChanges?
   installation : InstallationLite?
   /// The user that was added.
-  member : User
+  member_ : User
   repository : Repository
   sender : User
 } derive(Debug, Eq)
@@ -8222,7 +8222,7 @@ pub impl @typify_rt.Serde for MemberAdded with fn deserialize(d) {
   let v3 = if f3 is Some(v) { v } else { User::deserialize(r.absent(3)) }
   let v4 = if f4 is Some(v) { v } else { Repository::deserialize(r.absent(4)) }
   let v5 = if f5 is Some(v) { v } else { User::deserialize(r.absent(5)) }
-  MemberAdded::{ action: v0, changes: v1, installation: v2, member: v3, repository: v4, sender: v5 }
+  MemberAdded::{ action: v0, changes: v1, installation: v2, member_: v3, repository: v4, sender: v5 }
 }
 
 ///|
@@ -8235,7 +8235,7 @@ pub impl @typify_rt.Serde for MemberAdded with fn serialize(self) {
   if self.installation is Some(_) {
     o.field("installation", @typify_rt.ser_option(self.installation, InstallationLite::serialize))
   }
-  o.field("member", User::serialize(self.member))
+  o.field("member", User::serialize(self.member_))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
   o.build()
@@ -8258,7 +8258,7 @@ pub(all) struct MemberEdited {
   changes : MemberEditedChanges
   installation : InstallationLite?
   /// The user who's permissions are changed.
-  member : User
+  member_ : User
   repository : Repository
   sender : User
 } derive(Debug, Eq)
@@ -8289,7 +8289,7 @@ pub impl @typify_rt.Serde for MemberEdited with fn deserialize(d) {
   let v3 = if f3 is Some(v) { v } else { User::deserialize(r.absent(3)) }
   let v4 = if f4 is Some(v) { v } else { Repository::deserialize(r.absent(4)) }
   let v5 = if f5 is Some(v) { v } else { User::deserialize(r.absent(5)) }
-  MemberEdited::{ action: v0, changes: v1, installation: v2, member: v3, repository: v4, sender: v5 }
+  MemberEdited::{ action: v0, changes: v1, installation: v2, member_: v3, repository: v4, sender: v5 }
 }
 
 ///|
@@ -8300,7 +8300,7 @@ pub impl @typify_rt.Serde for MemberEdited with fn serialize(self) {
   if self.installation is Some(_) {
     o.field("installation", @typify_rt.ser_option(self.installation, InstallationLite::serialize))
   }
-  o.field("member", User::serialize(self.member))
+  o.field("member", User::serialize(self.member_))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
   o.build()
@@ -8322,7 +8322,7 @@ pub(all) struct MemberRemoved {
   action : MemberRemovedAction
   installation : InstallationLite?
   /// The user that was removed.
-  member : User
+  member_ : User
   repository : Repository
   sender : User
 } derive(Debug, Eq)
@@ -8350,7 +8350,7 @@ pub impl @typify_rt.Serde for MemberRemoved with fn deserialize(d) {
   let v2 = if f2 is Some(v) { v } else { User::deserialize(r.absent(2)) }
   let v3 = if f3 is Some(v) { v } else { Repository::deserialize(r.absent(3)) }
   let v4 = if f4 is Some(v) { v } else { User::deserialize(r.absent(4)) }
-  MemberRemoved::{ action: v0, installation: v1, member: v2, repository: v3, sender: v4 }
+  MemberRemoved::{ action: v0, installation: v1, member_: v2, repository: v3, sender: v4 }
 }
 
 ///|
@@ -8360,7 +8360,7 @@ pub impl @typify_rt.Serde for MemberRemoved with fn serialize(self) {
   if self.installation is Some(_) {
     o.field("installation", @typify_rt.ser_option(self.installation, InstallationLite::serialize))
   }
-  o.field("member", User::serialize(self.member))
+  o.field("member", User::serialize(self.member_))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
   o.build()
@@ -8496,7 +8496,7 @@ pub(all) struct MembershipAdded {
   action : MembershipAddedAction
   installation : InstallationLite?
   /// The [user](https://docs.github.com/en/rest/reference/users) that was added or removed.
-  member : User
+  member_ : User
   organization : Organization
   /// The scope of the membership. Currently, can only be `team`.
   scope : MembershipAddedScope
@@ -8534,7 +8534,7 @@ pub impl @typify_rt.Serde for MembershipAdded with fn deserialize(d) {
   let v4 = if f4 is Some(v) { v } else { MembershipAddedScope::deserialize(r.absent(4)) }
   let v5 = if f5 is Some(v) { v } else { User::deserialize(r.absent(5)) }
   let v6 = if f6 is Some(v) { v } else { Team::deserialize(r.absent(6)) }
-  MembershipAdded::{ action: v0, installation: v1, member: v2, organization: v3, scope: v4, sender: v5, team: v6 }
+  MembershipAdded::{ action: v0, installation: v1, member_: v2, organization: v3, scope: v4, sender: v5, team: v6 }
 }
 
 ///|
@@ -8544,7 +8544,7 @@ pub impl @typify_rt.Serde for MembershipAdded with fn serialize(self) {
   if self.installation is Some(_) {
     o.field("installation", @typify_rt.ser_option(self.installation, InstallationLite::serialize))
   }
-  o.field("member", User::serialize(self.member))
+  o.field("member", User::serialize(self.member_))
   o.field("organization", Organization::serialize(self.organization))
   o.field("scope", MembershipAddedScope::serialize(self.scope))
   o.field("sender", User::serialize(self.sender))
@@ -8568,7 +8568,7 @@ pub(all) struct MembershipRemoved {
   action : MembershipRemovedAction
   installation : InstallationLite?
   /// The [user](https://docs.github.com/en/rest/reference/users) that was added or removed.
-  member : User
+  member_ : User
   organization : Organization
   /// The scope of the membership. Currently, can only be `team`.
   scope : MembershipRemovedScope
@@ -8606,7 +8606,7 @@ pub impl @typify_rt.Serde for MembershipRemoved with fn deserialize(d) {
   let v4 = if f4 is Some(v) { v } else { MembershipRemovedScope::deserialize(r.absent(4)) }
   let v5 = if f5 is Some(v) { v } else { User::deserialize(r.absent(5)) }
   let v6 = if f6 is Some(v) { v } else { MembershipRemovedTeam::deserialize(r.absent(6)) }
-  MembershipRemoved::{ action: v0, installation: v1, member: v2, organization: v3, scope: v4, sender: v5, team: v6 }
+  MembershipRemoved::{ action: v0, installation: v1, member_: v2, organization: v3, scope: v4, sender: v5, team: v6 }
 }
 
 ///|
@@ -8616,7 +8616,7 @@ pub impl @typify_rt.Serde for MembershipRemoved with fn serialize(self) {
   if self.installation is Some(_) {
     o.field("installation", @typify_rt.ser_option(self.installation, InstallationLite::serialize))
   }
-  o.field("member", User::serialize(self.member))
+  o.field("member", User::serialize(self.member_))
   o.field("organization", Organization::serialize(self.organization))
   o.field("scope", MembershipRemovedScope::serialize(self.scope))
   o.field("sender", User::serialize(self.sender))
@@ -55003,7 +55003,7 @@ let issues_unlocked_issue_active_lock_reason_values : Array[@typify_rt.Content] 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
 pub fn IssuesUnlockedIssueActiveLockReason::new(value : Unit) -> IssuesUnlockedIssueActiveLockReason raise @typify_rt.ConversionError {
-  let serialized = (@typify_rt.ser_unit()) catch { _ => @typify_rt.ser_null() }
+  let serialized = @typify_rt.content_or_null(() => @typify_rt.ser_unit())
   if !@typify_rt.contains_value(issues_unlocked_issue_active_lock_reason_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -60724,7 +60724,7 @@ pub(all) struct PackagePublishedPackage {
   html_url : String
   id : Int64
   name : String
-  namespace : String
+  namespace_ : String
   owner : User
   package_type : String
   package_version : PackagePublishedPackagePackageVersion
@@ -60776,7 +60776,7 @@ pub impl @typify_rt.Serde for PackagePublishedPackage with fn deserialize(d) {
   let v9 = if f9 is Some(v) { v } else { PackagePublishedPackagePackageVersion::deserialize(r.absent(9)) }
   let v10 = if f10 is Some(v) { v } else { PackagePublishedPackageRegistry::deserialize(r.absent(10)) }
   let v11 = if f11 is Some(v) { v } else { @typify_rt.de_string(r.absent(11)) }
-  PackagePublishedPackage::{ created_at: v0, description: v1, ecosystem: v2, html_url: v3, id: v4, name: v5, namespace: v6, owner: v7, package_type: v8, package_version: v9, registry: v10, updated_at: v11 }
+  PackagePublishedPackage::{ created_at: v0, description: v1, ecosystem: v2, html_url: v3, id: v4, name: v5, namespace_: v6, owner: v7, package_type: v8, package_version: v9, registry: v10, updated_at: v11 }
 }
 
 ///|
@@ -60788,7 +60788,7 @@ pub impl @typify_rt.Serde for PackagePublishedPackage with fn serialize(self) {
   o.field("html_url", @typify_rt.ser_string(self.html_url))
   o.field("id", @typify_rt.ser_i64(self.id))
   o.field("name", @typify_rt.ser_string(self.name))
-  o.field("namespace", @typify_rt.ser_string(self.namespace))
+  o.field("namespace", @typify_rt.ser_string(self.namespace_))
   o.field("owner", User::serialize(self.owner))
   o.field("package_type", @typify_rt.ser_string(self.package_type))
   o.field("package_version", PackagePublishedPackagePackageVersion::serialize(self.package_version))
@@ -61253,7 +61253,7 @@ pub(all) struct PackageUpdatedPackage {
   html_url : String
   id : Int64
   name : String
-  namespace : String
+  namespace_ : String
   owner : User
   package_type : String
   package_version : PackageUpdatedPackagePackageVersion
@@ -61305,7 +61305,7 @@ pub impl @typify_rt.Serde for PackageUpdatedPackage with fn deserialize(d) {
   let v9 = if f9 is Some(v) { v } else { PackageUpdatedPackagePackageVersion::deserialize(r.absent(9)) }
   let v10 = if f10 is Some(v) { v } else { PackageUpdatedPackageRegistry::deserialize(r.absent(10)) }
   let v11 = if f11 is Some(v) { v } else { @typify_rt.de_string(r.absent(11)) }
-  PackageUpdatedPackage::{ created_at: v0, description: v1, ecosystem: v2, html_url: v3, id: v4, name: v5, namespace: v6, owner: v7, package_type: v8, package_version: v9, registry: v10, updated_at: v11 }
+  PackageUpdatedPackage::{ created_at: v0, description: v1, ecosystem: v2, html_url: v3, id: v4, name: v5, namespace_: v6, owner: v7, package_type: v8, package_version: v9, registry: v10, updated_at: v11 }
 }
 
 ///|
@@ -61317,7 +61317,7 @@ pub impl @typify_rt.Serde for PackageUpdatedPackage with fn serialize(self) {
   o.field("html_url", @typify_rt.ser_string(self.html_url))
   o.field("id", @typify_rt.ser_i64(self.id))
   o.field("name", @typify_rt.ser_string(self.name))
-  o.field("namespace", @typify_rt.ser_string(self.namespace))
+  o.field("namespace", @typify_rt.ser_string(self.namespace_))
   o.field("owner", User::serialize(self.owner))
   o.field("package_type", @typify_rt.ser_string(self.package_type))
   o.field("package_version", PackageUpdatedPackagePackageVersion::serialize(self.package_version))
@@ -66375,7 +66375,7 @@ let pull_request_opened_pull_request_active_lock_reason_values : Array[@typify_r
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
 pub fn PullRequestOpenedPullRequestActiveLockReason::new(value : Unit) -> PullRequestOpenedPullRequestActiveLockReason raise @typify_rt.ConversionError {
-  let serialized = (@typify_rt.ser_unit()) catch { _ => @typify_rt.ser_null() }
+  let serialized = @typify_rt.content_or_null(() => @typify_rt.ser_unit())
   if !@typify_rt.contains_value(pull_request_opened_pull_request_active_lock_reason_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -80519,7 +80519,7 @@ pub impl ToJson for StatusEventBranchesItemCommit with fn to_json(self) {
 pub(all) struct StatusEventBranchesItem {
   commit : StatusEventBranchesItemCommit
   name : String
-  protected : Bool
+  protected_ : Bool
 } derive(Debug, Eq)
 
 ///|
@@ -80539,7 +80539,7 @@ pub impl @typify_rt.Serde for StatusEventBranchesItem with fn deserialize(d) {
   let v0 = if f0 is Some(v) { v } else { StatusEventBranchesItemCommit::deserialize(r.absent(0)) }
   let v1 = if f1 is Some(v) { v } else { @typify_rt.de_string(r.absent(1)) }
   let v2 = if f2 is Some(v) { v } else { @typify_rt.de_bool(r.absent(2)) }
-  StatusEventBranchesItem::{ commit: v0, name: v1, protected: v2 }
+  StatusEventBranchesItem::{ commit: v0, name: v1, protected_: v2 }
 }
 
 ///|
@@ -80547,7 +80547,7 @@ pub impl @typify_rt.Serde for StatusEventBranchesItem with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("commit", StatusEventBranchesItemCommit::serialize(self.commit))
   o.field("name", @typify_rt.ser_string(self.name))
-  o.field("protected", @typify_rt.ser_bool(self.protected))
+  o.field("protected", @typify_rt.ser_bool(self.protected_))
   o.build()
 }
 
@@ -83712,7 +83712,7 @@ let workflow_job_started_workflow_job_conclusion_values : Array[@typify_rt.Conte
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
 pub fn WorkflowJobStartedWorkflowJobConclusion::new(value : Unit) -> WorkflowJobStartedWorkflowJobConclusion raise @typify_rt.ConversionError {
-  let serialized = (@typify_rt.ser_unit()) catch { _ => @typify_rt.ser_null() }
+  let serialized = @typify_rt.content_or_null(() => @typify_rt.ser_unit())
   if !@typify_rt.contains_value(workflow_job_started_workflow_job_conclusion_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }

@@ -12,6 +12,11 @@ let moonbit_keywords : Array[String] = [
   "do", "final", "macro", "override", "typeof", "virtual", "yield", "local", "method",
   "alias", "assert", "package", "recur", "extend", "lazy", "constructor", "self",
   "Self", "enumview", "var",
+  // Reserved for future use (moonc's reserved-word table).
+   "assume", "noasync", "finally", "dynrec", "dynobj", "dynclass", "unreachable",
+  "threadlocal", "resume", "orelse", "opaque", "export", "comptime", "anytype", "anyframe",
+  "volatile", "atomic", "sealed", "protected", "mixin", "include", "void", "upcast",
+  "namespace", "member", "inherit", "downcast", "define", "isnot",
 ]
 
 ///|

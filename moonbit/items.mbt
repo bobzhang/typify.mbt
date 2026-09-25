@@ -184,14 +184,6 @@ fn Gen::struct_decode(
 }
 
 ///|
-fn known_name(p : @typify.StructProperty) -> String {
-  match json_name(p) {
-    Some(n) => n
-    None => p.name
-  }
-}
-
-///|
 /// Serialization of struct fields into an `ObjectBuilder` named `o`;
 /// `access(i)` is the expression for property `i`.
 fn Gen::struct_encode(
@@ -356,7 +348,7 @@ fn Gen::output_newtype(
         ),
       )
       let is_enum = d.constraints is EnumValue(_)
-      "let serialized = (\{self.ser_expr(d.type_id, "value")}) catch { _ => @typify_rt.ser_null() }\nif \{if is_enum { "!" } else { "" }}@typify_rt.contains_value(\{allowed}, serialized) {\n  raise @typify_rt.ConversionError(\"invalid value\")\n}\n"
+      "let serialized = @typify_rt.content_or_null(() => \{self.ser_expr(d.type_id, "value")})\nif \{if is_enum { "!" } else { "" }}@typify_rt.contains_value(\{allowed}, serialized) {\n  raise @typify_rt.ConversionError(\"invalid value\")\n}\n"
     }
     String(max_length~, min_length~, pattern~) => {
       let buf = StringBuilder()
@@ -795,6 +787,21 @@ pub fn generate(space : @typify.TypeSpace) -> String {
   let gen = Gen::new(space)
   let out = StringBuilder()
   out.write_string(header)
+  // Rust types without a MoonBit counterpart (conversions, replacements,
+  // `x-rust-type`) are represented as `Json`.
+  let unknown = []
+  for pair in space.entries() {
+    if pair.1.details is Native(n) &&
+      native_kind(n) is NUnknown(name) &&
+      !unknown.contains(name) {
+      unknown.push(name)
+    }
+  }
+  if !unknown.is_empty() {
+    out.write_string(
+      "//\n// Represented as `Json` (no MoonBit equivalent): \{unknown.join(", ")}\n",
+    )
+  }
   out.write_string("\n")
   for pair in space.entries() {
     let (id, e) = pair

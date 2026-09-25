@@ -19,7 +19,7 @@ priv enum IntKind {
   U32
   I64
   U64
-  NonZero(IntKind, String)
+  NonZero(IntKind)
 }
 
 ///|
@@ -33,10 +33,10 @@ fn int_kind(name : String) -> IntKind {
     "u32" => U32
     "i64" => I64
     "u64" => U64
-    "::std::num::NonZeroU8" => NonZero(U8, "u8")
-    "::std::num::NonZeroU16" => NonZero(U16, "u16")
-    "::std::num::NonZeroU32" => NonZero(U32, "u32")
-    "::std::num::NonZeroU64" => NonZero(U64, "u64")
+    "::std::num::NonZeroU8" => NonZero(U8)
+    "::std::num::NonZeroU16" => NonZero(U16)
+    "::std::num::NonZeroU32" => NonZero(U32)
+    "::std::num::NonZeroU64" => NonZero(U64)
     _ => I64
   }
 }
@@ -51,7 +51,7 @@ fn IntKind::mbt(self : IntKind) -> String {
     U32 => "UInt"
     I64 => "Int64"
     U64 => "UInt64"
-    NonZero(k, _) => k.mbt()
+    NonZero(k) => k.mbt()
   }
 }
 

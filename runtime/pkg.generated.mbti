@@ -10,7 +10,13 @@ import {
 // Values
 pub fn adjacent(String, String, String, @serde_json.Content) -> @serde_json.Content
 
+pub fn adjacent_content(VariantInput, String) -> De
+
+pub fn adjacent_unit(VariantInput, String) -> Unit raise DeError
+
 pub fn char_count(String) -> Int
+
+pub fn claim_entry(FlatEntry) -> (String, De)
 
 pub fn classify_number(Double, String?) -> @serde_json.Number
 
@@ -18,9 +24,11 @@ pub fn compare_keys(String, String) -> Int
 
 pub fn contains_value(Array[@serde_json.Content], @serde_json.Content) -> Bool
 
+pub fn content_or_null(() -> @serde_json.Content raise SerError) -> @serde_json.Content
+
 pub fn content_to_json(@serde_json.Content) -> Json raise SerError
 
-pub fn de_adjacent(De, String, String, String, Array[String], Bool) -> (Int, VariantInput) raise DeError
+pub fn[T] de_adjacent(De, String, String, String, Array[String], Bool, (Int, VariantInput) -> T raise DeError) -> T raise DeError
 
 pub fn de_bool(De) -> Bool raise DeError
 
@@ -254,6 +262,10 @@ pub fn FlatBuf::deny_leftovers(Self) -> Unit raise DeError
 pub fn FlatBuf::new() -> Self
 pub fn FlatBuf::push(Self, String, De) -> Unit raise DeError
 
+pub struct FlatEntry {
+  // private fields
+}
+
 pub(all) enum IpAddr {
   V4(Ipv4Addr)
   V6(Ipv6Addr)
@@ -319,6 +331,7 @@ pub fn SeqReader::next_opt(Self) -> De?
 pub(all) enum StructInput {
   Entries(Array[(String, De)])
   Elements(SeqReader)
+  Claiming(Array[FlatEntry])
 }
 
 pub struct Uuid {

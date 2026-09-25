@@ -1,0 +1,41 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/examples/veggies"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) struct Veggie {
+  veggie_like : Bool
+  veggie_name : String
+} derive(Eq, @debug.Debug)
+pub fn Veggie::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Veggie::from_json(Json) -> Self raise @runtime.DeError
+pub fn Veggie::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Veggie::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Veggie::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Veggie
+pub impl ToJson for Veggie
+
+pub(all) struct Veggies {
+  fruits : Array[String]
+  vegetables : Array[Veggie]
+} derive(Eq, @debug.Debug)
+pub fn Veggies::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Veggies::from_json(Json) -> Self raise @runtime.DeError
+pub fn Veggies::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Veggies::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Veggies::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Veggies
+pub impl ToJson for Veggies
+
+// Type aliases
+
+// Traits

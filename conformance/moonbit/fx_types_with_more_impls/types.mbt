@@ -57,7 +57,7 @@ let sub10_primes_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
 pub fn Sub10Primes::new(value : UInt) -> Sub10Primes raise @typify_rt.ConversionError {
-  let serialized = (@typify_rt.ser_uint(value)) catch { _ => @typify_rt.ser_null() }
+  let serialized = @typify_rt.content_or_null(() => @typify_rt.ser_uint(value))
   if !@typify_rt.contains_value(sub10_primes_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }

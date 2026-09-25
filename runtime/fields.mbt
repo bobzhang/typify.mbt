@@ -14,7 +14,7 @@ pub struct Fields {
 
 ///|
 pub fn Fields::new(names : Array[String]) -> Fields {
-  let index = Map::new(capacity=names.length())
+  let index = Map([], capacity=names.length())
   for i, n in names {
     // serde matches the first field with a given name.
     if !index.contains(n) {

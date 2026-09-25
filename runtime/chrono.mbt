@@ -6,7 +6,6 @@
 priv enum ChronoErr {
   OutOfRange
   Impossible
-  NotEnough
   Invalid
   TooShort
   TooLong
@@ -23,7 +22,6 @@ fn ChronoErr::message(self : ChronoErr) -> String {
   match self {
     OutOfRange => "input is out of range"
     Impossible => "no possible date and time matching input"
-    NotEnough => "input is not enough for unique date and time"
     Invalid => "input contains invalid characters"
     TooShort => "premature end of input"
     TooLong => "trailing input"
@@ -114,7 +112,7 @@ fn Scan::number(self : Scan, min : Int, max : Int) -> Int64 raise ChronoError {
       return n
     }
     let d = (c - 0x30).to_int64()
-    if n > (@int64.max_value - d) / 10L {
+    if n > (9223372036854775807L - d) / 10L {
       raise ChronoError(OutOfRange)
     }
     n = n * 10L + d
@@ -431,8 +429,8 @@ fn parse_datetime(s : String) -> DateTimeUtc raise ChronoError {
     raise ChronoError(OutOfRange)
   }
   // `checked_sub_offset`
-  let local = hour * 3600 + minute * 60 + second
-  let utc = local - offset
+  let local_secs = hour * 3600 + minute * 60 + second
+  let utc = local_secs - offset
   let date = if utc < 0 {
     date.pred()
   } else if utc >= 86400 {

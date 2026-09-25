@@ -228,3 +228,12 @@ pub fn ser_json(j : Json) -> Content {
 pub fn to_json_string(c : Content) -> String {
   c.to_string()
 }
+
+///|
+/// The serialized value, or `null` if serialization fails (used to compare
+/// a value against a schema's allowed or denied values).
+pub fn content_or_null(f : () -> Content raise SerError) -> Content {
+  f() catch {
+    _ => Null
+  }
+}

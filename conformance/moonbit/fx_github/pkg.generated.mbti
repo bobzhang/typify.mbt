@@ -10362,7 +10362,7 @@ pub(all) struct MemberAdded {
   action : MemberAddedAction
   changes : MemberAddedChanges?
   installation : InstallationLite?
-  member : User
+  member_ : User
   repository : Repository
   sender : User
 } derive(Eq, @debug.Debug)
@@ -10429,7 +10429,7 @@ pub(all) struct MemberEdited {
   action : MemberEditedAction
   changes : MemberEditedChanges
   installation : InstallationLite?
-  member : User
+  member_ : User
   repository : Repository
   sender : User
 } derive(Eq, @debug.Debug)
@@ -10493,7 +10493,7 @@ pub impl ToJson for MemberEvent
 pub(all) struct MemberRemoved {
   action : MemberRemovedAction
   installation : InstallationLite?
-  member : User
+  member_ : User
   repository : Repository
   sender : User
 } derive(Eq, @debug.Debug)
@@ -10537,7 +10537,7 @@ pub impl ToJson for Membership
 pub(all) struct MembershipAdded {
   action : MembershipAddedAction
   installation : InstallationLite?
-  member : User
+  member_ : User
   organization : Organization
   scope : MembershipAddedScope
   sender : User
@@ -10594,7 +10594,7 @@ pub impl ToJson for MembershipEvent
 pub(all) struct MembershipRemoved {
   action : MembershipRemovedAction
   installation : InstallationLite?
-  member : User
+  member_ : User
   organization : Organization
   scope : MembershipRemovedScope
   sender : User
@@ -11429,7 +11429,7 @@ pub(all) struct PackagePublishedPackage {
   html_url : String
   id : Int64
   name : String
-  namespace : String
+  namespace_ : String
   owner : User
   package_type : String
   package_version : PackagePublishedPackagePackageVersion
@@ -11570,7 +11570,7 @@ pub(all) struct PackageUpdatedPackage {
   html_url : String
   id : Int64
   name : String
-  namespace : String
+  namespace_ : String
   owner : User
   package_type : String
   package_version : PackageUpdatedPackagePackageVersion
@@ -18122,7 +18122,7 @@ pub impl ToJson for StatusEvent
 pub(all) struct StatusEventBranchesItem {
   commit : StatusEventBranchesItemCommit
   name : String
-  protected : Bool
+  protected_ : Bool
 } derive(Eq, @debug.Debug)
 pub fn StatusEventBranchesItem::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn StatusEventBranchesItem::from_json(Json) -> Self raise @runtime.DeError

@@ -2,6 +2,8 @@
 //
 // Requires in moon.pkg:
 //   import { "bobzhang/typify/runtime" @typify_rt }
+//
+// Represented as `Json` (no MoonBit equivalent): ColorValue, MyEnum
 
 ///|
 /// `AggregateTransform`
@@ -12921,7 +12923,7 @@ let signal_name_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
 pub fn SignalName::new(value : String) -> SignalName raise @typify_rt.ConversionError {
-  let serialized = (@typify_rt.ser_string(value)) catch { _ => @typify_rt.ser_null() }
+  let serialized = @typify_rt.content_or_null(() => @typify_rt.ser_string(value))
   if @typify_rt.contains_value(signal_name_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -26200,7 +26202,7 @@ let bind_variant3_input_values : Array[@typify_rt.Content] = @typify_rt.enum_val
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
 pub fn BindVariant3Input::new(value : String) -> BindVariant3Input raise @typify_rt.ConversionError {
-  let serialized = (@typify_rt.ser_string(value)) catch { _ => @typify_rt.ser_null() }
+  let serialized = @typify_rt.content_or_null(() => @typify_rt.ser_string(value))
   if @typify_rt.contains_value(bind_variant3_input_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }

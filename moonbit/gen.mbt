@@ -124,10 +124,10 @@ fn Gen::de_fn(self : Gen, id : @typify.TypeId) -> String {
         U32 => "@typify_rt.de_u32"
         I64 => "@typify_rt.de_i64"
         U64 => "@typify_rt.de_u64"
-        NonZero(U8, _) => "@typify_rt.de_nonzero_u8"
-        NonZero(U16, _) => "@typify_rt.de_nonzero_u16"
-        NonZero(U32, _) => "@typify_rt.de_nonzero_u32"
-        NonZero(_, _) => "@typify_rt.de_nonzero_u64"
+        NonZero(U8) => "@typify_rt.de_nonzero_u8"
+        NonZero(U16) => "@typify_rt.de_nonzero_u16"
+        NonZero(U32) => "@typify_rt.de_nonzero_u32"
+        NonZero(_) => "@typify_rt.de_nonzero_u64"
       }
     Native(n) =>
       match native_kind(n) {
@@ -225,7 +225,7 @@ fn Gen::ser_callee(self : Gen, id : @typify.TypeId) -> String {
         U32 => "@typify_rt.ser_uint"
         I64 => "@typify_rt.ser_i64"
         U64 => "@typify_rt.ser_u64"
-        NonZero(k, _) =>
+        NonZero(k) =>
           match k {
             U8 => "@typify_rt.ser_byte"
             U16 => "@typify_rt.ser_u16"

@@ -162,7 +162,7 @@ let block_size_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
 pub fn BlockSize::new(value : Int64) -> BlockSize raise @typify_rt.ConversionError {
-  let serialized = (@typify_rt.ser_i64(value)) catch { _ => @typify_rt.ser_null() }
+  let serialized = @typify_rt.content_or_null(() => @typify_rt.ser_i64(value))
   if !@typify_rt.contains_value(block_size_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -571,7 +571,7 @@ let not_block_size_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
 pub fn NotBlockSize::new(value : Double) -> NotBlockSize raise @typify_rt.ConversionError {
-  let serialized = (@typify_rt.ser_f64(value)) catch { _ => @typify_rt.ser_null() }
+  let serialized = @typify_rt.content_or_null(() => @typify_rt.ser_f64(value))
   if @typify_rt.contains_value(not_block_size_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -1479,7 +1479,7 @@ let empty_object_prop_values : Array[@typify_rt.Content] = @typify_rt.enum_value
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
 pub fn EmptyObjectProp::new(value : Map[String, Json]) -> EmptyObjectProp raise @typify_rt.ConversionError {
-  let serialized = (@typify_rt.ser_sorted_map(value, @typify_rt.compare_keys, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Json) => @typify_rt.ser_json(v))) catch { _ => @typify_rt.ser_null() }
+  let serialized = @typify_rt.content_or_null(() => @typify_rt.ser_sorted_map(value, @typify_rt.compare_keys, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Json) => @typify_rt.ser_json(v)))
   if !@typify_rt.contains_value(empty_object_prop_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }

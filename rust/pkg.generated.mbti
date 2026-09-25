@@ -28,7 +28,7 @@ pub fn lit_str(String) -> Tokens
 
 pub fn lit_usize(Int) -> Tokens
 
-pub fn output_value(@typify.TypeSpace, @typify.TypeEntry, @serde_json.Value, Tokens) -> Tokens?
+pub fn output_value(@typify.TypeSpace, @typify.TypeEntry, @serde_json.Value, Tokens) -> Tokens? raise @typify.TypifyError
 
 pub fn parse_tokens(String) -> Tokens
 
@@ -38,7 +38,7 @@ pub fn quote(String, args? : Map[String, Tokens]) -> Tokens
 
 pub fn terminated(Array[Tokens], Char) -> Tokens
 
-pub fn to_stream(@typify.TypeSpace) -> Tokens
+pub fn to_stream(@typify.TypeSpace) -> Tokens raise @typify.TypifyError
 
 pub fn type_ident(@typify.TypeSpace, @typify.TypeEntry, String?) -> Tokens
 

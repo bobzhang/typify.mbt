@@ -59,7 +59,7 @@ let test_type_where_not_values : Array[@typify_rt.Content] = @typify_rt.enum_val
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
 pub fn TestTypeWhereNot::new(value : String) -> TestTypeWhereNot raise @typify_rt.ConversionError {
-  let serialized = (@typify_rt.ser_string(value)) catch { _ => @typify_rt.ser_null() }
+  let serialized = @typify_rt.content_or_null(() => @typify_rt.ser_string(value))
   if @typify_rt.contains_value(test_type_where_not_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -104,7 +104,7 @@ let test_type_why_not_values : Array[@typify_rt.Content] = @typify_rt.enum_value
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
 pub fn TestTypeWhyNot::new(value : String) -> TestTypeWhyNot raise @typify_rt.ConversionError {
-  let serialized = (@typify_rt.ser_string(value)) catch { _ => @typify_rt.ser_null() }
+  let serialized = @typify_rt.content_or_null(() => @typify_rt.ser_string(value))
   if @typify_rt.contains_value(test_type_why_not_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
