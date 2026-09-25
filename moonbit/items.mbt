@@ -614,8 +614,12 @@ fn Gen::output_enum(
     Adjacent(tag~, content~) => {
       for i, v in d.variants {
         let code = match v.details {
-          Simple =>
-            "{ @typify_rt.variant_unit(payload); \{name}::\{self.ctors.get(id.0).unwrap()[i]} }"
+          Simple => {
+            let expecting = str_lit(
+              "unit variant \{d.name}::\{v.ident_name.unwrap()}",
+            )
+            "{ @typify_rt.adjacent_unit(payload, \{expecting}); \{name}::\{self.ctors.get(id.0).unwrap()[i]} }"
+          }
           _ =>
             self.variant_payload_decode(
               out,
@@ -623,7 +627,7 @@ fn Gen::output_enum(
               d.name,
               i,
               v,
-              "@typify_rt.variant_payload(payload, \"variant content\")",
+              "@typify_rt.adjacent_content(payload, \{str_lit(content)})",
               true,
               d.deny_unknown_fields,
               false,

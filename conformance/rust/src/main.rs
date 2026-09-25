@@ -28,6 +28,17 @@ pub fn roundtrip<T: serde::de::DeserializeOwned + serde::Serialize>(input: &str)
 }
 
 fn main() {
+    // Deeply nested instances recurse through serde's buffering; give the
+    // harness a large stack.
+    std::thread::Builder::new()
+        .stack_size(1 << 30)
+        .spawn(run)
+        .unwrap()
+        .join()
+        .unwrap();
+}
+
+fn run() {
     std::panic::set_hook(Box::new(|_| {}));
     let stdin = std::io::stdin();
     let stdout = std::io::stdout();

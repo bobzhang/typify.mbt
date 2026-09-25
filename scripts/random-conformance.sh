@@ -44,6 +44,11 @@ for schema in conformance/random/schemas/*.json; do
   name=$(basename "$schema" .json)
   grep -qx "$name" conformance/random/keep.txt || continue
   moonrun "$gen" -- "$schema" "$name" "conformance/random/cases/$name.tsv" "$per_type"
-  "$harness" < "conformance/random/cases/$name.tsv" > "conformance/random/cases/$name.expected"
+  # Some schemas recurse without end in serde too (e.g. an untagged enum
+  # whose first variant is itself); skip them.
+  if ! "$harness" < "conformance/random/cases/$name.tsv" > "conformance/random/cases/$name.expected" 2>/dev/null; then
+    echo "skipping $name: the Rust harness crashed"
+    rm -f "conformance/random/cases/$name.tsv" "conformance/random/cases/$name.expected"
+  fi
 done
 moon test conformance/random

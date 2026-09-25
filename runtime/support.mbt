@@ -242,3 +242,33 @@ pub fn[T] de_adjacent(
     None => decode(i, NoPayload)
   }
 }
+
+///|
+/// The content of an adjacently tagged variant: absent content is decoded
+/// from serde's `MissingFieldDeserializer` (`Option` payloads become
+/// `None`, anything else is `missing field <content>`).
+pub fn adjacent_content(v : VariantInput, content : String) -> De {
+  match v {
+    Payload(d) => d
+    UnitOnly | NoPayload => Missing(content)
+  }
+}
+
+///|
+/// The content of an adjacently tagged unit variant: serde reads it with
+/// `deserialize_any` and its `UntaggedUnitVisitor`, so only `null` (or no
+/// content) is accepted; `expecting` is `unit variant Enum::Variant`.
+pub fn adjacent_unit(
+  v : VariantInput,
+  expecting : String,
+) -> Unit raise DeError {
+  match v {
+    Payload(Value(Null, _)) | Payload(Missing(_)) | UnitOnly | NoPayload => ()
+    Payload(Value(c, _)) => {
+      check_valid(c)
+      raise invalid_type_error(c, expecting)
+    }
+    Payload(MapKey(k, _)) => raise invalid_type_error(String(k), expecting)
+    Payload(Flat(_)) => raise flatten_error()
+  }
+}

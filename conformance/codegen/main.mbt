@@ -213,12 +213,87 @@ fn random_suite(
     let root = @schema.RootSchema::from_json_str(schema.to_string()) catch {
       e => abort("\{name}: \{e}")
     }
+    let space = @typify.TypeSpace::new(@typify.TypeSpaceSettings::default())
+    let converted = try? space.add_root_schema(root)
+    if converted is Err(_) || recursive_flatten(space) {
+      continue
+    }
     write("conformance/random/schemas/\{name}.json", schema.to_string())
     write("conformance/random/tokens/\{name}.tokens", tokens)
     write("conformance/random/tokens/\{name}.types", types)
     out.push((name, root, @typify.TypeSpaceSettings::default(), false))
   }
   out
+}
+
+///|
+/// Whether a struct flattens itself through a chain of flattened fields
+/// (possibly via `Option`, `Box`, newtypes and untagged enums). serde's
+/// nested `FlatMapSerializer` types then never end, and rustc rejects the
+/// upstream Rust (E0275), so such schemas are left out of the suite.
+fn recursive_flatten(space : @typify.TypeSpace) -> Bool {
+  let get = (id : @typify.TypeId) => space.id_to_entry.get(id)
+  // The structs whose flattened fields are reached when `id` is flattened.
+  fn targets(
+    id : @typify.TypeId,
+    out : Array[@typify.TypeId],
+    seen : Array[@typify.TypeId],
+  ) -> Unit {
+    if seen.contains(id) {
+      return
+    }
+    seen.push(id)
+    guard get(id) is Some(e) else { return }
+    match e.details {
+      Struct(_) => out.push(id)
+      Option(inner) | Box(inner) => targets(inner, out, seen)
+      Newtype(n) => targets(n.type_id, out, seen)
+      Enum(d) if d.tag_type is Untagged =>
+        for v in d.variants {
+          match v.details {
+            Item(t) => targets(t, out, seen)
+            Struct(props) =>
+              for p in props {
+                if p.rename is Flatten {
+                  targets(p.type_id, out, seen)
+                }
+              }
+            _ => ()
+          }
+        }
+      _ => ()
+    }
+  }
+  let edges : Map[@typify.TypeId, Array[@typify.TypeId]] = {}
+  for pair in space.entries() {
+    if pair.1.details is Struct(d) {
+      let out = []
+      for p in d.properties {
+        if p.rename is Flatten {
+          targets(p.type_id, out, [])
+        }
+      }
+      edges[pair.0] = out
+    }
+  }
+  // Cycle detection (0 = unvisited, 1 = on the stack, 2 = done).
+  let state : Map[@typify.TypeId, Int] = {}
+  fn visit(id : @typify.TypeId) -> Bool {
+    match state.get(id) {
+      Some(1) => return true
+      Some(_) => return false
+      None => ()
+    }
+    state[id] = 1
+    for next in edges.get(id).unwrap_or([]) {
+      if visit(next) {
+        return true
+      }
+    }
+    state[id] = 2
+    false
+  }
+  edges.keys().any(visit)
 }
 
 ///|

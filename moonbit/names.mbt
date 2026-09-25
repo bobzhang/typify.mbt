@@ -55,6 +55,7 @@ fn Scope::alloc(self : Scope, base : String) -> String {
 ///|
 /// A type or constructor name: ASCII uppercase start, no keywords.
 fn upper_ident(s : String, reserved : Array[String]) -> String {
+  let s = ascii_ident(s)
   let s = match s.get_char(0) {
     Some(c) if c.is_ascii_uppercase() => s
     Some(c) if c.is_ascii_lowercase() => {
@@ -71,9 +72,28 @@ fn upper_ident(s : String, reserved : Array[String]) -> String {
 }
 
 ///|
+/// Non-ASCII characters (valid in Rust identifiers) spelled in ASCII as
+/// `u<hex>`: MoonBit does not accept them in labelled arguments.
+fn ascii_ident(s : String) -> String {
+  if s.iter().all(c => c.to_int() < 0x80) {
+    return s
+  }
+  let buf = StringBuilder()
+  for c in s {
+    if c.to_int() < 0x80 {
+      buf.write_char(c)
+    } else {
+      buf.write_string("u\{c.to_int().to_string(radix=16)}")
+    }
+  }
+  buf.to_string()
+}
+
+///|
 /// A field or label name: not starting with an uppercase letter, no
 /// keywords.
 fn lower_ident(s : String) -> String {
+  let s = ascii_ident(s)
   let s = match s.get_char(0) {
     Some(c) if c.is_ascii_uppercase() => {
       let rest = s.unsafe_substring(start=1, end=s.length())

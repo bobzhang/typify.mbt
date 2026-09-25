@@ -39,6 +39,31 @@
 >    harnesses print a variant path) against the Rust harness, and include duplicate keys, key
 >    permutations, sequence forms and invalid inputs.
 
+> **Implementation status** (supersedes the sections below where they differ):
+>
+> - Generated types implement `@typify_rt.Serde` (`deserialize(De)` and
+>   `serialize(Self) -> Content`). The conveniences `from_json_str`,
+>   `to_json_string` and `from_json` are the trait's default methods, attached
+>   with `pub extend T with @typify_rt.Serde::{...}`. `ToJson` goes through
+>   `@typify_rt.json_of`.
+> - Struct decoding is table-driven. Each struct has a global `@typify_rt.Fields`
+>   table. `@typify_rt.de_fields` runs serde's visitor loop: it decodes each
+>   value as its key is read, rejects duplicates before the second value,
+>   handles unknown fields and deny rules, buffers entries for flatten, accepts
+>   the positional form, and claims flattened entries lazily. Generated code
+>   supplies a single `(index, De) -> Unit` callback. Absent fields are then
+>   resolved in declaration order through `FieldsInput::absent`.
+> - Adjacently tagged enums use `@typify_rt.de_adjacent(..., decode)`. Content
+>   read after the tag is decoded immediately, as in serde.
+> - The format types are faithful ports with oracle tests:
+>   - `runtime/chrono.mbt`: chrono 0.4.45's relaxed RFC 3339 parser and
+>     `ParseError` kinds;
+>   - `runtime/uuid.mbt`: uuid 1.16's `parse_str` with its error messages;
+>   - `runtime/net.mbt`: `std::net`.
+> - Conformance: `conformance/` covers all fixtures, with text-level
+>   perturbations. `scripts/random-conformance.sh` covers random schemas.
+>   Output and error text must match serde exactly.
+
 Goal: for every type the Rust backend emits, emit a MoonBit type whose JSON
 encoding and decoding behave exactly like the serde-derived Rust type:
 
