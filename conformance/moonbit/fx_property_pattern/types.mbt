@@ -27,7 +27,6 @@ pub impl @typify_rt.Serde for TestGrammarForPatternProperties with fn deserializ
 pub impl @typify_rt.Serde for TestGrammarForPatternProperties with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("rules", @typify_rt.ser_map(self.rules, (k : TestGrammarForPatternPropertiesRulesKey) => @typify_rt.map_key(TestGrammarForPatternPropertiesRulesKey::serialize(k)), (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 

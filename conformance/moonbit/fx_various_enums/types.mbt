@@ -222,7 +222,6 @@ pub impl @typify_rt.Serde for DiskAttachment with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("alternate", AlternativeEnum::serialize(self.alternate))
   o.field("state", DiskAttachmentState::serialize(self.state))
-
   o.build()
 }
 
@@ -262,7 +261,6 @@ pub impl @typify_rt.Serde for EmptyObject with fn serialize(self) {
   if self.prop is Some(_) {
     o.field("prop", @typify_rt.ser_option(self.prop, EmptyObjectProp::serialize))
   }
-
   o.build()
 }
 

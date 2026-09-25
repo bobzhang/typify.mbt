@@ -27,7 +27,6 @@ pub impl @typify_rt.Serde for AnythingWorks with fn deserialize(d) {
 pub impl @typify_rt.Serde for AnythingWorks with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_json(self.value))
-
   o.build()
 }
 
@@ -67,7 +66,6 @@ pub impl @typify_rt.Serde for FloatsArentTerribleImTold with fn serialize(self) 
   if self.flush_timeout is Some(_) {
     o.field("flush_timeout", @typify_rt.ser_option(self.flush_timeout, (v : Float) => @typify_rt.ser_f32(v)))
   }
-
   o.build()
 }
 
@@ -154,7 +152,6 @@ pub impl @typify_rt.Serde for UintMinimumAndMaximum with fn serialize(self) {
   o.field("min_non_zero", @typify_rt.ser_u64(self.min_non_zero))
   o.field("min_uint_non_zero", @typify_rt.ser_u64(self.min_uint_non_zero))
   o.field("no_bounds", @typify_rt.ser_u64(self.no_bounds))
-
   o.build()
 }
 

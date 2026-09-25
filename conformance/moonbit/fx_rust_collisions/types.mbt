@@ -27,7 +27,6 @@ pub impl @typify_rt.Serde for Box with fn deserialize(d) {
 pub impl @typify_rt.Serde for Box with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("data", @typify_rt.ser_string(self.data))
-
   o.build()
 }
 
@@ -65,7 +64,6 @@ pub impl @typify_rt.Serde for Copy with fn deserialize(d) {
 pub impl @typify_rt.Serde for Copy with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_i64(self.value))
-
   o.build()
 }
 
@@ -105,7 +103,6 @@ pub impl @typify_rt.Serde for DoubleOptionCollision with fn serialize(self) {
   if self.option is Some(_) {
     o.field("option", @typify_rt.ser_option(self.option, DoubleOptionCollisionOption::serialize))
   }
-
   o.build()
 }
 
@@ -143,7 +140,6 @@ pub impl @typify_rt.Serde for Drop with fn deserialize(d) {
 pub impl @typify_rt.Serde for Drop with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("cleanup", @typify_rt.ser_bool(self.cleanup))
-
   o.build()
 }
 
@@ -184,7 +180,6 @@ pub impl @typify_rt.Serde for FlattenedKeywords with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("normal", @typify_rt.ser_string(self.normal))
   o.flatten(@typify_rt.ser_map(self.extra, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -296,7 +291,6 @@ pub impl @typify_rt.Serde for MapOfKeywords with fn deserialize(d) {
 pub impl @typify_rt.Serde for MapOfKeywords with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("keyword_map", @typify_rt.ser_map(self.keyword_map, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), MapOfKeywordsKeywordMapValue::serialize))
-
   o.build()
 }
 
@@ -346,7 +340,6 @@ pub impl @typify_rt.Serde for NestedTypeCollisions with fn serialize(self) {
   }
   o.field("type", TypeWithOptionField::serialize(self.type_))
   o.field("types", @typify_rt.ser_vec(self.types, TypeWithOptionField::serialize))
-
   o.build()
 }
 
@@ -384,7 +377,6 @@ pub impl @typify_rt.Serde for Option_ with fn deserialize(d) {
 pub impl @typify_rt.Serde for Option_ with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("maybe", @typify_rt.ser_string(self.maybe))
-
   o.build()
 }
 
@@ -422,7 +414,6 @@ pub impl @typify_rt.Serde for Pin with fn deserialize(d) {
 pub impl @typify_rt.Serde for Pin with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("pointer", @typify_rt.ser_string(self.pointer))
-
   o.build()
 }
 
@@ -710,7 +701,6 @@ pub impl @typify_rt.Serde for RustKeywordMonster with fn serialize(self) {
   o.field("where", @typify_rt.ser_string(self.where_))
   o.field("while", @typify_rt.ser_string(self.while_))
   o.field("yield", @typify_rt.ser_string(self.yield_))
-
   o.build()
 }
 
@@ -748,7 +738,6 @@ pub impl @typify_rt.Serde for Send with fn deserialize(d) {
 pub impl @typify_rt.Serde for Send with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("message", @typify_rt.ser_string(self.message))
-
   o.build()
 }
 
@@ -786,7 +775,6 @@ pub impl @typify_rt.Serde for String_ with fn deserialize(d) {
 pub impl @typify_rt.Serde for String_ with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("text", @typify_rt.ser_string(self.text))
-
   o.build()
 }
 
@@ -935,7 +923,6 @@ pub impl @typify_rt.Serde for Sync with fn deserialize(d) {
 pub impl @typify_rt.Serde for Sync with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("data", @typify_rt.ser_string(self.data))
-
   o.build()
 }
 
@@ -980,7 +967,6 @@ pub impl @typify_rt.Serde for TypeWithOptionField with fn serialize(self) {
   if self.optional_field is Some(_) {
     o.field("optional_field", @typify_rt.ser_option(self.optional_field, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -1018,7 +1004,6 @@ pub impl @typify_rt.Serde for Vec with fn deserialize(d) {
 pub impl @typify_rt.Serde for Vec with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("items", @typify_rt.ser_vec(self.items, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -1169,7 +1154,6 @@ pub impl @typify_rt.Serde for Std with fn serialize(self) {
   o.field("result", StdResult::serialize(self.result))
   o.field("str", StdStr::serialize(self.str))
   o.field("string", StdString::serialize(self.string))
-
   o.build()
 }
 
@@ -1233,7 +1217,6 @@ pub impl @typify_rt.Serde for DoubleOptionCollisionOption with fn serialize(self
   if self.option is Some(_) {
     o.field("option", @typify_rt.ser_option(self.option, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -1410,7 +1393,6 @@ pub impl @typify_rt.Serde for NestedTypeCollisionsOptionType with fn serialize(s
   if self.type_ is Some(_) {
     o.field("type", @typify_rt.ser_option(self.type_, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -1448,7 +1430,6 @@ pub impl @typify_rt.Serde for StdBoxed with fn deserialize(d) {
 pub impl @typify_rt.Serde for StdBoxed with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_string(self.value))
-
   o.build()
 }
 
@@ -1486,7 +1467,6 @@ pub impl @typify_rt.Serde for StdConvert with fn deserialize(d) {
 pub impl @typify_rt.Serde for StdConvert with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_string(self.value))
-
   o.build()
 }
 
@@ -1524,7 +1504,6 @@ pub impl @typify_rt.Serde for StdFmt with fn deserialize(d) {
 pub impl @typify_rt.Serde for StdFmt with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_string(self.value))
-
   o.build()
 }
 
@@ -1562,7 +1541,6 @@ pub impl @typify_rt.Serde for StdOption with fn deserialize(d) {
 pub impl @typify_rt.Serde for StdOption with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_string(self.value))
-
   o.build()
 }
 
@@ -1600,7 +1578,6 @@ pub impl @typify_rt.Serde for StdResult with fn deserialize(d) {
 pub impl @typify_rt.Serde for StdResult with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_string(self.value))
-
   o.build()
 }
 
@@ -1638,7 +1615,6 @@ pub impl @typify_rt.Serde for StdStr with fn deserialize(d) {
 pub impl @typify_rt.Serde for StdStr with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_string(self.value))
-
   o.build()
 }
 
@@ -1676,7 +1652,6 @@ pub impl @typify_rt.Serde for StdString with fn deserialize(d) {
 pub impl @typify_rt.Serde for StdString with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_string(self.value))
-
   o.build()
 }
 

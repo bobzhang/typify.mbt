@@ -20,10 +20,10 @@ fn default_doodad_when() -> @typify_rt.DateTimeUtc raise @typify_rt.DeError {
 ///|
 pub impl @typify_rt.Serde for Doodad with fn deserialize(d) {
   let mut f0 : @typify_rt.DateTimeUtc? = None
-  let r = @typify_rt.de_fields(d, "struct Doodad", doodad_fields, (j, v) => match j {
+  ignore(@typify_rt.de_fields(d, "struct Doodad", doodad_fields, (j, v) => match j {
     0 => f0 = Some(@typify_rt.DateTimeUtc::deserialize(v))
     _ => ()
-  })
+  }))
   let v0 = if f0 is Some(v) { v } else { default_doodad_when() }
   Doodad::{ when: v0 }
 }
@@ -32,7 +32,6 @@ pub impl @typify_rt.Serde for Doodad with fn deserialize(d) {
 pub impl @typify_rt.Serde for Doodad with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("when", @typify_rt.DateTimeUtc::serialize(self.when))
-
   o.build()
 }
 
@@ -77,12 +76,12 @@ pub impl @typify_rt.Serde for MrDefaultNumbers with fn deserialize(d) {
   let mut f0 : UInt64?? = None
   let mut f1 : UInt16? = None
   let mut f2 : Byte? = None
-  let r = @typify_rt.de_fields(d, "struct MrDefaultNumbers", mr_default_numbers_fields, (j, v) => match j {
+  ignore(@typify_rt.de_fields(d, "struct MrDefaultNumbers", mr_default_numbers_fields, (j, v) => match j {
     0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_nonzero_u64))
     1 => f1 = Some(@typify_rt.de_nonzero_u16(v))
     2 => f2 = Some(@typify_rt.de_nonzero_u8(v))
     _ => ()
-  })
+  }))
   let v0 = if f0 is Some(v) { v } else { default_mr_default_numbers_big_nullable() }
   let v1 = if f1 is Some(v) { v } else { default_mr_default_numbers_little_u16() }
   let v2 = if f2 is Some(v) { v } else { default_mr_default_numbers_little_u8() }
@@ -95,7 +94,6 @@ pub impl @typify_rt.Serde for MrDefaultNumbers with fn serialize(self) {
   o.field("big_nullable", @typify_rt.ser_option(self.big_nullable, (v : UInt64) => @typify_rt.ser_u64(v)))
   o.field("little_u16", @typify_rt.ser_u16(self.little_u16))
   o.field("little_u8", @typify_rt.ser_byte(self.little_u8))
-
   o.build()
 }
 
@@ -135,7 +133,6 @@ pub impl @typify_rt.Serde for OuterThing with fn serialize(self) {
   if self.thing is Some(_) {
     o.field("thing", @typify_rt.ser_option(self.thing, ThingWithDefaults::serialize))
   }
-
   o.build()
 }
 
@@ -173,11 +170,11 @@ fn default_test_bed_id() -> @typify_rt.Uuid raise @typify_rt.DeError {
 pub impl @typify_rt.Serde for TestBed with fn deserialize(d) {
   let mut f0 : Array[Json]? = None
   let mut f1 : @typify_rt.Uuid? = None
-  let r = @typify_rt.de_fields(d, "struct TestBed", test_bed_fields, (j, v) => match j {
+  ignore(@typify_rt.de_fields(d, "struct TestBed", test_bed_fields, (j, v) => match j {
     0 => f0 = Some(@typify_rt.de_vec(v, @typify_rt.de_json))
     1 => f1 = Some(@typify_rt.Uuid::deserialize(v))
     _ => ()
-  })
+  }))
   let v0 = if f0 is Some(v) { v } else { default_test_bed_any() }
   let v1 = if f1 is Some(v) { v } else { default_test_bed_id() }
   TestBed::{ any: v0, id: v1 }
@@ -188,7 +185,6 @@ pub impl @typify_rt.Serde for TestBed with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("any", @typify_rt.ser_vec(self.any, (v : Json) => @typify_rt.ser_json(v)))
   o.field("id", @typify_rt.Uuid::serialize(self.id))
-
   o.build()
 }
 
@@ -243,10 +239,10 @@ fn default_u_int_container_max_path() -> UInt_ raise @typify_rt.DeError {
 ///|
 pub impl @typify_rt.Serde for UIntContainer with fn deserialize(d) {
   let mut f0 : UInt_? = None
-  let r = @typify_rt.de_fields(d, "struct UIntContainer", u_int_container_fields, (j, v) => match j {
+  ignore(@typify_rt.de_fields(d, "struct UIntContainer", u_int_container_fields, (j, v) => match j {
     0 => f0 = Some(UInt_::deserialize(v))
     _ => ()
-  })
+  }))
   let v0 = if f0 is Some(v) { v } else { default_u_int_container_max_path() }
   UIntContainer::{ max_path: v0 }
 }
@@ -255,7 +251,6 @@ pub impl @typify_rt.Serde for UIntContainer with fn deserialize(d) {
 pub impl @typify_rt.Serde for UIntContainer with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("max_path", UInt_::serialize(self.max_path))
-
   o.build()
 }
 
@@ -302,7 +297,6 @@ pub impl @typify_rt.Serde for ThingWithDefaults with fn serialize(self) {
   if self.type_ is Some(_) {
     o.field("type", @typify_rt.ser_option(self.type_, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 

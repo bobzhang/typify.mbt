@@ -29,7 +29,6 @@ pub impl @typify_rt.Serde for Container with fn serialize(self) {
   if self.thing is Some(_) {
     o.field("thing", @typify_rt.ser_option(self.thing, ContainerThing::serialize))
   }
-
   o.build()
 }
 
@@ -72,7 +71,6 @@ pub impl @typify_rt.Serde for ContainerThing with fn serialize(self) {
     o.field("id", @typify_rt.ser_option(self.id, (v : String) => @typify_rt.ser_string(v)))
   }
   o.flatten(@typify_rt.ser_map(self.extra, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 

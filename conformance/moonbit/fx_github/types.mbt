@@ -74,7 +74,6 @@ pub impl @typify_rt.Serde for AlertInstance with fn serialize(self) {
   }
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("state", AlertInstanceState::serialize(self.state))
-
   o.build()
 }
 
@@ -177,7 +176,6 @@ pub impl @typify_rt.Serde for App with fn serialize(self) {
     o.field("slug", @typify_rt.ser_option(self.slug, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
-
   o.build()
 }
 
@@ -431,7 +429,6 @@ pub impl @typify_rt.Serde for BranchProtectionRule with fn serialize(self) {
   o.field("signature_requirement_enforcement_level", BranchProtectionRuleSignatureRequirementEnforcementLevel::serialize(self.signature_requirement_enforcement_level))
   o.field("strict_required_status_checks_policy", @typify_rt.ser_bool(self.strict_required_status_checks_policy))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
-
   o.build()
 }
 
@@ -498,7 +495,6 @@ pub impl @typify_rt.Serde for BranchProtectionRuleCreated with fn serialize(self
   o.field("repository", Repository::serialize(self.repository))
   o.field("rule", BranchProtectionRule::serialize(self.rule))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -565,7 +561,6 @@ pub impl @typify_rt.Serde for BranchProtectionRuleDeleted with fn serialize(self
   o.field("repository", Repository::serialize(self.repository))
   o.field("rule", BranchProtectionRule::serialize(self.rule))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -637,7 +632,6 @@ pub impl @typify_rt.Serde for BranchProtectionRuleEdited with fn serialize(self)
   o.field("repository", Repository::serialize(self.repository))
   o.field("rule", BranchProtectionRule::serialize(self.rule))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -782,7 +776,6 @@ pub impl @typify_rt.Serde for CheckRunDeployment with fn serialize(self) {
   o.field("task", @typify_rt.ser_string(self.task))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -840,7 +833,6 @@ pub impl @typify_rt.Serde for CheckRunPullRequest with fn serialize(self) {
   o.field("id", @typify_rt.ser_i64(self.id))
   o.field("number", @typify_rt.ser_i64(self.number))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -915,7 +907,6 @@ pub impl @typify_rt.Serde for CheckRunCompleted with fn serialize(self) {
     o.field("requested_action", @typify_rt.ser_option(self.requested_action, CheckRunCompletedRequestedAction::serialize))
   }
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -990,7 +981,6 @@ pub impl @typify_rt.Serde for CheckRunCreated with fn serialize(self) {
     o.field("requested_action", @typify_rt.ser_option(self.requested_action, CheckRunCreatedRequestedAction::serialize))
   }
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -1062,7 +1052,6 @@ pub impl @typify_rt.Serde for CheckRunRequestedAction with fn serialize(self) {
   o.field("repository", Repository::serialize(self.repository))
   o.field("requested_action", CheckRunRequestedActionRequestedAction::serialize(self.requested_action))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -1137,7 +1126,6 @@ pub impl @typify_rt.Serde for CheckRunRerequested with fn serialize(self) {
     o.field("requested_action", @typify_rt.ser_option(self.requested_action, CheckRunRerequestedRequestedAction::serialize))
   }
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -1271,7 +1259,6 @@ pub impl @typify_rt.Serde for CheckSuiteCompleted with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -1338,7 +1325,6 @@ pub impl @typify_rt.Serde for CheckSuiteRequested with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -1405,7 +1391,6 @@ pub impl @typify_rt.Serde for CheckSuiteRerequested with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -1541,7 +1526,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertAppearedInBranch with fn serializ
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", GithubOrg::serialize(self.sender))
-
   o.build()
 }
 
@@ -1620,7 +1604,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertClosedByUser with fn serialize(se
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -1699,7 +1682,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertCreated with fn serialize(self) {
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", GithubOrg::serialize(self.sender))
-
   o.build()
 }
 
@@ -1778,7 +1760,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertFixed with fn serialize(self) {
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", GithubOrg::serialize(self.sender))
-
   o.build()
 }
 
@@ -1857,7 +1838,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertReopened with fn serialize(self) 
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", GithubOrg::serialize(self.sender))
-
   o.build()
 }
 
@@ -1936,7 +1916,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertReopenedByUser with fn serialize(
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -2118,7 +2097,6 @@ pub impl @typify_rt.Serde for Commit with fn serialize(self) {
   o.field("timestamp", @typify_rt.ser_string(self.timestamp))
   o.field("tree_id", @typify_rt.ser_string(self.tree_id))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -2181,7 +2159,6 @@ pub impl @typify_rt.Serde for CommitSimple with fn serialize(self) {
   o.field("message", @typify_rt.ser_string(self.message))
   o.field("timestamp", @typify_rt.ser_string(self.timestamp))
   o.field("tree_id", @typify_rt.ser_string(self.tree_id))
-
   o.build()
 }
 
@@ -2249,7 +2226,6 @@ pub impl @typify_rt.Serde for CommitCommentCreated with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -2332,7 +2308,6 @@ pub impl @typify_rt.Serde for Committer with fn serialize(self) {
   if self.username is Some(_) {
     o.field("username", @typify_rt.ser_option(self.username, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -2397,7 +2372,6 @@ pub impl @typify_rt.Serde for ContentReferenceCreated with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -2508,7 +2482,6 @@ pub impl @typify_rt.Serde for CreateEvent with fn serialize(self) {
   o.field("ref_type", CreateEventRefType::serialize(self.ref_type))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -2583,7 +2556,6 @@ pub impl @typify_rt.Serde for DeleteEvent with fn serialize(self) {
   o.field("ref_type", DeleteEventRefType::serialize(self.ref_type))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -2650,7 +2622,6 @@ pub impl @typify_rt.Serde for DeployKeyCreated with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -2717,7 +2688,6 @@ pub impl @typify_rt.Serde for DeployKeyDeleted with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -2841,7 +2811,6 @@ pub impl @typify_rt.Serde for DeploymentCreated with fn serialize(self) {
   o.field("sender", User::serialize(self.sender))
   o.field("workflow", @typify_rt.ser_unit())
   o.field("workflow_run", @typify_rt.ser_unit())
-
   o.build()
 }
 
@@ -2937,7 +2906,6 @@ pub impl @typify_rt.Serde for DeploymentStatusCreated with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -3089,7 +3057,6 @@ pub impl @typify_rt.Serde for Discussion with fn serialize(self) {
   o.field("title", @typify_rt.ser_string(self.title))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -3161,7 +3128,6 @@ pub impl @typify_rt.Serde for DiscussionAnswered with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -3233,7 +3199,6 @@ pub impl @typify_rt.Serde for DiscussionCategoryChanged with fn serialize(self) 
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -3300,7 +3265,6 @@ pub impl @typify_rt.Serde for DiscussionCreated with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -3367,7 +3331,6 @@ pub impl @typify_rt.Serde for DiscussionDeleted with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -3441,7 +3404,6 @@ pub impl @typify_rt.Serde for DiscussionEdited with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -3513,7 +3475,6 @@ pub impl @typify_rt.Serde for DiscussionLabeled with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -3580,7 +3541,6 @@ pub impl @typify_rt.Serde for DiscussionLocked with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -3647,7 +3607,6 @@ pub impl @typify_rt.Serde for DiscussionPinned with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -3719,7 +3678,6 @@ pub impl @typify_rt.Serde for DiscussionTransferred with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -3791,7 +3749,6 @@ pub impl @typify_rt.Serde for DiscussionUnanswered with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -3863,7 +3820,6 @@ pub impl @typify_rt.Serde for DiscussionUnlabeled with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -3930,7 +3886,6 @@ pub impl @typify_rt.Serde for DiscussionUnlocked with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -3997,7 +3952,6 @@ pub impl @typify_rt.Serde for DiscussionUnpinned with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -4067,7 +4021,6 @@ pub impl @typify_rt.Serde for DiscussionCommentCreated with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -4137,7 +4090,6 @@ pub impl @typify_rt.Serde for DiscussionCommentDeleted with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -4212,7 +4164,6 @@ pub impl @typify_rt.Serde for DiscussionCommentEdited with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -4488,7 +4439,6 @@ pub impl @typify_rt.Serde for ForkEvent with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -4623,7 +4573,6 @@ pub impl @typify_rt.Serde for GithubOrg with fn serialize(self) {
   o.field("subscriptions_url", @typify_rt.ser_string(self.subscriptions_url))
   o.field("type", @typify_rt.ser_string(self.type_))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -4666,7 +4615,6 @@ pub impl @typify_rt.Serde for GithubAppAuthorizationRevoked with fn serialize(se
   let o = @typify_rt.ObjectBuilder::new()
   o.field("action", GithubAppAuthorizationRevokedAction::serialize(self.action))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -4753,7 +4701,6 @@ pub impl @typify_rt.Serde for GollumEvent with fn serialize(self) {
   o.field("pages", @typify_rt.ser_vec(self.pages, GollumEventPagesItem::serialize))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -4890,7 +4837,6 @@ pub impl @typify_rt.Serde for Installation with fn serialize(self) {
   o.field("target_id", @typify_rt.ser_i64(self.target_id))
   o.field("target_type", InstallationTargetType::serialize(self.target_type))
   o.field("updated_at", InstallationUpdatedAt::serialize(self.updated_at))
-
   o.build()
 }
 
@@ -4953,7 +4899,6 @@ pub impl @typify_rt.Serde for InstallationCreated with fn serialize(self) {
     o.field("requester", @typify_rt.ser_option(self.requester, User::serialize))
   }
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -5014,7 +4959,6 @@ pub impl @typify_rt.Serde for InstallationDeleted with fn serialize(self) {
   }
   o.field("requester", @typify_rt.ser_unit())
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -5075,7 +5019,6 @@ pub impl @typify_rt.Serde for InstallationNewPermissionsAccepted with fn seriali
   }
   o.field("requester", @typify_rt.ser_unit())
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -5136,7 +5079,6 @@ pub impl @typify_rt.Serde for InstallationSuspend with fn serialize(self) {
   }
   o.field("requester", @typify_rt.ser_unit())
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -5197,7 +5139,6 @@ pub impl @typify_rt.Serde for InstallationUnsuspend with fn serialize(self) {
   }
   o.field("requester", @typify_rt.ser_unit())
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -5241,7 +5182,6 @@ pub impl @typify_rt.Serde for InstallationLite with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("id", @typify_rt.ser_i64(self.id))
   o.field("node_id", @typify_rt.ser_string(self.node_id))
-
   o.build()
 }
 
@@ -5389,7 +5329,6 @@ pub impl @typify_rt.Serde for InstallationRepositoriesAdded with fn serialize(se
   o.field("repository_selection", InstallationRepositoriesAddedRepositorySelection::serialize(self.repository_selection))
   o.field("requester", @typify_rt.ser_option(self.requester, User::serialize))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -5460,7 +5399,6 @@ pub impl @typify_rt.Serde for InstallationRepositoriesRemoved with fn serialize(
   o.field("repository_selection", InstallationRepositoriesRemovedRepositorySelection::serialize(self.repository_selection))
   o.field("requester", @typify_rt.ser_option(self.requester, User::serialize))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -5686,7 +5624,6 @@ pub impl @typify_rt.Serde for Issue with fn serialize(self) {
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -5777,7 +5714,6 @@ pub impl @typify_rt.Serde for IssueComment with fn serialize(self) {
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -5849,7 +5785,6 @@ pub impl @typify_rt.Serde for IssueCommentCreated with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -5921,7 +5856,6 @@ pub impl @typify_rt.Serde for IssueCommentDeleted with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -5998,7 +5932,6 @@ pub impl @typify_rt.Serde for IssueCommentEdited with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -6131,7 +6064,6 @@ pub impl @typify_rt.Serde for IssuesAssigned with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -6199,7 +6131,6 @@ pub impl @typify_rt.Serde for IssuesClosed with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -6266,7 +6197,6 @@ pub impl @typify_rt.Serde for IssuesDeleted with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -6338,7 +6268,6 @@ pub impl @typify_rt.Serde for IssuesDemilestoned with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -6417,7 +6346,6 @@ pub impl @typify_rt.Serde for IssuesEdited with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -6492,7 +6420,6 @@ pub impl @typify_rt.Serde for IssuesLabeled with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -6559,7 +6486,6 @@ pub impl @typify_rt.Serde for IssuesLocked with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -6631,7 +6557,6 @@ pub impl @typify_rt.Serde for IssuesMilestoned with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -6705,7 +6630,6 @@ pub impl @typify_rt.Serde for IssuesOpened with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -6772,7 +6696,6 @@ pub impl @typify_rt.Serde for IssuesPinned with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -6839,7 +6762,6 @@ pub impl @typify_rt.Serde for IssuesReopened with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -6911,7 +6833,6 @@ pub impl @typify_rt.Serde for IssuesTransferred with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -6987,7 +6908,6 @@ pub impl @typify_rt.Serde for IssuesUnassigned with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -7062,7 +6982,6 @@ pub impl @typify_rt.Serde for IssuesUnlabeled with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -7129,7 +7048,6 @@ pub impl @typify_rt.Serde for IssuesUnlocked with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -7196,7 +7114,6 @@ pub impl @typify_rt.Serde for IssuesUnpinned with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -7454,7 +7371,6 @@ pub impl @typify_rt.Serde for Label with fn serialize(self) {
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -7522,7 +7438,6 @@ pub impl @typify_rt.Serde for LabelCreated with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -7590,7 +7505,6 @@ pub impl @typify_rt.Serde for LabelDeleted with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -7665,7 +7579,6 @@ pub impl @typify_rt.Serde for LabelEdited with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -7780,7 +7693,6 @@ pub impl @typify_rt.Serde for License with fn serialize(self) {
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("spdx_id", @typify_rt.ser_string(self.spdx_id))
   o.field("url", @typify_rt.ser_option(self.url, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -7818,7 +7730,6 @@ pub impl @typify_rt.Serde for Link with fn deserialize(d) {
 pub impl @typify_rt.Serde for Link with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("href", @typify_rt.ser_string(self.href))
-
   o.build()
 }
 
@@ -7888,7 +7799,6 @@ pub impl @typify_rt.Serde for MarketplacePurchase with fn serialize(self) {
   o.field("on_free_trial", @typify_rt.ser_bool(self.on_free_trial))
   o.field("plan", MarketplacePurchasePlan::serialize(self.plan))
   o.field("unit_count", @typify_rt.ser_i64(self.unit_count))
-
   o.build()
 }
 
@@ -7948,7 +7858,6 @@ pub impl @typify_rt.Serde for MarketplacePurchaseCancelled with fn serialize(sel
     o.field("previous_marketplace_purchase", @typify_rt.ser_option(self.previous_marketplace_purchase, MarketplacePurchase::serialize))
   }
   o.field("sender", MarketplacePurchaseCancelledSender::serialize(self.sender))
-
   o.build()
 }
 
@@ -8008,7 +7917,6 @@ pub impl @typify_rt.Serde for MarketplacePurchaseChanged with fn serialize(self)
     o.field("previous_marketplace_purchase", @typify_rt.ser_option(self.previous_marketplace_purchase, MarketplacePurchase::serialize))
   }
   o.field("sender", MarketplacePurchaseChangedSender::serialize(self.sender))
-
   o.build()
 }
 
@@ -8068,7 +7976,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePendingChange with fn serialize
     o.field("previous_marketplace_purchase", @typify_rt.ser_option(self.previous_marketplace_purchase, MarketplacePurchase::serialize))
   }
   o.field("sender", MarketplacePurchasePendingChangeSender::serialize(self.sender))
-
   o.build()
 }
 
@@ -8128,7 +8035,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePendingChangeCancelled with fn 
     o.field("previous_marketplace_purchase", @typify_rt.ser_option(self.previous_marketplace_purchase, MarketplacePurchase::serialize))
   }
   o.field("sender", MarketplacePurchasePendingChangeCancelledSender::serialize(self.sender))
-
   o.build()
 }
 
@@ -8188,7 +8094,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePurchased with fn serialize(sel
     o.field("previous_marketplace_purchase", @typify_rt.ser_option(self.previous_marketplace_purchase, MarketplacePurchase::serialize))
   }
   o.field("sender", MarketplacePurchasePurchasedSender::serialize(self.sender))
-
   o.build()
 }
 
@@ -8333,7 +8238,6 @@ pub impl @typify_rt.Serde for MemberAdded with fn serialize(self) {
   o.field("member", User::serialize(self.member))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -8399,7 +8303,6 @@ pub impl @typify_rt.Serde for MemberEdited with fn serialize(self) {
   o.field("member", User::serialize(self.member))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -8460,7 +8363,6 @@ pub impl @typify_rt.Serde for MemberRemoved with fn serialize(self) {
   o.field("member", User::serialize(self.member))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -8575,7 +8477,6 @@ pub impl @typify_rt.Serde for Membership with fn serialize(self) {
   o.field("state", @typify_rt.ser_string(self.state))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -8648,7 +8549,6 @@ pub impl @typify_rt.Serde for MembershipAdded with fn serialize(self) {
   o.field("scope", MembershipAddedScope::serialize(self.scope))
   o.field("sender", User::serialize(self.sender))
   o.field("team", Team::serialize(self.team))
-
   o.build()
 }
 
@@ -8721,7 +8621,6 @@ pub impl @typify_rt.Serde for MembershipRemoved with fn serialize(self) {
   o.field("scope", MembershipRemovedScope::serialize(self.scope))
   o.field("sender", User::serialize(self.sender))
   o.field("team", MembershipRemovedTeam::serialize(self.team))
-
   o.build()
 }
 
@@ -8827,7 +8726,6 @@ pub impl @typify_rt.Serde for MetaDeleted with fn serialize(self) {
   o.field("hook_id", @typify_rt.ser_i64(self.hook_id))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -8967,7 +8865,6 @@ pub impl @typify_rt.Serde for Milestone with fn serialize(self) {
   o.field("title", @typify_rt.ser_string(self.title))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -9034,7 +8931,6 @@ pub impl @typify_rt.Serde for MilestoneClosed with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -9101,7 +8997,6 @@ pub impl @typify_rt.Serde for MilestoneCreated with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -9168,7 +9063,6 @@ pub impl @typify_rt.Serde for MilestoneDeleted with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -9240,7 +9134,6 @@ pub impl @typify_rt.Serde for MilestoneEdited with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -9307,7 +9200,6 @@ pub impl @typify_rt.Serde for MilestoneOpened with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -9445,7 +9337,6 @@ pub impl @typify_rt.Serde for OrgBlockBlocked with fn serialize(self) {
   }
   o.field("organization", Organization::serialize(self.organization))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -9506,7 +9397,6 @@ pub impl @typify_rt.Serde for OrgBlockUnblocked with fn serialize(self) {
   }
   o.field("organization", Organization::serialize(self.organization))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -9653,7 +9543,6 @@ pub impl @typify_rt.Serde for Organization with fn serialize(self) {
   o.field("public_members_url", @typify_rt.ser_string(self.public_members_url))
   o.field("repos_url", @typify_rt.ser_string(self.repos_url))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -9713,7 +9602,6 @@ pub impl @typify_rt.Serde for OrganizationDeleted with fn serialize(self) {
   o.field("membership", Membership::serialize(self.membership))
   o.field("organization", Organization::serialize(self.organization))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -9773,7 +9661,6 @@ pub impl @typify_rt.Serde for OrganizationMemberAdded with fn serialize(self) {
   o.field("membership", Membership::serialize(self.membership))
   o.field("organization", Organization::serialize(self.organization))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -9838,7 +9725,6 @@ pub impl @typify_rt.Serde for OrganizationMemberInvited with fn serialize(self) 
   o.field("organization", Organization::serialize(self.organization))
   o.field("sender", User::serialize(self.sender))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -9898,7 +9784,6 @@ pub impl @typify_rt.Serde for OrganizationMemberRemoved with fn serialize(self) 
   o.field("membership", Membership::serialize(self.membership))
   o.field("organization", Organization::serialize(self.organization))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -9958,7 +9843,6 @@ pub impl @typify_rt.Serde for OrganizationRenamed with fn serialize(self) {
   o.field("membership", Membership::serialize(self.membership))
   o.field("organization", Organization::serialize(self.organization))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -10095,7 +9979,6 @@ pub impl @typify_rt.Serde for PackagePublished with fn serialize(self) {
   o.field("package", PackagePublishedPackage::serialize(self.package_))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -10155,7 +10038,6 @@ pub impl @typify_rt.Serde for PackageUpdated with fn serialize(self) {
   o.field("package", PackageUpdatedPackage::serialize(self.package_))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -10269,7 +10151,6 @@ pub impl @typify_rt.Serde for PageBuildEvent with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -10339,7 +10220,6 @@ pub impl @typify_rt.Serde for PingEvent with fn serialize(self) {
     o.field("sender", @typify_rt.ser_option(self.sender, User::serialize))
   }
   o.field("zen", @typify_rt.ser_string(self.zen))
-
   o.build()
 }
 
@@ -10440,7 +10320,6 @@ pub impl @typify_rt.Serde for Project with fn serialize(self) {
   o.field("state", ProjectState::serialize(self.state))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -10507,7 +10386,6 @@ pub impl @typify_rt.Serde for ProjectClosed with fn serialize(self) {
   o.field("project", Project::serialize(self.project))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -10574,7 +10452,6 @@ pub impl @typify_rt.Serde for ProjectCreated with fn serialize(self) {
   o.field("project", Project::serialize(self.project))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -10641,7 +10518,6 @@ pub impl @typify_rt.Serde for ProjectDeleted with fn serialize(self) {
   o.field("project", Project::serialize(self.project))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -10713,7 +10589,6 @@ pub impl @typify_rt.Serde for ProjectEdited with fn serialize(self) {
   o.field("project", Project::serialize(self.project))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -10780,7 +10655,6 @@ pub impl @typify_rt.Serde for ProjectReopened with fn serialize(self) {
   o.field("project", Project::serialize(self.project))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -10882,7 +10756,6 @@ pub impl @typify_rt.Serde for ProjectCard with fn serialize(self) {
   o.field("project_url", @typify_rt.ser_string(self.project_url))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -10957,7 +10830,6 @@ pub impl @typify_rt.Serde for ProjectColumn with fn serialize(self) {
   o.field("project_url", @typify_rt.ser_string(self.project_url))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -11029,7 +10901,6 @@ pub impl @typify_rt.Serde for ProjectCardConverted with fn serialize(self) {
   o.field("project_card", ProjectCard::serialize(self.project_card))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -11096,7 +10967,6 @@ pub impl @typify_rt.Serde for ProjectCardCreated with fn serialize(self) {
   o.field("project_card", ProjectCard::serialize(self.project_card))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -11163,7 +11033,6 @@ pub impl @typify_rt.Serde for ProjectCardDeleted with fn serialize(self) {
   o.field("project_card", ProjectCard::serialize(self.project_card))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -11235,7 +11104,6 @@ pub impl @typify_rt.Serde for ProjectCardEdited with fn serialize(self) {
   o.field("project_card", ProjectCard::serialize(self.project_card))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -11307,7 +11175,6 @@ pub impl @typify_rt.Serde for ProjectCardMoved with fn serialize(self) {
   o.field("project_card", ProjectCardMovedProjectCard::serialize(self.project_card))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -11451,7 +11318,6 @@ pub impl @typify_rt.Serde for ProjectColumnCreated with fn serialize(self) {
   o.field("project_column", ProjectColumn::serialize(self.project_column))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -11518,7 +11384,6 @@ pub impl @typify_rt.Serde for ProjectColumnDeleted with fn serialize(self) {
   o.field("project_column", ProjectColumn::serialize(self.project_column))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -11590,7 +11455,6 @@ pub impl @typify_rt.Serde for ProjectColumnEdited with fn serialize(self) {
   o.field("project_column", ProjectColumn::serialize(self.project_column))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -11657,7 +11521,6 @@ pub impl @typify_rt.Serde for ProjectColumnMoved with fn serialize(self) {
   o.field("project_column", ProjectColumn::serialize(self.project_column))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -11858,7 +11721,6 @@ pub impl @typify_rt.Serde for PublicEvent with fn serialize(self) {
   }
   o.field("repository", PublicEventRepository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -12136,7 +11998,6 @@ pub impl @typify_rt.Serde for PullRequest with fn serialize(self) {
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -12316,7 +12177,6 @@ pub impl @typify_rt.Serde for PullRequestReviewComment with fn serialize(self) {
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -12394,7 +12254,6 @@ pub impl @typify_rt.Serde for PullRequestAssigned with fn serialize(self) {
   o.field("pull_request", PullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -12466,7 +12325,6 @@ pub impl @typify_rt.Serde for PullRequestAutoMergeDisabled with fn serialize(sel
   o.field("pull_request", PullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -12538,7 +12396,6 @@ pub impl @typify_rt.Serde for PullRequestAutoMergeEnabled with fn serialize(self
   o.field("pull_request", PullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -12611,7 +12468,6 @@ pub impl @typify_rt.Serde for PullRequestClosed with fn serialize(self) {
   o.field("pull_request", PullRequestClosedPullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -12684,7 +12540,6 @@ pub impl @typify_rt.Serde for PullRequestConvertedToDraft with fn serialize(self
   o.field("pull_request", PullRequestConvertedToDraftPullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -12762,7 +12617,6 @@ pub impl @typify_rt.Serde for PullRequestEdited with fn serialize(self) {
   o.field("pull_request", PullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -12840,7 +12694,6 @@ pub impl @typify_rt.Serde for PullRequestLabeled with fn serialize(self) {
   o.field("pull_request", PullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -12913,7 +12766,6 @@ pub impl @typify_rt.Serde for PullRequestLocked with fn serialize(self) {
   o.field("pull_request", PullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -12986,7 +12838,6 @@ pub impl @typify_rt.Serde for PullRequestOpened with fn serialize(self) {
   o.field("pull_request", PullRequestOpenedPullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -13059,7 +12910,6 @@ pub impl @typify_rt.Serde for PullRequestReadyForReview with fn serialize(self) 
   o.field("pull_request", PullRequestReadyForReviewPullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -13132,7 +12982,6 @@ pub impl @typify_rt.Serde for PullRequestReopened with fn serialize(self) {
   o.field("pull_request", PullRequestReopenedPullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -13497,7 +13346,6 @@ pub impl @typify_rt.Serde for PullRequestSynchronize with fn serialize(self) {
   o.field("pull_request", PullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -13575,7 +13423,6 @@ pub impl @typify_rt.Serde for PullRequestUnassigned with fn serialize(self) {
   o.field("pull_request", PullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -13653,7 +13500,6 @@ pub impl @typify_rt.Serde for PullRequestUnlabeled with fn serialize(self) {
   o.field("pull_request", PullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -13726,7 +13572,6 @@ pub impl @typify_rt.Serde for PullRequestUnlocked with fn serialize(self) {
   o.field("pull_request", PullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -13995,7 +13840,6 @@ pub impl @typify_rt.Serde for PullRequestReviewDismissed with fn serialize(self)
   o.field("repository", Repository::serialize(self.repository))
   o.field("review", PullRequestReviewDismissedReview::serialize(self.review))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -14072,7 +13916,6 @@ pub impl @typify_rt.Serde for PullRequestReviewEdited with fn serialize(self) {
   o.field("repository", Repository::serialize(self.repository))
   o.field("review", PullRequestReviewEditedReview::serialize(self.review))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -14144,7 +13987,6 @@ pub impl @typify_rt.Serde for PullRequestReviewSubmitted with fn serialize(self)
   o.field("repository", Repository::serialize(self.repository))
   o.field("review", PullRequestReviewSubmittedReview::serialize(self.review))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -14216,7 +14058,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentCreated with fn serialize(
   o.field("pull_request", PullRequestReviewCommentCreatedPullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -14288,7 +14129,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentDeleted with fn serialize(
   o.field("pull_request", PullRequestReviewCommentDeletedPullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -14365,7 +14205,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentEdited with fn serialize(s
   o.field("pull_request", PullRequestReviewCommentEditedPullRequest::serialize(self.pull_request))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -14595,7 +14434,6 @@ pub impl @typify_rt.Serde for PushEvent with fn serialize(self) {
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -14722,7 +14560,6 @@ pub impl @typify_rt.Serde for Release with fn serialize(self) {
   o.field("upload_url", @typify_rt.ser_string(self.upload_url))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("zipball_url", @typify_rt.ser_option(self.zipball_url, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -14789,7 +14626,6 @@ pub impl @typify_rt.Serde for ReleaseCreated with fn serialize(self) {
   o.field("release", Release::serialize(self.release))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -14856,7 +14692,6 @@ pub impl @typify_rt.Serde for ReleaseDeleted with fn serialize(self) {
   o.field("release", Release::serialize(self.release))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -14928,7 +14763,6 @@ pub impl @typify_rt.Serde for ReleaseEdited with fn serialize(self) {
   o.field("release", Release::serialize(self.release))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -14995,7 +14829,6 @@ pub impl @typify_rt.Serde for ReleasePrereleased with fn serialize(self) {
   o.field("release", ReleasePrereleasedRelease::serialize(self.release))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -15062,7 +14895,6 @@ pub impl @typify_rt.Serde for ReleasePublished with fn serialize(self) {
   o.field("release", ReleasePublishedRelease::serialize(self.release))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -15129,7 +14961,6 @@ pub impl @typify_rt.Serde for ReleaseReleased with fn serialize(self) {
   o.field("release", Release::serialize(self.release))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -15196,7 +15027,6 @@ pub impl @typify_rt.Serde for ReleaseUnpublished with fn serialize(self) {
   o.field("release", ReleaseUnpublishedRelease::serialize(self.release))
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -15298,7 +15128,6 @@ pub impl @typify_rt.Serde for ReleaseAsset with fn serialize(self) {
     o.field("uploader", @typify_rt.ser_option(self.uploader, User::serialize))
   }
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -15443,7 +15272,6 @@ pub impl @typify_rt.Serde for RepoRef with fn serialize(self) {
   o.field("id", @typify_rt.ser_i64(self.id))
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -15941,7 +15769,6 @@ pub impl @typify_rt.Serde for Repository with fn serialize(self) {
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("watchers", @typify_rt.ser_i64(self.watchers))
   o.field("watchers_count", @typify_rt.ser_i64(self.watchers_count))
-
   o.build()
 }
 
@@ -16003,7 +15830,6 @@ pub impl @typify_rt.Serde for RepositoryArchived with fn serialize(self) {
   }
   o.field("repository", RepositoryArchivedRepository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -16065,7 +15891,6 @@ pub impl @typify_rt.Serde for RepositoryCreated with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -16127,7 +15952,6 @@ pub impl @typify_rt.Serde for RepositoryDeleted with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -16194,7 +16018,6 @@ pub impl @typify_rt.Serde for RepositoryEdited with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -16256,7 +16079,6 @@ pub impl @typify_rt.Serde for RepositoryPrivatized with fn serialize(self) {
   }
   o.field("repository", RepositoryPrivatizedRepository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -16318,7 +16140,6 @@ pub impl @typify_rt.Serde for RepositoryPublicized with fn serialize(self) {
   }
   o.field("repository", RepositoryPublicizedRepository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -16385,7 +16206,6 @@ pub impl @typify_rt.Serde for RepositoryRenamed with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -16452,7 +16272,6 @@ pub impl @typify_rt.Serde for RepositoryTransferred with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -16514,7 +16333,6 @@ pub impl @typify_rt.Serde for RepositoryUnarchived with fn serialize(self) {
   }
   o.field("repository", RepositoryUnarchivedRepository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -16780,7 +16598,6 @@ pub impl @typify_rt.Serde for RepositoryLite with fn serialize(self) {
   o.field("teams_url", @typify_rt.ser_string(self.teams_url))
   o.field("trees_url", @typify_rt.ser_string(self.trees_url))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -16850,7 +16667,6 @@ pub impl @typify_rt.Serde for RepositoryDispatchOnDemandTest with fn serialize(s
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -17053,7 +16869,6 @@ pub impl @typify_rt.Serde for RepositoryImportEvent with fn serialize(self) {
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
   o.field("status", RepositoryImportEventStatus::serialize(self.status))
-
   o.build()
 }
 
@@ -17113,7 +16928,6 @@ pub impl @typify_rt.Serde for RepositoryVulnerabilityAlertCreate with fn seriali
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -17173,7 +16987,6 @@ pub impl @typify_rt.Serde for RepositoryVulnerabilityAlertDismiss with fn serial
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -17233,7 +17046,6 @@ pub impl @typify_rt.Serde for RepositoryVulnerabilityAlertResolve with fn serial
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -17352,7 +17164,6 @@ pub impl @typify_rt.Serde for SecretScanningAlertCreated with fn serialize(self)
     o.field("organization", @typify_rt.ser_option(self.organization, Organization::serialize))
   }
   o.field("repository", Repository::serialize(self.repository))
-
   o.build()
 }
 
@@ -17419,7 +17230,6 @@ pub impl @typify_rt.Serde for SecretScanningAlertReopened with fn serialize(self
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -17486,7 +17296,6 @@ pub impl @typify_rt.Serde for SecretScanningAlertResolved with fn serialize(self
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -17586,7 +17395,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPerformed with fn serialize(self) 
   let o = @typify_rt.ObjectBuilder::new()
   o.field("action", SecurityAdvisoryPerformedAction::serialize(self.action))
   o.field("security_advisory", SecurityAdvisoryPerformedSecurityAdvisory::serialize(self.security_advisory))
-
   o.build()
 }
 
@@ -17629,7 +17437,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPublished with fn serialize(self) 
   let o = @typify_rt.ObjectBuilder::new()
   o.field("action", SecurityAdvisoryPublishedAction::serialize(self.action))
   o.field("security_advisory", SecurityAdvisoryPublishedSecurityAdvisory::serialize(self.security_advisory))
-
   o.build()
 }
 
@@ -17672,7 +17479,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryUpdated with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("action", SecurityAdvisoryUpdatedAction::serialize(self.action))
   o.field("security_advisory", SecurityAdvisoryUpdatedSecurityAdvisory::serialize(self.security_advisory))
-
   o.build()
 }
 
@@ -17715,7 +17521,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryWithdrawn with fn serialize(self) 
   let o = @typify_rt.ObjectBuilder::new()
   o.field("action", SecurityAdvisoryWithdrawnAction::serialize(self.action))
   o.field("security_advisory", SecurityAdvisoryWithdrawnSecurityAdvisory::serialize(self.security_advisory))
-
   o.build()
 }
 
@@ -17995,7 +17800,6 @@ pub impl @typify_rt.Serde for SimplePullRequest with fn serialize(self) {
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -18043,7 +17847,6 @@ pub impl @typify_rt.Serde for SponsorshipCancelled with fn serialize(self) {
   o.field("action", SponsorshipCancelledAction::serialize(self.action))
   o.field("sender", User::serialize(self.sender))
   o.field("sponsorship", SponsorshipCancelledSponsorship::serialize(self.sponsorship))
-
   o.build()
 }
 
@@ -18091,7 +17894,6 @@ pub impl @typify_rt.Serde for SponsorshipCreated with fn serialize(self) {
   o.field("action", SponsorshipCreatedAction::serialize(self.action))
   o.field("sender", User::serialize(self.sender))
   o.field("sponsorship", SponsorshipCreatedSponsorship::serialize(self.sponsorship))
-
   o.build()
 }
 
@@ -18144,7 +17946,6 @@ pub impl @typify_rt.Serde for SponsorshipEdited with fn serialize(self) {
   o.field("changes", SponsorshipEditedChanges::serialize(self.changes))
   o.field("sender", User::serialize(self.sender))
   o.field("sponsorship", SponsorshipEditedSponsorship::serialize(self.sponsorship))
-
   o.build()
 }
 
@@ -18200,7 +18001,6 @@ pub impl @typify_rt.Serde for SponsorshipPendingCancellation with fn serialize(s
   }
   o.field("sender", User::serialize(self.sender))
   o.field("sponsorship", SponsorshipPendingCancellationSponsorship::serialize(self.sponsorship))
-
   o.build()
 }
 
@@ -18261,7 +18061,6 @@ pub impl @typify_rt.Serde for SponsorshipPendingTierChange with fn serialize(sel
   }
   o.field("sender", User::serialize(self.sender))
   o.field("sponsorship", SponsorshipPendingTierChangeSponsorship::serialize(self.sponsorship))
-
   o.build()
 }
 
@@ -18314,7 +18113,6 @@ pub impl @typify_rt.Serde for SponsorshipTierChanged with fn serialize(self) {
   o.field("changes", SponsorshipTierChangedChanges::serialize(self.changes))
   o.field("sender", User::serialize(self.sender))
   o.field("sponsorship", SponsorshipTierChangedSponsorship::serialize(self.sponsorship))
-
   o.build()
 }
 
@@ -18387,7 +18185,6 @@ pub impl @typify_rt.Serde for SponsorshipTier with fn serialize(self) {
   o.field("monthly_price_in_dollars", @typify_rt.ser_i64(self.monthly_price_in_dollars))
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("node_id", @typify_rt.ser_string(self.node_id))
-
   o.build()
 }
 
@@ -18542,7 +18339,6 @@ pub impl @typify_rt.Serde for StarCreated with fn serialize(self) {
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
   o.field("starred_at", @typify_rt.ser_string(self.starred_at))
-
   o.build()
 }
 
@@ -18610,7 +18406,6 @@ pub impl @typify_rt.Serde for StarDeleted with fn serialize(self) {
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
   o.field("starred_at", @typify_rt.ser_unit())
-
   o.build()
 }
 
@@ -18782,7 +18577,6 @@ pub impl @typify_rt.Serde for StatusEvent with fn serialize(self) {
   o.field("state", StatusEventState::serialize(self.state))
   o.field("target_url", @typify_rt.ser_option(self.target_url, (v : String) => @typify_rt.ser_string(v)))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
-
   o.build()
 }
 
@@ -18882,7 +18676,6 @@ pub impl @typify_rt.Serde for Team with fn serialize(self) {
   o.field("repositories_url", @typify_rt.ser_string(self.repositories_url))
   o.field("slug", @typify_rt.ser_string(self.slug))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -18949,7 +18742,6 @@ pub impl @typify_rt.Serde for TeamAddedToRepository with fn serialize(self) {
   }
   o.field("sender", User::serialize(self.sender))
   o.field("team", Team::serialize(self.team))
-
   o.build()
 }
 
@@ -19016,7 +18808,6 @@ pub impl @typify_rt.Serde for TeamCreated with fn serialize(self) {
   }
   o.field("sender", User::serialize(self.sender))
   o.field("team", Team::serialize(self.team))
-
   o.build()
 }
 
@@ -19083,7 +18874,6 @@ pub impl @typify_rt.Serde for TeamDeleted with fn serialize(self) {
   }
   o.field("sender", User::serialize(self.sender))
   o.field("team", Team::serialize(self.team))
-
   o.build()
 }
 
@@ -19155,7 +18945,6 @@ pub impl @typify_rt.Serde for TeamEdited with fn serialize(self) {
   }
   o.field("sender", User::serialize(self.sender))
   o.field("team", Team::serialize(self.team))
-
   o.build()
 }
 
@@ -19222,7 +19011,6 @@ pub impl @typify_rt.Serde for TeamRemovedFromRepository with fn serialize(self) 
   }
   o.field("sender", User::serialize(self.sender))
   o.field("team", Team::serialize(self.team))
-
   o.build()
 }
 
@@ -19282,7 +19070,6 @@ pub impl @typify_rt.Serde for TeamAddEvent with fn serialize(self) {
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
   o.field("team", Team::serialize(self.team))
-
   o.build()
 }
 
@@ -19496,7 +19283,6 @@ pub impl @typify_rt.Serde for User with fn serialize(self) {
   o.field("subscriptions_url", @typify_rt.ser_string(self.subscriptions_url))
   o.field("type", UserType::serialize(self.type_))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -19558,7 +19344,6 @@ pub impl @typify_rt.Serde for WatchStarted with fn serialize(self) {
   }
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
-
   o.build()
 }
 
@@ -19712,7 +19497,6 @@ pub impl @typify_rt.Serde for Workflow with fn serialize(self) {
   o.field("state", @typify_rt.ser_string(self.state))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -19820,7 +19604,6 @@ pub impl @typify_rt.Serde for WorkflowJob with fn serialize(self) {
   o.field("status", WorkflowJobStatus::serialize(self.status))
   o.field("steps", @typify_rt.ser_vec(self.steps, WorkflowStep::serialize))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -19988,7 +19771,6 @@ pub impl @typify_rt.Serde for WorkflowRun with fn serialize(self) {
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("workflow_id", @typify_rt.ser_i64(self.workflow_id))
   o.field("workflow_url", @typify_rt.ser_string(self.workflow_url))
-
   o.build()
 }
 
@@ -20098,7 +19880,6 @@ pub impl @typify_rt.Serde for WorkflowStepCompleted with fn serialize(self) {
   o.field("number", @typify_rt.ser_i64(self.number))
   o.field("started_at", @typify_rt.ser_string(self.started_at))
   o.field("status", WorkflowStepCompletedStatus::serialize(self.status))
-
   o.build()
 }
 
@@ -20161,7 +19942,6 @@ pub impl @typify_rt.Serde for WorkflowStepInProgress with fn serialize(self) {
   o.field("number", @typify_rt.ser_i64(self.number))
   o.field("started_at", @typify_rt.ser_string(self.started_at))
   o.field("status", WorkflowStepInProgressStatus::serialize(self.status))
-
   o.build()
 }
 
@@ -20233,7 +20013,6 @@ pub impl @typify_rt.Serde for WorkflowDispatchEvent with fn serialize(self) {
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
   o.field("workflow", @typify_rt.ser_string(self.workflow))
-
   o.build()
 }
 
@@ -20300,7 +20079,6 @@ pub impl @typify_rt.Serde for WorkflowJobCompleted with fn serialize(self) {
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
   o.field("workflow_job", WorkflowJobCompletedWorkflowJob::serialize(self.workflow_job))
-
   o.build()
 }
 
@@ -20367,7 +20145,6 @@ pub impl @typify_rt.Serde for WorkflowJobQueued with fn serialize(self) {
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
   o.field("workflow_job", WorkflowJobQueuedWorkflowJob::serialize(self.workflow_job))
-
   o.build()
 }
 
@@ -20434,7 +20211,6 @@ pub impl @typify_rt.Serde for WorkflowJobStarted with fn serialize(self) {
   o.field("repository", Repository::serialize(self.repository))
   o.field("sender", User::serialize(self.sender))
   o.field("workflow_job", WorkflowJobStartedWorkflowJob::serialize(self.workflow_job))
-
   o.build()
 }
 
@@ -20563,7 +20339,6 @@ pub impl @typify_rt.Serde for WorkflowRunCompleted with fn serialize(self) {
   o.field("sender", User::serialize(self.sender))
   o.field("workflow", Workflow::serialize(self.workflow))
   o.field("workflow_run", WorkflowRunCompletedWorkflowRun::serialize(self.workflow_run))
-
   o.build()
 }
 
@@ -20635,7 +20410,6 @@ pub impl @typify_rt.Serde for WorkflowRunRequested with fn serialize(self) {
   o.field("sender", User::serialize(self.sender))
   o.field("workflow", Workflow::serialize(self.workflow))
   o.field("workflow_run", WorkflowRun::serialize(self.workflow_run))
-
   o.build()
 }
 
@@ -21327,7 +21101,6 @@ pub impl @typify_rt.Serde for AlertInstanceLocation with fn serialize(self) {
   if self.start_line is Some(_) {
     o.field("start_line", @typify_rt.ser_option(self.start_line, (v : Int64) => @typify_rt.ser_i64(v)))
   }
-
   o.build()
 }
 
@@ -21367,7 +21140,6 @@ pub impl @typify_rt.Serde for AlertInstanceMessage with fn serialize(self) {
   if self.text is Some(_) {
     o.field("text", @typify_rt.ser_option(self.text, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -24236,7 +24008,6 @@ pub impl @typify_rt.Serde for AppPermissions with fn serialize(self) {
   if self.workflows is Some(_) {
     o.field("workflows", @typify_rt.ser_option(self.workflows, AppPermissionsWorkflows::serialize))
   }
-
   o.build()
 }
 
@@ -25090,7 +24861,6 @@ pub impl @typify_rt.Serde for BranchProtectionRuleEditedChangesAuthorizedActorNa
 pub impl @typify_rt.Serde for BranchProtectionRuleEditedChangesAuthorizedActorNames with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_vec(self.from, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -25128,7 +24898,6 @@ pub impl @typify_rt.Serde for BranchProtectionRuleEditedChangesAuthorizedActorsO
 pub impl @typify_rt.Serde for BranchProtectionRuleEditedChangesAuthorizedActorsOnly with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_bool(self.from))
-
   o.build()
 }
 
@@ -25175,7 +24944,6 @@ pub impl @typify_rt.Serde for BranchProtectionRuleEditedChanges with fn serializ
   if self.authorized_actors_only is Some(_) {
     o.field("authorized_actors_only", @typify_rt.ser_option(self.authorized_actors_only, BranchProtectionRuleEditedChangesAuthorizedActorsOnly::serialize))
   }
-
   o.build()
 }
 
@@ -25223,7 +24991,6 @@ pub impl @typify_rt.Serde for CheckRunPullRequestBase with fn serialize(self) {
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("repo", RepoRef::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
-
   o.build()
 }
 
@@ -25271,7 +25038,6 @@ pub impl @typify_rt.Serde for CheckRunPullRequestHead with fn serialize(self) {
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("repo", RepoRef::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
-
   o.build()
 }
 
@@ -25606,7 +25372,6 @@ pub impl @typify_rt.Serde for CheckRunCompletedCheckRunCheckSuite with fn serial
   o.field("status", CheckRunCompletedCheckRunCheckSuiteStatus::serialize(self.status))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -25767,7 +25532,6 @@ pub impl @typify_rt.Serde for CheckRunCompletedCheckRunOutput with fn serialize(
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -25950,7 +25714,6 @@ pub impl @typify_rt.Serde for CheckRunCompletedCheckRun with fn serialize(self) 
   o.field("started_at", @typify_rt.ser_string(self.started_at))
   o.field("status", CheckRunCompletedCheckRunStatus::serialize(self.status))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -25991,7 +25754,6 @@ pub impl @typify_rt.Serde for CheckRunCompletedRequestedAction with fn serialize
   if self.identifier is Some(_) {
     o.field("identifier", @typify_rt.ser_option(self.identifier, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -26326,7 +26088,6 @@ pub impl @typify_rt.Serde for CheckRunCreatedCheckRunCheckSuite with fn serializ
   o.field("status", CheckRunCreatedCheckRunCheckSuiteStatus::serialize(self.status))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -26487,7 +26248,6 @@ pub impl @typify_rt.Serde for CheckRunCreatedCheckRunOutput with fn serialize(se
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -26682,7 +26442,6 @@ pub impl @typify_rt.Serde for CheckRunCreatedCheckRun with fn serialize(self) {
   o.field("started_at", @typify_rt.ser_string(self.started_at))
   o.field("status", CheckRunCreatedCheckRunStatus::serialize(self.status))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -26723,7 +26482,6 @@ pub impl @typify_rt.Serde for CheckRunCreatedRequestedAction with fn serialize(s
   if self.identifier is Some(_) {
     o.field("identifier", @typify_rt.ser_option(self.identifier, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -27058,7 +26816,6 @@ pub impl @typify_rt.Serde for CheckRunRequestedActionCheckRunCheckSuite with fn 
   o.field("status", CheckRunRequestedActionCheckRunCheckSuiteStatus::serialize(self.status))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -27219,7 +26976,6 @@ pub impl @typify_rt.Serde for CheckRunRequestedActionCheckRunOutput with fn seri
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -27414,7 +27170,6 @@ pub impl @typify_rt.Serde for CheckRunRequestedActionCheckRun with fn serialize(
   o.field("started_at", @typify_rt.ser_string(self.started_at))
   o.field("status", CheckRunRequestedActionCheckRunStatus::serialize(self.status))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -27455,7 +27210,6 @@ pub impl @typify_rt.Serde for CheckRunRequestedActionRequestedAction with fn ser
   if self.identifier is Some(_) {
     o.field("identifier", @typify_rt.ser_option(self.identifier, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -27778,7 +27532,6 @@ pub impl @typify_rt.Serde for CheckRunRerequestedCheckRunCheckSuite with fn seri
   o.field("status", CheckRunRerequestedCheckRunCheckSuiteStatus::serialize(self.status))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -27939,7 +27692,6 @@ pub impl @typify_rt.Serde for CheckRunRerequestedCheckRunOutput with fn serializ
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -28122,7 +27874,6 @@ pub impl @typify_rt.Serde for CheckRunRerequestedCheckRun with fn serialize(self
   o.field("started_at", @typify_rt.ser_string(self.started_at))
   o.field("status", CheckRunRerequestedCheckRunStatus::serialize(self.status))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -28163,7 +27914,6 @@ pub impl @typify_rt.Serde for CheckRunRerequestedRequestedAction with fn seriali
   if self.identifier is Some(_) {
     o.field("identifier", @typify_rt.ser_option(self.identifier, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -28513,7 +28263,6 @@ pub impl @typify_rt.Serde for CheckSuiteCompletedCheckSuite with fn serialize(se
   o.field("status", @typify_rt.ser_option(self.status, CheckSuiteCompletedCheckSuiteStatus::serialize))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -28863,7 +28612,6 @@ pub impl @typify_rt.Serde for CheckSuiteRequestedCheckSuite with fn serialize(se
   o.field("status", @typify_rt.ser_option(self.status, CheckSuiteRequestedCheckSuiteStatus::serialize))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -29213,7 +28961,6 @@ pub impl @typify_rt.Serde for CheckSuiteRerequestedCheckSuite with fn serialize(
   o.field("status", @typify_rt.ser_option(self.status, CheckSuiteRerequestedCheckSuiteStatus::serialize))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -29471,7 +29218,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertAppearedInBranchAlertRule with fn
   o.field("description", @typify_rt.ser_string(self.description))
   o.field("id", @typify_rt.ser_string(self.id))
   o.field("severity", @typify_rt.ser_option(self.severity, CodeScanningAlertAppearedInBranchAlertRuleSeverity::serialize))
-
   o.build()
 }
 
@@ -29587,7 +29333,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertAppearedInBranchAlertTool with fn
   let o = @typify_rt.ObjectBuilder::new()
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("version", @typify_rt.ser_option(self.version, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -29688,7 +29433,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertAppearedInBranchAlert with fn ser
   o.field("state", CodeScanningAlertAppearedInBranchAlertState::serialize(self.state))
   o.field("tool", CodeScanningAlertAppearedInBranchAlertTool::serialize(self.tool))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -29886,7 +29630,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertClosedByUserAlertInstancesItemLoc
   if self.start_line is Some(_) {
     o.field("start_line", @typify_rt.ser_option(self.start_line, (v : Int64) => @typify_rt.ser_i64(v)))
   }
-
   o.build()
 }
 
@@ -29926,7 +29669,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertClosedByUserAlertInstancesItemMes
   if self.text is Some(_) {
     o.field("text", @typify_rt.ser_option(self.text, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -30069,7 +29811,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertClosedByUserAlertInstancesItem wi
   }
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("state", CodeScanningAlertClosedByUserAlertInstancesItemState::serialize(self.state))
-
   o.build()
 }
 
@@ -30221,7 +29962,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertClosedByUserAlertRule with fn ser
   }
   o.field("severity", @typify_rt.ser_option(self.severity, CodeScanningAlertClosedByUserAlertRuleSeverity::serialize))
   o.field("tags", @typify_rt.ser_unit())
-
   o.build()
 }
 
@@ -30332,7 +30072,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertClosedByUserAlertTool with fn ser
   }
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("version", @typify_rt.ser_option(self.version, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -30433,7 +30172,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertClosedByUserAlert with fn seriali
   o.field("state", CodeScanningAlertClosedByUserAlertState::serialize(self.state))
   o.field("tool", CodeScanningAlertClosedByUserAlertTool::serialize(self.tool))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -30560,7 +30298,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertCreatedAlertInstancesItemLocation
   if self.start_line is Some(_) {
     o.field("start_line", @typify_rt.ser_option(self.start_line, (v : Int64) => @typify_rt.ser_i64(v)))
   }
-
   o.build()
 }
 
@@ -30600,7 +30337,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertCreatedAlertInstancesItemMessage 
   if self.text is Some(_) {
     o.field("text", @typify_rt.ser_option(self.text, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -30749,7 +30485,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertCreatedAlertInstancesItem with fn
   }
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("state", CodeScanningAlertCreatedAlertInstancesItemState::serialize(self.state))
-
   o.build()
 }
 
@@ -30901,7 +30636,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertCreatedAlertRule with fn serializ
   }
   o.field("severity", @typify_rt.ser_option(self.severity, CodeScanningAlertCreatedAlertRuleSeverity::serialize))
   o.field("tags", @typify_rt.ser_unit())
-
   o.build()
 }
 
@@ -31018,7 +30752,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertCreatedAlertTool with fn serializ
   }
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("version", @typify_rt.ser_option(self.version, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -31119,7 +30852,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertCreatedAlert with fn serialize(se
   o.field("state", CodeScanningAlertCreatedAlertState::serialize(self.state))
   o.field("tool", CodeScanningAlertCreatedAlertTool::serialize(self.tool))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -31317,7 +31049,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertFixedAlertInstancesItemLocation w
   if self.start_line is Some(_) {
     o.field("start_line", @typify_rt.ser_option(self.start_line, (v : Int64) => @typify_rt.ser_i64(v)))
   }
-
   o.build()
 }
 
@@ -31357,7 +31088,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertFixedAlertInstancesItemMessage wi
   if self.text is Some(_) {
     o.field("text", @typify_rt.ser_option(self.text, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -31500,7 +31230,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertFixedAlertInstancesItem with fn s
   }
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("state", CodeScanningAlertFixedAlertInstancesItemState::serialize(self.state))
-
   o.build()
 }
 
@@ -31652,7 +31381,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertFixedAlertRule with fn serialize(
   }
   o.field("severity", @typify_rt.ser_option(self.severity, CodeScanningAlertFixedAlertRuleSeverity::serialize))
   o.field("tags", @typify_rt.ser_unit())
-
   o.build()
 }
 
@@ -31763,7 +31491,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertFixedAlertTool with fn serialize(
   }
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("version", @typify_rt.ser_option(self.version, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -31871,7 +31598,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertFixedAlert with fn serialize(self
   o.field("state", CodeScanningAlertFixedAlertState::serialize(self.state))
   o.field("tool", CodeScanningAlertFixedAlertTool::serialize(self.tool))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -31998,7 +31724,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertReopenedAlertInstancesItemLocatio
   if self.start_line is Some(_) {
     o.field("start_line", @typify_rt.ser_option(self.start_line, (v : Int64) => @typify_rt.ser_i64(v)))
   }
-
   o.build()
 }
 
@@ -32038,7 +31763,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertReopenedAlertInstancesItemMessage
   if self.text is Some(_) {
     o.field("text", @typify_rt.ser_option(self.text, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -32181,7 +31905,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertReopenedAlertInstancesItem with f
   }
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("state", CodeScanningAlertReopenedAlertInstancesItemState::serialize(self.state))
-
   o.build()
 }
 
@@ -32333,7 +32056,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertReopenedAlertRule with fn seriali
   }
   o.field("severity", @typify_rt.ser_option(self.severity, CodeScanningAlertReopenedAlertRuleSeverity::serialize))
   o.field("tags", @typify_rt.ser_unit())
-
   o.build()
 }
 
@@ -32456,7 +32178,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertReopenedAlertTool with fn seriali
   }
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("version", @typify_rt.ser_option(self.version, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -32557,7 +32278,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertReopenedAlert with fn serialize(s
   o.field("state", CodeScanningAlertReopenedAlertState::serialize(self.state))
   o.field("tool", CodeScanningAlertReopenedAlertTool::serialize(self.tool))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -32684,7 +32404,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertReopenedByUserAlertInstancesItemL
   if self.start_line is Some(_) {
     o.field("start_line", @typify_rt.ser_option(self.start_line, (v : Int64) => @typify_rt.ser_i64(v)))
   }
-
   o.build()
 }
 
@@ -32724,7 +32443,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertReopenedByUserAlertInstancesItemM
   if self.text is Some(_) {
     o.field("text", @typify_rt.ser_option(self.text, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -32867,7 +32585,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertReopenedByUserAlertInstancesItem 
   }
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("state", CodeScanningAlertReopenedByUserAlertInstancesItemState::serialize(self.state))
-
   o.build()
 }
 
@@ -32995,7 +32712,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertReopenedByUserAlertRule with fn s
   o.field("description", @typify_rt.ser_string(self.description))
   o.field("id", @typify_rt.ser_string(self.id))
   o.field("severity", @typify_rt.ser_option(self.severity, CodeScanningAlertReopenedByUserAlertRuleSeverity::serialize))
-
   o.build()
 }
 
@@ -33099,7 +32815,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertReopenedByUserAlertTool with fn s
   let o = @typify_rt.ObjectBuilder::new()
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("version", @typify_rt.ser_option(self.version, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -33200,7 +32915,6 @@ pub impl @typify_rt.Serde for CodeScanningAlertReopenedByUserAlert with fn seria
   o.field("state", CodeScanningAlertReopenedByUserAlertState::serialize(self.state))
   o.field("tool", CodeScanningAlertReopenedByUserAlertTool::serialize(self.tool))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -33364,7 +33078,6 @@ pub impl @typify_rt.Serde for CommitCommentCreatedComment with fn serialize(self
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -33471,7 +33184,6 @@ pub impl @typify_rt.Serde for ContentReferenceCreatedContentReference with fn se
   o.field("id", @typify_rt.ser_i64(self.id))
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("reference", @typify_rt.ser_string(self.reference))
-
   o.build()
 }
 
@@ -33728,7 +33440,6 @@ pub impl @typify_rt.Serde for DeployKeyCreatedKey with fn serialize(self) {
   o.field("title", @typify_rt.ser_string(self.title))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("verified", @typify_rt.ser_bool(self.verified))
-
   o.build()
 }
 
@@ -33855,7 +33566,6 @@ pub impl @typify_rt.Serde for DeployKeyDeletedKey with fn serialize(self) {
   o.field("title", @typify_rt.ser_string(self.title))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("verified", @typify_rt.ser_bool(self.verified))
-
   o.build()
 }
 
@@ -33938,9 +33648,9 @@ let deployment_created_deployment_payload_fields : @typify_rt.Fields = @typify_r
 
 ///|
 pub impl @typify_rt.Serde for DeploymentCreatedDeploymentPayload with fn deserialize(d) {
-  let r = @typify_rt.de_fields(d, "struct DeploymentCreatedDeploymentPayload", deployment_created_deployment_payload_fields, (j, v) => match j {
+  ignore(@typify_rt.de_fields(d, "struct DeploymentCreatedDeploymentPayload", deployment_created_deployment_payload_fields, (j, v) => match j {
     _ => ()
-  }, deny=true)
+  }, deny=true))
   DeploymentCreatedDeploymentPayload::{  }
 }
 
@@ -34062,7 +33772,6 @@ pub impl @typify_rt.Serde for DeploymentCreatedDeployment with fn serialize(self
   o.field("task", @typify_rt.ser_string(self.task))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -34145,9 +33854,9 @@ let deployment_status_created_deployment_payload_fields : @typify_rt.Fields = @t
 
 ///|
 pub impl @typify_rt.Serde for DeploymentStatusCreatedDeploymentPayload with fn deserialize(d) {
-  let r = @typify_rt.de_fields(d, "struct DeploymentStatusCreatedDeploymentPayload", deployment_status_created_deployment_payload_fields, (j, v) => match j {
+  ignore(@typify_rt.de_fields(d, "struct DeploymentStatusCreatedDeploymentPayload", deployment_status_created_deployment_payload_fields, (j, v) => match j {
     _ => ()
-  }, deny=true)
+  }, deny=true))
   DeploymentStatusCreatedDeploymentPayload::{  }
 }
 
@@ -34267,7 +33976,6 @@ pub impl @typify_rt.Serde for DeploymentStatusCreatedDeployment with fn serializ
   o.field("task", @typify_rt.ser_string(self.task))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -34370,7 +34078,6 @@ pub impl @typify_rt.Serde for DeploymentStatusCreatedDeploymentStatus with fn se
   o.field("target_url", @typify_rt.ser_string(self.target_url))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -34448,7 +34155,6 @@ pub impl @typify_rt.Serde for DiscussionCategory with fn serialize(self) {
   o.field("repository_id", @typify_rt.ser_i64(self.repository_id))
   o.field("slug", @typify_rt.ser_string(self.slug))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
-
   o.build()
 }
 
@@ -34671,7 +34377,6 @@ pub impl @typify_rt.Serde for DiscussionAnsweredAnswer with fn serialize(self) {
   o.field("repository_url", @typify_rt.ser_string(self.repository_url))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -34879,7 +34584,6 @@ pub impl @typify_rt.Serde for DiscussionAnsweredDiscussionAnswerChosenBy with fn
   o.field("subscriptions_url", @typify_rt.ser_string(self.subscriptions_url))
   o.field("type", DiscussionAnsweredDiscussionAnswerChosenByType::serialize(self.type_))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -34957,7 +34661,6 @@ pub impl @typify_rt.Serde for DiscussionAnsweredDiscussionCategory with fn seria
   o.field("repository_id", @typify_rt.ser_i64(self.repository_id))
   o.field("slug", @typify_rt.ser_string(self.slug))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
-
   o.build()
 }
 
@@ -35156,7 +34859,6 @@ pub impl @typify_rt.Serde for DiscussionAnsweredDiscussion with fn serialize(sel
   o.field("title", @typify_rt.ser_string(self.title))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -35293,7 +34995,6 @@ pub impl @typify_rt.Serde for DiscussionCategoryChangedChangesCategoryFrom with 
   o.field("repository_id", @typify_rt.ser_i64(self.repository_id))
   o.field("slug", @typify_rt.ser_string(self.slug))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
-
   o.build()
 }
 
@@ -35331,7 +35032,6 @@ pub impl @typify_rt.Serde for DiscussionCategoryChangedChangesCategory with fn d
 pub impl @typify_rt.Serde for DiscussionCategoryChangedChangesCategory with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", DiscussionCategoryChangedChangesCategoryFrom::serialize(self.from))
-
   o.build()
 }
 
@@ -35369,7 +35069,6 @@ pub impl @typify_rt.Serde for DiscussionCategoryChangedChanges with fn deseriali
 pub impl @typify_rt.Serde for DiscussionCategoryChangedChanges with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("category", DiscussionCategoryChangedChangesCategory::serialize(self.category))
-
   o.build()
 }
 
@@ -35506,7 +35205,6 @@ pub impl @typify_rt.Serde for DiscussionCreatedDiscussionCategory with fn serial
   o.field("repository_id", @typify_rt.ser_i64(self.repository_id))
   o.field("slug", @typify_rt.ser_string(self.slug))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
-
   o.build()
 }
 
@@ -35699,7 +35397,6 @@ pub impl @typify_rt.Serde for DiscussionCreatedDiscussion with fn serialize(self
   o.field("title", @typify_rt.ser_string(self.title))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -35855,7 +35552,6 @@ pub impl @typify_rt.Serde for DiscussionEditedChangesBody with fn deserialize(d)
 pub impl @typify_rt.Serde for DiscussionEditedChangesBody with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -35893,7 +35589,6 @@ pub impl @typify_rt.Serde for DiscussionEditedChangesTitle with fn deserialize(d
 pub impl @typify_rt.Serde for DiscussionEditedChangesTitle with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -35940,7 +35635,6 @@ pub impl @typify_rt.Serde for DiscussionEditedChanges with fn serialize(self) {
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, DiscussionEditedChangesTitle::serialize))
   }
-
   o.build()
 }
 
@@ -36136,7 +35830,6 @@ pub impl @typify_rt.Serde for DiscussionLockedDiscussionCategory with fn seriali
   o.field("repository_id", @typify_rt.ser_i64(self.repository_id))
   o.field("slug", @typify_rt.ser_string(self.slug))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
-
   o.build()
 }
 
@@ -36323,7 +36016,6 @@ pub impl @typify_rt.Serde for DiscussionLockedDiscussion with fn serialize(self)
   o.field("title", @typify_rt.ser_string(self.title))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -36484,7 +36176,6 @@ pub impl @typify_rt.Serde for DiscussionTransferredChanges with fn serialize(sel
   let o = @typify_rt.ObjectBuilder::new()
   o.field("new_discussion", Discussion::serialize(self.new_discussion))
   o.field("new_repository", Repository::serialize(self.new_repository))
-
   o.build()
 }
 
@@ -36621,7 +36312,6 @@ pub impl @typify_rt.Serde for DiscussionUnansweredDiscussionCategory with fn ser
   o.field("repository_id", @typify_rt.ser_i64(self.repository_id))
   o.field("slug", @typify_rt.ser_string(self.slug))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
-
   o.build()
 }
 
@@ -36820,7 +36510,6 @@ pub impl @typify_rt.Serde for DiscussionUnansweredDiscussion with fn serialize(s
   o.field("title", @typify_rt.ser_string(self.title))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -36913,7 +36602,6 @@ pub impl @typify_rt.Serde for DiscussionUnansweredOldAnswer with fn serialize(se
   o.field("repository_url", @typify_rt.ser_string(self.repository_url))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -37109,7 +36797,6 @@ pub impl @typify_rt.Serde for DiscussionUnlockedDiscussionCategory with fn seria
   o.field("repository_id", @typify_rt.ser_i64(self.repository_id))
   o.field("slug", @typify_rt.ser_string(self.slug))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
-
   o.build()
 }
 
@@ -37296,7 +36983,6 @@ pub impl @typify_rt.Serde for DiscussionUnlockedDiscussion with fn serialize(sel
   o.field("title", @typify_rt.ser_string(self.title))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -37507,7 +37193,6 @@ pub impl @typify_rt.Serde for DiscussionCommentCreatedComment with fn serialize(
   o.field("repository_url", @typify_rt.ser_string(self.repository_url))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -37659,7 +37344,6 @@ pub impl @typify_rt.Serde for DiscussionCommentDeletedComment with fn serialize(
   o.field("repository_url", @typify_rt.ser_string(self.repository_url))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -37756,7 +37440,6 @@ pub impl @typify_rt.Serde for DiscussionCommentEditedChangesBody with fn deseria
 pub impl @typify_rt.Serde for DiscussionCommentEditedChangesBody with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -37794,7 +37477,6 @@ pub impl @typify_rt.Serde for DiscussionCommentEditedChanges with fn deserialize
 pub impl @typify_rt.Serde for DiscussionCommentEditedChanges with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("body", DiscussionCommentEditedChangesBody::serialize(self.body))
-
   o.build()
 }
 
@@ -37887,7 +37569,6 @@ pub impl @typify_rt.Serde for DiscussionCommentEditedComment with fn serialize(s
   o.field("repository_url", @typify_rt.ser_string(self.repository_url))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -37996,7 +37677,6 @@ pub impl @typify_rt.Serde for ForkEventForkeePermissions with fn serialize(self)
   if self.triage is Some(_) {
     o.field("triage", @typify_rt.ser_option(self.triage, (v : Bool) => @typify_rt.ser_bool(v)))
   }
-
   o.build()
 }
 
@@ -38551,7 +38231,6 @@ pub impl @typify_rt.Serde for ForkEventForkee with fn serialize(self) {
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("watchers", @typify_rt.ser_i64(self.watchers))
   o.field("watchers_count", @typify_rt.ser_i64(self.watchers_count))
-
   o.build()
 }
 
@@ -38743,7 +38422,6 @@ pub impl @typify_rt.Serde for GollumEventPagesItem with fn serialize(self) {
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("summary", @typify_rt.ser_unit())
   o.field("title", @typify_rt.ser_string(self.title))
-
   o.build()
 }
 
@@ -41666,7 +41344,6 @@ pub impl @typify_rt.Serde for InstallationPermissions with fn serialize(self) {
   if self.workflows is Some(_) {
     o.field("workflows", @typify_rt.ser_option(self.workflows, InstallationPermissionsWorkflows::serialize))
   }
-
   o.build()
 }
 
@@ -41963,7 +41640,6 @@ pub impl @typify_rt.Serde for InstallationCreatedRepositoriesItem with fn serial
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("private", @typify_rt.ser_bool(self.private))
-
   o.build()
 }
 
@@ -42083,7 +41759,6 @@ pub impl @typify_rt.Serde for InstallationDeletedRepositoriesItem with fn serial
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("private", @typify_rt.ser_bool(self.private))
-
   o.build()
 }
 
@@ -42203,7 +41878,6 @@ pub impl @typify_rt.Serde for InstallationNewPermissionsAcceptedRepositoriesItem
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("private", @typify_rt.ser_bool(self.private))
-
   o.build()
 }
 
@@ -45185,7 +44859,6 @@ pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissions with fn
   if self.workflows is Some(_) {
     o.field("workflows", @typify_rt.ser_option(self.workflows, InstallationSuspendInstallationPermissionsWorkflows::serialize))
   }
-
   o.build()
 }
 
@@ -45458,7 +45131,6 @@ pub impl @typify_rt.Serde for InstallationSuspendInstallationSuspendedBy with fn
   o.field("subscriptions_url", @typify_rt.ser_string(self.subscriptions_url))
   o.field("type", InstallationSuspendInstallationSuspendedByType::serialize(self.type_))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -45707,7 +45379,6 @@ pub impl @typify_rt.Serde for InstallationSuspendInstallation with fn serialize(
   o.field("target_id", @typify_rt.ser_i64(self.target_id))
   o.field("target_type", InstallationSuspendInstallationTargetType::serialize(self.target_type))
   o.field("updated_at", InstallationSuspendInstallationUpdatedAt::serialize(self.updated_at))
-
   o.build()
 }
 
@@ -45768,7 +45439,6 @@ pub impl @typify_rt.Serde for InstallationSuspendRepositoriesItem with fn serial
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("private", @typify_rt.ser_bool(self.private))
-
   o.build()
 }
 
@@ -48750,7 +48420,6 @@ pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissions with 
   if self.workflows is Some(_) {
     o.field("workflows", @typify_rt.ser_option(self.workflows, InstallationUnsuspendInstallationPermissionsWorkflows::serialize))
   }
-
   o.build()
 }
 
@@ -49064,7 +48733,6 @@ pub impl @typify_rt.Serde for InstallationUnsuspendInstallation with fn serializ
   o.field("target_id", @typify_rt.ser_i64(self.target_id))
   o.field("target_type", InstallationUnsuspendInstallationTargetType::serialize(self.target_type))
   o.field("updated_at", InstallationUnsuspendInstallationUpdatedAt::serialize(self.updated_at))
-
   o.build()
 }
 
@@ -49125,7 +48793,6 @@ pub impl @typify_rt.Serde for InstallationUnsuspendRepositoriesItem with fn seri
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("private", @typify_rt.ser_bool(self.private))
-
   o.build()
 }
 
@@ -49245,7 +48912,6 @@ pub impl @typify_rt.Serde for InstallationRepositoriesAddedRepositoriesAddedItem
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("private", @typify_rt.ser_bool(self.private))
-
   o.build()
 }
 
@@ -49316,7 +48982,6 @@ pub impl @typify_rt.Serde for InstallationRepositoriesAddedRepositoriesRemovedIt
   if self.private is Some(_) {
     o.field("private", @typify_rt.ser_option(self.private, (v : Bool) => @typify_rt.ser_bool(v)))
   }
-
   o.build()
 }
 
@@ -49501,7 +49166,6 @@ pub impl @typify_rt.Serde for InstallationRepositoriesRemovedRepositoriesAddedIt
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("private", @typify_rt.ser_bool(self.private))
-
   o.build()
 }
 
@@ -49562,7 +49226,6 @@ pub impl @typify_rt.Serde for InstallationRepositoriesRemovedRepositoriesRemoved
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("private", @typify_rt.ser_bool(self.private))
-
   o.build()
 }
 
@@ -49765,7 +49428,6 @@ pub impl @typify_rt.Serde for IssuePullRequest with fn serialize(self) {
   if self.url is Some(_) {
     o.field("url", @typify_rt.ser_option(self.url, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -50174,7 +49836,6 @@ pub impl @typify_rt.Serde for IssueCommentCreatedIssueAssignee with fn serialize
   o.field("subscriptions_url", @typify_rt.ser_string(self.subscriptions_url))
   o.field("type", IssueCommentCreatedIssueAssigneeType::serialize(self.type_))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -50227,7 +49888,6 @@ pub impl @typify_rt.Serde for IssueCommentCreatedIssuePullRequest with fn serial
   o.field("html_url", @typify_rt.ser_string(self.html_url))
   o.field("patch_url", @typify_rt.ser_string(self.patch_url))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -50462,7 +50122,6 @@ pub impl @typify_rt.Serde for IssueCommentCreatedIssue with fn serialize(self) {
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -50806,7 +50465,6 @@ pub impl @typify_rt.Serde for IssueCommentDeletedIssueAssignee with fn serialize
   o.field("subscriptions_url", @typify_rt.ser_string(self.subscriptions_url))
   o.field("type", IssueCommentDeletedIssueAssigneeType::serialize(self.type_))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -50859,7 +50517,6 @@ pub impl @typify_rt.Serde for IssueCommentDeletedIssuePullRequest with fn serial
   o.field("html_url", @typify_rt.ser_string(self.html_url))
   o.field("patch_url", @typify_rt.ser_string(self.patch_url))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -51094,7 +50751,6 @@ pub impl @typify_rt.Serde for IssueCommentDeletedIssue with fn serialize(self) {
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -51192,7 +50848,6 @@ pub impl @typify_rt.Serde for IssueCommentEditedChangesBody with fn deserialize(
 pub impl @typify_rt.Serde for IssueCommentEditedChangesBody with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -51232,7 +50887,6 @@ pub impl @typify_rt.Serde for IssueCommentEditedChanges with fn serialize(self) 
   if self.body is Some(_) {
     o.field("body", @typify_rt.ser_option(self.body, IssueCommentEditedChangesBody::serialize))
   }
-
   o.build()
 }
 
@@ -51517,7 +51171,6 @@ pub impl @typify_rt.Serde for IssueCommentEditedIssueAssignee with fn serialize(
   o.field("subscriptions_url", @typify_rt.ser_string(self.subscriptions_url))
   o.field("type", IssueCommentEditedIssueAssigneeType::serialize(self.type_))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -51570,7 +51223,6 @@ pub impl @typify_rt.Serde for IssueCommentEditedIssuePullRequest with fn seriali
   o.field("html_url", @typify_rt.ser_string(self.html_url))
   o.field("patch_url", @typify_rt.ser_string(self.patch_url))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -51805,7 +51457,6 @@ pub impl @typify_rt.Serde for IssueCommentEditedIssue with fn serialize(self) {
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -52061,7 +51712,6 @@ pub impl @typify_rt.Serde for IssuesClosedIssuePullRequest with fn serialize(sel
   if self.url is Some(_) {
     o.field("url", @typify_rt.ser_option(self.url, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -52296,7 +51946,6 @@ pub impl @typify_rt.Serde for IssuesClosedIssue with fn serialize(self) {
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -52552,7 +52201,6 @@ pub impl @typify_rt.Serde for IssuesDemilestonedIssuePullRequest with fn seriali
   if self.url is Some(_) {
     o.field("url", @typify_rt.ser_option(self.url, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -52796,7 +52444,6 @@ pub impl @typify_rt.Serde for IssuesDemilestonedIssue with fn serialize(self) {
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -52894,7 +52541,6 @@ pub impl @typify_rt.Serde for IssuesEditedChangesBody with fn deserialize(d) {
 pub impl @typify_rt.Serde for IssuesEditedChangesBody with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -52933,7 +52579,6 @@ pub impl @typify_rt.Serde for IssuesEditedChangesTitle with fn deserialize(d) {
 pub impl @typify_rt.Serde for IssuesEditedChangesTitle with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -52980,7 +52625,6 @@ pub impl @typify_rt.Serde for IssuesEditedChanges with fn serialize(self) {
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, IssuesEditedChangesTitle::serialize))
   }
-
   o.build()
 }
 
@@ -53236,7 +52880,6 @@ pub impl @typify_rt.Serde for IssuesLockedIssuePullRequest with fn serialize(sel
   if self.url is Some(_) {
     o.field("url", @typify_rt.ser_option(self.url, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -53478,7 +53121,6 @@ pub impl @typify_rt.Serde for IssuesLockedIssue with fn serialize(self) {
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -53792,7 +53434,6 @@ pub impl @typify_rt.Serde for IssuesMilestonedIssueMilestone with fn serialize(s
   o.field("title", @typify_rt.ser_string(self.title))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -53853,7 +53494,6 @@ pub impl @typify_rt.Serde for IssuesMilestonedIssuePullRequest with fn serialize
   if self.url is Some(_) {
     o.field("url", @typify_rt.ser_option(self.url, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -54097,7 +53737,6 @@ pub impl @typify_rt.Serde for IssuesMilestonedIssue with fn serialize(self) {
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -54199,7 +53838,6 @@ pub impl @typify_rt.Serde for IssuesOpenedChanges with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("old_issue", Issue::serialize(self.old_issue))
   o.field("old_repository", Repository::serialize(self.old_repository))
-
   o.build()
 }
 
@@ -54337,7 +53975,6 @@ pub impl @typify_rt.Serde for IssuesOpenedIssuePullRequest with fn serialize(sel
   if self.url is Some(_) {
     o.field("url", @typify_rt.ser_option(self.url, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -54572,7 +54209,6 @@ pub impl @typify_rt.Serde for IssuesOpenedIssue with fn serialize(self) {
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -54828,7 +54464,6 @@ pub impl @typify_rt.Serde for IssuesReopenedIssuePullRequest with fn serialize(s
   if self.url is Some(_) {
     o.field("url", @typify_rt.ser_option(self.url, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -55063,7 +54698,6 @@ pub impl @typify_rt.Serde for IssuesReopenedIssue with fn serialize(self) {
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -55165,7 +54799,6 @@ pub impl @typify_rt.Serde for IssuesTransferredChanges with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("new_issue", Issue::serialize(self.new_issue))
   o.field("new_repository", Repository::serialize(self.new_repository))
-
   o.build()
 }
 
@@ -55448,7 +55081,6 @@ pub impl @typify_rt.Serde for IssuesUnlockedIssuePullRequest with fn serialize(s
   if self.url is Some(_) {
     o.field("url", @typify_rt.ser_option(self.url, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -55690,7 +55322,6 @@ pub impl @typify_rt.Serde for IssuesUnlockedIssue with fn serialize(self) {
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -55965,7 +55596,6 @@ pub impl @typify_rt.Serde for LabelEditedChangesColor with fn deserialize(d) {
 pub impl @typify_rt.Serde for LabelEditedChangesColor with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -56004,7 +55634,6 @@ pub impl @typify_rt.Serde for LabelEditedChangesDescription with fn deserialize(
 pub impl @typify_rt.Serde for LabelEditedChangesDescription with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -56043,7 +55672,6 @@ pub impl @typify_rt.Serde for LabelEditedChangesName with fn deserialize(d) {
 pub impl @typify_rt.Serde for LabelEditedChangesName with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -56097,7 +55725,6 @@ pub impl @typify_rt.Serde for LabelEditedChanges with fn serialize(self) {
   if self.name is Some(_) {
     o.field("name", @typify_rt.ser_option(self.name, LabelEditedChangesName::serialize))
   }
-
   o.build()
 }
 
@@ -56155,7 +55782,6 @@ pub impl @typify_rt.Serde for MarketplacePurchaseAccount with fn serialize(self)
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("organization_billing_email", @typify_rt.ser_string(self.organization_billing_email))
   o.field("type", @typify_rt.ser_string(self.type_))
-
   o.build()
 }
 
@@ -56233,7 +55859,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePlan with fn serialize(self) {
   o.field("price_model", @typify_rt.ser_string(self.price_model))
   o.field("unit_name", @typify_rt.ser_option(self.unit_name, (v : String) => @typify_rt.ser_string(v)))
   o.field("yearly_price_in_cents", @typify_rt.ser_i64(self.yearly_price_in_cents))
-
   o.build()
 }
 
@@ -56350,7 +55975,6 @@ pub impl @typify_rt.Serde for MarketplacePurchaseCancelledMarketplacePurchaseAcc
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("organization_billing_email", @typify_rt.ser_string(self.organization_billing_email))
   o.field("type", @typify_rt.ser_string(self.type_))
-
   o.build()
 }
 
@@ -56428,7 +56052,6 @@ pub impl @typify_rt.Serde for MarketplacePurchaseCancelledMarketplacePurchasePla
   o.field("price_model", @typify_rt.ser_string(self.price_model))
   o.field("unit_name", @typify_rt.ser_option(self.unit_name, (v : String) => @typify_rt.ser_string(v)))
   o.field("yearly_price_in_cents", @typify_rt.ser_i64(self.yearly_price_in_cents))
-
   o.build()
 }
 
@@ -56496,7 +56119,6 @@ pub impl @typify_rt.Serde for MarketplacePurchaseCancelledMarketplacePurchase wi
   o.field("on_free_trial", @typify_rt.ser_bool(self.on_free_trial))
   o.field("plan", MarketplacePurchaseCancelledMarketplacePurchasePlan::serialize(self.plan))
   o.field("unit_count", @typify_rt.ser_i64(self.unit_count))
-
   o.build()
 }
 
@@ -56619,7 +56241,6 @@ pub impl @typify_rt.Serde for MarketplacePurchaseCancelledSender with fn seriali
   o.field("subscriptions_url", @typify_rt.ser_string(self.subscriptions_url))
   o.field("type", @typify_rt.ser_string(self.type_))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -56736,7 +56357,6 @@ pub impl @typify_rt.Serde for MarketplacePurchaseChangedMarketplacePurchaseAccou
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("organization_billing_email", @typify_rt.ser_string(self.organization_billing_email))
   o.field("type", @typify_rt.ser_string(self.type_))
-
   o.build()
 }
 
@@ -56814,7 +56434,6 @@ pub impl @typify_rt.Serde for MarketplacePurchaseChangedMarketplacePurchasePlan 
   o.field("price_model", @typify_rt.ser_string(self.price_model))
   o.field("unit_name", @typify_rt.ser_option(self.unit_name, (v : String) => @typify_rt.ser_string(v)))
   o.field("yearly_price_in_cents", @typify_rt.ser_i64(self.yearly_price_in_cents))
-
   o.build()
 }
 
@@ -56882,7 +56501,6 @@ pub impl @typify_rt.Serde for MarketplacePurchaseChangedMarketplacePurchase with
   o.field("on_free_trial", @typify_rt.ser_bool(self.on_free_trial))
   o.field("plan", MarketplacePurchaseChangedMarketplacePurchasePlan::serialize(self.plan))
   o.field("unit_count", @typify_rt.ser_i64(self.unit_count))
-
   o.build()
 }
 
@@ -57005,7 +56623,6 @@ pub impl @typify_rt.Serde for MarketplacePurchaseChangedSender with fn serialize
   o.field("subscriptions_url", @typify_rt.ser_string(self.subscriptions_url))
   o.field("type", @typify_rt.ser_string(self.type_))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -57122,7 +56739,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePendingChangeMarketplacePurchas
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("organization_billing_email", @typify_rt.ser_string(self.organization_billing_email))
   o.field("type", @typify_rt.ser_string(self.type_))
-
   o.build()
 }
 
@@ -57200,7 +56816,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePendingChangeMarketplacePurchas
   o.field("price_model", @typify_rt.ser_string(self.price_model))
   o.field("unit_name", @typify_rt.ser_option(self.unit_name, (v : String) => @typify_rt.ser_string(v)))
   o.field("yearly_price_in_cents", @typify_rt.ser_i64(self.yearly_price_in_cents))
-
   o.build()
 }
 
@@ -57268,7 +56883,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePendingChangeMarketplacePurchas
   o.field("on_free_trial", @typify_rt.ser_bool(self.on_free_trial))
   o.field("plan", MarketplacePurchasePendingChangeMarketplacePurchasePlan::serialize(self.plan))
   o.field("unit_count", @typify_rt.ser_i64(self.unit_count))
-
   o.build()
 }
 
@@ -57391,7 +57005,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePendingChangeSender with fn ser
   o.field("subscriptions_url", @typify_rt.ser_string(self.subscriptions_url))
   o.field("type", @typify_rt.ser_string(self.type_))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -57508,7 +57121,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePendingChangeCancelledMarketpla
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("organization_billing_email", @typify_rt.ser_string(self.organization_billing_email))
   o.field("type", @typify_rt.ser_string(self.type_))
-
   o.build()
 }
 
@@ -57586,7 +57198,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePendingChangeCancelledMarketpla
   o.field("price_model", @typify_rt.ser_string(self.price_model))
   o.field("unit_name", @typify_rt.ser_option(self.unit_name, (v : String) => @typify_rt.ser_string(v)))
   o.field("yearly_price_in_cents", @typify_rt.ser_i64(self.yearly_price_in_cents))
-
   o.build()
 }
 
@@ -57654,7 +57265,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePendingChangeCancelledMarketpla
   o.field("on_free_trial", @typify_rt.ser_bool(self.on_free_trial))
   o.field("plan", MarketplacePurchasePendingChangeCancelledMarketplacePurchasePlan::serialize(self.plan))
   o.field("unit_count", @typify_rt.ser_i64(self.unit_count))
-
   o.build()
 }
 
@@ -57777,7 +57387,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePendingChangeCancelledSender wi
   o.field("subscriptions_url", @typify_rt.ser_string(self.subscriptions_url))
   o.field("type", @typify_rt.ser_string(self.type_))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -57894,7 +57503,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePurchasedMarketplacePurchaseAcc
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("organization_billing_email", @typify_rt.ser_string(self.organization_billing_email))
   o.field("type", @typify_rt.ser_string(self.type_))
-
   o.build()
 }
 
@@ -57972,7 +57580,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePurchasedMarketplacePurchasePla
   o.field("price_model", @typify_rt.ser_string(self.price_model))
   o.field("unit_name", @typify_rt.ser_option(self.unit_name, (v : String) => @typify_rt.ser_string(v)))
   o.field("yearly_price_in_cents", @typify_rt.ser_i64(self.yearly_price_in_cents))
-
   o.build()
 }
 
@@ -58040,7 +57647,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePurchasedMarketplacePurchase wi
   o.field("on_free_trial", @typify_rt.ser_bool(self.on_free_trial))
   o.field("plan", MarketplacePurchasePurchasedMarketplacePurchasePlan::serialize(self.plan))
   o.field("unit_count", @typify_rt.ser_i64(self.unit_count))
-
   o.build()
 }
 
@@ -58163,7 +57769,6 @@ pub impl @typify_rt.Serde for MarketplacePurchasePurchasedSender with fn seriali
   o.field("subscriptions_url", @typify_rt.ser_string(self.subscriptions_url))
   o.field("type", @typify_rt.ser_string(self.type_))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -58325,7 +57930,6 @@ pub impl @typify_rt.Serde for MemberAddedChangesPermission with fn deserialize(d
 pub impl @typify_rt.Serde for MemberAddedChangesPermission with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("to", MemberAddedChangesPermissionTo::serialize(self.to))
-
   o.build()
 }
 
@@ -58365,7 +57969,6 @@ pub impl @typify_rt.Serde for MemberAddedChanges with fn serialize(self) {
   if self.permission is Some(_) {
     o.field("permission", @typify_rt.ser_option(self.permission, MemberAddedChangesPermission::serialize))
   }
-
   o.build()
 }
 
@@ -58463,7 +58066,6 @@ pub impl @typify_rt.Serde for MemberEditedChangesOldPermission with fn deseriali
 pub impl @typify_rt.Serde for MemberEditedChangesOldPermission with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -58501,7 +58103,6 @@ pub impl @typify_rt.Serde for MemberEditedChanges with fn deserialize(d) {
 pub impl @typify_rt.Serde for MemberEditedChanges with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("old_permission", MemberEditedChangesOldPermission::serialize(self.old_permission))
-
   o.build()
 }
 
@@ -59046,7 +58647,6 @@ pub impl @typify_rt.Serde for MetaDeletedHookConfig with fn serialize(self) {
   o.field("content_type", MetaDeletedHookConfigContentType::serialize(self.content_type))
   o.field("insecure_ssl", @typify_rt.ser_string(self.insecure_ssl))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -59119,7 +58719,6 @@ pub impl @typify_rt.Serde for MetaDeletedHook with fn serialize(self) {
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("type", @typify_rt.ser_string(self.type_))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
-
   o.build()
 }
 
@@ -59417,7 +59016,6 @@ pub impl @typify_rt.Serde for MilestoneClosedMilestone with fn serialize(self) {
   o.field("title", @typify_rt.ser_string(self.title))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -59650,7 +59248,6 @@ pub impl @typify_rt.Serde for MilestoneCreatedMilestone with fn serialize(self) 
   o.field("title", @typify_rt.ser_string(self.title))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -59807,7 +59404,6 @@ pub impl @typify_rt.Serde for MilestoneEditedChangesDescription with fn deserial
 pub impl @typify_rt.Serde for MilestoneEditedChangesDescription with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -59846,7 +59442,6 @@ pub impl @typify_rt.Serde for MilestoneEditedChangesDueOn with fn deserialize(d)
 pub impl @typify_rt.Serde for MilestoneEditedChangesDueOn with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -59885,7 +59480,6 @@ pub impl @typify_rt.Serde for MilestoneEditedChangesTitle with fn deserialize(d)
 pub impl @typify_rt.Serde for MilestoneEditedChangesTitle with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -59939,7 +59533,6 @@ pub impl @typify_rt.Serde for MilestoneEditedChanges with fn serialize(self) {
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, MilestoneEditedChangesTitle::serialize))
   }
-
   o.build()
 }
 
@@ -60172,7 +59765,6 @@ pub impl @typify_rt.Serde for MilestoneOpenedMilestone with fn serialize(self) {
   o.field("title", @typify_rt.ser_string(self.title))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -60555,7 +60147,6 @@ pub impl @typify_rt.Serde for OrganizationMemberInvitedInvitation with fn serial
   o.field("node_id", @typify_rt.ser_string(self.node_id))
   o.field("role", @typify_rt.ser_string(self.role))
   o.field("team_count", @typify_rt.ser_f64(self.team_count))
-
   o.build()
 }
 
@@ -60820,7 +60411,6 @@ pub impl @typify_rt.Serde for PackagePublishedPackagePackageVersionPackageFilesI
   o.field("size", @typify_rt.ser_i64(self.size))
   o.field("state", @typify_rt.ser_string(self.state))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
-
   o.build()
 }
 
@@ -60908,7 +60498,6 @@ pub impl @typify_rt.Serde for PackagePublishedPackagePackageVersionRelease with 
   o.field("tag_name", @typify_rt.ser_string(self.tag_name))
   o.field("target_commitish", @typify_rt.ser_string(self.target_commitish))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -61056,7 +60645,6 @@ pub impl @typify_rt.Serde for PackagePublishedPackagePackageVersion with fn seri
   o.field("target_oid", @typify_rt.ser_string(self.target_oid))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("version", @typify_rt.ser_string(self.version))
-
   o.build()
 }
 
@@ -61114,7 +60702,6 @@ pub impl @typify_rt.Serde for PackagePublishedPackageRegistry with fn serialize(
   o.field("type", @typify_rt.ser_string(self.type_))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("vendor", @typify_rt.ser_string(self.vendor))
-
   o.build()
 }
 
@@ -61207,7 +60794,6 @@ pub impl @typify_rt.Serde for PackagePublishedPackage with fn serialize(self) {
   o.field("package_version", PackagePublishedPackagePackageVersion::serialize(self.package_version))
   o.field("registry", PackagePublishedPackageRegistry::serialize(self.registry))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
-
   o.build()
 }
 
@@ -61354,7 +60940,6 @@ pub impl @typify_rt.Serde for PackageUpdatedPackagePackageVersionPackageFilesIte
   o.field("size", @typify_rt.ser_i64(self.size))
   o.field("state", @typify_rt.ser_string(self.state))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
-
   o.build()
 }
 
@@ -61442,7 +61027,6 @@ pub impl @typify_rt.Serde for PackageUpdatedPackagePackageVersionRelease with fn
   o.field("tag_name", @typify_rt.ser_string(self.tag_name))
   o.field("target_commitish", @typify_rt.ser_string(self.target_commitish))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -61590,7 +61174,6 @@ pub impl @typify_rt.Serde for PackageUpdatedPackagePackageVersion with fn serial
   o.field("target_oid", @typify_rt.ser_string(self.target_oid))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("version", @typify_rt.ser_string(self.version))
-
   o.build()
 }
 
@@ -61648,7 +61231,6 @@ pub impl @typify_rt.Serde for PackageUpdatedPackageRegistry with fn serialize(se
   o.field("type", @typify_rt.ser_string(self.type_))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("vendor", @typify_rt.ser_string(self.vendor))
-
   o.build()
 }
 
@@ -61741,7 +61323,6 @@ pub impl @typify_rt.Serde for PackageUpdatedPackage with fn serialize(self) {
   o.field("package_version", PackageUpdatedPackagePackageVersion::serialize(self.package_version))
   o.field("registry", PackageUpdatedPackageRegistry::serialize(self.registry))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
-
   o.build()
 }
 
@@ -61779,7 +61360,6 @@ pub impl @typify_rt.Serde for PageBuildEventBuildError with fn deserialize(d) {
 pub impl @typify_rt.Serde for PageBuildEventBuildError with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("message", @typify_rt.ser_option(self.message, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -61852,7 +61432,6 @@ pub impl @typify_rt.Serde for PageBuildEventBuild with fn serialize(self) {
   o.field("status", @typify_rt.ser_string(self.status))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -61972,7 +61551,6 @@ pub impl @typify_rt.Serde for PingEventHookConfig with fn serialize(self) {
     o.field("secret", @typify_rt.ser_option(self.secret, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -62020,7 +61598,6 @@ pub impl @typify_rt.Serde for PingEventHookLastResponse with fn serialize(self) 
   o.field("code", @typify_rt.ser_unit())
   o.field("message", @typify_rt.ser_unit())
   o.field("status", @typify_rt.ser_string(self.status))
-
   o.build()
 }
 
@@ -62125,7 +61702,6 @@ pub impl @typify_rt.Serde for PingEventHook with fn serialize(self) {
   o.field("type", @typify_rt.ser_string(self.type_))
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -62465,7 +62041,6 @@ pub impl @typify_rt.Serde for ProjectEditedChangesBody with fn deserialize(d) {
 pub impl @typify_rt.Serde for ProjectEditedChangesBody with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -62504,7 +62079,6 @@ pub impl @typify_rt.Serde for ProjectEditedChangesName with fn deserialize(d) {
 pub impl @typify_rt.Serde for ProjectEditedChangesName with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -62551,7 +62125,6 @@ pub impl @typify_rt.Serde for ProjectEditedChanges with fn serialize(self) {
   if self.name is Some(_) {
     o.field("name", @typify_rt.ser_option(self.name, ProjectEditedChangesName::serialize))
   }
-
   o.build()
 }
 
@@ -62707,7 +62280,6 @@ pub impl @typify_rt.Serde for ProjectCardConvertedChangesNote with fn deserializ
 pub impl @typify_rt.Serde for ProjectCardConvertedChangesNote with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -62745,7 +62317,6 @@ pub impl @typify_rt.Serde for ProjectCardConvertedChanges with fn deserialize(d)
 pub impl @typify_rt.Serde for ProjectCardConvertedChanges with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("note", ProjectCardConvertedChangesNote::serialize(self.note))
-
   o.build()
 }
 
@@ -62960,7 +62531,6 @@ pub impl @typify_rt.Serde for ProjectCardEditedChangesNote with fn deserialize(d
 pub impl @typify_rt.Serde for ProjectCardEditedChangesNote with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -62998,7 +62568,6 @@ pub impl @typify_rt.Serde for ProjectCardEditedChanges with fn deserialize(d) {
 pub impl @typify_rt.Serde for ProjectCardEditedChanges with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("note", ProjectCardEditedChangesNote::serialize(self.note))
-
   o.build()
 }
 
@@ -63095,7 +62664,6 @@ pub impl @typify_rt.Serde for ProjectCardMovedChangesColumnId with fn deserializ
 pub impl @typify_rt.Serde for ProjectCardMovedChangesColumnId with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_i64(self.from))
-
   o.build()
 }
 
@@ -63133,7 +62701,6 @@ pub impl @typify_rt.Serde for ProjectCardMovedChanges with fn deserialize(d) {
 pub impl @typify_rt.Serde for ProjectCardMovedChanges with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("column_id", ProjectCardMovedChangesColumnId::serialize(self.column_id))
-
   o.build()
 }
 
@@ -63235,7 +62802,6 @@ pub impl @typify_rt.Serde for ProjectCardMovedProjectCard with fn serialize(self
   o.field("project_url", @typify_rt.ser_string(self.project_url))
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -63450,7 +63016,6 @@ pub impl @typify_rt.Serde for ProjectColumnEditedChangesName with fn deserialize
 pub impl @typify_rt.Serde for ProjectColumnEditedChangesName with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -63490,7 +63055,6 @@ pub impl @typify_rt.Serde for ProjectColumnEditedChanges with fn serialize(self)
   if self.name is Some(_) {
     o.field("name", @typify_rt.ser_option(self.name, ProjectColumnEditedChangesName::serialize))
   }
-
   o.build()
 }
 
@@ -63658,7 +63222,6 @@ pub impl @typify_rt.Serde for PublicEventRepositoryPermissions with fn serialize
   if self.triage is Some(_) {
     o.field("triage", @typify_rt.ser_option(self.triage, (v : Bool) => @typify_rt.ser_bool(v)))
   }
-
   o.build()
 }
 
@@ -64212,7 +63775,6 @@ pub impl @typify_rt.Serde for PublicEventRepository with fn serialize(self) {
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("watchers", @typify_rt.ser_i64(self.watchers))
   o.field("watchers_count", @typify_rt.ser_i64(self.watchers_count))
-
   o.build()
 }
 
@@ -64285,7 +63847,6 @@ pub impl @typify_rt.Serde for PullRequestLinks with fn serialize(self) {
   o.field("review_comments", Link::serialize(self.review_comments))
   o.field("self", Link::serialize(self.self_))
   o.field("statuses", Link::serialize(self.statuses))
-
   o.build()
 }
 
@@ -64420,7 +63981,6 @@ pub impl @typify_rt.Serde for PullRequestBase with fn serialize(self) {
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -64478,7 +64038,6 @@ pub impl @typify_rt.Serde for PullRequestHead with fn serialize(self) {
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -64638,7 +64197,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentLinks with fn serialize(se
   o.field("html", Link::serialize(self.html))
   o.field("pull_request", Link::serialize(self.pull_request))
   o.field("self", Link::serialize(self.self_))
-
   o.build()
 }
 
@@ -65077,7 +64635,6 @@ pub impl @typify_rt.Serde for PullRequestClosedPullRequestLinks with fn serializ
   o.field("review_comments", Link::serialize(self.review_comments))
   o.field("self", Link::serialize(self.self_))
   o.field("statuses", Link::serialize(self.statuses))
-
   o.build()
 }
 
@@ -65212,7 +64769,6 @@ pub impl @typify_rt.Serde for PullRequestClosedPullRequestBase with fn serialize
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -65270,7 +64826,6 @@ pub impl @typify_rt.Serde for PullRequestClosedPullRequestHead with fn serialize
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -65653,7 +65208,6 @@ pub impl @typify_rt.Serde for PullRequestClosedPullRequest with fn serialize(sel
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -65785,7 +65339,6 @@ pub impl @typify_rt.Serde for PullRequestConvertedToDraftPullRequestLinks with f
   o.field("review_comments", Link::serialize(self.review_comments))
   o.field("self", Link::serialize(self.self_))
   o.field("statuses", Link::serialize(self.statuses))
-
   o.build()
 }
 
@@ -65920,7 +65473,6 @@ pub impl @typify_rt.Serde for PullRequestConvertedToDraftPullRequestBase with fn
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -65978,7 +65530,6 @@ pub impl @typify_rt.Serde for PullRequestConvertedToDraftPullRequestHead with fn
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -66367,7 +65918,6 @@ pub impl @typify_rt.Serde for PullRequestConvertedToDraftPullRequest with fn ser
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -66465,7 +66015,6 @@ pub impl @typify_rt.Serde for PullRequestEditedChangesBody with fn deserialize(d
 pub impl @typify_rt.Serde for PullRequestEditedChangesBody with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -66504,7 +66053,6 @@ pub impl @typify_rt.Serde for PullRequestEditedChangesTitle with fn deserialize(
 pub impl @typify_rt.Serde for PullRequestEditedChangesTitle with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -66551,7 +66099,6 @@ pub impl @typify_rt.Serde for PullRequestEditedChanges with fn serialize(self) {
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, PullRequestEditedChangesTitle::serialize))
   }
-
   o.build()
 }
 
@@ -66801,7 +66348,6 @@ pub impl @typify_rt.Serde for PullRequestOpenedPullRequestLinks with fn serializ
   o.field("review_comments", Link::serialize(self.review_comments))
   o.field("self", Link::serialize(self.self_))
   o.field("statuses", Link::serialize(self.statuses))
-
   o.build()
 }
 
@@ -66904,7 +66450,6 @@ pub impl @typify_rt.Serde for PullRequestOpenedPullRequestBase with fn serialize
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -66962,7 +66507,6 @@ pub impl @typify_rt.Serde for PullRequestOpenedPullRequestHead with fn serialize
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -67345,7 +66889,6 @@ pub impl @typify_rt.Serde for PullRequestOpenedPullRequest with fn serialize(sel
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -67477,7 +67020,6 @@ pub impl @typify_rt.Serde for PullRequestReadyForReviewPullRequestLinks with fn 
   o.field("review_comments", Link::serialize(self.review_comments))
   o.field("self", Link::serialize(self.self_))
   o.field("statuses", Link::serialize(self.statuses))
-
   o.build()
 }
 
@@ -67612,7 +67154,6 @@ pub impl @typify_rt.Serde for PullRequestReadyForReviewPullRequestBase with fn s
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -67670,7 +67211,6 @@ pub impl @typify_rt.Serde for PullRequestReadyForReviewPullRequestHead with fn s
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -68052,7 +67592,6 @@ pub impl @typify_rt.Serde for PullRequestReadyForReviewPullRequest with fn seria
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -68184,7 +67723,6 @@ pub impl @typify_rt.Serde for PullRequestReopenedPullRequestLinks with fn serial
   o.field("review_comments", Link::serialize(self.review_comments))
   o.field("self", Link::serialize(self.self_))
   o.field("statuses", Link::serialize(self.statuses))
-
   o.build()
 }
 
@@ -68319,7 +67857,6 @@ pub impl @typify_rt.Serde for PullRequestReopenedPullRequestBase with fn seriali
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -68377,7 +67914,6 @@ pub impl @typify_rt.Serde for PullRequestReopenedPullRequestHead with fn seriali
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -68760,7 +68296,6 @@ pub impl @typify_rt.Serde for PullRequestReopenedPullRequest with fn serialize(s
   o.field("updated_at", @typify_rt.DateTimeUtc::serialize(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -69334,7 +68869,6 @@ pub impl @typify_rt.Serde for PullRequestReviewDismissedReviewLinks with fn seri
   let o = @typify_rt.ObjectBuilder::new()
   o.field("html", Link::serialize(self.html))
   o.field("pull_request", Link::serialize(self.pull_request))
-
   o.build()
 }
 
@@ -69484,7 +69018,6 @@ pub impl @typify_rt.Serde for PullRequestReviewDismissedReview with fn serialize
   o.field("state", PullRequestReviewDismissedReviewState::serialize(self.state))
   o.field("submitted_at", @typify_rt.DateTimeUtc::serialize(self.submitted_at))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -69582,7 +69115,6 @@ pub impl @typify_rt.Serde for PullRequestReviewEditedChangesBody with fn deseria
 pub impl @typify_rt.Serde for PullRequestReviewEditedChangesBody with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -69622,7 +69154,6 @@ pub impl @typify_rt.Serde for PullRequestReviewEditedChanges with fn serialize(s
   if self.body is Some(_) {
     o.field("body", @typify_rt.ser_option(self.body, PullRequestReviewEditedChangesBody::serialize))
   }
-
   o.build()
 }
 
@@ -69665,7 +69196,6 @@ pub impl @typify_rt.Serde for PullRequestReviewEditedReviewLinks with fn seriali
   let o = @typify_rt.ObjectBuilder::new()
   o.field("html", Link::serialize(self.html))
   o.field("pull_request", Link::serialize(self.pull_request))
-
   o.build()
 }
 
@@ -69756,7 +69286,6 @@ pub impl @typify_rt.Serde for PullRequestReviewEditedReview with fn serialize(se
   o.field("state", @typify_rt.ser_string(self.state))
   o.field("submitted_at", @typify_rt.DateTimeUtc::serialize(self.submitted_at))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -69858,7 +69387,6 @@ pub impl @typify_rt.Serde for PullRequestReviewSubmittedReviewLinks with fn seri
   let o = @typify_rt.ObjectBuilder::new()
   o.field("html", Link::serialize(self.html))
   o.field("pull_request", Link::serialize(self.pull_request))
-
   o.build()
 }
 
@@ -69949,7 +69477,6 @@ pub impl @typify_rt.Serde for PullRequestReviewSubmittedReview with fn serialize
   o.field("state", @typify_rt.ser_string(self.state))
   o.field("submitted_at", @typify_rt.DateTimeUtc::serialize(self.submitted_at))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -70081,7 +69608,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentCreatedPullRequestLinks wi
   o.field("review_comments", Link::serialize(self.review_comments))
   o.field("self", Link::serialize(self.self_))
   o.field("statuses", Link::serialize(self.statuses))
-
   o.build()
 }
 
@@ -70216,7 +69742,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentCreatedPullRequestBase wit
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -70274,7 +69799,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentCreatedPullRequestHead wit
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -70601,7 +70125,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentCreatedPullRequest with fn
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -70733,7 +70256,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentDeletedPullRequestLinks wi
   o.field("review_comments", Link::serialize(self.review_comments))
   o.field("self", Link::serialize(self.self_))
   o.field("statuses", Link::serialize(self.statuses))
-
   o.build()
 }
 
@@ -70868,7 +70390,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentDeletedPullRequestBase wit
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -70926,7 +70447,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentDeletedPullRequestHead wit
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -71253,7 +70773,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentDeletedPullRequest with fn
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -71351,7 +70870,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentEditedChangesBody with fn 
 pub impl @typify_rt.Serde for PullRequestReviewCommentEditedChangesBody with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -71391,7 +70909,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentEditedChanges with fn seri
   if self.body is Some(_) {
     o.field("body", @typify_rt.ser_option(self.body, PullRequestReviewCommentEditedChangesBody::serialize))
   }
-
   o.build()
 }
 
@@ -71464,7 +70981,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentEditedPullRequestLinks wit
   o.field("review_comments", Link::serialize(self.review_comments))
   o.field("self", Link::serialize(self.self_))
   o.field("statuses", Link::serialize(self.statuses))
-
   o.build()
 }
 
@@ -71599,7 +71115,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentEditedPullRequestBase with
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -71657,7 +71172,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentEditedPullRequestHead with
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -71984,7 +71498,6 @@ pub impl @typify_rt.Serde for PullRequestReviewCommentEditedPullRequest with fn 
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -72200,7 +71713,6 @@ pub impl @typify_rt.Serde for ReleaseEditedChangesBody with fn deserialize(d) {
 pub impl @typify_rt.Serde for ReleaseEditedChangesBody with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -72239,7 +71751,6 @@ pub impl @typify_rt.Serde for ReleaseEditedChangesName with fn deserialize(d) {
 pub impl @typify_rt.Serde for ReleaseEditedChangesName with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -72286,7 +71797,6 @@ pub impl @typify_rt.Serde for ReleaseEditedChanges with fn serialize(self) {
   if self.name is Some(_) {
     o.field("name", @typify_rt.ser_option(self.name, ReleaseEditedChangesName::serialize))
   }
-
   o.build()
 }
 
@@ -72471,7 +71981,6 @@ pub impl @typify_rt.Serde for ReleasePrereleasedRelease with fn serialize(self) 
   o.field("upload_url", @typify_rt.ser_string(self.upload_url))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("zipball_url", @typify_rt.ser_option(self.zipball_url, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -72657,7 +72166,6 @@ pub impl @typify_rt.Serde for ReleasePublishedRelease with fn serialize(self) {
   o.field("upload_url", @typify_rt.ser_string(self.upload_url))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("zipball_url", @typify_rt.ser_option(self.zipball_url, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -72902,7 +72410,6 @@ pub impl @typify_rt.Serde for ReleaseUnpublishedRelease with fn serialize(self) 
   o.field("upload_url", @typify_rt.ser_string(self.upload_url))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("zipball_url", @typify_rt.ser_option(self.zipball_url, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -73070,7 +72577,6 @@ pub impl @typify_rt.Serde for RepositoryPermissions with fn serialize(self) {
   if self.triage is Some(_) {
     o.field("triage", @typify_rt.ser_option(self.triage, (v : Bool) => @typify_rt.ser_bool(v)))
   }
-
   o.build()
 }
 
@@ -73295,7 +72801,6 @@ pub impl @typify_rt.Serde for RepositoryArchivedRepositoryPermissions with fn se
   if self.triage is Some(_) {
     o.field("triage", @typify_rt.ser_option(self.triage, (v : Bool) => @typify_rt.ser_bool(v)))
   }
-
   o.build()
 }
 
@@ -73849,7 +73354,6 @@ pub impl @typify_rt.Serde for RepositoryArchivedRepository with fn serialize(sel
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("watchers", @typify_rt.ser_i64(self.watchers))
   o.field("watchers_count", @typify_rt.ser_i64(self.watchers_count))
-
   o.build()
 }
 
@@ -74064,7 +73568,6 @@ pub impl @typify_rt.Serde for RepositoryEditedChangesDefaultBranch with fn deser
 pub impl @typify_rt.Serde for RepositoryEditedChangesDefaultBranch with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -74102,7 +73605,6 @@ pub impl @typify_rt.Serde for RepositoryEditedChangesDescription with fn deseria
 pub impl @typify_rt.Serde for RepositoryEditedChangesDescription with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_option(self.from, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -74140,7 +73642,6 @@ pub impl @typify_rt.Serde for RepositoryEditedChangesHomepage with fn deserializ
 pub impl @typify_rt.Serde for RepositoryEditedChangesHomepage with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_option(self.from, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -74194,7 +73695,6 @@ pub impl @typify_rt.Serde for RepositoryEditedChanges with fn serialize(self) {
   if self.homepage is Some(_) {
     o.field("homepage", @typify_rt.ser_option(self.homepage, RepositoryEditedChangesHomepage::serialize))
   }
-
   o.build()
 }
 
@@ -74362,7 +73862,6 @@ pub impl @typify_rt.Serde for RepositoryPrivatizedRepositoryPermissions with fn 
   if self.triage is Some(_) {
     o.field("triage", @typify_rt.ser_option(self.triage, (v : Bool) => @typify_rt.ser_bool(v)))
   }
-
   o.build()
 }
 
@@ -74916,7 +74415,6 @@ pub impl @typify_rt.Serde for RepositoryPrivatizedRepository with fn serialize(s
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("watchers", @typify_rt.ser_i64(self.watchers))
   o.field("watchers_count", @typify_rt.ser_i64(self.watchers_count))
-
   o.build()
 }
 
@@ -75084,7 +74582,6 @@ pub impl @typify_rt.Serde for RepositoryPublicizedRepositoryPermissions with fn 
   if self.triage is Some(_) {
     o.field("triage", @typify_rt.ser_option(self.triage, (v : Bool) => @typify_rt.ser_bool(v)))
   }
-
   o.build()
 }
 
@@ -75638,7 +75135,6 @@ pub impl @typify_rt.Serde for RepositoryPublicizedRepository with fn serialize(s
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("watchers", @typify_rt.ser_i64(self.watchers))
   o.field("watchers_count", @typify_rt.ser_i64(self.watchers_count))
-
   o.build()
 }
 
@@ -75735,7 +75231,6 @@ pub impl @typify_rt.Serde for RepositoryRenamedChangesRepositoryName with fn des
 pub impl @typify_rt.Serde for RepositoryRenamedChangesRepositoryName with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -75773,7 +75268,6 @@ pub impl @typify_rt.Serde for RepositoryRenamedChangesRepository with fn deseria
 pub impl @typify_rt.Serde for RepositoryRenamedChangesRepository with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("name", RepositoryRenamedChangesRepositoryName::serialize(self.name))
-
   o.build()
 }
 
@@ -75811,7 +75305,6 @@ pub impl @typify_rt.Serde for RepositoryRenamedChanges with fn deserialize(d) {
 pub impl @typify_rt.Serde for RepositoryRenamedChanges with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("repository", RepositoryRenamedChangesRepository::serialize(self.repository))
-
   o.build()
 }
 
@@ -75910,7 +75403,6 @@ pub impl @typify_rt.Serde for RepositoryTransferredChangesOwnerFrom with fn seri
   if self.user is Some(_) {
     o.field("user", @typify_rt.ser_option(self.user, User::serialize))
   }
-
   o.build()
 }
 
@@ -75948,7 +75440,6 @@ pub impl @typify_rt.Serde for RepositoryTransferredChangesOwner with fn deserial
 pub impl @typify_rt.Serde for RepositoryTransferredChangesOwner with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", RepositoryTransferredChangesOwnerFrom::serialize(self.from))
-
   o.build()
 }
 
@@ -75986,7 +75477,6 @@ pub impl @typify_rt.Serde for RepositoryTransferredChanges with fn deserialize(d
 pub impl @typify_rt.Serde for RepositoryTransferredChanges with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("owner", RepositoryTransferredChangesOwner::serialize(self.owner))
-
   o.build()
 }
 
@@ -76154,7 +75644,6 @@ pub impl @typify_rt.Serde for RepositoryUnarchivedRepositoryPermissions with fn 
   if self.triage is Some(_) {
     o.field("triage", @typify_rt.ser_option(self.triage, (v : Bool) => @typify_rt.ser_bool(v)))
   }
-
   o.build()
 }
 
@@ -76708,7 +76197,6 @@ pub impl @typify_rt.Serde for RepositoryUnarchivedRepository with fn serialize(s
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("watchers", @typify_rt.ser_i64(self.watchers))
   o.field("watchers_count", @typify_rt.ser_i64(self.watchers_count))
-
   o.build()
 }
 
@@ -77002,7 +76490,6 @@ pub impl @typify_rt.Serde for RepositoryVulnerabilityAlertCreateAlert with fn se
   if self.severity is Some(_) {
     o.field("severity", @typify_rt.ser_option(self.severity, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -77160,7 +76647,6 @@ pub impl @typify_rt.Serde for RepositoryVulnerabilityAlertDismissAlert with fn s
   if self.severity is Some(_) {
     o.field("severity", @typify_rt.ser_option(self.severity, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -77324,7 +76810,6 @@ pub impl @typify_rt.Serde for RepositoryVulnerabilityAlertResolveAlert with fn s
   if self.severity is Some(_) {
     o.field("severity", @typify_rt.ser_option(self.severity, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -77441,7 +76926,6 @@ pub impl @typify_rt.Serde for SecretScanningAlertCreatedAlert with fn serialize(
   o.field("resolved_at", @typify_rt.ser_unit())
   o.field("resolved_by", @typify_rt.ser_unit())
   o.field("secret_type", @typify_rt.ser_string(self.secret_type))
-
   o.build()
 }
 
@@ -77558,7 +77042,6 @@ pub impl @typify_rt.Serde for SecretScanningAlertReopenedAlert with fn serialize
   o.field("resolved_at", @typify_rt.ser_unit())
   o.field("resolved_by", @typify_rt.ser_unit())
   o.field("secret_type", @typify_rt.ser_string(self.secret_type))
-
   o.build()
 }
 
@@ -77752,7 +77235,6 @@ pub impl @typify_rt.Serde for SecretScanningAlertResolvedAlert with fn serialize
   o.field("resolved_at", @typify_rt.ser_string(self.resolved_at))
   o.field("resolved_by", User::serialize(self.resolved_by))
   o.field("secret_type", @typify_rt.ser_string(self.secret_type))
-
   o.build()
 }
 
@@ -77854,7 +77336,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPerformedSecurityAdvisoryCvss with
   let o = @typify_rt.ObjectBuilder::new()
   o.field("score", @typify_rt.ser_f64(self.score))
   o.field("vector_string", @typify_rt.ser_option(self.vector_string, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -77897,7 +77378,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPerformedSecurityAdvisoryCwesItem 
   let o = @typify_rt.ObjectBuilder::new()
   o.field("cwe_id", @typify_rt.ser_string(self.cwe_id))
   o.field("name", @typify_rt.ser_string(self.name))
-
   o.build()
 }
 
@@ -77940,7 +77420,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPerformedSecurityAdvisoryIdentifie
   let o = @typify_rt.ObjectBuilder::new()
   o.field("type", @typify_rt.ser_string(self.type_))
   o.field("value", @typify_rt.ser_string(self.value))
-
   o.build()
 }
 
@@ -77978,7 +77457,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPerformedSecurityAdvisoryReference
 pub impl @typify_rt.Serde for SecurityAdvisoryPerformedSecurityAdvisoryReferencesItem with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -78016,7 +77494,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPerformedSecurityAdvisoryVulnerabi
 pub impl @typify_rt.Serde for SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("identifier", @typify_rt.ser_string(self.identifier))
-
   o.build()
 }
 
@@ -78059,7 +77536,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPerformedSecurityAdvisoryVulnerabi
   let o = @typify_rt.ObjectBuilder::new()
   o.field("ecosystem", @typify_rt.ser_string(self.ecosystem))
   o.field("name", @typify_rt.ser_string(self.name))
-
   o.build()
 }
 
@@ -78112,7 +77588,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPerformedSecurityAdvisoryVulnerabi
   o.field("package", SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemPackage::serialize(self.package_))
   o.field("severity", @typify_rt.ser_string(self.severity))
   o.field("vulnerable_version_range", @typify_rt.ser_string(self.vulnerable_version_range))
-
   o.build()
 }
 
@@ -78205,7 +77680,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPerformedSecurityAdvisory with fn 
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("vulnerabilities", @typify_rt.ser_vec(self.vulnerabilities, SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem::serialize))
   o.field("withdrawn_at", @typify_rt.ser_option(self.withdrawn_at, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -78307,7 +77781,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPublishedSecurityAdvisoryCvss with
   let o = @typify_rt.ObjectBuilder::new()
   o.field("score", @typify_rt.ser_f64(self.score))
   o.field("vector_string", @typify_rt.ser_option(self.vector_string, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -78350,7 +77823,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPublishedSecurityAdvisoryCwesItem 
   let o = @typify_rt.ObjectBuilder::new()
   o.field("cwe_id", @typify_rt.ser_string(self.cwe_id))
   o.field("name", @typify_rt.ser_string(self.name))
-
   o.build()
 }
 
@@ -78393,7 +77865,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPublishedSecurityAdvisoryIdentifie
   let o = @typify_rt.ObjectBuilder::new()
   o.field("type", @typify_rt.ser_string(self.type_))
   o.field("value", @typify_rt.ser_string(self.value))
-
   o.build()
 }
 
@@ -78431,7 +77902,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPublishedSecurityAdvisoryReference
 pub impl @typify_rt.Serde for SecurityAdvisoryPublishedSecurityAdvisoryReferencesItem with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -78469,7 +77939,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPublishedSecurityAdvisoryVulnerabi
 pub impl @typify_rt.Serde for SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("identifier", @typify_rt.ser_string(self.identifier))
-
   o.build()
 }
 
@@ -78512,7 +77981,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPublishedSecurityAdvisoryVulnerabi
   let o = @typify_rt.ObjectBuilder::new()
   o.field("ecosystem", @typify_rt.ser_string(self.ecosystem))
   o.field("name", @typify_rt.ser_string(self.name))
-
   o.build()
 }
 
@@ -78565,7 +78033,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPublishedSecurityAdvisoryVulnerabi
   o.field("package", SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemPackage::serialize(self.package_))
   o.field("severity", @typify_rt.ser_string(self.severity))
   o.field("vulnerable_version_range", @typify_rt.ser_string(self.vulnerable_version_range))
-
   o.build()
 }
 
@@ -78658,7 +78125,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryPublishedSecurityAdvisory with fn 
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("vulnerabilities", @typify_rt.ser_vec(self.vulnerabilities, SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem::serialize))
   o.field("withdrawn_at", @typify_rt.ser_option(self.withdrawn_at, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -78760,7 +78226,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryUpdatedSecurityAdvisoryCvss with f
   let o = @typify_rt.ObjectBuilder::new()
   o.field("score", @typify_rt.ser_f64(self.score))
   o.field("vector_string", @typify_rt.ser_option(self.vector_string, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -78803,7 +78268,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryUpdatedSecurityAdvisoryCwesItem wi
   let o = @typify_rt.ObjectBuilder::new()
   o.field("cwe_id", @typify_rt.ser_string(self.cwe_id))
   o.field("name", @typify_rt.ser_string(self.name))
-
   o.build()
 }
 
@@ -78846,7 +78310,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryUpdatedSecurityAdvisoryIdentifiers
   let o = @typify_rt.ObjectBuilder::new()
   o.field("type", @typify_rt.ser_string(self.type_))
   o.field("value", @typify_rt.ser_string(self.value))
-
   o.build()
 }
 
@@ -78884,7 +78347,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryUpdatedSecurityAdvisoryReferencesI
 pub impl @typify_rt.Serde for SecurityAdvisoryUpdatedSecurityAdvisoryReferencesItem with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -78922,7 +78384,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabili
 pub impl @typify_rt.Serde for SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("identifier", @typify_rt.ser_string(self.identifier))
-
   o.build()
 }
 
@@ -78965,7 +78426,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabili
   let o = @typify_rt.ObjectBuilder::new()
   o.field("ecosystem", @typify_rt.ser_string(self.ecosystem))
   o.field("name", @typify_rt.ser_string(self.name))
-
   o.build()
 }
 
@@ -79018,7 +78478,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabili
   o.field("package", SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemPackage::serialize(self.package_))
   o.field("severity", @typify_rt.ser_string(self.severity))
   o.field("vulnerable_version_range", @typify_rt.ser_string(self.vulnerable_version_range))
-
   o.build()
 }
 
@@ -79111,7 +78570,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryUpdatedSecurityAdvisory with fn se
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("vulnerabilities", @typify_rt.ser_vec(self.vulnerabilities, SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItem::serialize))
   o.field("withdrawn_at", @typify_rt.ser_option(self.withdrawn_at, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -79213,7 +78671,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryWithdrawnSecurityAdvisoryCvss with
   let o = @typify_rt.ObjectBuilder::new()
   o.field("score", @typify_rt.ser_f64(self.score))
   o.field("vector_string", @typify_rt.ser_option(self.vector_string, (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -79256,7 +78713,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem 
   let o = @typify_rt.ObjectBuilder::new()
   o.field("cwe_id", @typify_rt.ser_string(self.cwe_id))
   o.field("name", @typify_rt.ser_string(self.name))
-
   o.build()
 }
 
@@ -79299,7 +78755,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryWithdrawnSecurityAdvisoryIdentifie
   let o = @typify_rt.ObjectBuilder::new()
   o.field("type", @typify_rt.ser_string(self.type_))
   o.field("value", @typify_rt.ser_string(self.value))
-
   o.build()
 }
 
@@ -79337,7 +78792,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryWithdrawnSecurityAdvisoryReference
 pub impl @typify_rt.Serde for SecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -79375,7 +78829,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabi
 pub impl @typify_rt.Serde for SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("identifier", @typify_rt.ser_string(self.identifier))
-
   o.build()
 }
 
@@ -79418,7 +78871,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabi
   let o = @typify_rt.ObjectBuilder::new()
   o.field("ecosystem", @typify_rt.ser_string(self.ecosystem))
   o.field("name", @typify_rt.ser_string(self.name))
-
   o.build()
 }
 
@@ -79471,7 +78923,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabi
   o.field("package", SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPackage::serialize(self.package_))
   o.field("severity", @typify_rt.ser_string(self.severity))
   o.field("vulnerable_version_range", @typify_rt.ser_string(self.vulnerable_version_range))
-
   o.build()
 }
 
@@ -79564,7 +79015,6 @@ pub impl @typify_rt.Serde for SecurityAdvisoryWithdrawnSecurityAdvisory with fn 
   o.field("updated_at", @typify_rt.ser_string(self.updated_at))
   o.field("vulnerabilities", @typify_rt.ser_vec(self.vulnerabilities, SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem::serialize))
   o.field("withdrawn_at", @typify_rt.ser_string(self.withdrawn_at))
-
   o.build()
 }
 
@@ -79637,7 +79087,6 @@ pub impl @typify_rt.Serde for SimplePullRequestLinks with fn serialize(self) {
   o.field("review_comments", Link::serialize(self.review_comments))
   o.field("self", Link::serialize(self.self_))
   o.field("statuses", Link::serialize(self.statuses))
-
   o.build()
 }
 
@@ -79772,7 +79221,6 @@ pub impl @typify_rt.Serde for SimplePullRequestBase with fn serialize(self) {
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -79830,7 +79278,6 @@ pub impl @typify_rt.Serde for SimplePullRequestHead with fn serialize(self) {
   o.field("repo", Repository::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("user", User::serialize(self.user))
-
   o.build()
 }
 
@@ -80064,7 +79511,6 @@ pub impl @typify_rt.Serde for SponsorshipCancelledSponsorship with fn serialize(
   o.field("sponsor", User::serialize(self.sponsor))
   o.field("sponsorable", User::serialize(self.sponsorable))
   o.field("tier", SponsorshipTier::serialize(self.tier))
-
   o.build()
 }
 
@@ -80186,7 +79632,6 @@ pub impl @typify_rt.Serde for SponsorshipCreatedSponsorship with fn serialize(se
   o.field("sponsor", User::serialize(self.sponsor))
   o.field("sponsorable", User::serialize(self.sponsorable))
   o.field("tier", SponsorshipTier::serialize(self.tier))
-
   o.build()
 }
 
@@ -80284,7 +79729,6 @@ pub impl @typify_rt.Serde for SponsorshipEditedChangesPrivacyLevel with fn deser
 pub impl @typify_rt.Serde for SponsorshipEditedChangesPrivacyLevel with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -80324,7 +79768,6 @@ pub impl @typify_rt.Serde for SponsorshipEditedChanges with fn serialize(self) {
   if self.privacy_level is Some(_) {
     o.field("privacy_level", @typify_rt.ser_option(self.privacy_level, SponsorshipEditedChangesPrivacyLevel::serialize))
   }
-
   o.build()
 }
 
@@ -80387,7 +79830,6 @@ pub impl @typify_rt.Serde for SponsorshipEditedSponsorship with fn serialize(sel
   o.field("sponsor", User::serialize(self.sponsor))
   o.field("sponsorable", User::serialize(self.sponsorable))
   o.field("tier", SponsorshipTier::serialize(self.tier))
-
   o.build()
 }
 
@@ -80509,7 +79951,6 @@ pub impl @typify_rt.Serde for SponsorshipPendingCancellationSponsorship with fn 
   o.field("sponsor", User::serialize(self.sponsor))
   o.field("sponsorable", User::serialize(self.sponsorable))
   o.field("tier", SponsorshipTier::serialize(self.tier))
-
   o.build()
 }
 
@@ -80606,7 +80047,6 @@ pub impl @typify_rt.Serde for SponsorshipPendingTierChangeChangesTier with fn de
 pub impl @typify_rt.Serde for SponsorshipPendingTierChangeChangesTier with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", SponsorshipTier::serialize(self.from))
-
   o.build()
 }
 
@@ -80644,7 +80084,6 @@ pub impl @typify_rt.Serde for SponsorshipPendingTierChangeChanges with fn deseri
 pub impl @typify_rt.Serde for SponsorshipPendingTierChangeChanges with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("tier", SponsorshipPendingTierChangeChangesTier::serialize(self.tier))
-
   o.build()
 }
 
@@ -80707,7 +80146,6 @@ pub impl @typify_rt.Serde for SponsorshipPendingTierChangeSponsorship with fn se
   o.field("sponsor", User::serialize(self.sponsor))
   o.field("sponsorable", User::serialize(self.sponsorable))
   o.field("tier", SponsorshipTier::serialize(self.tier))
-
   o.build()
 }
 
@@ -80804,7 +80242,6 @@ pub impl @typify_rt.Serde for SponsorshipTierChangedChangesTier with fn deserial
 pub impl @typify_rt.Serde for SponsorshipTierChangedChangesTier with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", SponsorshipTier::serialize(self.from))
-
   o.build()
 }
 
@@ -80842,7 +80279,6 @@ pub impl @typify_rt.Serde for SponsorshipTierChangedChanges with fn deserialize(
 pub impl @typify_rt.Serde for SponsorshipTierChangedChanges with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("tier", SponsorshipTierChangedChangesTier::serialize(self.tier))
-
   o.build()
 }
 
@@ -80905,7 +80341,6 @@ pub impl @typify_rt.Serde for SponsorshipTierChangedSponsorship with fn serializ
   o.field("sponsor", User::serialize(self.sponsor))
   o.field("sponsorable", User::serialize(self.sponsorable))
   o.field("tier", SponsorshipTier::serialize(self.tier))
-
   o.build()
 }
 
@@ -81066,7 +80501,6 @@ pub impl @typify_rt.Serde for StatusEventBranchesItemCommit with fn serialize(se
   let o = @typify_rt.ObjectBuilder::new()
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -81114,7 +80548,6 @@ pub impl @typify_rt.Serde for StatusEventBranchesItem with fn serialize(self) {
   o.field("commit", StatusEventBranchesItemCommit::serialize(self.commit))
   o.field("name", @typify_rt.ser_string(self.name))
   o.field("protected", @typify_rt.ser_bool(self.protected))
-
   o.build()
 }
 
@@ -81171,7 +80604,6 @@ pub impl @typify_rt.Serde for StatusEventCommitCommitAuthor with fn serialize(se
   if self.username is Some(_) {
     o.field("username", @typify_rt.ser_option(self.username, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -81228,7 +80660,6 @@ pub impl @typify_rt.Serde for StatusEventCommitCommitCommitter with fn serialize
   if self.username is Some(_) {
     o.field("username", @typify_rt.ser_option(self.username, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -81271,7 +80702,6 @@ pub impl @typify_rt.Serde for StatusEventCommitCommitTree with fn serialize(self
   let o = @typify_rt.ObjectBuilder::new()
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -81455,7 +80885,6 @@ pub impl @typify_rt.Serde for StatusEventCommitCommitVerification with fn serial
   o.field("reason", StatusEventCommitCommitVerificationReason::serialize(self.reason))
   o.field("signature", @typify_rt.ser_option(self.signature, (v : String) => @typify_rt.ser_string(v)))
   o.field("verified", @typify_rt.ser_bool(self.verified))
-
   o.build()
 }
 
@@ -81523,7 +80952,6 @@ pub impl @typify_rt.Serde for StatusEventCommitCommit with fn serialize(self) {
   o.field("tree", StatusEventCommitCommitTree::serialize(self.tree))
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("verification", StatusEventCommitCommitVerification::serialize(self.verification))
-
   o.build()
 }
 
@@ -81571,7 +80999,6 @@ pub impl @typify_rt.Serde for StatusEventCommitParentsItem with fn serialize(sel
   o.field("html_url", @typify_rt.ser_string(self.html_url))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -81649,7 +81076,6 @@ pub impl @typify_rt.Serde for StatusEventCommit with fn serialize(self) {
   o.field("parents", @typify_rt.ser_vec(self.parents, StatusEventCommitParentsItem::serialize))
   o.field("sha", @typify_rt.ser_string(self.sha))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -81890,7 +81316,6 @@ pub impl @typify_rt.Serde for TeamParent with fn serialize(self) {
   o.field("repositories_url", @typify_rt.ser_string(self.repositories_url))
   o.field("slug", @typify_rt.ser_string(self.slug))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -82236,7 +81661,6 @@ pub impl @typify_rt.Serde for TeamEditedChangesDescription with fn deserialize(d
 pub impl @typify_rt.Serde for TeamEditedChangesDescription with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -82275,7 +81699,6 @@ pub impl @typify_rt.Serde for TeamEditedChangesName with fn deserialize(d) {
 pub impl @typify_rt.Serde for TeamEditedChangesName with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -82314,7 +81737,6 @@ pub impl @typify_rt.Serde for TeamEditedChangesPrivacy with fn deserialize(d) {
 pub impl @typify_rt.Serde for TeamEditedChangesPrivacy with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", @typify_rt.ser_string(self.from))
-
   o.build()
 }
 
@@ -82371,7 +81793,6 @@ pub impl @typify_rt.Serde for TeamEditedChangesRepositoryPermissionsFrom with fn
   if self.push is Some(_) {
     o.field("push", @typify_rt.ser_option(self.push, (v : Bool) => @typify_rt.ser_bool(v)))
   }
-
   o.build()
 }
 
@@ -82409,7 +81830,6 @@ pub impl @typify_rt.Serde for TeamEditedChangesRepositoryPermissions with fn des
 pub impl @typify_rt.Serde for TeamEditedChangesRepositoryPermissions with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("from", TeamEditedChangesRepositoryPermissionsFrom::serialize(self.from))
-
   o.build()
 }
 
@@ -82447,7 +81867,6 @@ pub impl @typify_rt.Serde for TeamEditedChangesRepository with fn deserialize(d)
 pub impl @typify_rt.Serde for TeamEditedChangesRepository with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("permissions", TeamEditedChangesRepositoryPermissions::serialize(self.permissions))
-
   o.build()
 }
 
@@ -82508,7 +81927,6 @@ pub impl @typify_rt.Serde for TeamEditedChanges with fn serialize(self) {
   if self.repository is Some(_) {
     o.field("repository", @typify_rt.ser_option(self.repository, TeamEditedChangesRepository::serialize))
   }
-
   o.build()
 }
 
@@ -83311,7 +82729,6 @@ pub impl @typify_rt.Serde for WorkflowRunPullRequestsItemBase with fn serialize(
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("repo", RepoRef::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
-
   o.build()
 }
 
@@ -83359,7 +82776,6 @@ pub impl @typify_rt.Serde for WorkflowRunPullRequestsItemHead with fn serialize(
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("repo", RepoRef::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
-
   o.build()
 }
 
@@ -83417,7 +82833,6 @@ pub impl @typify_rt.Serde for WorkflowRunPullRequestsItem with fn serialize(self
   o.field("id", @typify_rt.ser_f64(self.id))
   o.field("number", @typify_rt.ser_f64(self.number))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -83986,7 +83401,6 @@ pub impl @typify_rt.Serde for WorkflowJobCompletedWorkflowJob with fn serialize(
   o.field("status", WorkflowJobCompletedWorkflowJobStatus::serialize(self.status))
   o.field("steps", @typify_rt.ser_vec(self.steps, WorkflowStep::serialize))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -84212,7 +83626,6 @@ pub impl @typify_rt.Serde for WorkflowJobQueuedWorkflowJob with fn serialize(sel
   o.field("status", WorkflowJobQueuedWorkflowJobStatus::serialize(self.status))
   o.field("steps", @typify_rt.ser_vec(self.steps, WorkflowStep::serialize))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -84495,7 +83908,6 @@ pub impl @typify_rt.Serde for WorkflowJobStartedWorkflowJob with fn serialize(se
   o.field("status", WorkflowJobStartedWorkflowJobStatus::serialize(self.status))
   o.field("steps", @typify_rt.ser_vec(self.steps[:], WorkflowStepInProgress::serialize))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -84697,7 +84109,6 @@ pub impl @typify_rt.Serde for WorkflowRunCompletedWorkflowRunPullRequestsItemBas
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("repo", RepoRef::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
-
   o.build()
 }
 
@@ -84745,7 +84156,6 @@ pub impl @typify_rt.Serde for WorkflowRunCompletedWorkflowRunPullRequestsItemHea
   o.field("ref", @typify_rt.ser_string(self.ref_))
   o.field("repo", RepoRef::serialize(self.repo))
   o.field("sha", @typify_rt.ser_string(self.sha))
-
   o.build()
 }
 
@@ -84803,7 +84213,6 @@ pub impl @typify_rt.Serde for WorkflowRunCompletedWorkflowRunPullRequestsItem wi
   o.field("id", @typify_rt.ser_f64(self.id))
   o.field("number", @typify_rt.ser_f64(self.number))
   o.field("url", @typify_rt.ser_string(self.url))
-
   o.build()
 }
 
@@ -85048,7 +84457,6 @@ pub impl @typify_rt.Serde for WorkflowRunCompletedWorkflowRun with fn serialize(
   o.field("url", @typify_rt.ser_string(self.url))
   o.field("workflow_id", @typify_rt.ser_i64(self.workflow_id))
   o.field("workflow_url", @typify_rt.ser_string(self.workflow_url))
-
   o.build()
 }
 

@@ -32,7 +32,6 @@ pub impl @typify_rt.Serde for TestType with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("where_not", TestTypeWhereNot::serialize(self.where_not))
   o.field("why_not", TestTypeWhyNot::serialize(self.why_not))
-
   o.build()
 }
 

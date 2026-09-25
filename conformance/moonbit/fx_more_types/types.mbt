@@ -27,7 +27,6 @@ pub impl @typify_rt.Serde for ObjectWithNoExtra with fn deserialize(d) {
 pub impl @typify_rt.Serde for ObjectWithNoExtra with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("foo", @typify_rt.ser_string(self.foo))
-
   o.build()
 }
 
@@ -65,7 +64,6 @@ pub impl @typify_rt.Serde for ObjectWithOkExtra with fn deserialize(d) {
 pub impl @typify_rt.Serde for ObjectWithOkExtra with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("foo", @typify_rt.ser_string(self.foo))
-
   o.build()
 }
 
@@ -106,7 +104,6 @@ pub impl @typify_rt.Serde for ObjectWithStringExtra with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("foo", @typify_rt.ser_string(self.foo))
   o.flatten(@typify_rt.ser_map(self.extra, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : String) => @typify_rt.ser_string(v)))
-
   o.build()
 }
 
@@ -147,7 +144,6 @@ pub impl @typify_rt.Serde for ObjectWithWhichExtra with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("foo", @typify_rt.ser_string(self.foo))
   o.flatten(@typify_rt.ser_sorted_map(self.extra, @typify_rt.compare_keys, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Json) => @typify_rt.ser_json(v)))
-
   o.build()
 }
 
@@ -185,7 +181,6 @@ pub impl @typify_rt.Serde for ObjectWithYesExtra with fn deserialize(d) {
 pub impl @typify_rt.Serde for ObjectWithYesExtra with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("foo", @typify_rt.ser_string(self.foo))
-
   o.build()
 }
 

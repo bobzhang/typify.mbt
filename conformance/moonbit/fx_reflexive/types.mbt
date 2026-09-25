@@ -36,7 +36,6 @@ pub impl @typify_rt.Serde for Node with fn serialize(self) {
   if self.value is Some(_) {
     o.field("value", @typify_rt.ser_option(self.value, (v : Int64) => @typify_rt.ser_i64(v)))
   }
-
   o.build()
 }
 

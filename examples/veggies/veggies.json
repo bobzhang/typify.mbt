@@ -1,0 +1,18 @@
+{
+  "title": "Veggies",
+  "type": "object",
+  "properties": {
+    "fruits": { "type": "array", "items": { "type": "string" } },
+    "vegetables": { "type": "array", "items": { "$ref": "#/definitions/veggie" } }
+  },
+  "definitions": {
+    "veggie": {
+      "type": "object",
+      "required": ["veggieName", "veggieLike"],
+      "properties": {
+        "veggieName": { "type": "string" },
+        "veggieLike": { "type": "boolean" }
+      }
+    }
+  }
+}

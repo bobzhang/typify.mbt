@@ -77,7 +77,6 @@ pub impl @typify_rt.Serde for ObjectBs with fn serialize(self) {
   if self.ok is Some(_) {
     o.field("ok", @typify_rt.ser_option(self.ok, (v : Bool) => @typify_rt.ser_bool(v)))
   }
-
   o.build()
 }
 

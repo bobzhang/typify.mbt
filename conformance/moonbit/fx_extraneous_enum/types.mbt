@@ -29,7 +29,6 @@ pub impl @typify_rt.Serde for LetterBox with fn serialize(self) {
   if self.letter is Some(_) {
     o.field("letter", @typify_rt.ser_option(self.letter, LetterBoxLetter::serialize))
   }
-
   o.build()
 }
 

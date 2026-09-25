@@ -27,7 +27,6 @@ pub impl @typify_rt.Serde for TestType with fn deserialize(d) {
 pub impl @typify_rt.Serde for TestType with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_option(self.value, TestTypeValue::serialize))
-
   o.build()
 }
 

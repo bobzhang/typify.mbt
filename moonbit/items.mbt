@@ -116,9 +116,22 @@ fn Gen::struct_decode(
       "let mut f\{n.0} : \{self.mbt_type(props[n.0].type_id)}? = None\n",
     )
   }
+  // The result is needed to resolve absent fields (unless every field has
+  // a default) and to read flattened fields.
+  let needs_input = has_flatten ||
+    named
+    .iter()
+    .any(n => {
+      let p = props[n.0]
+      match (p.state, entry(self.space, p.type_id).details) {
+        (Optional, Option(_)) | (Required, _) => true
+        _ => false
+      }
+    })
   // One callback decodes field `j` (in `named` order) as its key is read.
   buf.write_string(
-    "let r = @typify_rt.de_fields(\{d}, \{str_lit(expecting)}, \{table}, (j, v) => match j {\n",
+    (if needs_input { "let r = " } else { "ignore(" }) +
+    "@typify_rt.de_fields(\{d}, \{str_lit(expecting)}, \{table}, (j, v) => match j {\n",
   )
   for j, n in named {
     buf.write_string(
@@ -138,7 +151,7 @@ fn Gen::struct_decode(
   if external_variant {
     buf.write_string(", external_variant=true")
   }
-  buf.write_string(")\n")
+  buf.write_string(if needs_input { ")\n" } else { "))\n" })
   // Absent fields, in declaration order: defaults, `None` for optional
   // `Option`s, or serde's missing-field/invalid-length errors.
   for j, n in named {
@@ -295,7 +308,7 @@ fn Gen::output_struct(
       $|///|
       $|pub impl @typify_rt.Serde for \{name} with fn serialize(self) {
       $|  let o = @typify_rt.ObjectBuilder::new()
-      $|\{indent(self.struct_encode(d.properties, i => "self.\{fields[i]}"), 2)}
+      $|\{indent(self.struct_encode(d.properties, i => "self.\{fields[i]}").trim_end().to_owned(), 2)}
       $|  o.build()
       $|}
       $|

@@ -36,7 +36,6 @@ pub impl @typify_rt.Serde for AllTheThings with fn serialize(self) {
   if self.path is Some(_) {
     o.field("path", @typify_rt.ser_option(self.path, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 

@@ -29,7 +29,6 @@ pub impl @typify_rt.Serde for BarProp with fn serialize(self) {
   if self.bar is Some(_) {
     o.field("bar", @typify_rt.ser_option(self.bar, (v : Json) => @typify_rt.ser_json(v)))
   }
-
   o.build()
 }
 
@@ -76,7 +75,6 @@ pub impl @typify_rt.Serde for CommentedTypeMerged with fn serialize(self) {
   if self.y is Some(_) {
     o.field("y", @typify_rt.ser_option(self.y, (v : Json) => @typify_rt.ser_json(v)))
   }
-
   o.build()
 }
 
@@ -209,7 +207,6 @@ pub impl @typify_rt.Serde for JsonResponseBase with fn serialize(self) {
   if self.result is Some(_) {
     o.field("result", @typify_rt.ser_option(self.result, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -252,7 +249,6 @@ pub impl @typify_rt.Serde for JsonSuccess with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("msg", @typify_rt.ser_string(self.msg))
   o.field("result", JsonSuccessResult::serialize(self.result))
-
   o.build()
 }
 
@@ -295,7 +291,6 @@ pub impl @typify_rt.Serde for JsonSuccessBase with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("msg", @typify_rt.ser_string(self.msg))
   o.field("result", JsonSuccessBaseResult::serialize(self.result))
-
   o.build()
 }
 
@@ -340,7 +335,6 @@ pub impl @typify_rt.Serde for OrderDependentMerge with fn serialize(self) {
     o.field("bar", @typify_rt.ser_option(self.bar, (v : Json) => @typify_rt.ser_json(v)))
   }
   o.field("baz", @typify_rt.ser_bool(self.baz))
-
   o.build()
 }
 
@@ -453,7 +447,6 @@ pub impl @typify_rt.Serde for ButNotThat with fn serialize(self) {
   if self.this is Some(_) {
     o.field("this", @typify_rt.ser_option(self.this, (v : Json) => @typify_rt.ser_json(v)))
   }
-
   o.build()
 }
 
@@ -477,9 +470,9 @@ let merge_empty_fields : @typify_rt.Fields = @typify_rt.Fields::new([])
 
 ///|
 pub impl @typify_rt.Serde for MergeEmpty with fn deserialize(d) {
-  let r = @typify_rt.de_fields(d, "struct MergeEmpty", merge_empty_fields, (j, v) => match j {
+  ignore(@typify_rt.de_fields(d, "struct MergeEmpty", merge_empty_fields, (j, v) => match j {
     _ => ()
-  }, deny=true)
+  }, deny=true))
   MergeEmpty::{  }
 }
 
@@ -612,7 +605,6 @@ pub impl @typify_rt.Serde for Pickingone with fn deserialize(d) {
 pub impl @typify_rt.Serde for Pickingone with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("suspended_by", PickingoneSuspendedBy::serialize(self.suspended_by))
-
   o.build()
 }
 
@@ -652,7 +644,6 @@ pub impl @typify_rt.Serde for PickingoneInstallation with fn serialize(self) {
   if self.suspended_by is Some(_) {
     o.field("suspended_by", @typify_rt.ser_option(self.suspended_by, PickingoneUser::serialize))
   }
-
   o.build()
 }
 
@@ -692,7 +683,6 @@ pub impl @typify_rt.Serde for PickingoneUser with fn serialize(self) {
   if self.email is Some(_) {
     o.field("email", @typify_rt.ser_option(self.email, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -730,7 +720,6 @@ pub impl @typify_rt.Serde for TrimFat with fn deserialize(d) {
 pub impl @typify_rt.Serde for TrimFat with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("a", @typify_rt.ser_json(self.a))
-
   o.build()
 }
 
@@ -768,7 +757,6 @@ pub impl @typify_rt.Serde for UnchangedByMerge with fn deserialize(d) {
 pub impl @typify_rt.Serde for UnchangedByMerge with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("tag", UnchangedByMergeTag::serialize(self.tag))
-
   o.build()
 }
 
@@ -907,7 +895,6 @@ pub impl @typify_rt.Serde for Unsatisfiable3A with fn serialize(self) {
   if self.action is Some(_) {
     o.field("action", @typify_rt.ser_option(self.action, Unsatisfiable3C::serialize))
   }
-
   o.build()
 }
 
@@ -1310,7 +1297,6 @@ pub impl @typify_rt.Serde for PickingoneSuspendedBy with fn serialize(self) {
   if self.email is Some(_) {
     o.field("email", @typify_rt.ser_option(self.email, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 

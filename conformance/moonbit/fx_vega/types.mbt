@@ -86,7 +86,6 @@ pub impl @typify_rt.Serde for AggregateTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", AggregateTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -987,7 +986,6 @@ pub impl @typify_rt.Serde for Axis with fn serialize(self) {
   if self.zindex is Some(_) {
     o.field("zindex", @typify_rt.ser_option(self.zindex, (v : Double) => @typify_rt.ser_f64(v)))
   }
-
   o.build()
 }
 
@@ -1370,7 +1368,6 @@ pub impl @typify_rt.Serde for BinTransform with fn serialize(self) {
     o.field("steps", @typify_rt.ser_option(self.steps, BinTransformSteps::serialize))
   }
   o.field("type", BinTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -1827,7 +1824,6 @@ pub impl @typify_rt.Serde for CollectTransform with fn serialize(self) {
     o.field("sort", @typify_rt.ser_option(self.sort, Compare_::serialize))
   }
   o.field("type", CollectTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -1875,7 +1871,6 @@ pub impl @typify_rt.Serde for ColorHcl with fn serialize(self) {
   o.field("c", NumberValue::serialize(self.c))
   o.field("h", NumberValue::serialize(self.h))
   o.field("l", NumberValue::serialize(self.l))
-
   o.build()
 }
 
@@ -1923,7 +1918,6 @@ pub impl @typify_rt.Serde for ColorHsl with fn serialize(self) {
   o.field("h", NumberValue::serialize(self.h))
   o.field("l", NumberValue::serialize(self.l))
   o.field("s", NumberValue::serialize(self.s))
-
   o.build()
 }
 
@@ -1971,7 +1965,6 @@ pub impl @typify_rt.Serde for ColorLab with fn serialize(self) {
   o.field("a", NumberValue::serialize(self.a))
   o.field("b", NumberValue::serialize(self.b))
   o.field("l", NumberValue::serialize(self.l))
-
   o.build()
 }
 
@@ -2019,7 +2012,6 @@ pub impl @typify_rt.Serde for ColorRgb with fn serialize(self) {
   o.field("b", NumberValue::serialize(self.b))
   o.field("g", NumberValue::serialize(self.g))
   o.field("r", NumberValue::serialize(self.r))
-
   o.build()
 }
 
@@ -2072,11 +2064,11 @@ pub impl @typify_rt.Serde for Compare_ with fn deserialize(d) {
     {
       let mut f0 : Array[CompareVariant1FieldItem]? = None
       let mut f1 : Array[SortOrder]? = None
-      let r = @typify_rt.de_fields(c, "struct variant Compare::Variant1", compare_variant1_fields, (j, v) => match j {
+      ignore(@typify_rt.de_fields(c, "struct variant Compare::Variant1", compare_variant1_fields, (j, v) => match j {
         0 => f0 = Some(@typify_rt.de_vec(v, CompareVariant1FieldItem::deserialize))
         1 => f1 = Some(@typify_rt.de_vec(v, SortOrder::deserialize))
         _ => ()
-      }, deny=true, positional=false)
+      }, deny=true, positional=false))
       let v0 = if f0 is Some(v) { v } else { [] }
       let v1 = if f1 is Some(v) { v } else { [] }
       Compare_::Variant1(field=v0, order=v1)
@@ -2235,7 +2227,6 @@ pub impl @typify_rt.Serde for ContourTransform with fn serialize(self) {
   if self.y is Some(_) {
     o.field("y", @typify_rt.ser_option(self.y, ContourTransformY::serialize))
   }
-
   o.build()
 }
 
@@ -2322,7 +2313,6 @@ pub impl @typify_rt.Serde for CountpatternTransform with fn serialize(self) {
     o.field("stopwords", @typify_rt.ser_option(self.stopwords, CountpatternTransformStopwords::serialize))
   }
   o.field("type", CountpatternTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -2384,7 +2374,6 @@ pub impl @typify_rt.Serde for CrossTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", CrossTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -2439,7 +2428,6 @@ pub impl @typify_rt.Serde for CrossfilterTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", CrossfilterTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -2756,7 +2744,6 @@ pub impl @typify_rt.Serde for DensityTransform with fn serialize(self) {
     o.field("steps", @typify_rt.ser_option(self.steps, DensityTransformSteps::serialize))
   }
   o.field("type", DensityTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -2884,7 +2871,6 @@ pub impl @typify_rt.Serde for DotbinTransform with fn serialize(self) {
     o.field("step", @typify_rt.ser_option(self.step, DotbinTransformStep::serialize))
   }
   o.field("type", DotbinTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -3448,7 +3434,6 @@ pub impl @typify_rt.Serde for EncodeEntry with fn serialize(self) {
   if self.zindex is Some(_) {
     o.field("zindex", @typify_rt.ser_option(self.zindex, NumberValue::serialize))
   }
-
   o.build()
 }
 
@@ -3493,7 +3478,6 @@ pub impl @typify_rt.Serde for Expr with fn serialize(self) {
     o.field("as", @typify_rt.ser_option(self.as_, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("expr", @typify_rt.ser_string(self.expr))
-
   o.build()
 }
 
@@ -3567,7 +3551,6 @@ pub impl @typify_rt.Serde for ExtentTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", ExtentTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -3612,7 +3595,6 @@ pub impl @typify_rt.Serde for Facet with fn serialize(self) {
     o.field("data", @typify_rt.ser_option(self.data, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("facet", FacetFacet::serialize(self.facet))
-
   o.build()
 }
 
@@ -3796,7 +3778,6 @@ pub impl @typify_rt.Serde for FilterTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", FilterTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -3860,7 +3841,6 @@ pub impl @typify_rt.Serde for FlattenTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", FlattenTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -3920,7 +3900,6 @@ pub impl @typify_rt.Serde for FoldTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", FoldTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -4090,7 +4069,6 @@ pub impl @typify_rt.Serde for ForceTransform with fn serialize(self) {
   }
   o.field("type", ForceTransformType::serialize(self.type_))
   o.field("velocityDecay", ForceTransformVelocityDecay::serialize(self.velocity_decay))
-
   o.build()
 }
 
@@ -4152,7 +4130,6 @@ pub impl @typify_rt.Serde for FormulaTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", FormulaTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -4192,7 +4169,6 @@ pub impl @typify_rt.Serde for From with fn serialize(self) {
   if self.data is Some(_) {
     o.field("data", @typify_rt.ser_option(self.data, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -4251,7 +4227,6 @@ pub impl @typify_rt.Serde for GeojsonTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", GeojsonTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -4327,7 +4302,6 @@ pub impl @typify_rt.Serde for GeopathTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", GeopathTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -4392,7 +4366,6 @@ pub impl @typify_rt.Serde for GeopointTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", GeopointTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -4471,7 +4444,6 @@ pub impl @typify_rt.Serde for GeoshapeTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", GeoshapeTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -4598,7 +4570,6 @@ pub impl @typify_rt.Serde for GraticuleTransform with fn serialize(self) {
   o.field("stepMajor", GraticuleTransformStepMajor::serialize(self.step_major))
   o.field("stepMinor", GraticuleTransformStepMinor::serialize(self.step_minor))
   o.field("type", GraticuleTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -4650,7 +4621,6 @@ pub impl @typify_rt.Serde for GuideEncode with fn serialize(self) {
   if self.style is Some(_) {
     o.field("style", @typify_rt.ser_option(self.style, Style::serialize))
   }
-
   o.build()
 }
 
@@ -4736,7 +4706,6 @@ pub impl @typify_rt.Serde for HeatmapTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", HeatmapTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -4786,7 +4755,6 @@ pub impl @typify_rt.Serde for IdentifierTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", IdentifierTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -4872,7 +4840,6 @@ pub impl @typify_rt.Serde for ImputeTransform with fn serialize(self) {
   if self.value is Some(_) {
     o.field("value", @typify_rt.ser_option(self.value, (v : Json) => @typify_rt.ser_json(v)))
   }
-
   o.build()
 }
 
@@ -4999,7 +4966,6 @@ pub impl @typify_rt.Serde for IsocontourTransform with fn serialize(self) {
   }
   o.field("type", IsocontourTransformType::serialize(self.type_))
   o.field("zero", IsocontourTransformZero::serialize(self.zero))
-
   o.build()
 }
 
@@ -5079,7 +5045,6 @@ pub impl @typify_rt.Serde for JoinaggregateTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", JoinaggregateTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -5184,7 +5149,6 @@ pub impl @typify_rt.Serde for Kde2dTransform with fn serialize(self) {
   }
   o.field("x", Kde2dTransformX::serialize(self.x))
   o.field("y", Kde2dTransformY::serialize(self.y))
-
   o.build()
 }
 
@@ -5316,7 +5280,6 @@ pub impl @typify_rt.Serde for KdeTransform with fn serialize(self) {
     o.field("steps", @typify_rt.ser_option(self.steps, KdeTransformSteps::serialize))
   }
   o.field("type", KdeTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -5511,7 +5474,6 @@ pub impl @typify_rt.Serde for LabelTransform with fn serialize(self) {
     o.field("sort", @typify_rt.ser_option(self.sort, Compare_::serialize))
   }
   o.field("type", LabelTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -8639,7 +8601,6 @@ pub impl @typify_rt.Serde for LinearGradient with fn serialize(self) {
   if self.y2 is Some(_) {
     o.field("y2", @typify_rt.ser_option(self.y2, (v : Double) => @typify_rt.ser_f64(v)))
   }
-
   o.build()
 }
 
@@ -8761,7 +8722,6 @@ pub impl @typify_rt.Serde for LinkpathTransform with fn serialize(self) {
   o.field("targetX", LinkpathTransformTargetX::serialize(self.target_x))
   o.field("targetY", LinkpathTransformTargetY::serialize(self.target_y))
   o.field("type", LinkpathTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -8912,7 +8872,6 @@ pub impl @typify_rt.Serde for LoessTransform with fn serialize(self) {
   o.field("type", LoessTransformType::serialize(self.type_))
   o.field("x", LoessTransformX::serialize(self.x))
   o.field("y", LoessTransformY::serialize(self.y))
-
   o.build()
 }
 
@@ -8993,7 +8952,6 @@ pub impl @typify_rt.Serde for LookupTransform with fn serialize(self) {
   if self.values is Some(_) {
     o.field("values", @typify_rt.ser_option(self.values, LookupTransformValues::serialize))
   }
-
   o.build()
 }
 
@@ -9115,7 +9073,6 @@ pub impl @typify_rt.Serde for Mark with fn serialize(self) {
     o.field("transform", @typify_rt.ser_vec(self.transform, TransformMark::serialize))
   }
   o.field("type", Marktype::serialize(self.type_))
-
   o.build()
 }
 
@@ -9314,7 +9271,6 @@ pub impl @typify_rt.Serde for MarkGroup with fn serialize(self) {
   if !self.usermeta.is_empty() {
     o.field("usermeta", @typify_rt.ser_sorted_map(self.usermeta, @typify_rt.compare_keys, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Json) => @typify_rt.ser_json(v)))
   }
-
   o.build()
 }
 
@@ -9443,7 +9399,6 @@ pub impl @typify_rt.Serde for MarkVisual with fn serialize(self) {
     o.field("transform", @typify_rt.ser_vec(self.transform, TransformMark::serialize))
   }
   o.field("type", Marktype::serialize(self.type_))
-
   o.build()
 }
 
@@ -9613,7 +9568,6 @@ pub impl @typify_rt.Serde for NestTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", NestTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -9693,7 +9647,6 @@ pub impl @typify_rt.Serde for NumberModifiers with fn serialize(self) {
   if self.scale is Some(_) {
     o.field("scale", @typify_rt.ser_option(self.scale, Field::serialize))
   }
-
   o.build()
 }
 
@@ -9996,7 +9949,6 @@ pub impl @typify_rt.Serde for PackTransform with fn serialize(self) {
     o.field("sort", @typify_rt.ser_option(self.sort, Compare_::serialize))
   }
   o.field("type", PackTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -10133,7 +10085,6 @@ pub impl @typify_rt.Serde for ParamField with fn serialize(self) {
     o.field("as", @typify_rt.ser_option(self.as_, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("field", @typify_rt.ser_string(self.field))
-
   o.build()
 }
 
@@ -10223,7 +10174,6 @@ pub impl @typify_rt.Serde for PartitionTransform with fn serialize(self) {
     o.field("sort", @typify_rt.ser_option(self.sort, Compare_::serialize))
   }
   o.field("type", PartitionTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -10309,7 +10259,6 @@ pub impl @typify_rt.Serde for PieTransform with fn serialize(self) {
     o.field("startAngle", @typify_rt.ser_option(self.start_angle, PieTransformStartAngle::serialize))
   }
   o.field("type", PieTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -10395,7 +10344,6 @@ pub impl @typify_rt.Serde for PivotTransform with fn serialize(self) {
   }
   o.field("type", PivotTransformType::serialize(self.type_))
   o.field("value", PivotTransformValue::serialize(self.value))
-
   o.build()
 }
 
@@ -10454,7 +10402,6 @@ pub impl @typify_rt.Serde for ProjectTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", ProjectTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -10583,7 +10530,6 @@ pub impl @typify_rt.Serde for Projection with fn serialize(self) {
   if self.type_ is Some(_) {
     o.field("type", @typify_rt.ser_option(self.type_, StringOrSignal::serialize))
   }
-
   o.build()
 }
 
@@ -10667,7 +10613,6 @@ pub impl @typify_rt.Serde for QuantileTransform with fn serialize(self) {
   }
   o.field("step", QuantileTransformStep::serialize(self.step))
   o.field("type", QuantileTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -10759,7 +10704,6 @@ pub impl @typify_rt.Serde for RadialGradient with fn serialize(self) {
   if self.y2 is Some(_) {
     o.field("y2", @typify_rt.ser_option(self.y2, (v : Double) => @typify_rt.ser_f64(v)))
   }
-
   o.build()
 }
 
@@ -10862,7 +10806,6 @@ pub impl @typify_rt.Serde for RegressionTransform with fn serialize(self) {
   o.field("type", RegressionTransformType::serialize(self.type_))
   o.field("x", RegressionTransformX::serialize(self.x))
   o.field("y", RegressionTransformY::serialize(self.y))
-
   o.build()
 }
 
@@ -10917,7 +10860,6 @@ pub impl @typify_rt.Serde for ResolvefilterTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", ResolvefilterTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -10957,7 +10899,6 @@ pub impl @typify_rt.Serde for Rule with fn serialize(self) {
   if self.test_ is Some(_) {
     o.field("test", @typify_rt.ser_option(self.test_, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -11012,7 +10953,6 @@ pub impl @typify_rt.Serde for SampleTransform with fn serialize(self) {
   }
   o.field("size", SampleTransformSize::serialize(self.size))
   o.field("type", SampleTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -12671,7 +12611,6 @@ pub impl @typify_rt.Serde for Scope with fn serialize(self) {
   if !self.usermeta.is_empty() {
     o.field("usermeta", @typify_rt.ser_sorted_map(self.usermeta, @typify_rt.compare_keys, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Json) => @typify_rt.ser_json(v)))
   }
-
   o.build()
 }
 
@@ -12770,7 +12709,6 @@ pub impl @typify_rt.Serde for SequenceTransform with fn serialize(self) {
   o.field("step", SequenceTransformStep::serialize(self.step))
   o.field("stop", SequenceTransformStop::serialize(self.stop))
   o.field("type", SequenceTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -13038,7 +12976,6 @@ pub impl @typify_rt.Serde for SignalRef with fn deserialize(d) {
 pub impl @typify_rt.Serde for SignalRef with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("signal", @typify_rt.ser_string(self.signal))
-
   o.build()
 }
 
@@ -13171,7 +13108,6 @@ pub impl @typify_rt.Serde for StackTransform with fn serialize(self) {
     o.field("sort", @typify_rt.ser_option(self.sort, Compare_::serialize))
   }
   o.field("type", StackTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -13226,7 +13162,6 @@ pub impl @typify_rt.Serde for StratifyTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", StratifyTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -13500,7 +13435,6 @@ pub impl @typify_rt.Serde for StringModifiers with fn serialize(self) {
   if self.scale is Some(_) {
     o.field("scale", @typify_rt.ser_option(self.scale, Field::serialize))
   }
-
   o.build()
 }
 
@@ -14078,7 +14012,6 @@ pub impl @typify_rt.Serde for TimeunitTransform with fn serialize(self) {
   if self.units is Some(_) {
     o.field("units", @typify_rt.ser_option(self.units, TimeunitTransformUnits::serialize))
   }
-
   o.build()
 }
 
@@ -15289,7 +15222,6 @@ pub impl @typify_rt.Serde for TreeTransform with fn serialize(self) {
     o.field("sort", @typify_rt.ser_option(self.sort, Compare_::serialize))
   }
   o.field("type", TreeTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -15334,7 +15266,6 @@ pub impl @typify_rt.Serde for TreelinksTransform with fn serialize(self) {
     o.field("signal", @typify_rt.ser_option(self.signal, (v : String) => @typify_rt.ser_string(v)))
   }
   o.field("type", TreelinksTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -15486,7 +15417,6 @@ pub impl @typify_rt.Serde for TreemapTransform with fn serialize(self) {
     o.field("sort", @typify_rt.ser_option(self.sort, Compare_::serialize))
   }
   o.field("type", TreemapTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -15568,7 +15498,6 @@ pub impl @typify_rt.Serde for VoronoiTransform with fn serialize(self) {
   o.field("type", VoronoiTransformType::serialize(self.type_))
   o.field("x", VoronoiTransformX::serialize(self.x))
   o.field("y", VoronoiTransformY::serialize(self.y))
-
   o.build()
 }
 
@@ -15672,7 +15601,6 @@ pub impl @typify_rt.Serde for WindowTransform with fn serialize(self) {
     o.field("sort", @typify_rt.ser_option(self.sort, Compare_::serialize))
   }
   o.field("type", WindowTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -15812,7 +15740,6 @@ pub impl @typify_rt.Serde for WordcloudTransform with fn serialize(self) {
     o.field("text", @typify_rt.ser_option(self.text, WordcloudTransformText::serialize))
   }
   o.field("type", WordcloudTransformType::serialize(self.type_))
-
   o.build()
 }
 
@@ -15985,7 +15912,6 @@ pub impl @typify_rt.Serde for Everything with fn serialize(self) {
   if self.width is Some(_) {
     o.field("width", @typify_rt.ser_option(self.width, NumberOrSignal::serialize))
   }
-
   o.build()
 }
 
@@ -20641,7 +20567,6 @@ pub impl @typify_rt.Serde for AxisEncode with fn serialize(self) {
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, GuideEncode::serialize))
   }
-
   o.build()
 }
 
@@ -30121,7 +30046,6 @@ pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype0 with fn seriali
   if self.type_ is Some(_) {
     o.field("type", @typify_rt.ser_option(self.type_, StringOrSignal::serialize))
   }
-
   o.build()
 }
 
@@ -30521,7 +30445,6 @@ pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype1 with fn seriali
   if self.type_ is Some(_) {
     o.field("type", @typify_rt.ser_option(self.type_, DataVariant2FormatVariant0Subtype1Type::serialize))
   }
-
   o.build()
 }
 
@@ -30918,7 +30841,6 @@ pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype2 with fn seriali
     o.field("parse", @typify_rt.ser_option(self.parse, DataVariant2FormatVariant0Subtype2Parse::serialize))
   }
   o.field("type", DataVariant2FormatVariant0Subtype2Type::serialize(self.type_))
-
   o.build()
 }
 
@@ -31314,7 +31236,6 @@ pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype3 with fn seriali
     o.field("parse", @typify_rt.ser_option(self.parse, DataVariant2FormatVariant0Subtype3Parse::serialize))
   }
   o.field("type", DataVariant2FormatVariant0Subtype3Type::serialize(self.type_))
-
   o.build()
 }
 
@@ -31995,7 +31916,6 @@ pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype0 with fn seriali
   if self.type_ is Some(_) {
     o.field("type", @typify_rt.ser_option(self.type_, StringOrSignal::serialize))
   }
-
   o.build()
 }
 
@@ -32395,7 +32315,6 @@ pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype1 with fn seriali
   if self.type_ is Some(_) {
     o.field("type", @typify_rt.ser_option(self.type_, DataVariant3FormatVariant0Subtype1Type::serialize))
   }
-
   o.build()
 }
 
@@ -32792,7 +32711,6 @@ pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype2 with fn seriali
     o.field("parse", @typify_rt.ser_option(self.parse, DataVariant3FormatVariant0Subtype2Parse::serialize))
   }
   o.field("type", DataVariant3FormatVariant0Subtype2Type::serialize(self.type_))
-
   o.build()
 }
 
@@ -33188,7 +33106,6 @@ pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype3 with fn seriali
     o.field("parse", @typify_rt.ser_option(self.parse, DataVariant3FormatVariant0Subtype3Parse::serialize))
   }
   o.field("type", DataVariant3FormatVariant0Subtype3Type::serialize(self.type_))
-
   o.build()
 }
 
@@ -36115,7 +36032,6 @@ pub impl @typify_rt.Serde for FacetFacetVariant1Aggregate with fn serialize(self
   if !self.ops.is_empty() {
     o.field("ops", @typify_rt.ser_vec(self.ops, (v : String) => @typify_rt.ser_string(v)))
   }
-
   o.build()
 }
 
@@ -40106,7 +40022,6 @@ pub impl @typify_rt.Serde for GradientStopsItem with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("color", @typify_rt.ser_string(self.color))
   o.field("offset", @typify_rt.ser_f64(self.offset))
-
   o.build()
 }
 
@@ -47139,7 +47054,6 @@ pub impl @typify_rt.Serde for LegendVariant0Encode with fn serialize(self) {
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, GuideEncode::serialize))
   }
-
   o.build()
 }
 
@@ -50374,7 +50288,6 @@ pub impl @typify_rt.Serde for LegendVariant1Encode with fn serialize(self) {
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, GuideEncode::serialize))
   }
-
   o.build()
 }
 
@@ -53609,7 +53522,6 @@ pub impl @typify_rt.Serde for LegendVariant2Encode with fn serialize(self) {
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, GuideEncode::serialize))
   }
-
   o.build()
 }
 
@@ -56844,7 +56756,6 @@ pub impl @typify_rt.Serde for LegendVariant3Encode with fn serialize(self) {
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, GuideEncode::serialize))
   }
-
   o.build()
 }
 
@@ -60079,7 +59990,6 @@ pub impl @typify_rt.Serde for LegendVariant4Encode with fn serialize(self) {
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, GuideEncode::serialize))
   }
-
   o.build()
 }
 
@@ -63314,7 +63224,6 @@ pub impl @typify_rt.Serde for LegendVariant5Encode with fn serialize(self) {
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, GuideEncode::serialize))
   }
-
   o.build()
 }
 
@@ -66549,7 +66458,6 @@ pub impl @typify_rt.Serde for LegendVariant6Encode with fn serialize(self) {
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, GuideEncode::serialize))
   }
-
   o.build()
 }
 
@@ -74858,7 +74766,6 @@ pub impl @typify_rt.Serde for OnMarkTriggerItem with fn serialize(self) {
   if self.values is Some(_) {
     o.field("values", @typify_rt.ser_option(self.values, ExprString::serialize))
   }
-
   o.build()
 }
 
@@ -74978,7 +74885,6 @@ pub impl @typify_rt.Serde for OnTriggerItem with fn serialize(self) {
   if self.values is Some(_) {
     o.field("values", @typify_rt.ser_option(self.values, ExprString::serialize))
   }
-
   o.build()
 }
 
@@ -95771,7 +95677,6 @@ pub impl @typify_rt.Serde for TitleObjectEncodeSubtype1 with fn serialize(self) 
   if self.title is Some(_) {
     o.field("title", @typify_rt.ser_option(self.title, GuideEncode::serialize))
   }
-
   o.build()
 }
 
@@ -95810,7 +95715,6 @@ pub impl @typify_rt.Serde for TitleObjectEncode with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.flatten(@typify_rt.ser_option(self.subtype_0, (v : Map[TitleObjectEncodeSubtype0Key, EncodeEntry]) => @typify_rt.ser_map(v, (k : TitleObjectEncodeSubtype0Key) => @typify_rt.map_key(TitleObjectEncodeSubtype0Key::serialize(k)), EncodeEntry::serialize)))
   o.flatten(@typify_rt.ser_option(self.subtype_1, TitleObjectEncodeSubtype1::serialize))
-
   o.build()
 }
 

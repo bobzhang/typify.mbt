@@ -61,7 +61,6 @@ pub impl @typify_rt.Serde for TestType with fn serialize(self) {
   o.field("converted_type", @typify_rt.ser_json(self.converted_type))
   o.field("patched_type", TypeThatHasMoreDerives::serialize(self.patched_type))
   o.field("replaced_type", @typify_rt.ser_string(self.replaced_type))
-
   o.build()
 }
 
