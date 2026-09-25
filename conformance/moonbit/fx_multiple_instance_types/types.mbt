@@ -11,19 +11,15 @@ pub(all) enum IntOrStr {
 } derive(Debug, Eq)
 
 ///|
-pub fn IntOrStr::deserialize(d : @typify_rt.De) -> IntOrStr raise @typify_rt.DeError {
+pub impl @typify_rt.Serde for IntOrStr with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
-  try {
-    IntOrStr::Integer(@typify_rt.de_i64(c))
-  } catch {
+  try IntOrStr::Integer(@typify_rt.de_i64(c)) catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try {
-    IntOrStr::String(@typify_rt.de_string(c))
-  } catch {
+  try IntOrStr::String(@typify_rt.de_string(c)) catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -33,7 +29,7 @@ pub fn IntOrStr::deserialize(d : @typify_rt.De) -> IntOrStr raise @typify_rt.DeE
 }
 
 ///|
-pub fn IntOrStr::serialize(self : IntOrStr) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for IntOrStr with fn serialize(self) {
   match self {
     Integer(p0) => @typify_rt.ser_i64(p0)
     String(p0) => @typify_rt.ser_string(p0)
@@ -41,29 +37,17 @@ pub fn IntOrStr::serialize(self : IntOrStr) -> @typify_rt.Content raise @typify_
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn IntOrStr::from_json_str(text : StringView) -> IntOrStr raise @typify_rt.DeError {
-  IntOrStr::deserialize(@typify_rt.De::from_str(text))
+pub extend IntOrStr with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn IntOrStr::to_json_string(self : IntOrStr) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn IntOrStr::from_json(json : Json) -> IntOrStr raise @typify_rt.DeError {
-  IntOrStr::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for IntOrStr with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("IntOrStr::to_json: \{e}")
-  }
+pub impl ToJson for IntOrStr with fn to_json(self) {
+  @typify_rt.json_of(self, "IntOrStr")
 }
 
 ///|
@@ -78,51 +62,46 @@ pub(all) enum OneOfSeveral {
 } derive(Debug, Eq)
 
 ///|
-pub fn OneOfSeveral::deserialize(d : @typify_rt.De) -> OneOfSeveral raise @typify_rt.DeError {
+pub impl @typify_rt.Serde for OneOfSeveral with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
   try {
-    { @typify_rt.de_unit(c); OneOfSeveral::Null }
+    @typify_rt.de_unit(c)
+    OneOfSeveral::Null
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try {
-    OneOfSeveral::Boolean(@typify_rt.de_bool(c))
-  } catch {
+  try OneOfSeveral::Boolean(@typify_rt.de_bool(c)) catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try {
-    OneOfSeveral::Integer(@typify_rt.de_i64(c))
-  } catch {
+  try OneOfSeveral::Integer(@typify_rt.de_i64(c)) catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try {
-    OneOfSeveral::String(@typify_rt.de_string(c))
-  } catch {
+  try OneOfSeveral::String(@typify_rt.de_string(c)) catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try {
-    OneOfSeveral::Array(@typify_rt.de_vec(c, @typify_rt.de_json))
-  } catch {
+  try OneOfSeveral::Array(@typify_rt.de_vec(c, @typify_rt.de_json)) catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try {
-    OneOfSeveral::Object(@typify_rt.de_map(c, @typify_rt.de_string, @typify_rt.de_json))
-  } catch {
+  try
+    OneOfSeveral::Object(
+      @typify_rt.de_map(c, @typify_rt.de_string, @typify_rt.de_json),
+    )
+  catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -132,41 +111,35 @@ pub fn OneOfSeveral::deserialize(d : @typify_rt.De) -> OneOfSeveral raise @typif
 }
 
 ///|
-pub fn OneOfSeveral::serialize(self : OneOfSeveral) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for OneOfSeveral with fn serialize(self) {
   match self {
     Null => @typify_rt.ser_unit()
     Boolean(p0) => @typify_rt.ser_bool(p0)
     Integer(p0) => @typify_rt.ser_i64(p0)
     String(p0) => @typify_rt.ser_string(p0)
     Array(p0) => @typify_rt.ser_vec(p0, (v : Json) => @typify_rt.ser_json(v))
-    Object(p0) => @typify_rt.ser_sorted_map(p0, @typify_rt.compare_keys, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Json) => @typify_rt.ser_json(v))
+    Object(p0) =>
+      @typify_rt.ser_sorted_map(
+        p0,
+        @typify_rt.compare_keys,
+        (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
+        (v : Json) => @typify_rt.ser_json(v),
+      )
   }
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn OneOfSeveral::from_json_str(text : StringView) -> OneOfSeveral raise @typify_rt.DeError {
-  OneOfSeveral::deserialize(@typify_rt.De::from_str(text))
+pub extend OneOfSeveral with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn OneOfSeveral::to_json_string(self : OneOfSeveral) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn OneOfSeveral::from_json(json : Json) -> OneOfSeveral raise @typify_rt.DeError {
-  OneOfSeveral::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for OneOfSeveral with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("OneOfSeveral::to_json: \{e}")
-  }
+pub impl ToJson for OneOfSeveral with fn to_json(self) {
+  @typify_rt.json_of(self, "OneOfSeveral")
 }
 
 ///|
@@ -174,39 +147,27 @@ pub impl ToJson for OneOfSeveral with to_json(self) {
 pub(all) struct ReallyJustNull(Unit) derive(Debug, Eq)
 
 ///|
-pub fn ReallyJustNull::deserialize(d : @typify_rt.De) -> ReallyJustNull raise @typify_rt.DeError {
+pub impl @typify_rt.Serde for ReallyJustNull with fn deserialize(d) {
   ReallyJustNull(@typify_rt.de_unit(d))
 }
 
 ///|
-pub fn ReallyJustNull::serialize(self : ReallyJustNull) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for ReallyJustNull with fn serialize(self) {
   @typify_rt.ser_unit()
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn ReallyJustNull::from_json_str(text : StringView) -> ReallyJustNull raise @typify_rt.DeError {
-  ReallyJustNull::deserialize(@typify_rt.De::from_str(text))
+pub extend ReallyJustNull with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn ReallyJustNull::to_json_string(self : ReallyJustNull) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn ReallyJustNull::from_json(json : Json) -> ReallyJustNull raise @typify_rt.DeError {
-  ReallyJustNull::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for ReallyJustNull with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("ReallyJustNull::to_json: \{e}")
-  }
+pub impl ToJson for ReallyJustNull with fn to_json(self) {
+  @typify_rt.json_of(self, "ReallyJustNull")
 }
 
 ///|
@@ -214,39 +175,27 @@ pub impl ToJson for ReallyJustNull with to_json(self) {
 pub(all) struct SeriouslyAnything(Json) derive(Debug, Eq)
 
 ///|
-pub fn SeriouslyAnything::deserialize(d : @typify_rt.De) -> SeriouslyAnything raise @typify_rt.DeError {
+pub impl @typify_rt.Serde for SeriouslyAnything with fn deserialize(d) {
   SeriouslyAnything(@typify_rt.de_json(d))
 }
 
 ///|
-pub fn SeriouslyAnything::serialize(self : SeriouslyAnything) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for SeriouslyAnything with fn serialize(self) {
   @typify_rt.ser_json(self.0)
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn SeriouslyAnything::from_json_str(text : StringView) -> SeriouslyAnything raise @typify_rt.DeError {
-  SeriouslyAnything::deserialize(@typify_rt.De::from_str(text))
+pub extend SeriouslyAnything with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn SeriouslyAnything::to_json_string(self : SeriouslyAnything) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn SeriouslyAnything::from_json(json : Json) -> SeriouslyAnything raise @typify_rt.DeError {
-  SeriouslyAnything::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for SeriouslyAnything with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("SeriouslyAnything::to_json: \{e}")
-  }
+pub impl ToJson for SeriouslyAnything with fn to_json(self) {
+  @typify_rt.json_of(self, "SeriouslyAnything")
 }
 
 ///|
@@ -257,39 +206,39 @@ pub(all) enum YesNoMaybe {
 } derive(Debug, Eq)
 
 ///|
-pub fn YesNoMaybe::deserialize(d : @typify_rt.De) -> YesNoMaybe raise @typify_rt.DeError {
+let yes_no_maybe_object_fields : @typify_rt.Fields = @typify_rt.Fields::new([
+  "value",
+])
+
+///|
+pub impl @typify_rt.Serde for YesNoMaybe with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
-  try {
-    YesNoMaybe::Boolean(@typify_rt.de_bool(c))
-  } catch {
+  try YesNoMaybe::Boolean(@typify_rt.de_bool(c)) catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
   try {
-    match @typify_rt.de_struct(c, "struct variant YesNoMaybe::Object", ["value"], false) {
-      Entries(entries) => {
-        let mut f0 : String?? = None
-        for e in entries {
-          match e.0 {
-            "value" => {
-              if f0 is Some(_) {
-                raise @typify_rt.duplicate_field_error("value")
-              }
-              f0 = Some(@typify_rt.de_option(e.1, @typify_rt.de_string))
-            }
-            _ => ()
-          }
+    let mut f0 : String?? = None
+    let r = @typify_rt.de_fields(
+      c,
+      "struct variant YesNoMaybe::Object",
+      yes_no_maybe_object_fields,
+      (j, v) => {
+        match j {
+          0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+          _ => ()
         }
-        let v0 = match f0 {
-          Some(v) => v
-          None => @typify_rt.de_option(@typify_rt.De::Missing("value"), @typify_rt.de_string)
-        }
-        YesNoMaybe::Object(value=v0)
-      }
-      Elements(_) => raise @typify_rt.DeError("invalid type: sequence, expected struct variant YesNoMaybe::Object")
+      },
+      positional=false,
+    )
+    let v0 = if f0 is Some(v) {
+      v
+    } else {
+      @typify_rt.de_option(r.absent(0), @typify_rt.de_string)
     }
+    YesNoMaybe::Object(value=v0)
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
@@ -300,13 +249,16 @@ pub fn YesNoMaybe::deserialize(d : @typify_rt.De) -> YesNoMaybe raise @typify_rt
 }
 
 ///|
-pub fn YesNoMaybe::serialize(self : YesNoMaybe) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for YesNoMaybe with fn serialize(self) {
   match self {
     Boolean(p0) => @typify_rt.ser_bool(p0)
     Object(value=p0) => {
       let o = @typify_rt.ObjectBuilder::new()
       if p0 is Some(_) {
-        o.field("value", @typify_rt.ser_option(p0, (v : String) => @typify_rt.ser_string(v)))
+        o.field(
+          "value",
+          @typify_rt.ser_option(p0, (v : String) => @typify_rt.ser_string(v)),
+        )
       }
       o.build()
     }
@@ -314,28 +266,15 @@ pub fn YesNoMaybe::serialize(self : YesNoMaybe) -> @typify_rt.Content raise @typ
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn YesNoMaybe::from_json_str(text : StringView) -> YesNoMaybe raise @typify_rt.DeError {
-  YesNoMaybe::deserialize(@typify_rt.De::from_str(text))
+pub extend YesNoMaybe with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn YesNoMaybe::to_json_string(self : YesNoMaybe) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
+pub impl ToJson for YesNoMaybe with fn to_json(self) {
+  @typify_rt.json_of(self, "YesNoMaybe")
 }
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn YesNoMaybe::from_json(json : Json) -> YesNoMaybe raise @typify_rt.DeError {
-  YesNoMaybe::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for YesNoMaybe with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("YesNoMaybe::to_json: \{e}")
-  }
-}
-

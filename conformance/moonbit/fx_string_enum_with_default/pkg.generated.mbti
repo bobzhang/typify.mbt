@@ -1,0 +1,34 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/conformance/moonbit/fx_string_enum_with_default"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) enum TestEnum {
+  Failure
+  Skipped
+  Success
+} derive(Eq, Hash, @debug.Debug)
+pub fn TestEnum::default() -> Self
+pub fn TestEnum::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn TestEnum::from_json(Json) -> Self raise @runtime.DeError
+pub fn TestEnum::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn TestEnum::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn TestEnum::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn TestEnum::to_json_string(Self) -> String raise @runtime.SerError
+pub fn TestEnum::to_string(Self) -> String
+pub fn TestEnum::variant_index(Self) -> Int
+pub impl @runtime.Serde for TestEnum
+pub impl ToJson for TestEnum
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,64 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/conformance/moonbit/fx_simple_types"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) struct AnythingWorks {
+  value : Json
+} derive(Eq, @debug.Debug)
+pub fn AnythingWorks::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn AnythingWorks::from_json(Json) -> Self raise @runtime.DeError
+pub fn AnythingWorks::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn AnythingWorks::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn AnythingWorks::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for AnythingWorks
+pub impl ToJson for AnythingWorks
+
+pub(all) struct FloatsArentTerribleImTold {
+  flush_timeout : Float?
+} derive(Eq, @debug.Debug)
+pub fn FloatsArentTerribleImTold::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn FloatsArentTerribleImTold::from_json(Json) -> Self raise @runtime.DeError
+pub fn FloatsArentTerribleImTold::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn FloatsArentTerribleImTold::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn FloatsArentTerribleImTold::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for FloatsArentTerribleImTold
+pub impl ToJson for FloatsArentTerribleImTold
+
+pub(all) struct JustOne(String) derive(Eq, Hash, @debug.Debug)
+pub fn JustOne::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn JustOne::from_json(Json) -> Self raise @runtime.DeError
+pub fn JustOne::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn JustOne::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn JustOne::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for JustOne
+pub impl ToJson for JustOne
+
+pub(all) struct UintMinimumAndMaximum {
+  max : UInt64
+  min : UInt64
+  min_and_max : UInt64
+  min_non_zero : UInt64
+  min_uint_non_zero : UInt64
+  no_bounds : UInt64
+} derive(Eq, @debug.Debug)
+pub fn UintMinimumAndMaximum::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn UintMinimumAndMaximum::from_json(Json) -> Self raise @runtime.DeError
+pub fn UintMinimumAndMaximum::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn UintMinimumAndMaximum::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn UintMinimumAndMaximum::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for UintMinimumAndMaximum
+pub impl ToJson for UintMinimumAndMaximum
+
+// Type aliases
+
+// Traits

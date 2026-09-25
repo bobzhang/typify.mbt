@@ -1,0 +1,43 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/conformance/moonbit/fx_extraneous_enum"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) struct LetterBox {
+  letter : LetterBoxLetter?
+} derive(Eq, @debug.Debug)
+pub fn LetterBox::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn LetterBox::from_json(Json) -> Self raise @runtime.DeError
+pub fn LetterBox::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn LetterBox::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn LetterBox::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for LetterBox
+pub impl ToJson for LetterBox
+
+pub(all) enum LetterBoxLetter {
+  A
+  B
+} derive(Eq, Hash, @debug.Debug)
+pub fn LetterBoxLetter::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn LetterBoxLetter::from_json(Json) -> Self raise @runtime.DeError
+pub fn LetterBoxLetter::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn LetterBoxLetter::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn LetterBoxLetter::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn LetterBoxLetter::to_json_string(Self) -> String raise @runtime.SerError
+pub fn LetterBoxLetter::to_string(Self) -> String
+pub fn LetterBoxLetter::variant_index(Self) -> Int
+pub impl @runtime.Serde for LetterBoxLetter
+pub impl ToJson for LetterBoxLetter
+
+// Type aliases
+
+// Traits

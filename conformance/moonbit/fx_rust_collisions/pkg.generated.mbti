@@ -1,0 +1,444 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/conformance/moonbit/fx_rust_collisions"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) struct Box {
+  data : String
+} derive(Eq, @debug.Debug)
+pub fn Box::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Box::from_json(Json) -> Self raise @runtime.DeError
+pub fn Box::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Box::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Box::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Box
+pub impl ToJson for Box
+
+pub(all) struct Copy {
+  value : Int64
+} derive(Eq, @debug.Debug)
+pub fn Copy::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Copy::from_json(Json) -> Self raise @runtime.DeError
+pub fn Copy::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Copy::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Copy::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Copy
+pub impl ToJson for Copy
+
+pub(all) struct DoubleOptionCollision {
+  option : DoubleOptionCollisionOption?
+} derive(Eq, @debug.Debug)
+pub fn DoubleOptionCollision::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn DoubleOptionCollision::from_json(Json) -> Self raise @runtime.DeError
+pub fn DoubleOptionCollision::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn DoubleOptionCollision::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn DoubleOptionCollision::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for DoubleOptionCollision
+pub impl ToJson for DoubleOptionCollision
+
+pub(all) struct DoubleOptionCollisionOption {
+  option : String?
+} derive(Eq, @debug.Debug)
+pub fn DoubleOptionCollisionOption::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn DoubleOptionCollisionOption::from_json(Json) -> Self raise @runtime.DeError
+pub fn DoubleOptionCollisionOption::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn DoubleOptionCollisionOption::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn DoubleOptionCollisionOption::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for DoubleOptionCollisionOption
+pub impl ToJson for DoubleOptionCollisionOption
+
+pub(all) struct Drop {
+  cleanup : Bool
+} derive(Eq, @debug.Debug)
+pub fn Drop::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Drop::from_json(Json) -> Self raise @runtime.DeError
+pub fn Drop::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Drop::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Drop::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Drop
+pub impl ToJson for Drop
+
+pub(all) struct FlattenedKeywords {
+  normal : String
+  extra : Map[String, String]
+} derive(Eq, @debug.Debug)
+pub fn FlattenedKeywords::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn FlattenedKeywords::from_json(Json) -> Self raise @runtime.DeError
+pub fn FlattenedKeywords::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn FlattenedKeywords::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn FlattenedKeywords::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for FlattenedKeywords
+pub impl ToJson for FlattenedKeywords
+
+pub(all) enum FormatCollision {
+  AbcDef
+  HttpExampleComFooThing
+  Self_
+  QuoteUnquote
+  Xyz
+} derive(Eq, Hash, @debug.Debug)
+pub fn FormatCollision::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn FormatCollision::from_json(Json) -> Self raise @runtime.DeError
+pub fn FormatCollision::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn FormatCollision::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn FormatCollision::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn FormatCollision::to_json_string(Self) -> String raise @runtime.SerError
+pub fn FormatCollision::to_string(Self) -> String
+pub fn FormatCollision::variant_index(Self) -> Int
+pub impl @runtime.Serde for FormatCollision
+pub impl ToJson for FormatCollision
+
+pub(all) enum KeywordFieldsEnum {
+  Object(impl_~ : String, match_~ : Int64, ref_~ : Bool, type_~ : String)
+  Array(FixedArray[String])
+} derive(Eq, @debug.Debug)
+pub fn KeywordFieldsEnum::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn KeywordFieldsEnum::from_json(Json) -> Self raise @runtime.DeError
+pub fn KeywordFieldsEnum::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn KeywordFieldsEnum::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn KeywordFieldsEnum::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for KeywordFieldsEnum
+pub impl ToJson for KeywordFieldsEnum
+
+pub(all) struct MapOfKeywords {
+  keyword_map : Map[String, MapOfKeywordsKeywordMapValue]
+} derive(Eq, @debug.Debug)
+pub fn MapOfKeywords::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn MapOfKeywords::from_json(Json) -> Self raise @runtime.DeError
+pub fn MapOfKeywords::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn MapOfKeywords::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn MapOfKeywords::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for MapOfKeywords
+pub impl ToJson for MapOfKeywords
+
+pub(all) enum MapOfKeywordsKeywordMapValue {
+  Type
+  Impl
+  Fn
+  Let
+  Match
+  Mod
+  Move
+  Pub
+  Ref
+  Self_
+  Super
+  Trait
+  Use
+  Where
+} derive(Eq, Hash, @debug.Debug)
+pub fn MapOfKeywordsKeywordMapValue::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn MapOfKeywordsKeywordMapValue::from_json(Json) -> Self raise @runtime.DeError
+pub fn MapOfKeywordsKeywordMapValue::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn MapOfKeywordsKeywordMapValue::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn MapOfKeywordsKeywordMapValue::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn MapOfKeywordsKeywordMapValue::to_json_string(Self) -> String raise @runtime.SerError
+pub fn MapOfKeywordsKeywordMapValue::to_string(Self) -> String
+pub fn MapOfKeywordsKeywordMapValue::variant_index(Self) -> Int
+pub impl @runtime.Serde for MapOfKeywordsKeywordMapValue
+pub impl ToJson for MapOfKeywordsKeywordMapValue
+
+pub(all) struct NestedTypeCollisions {
+  option_type : NestedTypeCollisionsOptionType?
+  type_ : TypeWithOptionField
+  types : Array[TypeWithOptionField]
+} derive(Eq, @debug.Debug)
+pub fn NestedTypeCollisions::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn NestedTypeCollisions::from_json(Json) -> Self raise @runtime.DeError
+pub fn NestedTypeCollisions::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn NestedTypeCollisions::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn NestedTypeCollisions::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for NestedTypeCollisions
+pub impl ToJson for NestedTypeCollisions
+
+pub(all) struct NestedTypeCollisionsOptionType {
+  type_ : String?
+} derive(Eq, @debug.Debug)
+pub fn NestedTypeCollisionsOptionType::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn NestedTypeCollisionsOptionType::from_json(Json) -> Self raise @runtime.DeError
+pub fn NestedTypeCollisionsOptionType::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn NestedTypeCollisionsOptionType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn NestedTypeCollisionsOptionType::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for NestedTypeCollisionsOptionType
+pub impl ToJson for NestedTypeCollisionsOptionType
+
+pub(all) struct Option_ {
+  maybe : String
+} derive(Eq, @debug.Debug)
+pub fn Option_::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Option_::from_json(Json) -> Self raise @runtime.DeError
+pub fn Option_::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Option_::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Option_::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Option_
+pub impl ToJson for Option_
+
+pub(all) struct Pin {
+  pointer : String
+} derive(Eq, @debug.Debug)
+pub fn Pin::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Pin::from_json(Json) -> Self raise @runtime.DeError
+pub fn Pin::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Pin::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Pin::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Pin
+pub impl ToJson for Pin
+
+pub(all) struct RustKeywordMonster {
+  abstract_ : String
+  as_ : String
+  async_ : String
+  await_ : String
+  become_ : String
+  box_ : String
+  break_ : String
+  const_ : String
+  continue_ : String
+  crate_ : String
+  do_ : String
+  dyn_ : String
+  else_ : String
+  enum_ : String
+  extern_ : String
+  false_ : String
+  final_ : String
+  fn_ : String
+  for_ : String
+  gen_ : String
+  if_ : String
+  impl_ : String
+  in_ : String
+  let_ : String
+  loop_ : String
+  macro_ : String
+  match_ : String
+  mod_ : String
+  move_ : String
+  mut_ : String
+  override_ : String
+  priv_ : String
+  pub_ : String
+  ref_ : String
+  return_ : String
+  self_ : String
+  static_ : String
+  struct_ : String
+  super_ : String
+  trait_ : String
+  true_ : String
+  try_ : String
+  type_ : String
+  typeof_ : String
+  unsafe_ : String
+  unsized_ : String
+  use_ : String
+  virtual_ : String
+  where_ : String
+  while_ : String
+  yield_ : String
+} derive(Eq, @debug.Debug)
+pub fn RustKeywordMonster::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn RustKeywordMonster::from_json(Json) -> Self raise @runtime.DeError
+pub fn RustKeywordMonster::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn RustKeywordMonster::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn RustKeywordMonster::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for RustKeywordMonster
+pub impl ToJson for RustKeywordMonster
+
+pub(all) struct Send {
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn Send::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Send::from_json(Json) -> Self raise @runtime.DeError
+pub fn Send::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Send::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Send::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Send
+pub impl ToJson for Send
+
+pub(all) struct Std {
+  boxed : StdBoxed
+  convert : StdConvert
+  fmt : StdFmt
+  option : StdOption
+  result : StdResult
+  str : StdStr
+  string : StdString
+} derive(Eq, @debug.Debug)
+pub fn Std::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Std::from_json(Json) -> Self raise @runtime.DeError
+pub fn Std::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Std::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Std::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Std
+pub impl ToJson for Std
+
+pub(all) struct StdBoxed {
+  value : String
+} derive(Eq, @debug.Debug)
+pub fn StdBoxed::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn StdBoxed::from_json(Json) -> Self raise @runtime.DeError
+pub fn StdBoxed::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn StdBoxed::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn StdBoxed::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for StdBoxed
+pub impl ToJson for StdBoxed
+
+pub(all) struct StdConvert {
+  value : String
+} derive(Eq, @debug.Debug)
+pub fn StdConvert::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn StdConvert::from_json(Json) -> Self raise @runtime.DeError
+pub fn StdConvert::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn StdConvert::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn StdConvert::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for StdConvert
+pub impl ToJson for StdConvert
+
+pub(all) struct StdFmt {
+  value : String
+} derive(Eq, @debug.Debug)
+pub fn StdFmt::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn StdFmt::from_json(Json) -> Self raise @runtime.DeError
+pub fn StdFmt::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn StdFmt::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn StdFmt::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for StdFmt
+pub impl ToJson for StdFmt
+
+pub(all) struct StdOption {
+  value : String
+} derive(Eq, @debug.Debug)
+pub fn StdOption::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn StdOption::from_json(Json) -> Self raise @runtime.DeError
+pub fn StdOption::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn StdOption::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn StdOption::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for StdOption
+pub impl ToJson for StdOption
+
+pub(all) struct StdResult {
+  value : String
+} derive(Eq, @debug.Debug)
+pub fn StdResult::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn StdResult::from_json(Json) -> Self raise @runtime.DeError
+pub fn StdResult::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn StdResult::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn StdResult::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for StdResult
+pub impl ToJson for StdResult
+
+pub(all) struct StdStr {
+  value : String
+} derive(Eq, @debug.Debug)
+pub fn StdStr::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn StdStr::from_json(Json) -> Self raise @runtime.DeError
+pub fn StdStr::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn StdStr::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn StdStr::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for StdStr
+pub impl ToJson for StdStr
+
+pub(all) struct StdString {
+  value : String
+} derive(Eq, @debug.Debug)
+pub fn StdString::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn StdString::from_json(Json) -> Self raise @runtime.DeError
+pub fn StdString::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn StdString::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn StdString::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for StdString
+pub impl ToJson for StdString
+
+pub(all) enum StringEnum {
+  One
+  Two
+  Three
+} derive(Eq, Hash, @debug.Debug)
+pub fn StringEnum::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn StringEnum::from_json(Json) -> Self raise @runtime.DeError
+pub fn StringEnum::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn StringEnum::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn StringEnum::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn StringEnum::to_json_string(Self) -> String raise @runtime.SerError
+pub fn StringEnum::to_string(Self) -> String
+pub fn StringEnum::variant_index(Self) -> Int
+pub impl @runtime.Serde for StringEnum
+pub impl ToJson for StringEnum
+
+pub(all) struct StringNewtype(String) derive(Eq, Hash, @debug.Debug)
+pub fn StringNewtype::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn StringNewtype::from_json(Json) -> Self raise @runtime.DeError
+pub fn StringNewtype::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn StringNewtype::new(String) -> Self raise @runtime.ConversionError
+pub fn StringNewtype::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn StringNewtype::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for StringNewtype
+pub impl ToJson for StringNewtype
+
+pub(all) struct String_ {
+  text : String
+} derive(Eq, @debug.Debug)
+pub fn String_::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn String_::from_json(Json) -> Self raise @runtime.DeError
+pub fn String_::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn String_::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn String_::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for String_
+pub impl ToJson for String_
+
+pub(all) struct Sync {
+  data : String
+} derive(Eq, @debug.Debug)
+pub fn Sync::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Sync::from_json(Json) -> Self raise @runtime.DeError
+pub fn Sync::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Sync::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Sync::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Sync
+pub impl ToJson for Sync
+
+pub(all) struct TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords(Json) derive(Eq, @debug.Debug)
+pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::from_json(Json) -> Self raise @runtime.DeError
+pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords
+pub impl ToJson for TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords
+
+pub(all) struct TypeWithOptionField {
+  boxed_field : Box
+  optional_field : String?
+} derive(Eq, @debug.Debug)
+pub fn TypeWithOptionField::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn TypeWithOptionField::from_json(Json) -> Self raise @runtime.DeError
+pub fn TypeWithOptionField::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn TypeWithOptionField::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn TypeWithOptionField::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for TypeWithOptionField
+pub impl ToJson for TypeWithOptionField
+
+pub(all) struct Vec {
+  items : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn Vec::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Vec::from_json(Json) -> Self raise @runtime.DeError
+pub fn Vec::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Vec::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Vec::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Vec
+pub impl ToJson for Vec
+
+// Type aliases
+
+// Traits

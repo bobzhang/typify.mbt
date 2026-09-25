@@ -1,0 +1,356 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/runtime"
+
+import {
+  "bobzhang/typify/regex",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn adjacent(String, String, String, @serde_json.Content) -> @serde_json.Content
+
+pub fn char_count(String) -> Int
+
+pub fn classify_number(Double, String?) -> @serde_json.Number
+
+pub fn compare_keys(String, String) -> Int
+
+pub fn contains_value(Array[@serde_json.Content], @serde_json.Content) -> Bool
+
+pub fn content_to_json(@serde_json.Content) -> Json raise SerError
+
+pub fn de_adjacent(De, String, String, String, Array[String], Bool) -> (Int, VariantInput) raise DeError
+
+pub fn de_bool(De) -> Bool raise DeError
+
+pub fn de_enum(De, String, Array[String]) -> (Int, VariantInput) raise DeError
+
+pub fn de_f32(De) -> Float raise DeError
+
+pub fn de_f64(De) -> Double raise DeError
+
+pub fn de_fields(De, String, Fields, (Int, De) -> Unit raise DeError, flatten? : Bool, deny? : Bool, positional? : Bool, external_variant? : Bool) -> FieldsInput raise DeError
+
+pub fn de_fixed(De, Int) -> SeqReader raise DeError
+
+pub fn de_i16(De) -> Int16 raise DeError
+
+pub fn de_i32(De) -> Int raise DeError
+
+pub fn de_i64(De) -> Int64 raise DeError
+
+pub fn de_i8(De) -> Int raise DeError
+
+pub fn de_internal(De, String, String, Array[String]) -> (Int, De) raise DeError
+
+pub fn de_json(De) -> Json raise DeError
+
+pub fn[K : Hash + Eq, V] de_map(De, (De) -> K raise DeError, (De) -> V raise DeError) -> Map[K, V] raise DeError
+
+pub fn de_map_entries(De) -> Array[(De, De)] raise DeError
+
+pub fn de_nonzero_u16(De) -> UInt16 raise DeError
+
+pub fn de_nonzero_u32(De) -> UInt raise DeError
+
+pub fn de_nonzero_u64(De) -> UInt64 raise DeError
+
+pub fn de_nonzero_u8(De) -> Byte raise DeError
+
+pub fn[T] de_option(De, (De) -> T raise DeError) -> T? raise DeError
+
+pub fn de_path(De) -> String raise DeError
+
+pub fn de_string(De) -> String raise DeError
+
+pub fn de_string_expecting(De, String) -> String raise DeError
+
+pub fn de_struct(De, String, Array[String], Bool, external_variant? : Bool) -> StructInput raise DeError
+
+pub fn de_tuple(De, Int) -> SeqReader raise DeError
+
+pub fn de_tuple_variant(De, String, Int, Bool) -> SeqReader raise DeError
+
+pub fn de_u16(De) -> UInt16 raise DeError
+
+pub fn de_u16_expecting(De, String) -> UInt16 raise DeError
+
+pub fn de_u32(De) -> UInt raise DeError
+
+pub fn de_u32_expecting(De, String) -> UInt raise DeError
+
+pub fn de_u64(De) -> UInt64 raise DeError
+
+pub fn de_u64_expecting(De, String) -> UInt64 raise DeError
+
+pub fn de_u8(De) -> Byte raise DeError
+
+pub fn de_u8_expecting(De, String) -> Byte raise DeError
+
+pub fn de_unit(De) -> Unit raise DeError
+
+pub fn de_untagged(De) -> De raise DeError
+
+pub fn[T] de_vec(De, (De) -> T raise DeError) -> Array[T] raise DeError
+
+pub fn[T] default_value(String, (De) -> T raise DeError) -> T raise DeError
+
+pub fn duplicate_field_error(String) -> DeError
+
+pub fn[T] encode_array(ArrayView[T], (T) -> Json) -> Json
+
+pub fn encode_f32(Float) -> Json
+
+pub fn encode_f64(Double) -> Json
+
+pub fn encode_i64(Int64) -> Json
+
+pub fn encode_int(Int) -> Json
+
+pub fn[K, V] encode_map(Map[K, V], (K) -> String, (V) -> Json) -> Json
+
+pub fn encode_u64(UInt64) -> Json
+
+pub fn encode_uint(UInt) -> Json
+
+pub fn end_enum_map(De) -> Unit raise DeError
+
+pub fn[T] enum_values(Array[String], (De) -> T raise DeError, (T) -> @serde_json.Content raise SerError) -> Array[@serde_json.Content]
+
+pub fn internal_unit(De, String, String) -> Unit raise DeError
+
+pub fn invalid_type_error(@serde_json.Content, String) -> DeError
+
+pub fn[T : Serde] json_of(T, String) -> Json
+
+pub fn json_to_value(Json) -> @serde_json.Value
+
+pub fn map_key(@serde_json.Content) -> String raise SerError
+
+pub fn missing_field_error(String) -> DeError
+
+pub fn nonzero(Bool, String) -> Unit raise DeError
+
+pub fn parse(StringView) -> Json raise @serde_json.ParseError
+
+pub fn regex(String) -> @regex.Regex
+
+pub fn ser_bool(Bool) -> @serde_json.Content
+
+pub fn ser_byte(Byte) -> @serde_json.Content
+
+pub fn ser_f32(Float) -> @serde_json.Content
+
+pub fn ser_f64(Double) -> @serde_json.Content
+
+pub fn ser_i16(Int16) -> @serde_json.Content
+
+pub fn ser_i64(Int64) -> @serde_json.Content
+
+pub fn ser_int(Int) -> @serde_json.Content
+
+pub fn ser_json(Json) -> @serde_json.Content
+
+pub fn[K, V] ser_map(Map[K, V], (K) -> String raise SerError, (V) -> @serde_json.Content raise SerError) -> @serde_json.Content raise SerError
+
+pub fn ser_null() -> @serde_json.Content
+
+pub fn[T] ser_option(T?, (T) -> @serde_json.Content raise SerError) -> @serde_json.Content raise SerError
+
+pub fn[K, V] ser_sorted_map(Map[K, V], (K, K) -> Int, (K) -> String raise SerError, (V) -> @serde_json.Content raise SerError) -> @serde_json.Content raise SerError
+
+pub fn ser_string(String) -> @serde_json.Content
+
+pub fn ser_u16(UInt16) -> @serde_json.Content
+
+pub fn ser_u64(UInt64) -> @serde_json.Content
+
+pub fn ser_uint(UInt) -> @serde_json.Content
+
+pub fn ser_unit() -> @serde_json.Content
+
+pub fn[T] ser_vec(ArrayView[T], (T) -> @serde_json.Content raise SerError) -> @serde_json.Content raise SerError
+
+pub fn single_entry(String, @serde_json.Content) -> @serde_json.Content
+
+pub fn sort_keys(Json) -> Json
+
+pub fn stringify(Json) -> String
+
+pub fn tagged(String, String, @serde_json.Content) -> @serde_json.Content raise SerError
+
+pub fn to_json_string(@serde_json.Content) -> String
+
+pub fn unknown_field_error(String, Array[String]) -> DeError
+
+pub fn untagged_error(String) -> DeError
+
+pub fn validated(@serde_json.Content) -> @serde_json.Content raise DeError
+
+pub fn value_to_json(@serde_json.Value) -> Json
+
+pub fn variant_payload(VariantInput, String) -> De raise DeError
+
+pub fn variant_unit(VariantInput) -> Unit raise DeError
+
+// Errors
+pub(all) suberror ConversionError {
+  ConversionError(String)
+} derive(Eq, @debug.Debug)
+pub impl Show for ConversionError
+
+pub(all) suberror DeError {
+  DeError(String)
+} derive(Eq, @debug.Debug)
+pub impl Show for DeError
+
+pub(all) suberror SerError {
+  SerError(String)
+} derive(Eq, @debug.Debug)
+pub impl Show for SerError
+
+// Types and methods
+pub struct DateTimeUtc {
+  date : NaiveDate
+  secs : Int
+  frac : Int
+} derive(Compare, Eq, Hash, @debug.Debug)
+pub fn DateTimeUtc::date(Self) -> NaiveDate
+pub fn DateTimeUtc::deserialize(De) -> Self raise DeError
+pub fn DateTimeUtc::nanosecond(Self) -> Int
+pub fn DateTimeUtc::parse(String) -> Self raise ConversionError
+pub fn DateTimeUtc::serialize(Self) -> @serde_json.Content raise SerError
+pub fn DateTimeUtc::timestamp(Self) -> Int64
+pub fn DateTimeUtc::to_string(Self) -> String
+pub impl Show for DateTimeUtc
+
+pub(all) enum De {
+  Value(@serde_json.Content, Mode)
+  MapKey(String, Bool)
+  Flat(FlatBuf)
+  Missing(String)
+}
+pub fn De::from_json(Json) -> Self
+pub fn De::from_str(StringView) -> Self raise DeError
+
+pub struct Fields {
+  // private fields
+}
+pub fn Fields::new(Array[String]) -> Self
+
+pub struct FieldsInput {
+  // private fields
+}
+pub fn FieldsInput::absent(Self, Int) -> De raise DeError
+pub fn FieldsInput::absent_error(Self, Int) -> DeError
+pub fn FieldsInput::deny_leftovers(Self) -> Unit raise DeError
+pub fn FieldsInput::flat(Self) -> De
+
+pub struct FlatBuf {
+  // private fields
+}
+pub fn FlatBuf::deny_leftovers(Self) -> Unit raise DeError
+pub fn FlatBuf::new() -> Self
+pub fn FlatBuf::push(Self, String, De) -> Unit raise DeError
+
+pub(all) enum IpAddr {
+  V4(Ipv4Addr)
+  V6(Ipv6Addr)
+} derive(Eq, Hash, @debug.Debug)
+pub fn IpAddr::deserialize(De) -> Self raise DeError
+pub fn IpAddr::parse(String) -> Self raise ConversionError
+pub fn IpAddr::serialize(Self) -> @serde_json.Content raise SerError
+pub fn IpAddr::to_string(Self) -> String
+
+pub struct Ipv4Addr {
+  octets : FixedArray[Int]
+} derive(Eq, Hash, @debug.Debug)
+pub fn Ipv4Addr::deserialize(De) -> Self raise DeError
+pub fn Ipv4Addr::parse(String) -> Self raise ConversionError
+pub fn Ipv4Addr::serialize(Self) -> @serde_json.Content raise SerError
+pub fn Ipv4Addr::to_string(Self) -> String
+
+pub struct Ipv6Addr {
+  segments : FixedArray[Int]
+} derive(Eq, Hash, @debug.Debug)
+pub fn Ipv6Addr::deserialize(De) -> Self raise DeError
+pub fn Ipv6Addr::parse(String) -> Self raise ConversionError
+pub fn Ipv6Addr::serialize(Self) -> @serde_json.Content raise SerError
+pub fn Ipv6Addr::to_string(Self) -> String
+
+pub(all) enum Mode {
+  Direct
+  Owned
+  Borrowed
+} derive(Eq, @debug.Debug)
+
+pub struct NaiveDate {
+  year : Int
+  month : Int
+  day : Int
+} derive(Compare, Eq, Hash, @debug.Debug)
+pub fn NaiveDate::day(Self) -> Int
+pub fn NaiveDate::deserialize(De) -> Self raise DeError
+pub fn NaiveDate::from_ymd(Int, Int, Int) -> Self?
+pub fn NaiveDate::month(Self) -> Int
+pub fn NaiveDate::parse(String) -> Self raise ConversionError
+pub fn NaiveDate::serialize(Self) -> @serde_json.Content raise SerError
+pub fn NaiveDate::to_string(Self) -> String
+pub fn NaiveDate::year(Self) -> Int
+pub impl Show for NaiveDate
+
+pub struct ObjectBuilder {
+  // private fields
+}
+pub fn ObjectBuilder::build(Self) -> @serde_json.Content
+pub fn ObjectBuilder::field(Self, String, @serde_json.Content) -> Unit
+pub fn ObjectBuilder::flatten(Self, @serde_json.Content) -> Unit raise SerError
+pub fn ObjectBuilder::new() -> Self
+
+pub struct SeqReader {
+  // private fields
+}
+pub fn SeqReader::finish(Self) -> Unit raise DeError
+pub fn SeqReader::invalid_length(Self) -> DeError
+pub fn SeqReader::next(Self) -> De raise DeError
+pub fn SeqReader::next_opt(Self) -> De?
+
+pub(all) enum StructInput {
+  Entries(Array[(String, De)])
+  Elements(SeqReader)
+}
+
+pub struct Uuid {
+  // private fields
+} derive(Compare, Eq, Hash)
+pub fn Uuid::deserialize(De) -> Self raise DeError
+pub fn Uuid::from_bytes(FixedArray[Byte]) -> Self
+pub fn Uuid::parse(String) -> Self raise ConversionError
+pub fn Uuid::serialize(Self) -> @serde_json.Content raise SerError
+pub fn Uuid::to_bytes(Self) -> FixedArray[Byte]
+pub fn Uuid::to_string(Self) -> String
+pub impl Show for Uuid
+pub impl @debug.Debug for Uuid
+
+pub(all) enum VariantInput {
+  UnitOnly
+  Payload(De)
+  NoPayload
+}
+
+// Type aliases
+pub using @serde_json {type Content}
+
+pub using @serde_json {type Entry}
+
+pub using @regex {type Regex}
+
+// Traits
+pub(open) trait Serde {
+  fn deserialize(De) -> Self raise DeError
+  fn serialize(Self) -> @serde_json.Content raise SerError
+  fn from_json_str(StringView) -> Self raise DeError = _
+  fn to_json_string(Self) -> String raise SerError = _
+  fn from_json(Json) -> Self raise DeError = _
+}

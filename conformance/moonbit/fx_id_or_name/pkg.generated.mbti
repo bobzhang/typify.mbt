@@ -1,0 +1,73 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/conformance/moonbit/fx_id_or_name"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) enum IdOrName {
+  Id(@runtime.Uuid)
+  Name(Name)
+} derive(Eq, @debug.Debug)
+pub fn IdOrName::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn IdOrName::from_json(Json) -> Self raise @runtime.DeError
+pub fn IdOrName::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn IdOrName::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn IdOrName::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for IdOrName
+pub impl ToJson for IdOrName
+
+pub(all) enum IdOrNameRedundant {
+  Uuid(@runtime.Uuid)
+  String(Name)
+} derive(Eq, @debug.Debug)
+pub fn IdOrNameRedundant::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn IdOrNameRedundant::from_json(Json) -> Self raise @runtime.DeError
+pub fn IdOrNameRedundant::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn IdOrNameRedundant::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn IdOrNameRedundant::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for IdOrNameRedundant
+pub impl ToJson for IdOrNameRedundant
+
+pub(all) enum IdOrYolo {
+  Id(@runtime.Uuid)
+  Yolo(IdOrYoloYolo)
+} derive(Eq, @debug.Debug)
+pub fn IdOrYolo::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn IdOrYolo::from_json(Json) -> Self raise @runtime.DeError
+pub fn IdOrYolo::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn IdOrYolo::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn IdOrYolo::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for IdOrYolo
+pub impl ToJson for IdOrYolo
+
+pub(all) struct IdOrYoloYolo(String) derive(Eq, Hash, @debug.Debug)
+pub fn IdOrYoloYolo::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn IdOrYoloYolo::from_json(Json) -> Self raise @runtime.DeError
+pub fn IdOrYoloYolo::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn IdOrYoloYolo::new(String) -> Self raise @runtime.ConversionError
+pub fn IdOrYoloYolo::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn IdOrYoloYolo::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for IdOrYoloYolo
+pub impl ToJson for IdOrYoloYolo
+
+pub(all) struct Name(String) derive(Eq, Hash, @debug.Debug)
+pub fn Name::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Name::from_json(Json) -> Self raise @runtime.DeError
+pub fn Name::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Name::new(String) -> Self raise @runtime.ConversionError
+pub fn Name::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Name::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Name
+pub impl ToJson for Name
+
+// Type aliases
+
+// Traits

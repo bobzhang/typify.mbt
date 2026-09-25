@@ -11,89 +11,56 @@ pub(all) struct Node {
 } derive(Debug, Eq)
 
 ///|
-pub fn Node::deserialize(d : @typify_rt.De) -> Node raise @typify_rt.DeError {
-  match @typify_rt.de_struct(d, "struct Node", ["children", "value"], false) {
-    Entries(entries) => {
-      let mut f0 : Array[Node]? = None
-      let mut f1 : Int64?? = None
-      for e in entries {
-        match e.0 {
-          "children" => {
-            if f0 is Some(_) {
-              raise @typify_rt.duplicate_field_error("children")
-            }
-            f0 = Some(@typify_rt.de_vec(e.1, Node::deserialize))
-          }
-          "value" => {
-            if f1 is Some(_) {
-              raise @typify_rt.duplicate_field_error("value")
-            }
-            f1 = Some(@typify_rt.de_option(e.1, @typify_rt.de_i64))
-          }
-          _ => ()
-        }
-      }
-      let v0 = match f0 {
-        Some(v) => v
-        None => []
-      }
-      let v1 = match f1 {
-        Some(v) => v
-        None => @typify_rt.de_option(@typify_rt.De::Missing("value"), @typify_rt.de_i64)
-      }
-      Node::{ children: v0, value: v1 }
+let node_fields : @typify_rt.Fields = @typify_rt.Fields::new([
+  "children", "value",
+])
+
+///|
+pub impl @typify_rt.Serde for Node with fn deserialize(d) {
+  let mut f0 : Array[Node]? = None
+  let mut f1 : Int64?? = None
+  let r = @typify_rt.de_fields(d, "struct Node", node_fields, (j, v) => {
+    match j {
+      0 => f0 = Some(@typify_rt.de_vec(v, Node::deserialize))
+      1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_i64))
+      _ => ()
     }
-    Elements(s) => {
-      let v0 = match s.next_opt() {
-        Some(d) => @typify_rt.de_vec(d, Node::deserialize)
-        None => []
-      }
-      let v1 = match s.next_opt() {
-        Some(d) => @typify_rt.de_option(d, @typify_rt.de_i64)
-        None => raise s.invalid_length()
-      }
-      s.finish()
-      Node::{ children: v0, value: v1 }
-    }
+  })
+  let v0 = if f0 is Some(v) { v } else { [] }
+  let v1 = if f1 is Some(v) {
+    v
+  } else {
+    @typify_rt.de_option(r.absent(1), @typify_rt.de_i64)
   }
+  Node::{ children: v0, value: v1, }
 }
 
 ///|
-pub fn Node::serialize(self : Node) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for Node with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if !self.children.is_empty() {
     o.field("children", @typify_rt.ser_vec(self.children, Node::serialize))
   }
   if self.value is Some(_) {
-    o.field("value", @typify_rt.ser_option(self.value, (v : Int64) => @typify_rt.ser_i64(v)))
+    o.field(
+      "value",
+      @typify_rt.ser_option(self.value, (v : Int64) => @typify_rt.ser_i64(v)),
+    )
   }
 
   o.build()
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn Node::from_json_str(text : StringView) -> Node raise @typify_rt.DeError {
-  Node::deserialize(@typify_rt.De::from_str(text))
+pub extend Node with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn Node::to_json_string(self : Node) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
+pub impl ToJson for Node with fn to_json(self) {
+  @typify_rt.json_of(self, "Node")
 }
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn Node::from_json(json : Json) -> Node raise @typify_rt.DeError {
-  Node::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for Node with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("Node::to_json: \{e}")
-  }
-}
-

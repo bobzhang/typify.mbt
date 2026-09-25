@@ -10,72 +10,50 @@ pub(all) struct Container {
 } derive(Debug, Eq)
 
 ///|
-pub fn Container::deserialize(d : @typify_rt.De) -> Container raise @typify_rt.DeError {
-  match @typify_rt.de_struct(d, "struct Container", ["thing"], false) {
-    Entries(entries) => {
-      let mut f0 : ContainerThing?? = None
-      for e in entries {
-        match e.0 {
-          "thing" => {
-            if f0 is Some(_) {
-              raise @typify_rt.duplicate_field_error("thing")
-            }
-            f0 = Some(@typify_rt.de_option(e.1, ContainerThing::deserialize))
-          }
-          _ => ()
-        }
-      }
-      let v0 = match f0 {
-        Some(v) => v
-        None => @typify_rt.de_option(@typify_rt.De::Missing("thing"), ContainerThing::deserialize)
-      }
-      Container::{ thing: v0 }
+let container_fields : @typify_rt.Fields = @typify_rt.Fields::new(["thing"])
+
+///|
+pub impl @typify_rt.Serde for Container with fn deserialize(d) {
+  let mut f0 : ContainerThing?? = None
+  let r = @typify_rt.de_fields(d, "struct Container", container_fields, (j, v) => {
+    match j {
+      0 => f0 = Some(@typify_rt.de_option(v, ContainerThing::deserialize))
+      _ => ()
     }
-    Elements(s) => {
-      let v0 = match s.next_opt() {
-        Some(d) => @typify_rt.de_option(d, ContainerThing::deserialize)
-        None => raise s.invalid_length()
-      }
-      s.finish()
-      Container::{ thing: v0 }
-    }
+  })
+  let v0 = if f0 is Some(v) {
+    v
+  } else {
+    @typify_rt.de_option(r.absent(0), ContainerThing::deserialize)
   }
+  Container::{ thing: v0, }
 }
 
 ///|
-pub fn Container::serialize(self : Container) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for Container with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.thing is Some(_) {
-    o.field("thing", @typify_rt.ser_option(self.thing, ContainerThing::serialize))
+    o.field(
+      "thing",
+      @typify_rt.ser_option(self.thing, ContainerThing::serialize),
+    )
   }
 
   o.build()
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn Container::from_json_str(text : StringView) -> Container raise @typify_rt.DeError {
-  Container::deserialize(@typify_rt.De::from_str(text))
+pub extend Container with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn Container::to_json_string(self : Container) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn Container::from_json(json : Json) -> Container raise @typify_rt.DeError {
-  Container::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for Container with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("Container::to_json: \{e}")
-  }
+pub impl ToJson for Container with fn to_json(self) {
+  @typify_rt.json_of(self, "Container")
 }
 
 ///|
@@ -86,40 +64,52 @@ pub(all) struct ContainerThing {
 } derive(Debug, Eq)
 
 ///|
-pub fn ContainerThing::deserialize(d : @typify_rt.De) -> ContainerThing raise @typify_rt.DeError {
-  match @typify_rt.de_struct(d, "struct ContainerThing", ["id"], true) {
-    Entries(entries) => {
-      let mut f0 : String?? = None
-      let buf = @typify_rt.FlatBuf::new()
-      for e in entries {
-        match e.0 {
-          "id" => {
-            if f0 is Some(_) {
-              raise @typify_rt.duplicate_field_error("id")
-            }
-            f0 = Some(@typify_rt.de_option(e.1, @typify_rt.de_string))
-          }
-          _ => buf.push(e.0, e.1)
-        }
+let container_thing_fields : @typify_rt.Fields = @typify_rt.Fields::new(["id"])
+
+///|
+pub impl @typify_rt.Serde for ContainerThing with fn deserialize(d) {
+  let mut f0 : String?? = None
+  let r = @typify_rt.de_fields(
+    d,
+    "struct ContainerThing",
+    container_thing_fields,
+    (j, v) => {
+      match j {
+        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+        _ => ()
       }
-      let v0 = match f0 {
-        Some(v) => v
-        None => @typify_rt.de_option(@typify_rt.De::Missing("id"), @typify_rt.de_string)
-      }
-      let v1 = @typify_rt.de_map(@typify_rt.De::Flat(buf), @typify_rt.de_string, @typify_rt.de_string)
-      ContainerThing::{ id: v0, extra: v1 }
-    }
-    Elements(_) => raise @typify_rt.DeError("invalid type: sequence, expected struct ContainerThing")
+    },
+    flatten=true,
+  )
+  let v0 = if f0 is Some(v) {
+    v
+  } else {
+    @typify_rt.de_option(r.absent(0), @typify_rt.de_string)
   }
+  let v1 = @typify_rt.de_map(
+    r.flat(),
+    @typify_rt.de_string,
+    @typify_rt.de_string,
+  )
+  ContainerThing::{ id: v0, extra: v1, }
 }
 
 ///|
-pub fn ContainerThing::serialize(self : ContainerThing) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for ContainerThing with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.id is Some(_) {
-    o.field("id", @typify_rt.ser_option(self.id, (v : String) => @typify_rt.ser_string(v)))
+    o.field(
+      "id",
+      @typify_rt.ser_option(self.id, (v : String) => @typify_rt.ser_string(v)),
+    )
   }
-  o.flatten(@typify_rt.ser_map(self.extra, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : String) => @typify_rt.ser_string(v)))
+  o.flatten(
+    @typify_rt.ser_map(
+      self.extra,
+      (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
+      (v : String) => @typify_rt.ser_string(v),
+    ),
+  )
 
   o.build()
 }
@@ -127,34 +117,24 @@ pub fn ContainerThing::serialize(self : ContainerThing) -> @typify_rt.Content ra
 ///|
 /// The schema's default value.
 pub fn ContainerThing::default() -> ContainerThing {
-  @typify_rt.default_value("{\"extra_key\":\"extra_value\",\"id\":\"abc\"}", ContainerThing::deserialize) catch {
+  @typify_rt.default_value(
+    "{\"extra_key\":\"extra_value\",\"id\":\"abc\"}",
+    ContainerThing::deserialize,
+  ) catch {
     e => abort("invalid default for ContainerThing: \{e}")
   }
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn ContainerThing::from_json_str(text : StringView) -> ContainerThing raise @typify_rt.DeError {
-  ContainerThing::deserialize(@typify_rt.De::from_str(text))
+pub extend ContainerThing with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn ContainerThing::to_json_string(self : ContainerThing) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
+pub impl ToJson for ContainerThing with fn to_json(self) {
+  @typify_rt.json_of(self, "ContainerThing")
 }
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn ContainerThing::from_json(json : Json) -> ContainerThing raise @typify_rt.DeError {
-  ContainerThing::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for ContainerThing with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("ContainerThing::to_json: \{e}")
-  }
-}
-

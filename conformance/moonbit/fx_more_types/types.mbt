@@ -10,40 +10,31 @@ pub(all) struct ObjectWithNoExtra {
 } derive(Debug, Eq)
 
 ///|
-pub fn ObjectWithNoExtra::deserialize(d : @typify_rt.De) -> ObjectWithNoExtra raise @typify_rt.DeError {
-  match @typify_rt.de_struct(d, "struct ObjectWithNoExtra", ["foo"], false) {
-    Entries(entries) => {
-      let mut f0 : String? = None
-      for e in entries {
-        match e.0 {
-          "foo" => {
-            if f0 is Some(_) {
-              raise @typify_rt.duplicate_field_error("foo")
-            }
-            f0 = Some(@typify_rt.de_string(e.1))
-          }
-          other => raise @typify_rt.unknown_field_error(other, ["foo"])
-        }
+let object_with_no_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new([
+  "foo",
+])
+
+///|
+pub impl @typify_rt.Serde for ObjectWithNoExtra with fn deserialize(d) {
+  let mut f0 : String? = None
+  let r = @typify_rt.de_fields(
+    d,
+    "struct ObjectWithNoExtra",
+    object_with_no_extra_fields,
+    (j, v) => {
+      match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
       }
-      let v0 = match f0 {
-        Some(v) => v
-        None => @typify_rt.de_string(@typify_rt.De::Missing("foo"))
-      }
-      ObjectWithNoExtra::{ foo: v0 }
-    }
-    Elements(s) => {
-      let v0 = match s.next_opt() {
-        Some(d) => @typify_rt.de_string(d)
-        None => raise s.invalid_length()
-      }
-      s.finish()
-      ObjectWithNoExtra::{ foo: v0 }
-    }
-  }
+    },
+    deny=true,
+  )
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
+  ObjectWithNoExtra::{ foo: v0, }
 }
 
 ///|
-pub fn ObjectWithNoExtra::serialize(self : ObjectWithNoExtra) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for ObjectWithNoExtra with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("foo", @typify_rt.ser_string(self.foo))
 
@@ -51,29 +42,17 @@ pub fn ObjectWithNoExtra::serialize(self : ObjectWithNoExtra) -> @typify_rt.Cont
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn ObjectWithNoExtra::from_json_str(text : StringView) -> ObjectWithNoExtra raise @typify_rt.DeError {
-  ObjectWithNoExtra::deserialize(@typify_rt.De::from_str(text))
+pub extend ObjectWithNoExtra with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn ObjectWithNoExtra::to_json_string(self : ObjectWithNoExtra) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn ObjectWithNoExtra::from_json(json : Json) -> ObjectWithNoExtra raise @typify_rt.DeError {
-  ObjectWithNoExtra::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for ObjectWithNoExtra with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("ObjectWithNoExtra::to_json: \{e}")
-  }
+pub impl ToJson for ObjectWithNoExtra with fn to_json(self) {
+  @typify_rt.json_of(self, "ObjectWithNoExtra")
 }
 
 ///|
@@ -83,40 +62,30 @@ pub(all) struct ObjectWithOkExtra {
 } derive(Debug, Eq)
 
 ///|
-pub fn ObjectWithOkExtra::deserialize(d : @typify_rt.De) -> ObjectWithOkExtra raise @typify_rt.DeError {
-  match @typify_rt.de_struct(d, "struct ObjectWithOkExtra", ["foo"], false) {
-    Entries(entries) => {
-      let mut f0 : String? = None
-      for e in entries {
-        match e.0 {
-          "foo" => {
-            if f0 is Some(_) {
-              raise @typify_rt.duplicate_field_error("foo")
-            }
-            f0 = Some(@typify_rt.de_string(e.1))
-          }
-          _ => ()
-        }
+let object_with_ok_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new([
+  "foo",
+])
+
+///|
+pub impl @typify_rt.Serde for ObjectWithOkExtra with fn deserialize(d) {
+  let mut f0 : String? = None
+  let r = @typify_rt.de_fields(
+    d,
+    "struct ObjectWithOkExtra",
+    object_with_ok_extra_fields,
+    (j, v) => {
+      match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
       }
-      let v0 = match f0 {
-        Some(v) => v
-        None => @typify_rt.de_string(@typify_rt.De::Missing("foo"))
-      }
-      ObjectWithOkExtra::{ foo: v0 }
-    }
-    Elements(s) => {
-      let v0 = match s.next_opt() {
-        Some(d) => @typify_rt.de_string(d)
-        None => raise s.invalid_length()
-      }
-      s.finish()
-      ObjectWithOkExtra::{ foo: v0 }
-    }
-  }
+    },
+  )
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
+  ObjectWithOkExtra::{ foo: v0, }
 }
 
 ///|
-pub fn ObjectWithOkExtra::serialize(self : ObjectWithOkExtra) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for ObjectWithOkExtra with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("foo", @typify_rt.ser_string(self.foo))
 
@@ -124,29 +93,17 @@ pub fn ObjectWithOkExtra::serialize(self : ObjectWithOkExtra) -> @typify_rt.Cont
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn ObjectWithOkExtra::from_json_str(text : StringView) -> ObjectWithOkExtra raise @typify_rt.DeError {
-  ObjectWithOkExtra::deserialize(@typify_rt.De::from_str(text))
+pub extend ObjectWithOkExtra with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn ObjectWithOkExtra::to_json_string(self : ObjectWithOkExtra) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn ObjectWithOkExtra::from_json(json : Json) -> ObjectWithOkExtra raise @typify_rt.DeError {
-  ObjectWithOkExtra::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for ObjectWithOkExtra with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("ObjectWithOkExtra::to_json: \{e}")
-  }
+pub impl ToJson for ObjectWithOkExtra with fn to_json(self) {
+  @typify_rt.json_of(self, "ObjectWithOkExtra")
 }
 
 ///|
@@ -157,66 +114,62 @@ pub(all) struct ObjectWithStringExtra {
 } derive(Debug, Eq)
 
 ///|
-pub fn ObjectWithStringExtra::deserialize(d : @typify_rt.De) -> ObjectWithStringExtra raise @typify_rt.DeError {
-  match @typify_rt.de_struct(d, "struct ObjectWithStringExtra", ["foo"], true) {
-    Entries(entries) => {
-      let mut f0 : String? = None
-      let buf = @typify_rt.FlatBuf::new()
-      for e in entries {
-        match e.0 {
-          "foo" => {
-            if f0 is Some(_) {
-              raise @typify_rt.duplicate_field_error("foo")
-            }
-            f0 = Some(@typify_rt.de_string(e.1))
-          }
-          _ => buf.push(e.0, e.1)
-        }
+let object_with_string_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new([
+    "foo",
+  ],
+)
+
+///|
+pub impl @typify_rt.Serde for ObjectWithStringExtra with fn deserialize(d) {
+  let mut f0 : String? = None
+  let r = @typify_rt.de_fields(
+    d,
+    "struct ObjectWithStringExtra",
+    object_with_string_extra_fields,
+    (j, v) => {
+      match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
       }
-      let v0 = match f0 {
-        Some(v) => v
-        None => @typify_rt.de_string(@typify_rt.De::Missing("foo"))
-      }
-      let v1 = @typify_rt.de_map(@typify_rt.De::Flat(buf), @typify_rt.de_string, @typify_rt.de_string)
-      ObjectWithStringExtra::{ foo: v0, extra: v1 }
-    }
-    Elements(_) => raise @typify_rt.DeError("invalid type: sequence, expected struct ObjectWithStringExtra")
-  }
+    },
+    flatten=true,
+  )
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
+  let v1 = @typify_rt.de_map(
+    r.flat(),
+    @typify_rt.de_string,
+    @typify_rt.de_string,
+  )
+  ObjectWithStringExtra::{ foo: v0, extra: v1, }
 }
 
 ///|
-pub fn ObjectWithStringExtra::serialize(self : ObjectWithStringExtra) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for ObjectWithStringExtra with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("foo", @typify_rt.ser_string(self.foo))
-  o.flatten(@typify_rt.ser_map(self.extra, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : String) => @typify_rt.ser_string(v)))
+  o.flatten(
+    @typify_rt.ser_map(
+      self.extra,
+      (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
+      (v : String) => @typify_rt.ser_string(v),
+    ),
+  )
 
   o.build()
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn ObjectWithStringExtra::from_json_str(text : StringView) -> ObjectWithStringExtra raise @typify_rt.DeError {
-  ObjectWithStringExtra::deserialize(@typify_rt.De::from_str(text))
+pub extend ObjectWithStringExtra with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn ObjectWithStringExtra::to_json_string(self : ObjectWithStringExtra) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn ObjectWithStringExtra::from_json(json : Json) -> ObjectWithStringExtra raise @typify_rt.DeError {
-  ObjectWithStringExtra::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for ObjectWithStringExtra with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("ObjectWithStringExtra::to_json: \{e}")
-  }
+pub impl ToJson for ObjectWithStringExtra with fn to_json(self) {
+  @typify_rt.json_of(self, "ObjectWithStringExtra")
 }
 
 ///|
@@ -227,66 +180,59 @@ pub(all) struct ObjectWithWhichExtra {
 } derive(Debug, Eq)
 
 ///|
-pub fn ObjectWithWhichExtra::deserialize(d : @typify_rt.De) -> ObjectWithWhichExtra raise @typify_rt.DeError {
-  match @typify_rt.de_struct(d, "struct ObjectWithWhichExtra", ["foo"], true) {
-    Entries(entries) => {
-      let mut f0 : String? = None
-      let buf = @typify_rt.FlatBuf::new()
-      for e in entries {
-        match e.0 {
-          "foo" => {
-            if f0 is Some(_) {
-              raise @typify_rt.duplicate_field_error("foo")
-            }
-            f0 = Some(@typify_rt.de_string(e.1))
-          }
-          _ => buf.push(e.0, e.1)
-        }
+let object_with_which_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new([
+    "foo",
+  ],
+)
+
+///|
+pub impl @typify_rt.Serde for ObjectWithWhichExtra with fn deserialize(d) {
+  let mut f0 : String? = None
+  let r = @typify_rt.de_fields(
+    d,
+    "struct ObjectWithWhichExtra",
+    object_with_which_extra_fields,
+    (j, v) => {
+      match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
       }
-      let v0 = match f0 {
-        Some(v) => v
-        None => @typify_rt.de_string(@typify_rt.De::Missing("foo"))
-      }
-      let v1 = @typify_rt.de_map(@typify_rt.De::Flat(buf), @typify_rt.de_string, @typify_rt.de_json)
-      ObjectWithWhichExtra::{ foo: v0, extra: v1 }
-    }
-    Elements(_) => raise @typify_rt.DeError("invalid type: sequence, expected struct ObjectWithWhichExtra")
-  }
+    },
+    flatten=true,
+  )
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
+  let v1 = @typify_rt.de_map(r.flat(), @typify_rt.de_string, @typify_rt.de_json)
+  ObjectWithWhichExtra::{ foo: v0, extra: v1, }
 }
 
 ///|
-pub fn ObjectWithWhichExtra::serialize(self : ObjectWithWhichExtra) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for ObjectWithWhichExtra with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("foo", @typify_rt.ser_string(self.foo))
-  o.flatten(@typify_rt.ser_sorted_map(self.extra, @typify_rt.compare_keys, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Json) => @typify_rt.ser_json(v)))
+  o.flatten(
+    @typify_rt.ser_sorted_map(
+      self.extra,
+      @typify_rt.compare_keys,
+      (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
+      (v : Json) => @typify_rt.ser_json(v),
+    ),
+  )
 
   o.build()
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn ObjectWithWhichExtra::from_json_str(text : StringView) -> ObjectWithWhichExtra raise @typify_rt.DeError {
-  ObjectWithWhichExtra::deserialize(@typify_rt.De::from_str(text))
+pub extend ObjectWithWhichExtra with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn ObjectWithWhichExtra::to_json_string(self : ObjectWithWhichExtra) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn ObjectWithWhichExtra::from_json(json : Json) -> ObjectWithWhichExtra raise @typify_rt.DeError {
-  ObjectWithWhichExtra::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for ObjectWithWhichExtra with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("ObjectWithWhichExtra::to_json: \{e}")
-  }
+pub impl ToJson for ObjectWithWhichExtra with fn to_json(self) {
+  @typify_rt.json_of(self, "ObjectWithWhichExtra")
 }
 
 ///|
@@ -296,40 +242,30 @@ pub(all) struct ObjectWithYesExtra {
 } derive(Debug, Eq)
 
 ///|
-pub fn ObjectWithYesExtra::deserialize(d : @typify_rt.De) -> ObjectWithYesExtra raise @typify_rt.DeError {
-  match @typify_rt.de_struct(d, "struct ObjectWithYesExtra", ["foo"], false) {
-    Entries(entries) => {
-      let mut f0 : String? = None
-      for e in entries {
-        match e.0 {
-          "foo" => {
-            if f0 is Some(_) {
-              raise @typify_rt.duplicate_field_error("foo")
-            }
-            f0 = Some(@typify_rt.de_string(e.1))
-          }
-          _ => ()
-        }
+let object_with_yes_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new([
+  "foo",
+])
+
+///|
+pub impl @typify_rt.Serde for ObjectWithYesExtra with fn deserialize(d) {
+  let mut f0 : String? = None
+  let r = @typify_rt.de_fields(
+    d,
+    "struct ObjectWithYesExtra",
+    object_with_yes_extra_fields,
+    (j, v) => {
+      match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
       }
-      let v0 = match f0 {
-        Some(v) => v
-        None => @typify_rt.de_string(@typify_rt.De::Missing("foo"))
-      }
-      ObjectWithYesExtra::{ foo: v0 }
-    }
-    Elements(s) => {
-      let v0 = match s.next_opt() {
-        Some(d) => @typify_rt.de_string(d)
-        None => raise s.invalid_length()
-      }
-      s.finish()
-      ObjectWithYesExtra::{ foo: v0 }
-    }
-  }
+    },
+  )
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
+  ObjectWithYesExtra::{ foo: v0, }
 }
 
 ///|
-pub fn ObjectWithYesExtra::serialize(self : ObjectWithYesExtra) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for ObjectWithYesExtra with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("foo", @typify_rt.ser_string(self.foo))
 
@@ -337,28 +273,15 @@ pub fn ObjectWithYesExtra::serialize(self : ObjectWithYesExtra) -> @typify_rt.Co
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn ObjectWithYesExtra::from_json_str(text : StringView) -> ObjectWithYesExtra raise @typify_rt.DeError {
-  ObjectWithYesExtra::deserialize(@typify_rt.De::from_str(text))
+pub extend ObjectWithYesExtra with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn ObjectWithYesExtra::to_json_string(self : ObjectWithYesExtra) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
+pub impl ToJson for ObjectWithYesExtra with fn to_json(self) {
+  @typify_rt.json_of(self, "ObjectWithYesExtra")
 }
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn ObjectWithYesExtra::from_json(json : Json) -> ObjectWithYesExtra raise @typify_rt.DeError {
-  ObjectWithYesExtra::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for ObjectWithYesExtra with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("ObjectWithYesExtra::to_json: \{e}")
-  }
-}
-

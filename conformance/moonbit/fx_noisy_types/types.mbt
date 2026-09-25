@@ -8,39 +8,27 @@
 pub(all) struct ArrayBs(Array[Bool]) derive(Debug, Eq)
 
 ///|
-pub fn ArrayBs::deserialize(d : @typify_rt.De) -> ArrayBs raise @typify_rt.DeError {
+pub impl @typify_rt.Serde for ArrayBs with fn deserialize(d) {
   ArrayBs(@typify_rt.de_vec(d, @typify_rt.de_bool))
 }
 
 ///|
-pub fn ArrayBs::serialize(self : ArrayBs) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for ArrayBs with fn serialize(self) {
   @typify_rt.ser_vec(self.0, (v : Bool) => @typify_rt.ser_bool(v))
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn ArrayBs::from_json_str(text : StringView) -> ArrayBs raise @typify_rt.DeError {
-  ArrayBs::deserialize(@typify_rt.De::from_str(text))
+pub extend ArrayBs with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn ArrayBs::to_json_string(self : ArrayBs) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn ArrayBs::from_json(json : Json) -> ArrayBs raise @typify_rt.DeError {
-  ArrayBs::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for ArrayBs with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("ArrayBs::to_json: \{e}")
-  }
+pub impl ToJson for ArrayBs with fn to_json(self) {
+  @typify_rt.json_of(self, "ArrayBs")
 }
 
 ///|
@@ -48,39 +36,27 @@ pub impl ToJson for ArrayBs with to_json(self) {
 pub(all) struct IntegerBs(UInt64) derive(Debug, Eq)
 
 ///|
-pub fn IntegerBs::deserialize(d : @typify_rt.De) -> IntegerBs raise @typify_rt.DeError {
+pub impl @typify_rt.Serde for IntegerBs with fn deserialize(d) {
   IntegerBs(@typify_rt.de_u64(d))
 }
 
 ///|
-pub fn IntegerBs::serialize(self : IntegerBs) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for IntegerBs with fn serialize(self) {
   @typify_rt.ser_u64(self.0)
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn IntegerBs::from_json_str(text : StringView) -> IntegerBs raise @typify_rt.DeError {
-  IntegerBs::deserialize(@typify_rt.De::from_str(text))
+pub extend IntegerBs with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn IntegerBs::to_json_string(self : IntegerBs) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn IntegerBs::from_json(json : Json) -> IntegerBs raise @typify_rt.DeError {
-  IntegerBs::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for IntegerBs with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("IntegerBs::to_json: \{e}")
-  }
+pub impl ToJson for IntegerBs with fn to_json(self) {
+  @typify_rt.json_of(self, "IntegerBs")
 }
 
 ///|
@@ -90,71 +66,48 @@ pub(all) struct ObjectBs {
 } derive(Debug, Eq)
 
 ///|
-pub fn ObjectBs::deserialize(d : @typify_rt.De) -> ObjectBs raise @typify_rt.DeError {
-  match @typify_rt.de_struct(d, "struct ObjectBs", ["ok"], false) {
-    Entries(entries) => {
-      let mut f0 : Bool?? = None
-      for e in entries {
-        match e.0 {
-          "ok" => {
-            if f0 is Some(_) {
-              raise @typify_rt.duplicate_field_error("ok")
-            }
-            f0 = Some(@typify_rt.de_option(e.1, @typify_rt.de_bool))
-          }
-          _ => ()
-        }
-      }
-      let v0 = match f0 {
-        Some(v) => v
-        None => @typify_rt.de_option(@typify_rt.De::Missing("ok"), @typify_rt.de_bool)
-      }
-      ObjectBs::{ ok: v0 }
+let object_bs_fields : @typify_rt.Fields = @typify_rt.Fields::new(["ok"])
+
+///|
+pub impl @typify_rt.Serde for ObjectBs with fn deserialize(d) {
+  let mut f0 : Bool?? = None
+  let r = @typify_rt.de_fields(d, "struct ObjectBs", object_bs_fields, (j, v) => {
+    match j {
+      0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_bool))
+      _ => ()
     }
-    Elements(s) => {
-      let v0 = match s.next_opt() {
-        Some(d) => @typify_rt.de_option(d, @typify_rt.de_bool)
-        None => raise s.invalid_length()
-      }
-      s.finish()
-      ObjectBs::{ ok: v0 }
-    }
+  })
+  let v0 = if f0 is Some(v) {
+    v
+  } else {
+    @typify_rt.de_option(r.absent(0), @typify_rt.de_bool)
   }
+  ObjectBs::{ ok: v0, }
 }
 
 ///|
-pub fn ObjectBs::serialize(self : ObjectBs) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for ObjectBs with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.ok is Some(_) {
-    o.field("ok", @typify_rt.ser_option(self.ok, (v : Bool) => @typify_rt.ser_bool(v)))
+    o.field(
+      "ok",
+      @typify_rt.ser_option(self.ok, (v : Bool) => @typify_rt.ser_bool(v)),
+    )
   }
 
   o.build()
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn ObjectBs::from_json_str(text : StringView) -> ObjectBs raise @typify_rt.DeError {
-  ObjectBs::deserialize(@typify_rt.De::from_str(text))
+pub extend ObjectBs with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn ObjectBs::to_json_string(self : ObjectBs) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
+pub impl ToJson for ObjectBs with fn to_json(self) {
+  @typify_rt.json_of(self, "ObjectBs")
 }
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn ObjectBs::from_json(json : Json) -> ObjectBs raise @typify_rt.DeError {
-  ObjectBs::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for ObjectBs with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("ObjectBs::to_json: \{e}")
-  }
-}
-

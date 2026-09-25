@@ -81,14 +81,14 @@ fn Gen::default_fn(
 }
 
 ///|
-/// Decoding code for struct fields from `input` (a `@typify_rt.StructInput`);
-/// `build` receives the decoded field variables in property order.
+/// Decoding code for struct fields from the deserializer expression `d`,
+/// using the runtime's table-driven `de_fields`; `build` receives the
+/// decoded field variables (`v0`, `v1`, ...) in property order.
 fn Gen::struct_decode(
   self : Gen,
   out : StringBuilder,
   owner : String,
   props : Array[@typify.StructProperty],
-  field_names : Array[String],
   expecting : String,
   deny_unknown_fields : Bool,
   allow_seq : Bool,
@@ -97,115 +97,76 @@ fn Gen::struct_decode(
   external_variant? : Bool = false,
 ) -> String {
   let has_flatten = props.iter().any(p => p.rename is Flatten)
-  let named = props
-    .mapi((i, p) => (i, p))
-    .filter(p => json_name(p.1) is Some(_))
-  let known = named.map(p => json_name(p.1).unwrap())
-  let buf = StringBuilder()
-  buf.write_string(
-    "match @typify_rt.de_struct(\{d}, \{str_lit(expecting)}, \{str_array(known)}, \{has_flatten}\{if external_variant { ", external_variant=true" } else { "" }}) {\n",
+  // Named fields: (property index, JSON name).
+  let named : Array[(Int, String)] = []
+  for i, p in props {
+    if json_name(p) is Some(n) {
+      named.push((i, n))
+    }
+  }
+  let table = self.globals.alloc(
+    lower_ident(@typify.sanitize("\{owner}_fields", Snake)),
   )
-  // Missing-field and default expressions.
-  let missing = props.mapi((i, p) => {
-    let default_expr = match (p.state, entry(self.space, p.type_id).details) {
-      (Optional, Option(_)) => None
-      (Optional, _) => Some(self.zero_value(p.type_id))
+  out.write_string(
+    "///|\nlet \{table} : @typify_rt.Fields = @typify_rt.Fields::new(\{str_array(named.map(n => n.1))})\n\n",
+  )
+  let buf = StringBuilder()
+  for n in named {
+    buf.write_string(
+      "let mut f\{n.0} : \{self.mbt_type(props[n.0].type_id)}? = None\n",
+    )
+  }
+  // One callback decodes field `j` (in `named` order) as its key is read.
+  buf.write_string(
+    "let r = @typify_rt.de_fields(\{d}, \{str_lit(expecting)}, \{table}, (j, v) => match j {\n",
+  )
+  for j, n in named {
+    buf.write_string(
+      "  \{j} => f\{n.0} = Some(\{self.de_expr(props[n.0].type_id, "v")})\n",
+    )
+  }
+  buf.write_string("  _ => ()\n}")
+  if has_flatten {
+    buf.write_string(", flatten=true")
+  }
+  if deny_unknown_fields && !has_flatten {
+    buf.write_string(", deny=true")
+  }
+  if !allow_seq {
+    buf.write_string(", positional=false")
+  }
+  if external_variant {
+    buf.write_string(", external_variant=true")
+  }
+  buf.write_string(")\n")
+  // Absent fields, in declaration order: defaults, `None` for optional
+  // `Option`s, or serde's missing-field/invalid-length errors.
+  for j, n in named {
+    let (i, p) = (n.0, props[n.0])
+    let details = entry(self.space, p.type_id).details
+    let missing = match (p.state, details) {
+      (Optional, Option(_)) => self.de_expr(p.type_id, "r.absent(\{j})")
+      (Optional, _) => self.zero_value(p.type_id)
       (Default(v), _) =>
-        Some("\{self.default_fn(out, owner, p.name, p.type_id, v)}()")
-      _ => None
-    }
-    let missing_expr = match
-      (default_expr, p.state, entry(self.space, p.type_id).details) {
-      (Some(e), _, _) => e
+        "\{self.default_fn(out, owner, p.name, p.type_id, v)}()"
       // `deserialize_with = Option::deserialize` reports absence itself.
-      (None, Required, Option(_)) =>
-        "raise @typify_rt.missing_field_error(\{str_lit(known_name(p))})"
-      (None, _, _) =>
-        self.de_expr(
-          p.type_id,
-          "@typify_rt.De::Missing(\{str_lit(known_name(p))})",
-        )
-    }
-    ignore(i)
-    (default_expr, missing_expr)
-  })
-  // Map form.
-  buf.write_string("  Entries(entries) => {\n")
-  for p in named {
-    let (i, prop) = p
-    buf.write_string(
-      "    let mut f\{i} : \{self.mbt_type(prop.type_id)}? = None\n",
-    )
-  }
-  if has_flatten {
-    buf.write_string("    let buf = @typify_rt.FlatBuf::new()\n")
-  }
-  buf.write_string("    for e in entries {\n      match e.0 {\n")
-  for p in named {
-    let (i, prop) = p
-    let name = json_name(prop).unwrap()
-    buf.write_string(
-      (
-        $|        \{str_lit(name)} => {
-        $|          if f\{i} is Some(_) {
-        $|            raise @typify_rt.duplicate_field_error(\{str_lit(name)})
-        $|          }
-        $|          f\{i} = Some(\{self.de_expr(prop.type_id, "e.1")})
-        $|        }
-        $|
-      ),
-    )
-  }
-  if has_flatten {
-    buf.write_string("        _ => buf.push(e.0, e.1)\n")
-  } else if deny_unknown_fields {
-    buf.write_string(
-      "        other => raise @typify_rt.unknown_field_error(other, \{str_array(known)})\n",
-    )
-  } else {
-    buf.write_string("        _ => ()\n")
-  }
-  buf.write_string("      }\n    }\n")
-  for i, prop in props {
-    let bound = "v\{i}"
-    if prop.rename is Flatten {
-      continue
+      (Required, Option(_)) => "raise r.absent_error(\{j})"
+      (Required, _) => self.de_expr(p.type_id, "r.absent(\{j})")
     }
     buf.write_string(
-      "    let \{bound} = match f\{i} {\n      Some(v) => v\n      None => \{missing[i].1}\n    }\n",
+      "let v\{i} = if f\{i} is Some(v) { v } else { \{missing} }\n",
     )
   }
-  for i, prop in props {
-    if prop.rename is Flatten {
-      buf.write_string(
-        "    let v\{i} = \{self.de_expr(prop.type_id, "@typify_rt.De::Flat(buf)")}\n",
-      )
+  // Flattened fields read the buffered entries, in declaration order.
+  for i, p in props {
+    if p.rename is Flatten {
+      buf.write_string("let v\{i} = \{self.de_expr(p.type_id, "r.flat()")}\n")
     }
   }
   if has_flatten && deny_unknown_fields {
-    buf.write_string("    buf.deny_leftovers()\n")
+    buf.write_string("r.deny_leftovers()\n")
   }
-  buf.write_string("    \{build}\n  }\n")
-  // Positional form.
-  if allow_seq && !has_flatten {
-    buf.write_string("  Elements(s) => {\n")
-    for i, prop in props {
-      let absent = match missing[i].0 {
-        Some(e) => e
-        None => "raise s.invalid_length()"
-      }
-      buf.write_string(
-        "    let v\{i} = match s.next_opt() {\n      Some(d) => \{self.de_expr(prop.type_id, "d")}\n      None => \{absent}\n    }\n",
-      )
-    }
-    buf.write_string("    s.finish()\n    \{build}\n  }\n")
-  } else {
-    buf.write_string(
-      "  Elements(_) => raise @typify_rt.DeError(\"invalid type: sequence, expected \{expecting}\")\n",
-    )
-  }
-  buf.write_string("}")
-  ignore(field_names)
+  buf.write_string(build)
   buf.to_string()
 }
 
@@ -254,29 +215,13 @@ fn Gen::api_methods(self : Gen, out : StringBuilder, name : String) -> Unit {
   out.write_string(
     (
       $|///|
-      $|/// Decode from JSON text, like `serde_json::from_str`.
-      $|pub fn \{name}::from_json_str(text : StringView) -> \{name} raise @typify_rt.DeError {
-      $|  \{name}::deserialize(@typify_rt.De::from_str(text))
-      $|}
-      $|
-      $|///|
-      $|/// Encode as compact JSON text, like `serde_json::to_string`.
-      $|pub fn \{name}::to_json_string(self : \{name}) -> String raise @typify_rt.SerError {
-      $|  @typify_rt.to_json_string(self.serialize())
-      $|}
-      $|
-      $|///|
-      $|/// Decode from a builtin `Json` value (duplicate keys and number
-      $|/// lexemes are not representable in `Json`; prefer `from_json_str`).
-      $|pub fn \{name}::from_json(json : Json) -> \{name} raise @typify_rt.DeError {
-      $|  \{name}::deserialize(@typify_rt.De::from_json(json))
+      $|pub extend \{name} with @typify_rt.Serde::{
+      $|  deserialize, serialize, from_json_str, to_json_string, from_json,
       $|}
       $|
       $|///|
       $|pub impl ToJson for \{name} with to_json(self) {
-      $|  @typify_rt.content_to_json(self.serialize()) catch {
-      $|    e => abort("\{name}::to_json: \{"\\{e}"}")
-      $|  }
+      $|  @typify_rt.json_of(self, \{str_lit(name)})
       $|}
       $|
       $|
@@ -334,7 +279,6 @@ fn Gen::output_struct(
     out,
     d.name,
     d.properties,
-    fields,
     "struct \{d.name}",
     d.deny_unknown_fields,
     true,
@@ -344,12 +288,12 @@ fn Gen::output_struct(
   out.write_string(
     (
       $|///|
-      $|pub fn \{name}::deserialize(d : @typify_rt.De) -> \{name} raise @typify_rt.DeError {
+      $|pub impl @typify_rt.Serde for \{name} with deserialize(d) {
       $|\{indent(decode, 2)}
       $|}
       $|
       $|///|
-      $|pub fn \{name}::serialize(self : \{name}) -> @typify_rt.Content raise @typify_rt.SerError {
+      $|pub impl @typify_rt.Serde for \{name} with serialize(self) {
       $|  let o = @typify_rt.ObjectBuilder::new()
       $|\{indent(self.struct_encode(d.properties, i => "self.\{fields[i]}"), 2)}
       $|  o.build()
@@ -438,7 +382,7 @@ fn Gen::output_newtype(
         $|}
         $|
         $|///|
-        $|pub fn \{name}::deserialize(d : @typify_rt.De) -> \{name} raise @typify_rt.DeError {
+        $|pub impl @typify_rt.Serde for \{name} with deserialize(d) {
         $|  let value = \{self.de_expr(d.type_id, "d")}
         $|  \{name}::new(value) catch {
         $|    @typify_rt.ConversionError(msg) => raise @typify_rt.DeError(msg)
@@ -452,7 +396,7 @@ fn Gen::output_newtype(
     out.write_string(
       (
         $|///|
-        $|pub fn \{name}::deserialize(d : @typify_rt.De) -> \{name} raise @typify_rt.DeError {
+        $|pub impl @typify_rt.Serde for \{name} with deserialize(d) {
         $|  \{name}(\{self.de_expr(d.type_id, "d")})
         $|}
         $|
@@ -463,7 +407,7 @@ fn Gen::output_newtype(
   out.write_string(
     (
       $|///|
-      $|pub fn \{name}::serialize(self : \{name}) -> @typify_rt.Content raise @typify_rt.SerError {
+      $|pub impl @typify_rt.Serde for \{name} with serialize(self) {
       $|  \{self.ser_expr(d.type_id, "self.0")}
       $|}
       $|
@@ -525,11 +469,10 @@ fn Gen::variant_payload_decode(
     Struct(props) => {
       let labels = self.fields.get("\{id.0}/\{i}").unwrap()
       let build = "\{ctor}(\{labels.mapi((j, l) => "\{l}=v\{j}").join(", ")})"
-      self.struct_decode(
+      let code = self.struct_decode(
         out,
         enum_name + v.ident_name.unwrap(),
         props,
-        labels,
         "struct variant \{enum_name}::\{v.ident_name.unwrap()}",
         deny,
         allow_seq,
@@ -537,6 +480,7 @@ fn Gen::variant_payload_decode(
         build,
         external_variant=external,
       )
+      "{\n\{indent(code, 2)}\n}"
     }
   }
 }
@@ -720,7 +664,7 @@ fn Gen::output_enum(
   out.write_string(
     (
       $|///|
-      $|pub fn \{name}::deserialize(d : @typify_rt.De) -> \{name} raise @typify_rt.DeError {
+      $|pub impl @typify_rt.Serde for \{name} with deserialize(d) {
       $|\{indent(body, 2)}
       $|}
       $|
@@ -758,7 +702,7 @@ fn Gen::output_enum(
   out.write_string(
     (
       $|///|
-      $|pub fn \{name}::serialize(self : \{name}) -> @typify_rt.Content raise @typify_rt.SerError {
+      $|pub impl @typify_rt.Serde for \{name} with serialize(self) {
       $|  match self {
       $|\{indent(enc_body.trim_end().to_owned(), 2)}
       $|  }

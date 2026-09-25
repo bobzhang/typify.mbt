@@ -10,40 +10,23 @@ pub(all) struct TestType {
 } derive(Debug, Eq)
 
 ///|
-pub fn TestType::deserialize(d : @typify_rt.De) -> TestType raise @typify_rt.DeError {
-  match @typify_rt.de_struct(d, "struct TestType", ["value"], false) {
-    Entries(entries) => {
-      let mut f0 : TestTypeValue?? = None
-      for e in entries {
-        match e.0 {
-          "value" => {
-            if f0 is Some(_) {
-              raise @typify_rt.duplicate_field_error("value")
-            }
-            f0 = Some(@typify_rt.de_option(e.1, TestTypeValue::deserialize))
-          }
-          _ => ()
-        }
-      }
-      let v0 = match f0 {
-        Some(v) => v
-        None => raise @typify_rt.missing_field_error("value")
-      }
-      TestType::{ value: v0 }
+let test_type_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
+
+///|
+pub impl @typify_rt.Serde for TestType with fn deserialize(d) {
+  let mut f0 : TestTypeValue?? = None
+  let r = @typify_rt.de_fields(d, "struct TestType", test_type_fields, (j, v) => {
+    match j {
+      0 => f0 = Some(@typify_rt.de_option(v, TestTypeValue::deserialize))
+      _ => ()
     }
-    Elements(s) => {
-      let v0 = match s.next_opt() {
-        Some(d) => @typify_rt.de_option(d, TestTypeValue::deserialize)
-        None => raise s.invalid_length()
-      }
-      s.finish()
-      TestType::{ value: v0 }
-    }
-  }
+  })
+  let v0 = if f0 is Some(v) { v } else { raise r.absent_error(0) }
+  TestType::{ value: v0, }
 }
 
 ///|
-pub fn TestType::serialize(self : TestType) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for TestType with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("value", @typify_rt.ser_option(self.value, TestTypeValue::serialize))
 
@@ -51,29 +34,17 @@ pub fn TestType::serialize(self : TestType) -> @typify_rt.Content raise @typify_
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn TestType::from_json_str(text : StringView) -> TestType raise @typify_rt.DeError {
-  TestType::deserialize(@typify_rt.De::from_str(text))
+pub extend TestType with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn TestType::to_json_string(self : TestType) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn TestType::from_json(json : Json) -> TestType raise @typify_rt.DeError {
-  TestType::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for TestType with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("TestType::to_json: \{e}")
-  }
+pub impl ToJson for TestType with fn to_json(self) {
+  @typify_rt.json_of(self, "TestType")
 }
 
 ///|
@@ -85,12 +56,23 @@ pub(all) enum TestTypeValue {
 } derive(Debug, Eq, Hash)
 
 ///|
-pub fn TestTypeValue::deserialize(d : @typify_rt.De) -> TestTypeValue raise @typify_rt.DeError {
-  let (idx, payload) = @typify_rt.de_enum(d, "TestTypeValue", ["start", "middle", "end"])
+pub impl @typify_rt.Serde for TestTypeValue with fn deserialize(d) {
+  let (idx, payload) = @typify_rt.de_enum(d, "TestTypeValue", [
+    "start", "middle", "end",
+  ])
   let v = match idx {
-    0 => { @typify_rt.variant_unit(payload); TestTypeValue::Start }
-    1 => { @typify_rt.variant_unit(payload); TestTypeValue::Middle }
-    2 => { @typify_rt.variant_unit(payload); TestTypeValue::End }
+    0 => {
+      @typify_rt.variant_unit(payload)
+      TestTypeValue::Start
+    }
+    1 => {
+      @typify_rt.variant_unit(payload)
+      TestTypeValue::Middle
+    }
+    2 => {
+      @typify_rt.variant_unit(payload)
+      TestTypeValue::End
+    }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -98,7 +80,7 @@ pub fn TestTypeValue::deserialize(d : @typify_rt.De) -> TestTypeValue raise @typ
 }
 
 ///|
-pub fn TestTypeValue::serialize(self : TestTypeValue) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for TestTypeValue with fn serialize(self) {
   match self {
     Start => @typify_rt.ser_string("start")
     Middle => @typify_rt.ser_string("middle")
@@ -128,7 +110,9 @@ pub fn TestTypeValue::to_string(self : TestTypeValue) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn TestTypeValue::parse(value : StringView) -> TestTypeValue raise @typify_rt.ConversionError {
+pub fn TestTypeValue::parse(
+  value : StringView,
+) -> TestTypeValue raise @typify_rt.ConversionError {
   match value {
     "start" => Start
     "middle" => Middle
@@ -138,28 +122,15 @@ pub fn TestTypeValue::parse(value : StringView) -> TestTypeValue raise @typify_r
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn TestTypeValue::from_json_str(text : StringView) -> TestTypeValue raise @typify_rt.DeError {
-  TestTypeValue::deserialize(@typify_rt.De::from_str(text))
+pub extend TestTypeValue with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn TestTypeValue::to_json_string(self : TestTypeValue) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
+pub impl ToJson for TestTypeValue with fn to_json(self) {
+  @typify_rt.json_of(self, "TestTypeValue")
 }
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn TestTypeValue::from_json(json : Json) -> TestTypeValue raise @typify_rt.DeError {
-  TestTypeValue::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for TestTypeValue with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("TestTypeValue::to_json: \{e}")
-  }
-}
-

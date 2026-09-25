@@ -1,0 +1,80 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/conformance/moonbit/fx_arrays_and_tuples"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) struct ArraySansItems(Array[Json]) derive(Eq, @debug.Debug)
+pub fn ArraySansItems::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn ArraySansItems::from_json(Json) -> Self raise @runtime.DeError
+pub fn ArraySansItems::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn ArraySansItems::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn ArraySansItems::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for ArraySansItems
+pub impl ToJson for ArraySansItems
+
+pub(all) struct LessSimpleTwoTuple((String, String)) derive(Eq, @debug.Debug)
+pub fn LessSimpleTwoTuple::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn LessSimpleTwoTuple::from_json(Json) -> Self raise @runtime.DeError
+pub fn LessSimpleTwoTuple::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn LessSimpleTwoTuple::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn LessSimpleTwoTuple::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for LessSimpleTwoTuple
+pub impl ToJson for LessSimpleTwoTuple
+
+pub(all) struct SetAvecItem(Array[String]) derive(Eq, @debug.Debug)
+pub fn SetAvecItem::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn SetAvecItem::from_json(Json) -> Self raise @runtime.DeError
+pub fn SetAvecItem::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn SetAvecItem::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn SetAvecItem::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for SetAvecItem
+pub impl ToJson for SetAvecItem
+
+pub(all) struct SimpleTwoArray(FixedArray[String]) derive(Eq, @debug.Debug)
+pub fn SimpleTwoArray::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn SimpleTwoArray::from_json(Json) -> Self raise @runtime.DeError
+pub fn SimpleTwoArray::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn SimpleTwoArray::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn SimpleTwoArray::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for SimpleTwoArray
+pub impl ToJson for SimpleTwoArray
+
+pub(all) struct SimpleTwoTuple((String, String)) derive(Eq, @debug.Debug)
+pub fn SimpleTwoTuple::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn SimpleTwoTuple::from_json(Json) -> Self raise @runtime.DeError
+pub fn SimpleTwoTuple::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn SimpleTwoTuple::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn SimpleTwoTuple::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for SimpleTwoTuple
+pub impl ToJson for SimpleTwoTuple
+
+pub(all) struct UnsimpleTwoTuple((String, String)) derive(Eq, @debug.Debug)
+pub fn UnsimpleTwoTuple::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn UnsimpleTwoTuple::from_json(Json) -> Self raise @runtime.DeError
+pub fn UnsimpleTwoTuple::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn UnsimpleTwoTuple::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn UnsimpleTwoTuple::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for UnsimpleTwoTuple
+pub impl ToJson for UnsimpleTwoTuple
+
+pub(all) struct YoloTwoArray(FixedArray[Json]) derive(Eq, @debug.Debug)
+pub fn YoloTwoArray::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn YoloTwoArray::from_json(Json) -> Self raise @runtime.DeError
+pub fn YoloTwoArray::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn YoloTwoArray::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn YoloTwoArray::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for YoloTwoArray
+pub impl ToJson for YoloTwoArray
+
+// Type aliases
+
+// Traits

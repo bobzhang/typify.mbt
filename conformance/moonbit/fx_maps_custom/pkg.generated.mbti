@@ -1,0 +1,71 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/conformance/moonbit/fx_maps_custom"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) struct DeadSimple(Map[String, Json]) derive(Eq, @debug.Debug)
+pub fn DeadSimple::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn DeadSimple::from_json(Json) -> Self raise @runtime.DeError
+pub fn DeadSimple::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn DeadSimple::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn DeadSimple::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for DeadSimple
+pub impl ToJson for DeadSimple
+
+pub(all) struct Eh(String) derive(Eq, Hash, @debug.Debug)
+pub fn Eh::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Eh::from_json(Json) -> Self raise @runtime.DeError
+pub fn Eh::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Eh::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Eh::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Eh
+pub impl ToJson for Eh
+
+pub(all) struct MapWithDateKeys(Map[@runtime.NaiveDate, Value]) derive(Eq, @debug.Debug)
+pub fn MapWithDateKeys::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn MapWithDateKeys::from_json(Json) -> Self raise @runtime.DeError
+pub fn MapWithDateKeys::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn MapWithDateKeys::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn MapWithDateKeys::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for MapWithDateKeys
+pub impl ToJson for MapWithDateKeys
+
+pub(all) struct MapWithDateTimeKeys(Map[@runtime.DateTimeUtc, Value]) derive(Eq, @debug.Debug)
+pub fn MapWithDateTimeKeys::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn MapWithDateTimeKeys::from_json(Json) -> Self raise @runtime.DeError
+pub fn MapWithDateTimeKeys::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn MapWithDateTimeKeys::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn MapWithDateTimeKeys::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for MapWithDateTimeKeys
+pub impl ToJson for MapWithDateTimeKeys
+
+pub(all) struct MapWithKeys(Map[Eh, Value]) derive(Eq, @debug.Debug)
+pub fn MapWithKeys::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn MapWithKeys::from_json(Json) -> Self raise @runtime.DeError
+pub fn MapWithKeys::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn MapWithKeys::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn MapWithKeys::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for MapWithKeys
+pub impl ToJson for MapWithKeys
+
+pub(all) struct Value(String) derive(Eq, Hash, @debug.Debug)
+pub fn Value::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Value::from_json(Json) -> Self raise @runtime.DeError
+pub fn Value::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Value::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Value
+pub impl ToJson for Value
+
+// Type aliases
+
+// Traits

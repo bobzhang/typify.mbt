@@ -1,0 +1,75 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/conformance/moonbit/fx_multiple_instance_types"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) enum IntOrStr {
+  Integer(Int64)
+  String(String)
+} derive(Eq, @debug.Debug)
+pub fn IntOrStr::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn IntOrStr::from_json(Json) -> Self raise @runtime.DeError
+pub fn IntOrStr::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn IntOrStr::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn IntOrStr::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for IntOrStr
+pub impl ToJson for IntOrStr
+
+pub(all) enum OneOfSeveral {
+  Null
+  Boolean(Bool)
+  Integer(Int64)
+  String(String)
+  Array(Array[Json])
+  Object(Map[String, Json])
+} derive(Eq, @debug.Debug)
+pub fn OneOfSeveral::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OneOfSeveral::from_json(Json) -> Self raise @runtime.DeError
+pub fn OneOfSeveral::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OneOfSeveral::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OneOfSeveral::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for OneOfSeveral
+pub impl ToJson for OneOfSeveral
+
+pub(all) struct ReallyJustNull(Unit) derive(Eq, @debug.Debug)
+pub fn ReallyJustNull::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn ReallyJustNull::from_json(Json) -> Self raise @runtime.DeError
+pub fn ReallyJustNull::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn ReallyJustNull::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn ReallyJustNull::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for ReallyJustNull
+pub impl ToJson for ReallyJustNull
+
+pub(all) struct SeriouslyAnything(Json) derive(Eq, @debug.Debug)
+pub fn SeriouslyAnything::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn SeriouslyAnything::from_json(Json) -> Self raise @runtime.DeError
+pub fn SeriouslyAnything::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn SeriouslyAnything::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn SeriouslyAnything::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for SeriouslyAnything
+pub impl ToJson for SeriouslyAnything
+
+pub(all) enum YesNoMaybe {
+  Boolean(Bool)
+  Object(value~ : String?)
+} derive(Eq, @debug.Debug)
+pub fn YesNoMaybe::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn YesNoMaybe::from_json(Json) -> Self raise @runtime.DeError
+pub fn YesNoMaybe::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn YesNoMaybe::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn YesNoMaybe::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for YesNoMaybe
+pub impl ToJson for YesNoMaybe
+
+// Type aliases
+
+// Traits

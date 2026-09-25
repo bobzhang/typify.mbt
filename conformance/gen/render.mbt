@@ -22,7 +22,12 @@ fn Gen::ws(self : Gen, buf : StringBuilder) -> Unit {
 
 ///|
 /// A string literal, with some characters written as `\u` escapes.
-fn Gen::render_str(self : Gen, buf : StringBuilder, s : String, escape_pct : Int) -> Unit {
+fn Gen::render_str(
+  self : Gen,
+  buf : StringBuilder,
+  s : String,
+  escape_pct : Int,
+) -> Unit {
   if !self.chance(escape_pct) || s.is_empty() {
     @serde_json.write_escaped_str(buf, s)
     return
@@ -44,7 +49,9 @@ fn Gen::render_str(self : Gen, buf : StringBuilder, s : String, escape_pct : Int
       let v = code - 0x10000
       let hi = 0xD800 + (v >> 10)
       let lo = 0xDC00 + (v & 0x3FF)
-      buf.write_string("\\u\{hi.to_string(radix=16)}\\u\{lo.to_string(radix=16)}")
+      buf.write_string(
+        "\\u\{hi.to_string(radix=16)}\\u\{lo.to_string(radix=16)}",
+      )
     }
   }
   buf.write_char('"')

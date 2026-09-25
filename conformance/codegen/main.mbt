@@ -59,6 +59,23 @@ fn fixtures() -> Array[(String, String, @typify.TypeSpaceSettings, Bool)] {
       false,
     ),
   )
+  // vega: compile-only (its conversion/replacement types are user-supplied,
+  // so there is no Rust harness for it).
+  let my_enum = @schema.RootSchema::from_json_str(
+    "{\"enum\":[null,\"normal\",\"bold\",\"lighter\",\"bolder\",\"100\",\"200\",\"300\",\"400\",\"500\",\"600\",\"700\",\"800\",\"900\",100,200,300,400,500,600,700,800,900]}",
+  ) catch {
+    e => abort("vega conversion: \{e}")
+  }
+  out.push(
+    (
+      "vega",
+      "tests/upstream/impl/vega.json",
+      @typify.TypeSpaceSettings::default()
+      .with_conversion(my_enum.schema, "MyEnum", [FromStr])
+      .with_replacement("ColorValue", "ColorValue", []),
+      true,
+    ),
+  )
   out.push(
     (
       "github",
@@ -124,7 +141,7 @@ fn main {
         Newtype(d) => Some(d.name)
         _ => None
       }
-      guard rust_name is Some(rust_name) else { continue }
+      guard rust_name is Some(rust_name) && name != "vega" else { continue }
       let mbt_name = @moonbit.type_name_of(space, pair.0)
       dispatch.write_string(
         "    (\"\{name}\", \"\{rust_name}\") => run(input, @\{pkg}.\{mbt_name}::from_json_str, @\{pkg}.\{mbt_name}::to_json_string)\n",

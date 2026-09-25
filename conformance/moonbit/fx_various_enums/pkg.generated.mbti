@@ -1,0 +1,415 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/conformance/moonbit/fx_various_enums"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) enum AlternativeEnum {
+  Choice1
+  Choice2
+  Choice3
+} derive(Eq, Hash, @debug.Debug)
+pub fn AlternativeEnum::default() -> Self
+pub fn AlternativeEnum::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn AlternativeEnum::from_json(Json) -> Self raise @runtime.DeError
+pub fn AlternativeEnum::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn AlternativeEnum::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn AlternativeEnum::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn AlternativeEnum::to_json_string(Self) -> String raise @runtime.SerError
+pub fn AlternativeEnum::to_string(Self) -> String
+pub fn AlternativeEnum::variant_index(Self) -> Int
+pub impl @runtime.Serde for AlternativeEnum
+pub impl ToJson for AlternativeEnum
+
+pub(all) enum AnyOfNoStrings {
+} derive(Eq, Hash, @debug.Debug)
+pub fn AnyOfNoStrings::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn AnyOfNoStrings::from_json(Json) -> Self raise @runtime.DeError
+pub fn AnyOfNoStrings::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn AnyOfNoStrings::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn AnyOfNoStrings::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for AnyOfNoStrings
+pub impl ToJson for AnyOfNoStrings
+
+pub(all) enum AnyOfNothing {
+} derive(Eq, Hash, @debug.Debug)
+pub fn AnyOfNothing::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn AnyOfNothing::from_json(Json) -> Self raise @runtime.DeError
+pub fn AnyOfNothing::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn AnyOfNothing::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn AnyOfNothing::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for AnyOfNothing
+pub impl ToJson for AnyOfNothing
+
+pub(all) struct BlockSize(Int64) derive(Eq, @debug.Debug)
+pub fn BlockSize::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn BlockSize::from_json(Json) -> Self raise @runtime.DeError
+pub fn BlockSize::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn BlockSize::new(Int64) -> Self raise @runtime.ConversionError
+pub fn BlockSize::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn BlockSize::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for BlockSize
+pub impl ToJson for BlockSize
+
+pub(all) enum CommentedVariants {
+  A
+  B
+  C
+} derive(Eq, Hash, @debug.Debug)
+pub fn CommentedVariants::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn CommentedVariants::from_json(Json) -> Self raise @runtime.DeError
+pub fn CommentedVariants::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn CommentedVariants::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn CommentedVariants::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn CommentedVariants::to_json_string(Self) -> String raise @runtime.SerError
+pub fn CommentedVariants::to_string(Self) -> String
+pub fn CommentedVariants::variant_index(Self) -> Int
+pub impl @runtime.Serde for CommentedVariants
+pub impl ToJson for CommentedVariants
+
+pub(all) struct DiskAttachment {
+  alternate : AlternativeEnum
+  state : DiskAttachmentState
+} derive(Eq, @debug.Debug)
+pub fn DiskAttachment::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn DiskAttachment::from_json(Json) -> Self raise @runtime.DeError
+pub fn DiskAttachment::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn DiskAttachment::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn DiskAttachment::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for DiskAttachment
+pub impl ToJson for DiskAttachment
+
+pub(all) enum DiskAttachmentState {
+  Detached
+  Destroyed
+  Faulted
+} derive(Eq, Hash, @debug.Debug)
+pub fn DiskAttachmentState::default() -> Self
+pub fn DiskAttachmentState::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn DiskAttachmentState::from_json(Json) -> Self raise @runtime.DeError
+pub fn DiskAttachmentState::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn DiskAttachmentState::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn DiskAttachmentState::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn DiskAttachmentState::to_json_string(Self) -> String raise @runtime.SerError
+pub fn DiskAttachmentState::to_string(Self) -> String
+pub fn DiskAttachmentState::variant_index(Self) -> Int
+pub impl @runtime.Serde for DiskAttachmentState
+pub impl ToJson for DiskAttachmentState
+
+pub(all) struct EmptyObject {
+  prop : EmptyObjectProp?
+} derive(Eq, @debug.Debug)
+pub fn EmptyObject::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn EmptyObject::from_json(Json) -> Self raise @runtime.DeError
+pub fn EmptyObject::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn EmptyObject::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn EmptyObject::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for EmptyObject
+pub impl ToJson for EmptyObject
+
+pub(all) struct EmptyObjectProp(Map[String, Json]) derive(Eq, @debug.Debug)
+pub fn EmptyObjectProp::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn EmptyObjectProp::from_json(Json) -> Self raise @runtime.DeError
+pub fn EmptyObjectProp::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn EmptyObjectProp::new(Map[String, Json]) -> Self raise @runtime.ConversionError
+pub fn EmptyObjectProp::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn EmptyObjectProp::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for EmptyObjectProp
+pub impl ToJson for EmptyObjectProp
+
+pub(all) enum EnumAndConstant {
+  Dog(bark~ : String)
+  Cat(purr~ : String)
+  Monkey(help~ : String)
+  Fish(float~ : String)
+} derive(Eq, @debug.Debug)
+pub fn EnumAndConstant::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn EnumAndConstant::from_json(Json) -> Self raise @runtime.DeError
+pub fn EnumAndConstant::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn EnumAndConstant::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn EnumAndConstant::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for EnumAndConstant
+pub impl ToJson for EnumAndConstant
+
+pub(all) enum IpNet {
+  V4(Ipv4Net)
+  V6(Ipv6Net)
+} derive(Eq, @debug.Debug)
+pub fn IpNet::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn IpNet::from_json(Json) -> Self raise @runtime.DeError
+pub fn IpNet::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn IpNet::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn IpNet::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for IpNet
+pub impl ToJson for IpNet
+
+pub(all) struct Ipv4Net(String) derive(Eq, Hash, @debug.Debug)
+pub fn Ipv4Net::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Ipv4Net::from_json(Json) -> Self raise @runtime.DeError
+pub fn Ipv4Net::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Ipv4Net::new(String) -> Self raise @runtime.ConversionError
+pub fn Ipv4Net::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Ipv4Net::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Ipv4Net
+pub impl ToJson for Ipv4Net
+
+pub(all) struct Ipv6Net(String) derive(Eq, Hash, @debug.Debug)
+pub fn Ipv6Net::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Ipv6Net::from_json(Json) -> Self raise @runtime.DeError
+pub fn Ipv6Net::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Ipv6Net::new(String) -> Self raise @runtime.ConversionError
+pub fn Ipv6Net::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Ipv6Net::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Ipv6Net
+pub impl ToJson for Ipv6Net
+
+pub(all) enum JankNames {
+  Variant0(String)
+  Variant1(Map[String, String])
+  Variant2(Map[String, Int64])
+} derive(Eq, @debug.Debug)
+pub fn JankNames::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn JankNames::from_json(Json) -> Self raise @runtime.DeError
+pub fn JankNames::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn JankNames::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn JankNames::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for JankNames
+pub impl ToJson for JankNames
+
+pub(all) enum Never {
+} derive(Eq, Hash, @debug.Debug)
+pub fn Never::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Never::from_json(Json) -> Self raise @runtime.DeError
+pub fn Never::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Never::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Never::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Never
+pub impl ToJson for Never
+
+pub(all) enum NeverEver {
+} derive(Eq, Hash, @debug.Debug)
+pub fn NeverEver::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn NeverEver::from_json(Json) -> Self raise @runtime.DeError
+pub fn NeverEver::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn NeverEver::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn NeverEver::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for NeverEver
+pub impl ToJson for NeverEver
+
+pub(all) enum NeverEverForever {
+} derive(Eq, Hash, @debug.Debug)
+pub fn NeverEverForever::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn NeverEverForever::from_json(Json) -> Self raise @runtime.DeError
+pub fn NeverEverForever::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn NeverEverForever::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn NeverEverForever::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for NeverEverForever
+pub impl ToJson for NeverEverForever
+
+pub(all) struct NotBlockSize(Double) derive(Eq, @debug.Debug)
+pub fn NotBlockSize::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn NotBlockSize::from_json(Json) -> Self raise @runtime.DeError
+pub fn NotBlockSize::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn NotBlockSize::new(Double) -> Self raise @runtime.ConversionError
+pub fn NotBlockSize::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn NotBlockSize::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for NotBlockSize
+pub impl ToJson for NotBlockSize
+
+pub(all) struct NullStringEnumWithUnknownFormat(NullStringEnumWithUnknownFormatInner?) derive(Eq, @debug.Debug)
+pub fn NullStringEnumWithUnknownFormat::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn NullStringEnumWithUnknownFormat::from_json(Json) -> Self raise @runtime.DeError
+pub fn NullStringEnumWithUnknownFormat::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn NullStringEnumWithUnknownFormat::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn NullStringEnumWithUnknownFormat::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for NullStringEnumWithUnknownFormat
+pub impl ToJson for NullStringEnumWithUnknownFormat
+
+pub(all) enum NullStringEnumWithUnknownFormatInner {
+  A
+  B
+  C
+} derive(Eq, Hash, @debug.Debug)
+pub fn NullStringEnumWithUnknownFormatInner::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn NullStringEnumWithUnknownFormatInner::from_json(Json) -> Self raise @runtime.DeError
+pub fn NullStringEnumWithUnknownFormatInner::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn NullStringEnumWithUnknownFormatInner::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn NullStringEnumWithUnknownFormatInner::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn NullStringEnumWithUnknownFormatInner::to_json_string(Self) -> String raise @runtime.SerError
+pub fn NullStringEnumWithUnknownFormatInner::to_string(Self) -> String
+pub fn NullStringEnumWithUnknownFormatInner::variant_index(Self) -> Int
+pub impl @runtime.Serde for NullStringEnumWithUnknownFormatInner
+pub impl ToJson for NullStringEnumWithUnknownFormatInner
+
+pub(all) enum OneOfMissingTitle {
+  Variant0(foo~ : String?)
+  Variant1(bar~ : Int64?)
+  Variant2(bar~ : Int64?, baz~ : Int64?)
+} derive(Eq, @debug.Debug)
+pub fn OneOfMissingTitle::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OneOfMissingTitle::from_json(Json) -> Self raise @runtime.DeError
+pub fn OneOfMissingTitle::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OneOfMissingTitle::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OneOfMissingTitle::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for OneOfMissingTitle
+pub impl ToJson for OneOfMissingTitle
+
+pub(all) enum OneOfRawType {
+  String(String)
+  Integer(Int64)
+} derive(Eq, @debug.Debug)
+pub fn OneOfRawType::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OneOfRawType::from_json(Json) -> Self raise @runtime.DeError
+pub fn OneOfRawType::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OneOfRawType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OneOfRawType::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for OneOfRawType
+pub impl ToJson for OneOfRawType
+
+pub(all) enum OneOfTypes {
+  Bar(Int64)
+  Foo(String)
+} derive(Eq, @debug.Debug)
+pub fn OneOfTypes::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OneOfTypes::from_json(Json) -> Self raise @runtime.DeError
+pub fn OneOfTypes::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OneOfTypes::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OneOfTypes::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for OneOfTypes
+pub impl ToJson for OneOfTypes
+
+pub(all) struct OptionAnyofConst(String?) derive(Eq, @debug.Debug)
+pub fn OptionAnyofConst::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OptionAnyofConst::from_json(Json) -> Self raise @runtime.DeError
+pub fn OptionAnyofConst::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OptionAnyofConst::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OptionAnyofConst::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for OptionAnyofConst
+pub impl ToJson for OptionAnyofConst
+
+pub(all) struct OptionAnyofEnum(String?) derive(Eq, @debug.Debug)
+pub fn OptionAnyofEnum::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OptionAnyofEnum::from_json(Json) -> Self raise @runtime.DeError
+pub fn OptionAnyofEnum::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OptionAnyofEnum::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OptionAnyofEnum::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for OptionAnyofEnum
+pub impl ToJson for OptionAnyofEnum
+
+pub(all) struct OptionAnyofNull(String?) derive(Eq, @debug.Debug)
+pub fn OptionAnyofNull::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OptionAnyofNull::from_json(Json) -> Self raise @runtime.DeError
+pub fn OptionAnyofNull::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OptionAnyofNull::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OptionAnyofNull::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for OptionAnyofNull
+pub impl ToJson for OptionAnyofNull
+
+pub(all) struct OptionOneofConst(String?) derive(Eq, @debug.Debug)
+pub fn OptionOneofConst::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OptionOneofConst::from_json(Json) -> Self raise @runtime.DeError
+pub fn OptionOneofConst::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OptionOneofConst::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OptionOneofConst::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for OptionOneofConst
+pub impl ToJson for OptionOneofConst
+
+pub(all) struct OptionOneofEnum(String?) derive(Eq, @debug.Debug)
+pub fn OptionOneofEnum::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OptionOneofEnum::from_json(Json) -> Self raise @runtime.DeError
+pub fn OptionOneofEnum::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OptionOneofEnum::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OptionOneofEnum::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for OptionOneofEnum
+pub impl ToJson for OptionOneofEnum
+
+pub(all) struct OptionOneofNull(String?) derive(Eq, @debug.Debug)
+pub fn OptionOneofNull::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OptionOneofNull::from_json(Json) -> Self raise @runtime.DeError
+pub fn OptionOneofNull::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OptionOneofNull::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OptionOneofNull::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for OptionOneofNull
+pub impl ToJson for OptionOneofNull
+
+pub(all) struct ReferenceDef(String) derive(Eq, Hash, @debug.Debug)
+pub fn ReferenceDef::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn ReferenceDef::from_json(Json) -> Self raise @runtime.DeError
+pub fn ReferenceDef::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn ReferenceDef::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn ReferenceDef::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for ReferenceDef
+pub impl ToJson for ReferenceDef
+
+pub(all) enum References {
+  Array(Array[String])
+  Object(Map[String, ReferencesObjectValue])
+} derive(Eq, @debug.Debug)
+pub fn References::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn References::from_json(Json) -> Self raise @runtime.DeError
+pub fn References::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn References::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn References::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for References
+pub impl ToJson for References
+
+pub(all) enum ReferencesObjectValue {
+  StringVersion(StringVersion)
+  ReferenceDef(ReferenceDef)
+} derive(Eq, @debug.Debug)
+pub fn ReferencesObjectValue::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn ReferencesObjectValue::from_json(Json) -> Self raise @runtime.DeError
+pub fn ReferencesObjectValue::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn ReferencesObjectValue::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn ReferencesObjectValue::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for ReferencesObjectValue
+pub impl ToJson for ReferencesObjectValue
+
+pub(all) enum ShouldBeExclusive {
+  Variant0(id~ : String)
+  Variant1(reference~ : String)
+} derive(Eq, @debug.Debug)
+pub fn ShouldBeExclusive::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn ShouldBeExclusive::from_json(Json) -> Self raise @runtime.DeError
+pub fn ShouldBeExclusive::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn ShouldBeExclusive::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn ShouldBeExclusive::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for ShouldBeExclusive
+pub impl ToJson for ShouldBeExclusive
+
+pub(all) struct StringVersion(String) derive(Eq, Hash, @debug.Debug)
+pub fn StringVersion::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn StringVersion::from_json(Json) -> Self raise @runtime.DeError
+pub fn StringVersion::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn StringVersion::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn StringVersion::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for StringVersion
+pub impl ToJson for StringVersion
+
+pub(all) enum VariantsDifferByPunct {
+  X2x5gbasext
+  X25gbasext
+  X2x5xgbasext
+} derive(Eq, Hash, @debug.Debug)
+pub fn VariantsDifferByPunct::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn VariantsDifferByPunct::from_json(Json) -> Self raise @runtime.DeError
+pub fn VariantsDifferByPunct::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn VariantsDifferByPunct::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn VariantsDifferByPunct::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn VariantsDifferByPunct::to_json_string(Self) -> String raise @runtime.SerError
+pub fn VariantsDifferByPunct::to_string(Self) -> String
+pub fn VariantsDifferByPunct::variant_index(Self) -> Int
+pub impl @runtime.Serde for VariantsDifferByPunct
+pub impl ToJson for VariantsDifferByPunct
+
+// Type aliases
+
+// Traits

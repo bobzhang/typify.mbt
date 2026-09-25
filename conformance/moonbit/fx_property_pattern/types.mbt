@@ -10,91 +10,113 @@ pub(all) struct TestGrammarForPatternProperties {
 } derive(Debug, Eq)
 
 ///|
-pub fn TestGrammarForPatternProperties::deserialize(d : @typify_rt.De) -> TestGrammarForPatternProperties raise @typify_rt.DeError {
-  match @typify_rt.de_struct(d, "struct TestGrammarForPatternProperties", ["rules"], false) {
-    Entries(entries) => {
-      let mut f0 : Map[TestGrammarForPatternPropertiesRulesKey, String]? = None
-      for e in entries {
-        match e.0 {
-          "rules" => {
-            if f0 is Some(_) {
-              raise @typify_rt.duplicate_field_error("rules")
-            }
-            f0 = Some(@typify_rt.de_map(e.1, TestGrammarForPatternPropertiesRulesKey::deserialize, @typify_rt.de_string))
-          }
-          other => raise @typify_rt.unknown_field_error(other, ["rules"])
-        }
+let test_grammar_for_pattern_properties_fields : @typify_rt.Fields = @typify_rt.Fields::new([
+    "rules",
+  ],
+)
+
+///|
+pub impl @typify_rt.Serde for TestGrammarForPatternProperties with fn deserialize(
+  d,
+) {
+  let mut f0 : Map[TestGrammarForPatternPropertiesRulesKey, String]? = None
+  let r = @typify_rt.de_fields(
+    d,
+    "struct TestGrammarForPatternProperties",
+    test_grammar_for_pattern_properties_fields,
+    (j, v) => {
+      match j {
+        0 =>
+          f0 = Some(
+            @typify_rt.de_map(
+              v,
+              TestGrammarForPatternPropertiesRulesKey::deserialize,
+              @typify_rt.de_string,
+            ),
+          )
+        _ => ()
       }
-      let v0 = match f0 {
-        Some(v) => v
-        None => @typify_rt.de_map(@typify_rt.De::Missing("rules"), TestGrammarForPatternPropertiesRulesKey::deserialize, @typify_rt.de_string)
-      }
-      TestGrammarForPatternProperties::{ rules: v0 }
-    }
-    Elements(s) => {
-      let v0 = match s.next_opt() {
-        Some(d) => @typify_rt.de_map(d, TestGrammarForPatternPropertiesRulesKey::deserialize, @typify_rt.de_string)
-        None => raise s.invalid_length()
-      }
-      s.finish()
-      TestGrammarForPatternProperties::{ rules: v0 }
-    }
+    },
+    deny=true,
+  )
+  let v0 = if f0 is Some(v) {
+    v
+  } else {
+    @typify_rt.de_map(
+      r.absent(0),
+      TestGrammarForPatternPropertiesRulesKey::deserialize,
+      @typify_rt.de_string,
+    )
   }
+  TestGrammarForPatternProperties::{ rules: v0, }
 }
 
 ///|
-pub fn TestGrammarForPatternProperties::serialize(self : TestGrammarForPatternProperties) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for TestGrammarForPatternProperties with fn serialize(
+  self,
+) {
   let o = @typify_rt.ObjectBuilder::new()
-  o.field("rules", @typify_rt.ser_map(self.rules, (k : TestGrammarForPatternPropertiesRulesKey) => @typify_rt.map_key(TestGrammarForPatternPropertiesRulesKey::serialize(k)), (v : String) => @typify_rt.ser_string(v)))
+  o.field(
+    "rules",
+    @typify_rt.ser_map(
+      self.rules,
+      (k : TestGrammarForPatternPropertiesRulesKey) => {
+        @typify_rt.map_key(
+          TestGrammarForPatternPropertiesRulesKey::serialize(k),
+        )
+      },
+      (v : String) => @typify_rt.ser_string(v),
+    ),
+  )
 
   o.build()
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn TestGrammarForPatternProperties::from_json_str(text : StringView) -> TestGrammarForPatternProperties raise @typify_rt.DeError {
-  TestGrammarForPatternProperties::deserialize(@typify_rt.De::from_str(text))
+pub extend TestGrammarForPatternProperties with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn TestGrammarForPatternProperties::to_json_string(self : TestGrammarForPatternProperties) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn TestGrammarForPatternProperties::from_json(json : Json) -> TestGrammarForPatternProperties raise @typify_rt.DeError {
-  TestGrammarForPatternProperties::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for TestGrammarForPatternProperties with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("TestGrammarForPatternProperties::to_json: \{e}")
-  }
+pub impl ToJson for TestGrammarForPatternProperties with fn to_json(self) {
+  @typify_rt.json_of(self, "TestGrammarForPatternProperties")
 }
 
 ///|
 /// `TestGrammarForPatternPropertiesRulesKey`
-pub(all) struct TestGrammarForPatternPropertiesRulesKey(String) derive(Debug, Eq, Hash)
+pub(all) struct TestGrammarForPatternPropertiesRulesKey(String) derive (
+  Debug,
+  Eq,
+  Hash,
+)
 
 ///|
-let test_grammar_for_pattern_properties_rules_key_pattern : @typify_rt.Regex = @typify_rt.regex("^[a-zA-Z_]\\w*$")
+let test_grammar_for_pattern_properties_rules_key_pattern : @typify_rt.Regex = @typify_rt.regex(
+  "^[a-zA-Z_]\\w*$",
+)
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn TestGrammarForPatternPropertiesRulesKey::new(value : String) -> TestGrammarForPatternPropertiesRulesKey raise @typify_rt.ConversionError {
+pub fn TestGrammarForPatternPropertiesRulesKey::new(
+  value : String,
+) -> TestGrammarForPatternPropertiesRulesKey raise @typify_rt.ConversionError {
   if !test_grammar_for_pattern_properties_rules_key_pattern.is_match(value) {
-    raise @typify_rt.ConversionError("doesn't match pattern \"^[a-zA-Z_]\\w*$\"")
+    raise @typify_rt.ConversionError(
+      "doesn't match pattern \"^[a-zA-Z_]\\w*$\"",
+    )
   }
 
   TestGrammarForPatternPropertiesRulesKey(value)
 }
 
 ///|
-pub fn TestGrammarForPatternPropertiesRulesKey::deserialize(d : @typify_rt.De) -> TestGrammarForPatternPropertiesRulesKey raise @typify_rt.DeError {
+pub impl @typify_rt.Serde for TestGrammarForPatternPropertiesRulesKey with fn deserialize(
+  d,
+) {
   let value = @typify_rt.de_string(d)
   TestGrammarForPatternPropertiesRulesKey::new(value) catch {
     @typify_rt.ConversionError(msg) => raise @typify_rt.DeError(msg)
@@ -102,33 +124,24 @@ pub fn TestGrammarForPatternPropertiesRulesKey::deserialize(d : @typify_rt.De) -
 }
 
 ///|
-pub fn TestGrammarForPatternPropertiesRulesKey::serialize(self : TestGrammarForPatternPropertiesRulesKey) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for TestGrammarForPatternPropertiesRulesKey with fn serialize(
+  self,
+) {
   @typify_rt.ser_string(self.0)
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn TestGrammarForPatternPropertiesRulesKey::from_json_str(text : StringView) -> TestGrammarForPatternPropertiesRulesKey raise @typify_rt.DeError {
-  TestGrammarForPatternPropertiesRulesKey::deserialize(@typify_rt.De::from_str(text))
+pub extend TestGrammarForPatternPropertiesRulesKey with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn TestGrammarForPatternPropertiesRulesKey::to_json_string(self : TestGrammarForPatternPropertiesRulesKey) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
+pub impl ToJson for TestGrammarForPatternPropertiesRulesKey with fn to_json(
+  self,
+) {
+  @typify_rt.json_of(self, "TestGrammarForPatternPropertiesRulesKey")
 }
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn TestGrammarForPatternPropertiesRulesKey::from_json(json : Json) -> TestGrammarForPatternPropertiesRulesKey raise @typify_rt.DeError {
-  TestGrammarForPatternPropertiesRulesKey::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for TestGrammarForPatternPropertiesRulesKey with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("TestGrammarForPatternPropertiesRulesKey::to_json: \{e}")
-  }
-}
-

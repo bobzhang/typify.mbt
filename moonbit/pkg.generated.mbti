@@ -1,0 +1,19 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/moonbit"
+
+import {
+  "bobzhang/typify",
+}
+
+// Values
+pub fn generate(@typify.TypeSpace) -> String
+
+pub fn type_name_of(@typify.TypeSpace, @typify.TypeId) -> String
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

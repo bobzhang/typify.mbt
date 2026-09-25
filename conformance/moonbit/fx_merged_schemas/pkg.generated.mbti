@@ -1,0 +1,359 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/conformance/moonbit/fx_merged_schemas"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) struct BarProp {
+  bar : Json?
+} derive(Eq, @debug.Debug)
+pub fn BarProp::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn BarProp::from_json(Json) -> Self raise @runtime.DeError
+pub fn BarProp::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn BarProp::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn BarProp::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for BarProp
+pub impl ToJson for BarProp
+
+pub(all) struct ButNotThat {
+  this : Json?
+} derive(Eq, @debug.Debug)
+pub fn ButNotThat::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn ButNotThat::from_json(Json) -> Self raise @runtime.DeError
+pub fn ButNotThat::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn ButNotThat::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn ButNotThat::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for ButNotThat
+pub impl ToJson for ButNotThat
+
+pub(all) struct CommentedTypeMerged {
+  x : Json?
+  y : Json?
+} derive(Eq, @debug.Debug)
+pub fn CommentedTypeMerged::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn CommentedTypeMerged::from_json(Json) -> Self raise @runtime.DeError
+pub fn CommentedTypeMerged::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn CommentedTypeMerged::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn CommentedTypeMerged::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for CommentedTypeMerged
+pub impl ToJson for CommentedTypeMerged
+
+pub(all) enum HereAndThere {
+  Variant0(bar~ : String?, foo~ : String?)
+  Variant1(baz~ : String?, foo~ : String?)
+} derive(Eq, @debug.Debug)
+pub fn HereAndThere::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn HereAndThere::from_json(Json) -> Self raise @runtime.DeError
+pub fn HereAndThere::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn HereAndThere::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn HereAndThere::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for HereAndThere
+pub impl ToJson for HereAndThere
+
+pub(all) struct JsonResponseBase {
+  result : String?
+} derive(Eq, @debug.Debug)
+pub fn JsonResponseBase::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn JsonResponseBase::from_json(Json) -> Self raise @runtime.DeError
+pub fn JsonResponseBase::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn JsonResponseBase::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn JsonResponseBase::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for JsonResponseBase
+pub impl ToJson for JsonResponseBase
+
+pub(all) struct JsonSuccess {
+  msg : String
+  result : JsonSuccessResult
+} derive(Eq, @debug.Debug)
+pub fn JsonSuccess::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn JsonSuccess::from_json(Json) -> Self raise @runtime.DeError
+pub fn JsonSuccess::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn JsonSuccess::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn JsonSuccess::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for JsonSuccess
+pub impl ToJson for JsonSuccess
+
+pub(all) struct JsonSuccessBase {
+  msg : String
+  result : JsonSuccessBaseResult
+} derive(Eq, @debug.Debug)
+pub fn JsonSuccessBase::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn JsonSuccessBase::from_json(Json) -> Self raise @runtime.DeError
+pub fn JsonSuccessBase::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn JsonSuccessBase::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn JsonSuccessBase::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for JsonSuccessBase
+pub impl ToJson for JsonSuccessBase
+
+pub(all) enum JsonSuccessBaseResult {
+  Success
+} derive(Eq, Hash, @debug.Debug)
+pub fn JsonSuccessBaseResult::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn JsonSuccessBaseResult::from_json(Json) -> Self raise @runtime.DeError
+pub fn JsonSuccessBaseResult::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn JsonSuccessBaseResult::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn JsonSuccessBaseResult::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn JsonSuccessBaseResult::to_json_string(Self) -> String raise @runtime.SerError
+pub fn JsonSuccessBaseResult::to_string(Self) -> String
+pub fn JsonSuccessBaseResult::variant_index(Self) -> Int
+pub impl @runtime.Serde for JsonSuccessBaseResult
+pub impl ToJson for JsonSuccessBaseResult
+
+pub(all) enum JsonSuccessResult {
+  Success
+} derive(Eq, Hash, @debug.Debug)
+pub fn JsonSuccessResult::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn JsonSuccessResult::from_json(Json) -> Self raise @runtime.DeError
+pub fn JsonSuccessResult::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn JsonSuccessResult::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn JsonSuccessResult::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn JsonSuccessResult::to_json_string(Self) -> String raise @runtime.SerError
+pub fn JsonSuccessResult::to_string(Self) -> String
+pub fn JsonSuccessResult::variant_index(Self) -> Int
+pub impl @runtime.Serde for JsonSuccessResult
+pub impl ToJson for JsonSuccessResult
+
+pub(all) struct MergeEmpty {
+} derive(Eq, @debug.Debug)
+pub fn MergeEmpty::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn MergeEmpty::from_json(Json) -> Self raise @runtime.DeError
+pub fn MergeEmpty::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn MergeEmpty::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn MergeEmpty::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for MergeEmpty
+pub impl ToJson for MergeEmpty
+
+pub(all) struct MergeNumberBounds(Double) derive(Eq, @debug.Debug)
+pub fn MergeNumberBounds::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn MergeNumberBounds::from_json(Json) -> Self raise @runtime.DeError
+pub fn MergeNumberBounds::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn MergeNumberBounds::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn MergeNumberBounds::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for MergeNumberBounds
+pub impl ToJson for MergeNumberBounds
+
+pub(all) struct MergeStringBounds(String) derive(Eq, Hash, @debug.Debug)
+pub fn MergeStringBounds::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn MergeStringBounds::from_json(Json) -> Self raise @runtime.DeError
+pub fn MergeStringBounds::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn MergeStringBounds::new(String) -> Self raise @runtime.ConversionError
+pub fn MergeStringBounds::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn MergeStringBounds::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for MergeStringBounds
+pub impl ToJson for MergeStringBounds
+
+pub(all) struct NarrowNumber(UInt64) derive(Eq, @debug.Debug)
+pub fn NarrowNumber::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn NarrowNumber::from_json(Json) -> Self raise @runtime.DeError
+pub fn NarrowNumber::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn NarrowNumber::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn NarrowNumber::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for NarrowNumber
+pub impl ToJson for NarrowNumber
+
+pub(all) struct OrderDependentMerge {
+  bar : Json?
+  baz : Bool
+} derive(Eq, @debug.Debug)
+pub fn OrderDependentMerge::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OrderDependentMerge::from_json(Json) -> Self raise @runtime.DeError
+pub fn OrderDependentMerge::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OrderDependentMerge::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OrderDependentMerge::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for OrderDependentMerge
+pub impl ToJson for OrderDependentMerge
+
+pub(all) struct Pickingone {
+  suspended_by : PickingoneSuspendedBy
+} derive(Eq, @debug.Debug)
+pub fn Pickingone::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Pickingone::from_json(Json) -> Self raise @runtime.DeError
+pub fn Pickingone::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Pickingone::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Pickingone::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Pickingone
+pub impl ToJson for Pickingone
+
+pub(all) struct PickingoneInstallation {
+  suspended_by : PickingoneUser?
+} derive(Eq, @debug.Debug)
+pub fn PickingoneInstallation::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn PickingoneInstallation::from_json(Json) -> Self raise @runtime.DeError
+pub fn PickingoneInstallation::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn PickingoneInstallation::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn PickingoneInstallation::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for PickingoneInstallation
+pub impl ToJson for PickingoneInstallation
+
+pub(all) struct PickingoneSuspendedBy {
+  email : String?
+} derive(Eq, @debug.Debug)
+pub fn PickingoneSuspendedBy::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn PickingoneSuspendedBy::from_json(Json) -> Self raise @runtime.DeError
+pub fn PickingoneSuspendedBy::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn PickingoneSuspendedBy::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn PickingoneSuspendedBy::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for PickingoneSuspendedBy
+pub impl ToJson for PickingoneSuspendedBy
+
+pub(all) struct PickingoneUser {
+  email : String?
+} derive(Eq, @debug.Debug)
+pub fn PickingoneUser::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn PickingoneUser::from_json(Json) -> Self raise @runtime.DeError
+pub fn PickingoneUser::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn PickingoneUser::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn PickingoneUser::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for PickingoneUser
+pub impl ToJson for PickingoneUser
+
+pub(all) struct TrimFat {
+  a : Json
+} derive(Eq, @debug.Debug)
+pub fn TrimFat::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn TrimFat::from_json(Json) -> Self raise @runtime.DeError
+pub fn TrimFat::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn TrimFat::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn TrimFat::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for TrimFat
+pub impl ToJson for TrimFat
+
+pub(all) struct TriplePattern(String) derive(Eq, Hash, @debug.Debug)
+pub fn TriplePattern::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn TriplePattern::from_json(Json) -> Self raise @runtime.DeError
+pub fn TriplePattern::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn TriplePattern::new(String) -> Self raise @runtime.ConversionError
+pub fn TriplePattern::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn TriplePattern::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for TriplePattern
+pub impl ToJson for TriplePattern
+
+pub(all) struct UnchangedByMerge {
+  tag : UnchangedByMergeTag
+} derive(Eq, @debug.Debug)
+pub fn UnchangedByMerge::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn UnchangedByMerge::from_json(Json) -> Self raise @runtime.DeError
+pub fn UnchangedByMerge::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn UnchangedByMerge::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn UnchangedByMerge::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for UnchangedByMerge
+pub impl ToJson for UnchangedByMerge
+
+pub(all) enum UnchangedByMergeTag {
+  Something
+} derive(Eq, Hash, @debug.Debug)
+pub fn UnchangedByMergeTag::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn UnchangedByMergeTag::from_json(Json) -> Self raise @runtime.DeError
+pub fn UnchangedByMergeTag::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn UnchangedByMergeTag::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn UnchangedByMergeTag::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn UnchangedByMergeTag::to_json_string(Self) -> String raise @runtime.SerError
+pub fn UnchangedByMergeTag::to_string(Self) -> String
+pub fn UnchangedByMergeTag::variant_index(Self) -> Int
+pub impl @runtime.Serde for UnchangedByMergeTag
+pub impl ToJson for UnchangedByMergeTag
+
+pub(all) enum Unresolvable {
+} derive(Eq, Hash, @debug.Debug)
+pub fn Unresolvable::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Unresolvable::from_json(Json) -> Self raise @runtime.DeError
+pub fn Unresolvable::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Unresolvable::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Unresolvable::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Unresolvable
+pub impl ToJson for Unresolvable
+
+pub(all) enum Unsatisfiable1 {
+} derive(Eq, Hash, @debug.Debug)
+pub fn Unsatisfiable1::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Unsatisfiable1::from_json(Json) -> Self raise @runtime.DeError
+pub fn Unsatisfiable1::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Unsatisfiable1::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Unsatisfiable1::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Unsatisfiable1
+pub impl ToJson for Unsatisfiable1
+
+pub(all) enum Unsatisfiable2 {
+} derive(Eq, Hash, @debug.Debug)
+pub fn Unsatisfiable2::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Unsatisfiable2::from_json(Json) -> Self raise @runtime.DeError
+pub fn Unsatisfiable2::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Unsatisfiable2::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Unsatisfiable2::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Unsatisfiable2
+pub impl ToJson for Unsatisfiable2
+
+pub(all) enum Unsatisfiable3 {
+} derive(Eq, Hash, @debug.Debug)
+pub fn Unsatisfiable3::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Unsatisfiable3::from_json(Json) -> Self raise @runtime.DeError
+pub fn Unsatisfiable3::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Unsatisfiable3::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Unsatisfiable3::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Unsatisfiable3
+pub impl ToJson for Unsatisfiable3
+
+pub(all) struct Unsatisfiable3A {
+  action : Unsatisfiable3C?
+} derive(Eq, @debug.Debug)
+pub fn Unsatisfiable3A::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Unsatisfiable3A::from_json(Json) -> Self raise @runtime.DeError
+pub fn Unsatisfiable3A::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Unsatisfiable3A::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Unsatisfiable3A::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Unsatisfiable3A
+pub impl ToJson for Unsatisfiable3A
+
+pub(all) enum Unsatisfiable3B {
+  Bar
+} derive(Eq, Hash, @debug.Debug)
+pub fn Unsatisfiable3B::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Unsatisfiable3B::from_json(Json) -> Self raise @runtime.DeError
+pub fn Unsatisfiable3B::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Unsatisfiable3B::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn Unsatisfiable3B::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Unsatisfiable3B::to_json_string(Self) -> String raise @runtime.SerError
+pub fn Unsatisfiable3B::to_string(Self) -> String
+pub fn Unsatisfiable3B::variant_index(Self) -> Int
+pub impl @runtime.Serde for Unsatisfiable3B
+pub impl ToJson for Unsatisfiable3B
+
+pub(all) enum Unsatisfiable3C {
+  Foo
+} derive(Eq, Hash, @debug.Debug)
+pub fn Unsatisfiable3C::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Unsatisfiable3C::from_json(Json) -> Self raise @runtime.DeError
+pub fn Unsatisfiable3C::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Unsatisfiable3C::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn Unsatisfiable3C::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Unsatisfiable3C::to_json_string(Self) -> String raise @runtime.SerError
+pub fn Unsatisfiable3C::to_string(Self) -> String
+pub fn Unsatisfiable3C::variant_index(Self) -> Int
+pub impl @runtime.Serde for Unsatisfiable3C
+pub impl ToJson for Unsatisfiable3C
+
+pub(all) enum WeirdEnum {
+  Variant0(pattern~ : String)
+  Variant1(patterns~ : String)
+  Variant2(pattern_either~ : String)
+  Variant3(pattern_regex~ : String)
+} derive(Eq, @debug.Debug)
+pub fn WeirdEnum::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn WeirdEnum::from_json(Json) -> Self raise @runtime.DeError
+pub fn WeirdEnum::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn WeirdEnum::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn WeirdEnum::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for WeirdEnum
+pub impl ToJson for WeirdEnum
+
+// Type aliases
+
+// Traits

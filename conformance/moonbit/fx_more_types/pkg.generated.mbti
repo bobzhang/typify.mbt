@@ -1,0 +1,74 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/conformance/moonbit/fx_more_types"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) struct ObjectWithNoExtra {
+  foo : String
+} derive(Eq, @debug.Debug)
+pub fn ObjectWithNoExtra::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn ObjectWithNoExtra::from_json(Json) -> Self raise @runtime.DeError
+pub fn ObjectWithNoExtra::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn ObjectWithNoExtra::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn ObjectWithNoExtra::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for ObjectWithNoExtra
+pub impl ToJson for ObjectWithNoExtra
+
+pub(all) struct ObjectWithOkExtra {
+  foo : String
+} derive(Eq, @debug.Debug)
+pub fn ObjectWithOkExtra::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn ObjectWithOkExtra::from_json(Json) -> Self raise @runtime.DeError
+pub fn ObjectWithOkExtra::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn ObjectWithOkExtra::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn ObjectWithOkExtra::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for ObjectWithOkExtra
+pub impl ToJson for ObjectWithOkExtra
+
+pub(all) struct ObjectWithStringExtra {
+  foo : String
+  extra : Map[String, String]
+} derive(Eq, @debug.Debug)
+pub fn ObjectWithStringExtra::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn ObjectWithStringExtra::from_json(Json) -> Self raise @runtime.DeError
+pub fn ObjectWithStringExtra::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn ObjectWithStringExtra::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn ObjectWithStringExtra::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for ObjectWithStringExtra
+pub impl ToJson for ObjectWithStringExtra
+
+pub(all) struct ObjectWithWhichExtra {
+  foo : String
+  extra : Map[String, Json]
+} derive(Eq, @debug.Debug)
+pub fn ObjectWithWhichExtra::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn ObjectWithWhichExtra::from_json(Json) -> Self raise @runtime.DeError
+pub fn ObjectWithWhichExtra::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn ObjectWithWhichExtra::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn ObjectWithWhichExtra::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for ObjectWithWhichExtra
+pub impl ToJson for ObjectWithWhichExtra
+
+pub(all) struct ObjectWithYesExtra {
+  foo : String
+} derive(Eq, @debug.Debug)
+pub fn ObjectWithYesExtra::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn ObjectWithYesExtra::from_json(Json) -> Self raise @runtime.DeError
+pub fn ObjectWithYesExtra::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn ObjectWithYesExtra::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn ObjectWithYesExtra::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for ObjectWithYesExtra
+pub impl ToJson for ObjectWithYesExtra
+
+// Type aliases
+
+// Traits

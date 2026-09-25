@@ -1,0 +1,37 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/conformance/moonbit/fx_types_with_more_impls"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) struct PatternString(String) derive(Eq, Hash, @debug.Debug)
+pub fn PatternString::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn PatternString::from_json(Json) -> Self raise @runtime.DeError
+pub fn PatternString::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn PatternString::new(String) -> Self raise @runtime.ConversionError
+pub fn PatternString::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn PatternString::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for PatternString
+pub impl ToJson for PatternString
+
+pub(all) struct Sub10Primes(UInt) derive(Eq, @debug.Debug)
+pub fn Sub10Primes::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Sub10Primes::from_json(Json) -> Self raise @runtime.DeError
+pub fn Sub10Primes::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Sub10Primes::new(UInt) -> Self raise @runtime.ConversionError
+pub fn Sub10Primes::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Sub10Primes::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Sub10Primes
+pub impl ToJson for Sub10Primes
+
+// Type aliases
+
+// Traits

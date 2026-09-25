@@ -432,7 +432,7 @@ pub fn de_tuple_variant(
 ) -> SeqReader raise DeError {
   match d {
     Value(Array(xs), mode) =>
-      { items: xs, mode, pos: 0, expected: with_elements(expecting, n) }
+      { items: xs, mode, pos: 0, expected: with_elements(expecting, n), }
     Value(c, mode) => {
       check_valid(c)
       raise invalid_type_error(

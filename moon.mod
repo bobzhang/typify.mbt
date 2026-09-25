@@ -19,3 +19,7 @@ import {
 preferred_target = "wasm"
 
 warnings = "-implicit_impl_as_method"
+
+options(
+  exclude: [ "conformance", "scripts", "tests", "docs" ],
+)

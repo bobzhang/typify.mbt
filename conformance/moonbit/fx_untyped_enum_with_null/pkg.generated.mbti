@@ -1,0 +1,44 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/conformance/moonbit/fx_untyped_enum_with_null"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) struct TestType {
+  value : TestTypeValue?
+} derive(Eq, @debug.Debug)
+pub fn TestType::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn TestType::from_json(Json) -> Self raise @runtime.DeError
+pub fn TestType::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn TestType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn TestType::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for TestType
+pub impl ToJson for TestType
+
+pub(all) enum TestTypeValue {
+  Start
+  Middle
+  End
+} derive(Eq, Hash, @debug.Debug)
+pub fn TestTypeValue::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn TestTypeValue::from_json(Json) -> Self raise @runtime.DeError
+pub fn TestTypeValue::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn TestTypeValue::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn TestTypeValue::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn TestTypeValue::to_json_string(Self) -> String raise @runtime.SerError
+pub fn TestTypeValue::to_string(Self) -> String
+pub fn TestTypeValue::variant_index(Self) -> Int
+pub impl @runtime.Serde for TestTypeValue
+pub impl ToJson for TestTypeValue
+
+// Type aliases
+
+// Traits

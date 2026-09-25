@@ -7,9 +7,13 @@ import {
 }
 
 // Values
+pub fn format_f32(Float) -> String
+
 pub fn format_f64(Double) -> String
 
 pub fn parse(StringView) -> Value raise ParseError
+
+pub fn parse_content(StringView, lenient? : Bool) -> Content raise ParseError
 
 pub fn write_escaped_str(StringBuilder, StringView) -> Unit
 
@@ -20,6 +24,27 @@ pub(all) suberror ParseError {
 pub impl Show for ParseError
 
 // Types and methods
+pub(all) enum Content {
+  Null
+  Bool(Bool)
+  Number(Number)
+  String(String)
+  Array(Array[Content])
+  Object(Array[Entry])
+  Invalid(ParseError)
+  Float32(Float)
+} derive(Eq, @debug.Debug)
+pub fn Content::to_string(Self) -> String
+pub fn Content::to_value(Self) -> Value raise ParseError
+pub impl Show for Content
+
+pub(all) struct Entry {
+  key : String
+  key_escaped : Bool
+  key_error : ParseError?
+  value : Content
+} derive(Eq, @debug.Debug)
+
 pub(all) enum Number {
   PosInt(UInt64)
   NegInt(Int64)
@@ -68,6 +93,7 @@ pub fn Value::is_object(Self) -> Bool
 pub fn Value::is_string(Self) -> Bool
 pub fn Value::is_u64(Self) -> Bool
 pub fn Value::object(ArrayView[(String, Self)]) -> Self
+pub fn Value::to_content(Self) -> Content
 pub fn Value::to_json(Self) -> Json
 pub fn Value::to_string(Self) -> String
 pub fn Value::to_string_pretty(Self) -> String

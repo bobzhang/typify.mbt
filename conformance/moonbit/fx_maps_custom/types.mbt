@@ -8,119 +8,115 @@
 pub(all) struct Eh(String) derive(Debug, Eq, Hash)
 
 ///|
-pub fn Eh::deserialize(d : @typify_rt.De) -> Eh raise @typify_rt.DeError {
+pub impl @typify_rt.Serde for Eh with fn deserialize(d) {
   Eh(@typify_rt.de_string(d))
 }
 
 ///|
-pub fn Eh::serialize(self : Eh) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for Eh with fn serialize(self) {
   @typify_rt.ser_string(self.0)
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn Eh::from_json_str(text : StringView) -> Eh raise @typify_rt.DeError {
-  Eh::deserialize(@typify_rt.De::from_str(text))
+pub extend Eh with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn Eh::to_json_string(self : Eh) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn Eh::from_json(json : Json) -> Eh raise @typify_rt.DeError {
-  Eh::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for Eh with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("Eh::to_json: \{e}")
-  }
+pub impl ToJson for Eh with fn to_json(self) {
+  @typify_rt.json_of(self, "Eh")
 }
 
 ///|
 /// `MapWithDateKeys`
-pub(all) struct MapWithDateKeys(Map[@typify_rt.NaiveDate, Value]) derive(Debug, Eq)
+pub(all) struct MapWithDateKeys(Map[@typify_rt.NaiveDate, Value]) derive (
+  Debug,
+  Eq,
+)
 
 ///|
-pub fn MapWithDateKeys::deserialize(d : @typify_rt.De) -> MapWithDateKeys raise @typify_rt.DeError {
-  MapWithDateKeys(@typify_rt.de_map(d, @typify_rt.NaiveDate::deserialize, Value::deserialize))
+pub impl @typify_rt.Serde for MapWithDateKeys with fn deserialize(d) {
+  MapWithDateKeys(
+    @typify_rt.de_map(d, @typify_rt.NaiveDate::deserialize, Value::deserialize),
+  )
 }
 
 ///|
-pub fn MapWithDateKeys::serialize(self : MapWithDateKeys) -> @typify_rt.Content raise @typify_rt.SerError {
-  @typify_rt.ser_sorted_map(self.0, (a : @typify_rt.NaiveDate, b : @typify_rt.NaiveDate) => @typify_rt.compare_keys(a.to_string(), b.to_string()), (k : @typify_rt.NaiveDate) => @typify_rt.map_key(@typify_rt.NaiveDate::serialize(k)), Value::serialize)
+pub impl @typify_rt.Serde for MapWithDateKeys with fn serialize(self) {
+  @typify_rt.ser_sorted_map(
+    self.0,
+    (a : @typify_rt.NaiveDate, b : @typify_rt.NaiveDate) => {
+      @typify_rt.compare_keys(a.to_string(), b.to_string())
+    },
+    (k : @typify_rt.NaiveDate) => {
+      @typify_rt.map_key(@typify_rt.NaiveDate::serialize(k))
+    },
+    Value::serialize,
+  )
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn MapWithDateKeys::from_json_str(text : StringView) -> MapWithDateKeys raise @typify_rt.DeError {
-  MapWithDateKeys::deserialize(@typify_rt.De::from_str(text))
+pub extend MapWithDateKeys with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn MapWithDateKeys::to_json_string(self : MapWithDateKeys) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn MapWithDateKeys::from_json(json : Json) -> MapWithDateKeys raise @typify_rt.DeError {
-  MapWithDateKeys::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for MapWithDateKeys with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("MapWithDateKeys::to_json: \{e}")
-  }
+pub impl ToJson for MapWithDateKeys with fn to_json(self) {
+  @typify_rt.json_of(self, "MapWithDateKeys")
 }
 
 ///|
 /// `MapWithDateTimeKeys`
-pub(all) struct MapWithDateTimeKeys(Map[@typify_rt.DateTimeUtc, Value]) derive(Debug, Eq)
+pub(all) struct MapWithDateTimeKeys(Map[@typify_rt.DateTimeUtc, Value]) derive (
+  Debug,
+  Eq,
+)
 
 ///|
-pub fn MapWithDateTimeKeys::deserialize(d : @typify_rt.De) -> MapWithDateTimeKeys raise @typify_rt.DeError {
-  MapWithDateTimeKeys(@typify_rt.de_map(d, @typify_rt.DateTimeUtc::deserialize, Value::deserialize))
+pub impl @typify_rt.Serde for MapWithDateTimeKeys with fn deserialize(d) {
+  MapWithDateTimeKeys(
+    @typify_rt.de_map(
+      d,
+      @typify_rt.DateTimeUtc::deserialize,
+      Value::deserialize,
+    ),
+  )
 }
 
 ///|
-pub fn MapWithDateTimeKeys::serialize(self : MapWithDateTimeKeys) -> @typify_rt.Content raise @typify_rt.SerError {
-  @typify_rt.ser_sorted_map(self.0, (a : @typify_rt.DateTimeUtc, b : @typify_rt.DateTimeUtc) => @typify_rt.compare_keys(a.to_string(), b.to_string()), (k : @typify_rt.DateTimeUtc) => @typify_rt.map_key(@typify_rt.DateTimeUtc::serialize(k)), Value::serialize)
+pub impl @typify_rt.Serde for MapWithDateTimeKeys with fn serialize(self) {
+  @typify_rt.ser_sorted_map(
+    self.0,
+    (a : @typify_rt.DateTimeUtc, b : @typify_rt.DateTimeUtc) => {
+      @typify_rt.compare_keys(a.to_string(), b.to_string())
+    },
+    (k : @typify_rt.DateTimeUtc) => {
+      @typify_rt.map_key(@typify_rt.DateTimeUtc::serialize(k))
+    },
+    Value::serialize,
+  )
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn MapWithDateTimeKeys::from_json_str(text : StringView) -> MapWithDateTimeKeys raise @typify_rt.DeError {
-  MapWithDateTimeKeys::deserialize(@typify_rt.De::from_str(text))
+pub extend MapWithDateTimeKeys with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn MapWithDateTimeKeys::to_json_string(self : MapWithDateTimeKeys) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn MapWithDateTimeKeys::from_json(json : Json) -> MapWithDateTimeKeys raise @typify_rt.DeError {
-  MapWithDateTimeKeys::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for MapWithDateTimeKeys with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("MapWithDateTimeKeys::to_json: \{e}")
-  }
+pub impl ToJson for MapWithDateTimeKeys with fn to_json(self) {
+  @typify_rt.json_of(self, "MapWithDateTimeKeys")
 }
 
 ///|
@@ -128,39 +124,34 @@ pub impl ToJson for MapWithDateTimeKeys with to_json(self) {
 pub(all) struct MapWithKeys(Map[Eh, Value]) derive(Debug, Eq)
 
 ///|
-pub fn MapWithKeys::deserialize(d : @typify_rt.De) -> MapWithKeys raise @typify_rt.DeError {
+pub impl @typify_rt.Serde for MapWithKeys with fn deserialize(d) {
   MapWithKeys(@typify_rt.de_map(d, Eh::deserialize, Value::deserialize))
 }
 
 ///|
-pub fn MapWithKeys::serialize(self : MapWithKeys) -> @typify_rt.Content raise @typify_rt.SerError {
-  @typify_rt.ser_sorted_map(self.0, (a : Eh, b : Eh) => @typify_rt.compare_keys(a.0.to_string(), b.0.to_string()), (k : Eh) => @typify_rt.map_key(Eh::serialize(k)), Value::serialize)
+pub impl @typify_rt.Serde for MapWithKeys with fn serialize(self) {
+  @typify_rt.ser_sorted_map(
+    self.0,
+    (a : Eh, b : Eh) => {
+      @typify_rt.compare_keys(a.0.to_string(), b.0.to_string())
+    },
+    (k : Eh) => @typify_rt.map_key(Eh::serialize(k)),
+    Value::serialize,
+  )
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn MapWithKeys::from_json_str(text : StringView) -> MapWithKeys raise @typify_rt.DeError {
-  MapWithKeys::deserialize(@typify_rt.De::from_str(text))
+pub extend MapWithKeys with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn MapWithKeys::to_json_string(self : MapWithKeys) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn MapWithKeys::from_json(json : Json) -> MapWithKeys raise @typify_rt.DeError {
-  MapWithKeys::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for MapWithKeys with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("MapWithKeys::to_json: \{e}")
-  }
+pub impl ToJson for MapWithKeys with fn to_json(self) {
+  @typify_rt.json_of(self, "MapWithKeys")
 }
 
 ///|
@@ -168,39 +159,27 @@ pub impl ToJson for MapWithKeys with to_json(self) {
 pub(all) struct Value(String) derive(Debug, Eq, Hash)
 
 ///|
-pub fn Value::deserialize(d : @typify_rt.De) -> Value raise @typify_rt.DeError {
+pub impl @typify_rt.Serde for Value with fn deserialize(d) {
   Value(@typify_rt.de_string(d))
 }
 
 ///|
-pub fn Value::serialize(self : Value) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for Value with fn serialize(self) {
   @typify_rt.ser_string(self.0)
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn Value::from_json_str(text : StringView) -> Value raise @typify_rt.DeError {
-  Value::deserialize(@typify_rt.De::from_str(text))
+pub extend Value with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn Value::to_json_string(self : Value) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn Value::from_json(json : Json) -> Value raise @typify_rt.DeError {
-  Value::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for Value with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("Value::to_json: \{e}")
-  }
+pub impl ToJson for Value with fn to_json(self) {
+  @typify_rt.json_of(self, "Value")
 }
 
 ///|
@@ -208,38 +187,30 @@ pub impl ToJson for Value with to_json(self) {
 pub(all) struct DeadSimple(Map[String, Json]) derive(Debug, Eq)
 
 ///|
-pub fn DeadSimple::deserialize(d : @typify_rt.De) -> DeadSimple raise @typify_rt.DeError {
+pub impl @typify_rt.Serde for DeadSimple with fn deserialize(d) {
   DeadSimple(@typify_rt.de_map(d, @typify_rt.de_string, @typify_rt.de_json))
 }
 
 ///|
-pub fn DeadSimple::serialize(self : DeadSimple) -> @typify_rt.Content raise @typify_rt.SerError {
-  @typify_rt.ser_sorted_map(self.0, @typify_rt.compare_keys, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Json) => @typify_rt.ser_json(v))
+pub impl @typify_rt.Serde for DeadSimple with fn serialize(self) {
+  @typify_rt.ser_sorted_map(
+    self.0,
+    @typify_rt.compare_keys,
+    (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
+    (v : Json) => @typify_rt.ser_json(v),
+  )
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn DeadSimple::from_json_str(text : StringView) -> DeadSimple raise @typify_rt.DeError {
-  DeadSimple::deserialize(@typify_rt.De::from_str(text))
+pub extend DeadSimple with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn DeadSimple::to_json_string(self : DeadSimple) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
+pub impl ToJson for DeadSimple with fn to_json(self) {
+  @typify_rt.json_of(self, "DeadSimple")
 }
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn DeadSimple::from_json(json : Json) -> DeadSimple raise @typify_rt.DeError {
-  DeadSimple::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for DeadSimple with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("DeadSimple::to_json: \{e}")
-  }
-}
-

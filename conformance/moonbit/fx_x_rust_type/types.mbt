@@ -11,102 +11,89 @@ pub(all) struct AllTheThings {
 } derive(Debug, Eq)
 
 ///|
-pub fn AllTheThings::deserialize(d : @typify_rt.De) -> AllTheThings raise @typify_rt.DeError {
-  match @typify_rt.de_struct(d, "struct AllTheThings", ["option_marker", "path"], false) {
-    Entries(entries) => {
-      let mut f0 : Marker??? = None
-      let mut f1 : String?? = None
-      for e in entries {
-        match e.0 {
-          "option_marker" => {
-            if f0 is Some(_) {
-              raise @typify_rt.duplicate_field_error("option_marker")
-            }
-            f0 = Some(@typify_rt.de_option(e.1, (d : @typify_rt.De) => @typify_rt.de_option(d, Marker::deserialize)))
-          }
-          "path" => {
-            if f1 is Some(_) {
-              raise @typify_rt.duplicate_field_error("path")
-            }
-            f1 = Some(@typify_rt.de_option(e.1, @typify_rt.de_path))
-          }
-          _ => ()
-        }
+let all_the_things_fields : @typify_rt.Fields = @typify_rt.Fields::new([
+  "option_marker", "path",
+])
+
+///|
+pub impl @typify_rt.Serde for AllTheThings with fn deserialize(d) {
+  let mut f0 : Marker??? = None
+  let mut f1 : String?? = None
+  let r = @typify_rt.de_fields(
+    d,
+    "struct AllTheThings",
+    all_the_things_fields,
+    (j, v) => {
+      match j {
+        0 =>
+          f0 = Some(
+            @typify_rt.de_option(v, (d : @typify_rt.De) => {
+              @typify_rt.de_option(d, Marker::deserialize)
+            }),
+          )
+        1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_path))
+        _ => ()
       }
-      let v0 = match f0 {
-        Some(v) => v
-        None => @typify_rt.de_option(@typify_rt.De::Missing("option_marker"), (d : @typify_rt.De) => @typify_rt.de_option(d, Marker::deserialize))
-      }
-      let v1 = match f1 {
-        Some(v) => v
-        None => @typify_rt.de_option(@typify_rt.De::Missing("path"), @typify_rt.de_path)
-      }
-      AllTheThings::{ option_marker: v0, path: v1 }
-    }
-    Elements(s) => {
-      let v0 = match s.next_opt() {
-        Some(d) => @typify_rt.de_option(d, (d : @typify_rt.De) => @typify_rt.de_option(d, Marker::deserialize))
-        None => raise s.invalid_length()
-      }
-      let v1 = match s.next_opt() {
-        Some(d) => @typify_rt.de_option(d, @typify_rt.de_path)
-        None => raise s.invalid_length()
-      }
-      s.finish()
-      AllTheThings::{ option_marker: v0, path: v1 }
-    }
+    },
+  )
+  let v0 = if f0 is Some(v) {
+    v
+  } else {
+    @typify_rt.de_option(r.absent(0), (d : @typify_rt.De) => {
+      @typify_rt.de_option(d, Marker::deserialize)
+    })
   }
+  let v1 = if f1 is Some(v) {
+    v
+  } else {
+    @typify_rt.de_option(r.absent(1), @typify_rt.de_path)
+  }
+  AllTheThings::{ option_marker: v0, path: v1, }
 }
 
 ///|
-pub fn AllTheThings::serialize(self : AllTheThings) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for AllTheThings with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.option_marker is Some(_) {
-    o.field("option_marker", @typify_rt.ser_option(self.option_marker, (v : Marker?) => @typify_rt.ser_option(v, Marker::serialize)))
+    o.field(
+      "option_marker",
+      @typify_rt.ser_option(self.option_marker, (v : Marker?) => {
+        @typify_rt.ser_option(v, Marker::serialize)
+      }),
+    )
   }
   if self.path is Some(_) {
-    o.field("path", @typify_rt.ser_option(self.path, (v : String) => @typify_rt.ser_string(v)))
+    o.field(
+      "path",
+      @typify_rt.ser_option(self.path, (v : String) => @typify_rt.ser_string(v)),
+    )
   }
 
   o.build()
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn AllTheThings::from_json_str(text : StringView) -> AllTheThings raise @typify_rt.DeError {
-  AllTheThings::deserialize(@typify_rt.De::from_str(text))
+pub extend AllTheThings with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn AllTheThings::to_json_string(self : AllTheThings) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
-}
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn AllTheThings::from_json(json : Json) -> AllTheThings raise @typify_rt.DeError {
-  AllTheThings::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for AllTheThings with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("AllTheThings::to_json: \{e}")
-  }
+pub impl ToJson for AllTheThings with fn to_json(self) {
+  @typify_rt.json_of(self, "AllTheThings")
 }
 
 ///|
 /// `Marker`
-pub(all) enum Marker {
-} derive(Debug, Eq, Hash)
+pub(all) enum Marker {} derive(Debug, Eq, Hash)
 
 ///|
-pub fn Marker::deserialize(d : @typify_rt.De) -> Marker raise @typify_rt.DeError {
+pub impl @typify_rt.Serde for Marker with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "Marker", [])
   let v = match idx {
-
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -114,35 +101,22 @@ pub fn Marker::deserialize(d : @typify_rt.De) -> Marker raise @typify_rt.DeError
 }
 
 ///|
-pub fn Marker::serialize(self : Marker) -> @typify_rt.Content raise @typify_rt.SerError {
+pub impl @typify_rt.Serde for Marker with fn serialize(self) {
   match self {
     _ => abort("uninhabited")
   }
 }
 
 ///|
-/// Decode from JSON text, like `serde_json::from_str`.
-pub fn Marker::from_json_str(text : StringView) -> Marker raise @typify_rt.DeError {
-  Marker::deserialize(@typify_rt.De::from_str(text))
+pub extend Marker with @typify_rt.Serde::{
+  deserialize,
+  serialize,
+  from_json_str,
+  to_json_string,
+  from_json,
 }
 
 ///|
-/// Encode as compact JSON text, like `serde_json::to_string`.
-pub fn Marker::to_json_string(self : Marker) -> String raise @typify_rt.SerError {
-  @typify_rt.to_json_string(self.serialize())
+pub impl ToJson for Marker with fn to_json(self) {
+  @typify_rt.json_of(self, "Marker")
 }
-
-///|
-/// Decode from a builtin `Json` value (duplicate keys and number
-/// lexemes are not representable in `Json`; prefer `from_json_str`).
-pub fn Marker::from_json(json : Json) -> Marker raise @typify_rt.DeError {
-  Marker::deserialize(@typify_rt.De::from_json(json))
-}
-
-///|
-pub impl ToJson for Marker with to_json(self) {
-  @typify_rt.content_to_json(self.serialize()) catch {
-    e => abort("Marker::to_json: \{e}")
-  }
-}
-
