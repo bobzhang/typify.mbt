@@ -94,7 +94,7 @@ impl Gen {
         if depth > 3 || self.rng.chance(35) {
             return self.leaf();
         }
-        let mut s = match self.rng.below(12) {
+        let mut s = match self.rng.below(13) {
             0 | 1 | 2 => self.object(depth),
             3 => {
                 let mut o = json!({"type": "array", "items": self.schema(depth + 1)});
@@ -123,6 +123,7 @@ impl Gen {
             }
             9 => json!({"type": "object", "additionalProperties": self.schema(depth + 1)}),
             10 if self.rng.chance(10) => json!({"not": self.leaf()}),
+            10 | 11 => self.extra(depth),
             _ => self.leaf(),
         };
         if s.is_object() && self.rng.chance(10) {
@@ -132,6 +133,87 @@ impl Gen {
             s["title"] = json!(*self.rng.pick(DEF_NAMES));
         }
         s
+    }
+
+    /// Tagged unions, merges, defaults and other typify special cases.
+    fn extra(&mut self, depth: u32) -> Value {
+        match self.rng.below(12) {
+            0 | 1 => {
+                // Internally/adjacently tagged: objects with a const-like tag.
+                let tag = *self.rng.pick(&["type", "kind", "tag"]);
+                let n = 1 + self.rng.below(3);
+                let adjacent = self.rng.chance(40);
+                let variants: Vec<Value> = (0..n)
+                    .map(|i| {
+                        let mut props = Map::new();
+                        let tag_value = if self.rng.chance(85) {
+                            json!({"type": "string", "enum": [*self.rng.pick(STRINGS)]})
+                        } else {
+                            json!({"const": format!("v{i}")})
+                        };
+                        props.insert(tag.to_string(), tag_value);
+                        let mut req = vec![json!(tag)];
+                        if adjacent {
+                            props.insert("content".to_string(), self.schema(depth + 1));
+                            if self.rng.chance(70) {
+                                req.push(json!("content"));
+                            }
+                        } else {
+                            for _ in 0..self.rng.below(3) {
+                                let k = self.rng.pick(NAMES).to_string();
+                                props.insert(k.clone(), self.schema(depth + 1));
+                                if self.rng.chance(50) {
+                                    req.push(json!(k));
+                                }
+                            }
+                        }
+                        let mut o = json!({"type": "object", "properties": props, "required": req});
+                        if self.rng.chance(30) {
+                            o["additionalProperties"] = json!(false);
+                        }
+                        o
+                    })
+                    .collect();
+                json!({ *self.rng.pick(&["oneOf", "anyOf"]): variants })
+            }
+            2 => {
+                // Externally tagged: single required property objects.
+                let n = 1 + self.rng.below(3);
+                let variants: Vec<Value> = (0..n)
+                    .map(|_| {
+                        let k = self.rng.pick(STRINGS).to_string();
+                        json!({"type": "object", "properties": {k.clone(): self.schema(depth + 1)}, "required": [k], "additionalProperties": false})
+                    })
+                    .collect();
+                json!({"oneOf": variants})
+            }
+            3 => json!({"allOf": [self.object(depth + 1), self.object(depth + 1)]}),
+            4 => {
+                let mut l = self.leaf();
+                if l.is_object() {
+                    let d = match l.get("type").and_then(|t| t.as_str()) {
+                        Some("string") => json!(*self.rng.pick(STRINGS)),
+                        Some("integer") => json!(self.rng.below(300)),
+                        Some("number") => json!(1.5),
+                        Some("boolean") => json!(true),
+                        _ => json!(null),
+                    };
+                    l["default"] = d;
+                }
+                l
+            }
+            5 => json!({"type": "integer", "enum": [1, 2, 3]}),
+            6 => {
+                let mut o = self.object(depth + 1);
+                o["type"] = json!(["object", "null"]);
+                o
+            }
+            7 => json!({"type": "object", "patternProperties": {"^x-": self.leaf()}, "additionalProperties": false}),
+            8 => json!({"type": "object", "additionalProperties": self.leaf(), "propertyNames": {"pattern": "^[a-z]+$"}}),
+            9 => json!({"$ref": "#"}),
+            10 => json!({"type": "object", "x-rust-type": {"crate": "foo", "version": "1.0.0", "path": "foo::Bar"}}),
+            _ => json!({"type": "array", "items": self.schema(depth + 1), "default": []}),
+        }
     }
 
     fn object(&mut self, depth: u32) -> Value {
@@ -192,13 +274,14 @@ pub fn main(n: usize) {
         let exe = std::env::current_exe().unwrap();
         let tmp = out_dir.join("schema.tmp.json");
         std::fs::write(&tmp, &text).unwrap();
-        let out = std::process::Command::new(exe).arg("one").arg(&tmp).output().unwrap();
-        let entry = if out.status.success() {
+        let out = run_with_timeout(&exe, &tmp, std::time::Duration::from_secs(10));
+        let entry = if let Some(out) = out.filter(|o| o.status.success()) {
             let mut v: Value = serde_json::from_slice(&out.stdout).unwrap();
             v["schema"] = schema;
             v
         } else {
-            json!({"schema": schema, "crash": String::from_utf8_lossy(&out.stderr).lines().next().unwrap_or("").to_string()})
+            // A stack overflow, or a runaway expansion (killed after 10s).
+            json!({"schema": schema, "crash": "upstream crashed or timed out"})
         };
         lines.push(serde_json::to_string(&entry).unwrap());
     }
@@ -243,4 +326,38 @@ pub fn one(path: &str) {
         }
     };
     println!("{}", serde_json::to_string(&entry).unwrap());
+}
+
+/// Run `exe one <schema>` in a child process, killing it after `limit`.
+fn run_with_timeout(
+    exe: &std::path::Path,
+    schema: &std::path::Path,
+    limit: std::time::Duration,
+) -> Option<std::process::Output> {
+    let mut child = std::process::Command::new(exe)
+        .arg("one")
+        .arg(schema)
+        .stdout(std::process::Stdio::piped())
+        .stderr(std::process::Stdio::null())
+        .spawn()
+        .unwrap();
+    // Drain stdout concurrently so a large result cannot block the child.
+    let mut stdout = child.stdout.take().unwrap();
+    let reader = std::thread::spawn(move || {
+        let mut buf = Vec::new();
+        std::io::Read::read_to_end(&mut stdout, &mut buf).map(|_| buf)
+    });
+    let start = std::time::Instant::now();
+    loop {
+        if let Some(status) = child.try_wait().unwrap() {
+            let stdout = reader.join().unwrap().unwrap_or_default();
+            return Some(std::process::Output { status, stdout, stderr: vec![] });
+        }
+        if start.elapsed() > limit {
+            let _ = child.kill();
+            let _ = child.wait();
+            return None;
+        }
+        std::thread::sleep(std::time::Duration::from_millis(5));
+    }
 }

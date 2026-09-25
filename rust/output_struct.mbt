@@ -14,7 +14,7 @@ fn output_struct(
   output : OutputSpace,
   d : @typify.TypeEntryStruct,
   derive_set : Array[String],
-) -> Unit {
+) -> Unit raise @typify.TypifyError {
   let doc = make_doc(d.name, d.description)
   let options : Array[Tokens] = []
   if d.rename is Some(old) {
@@ -109,7 +109,9 @@ fn output_struct(
   match d.default {
     Some(value) => {
       guard output_value(space, e, value, Tokens::new()) is Some(v) else {
-        abort("called `Option::unwrap()` on a `None` value (struct default)")
+        raise @typify.TypifyError::Panic(
+          "called `Option::unwrap()` on a `None` value (struct default)",
+        )
       }
       output.add_item(
         Crate,
@@ -123,7 +125,7 @@ fn output_struct(
           Array::makei(prop_name.length(), i => {
             let v = match prop_default[i] {
               DefaultValue(t) | CustomValue(t) => t
-              NoDefault(_) => abort("unreachable")
+              NoDefault(_) => raise @typify.TypifyError::Panic("unreachable")
             }
             quote("#n: #v,", args={ "n": prop_name[i], "v": v })
           }),

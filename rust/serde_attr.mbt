@@ -17,7 +17,7 @@ fn generate_serde_attr(
   prop_type : @typify.TypeEntry,
   space : @typify.TypeSpace,
   output : OutputSpace,
-) -> (Tokens, DefaultFunction) {
+) -> (Tokens, DefaultFunction) raise @typify.TypifyError {
   let options : Array[Tokens] = []
   match naming {
     Rename(s) => options.push(quote("rename = #s", args={ "s": lit_str(s) }))
@@ -91,9 +91,12 @@ fn default_fn(
   space : @typify.TypeSpace,
   type_name : String,
   prop_name : String,
-) -> (String, Tokens?) {
+) -> (String, Tokens?) raise @typify.TypifyError {
   let builtin = match e.details {
-    Unit => abort("internal error: entered unreachable code")
+    Unit =>
+      raise @typify.TypifyError::Panic(
+        "internal error: entered unreachable code",
+      )
     Boolean => Some("defaults::default_bool::<true>")
     Integer(name) =>
       match (value.as_u64(), value.as_i64()) {
@@ -104,7 +107,7 @@ fn default_fn(
             Some("defaults::default_u64::<\{name}, \{v}>")
           }
         (None, Some(v)) => Some("defaults::default_i64::<\{name}, \{v}>")
-        _ => abort("explicit panic")
+        _ => raise @typify.TypifyError::Panic("explicit panic")
       }
     _ => None
   }
@@ -113,7 +116,7 @@ fn default_fn(
   }
   let n = type_ident(space, e, Some("super"))
   guard output_value(space, e, value, quote("super::")) is Some(v) else {
-    abort(
+    raise @typify.TypifyError::Panic(
       "The default value could not be rendered for this type\nvalue: \{value.to_string_pretty()}",
     )
   }

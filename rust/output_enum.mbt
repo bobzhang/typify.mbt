@@ -6,7 +6,7 @@ fn output_variant(
   space : @typify.TypeSpace,
   output : OutputSpace,
   type_name : String,
-) -> Tokens {
+) -> Tokens raise @typify.TypifyError {
   let ident_name = variant.ident_name.unwrap()
   let variant_name = ident(ident_name)
   let doc = match variant.description {
@@ -86,7 +86,7 @@ fn output_enum(
   output : OutputSpace,
   d : @typify.TypeEntryEnum,
   derive_set : Array[String],
-) -> Unit {
+) -> Unit raise @typify.TypifyError {
   let doc = make_doc(d.name, d.description)
   let derive_set = derive_set.copy()
   if d.variants.iter().all(v => v.details is Simple) {
@@ -120,7 +120,9 @@ fn output_enum(
   })
   if d.tag_type == Untagged &&
     d.variants.filter(v => v.details is Simple).length() > 1 {
-    abort("assertion failed: untagged enum with several simple variants")
+    raise @typify.TypifyError::Panic(
+      "assertion failed: untagged enum with several simple variants",
+    )
   }
   let simple_enum_impl = if d.bespoke_impls.contains(AllSimpleVariants) {
     let display_arms = concat(
@@ -169,7 +171,9 @@ fn output_enum(
   let default_impl = match d.default {
     Some(value) => {
       guard output_value(space, e, value, Tokens::new()) is Some(v) else {
-        abort("called `Option::unwrap()` on a `None` value (enum default)")
+        raise @typify.TypifyError::Panic(
+          "called `Option::unwrap()` on a `None` value (enum default)",
+        )
       }
       quote(
         "impl ::std::default::Default for #type_name { fn default() -> Self { #v } }",

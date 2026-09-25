@@ -7,7 +7,7 @@ fn output_newtype(
   output : OutputSpace,
   d : @typify.TypeEntryNewtype,
   derive_set : Array[String],
-) -> Unit {
+) -> Unit raise @typify.TypifyError {
   let doc = make_doc(d.name, d.description)
   let type_name = ident(d.name)
   let inner_type = entry(space, d.type_id)
@@ -65,7 +65,9 @@ fn output_newtype(
     DenyValue(enum_values) | EnumValue(enum_values) => {
       let is_enum = d.constraints is EnumValue(_)
       if is_enum && is_str {
-        abort("assertion failed: enumerated string newtype")
+        raise @typify.TypifyError::Panic(
+          "assertion failed: enumerated string newtype",
+        )
       }
       derive_set.remove("::serde::Deserialize") |> ignore
       let value_output = enum_values.map(v => {
@@ -245,7 +247,9 @@ fn output_newtype(
   let default_impl = match d.default {
     Some(value) => {
       guard output_value(space, e, value, Tokens::new()) is Some(v) else {
-        abort("called `Option::unwrap()` on a `None` value (newtype default)")
+        raise @typify.TypifyError::Panic(
+          "called `Option::unwrap()` on a `None` value (newtype default)",
+        )
       }
       quote(
         "impl ::std::default::Default for #type_name { fn default() -> Self { #v } }",

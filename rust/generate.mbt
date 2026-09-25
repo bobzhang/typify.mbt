@@ -10,7 +10,7 @@ fn output_entry(
   space : @typify.TypeSpace,
   e : @typify.TypeEntry,
   output : OutputSpace,
-) -> Unit {
+) -> Unit raise @typify.TypifyError {
   match e.details {
     Enum(d) => output_enum(space, e, output, d, base_derives)
     Struct(d) => output_struct(space, e, output, d, base_derives)
@@ -48,7 +48,7 @@ let conversion_error_item : String =
 
 ///|
 /// All Rust code for the type space, as tokens (upstream `to_stream`).
-pub fn to_stream(space : @typify.TypeSpace) -> Tokens {
+pub fn to_stream(space : @typify.TypeSpace) -> Tokens raise @typify.TypifyError {
   let output = OutputSpace::new()
   for pair in space.entries() {
     output_entry(space, pair.1, output)

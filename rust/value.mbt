@@ -8,7 +8,7 @@ pub fn output_value(
   e : @typify.TypeEntry,
   value : @serde_json.Value,
   scope : Tokens,
-) -> Tokens? {
+) -> Tokens? raise @typify.TypifyError {
   let v = match e.details {
     Enum({ name, tag_type, variants, .. }) =>
       match tag_type {
@@ -142,7 +142,10 @@ pub fn output_value(
     }
     String =>
       value.as_str().map(s => quote("#s.to_string()", args={ "s": lit_str(s) }))
-    Reference(_) => abort("internal error: entered unreachable code")
+    Reference(_) =>
+      raise @typify.TypifyError::Panic(
+        "internal error: entered unreachable code",
+      )
   }
   v
 }
@@ -153,7 +156,7 @@ fn all_values(
   inner : @typify.TypeEntry,
   arr : Array[@serde_json.Value],
   scope : Tokens,
-) -> Array[Tokens]? {
+) -> Array[Tokens]? raise @typify.TypifyError {
   let out = []
   for v in arr {
     guard output_value(space, inner, v, scope) is Some(t) else { return None }
@@ -190,7 +193,7 @@ fn value_for_external_enum(
   variants : Array[@typify.Variant],
   value : @serde_json.Value,
   scope : Tokens,
-) -> Tokens? {
+) -> Tokens? raise @typify.TypifyError {
   if value.as_str() is Some(simple_name) {
     guard find_variant(variants, simple_name) is Some(variant) else {
       return None
@@ -236,7 +239,7 @@ fn value_for_internal_enum(
   value : @serde_json.Value,
   tag : String,
   scope : Tokens,
-) -> Tokens? {
+) -> Tokens? raise @typify.TypifyError {
   guard value.as_object() is Some(map) else { return None }
   guard map.get(tag).bind(v => v.as_str()) is Some(ser_name) else {
     return None
@@ -255,7 +258,10 @@ fn value_for_internal_enum(
         })
       })
     }
-    Item(_) | Tuple(_) => abort("internal error: entered unreachable code")
+    Item(_) | Tuple(_) =>
+      raise @typify.TypifyError::Panic(
+        "internal error: entered unreachable code",
+      )
   }
 }
 
@@ -268,7 +274,7 @@ fn value_for_adjacent_enum(
   tag : String,
   content : String,
   scope : Tokens,
-) -> Tokens? {
+) -> Tokens? raise @typify.TypifyError {
   guard value.as_object() is Some(map) else { return None }
   let tag_value = map.get(tag).bind(v => v.as_str())
   let (tag_value, content_value) = match
@@ -303,7 +309,7 @@ fn value_for_untagged_enum(
   variants : Array[@typify.Variant],
   value : @serde_json.Value,
   scope : Tokens,
-) -> Tokens? {
+) -> Tokens? raise @typify.TypifyError {
   for variant in variants {
     let path = variant_path(scope, type_name, variant)
     let result = match variant.details {
@@ -337,7 +343,7 @@ fn value_for_tuple(
   value : @serde_json.Value,
   types : Array[@typify.TypeId],
   scope : Tokens,
-) -> Array[Tokens]? {
+) -> Array[Tokens]? raise @typify.TypifyError {
   guard value.as_array() is Some(arr) else { return None }
   if arr.length() != types.length() {
     return None
@@ -367,7 +373,7 @@ fn value_for_struct_props(
   value : @serde_json.Value,
   space : @typify.TypeSpace,
   scope : Tokens,
-) -> Array[Tokens]? {
+) -> Array[Tokens]? raise @typify.TypifyError {
   guard value.as_object() is Some(map) else { return None }
   let out = []
   for prop in properties {
@@ -402,7 +408,10 @@ fn value_for_struct_props(
     let type_entry = entry(space, prop.type_id)
     match type_entry.details {
       Struct(_) | Option(_) | Map(_, _) => ()
-      _ => abort("internal error: entered unreachable code")
+      _ =>
+        raise @typify.TypifyError::Panic(
+          "internal error: entered unreachable code",
+        )
     }
     if output_value(space, type_entry, extra_value, scope) is Some(flat_value) {
       out.push(quote("#n: #v", args={ "n": ident(prop.name), "v": flat_value }))
