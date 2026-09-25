@@ -1,0 +1,16 @@
+OK {}
+OK {"thing":{"extra_key":"null"}}
+OK {"thing":{"id":"😀","extra_key":"abc"}}
+OK {"thing":{}}
+OK {}
+OK {}
+OK {"thing":{"id":"true","extra_key":"UPPER"}}
+OK {"thing":{}}
+OK {}
+OK {"thing":{}}
+OK {}
+ERR invalid type: boolean `true`, expected struct Container
+OK {"thing":{"id":"x y","extra_key":"ok"}}
+OK {"thing":{}}
+OK {"thing":{"id":"a-b_c","extra_key":"ok"}}
+OK {"thing":{"id":"abc","extra_key":"UPPER"}}

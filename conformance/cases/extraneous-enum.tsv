@@ -1,0 +1,16 @@
+extraneous-enum	LetterBox	{"letter":"cee"}
+extraneous-enum	LetterBox	{"letter":"a"}
+extraneous-enum	LetterBox	{}
+extraneous-enum	LetterBox	{"letter":null}
+extraneous-enum	LetterBox	{"letter":"cee"}
+extraneous-enum	LetterBox	{"letter":"b"}
+extraneous-enum	LetterBox	{}
+extraneous-enum	LetterBox	null
+extraneous-enum	LetterBox	{}
+extraneous-enum	LetterBox	{}
+extraneous-enum	LetterBox	{}
+extraneous-enum	LetterBox	{"letter":"a","unexpected_field":"a"}
+extraneous-enum	LetterBox	{"letter":"cee"}
+extraneous-enum	LetterBox	{}
+extraneous-enum	LetterBox	{"letter":"a"}
+extraneous-enum	LetterBox	null

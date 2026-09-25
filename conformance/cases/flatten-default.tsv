@@ -1,0 +1,16 @@
+flatten-default	Container	{}
+flatten-default	Container	{"thing":{"extra_key":"null"}}
+flatten-default	Container	{"thing":{"extra_key":"abc","id":"😀"}}
+flatten-default	Container	[{}]
+flatten-default	Container	{}
+flatten-default	Container	{}
+flatten-default	Container	{"thing":{"extra_key":"UPPER","id":"true"}}
+flatten-default	Container	[{}]
+flatten-default	Container	{}
+flatten-default	Container	{"thing":{}}
+flatten-default	Container	{}
+flatten-default	Container	true
+flatten-default	Container	{"thing":{"extra_key":"ok","id":"x y"}}
+flatten-default	Container	{"thing":{}}
+flatten-default	Container	{"thing":{"extra_key":"ok","id":"a-b_c"}}
+flatten-default	Container	{"thing":{"extra_key":"UPPER","id":"abc"},"unexpected_field":"Hello, World"}

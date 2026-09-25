@@ -1,0 +1,96 @@
+maps	Eh	"é中文"
+maps	Eh	""
+maps	Eh	"UPPER"
+maps	Eh	["abc"]
+maps	Eh	"null"
+maps	Eh	"0x10"
+maps	Eh	"with \"quotes\""
+maps	Eh	[1e+300,null]
+maps	Eh	"abc"
+maps	Eh	"a"
+maps	Eh	"UPPER"
+maps	Eh	["abc"]
+maps	Eh	"UPPER"
+maps	Eh	"abc"
+maps	Eh	"with \"quotes\""
+maps	Eh	["x y"]
+maps	MapWithDateKeys	{}
+maps	MapWithDateKeys	{"extra_key":"true"}
+maps	MapWithDateKeys	{"extra_key":"a-b_c"}
+maps	MapWithDateKeys	{"wrapped":{}}
+maps	MapWithDateKeys	{"extra_key":"ok"}
+maps	MapWithDateKeys	{"extra_key":"true"}
+maps	MapWithDateKeys	{}
+maps	MapWithDateKeys	{"extra_key":""}
+maps	MapWithDateKeys	{}
+maps	MapWithDateKeys	{}
+maps	MapWithDateKeys	{}
+maps	MapWithDateKeys	{"extra_key":null}
+maps	MapWithDateKeys	{"extra_key":"ok"}
+maps	MapWithDateKeys	{"extra_key":"abc"}
+maps	MapWithDateKeys	{}
+maps	MapWithDateKeys	null
+maps	MapWithDateTimeKeys	{"extra_key":"😀"}
+maps	MapWithDateTimeKeys	{"extra_key":"null"}
+maps	MapWithDateTimeKeys	{"extra_key":"with \"quotes\""}
+maps	MapWithDateTimeKeys	null
+maps	MapWithDateTimeKeys	{}
+maps	MapWithDateTimeKeys	{"extra_key":"Hello, World"}
+maps	MapWithDateTimeKeys	{"extra_key":"with \"quotes\""}
+maps	MapWithDateTimeKeys	{"extra_key":"😀"}
+maps	MapWithDateTimeKeys	{"extra_key":"null"}
+maps	MapWithDateTimeKeys	{}
+maps	MapWithDateTimeKeys	{"extra_key":"0x10"}
+maps	MapWithDateTimeKeys	{"wrapped":{}}
+maps	MapWithDateTimeKeys	{"extra_key":"0x10"}
+maps	MapWithDateTimeKeys	{"extra_key":"with \"quotes\""}
+maps	MapWithDateTimeKeys	{}
+maps	MapWithDateTimeKeys	{}
+maps	MapWithKeys	{"extra_key":"a-b_c"}
+maps	MapWithKeys	{}
+maps	MapWithKeys	{"extra_key":"a"}
+maps	MapWithKeys	{"extra_key":["true"]}
+maps	MapWithKeys	{"extra_key":"with \"quotes\""}
+maps	MapWithKeys	{}
+maps	MapWithKeys	{}
+maps	MapWithKeys	{"extra_key":null}
+maps	MapWithKeys	{"extra_key":"abc"}
+maps	MapWithKeys	{"extra_key":"UPPER"}
+maps	MapWithKeys	{"extra_key":"UPPER"}
+maps	MapWithKeys	{"extra_key":-2.25}
+maps	MapWithKeys	{}
+maps	MapWithKeys	{"extra_key":"abc"}
+maps	MapWithKeys	{"extra_key":"UPPER"}
+maps	MapWithKeys	{"extra_key":null}
+maps	Value	"Hello, World"
+maps	Value	"with \"quotes\""
+maps	Value	"with \"quotes\""
+maps	Value	"é中文"
+maps	Value	"a-b_c"
+maps	Value	"true"
+maps	Value	"abc"
+maps	Value	null
+maps	Value	"a"
+maps	Value	"with \"quotes\""
+maps	Value	"😀"
+maps	Value	{"wrapped":"a"}
+maps	Value	"0x10"
+maps	Value	"abc"
+maps	Value	"with \"quotes\""
+maps	Value	{"wrapped":"x y"}
+maps	DeadSimple	{"key":"x y"}
+maps	DeadSimple	{}
+maps	DeadSimple	{}
+maps	DeadSimple	{"wrapped":{}}
+maps	DeadSimple	{}
+maps	DeadSimple	{}
+maps	DeadSimple	{}
+maps	DeadSimple	null
+maps	DeadSimple	{"key":-0.0}
+maps	DeadSimple	{}
+maps	DeadSimple	{"key":null}
+maps	DeadSimple	{"wrapped":{}}
+maps	DeadSimple	{"key":true}
+maps	DeadSimple	{"key":"abc"}
+maps	DeadSimple	{"key":false}
+maps	DeadSimple	{"key":"1234"}

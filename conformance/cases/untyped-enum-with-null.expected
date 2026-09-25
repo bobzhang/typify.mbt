@@ -1,0 +1,16 @@
+OK {"value":"start"}
+OK {"value":null}
+OK {"value":"end"}
+ERR unknown variant `true`, expected one of `start`, `middle`, `end`
+OK {"value":"end"}
+OK {"value":"start"}
+OK {"value":"start"}
+ERR missing field `value`
+OK {"value":null}
+OK {"value":"end"}
+OK {"value":null}
+ERR unknown variant `null`, expected one of `start`, `middle`, `end`
+OK {"value":"middle"}
+OK {"value":"start"}
+OK {"value":"end"}
+OK {"value":"start"}

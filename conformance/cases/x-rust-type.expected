@@ -1,0 +1,64 @@
+OK {}
+OK {"path":"Hello, World"}
+OK {}
+OK {}
+OK {"path":""}
+OK {}
+OK {"path":"null"}
+OK {"path":"true"}
+OK {"path":"é中文"}
+OK {}
+OK {"path":"a"}
+OK {}
+OK {}
+OK {"path":"null"}
+OK {}
+OK {}
+ERR unknown variant `null`, there are no variants
+ERR unknown variant `true`, there are no variants
+ERR expected value
+ERR expected value
+ERR expected value
+ERR expected value
+ERR unknown variant `k0`, there are no variants
+ERR expected value
+ERR expected value
+ERR expected value
+ERR expected value
+ERR expected value
+ERR expected value
+ERR expected value
+ERR unknown variant `k0`, there are no variants
+ERR expected value
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE
+NOTYPE

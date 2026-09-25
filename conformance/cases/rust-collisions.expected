@@ -1,0 +1,336 @@
+OK {"data":"Hello, World"}
+OK {"data":""}
+OK {"data":"a-b_c"}
+ERR invalid type: null, expected a string
+OK {"data":"ok"}
+OK {"data":"abc"}
+OK {"data":"a"}
+ERR invalid type: map, expected a string
+OK {"data":"abc"}
+OK {"data":"Hello, World"}
+OK {"data":"with \"quotes\""}
+ERR invalid type: boolean `true`, expected a string
+OK {"data":"a-b_c"}
+OK {"data":"a-b_c"}
+OK {"data":"😀"}
+ERR missing field `data`
+ERR invalid value: integer `9223372036854775808`, expected i64
+ERR invalid type: floating point `1.0`, expected i64
+OK {"value":9223372036854775807}
+ERR invalid type: null, expected i64
+OK {"value":2}
+OK {"value":-128}
+OK {"value":256}
+ERR invalid type: null, expected i64
+OK {"value":-129}
+ERR invalid value: integer `9223372036854775808`, expected i64
+ERR invalid type: floating point `1.0`, expected i64
+OK {"value":4294967295}
+OK {"value":2147483648}
+OK {"value":4294967295}
+OK {"value":2147483648}
+OK {"value":-32769}
+OK {}
+OK {}
+OK {}
+OK {}
+OK {}
+OK {}
+OK {}
+ERR invalid type: string "x y", expected struct DoubleOptionCollisionOption
+OK {}
+OK {}
+OK {}
+ERR invalid type: boolean `false`, expected struct DoubleOptionCollisionOption
+OK {}
+OK {}
+OK {}
+OK {}
+OK {"cleanup":false}
+OK {"cleanup":true}
+OK {"cleanup":false}
+ERR missing field `cleanup`
+OK {"cleanup":true}
+OK {"cleanup":true}
+OK {"cleanup":true}
+ERR invalid type: null, expected a boolean
+OK {"cleanup":true}
+OK {"cleanup":true}
+OK {"cleanup":true}
+ERR invalid type: null, expected a boolean
+OK {"cleanup":false}
+OK {"cleanup":false}
+OK {"cleanup":false}
+OK {"cleanup":false}
+OK {"normal":"a","extra_key":"with \"quotes\""}
+OK {"normal":"true"}
+OK {"normal":"😀"}
+ERR missing field `normal`
+OK {"normal":"😀"}
+OK {"normal":"é中文","extra_key":"😀"}
+OK {"normal":"true"}
+ERR invalid type: null, expected a string
+OK {"normal":"","extra_key":"abc"}
+OK {"normal":"😀"}
+OK {"normal":"x y"}
+ERR invalid type: boolean `true`, expected a string
+OK {"normal":"1234","extra_key":"true"}
+OK {"normal":"UPPER"}
+OK {"normal":"a"}
+ERR missing field `normal`
+OK ["Hello, World","true"]
+ERR data did not match any variant of untagged enum KeywordFieldsEnum
+OK ["","null"]
+ERR data did not match any variant of untagged enum KeywordFieldsEnum
+OK {"impl":"null","match":2147483648,"ref":false,"type":"UPPER"}
+ERR data did not match any variant of untagged enum KeywordFieldsEnum
+OK {"impl":"a-b_c","match":0,"ref":false,"type":"abc"}
+ERR data did not match any variant of untagged enum KeywordFieldsEnum
+OK ["Hello, World","é中文"]
+OK ["","é中文"]
+OK ["Hello, World",""]
+ERR data did not match any variant of untagged enum KeywordFieldsEnum
+OK {"impl":"a","match":65535,"ref":false,"type":"x y"}
+OK ["","null"]
+OK ["with \"quotes\"","UPPER"]
+ERR data did not match any variant of untagged enum KeywordFieldsEnum
+OK {"keyword_map":{"extra_key":"where"}}
+OK {"keyword_map":{}}
+OK {"keyword_map":{}}
+OK {"keyword_map":{"extra_key":"type"}}
+OK {"keyword_map":{}}
+OK {"keyword_map":{}}
+OK {"keyword_map":{"extra_key":"where"}}
+ERR missing field `keyword_map`
+OK {"keyword_map":{}}
+OK {"keyword_map":{"extra_key":"move"}}
+OK {"keyword_map":{}}
+ERR invalid type: string "null", expected a map
+OK {"keyword_map":{}}
+OK {"keyword_map":{"extra_key":"let"}}
+OK {"keyword_map":{"extra_key":"self"}}
+OK {"keyword_map":{"extra_key":"let"}}
+OK {"type":{"boxed_field":{"data":"Hello, World"},"optional_field":"é中文"},"types":[{"boxed_field":{"data":"Hello, World"}},{"boxed_field":{"data":"😀"}}]}
+OK {"option_type":{"type":""},"type":{"boxed_field":{"data":"with \"quotes\""}},"types":[{"boxed_field":{"data":"a-b_c"}}]}
+OK {"type":{"boxed_field":{"data":"1234"},"optional_field":"true"},"types":[{"boxed_field":{"data":"ok"},"optional_field":"UPPER"},{"boxed_field":{"data":"é中文"},"optional_field":"a"},{"boxed_field":{"data":"a"},"optional_field":"true"}]}
+OK {"type":{"boxed_field":{"data":"a-b_c"}},"types":[{"boxed_field":{"data":"a-b_c"}}]}
+OK {"option_type":{"type":"UPPER"},"type":{"boxed_field":{"data":"ok"}},"types":[{"boxed_field":{"data":"é中文"},"optional_field":"abc"}]}
+OK {"type":{"boxed_field":{"data":"é中文"}},"types":[{"boxed_field":{"data":"x y"}}]}
+OK {"type":{"boxed_field":{"data":""}},"types":[{"boxed_field":{"data":"é中文"}}]}
+OK {"type":{"boxed_field":{"data":"true"}},"types":[{"boxed_field":{"data":"1234"}},{"boxed_field":{"data":"1234"}}]}
+OK {"type":{"boxed_field":{"data":"abc"}},"types":[]}
+OK {"type":{"boxed_field":{"data":"true"},"optional_field":"a-b_c"},"types":[{"boxed_field":{"data":"with \"quotes\""},"optional_field":"0x10"},{"boxed_field":{"data":"é中文"},"optional_field":"true"}]}
+OK {"type":{"boxed_field":{"data":"with \"quotes\""}},"types":[{"boxed_field":{"data":"true"}},{"boxed_field":{"data":""}},{"boxed_field":{"data":"abc"}}]}
+OK {"option_type":{},"type":{"boxed_field":{"data":"with \"quotes\""}},"types":[{"boxed_field":{"data":"é中文"}},{"boxed_field":{"data":""}},{"boxed_field":{"data":"abc"}}]}
+OK {"type":{"boxed_field":{"data":""}},"types":[{"boxed_field":{"data":"abc"}}]}
+OK {"option_type":{"type":"UPPER"},"type":{"boxed_field":{"data":"Hello, World"}},"types":[{"boxed_field":{"data":"x y"}},{"boxed_field":{"data":"UPPER"}},{"boxed_field":{"data":"a-b_c"},"optional_field":"UPPER"}]}
+OK {"type":{"boxed_field":{"data":"x y"},"optional_field":"abc"},"types":[{"boxed_field":{"data":"😀"}},{"boxed_field":{"data":"UPPER"}},{"boxed_field":{"data":"1234"}}]}
+OK {"type":{"boxed_field":{"data":"abc"},"optional_field":"é中文"},"types":[{"boxed_field":{"data":"Hello, World"}},{"boxed_field":{"data":"1234"},"optional_field":"😀"}]}
+OK {"maybe":"x y"}
+OK {"maybe":"UPPER"}
+OK {"maybe":"with \"quotes\""}
+ERR invalid type: sequence, expected a string
+OK {"maybe":"Hello, World"}
+OK {"maybe":"😀"}
+OK {"maybe":"a"}
+ERR missing field `maybe`
+OK {"maybe":"a"}
+OK {"maybe":"0x10"}
+OK {"maybe":"UPPER"}
+ERR invalid type: null, expected a string
+OK {"maybe":"0x10"}
+OK {"maybe":"😀"}
+OK {"maybe":"x y"}
+ERR missing field `maybe`
+OK {"pointer":"null"}
+OK {"pointer":"ok"}
+OK {"pointer":"Hello, World"}
+OK {"pointer":"x y"}
+OK {"pointer":"true"}
+OK {"pointer":"a-b_c"}
+OK {"pointer":"a"}
+OK {"pointer":"1234"}
+OK {"pointer":"abc"}
+OK {"pointer":"é中文"}
+OK {"pointer":"a-b_c"}
+OK {"pointer":"ok"}
+OK {"pointer":"a-b_c"}
+OK {"pointer":"true"}
+OK {"pointer":"é中文"}
+OK {"pointer":"é中文"}
+OK {"abstract":"ok","as":"é中文","async":"é中文","await":"with \"quotes\"","become":"null","box":"UPPER","break":"x y","const":"é中文","continue":"😀","crate":"0x10","do":"null","dyn":"x y","else":"UPPER","enum":"x y","extern":"é中文","false":"a","final":"abc","fn":"ok","for":"ok","gen":"true","if":"ok","impl":"UPPER","in":"UPPER","let":"Hello, World","loop":"a-b_c","macro":"é中文","match":"x y","mod":"😀","move":"null","mut":"😀","override":"","priv":"0x10","pub":"null","ref":"ok","return":"0x10","self":"x y","static":"a","struct":"","super":"a","trait":"abc","true":"😀","try":"Hello, World","type":"abc","typeof":"true","unsafe":"1234","unsized":"ok","use":"true","virtual":"with \"quotes\"","where":"abc","while":"UPPER","yield":"UPPER"}
+OK {"abstract":"true","as":"abc","async":"Hello, World","await":"","become":"a-b_c","box":"UPPER","break":"a-b_c","const":"with \"quotes\"","continue":"","crate":"null","do":"Hello, World","dyn":"😀","else":"é中文","enum":"1234","extern":"x y","false":"true","final":"x y","fn":"null","for":"0x10","gen":"true","if":"with \"quotes\"","impl":"1234","in":"null","let":"with \"quotes\"","loop":"ok","macro":"0x10","match":"😀","mod":"with \"quotes\"","move":"null","mut":"ok","override":"😀","priv":"abc","pub":"a","ref":"1234","return":"true","self":"😀","static":"true","struct":"x y","super":"with \"quotes\"","trait":"abc","true":"1234","try":"é中文","type":"","typeof":"Hello, World","unsafe":"é中文","unsized":"","use":"ok","virtual":"x y","where":"x y","while":"Hello, World","yield":"0x10"}
+OK {"abstract":"0x10","as":"0x10","async":"Hello, World","await":"é中文","become":"ok","box":"ok","break":"with \"quotes\"","const":"with \"quotes\"","continue":"x y","crate":"ok","do":"😀","dyn":"with \"quotes\"","else":"null","enum":"😀","extern":"true","false":"a","final":"a-b_c","fn":"UPPER","for":"0x10","gen":"","if":"null","impl":"x y","in":"true","let":"é中文","loop":"ok","macro":"Hello, World","match":"0x10","mod":"Hello, World","move":"0x10","mut":"ok","override":"0x10","priv":"a","pub":"UPPER","ref":"a-b_c","return":"","self":"😀","static":"abc","struct":"null","super":"0x10","trait":"with \"quotes\"","true":"ok","try":"a-b_c","type":"ok","typeof":"0x10","unsafe":"1234","unsized":"Hello, World","use":"0x10","virtual":"","where":"é中文","while":"a-b_c","yield":"null"}
+OK {"abstract":"ok","as":"0x10","async":"true","await":"x y","become":"x y","box":"a-b_c","break":"x y","const":"true","continue":"with \"quotes\"","crate":"abc","do":"abc","dyn":"true","else":"é中文","enum":"with \"quotes\"","extern":"","false":"ok","final":"1234","fn":"with \"quotes\"","for":"","gen":"","if":"null","impl":"Hello, World","in":"é中文","let":"UPPER","loop":"😀","macro":"","match":"é中文","mod":"é中文","move":"a","mut":"é中文","override":"UPPER","priv":"ok","pub":"abc","ref":"é中文","return":"ok","self":"UPPER","static":"a","struct":"é中文","super":"UPPER","trait":"abc","true":"with \"quotes\"","try":"0x10","type":"null","typeof":"é中文","unsafe":"😀","unsized":"😀","use":"UPPER","virtual":"a","where":"null","while":"ok","yield":"0x10"}
+OK {"abstract":"😀","as":"0x10","async":"é中文","await":"UPPER","become":"ok","box":"abc","break":"é中文","const":"😀","continue":"x y","crate":"1234","do":"","dyn":"UPPER","else":"","enum":"a-b_c","extern":"abc","false":"abc","final":"ok","fn":"0x10","for":"a","gen":"null","if":"abc","impl":"abc","in":"a-b_c","let":"null","loop":"with \"quotes\"","macro":"Hello, World","match":"1234","mod":"abc","move":"true","mut":"","override":"UPPER","priv":"ok","pub":"ok","ref":"UPPER","return":"ok","self":"x y","static":"😀","struct":"x y","super":"é中文","trait":"null","true":"x y","try":"0x10","type":"0x10","typeof":"ok","unsafe":"ok","unsized":"","use":"a","virtual":"é中文","where":"true","while":"true","yield":"with \"quotes\""}
+OK {"abstract":"0x10","as":"a","async":"null","await":"1234","become":"Hello, World","box":"1234","break":"😀","const":"0x10","continue":"x y","crate":"😀","do":"ok","dyn":"😀","else":"é中文","enum":"a","extern":"a","false":"1234","final":"null","fn":"a","for":"","gen":"x y","if":"x y","impl":"UPPER","in":"ok","let":"ok","loop":"","macro":"true","match":"0x10","mod":"x y","move":"true","mut":"ok","override":"Hello, World","priv":"é中文","pub":"x y","ref":"true","return":"Hello, World","self":"Hello, World","static":"true","struct":"😀","super":"a-b_c","trait":"true","true":"é中文","try":"a-b_c","type":"true","typeof":"😀","unsafe":"1234","unsized":"UPPER","use":"UPPER","virtual":"😀","where":"UPPER","while":"a","yield":"ok"}
+OK {"abstract":"ok","as":"Hello, World","async":"abc","await":"with \"quotes\"","become":"0x10","box":"Hello, World","break":"null","const":"é中文","continue":"ok","crate":"null","do":"true","dyn":"1234","else":"a","enum":"0x10","extern":"abc","false":"ok","final":"a-b_c","fn":"","for":"null","gen":"true","if":"x y","impl":"with \"quotes\"","in":"é中文","let":"a-b_c","loop":"😀","macro":"0x10","match":"a","mod":"Hello, World","move":"null","mut":"0x10","override":"with \"quotes\"","priv":"UPPER","pub":"a-b_c","ref":"with \"quotes\"","return":"ok","self":"1234","static":"ok","struct":"","super":"😀","trait":"null","true":"ok","try":"abc","type":"with \"quotes\"","typeof":"0x10","unsafe":"true","unsized":"abc","use":"a-b_c","virtual":"null","where":"null","while":"é中文","yield":"😀"}
+OK {"abstract":"","as":"UPPER","async":"Hello, World","await":"","become":"UPPER","box":"a","break":"abc","const":"x y","continue":"ok","crate":"null","do":"1234","dyn":"ok","else":"ok","enum":"UPPER","extern":"😀","false":"1234","final":"null","fn":"Hello, World","for":"ok","gen":"x y","if":"a","impl":"1234","in":"UPPER","let":"ok","loop":"😀","macro":"abc","match":"a-b_c","mod":"é中文","move":"x y","mut":"with \"quotes\"","override":"x y","priv":"a","pub":"abc","ref":"true","return":"ok","self":"😀","static":"UPPER","struct":"Hello, World","super":"0x10","trait":"x y","true":"null","try":"","type":"0x10","typeof":"ok","unsafe":"0x10","unsized":"null","use":"é中文","virtual":"x y","where":"abc","while":"abc","yield":"UPPER"}
+OK {"abstract":"x y","as":"0x10","async":"1234","await":"true","become":"1234","box":"Hello, World","break":"0x10","const":"1234","continue":"x y","crate":"abc","do":"ok","dyn":"Hello, World","else":"abc","enum":"x y","extern":"0x10","false":"😀","final":"null","fn":"true","for":"true","gen":"null","if":"0x10","impl":"a","in":"é中文","let":"with \"quotes\"","loop":"ok","macro":"abc","match":"","mod":"abc","move":"a","mut":"😀","override":"x y","priv":"Hello, World","pub":"","ref":"0x10","return":"null","self":"","static":"0x10","struct":"with \"quotes\"","super":"0x10","trait":"é中文","true":"null","try":"1234","type":"1234","typeof":"with \"quotes\"","unsafe":"ok","unsized":"","use":"null","virtual":"x y","where":"😀","while":"a-b_c","yield":"é中文"}
+OK {"abstract":"","as":"a-b_c","async":"null","await":"a-b_c","become":"with \"quotes\"","box":"abc","break":"Hello, World","const":"a-b_c","continue":"UPPER","crate":"","do":"0x10","dyn":"true","else":"true","enum":"null","extern":"a","false":"","final":"with \"quotes\"","fn":"abc","for":"UPPER","gen":"1234","if":"UPPER","impl":"abc","in":"1234","let":"é中文","loop":"é中文","macro":"UPPER","match":"x y","mod":"a","move":"null","mut":"abc","override":"x y","priv":"UPPER","pub":"1234","ref":"null","return":"1234","self":"0x10","static":"a","struct":"Hello, World","super":"abc","trait":"UPPER","true":"ok","try":"true","type":"x y","typeof":"a","unsafe":"ok","unsized":"ok","use":"true","virtual":"abc","where":"with \"quotes\"","while":"1234","yield":"0x10"}
+OK {"abstract":"with \"quotes\"","as":"abc","async":"0x10","await":"UPPER","become":"Hello, World","box":"é中文","break":"0x10","const":"","continue":"0x10","crate":"abc","do":"x y","dyn":"😀","else":"abc","enum":"a-b_c","extern":"😀","false":"","final":"a-b_c","fn":"x y","for":"abc","gen":"a","if":"null","impl":"","in":"ok","let":"a","loop":"a","macro":"é中文","match":"null","mod":"abc","move":"a","mut":"ok","override":"😀","priv":"x y","pub":"a-b_c","ref":"","return":"a","self":"a","static":"é中文","struct":"0x10","super":"UPPER","trait":"0x10","true":"a-b_c","try":"ok","type":"ok","typeof":"ok","unsafe":"UPPER","unsized":"ok","use":"0x10","virtual":"ok","where":"x y","while":"0x10","yield":"a"}
+ERR invalid type: null, expected a string
+OK {"abstract":"a","as":"with \"quotes\"","async":"x y","await":"a","become":"é中文","box":"with \"quotes\"","break":"1234","const":"1234","continue":"0x10","crate":"with \"quotes\"","do":"UPPER","dyn":"a-b_c","else":"UPPER","enum":"😀","extern":"0x10","false":"a-b_c","final":"null","fn":"true","for":"x y","gen":"","if":"UPPER","impl":"x y","in":"","let":"é中文","loop":"x y","macro":"null","match":"😀","mod":"true","move":"a","mut":"true","override":"true","priv":"a-b_c","pub":"true","ref":"abc","return":"x y","self":"é中文","static":"1234","struct":"ok","super":"😀","trait":"x y","true":"with \"quotes\"","try":"0x10","type":"Hello, World","typeof":"0x10","unsafe":"a-b_c","unsized":"a","use":"1234","virtual":"x y","where":"😀","while":"Hello, World","yield":"with \"quotes\""}
+OK {"abstract":"😀","as":"Hello, World","async":"1234","await":"x y","become":"x y","box":"é中文","break":"1234","const":"😀","continue":"null","crate":"","do":"0x10","dyn":"Hello, World","else":"0x10","enum":"a-b_c","extern":"a-b_c","false":"x y","final":"UPPER","fn":"true","for":"a-b_c","gen":"UPPER","if":"1234","impl":"ok","in":"","let":"abc","loop":"ok","macro":"true","match":"Hello, World","mod":"null","move":"null","mut":"1234","override":"😀","priv":"abc","pub":"x y","ref":"true","return":"é中文","self":"null","static":"a-b_c","struct":"abc","super":"x y","trait":"0x10","true":"😀","try":"true","type":"true","typeof":"true","unsafe":"null","unsized":"1234","use":"ok","virtual":"","where":"é中文","while":"é中文","yield":"true"}
+OK {"abstract":"ok","as":"a-b_c","async":"with \"quotes\"","await":"Hello, World","become":"1234","box":"x y","break":"x y","const":"Hello, World","continue":"with \"quotes\"","crate":"","do":"with \"quotes\"","dyn":"a-b_c","else":"UPPER","enum":"a-b_c","extern":"with \"quotes\"","false":"ok","final":"null","fn":"UPPER","for":"😀","gen":"with \"quotes\"","if":"😀","impl":"a-b_c","in":"","let":"1234","loop":"true","macro":"0x10","match":"null","mod":"ok","move":"with \"quotes\"","mut":"é中文","override":"ok","priv":"Hello, World","pub":"a-b_c","ref":"ok","return":"with \"quotes\"","self":"😀","static":"a-b_c","struct":"1234","super":"ok","trait":"😀","true":"0x10","try":"ok","type":"é中文","typeof":"é中文","unsafe":"x y","unsized":"a","use":"1234","virtual":"0x10","where":"x y","while":"😀","yield":"a"}
+ERR invalid type: null, expected a string
+OK {"message":"ok"}
+OK {"message":"true"}
+OK {"message":"Hello, World"}
+OK {"message":"😀"}
+OK {"message":"a-b_c"}
+OK {"message":"x y"}
+OK {"message":"a-b_c"}
+OK {"message":"abc"}
+OK {"message":"😀"}
+OK {"message":"0x10"}
+OK {"message":"UPPER"}
+ERR missing field `message`
+OK {"message":"null"}
+OK {"message":"1234"}
+OK {"message":"true"}
+OK {"message":"é中文"}
+OK {"text":"UPPER"}
+OK {"text":"1234"}
+OK {"text":""}
+ERR invalid type: sequence, expected a string
+OK {"text":"UPPER"}
+OK {"text":"true"}
+OK {"text":"with \"quotes\""}
+OK {"text":"0x10"}
+OK {"text":"0x10"}
+OK {"text":"null"}
+OK {"text":"true"}
+OK {"text":"with \"quotes\""}
+OK {"text":"1234"}
+OK {"text":"UPPER"}
+OK {"text":"a"}
+ERR missing field `text`
+OK "two"
+OK "three"
+OK "one"
+ERR unknown variant `wrapped`, expected one of `one`, `two`, `three`
+OK "three"
+OK "two"
+OK "two"
+ERR unknown variant `wrapped`, expected one of `one`, `two`, `three`
+OK "one"
+OK "two"
+OK "one"
+ERR expected value
+OK "two"
+OK "two"
+OK "three"
+ERR unknown variant `wrapped`, expected one of `one`, `two`, `three`
+OK "null"
+OK "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+OK "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+ERR invalid type: map, expected a string
+ERR longer than 100 characters
+OK "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+OK "y"
+ERR invalid type: null, expected a string
+OK "Hello, World"
+ERR shorter than 1 characters
+OK "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+ERR invalid type: sequence, expected a string
+OK "UPPER"
+OK "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+OK "abc"
+ERR invalid type: map, expected a string
+OK {"data":"true"}
+OK {"data":"0x10"}
+OK {"data":"UPPER"}
+OK {"data":"Hello, World"}
+OK {"data":"Hello, World"}
+OK {"data":"true"}
+OK {"data":"null"}
+ERR missing field `data`
+OK {"data":"with \"quotes\""}
+OK {"data":"1234"}
+OK {"data":"a-b_c"}
+ERR invalid type: null, expected a string
+OK {"data":"a-b_c"}
+OK {"data":"Hello, World"}
+OK {"data":"1234"}
+ERR missing field `data`
+OK {"boxed_field":{"data":"null"}}
+OK {"boxed_field":{"data":"0x10"}}
+OK {"boxed_field":{"data":"😀"}}
+ERR missing field `boxed_field`
+OK {"boxed_field":{"data":"a"}}
+OK {"boxed_field":{"data":"x y"},"optional_field":"true"}
+OK {"boxed_field":{"data":"a-b_c"}}
+ERR missing field `data`
+OK {"boxed_field":{"data":"0x10"},"optional_field":"abc"}
+OK {"boxed_field":{"data":"x y"},"optional_field":"true"}
+OK {"boxed_field":{"data":"ok"}}
+ERR invalid type: sequence, expected a string
+OK {"boxed_field":{"data":"null"},"optional_field":"Hello, World"}
+OK {"boxed_field":{"data":"x y"},"optional_field":""}
+OK {"boxed_field":{"data":"😀"}}
+OK {"boxed_field":{"data":"x y"}}
+OK {"items":["","😀","Hello, World"]}
+OK {"items":[]}
+OK {"items":["Hello, World","x y","ok"]}
+ERR invalid type: null, expected a sequence
+OK {"items":["ok","abc","Hello, World"]}
+OK {"items":[]}
+OK {"items":[]}
+ERR invalid type: sequence, expected a string
+OK {"items":["a-b_c","with \"quotes\"","x y"]}
+OK {"items":[]}
+OK {"items":[""]}
+OK {"items":["a-b_c","😀"]}
+OK {"items":["","a-b_c","x y"]}
+OK {"items":[]}
+OK {"items":["ok","a-b_c","x y"]}
+ERR missing field `items`
+OK "{self}"
+OK "{self}"
+OK "quote\"unquote"
+ERR unknown variant `wrapped`, expected one of `{abc}def`, `{http://example.com/Foo}Thing`, `{self}`, `quote"unquote`, `xyz`
+OK "{http://example.com/Foo}Thing"
+OK "{http://example.com/Foo}Thing"
+OK "quote\"unquote"
+ERR expected value
+OK "{http://example.com/Foo}Thing"
+OK "xyz"
+OK "{http://example.com/Foo}Thing"
+ERR unknown variant `UPPER`, expected one of `{abc}def`, `{http://example.com/Foo}Thing`, `{self}`, `quote"unquote`, `xyz`
+OK "quote\"unquote"
+OK "xyz"
+OK "{self}"
+ERR unknown variant `wrapped`, expected one of `{abc}def`, `{http://example.com/Foo}Thing`, `{self}`, `quote"unquote`, `xyz`
+OK {"boxed":{"value":"a"},"convert":{"value":"😀"},"fmt":{"value":"ok"},"option":{"value":"UPPER"},"result":{"value":"Hello, World"},"str":{"value":"with \"quotes\""},"string":{"value":"😀"}}
+OK {"boxed":{"value":"1234"},"convert":{"value":"a-b_c"},"fmt":{"value":"true"},"option":{"value":""},"result":{"value":"1234"},"str":{"value":"0x10"},"string":{"value":"😀"}}
+OK {"boxed":{"value":"a"},"convert":{"value":"abc"},"fmt":{"value":"abc"},"option":{"value":"1234"},"result":{"value":"a"},"str":{"value":"1234"},"string":{"value":"UPPER"}}
+ERR invalid type: null, expected struct StdStr
+OK {"boxed":{"value":"ok"},"convert":{"value":"ok"},"fmt":{"value":"ok"},"option":{"value":"Hello, World"},"result":{"value":"Hello, World"},"str":{"value":"0x10"},"string":{"value":"ok"}}
+OK {"boxed":{"value":"null"},"convert":{"value":"abc"},"fmt":{"value":"null"},"option":{"value":"a-b_c"},"result":{"value":"a"},"str":{"value":"ok"},"string":{"value":"0x10"}}
+OK {"boxed":{"value":"with \"quotes\""},"convert":{"value":"a-b_c"},"fmt":{"value":"a-b_c"},"option":{"value":"true"},"result":{"value":"1234"},"str":{"value":"é中文"},"string":{"value":"é中文"}}
+ERR invalid type: boolean `true`, expected struct StdString
+OK {"boxed":{"value":"UPPER"},"convert":{"value":"UPPER"},"fmt":{"value":"0x10"},"option":{"value":"null"},"result":{"value":"é中文"},"str":{"value":"Hello, World"},"string":{"value":"true"}}
+OK {"boxed":{"value":"Hello, World"},"convert":{"value":"abc"},"fmt":{"value":"x y"},"option":{"value":"é中文"},"result":{"value":"abc"},"str":{"value":"a"},"string":{"value":""}}
+OK {"boxed":{"value":"é中文"},"convert":{"value":"a"},"fmt":{"value":"x y"},"option":{"value":"a-b_c"},"result":{"value":"Hello, World"},"str":{"value":"1234"},"string":{"value":"😀"}}
+ERR missing field `convert`
+OK {"boxed":{"value":"with \"quotes\""},"convert":{"value":""},"fmt":{"value":"0x10"},"option":{"value":"UPPER"},"result":{"value":"UPPER"},"str":{"value":"1234"},"string":{"value":"UPPER"}}
+OK {"boxed":{"value":"abc"},"convert":{"value":"a-b_c"},"fmt":{"value":"abc"},"option":{"value":"é中文"},"result":{"value":"a-b_c"},"str":{"value":"a"},"string":{"value":"0x10"}}
+OK {"boxed":{"value":"a-b_c"},"convert":{"value":""},"fmt":{"value":"null"},"option":{"value":""},"result":{"value":"é中文"},"str":{"value":"Hello, World"},"string":{"value":"0x10"}}
+ERR invalid type: integer `0`, expected struct StdResult
+OK {"k0":"a","k1":1}
+OK null
+OK {}
+OK {"wrapped":false}
+OK false
+OK "ok"
+OK null
+OK null
+OK "abc"
+OK ["null",-0.0]
+OK 3
+OK {"wrapped":"a"}
+OK 10000000000.0
+OK []
+OK true
+OK {"wrapped":1.0}

@@ -1,0 +1,16 @@
+reflexive	Node	{"children":[1],"value":4294967296}
+reflexive	Node	{"children":["ok",false],"value":-129}
+reflexive	Node	{"children":["😀"],"value":7}
+reflexive	Node	null
+reflexive	Node	{"value":0}
+reflexive	Node	{"children":[1e+300,-2.25],"value":-32769}
+reflexive	Node	{}
+reflexive	Node	{"children":[[null,-0.0,null]]}
+reflexive	Node	{"children":["😀",true]}
+reflexive	Node	{"children":[-1,"null","with \"quotes\""],"value":18446744073709551615}
+reflexive	Node	{"value":7}
+reflexive	Node	{"children":null,"value":1.8446744073709552e+19}
+reflexive	Node	{"value":7}
+reflexive	Node	{"children":["Hello, World",false],"value":255}
+reflexive	Node	{"children":[false]}
+reflexive	Node	{}

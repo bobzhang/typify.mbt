@@ -1,0 +1,16 @@
+OK {"rules":{}}
+OK {"rules":{"abc":"1234"}}
+OK {"rules":{}}
+ERR invalid type: boolean `false`, expected a map
+OK {"rules":{}}
+OK {"rules":{"abc":"Hello, World"}}
+OK {"rules":{}}
+ERR invalid type: null, expected a map
+OK {"rules":{}}
+OK {"rules":{}}
+OK {"rules":{"abc":"é中文"}}
+ERR unknown field `unexpected_field`, expected `rules`
+OK {"rules":{}}
+OK {"rules":{"abc":"with \"quotes\""}}
+OK {"rules":{}}
+ERR unknown field `unexpected_field`, expected `rules`

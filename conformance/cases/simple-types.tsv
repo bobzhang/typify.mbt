@@ -1,0 +1,64 @@
+simple-types	AnythingWorks	{"value":1}
+simple-types	AnythingWorks	{"value":true}
+simple-types	AnythingWorks	{"value":{"k0":null}}
+simple-types	AnythingWorks	{"value":"😀"}
+simple-types	AnythingWorks	{"value":1.5}
+simple-types	AnythingWorks	{"value":false}
+simple-types	AnythingWorks	{"value":false}
+simple-types	AnythingWorks	{}
+simple-types	AnythingWorks	{"value":["Hello, World",-2.25]}
+simple-types	AnythingWorks	{"value":[null,true]}
+simple-types	AnythingWorks	{"value":null}
+simple-types	AnythingWorks	{"value":{"wrapped":1.5}}
+simple-types	AnythingWorks	{"value":""}
+simple-types	AnythingWorks	{"value":"Hello, World"}
+simple-types	AnythingWorks	{"value":{}}
+simple-types	AnythingWorks	{"value":null}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":1.5}
+simple-types	FloatsArentTerribleImTold	{}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":-2.25}
+simple-types	FloatsArentTerribleImTold	{}
+simple-types	FloatsArentTerribleImTold	{}
+simple-types	FloatsArentTerribleImTold	{}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":10000000000.0}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":null}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":0}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":1e+300}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":10000000000.0}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":1.0,"unexpected_field":"Hello, World"}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":1}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":123456789.125}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":123456789.125}
+simple-types	FloatsArentTerribleImTold	{"flush_timeout":{"k0":true}}
+simple-types	JustOne	"ok"
+simple-types	JustOne	"UPPER"
+simple-types	JustOne	"null"
+simple-types	JustOne	null
+simple-types	JustOne	"x y"
+simple-types	JustOne	"a-b_c"
+simple-types	JustOne	"UPPER"
+simple-types	JustOne	null
+simple-types	JustOne	"Hello, World"
+simple-types	JustOne	"Hello, World"
+simple-types	JustOne	"a"
+simple-types	JustOne	{"wrapped":""}
+simple-types	JustOne	"é中文"
+simple-types	JustOne	"😀"
+simple-types	JustOne	"1234"
+simple-types	JustOne	{"wrapped":"😀"}
+simple-types	UintMinimumAndMaximum	{"max":9223372036854775807,"min":2,"min_and_max":-128,"min_non_zero":1,"min_uint_non_zero":1,"no_bounds":9223372036854775807}
+simple-types	UintMinimumAndMaximum	{"max":-9.223372036854776e+18,"min":-1,"min_and_max":65536,"min_non_zero":1,"min_uint_non_zero":128,"no_bounds":2.5}
+simple-types	UintMinimumAndMaximum	{"max":7,"min":128,"min_and_max":65536,"min_non_zero":0,"min_uint_non_zero":-128,"no_bounds":127}
+simple-types	UintMinimumAndMaximum	{"max":"with \"quotes\"","min":2147483648,"min_and_max":65535,"min_non_zero":9223372036854775807,"min_uint_non_zero":128,"no_bounds":7}
+simple-types	UintMinimumAndMaximum	{"max":256,"min":65536,"min_and_max":1,"min_non_zero":2,"min_uint_non_zero":0,"no_bounds":127}
+simple-types	UintMinimumAndMaximum	{"max":255,"min":1.0,"min_and_max":257,"min_non_zero":-1,"min_uint_non_zero":1.8446744073709552e+19,"no_bounds":256}
+simple-types	UintMinimumAndMaximum	{"max":256,"min":2147483647,"min_and_max":1.8446744073709552e+19,"min_non_zero":2147483647,"min_uint_non_zero":1.8446744073709552e+19,"no_bounds":-128}
+simple-types	UintMinimumAndMaximum	{"max":256,"min":2,"min_and_max":-1,"min_non_zero":1,"min_uint_non_zero":null,"no_bounds":-9223372036854775808}
+simple-types	UintMinimumAndMaximum	{"max":257,"min":1,"min_and_max":255,"min_non_zero":1,"min_uint_non_zero":9007199254740993,"no_bounds":9007199254740993}
+simple-types	UintMinimumAndMaximum	{"max":32768,"min":1.8446744073709552e+19,"min_and_max":9223372036854775807,"min_non_zero":9007199254740993,"min_uint_non_zero":2,"no_bounds":128}
+simple-types	UintMinimumAndMaximum	{"max":256,"min":9007199254740993,"min_and_max":0,"min_non_zero":1,"min_uint_non_zero":-129,"no_bounds":128}
+simple-types	UintMinimumAndMaximum	{"max":2147483648,"min":null,"min_and_max":9007199254740993,"min_non_zero":2147483648,"min_uint_non_zero":-1,"no_bounds":128}
+simple-types	UintMinimumAndMaximum	{"max":255,"min":127,"min_and_max":4294967295,"min_non_zero":4294967295,"min_uint_non_zero":65535,"no_bounds":9007199254740993}
+simple-types	UintMinimumAndMaximum	{"max":-128,"min":2.5,"min_and_max":-128,"min_non_zero":2,"min_uint_non_zero":2,"no_bounds":-128}
+simple-types	UintMinimumAndMaximum	{"max":255,"min":7,"min_and_max":2,"min_non_zero":2.5,"min_uint_non_zero":-32769,"no_bounds":2.5}
+simple-types	UintMinimumAndMaximum	{"min":256,"min_and_max":0,"min_non_zero":2147483648,"min_uint_non_zero":1,"no_bounds":2.5}

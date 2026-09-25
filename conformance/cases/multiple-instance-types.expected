@@ -1,0 +1,80 @@
+OK "Hello, World"
+OK 7
+OK 32768
+ERR data did not match any variant of untagged enum IntOrStr
+OK "é中文"
+OK 0
+ERR data did not match any variant of untagged enum IntOrStr
+ERR data did not match any variant of untagged enum IntOrStr
+ERR data did not match any variant of untagged enum IntOrStr
+OK 256
+OK "abc"
+ERR data did not match any variant of untagged enum IntOrStr
+OK "a"
+OK -128
+OK "UPPER"
+ERR data did not match any variant of untagged enum IntOrStr
+OK [["with \"quotes\"","Hello, World"],null]
+OK null
+OK true
+OK [-9.223372036854776e+18]
+OK null
+OK "x y"
+OK [{"k0":false},true]
+OK null
+OK null
+OK {}
+OK null
+OK ["abc"]
+OK {"key":true}
+OK [-0.0]
+OK true
+OK {}
+OK null
+OK null
+OK null
+ERR invalid type: string "😀", expected unit
+OK null
+OK null
+OK null
+OK null
+OK null
+OK null
+OK null
+ERR invalid type: sequence, expected unit
+OK null
+OK null
+OK null
+OK null
+OK "Hello, World"
+OK 1.0
+OK 0.1
+OK null
+OK 3
+OK false
+OK []
+OK null
+OK "a-b_c"
+OK [["a-b_c"]]
+OK {}
+OK {"wrapped":1}
+OK 18446744073709551615
+OK true
+OK 1
+OK null
+OK {"value":"ok"}
+OK true
+OK {"value":"0x10"}
+OK true
+OK {}
+OK false
+OK {}
+ERR data did not match any variant of untagged enum YesNoMaybe
+OK false
+OK false
+OK false
+OK {"value":"true"}
+OK {"value":"x y"}
+OK false
+OK false
+ERR data did not match any variant of untagged enum YesNoMaybe

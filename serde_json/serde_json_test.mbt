@@ -159,3 +159,32 @@ test "format_f64 output is shortest round-trip text" {
     })
   })
 }
+
+///|
+test "lenient parsing defers errors serde_json reports only when visited" {
+  let c = @serde_json.parse_content(
+    "{\"n\": 1e999, \"s\": \"\\ud800x\", \"\\udc00k\": 1, \"ok\": [1, 2]}",
+    lenient=true,
+  )
+  guard c is Object(entries) else { fail("expected object") }
+  debug_inspect(
+    entries.map(e => (e.key_error is Some(_), e.value is Invalid(_))),
+    content="[(false, true), (false, true), (true, false), (false, false)]",
+  )
+  // Strict parsing (serde_json::from_str::<Value>) rejects the same text.
+  let strict = try @serde_json.parse_content("[1e999]") catch {
+    e => e.to_string()
+  } noraise {
+    _ => "ok"
+  }
+  inspect(strict, content="number out of range at line 1 column 6")
+  // Nesting beyond the recursion limit is deferred too.
+  let deep = "[".repeat(200) + "]".repeat(200)
+  let d = @serde_json.parse_content(deep, lenient=true)
+  let visited = try d.to_value() catch {
+    e => e.to_string()
+  } noraise {
+    _ => "ok"
+  }
+  inspect(visited, content="recursion limit exceeded at line 1 column 128")
+}

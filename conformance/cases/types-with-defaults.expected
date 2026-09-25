@@ -1,0 +1,96 @@
+OK {"when":"2024-02-29T12:34:56.123456789Z"}
+OK {"when":"2024-02-29T12:34:56.123Z"}
+OK {"when":"2024-02-29T12:34:56Z"}
+ERR invalid type: null, expected an RFC 3339 formatted date and time string
+OK {"when":"2024-02-29T12:34:56.123456789Z"}
+OK {"when":"1970-01-01T00:00:00Z"}
+OK {"when":"2024-02-29T12:34:56.123Z"}
+ERR invalid type: map, expected an RFC 3339 formatted date and time string
+OK {"when":"1970-01-01T00:00:00Z"}
+OK {"when":"1970-01-01T00:00:00Z"}
+OK {"when":"1970-01-01T00:00:00Z"}
+ERR invalid type: boolean `true`, expected an RFC 3339 formatted date and time string
+ERR premature end of input
+OK {"when":"2024-02-29T12:34:56Z"}
+OK {"when":"2024-02-29T12:34:56Z"}
+ERR invalid type: map, expected an RFC 3339 formatted date and time string
+ERR invalid type: floating point `1.8446744073709552e+19`, expected a nonzero u64
+OK {"big_nullable":null,"little_u16":7,"little_u8":7}
+OK {"big_nullable":2147483648,"little_u16":1,"little_u8":2}
+OK {"big_nullable":null,"little_u16":3,"little_u8":2}
+ERR invalid value: integer `4294967295`, expected a nonzero u8
+OK {"big_nullable":1,"little_u16":3,"little_u8":2}
+OK {"big_nullable":4294967295,"little_u16":127,"little_u8":1}
+ERR invalid value: integer `0`, expected a nonzero u8
+ERR invalid value: integer `0`, expected a nonzero u8
+ERR invalid value: integer `18446744073709551615`, expected a nonzero u16
+OK {"big_nullable":null,"little_u16":3,"little_u8":1}
+OK {"big_nullable":1,"little_u16":128,"little_u8":2}
+ERR invalid value: integer `2147483648`, expected a nonzero u16
+ERR invalid type: floating point `-9.223372036854776e+18`, expected a nonzero u64
+ERR invalid type: floating point `2.5`, expected a nonzero u16
+ERR invalid type: null, expected a nonzero u16
+OK {}
+OK {}
+OK {"thing":{}}
+OK {}
+OK {"thing":{"a":"Hello, World","type":"UPPER"}}
+OK {"thing":{"a":"abc","type":""}}
+OK {"thing":{"type":"ok"}}
+ERR invalid type: null, expected struct OuterThing
+OK {"thing":{"a":"1234","type":"ok"}}
+OK {}
+OK {}
+OK {}
+OK {"thing":{"a":"true","type":"Hello, World"}}
+OK {}
+OK {"thing":{"a":"true","type":"ok"}}
+OK {}
+OK {"any":[],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
+OK {"any":[[8,6,7],[5,3,0,9]],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
+PANIC
+ERR invalid type: null, expected a UUID string
+OK {"any":[[8,6,7],[5,3,0,9]],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
+OK {"any":["x y","abc"],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
+ERR UUID parsing failed: invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `n` at 1
+OK {"any":["é中文","x y"],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
+ERR UUID parsing failed: invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `n` at 1
+OK {"any":[[8,6,7],[5,3,0,9]],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
+ERR UUID parsing failed: invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `n` at 1
+OK {"any":[[8,6,7],[5,3,0,9]],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
+PANIC
+PANIC
+OK {"any":[false,true],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
+OK {"any":[[8,6,7],[5,3,0,9]],"id":"67e55044-10b1-426f-9247-bb680e5fe0c8"}
+ERR invalid type: floating point `1.8446744073709552e+19`, expected i64
+OK 127
+OK -128
+ERR invalid type: sequence, expected i64
+ERR invalid type: floating point `1.0`, expected i64
+OK -128
+OK 9223372036854775807
+ERR invalid type: sequence, expected i64
+OK 9007199254740993
+OK -129
+OK 256
+ERR invalid type: string "Hello, World", expected i64
+OK 2147483648
+ERR invalid type: floating point `1.0`, expected i64
+OK -129
+ERR invalid type: sequence, expected i64
+OK {"max_path":-128}
+OK {"max_path":1}
+OK {"max_path":0}
+ERR invalid type: string "x y", expected i64
+OK {"max_path":1}
+OK {"max_path":9223372036854775807}
+OK {"max_path":1}
+OK {"max_path":1}
+OK {"max_path":1}
+ERR invalid type: floating point `1.8446744073709552e+19`, expected i64
+ERR invalid type: floating point `1.0`, expected i64
+ERR invalid type: boolean `true`, expected struct UIntContainer
+OK {"max_path":256}
+OK {"max_path":256}
+OK {"max_path":2147483647}
+ERR invalid type: boolean `true`, expected i64

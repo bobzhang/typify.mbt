@@ -1,0 +1,80 @@
+more_types	ObjectWithNoExtra	{"foo":"x y"}
+more_types	ObjectWithNoExtra	{"foo":"ok"}
+more_types	ObjectWithNoExtra	{"foo":"1234"}
+more_types	ObjectWithNoExtra	{"foo":"😀"}
+more_types	ObjectWithNoExtra	{"foo":"Hello, World"}
+more_types	ObjectWithNoExtra	{"foo":"é中文"}
+more_types	ObjectWithNoExtra	{"foo":""}
+more_types	ObjectWithNoExtra	{"foo":"true","unexpected_field":"a"}
+more_types	ObjectWithNoExtra	{"foo":"a"}
+more_types	ObjectWithNoExtra	{"foo":"a"}
+more_types	ObjectWithNoExtra	{"foo":"ok"}
+more_types	ObjectWithNoExtra	{"foo":true}
+more_types	ObjectWithNoExtra	{"foo":"UPPER"}
+more_types	ObjectWithNoExtra	{"foo":"UPPER"}
+more_types	ObjectWithNoExtra	{"foo":"a-b_c"}
+more_types	ObjectWithNoExtra	{"foo":null}
+more_types	ObjectWithOkExtra	{"foo":"abc"}
+more_types	ObjectWithOkExtra	{"foo":"UPPER"}
+more_types	ObjectWithOkExtra	{"foo":"null"}
+more_types	ObjectWithOkExtra	{"foo":null}
+more_types	ObjectWithOkExtra	{"foo":"a-b_c"}
+more_types	ObjectWithOkExtra	{"foo":"a"}
+more_types	ObjectWithOkExtra	{"foo":"UPPER"}
+more_types	ObjectWithOkExtra	{"foo":null}
+more_types	ObjectWithOkExtra	{"foo":"UPPER"}
+more_types	ObjectWithOkExtra	{"foo":""}
+more_types	ObjectWithOkExtra	{"foo":"😀"}
+more_types	ObjectWithOkExtra	{"foo":{"k0":null}}
+more_types	ObjectWithOkExtra	{"foo":"Hello, World"}
+more_types	ObjectWithOkExtra	{"foo":""}
+more_types	ObjectWithOkExtra	{"foo":"null"}
+more_types	ObjectWithOkExtra	{"foo":"ok","unexpected_field":-2.25}
+more_types	ObjectWithStringExtra	{"extra_key":"abc","foo":"x y"}
+more_types	ObjectWithStringExtra	{"extra_key":"x y","foo":"a"}
+more_types	ObjectWithStringExtra	{"foo":"abc"}
+more_types	ObjectWithStringExtra	{"extra_key":"x y","foo":"null","unexpected_field":null}
+more_types	ObjectWithStringExtra	{"extra_key":"0x10","foo":""}
+more_types	ObjectWithStringExtra	{"extra_key":"é中文","foo":""}
+more_types	ObjectWithStringExtra	{"foo":"a"}
+more_types	ObjectWithStringExtra	{"extra_key":"😀","foo":null}
+more_types	ObjectWithStringExtra	{"extra_key":"with \"quotes\"","foo":"ok"}
+more_types	ObjectWithStringExtra	{"extra_key":"Hello, World","foo":"😀"}
+more_types	ObjectWithStringExtra	{"extra_key":"abc","foo":"UPPER"}
+more_types	ObjectWithStringExtra	{"extra_key":"😀","foo":"true","unexpected_field":null}
+more_types	ObjectWithStringExtra	{"extra_key":"true","foo":"abc"}
+more_types	ObjectWithStringExtra	{"extra_key":"😀","foo":"a"}
+more_types	ObjectWithStringExtra	{"extra_key":"x y","foo":"é中文"}
+more_types	ObjectWithStringExtra	{"extra_key":"UPPER","foo":"Hello, World","unexpected_field":true}
+more_types	ObjectWithWhichExtra	{"extra_key":["0x10"],"foo":""}
+more_types	ObjectWithWhichExtra	{"extra_key":"UPPER","foo":""}
+more_types	ObjectWithWhichExtra	{"foo":"Hello, World"}
+more_types	ObjectWithWhichExtra	{}
+more_types	ObjectWithWhichExtra	{"foo":"UPPER"}
+more_types	ObjectWithWhichExtra	{"extra_key":"with \"quotes\"","foo":"😀"}
+more_types	ObjectWithWhichExtra	{"foo":"abc"}
+more_types	ObjectWithWhichExtra	{"extra_key":["","é中文"],"foo":"UPPER","unexpected_field":false}
+more_types	ObjectWithWhichExtra	{"extra_key":null,"foo":"true"}
+more_types	ObjectWithWhichExtra	{"extra_key":false,"foo":"abc"}
+more_types	ObjectWithWhichExtra	{"extra_key":null,"foo":"a-b_c"}
+more_types	ObjectWithWhichExtra	{"extra_key":1.0}
+more_types	ObjectWithWhichExtra	{"foo":"with \"quotes\""}
+more_types	ObjectWithWhichExtra	{"extra_key":[null,null],"foo":"null"}
+more_types	ObjectWithWhichExtra	{"extra_key":[],"foo":""}
+more_types	ObjectWithWhichExtra	{"extra_key":true,"foo":"0x10"}
+more_types	ObjectWithYesExtra	{"foo":"UPPER"}
+more_types	ObjectWithYesExtra	{"foo":"a"}
+more_types	ObjectWithYesExtra	{"foo":"a-b_c"}
+more_types	ObjectWithYesExtra	{"foo":null}
+more_types	ObjectWithYesExtra	{"foo":"1234"}
+more_types	ObjectWithYesExtra	{"foo":"null"}
+more_types	ObjectWithYesExtra	{"foo":""}
+more_types	ObjectWithYesExtra	{"foo":null}
+more_types	ObjectWithYesExtra	{"foo":"1234"}
+more_types	ObjectWithYesExtra	{"foo":"UPPER"}
+more_types	ObjectWithYesExtra	{"foo":"UPPER"}
+more_types	ObjectWithYesExtra	{"foo":null}
+more_types	ObjectWithYesExtra	{"foo":"with \"quotes\""}
+more_types	ObjectWithYesExtra	{"foo":"Hello, World"}
+more_types	ObjectWithYesExtra	{"foo":"a-b_c"}
+more_types	ObjectWithYesExtra	{"foo":"","unexpected_field":true}

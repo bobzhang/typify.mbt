@@ -22,6 +22,33 @@ priv struct Parser {
   src : Bytes
   mut index : Int
   mut remaining_depth : Int
+  /// Whether the last string parsed contained an escape sequence.
+  mut last_escaped : Bool
+  /// Lenient mode defers errors that serde_json only reports when a value is
+  /// actually visited (not skipped as an ignored field).
+  lenient : Bool
+  /// The first deferred error within the value being parsed.
+  mut pending : ParseError?
+  /// Nesting levels past the recursion limit being parsed leniently.
+  mut unlimited : Int
+}
+
+///|
+/// Record a deferrable error: raise in strict mode, remember in lenient mode.
+fn Parser::postpone(self : Parser, e : ParseError) -> Unit raise ParseError {
+  if !self.lenient {
+    raise e
+  }
+  if self.pending is None {
+    self.pending = Some(e)
+  }
+}
+
+///|
+fn Parser::take_pending(self : Parser) -> ParseError? {
+  let p = self.pending
+  self.pending = None
+  p
 }
 
 ///|
@@ -128,8 +155,8 @@ fn Parser::parse_ident(self : Parser, ident : String) -> Unit raise ParseError {
 }
 
 ///|
-/// `deserialize_any` specialised to `Value`.
-fn Parser::parse_value(self : Parser) -> Value raise ParseError {
+/// `deserialize_any` building an ordered `Content`.
+fn Parser::parse_value(self : Parser) -> Content raise ParseError {
   let peek = self.parse_whitespace()
   match peek {
     -1 => raise self.peek_error("EOF while parsing a value")
@@ -150,46 +177,79 @@ fn Parser::parse_value(self : Parser) -> Value raise ParseError {
     }
     '-' => {
       self.index += 1
-      Number(self.parse_integer(false))
+      self.number_or_deferred(false)
     }
-    '0'..='9' => Number(self.parse_integer(true))
+    '0'..='9' => self.number_or_deferred(true)
     '"' => {
       self.index += 1
-      String(self.parse_str())
+      let s = self.parse_str()
+      match self.take_pending() {
+        Some(e) => Invalid(e)
+        None => String(s)
+      }
     }
     '[' => {
-      self.check_recursion()
+      let too_deep = self.check_recursion()
       self.index += 1
       let items = self.parse_seq()
-      self.remaining_depth += 1
+      self.leave()
       // end_seq: the visitor only returns after peeking `]`.
       self.index += 1
-      Array(items)
+      match too_deep {
+        Some(e) => Invalid(e)
+        None => Array(items)
+      }
     }
     '{' => {
-      self.check_recursion()
+      let too_deep = self.check_recursion()
       self.index += 1
       let obj = self.parse_map()
-      self.remaining_depth += 1
+      self.leave()
       self.index += 1
-      Object(obj)
+      match too_deep {
+        Some(e) => Invalid(e)
+        None => Object(obj)
+      }
     }
     _ => raise self.peek_error("expected value")
   }
 }
 
 ///|
-fn Parser::check_recursion(self : Parser) -> Unit raise ParseError {
+/// Enter a nested array/object. Returns a deferred error when the recursion
+/// limit is exceeded in lenient mode (the subtree is then parsed without
+/// limit, as serde_json skips ignored values).
+fn Parser::check_recursion(self : Parser) -> ParseError? raise ParseError {
+  if self.unlimited > 0 {
+    self.unlimited += 1
+    return None
+  }
   self.remaining_depth -= 1
   if self.remaining_depth == 0 {
-    raise self.peek_error("recursion limit exceeded")
+    let e = self.peek_error("recursion limit exceeded")
+    if !self.lenient {
+      raise e
+    }
+    self.remaining_depth += 1
+    self.unlimited = 1
+    return Some(e)
+  }
+  None
+}
+
+///|
+fn Parser::leave(self : Parser) -> Unit {
+  if self.unlimited > 0 {
+    self.unlimited -= 1
+  } else {
+    self.remaining_depth += 1
   }
 }
 
 ///|
 /// `SeqAccess::next_element_seed` driven to completion. Leaves the closing
 /// `]` unconsumed.
-fn Parser::parse_seq(self : Parser) -> Array[Value] raise ParseError {
+fn Parser::parse_seq(self : Parser) -> Array[Content] raise ParseError {
   let items = []
   for first = true {
     let peek = self.parse_whitespace()
@@ -218,10 +278,8 @@ fn Parser::parse_seq(self : Parser) -> Array[Value] raise ParseError {
 
 ///|
 /// `MapAccess` driven to completion. Leaves the closing `}` unconsumed.
-fn Parser::parse_map(
-  self : Parser,
-) -> @collections.StrMap[Value] raise ParseError {
-  let obj = @collections.StrMap::new()
+fn Parser::parse_map(self : Parser) -> Array[Entry] raise ParseError {
+  let obj = []
   for first = true {
     let peek = self.parse_whitespace()
     if peek < 0 {
@@ -247,14 +305,16 @@ fn Parser::parse_map(
     // MapKey: eat the quote and parse the string.
     self.index += 1
     let key = self.parse_str()
+    let key_escaped = self.last_escaped
+    let key_error = self.take_pending()
     // parse_object_colon
     match self.parse_whitespace() {
       ':' => self.index += 1
       -1 => raise self.peek_error("EOF while parsing an object")
       _ => raise self.peek_error("expected `:`")
     }
-    // Duplicate keys: the last occurrence wins (BTreeMap::insert).
-    obj.set(key, self.parse_value())
+    // Entries keep their order and duplicates.
+    obj.push({ key, key_escaped, key_error, value: self.parse_value(), })
     continue false
   }
   obj
@@ -325,19 +385,24 @@ fn Parser::parse_escape(self : Parser, buf : Buffer) -> Unit raise ParseError {
     'u' => {
       let n = self.decode_hex_escape()
       if n >= 0xDC00 && n <= 0xDFFF {
-        raise self.error("lone leading surrogate in hex escape")
+        self.postpone(self.error("lone leading surrogate in hex escape"))
+        return
       }
       if n < 0xD800 || n > 0xDBFF {
         push_utf8(buf, n)
         return
       }
       // A leading surrogate must be followed by `\u` + trailing surrogate.
+      // (When skipping, serde_json does not pair surrogates at all.)
       match self.peek() {
         -1 => raise self.error("EOF while parsing a string")
         '\\' => self.index += 1
         _ => {
           self.index += 1
-          raise self.error("unexpected end of hex escape")
+          let e = self.error("unexpected end of hex escape")
+          self.index -= 1
+          self.postpone(e)
+          return
         }
       }
       match self.peek() {
@@ -345,12 +410,17 @@ fn Parser::parse_escape(self : Parser, buf : Buffer) -> Unit raise ParseError {
         'u' => self.index += 1
         _ => {
           self.index += 1
-          raise self.error("unexpected end of hex escape")
+          let e = self.error("unexpected end of hex escape")
+          // Resume at the backslash: it starts an ordinary escape.
+          self.index -= 2
+          self.postpone(e)
+          return
         }
       }
       let n2 = self.decode_hex_escape()
       if n2 < 0xDC00 || n2 > 0xDFFF {
-        raise self.error("lone leading surrogate in hex escape")
+        self.postpone(self.error("lone leading surrogate in hex escape"))
+        return
       }
       push_utf8(buf, 0x10000 + ((n - 0xD800) << 10) + (n2 - 0xDC00))
     }
@@ -362,6 +432,7 @@ fn Parser::parse_escape(self : Parser, buf : Buffer) -> Unit raise ParseError {
 /// `SliceRead::parse_str_bytes`; the opening quote has been consumed.
 fn Parser::parse_str(self : Parser) -> String raise ParseError {
   let buf = Buffer()
+  self.last_escaped = false
   for ;; {
     let c = self.peek()
     match c {
@@ -372,6 +443,7 @@ fn Parser::parse_str(self : Parser) -> String raise ParseError {
       }
       '\\' => {
         self.index += 1
+        self.last_escaped = true
         self.parse_escape(buf)
       }
       _ if c < 0x20 => {
@@ -388,6 +460,72 @@ fn Parser::parse_str(self : Parser) -> String raise ParseError {
   }
   @utf8.decode(buf.to_bytes()) catch {
     _ => abort("unreachable: input and escapes are valid UTF-8")
+  }
+}
+
+///|
+/// Parse a number; in lenient mode an out-of-range number becomes a deferred
+/// error after validating its syntax like serde_json's `ignore_number`.
+fn Parser::number_or_deferred(
+  self : Parser,
+  positive : Bool,
+) -> Content raise ParseError {
+  let start = self.index
+  try self.parse_integer(positive) catch {
+    ParseError(message="number out of range", ..) as e if self.lenient => {
+      self.index = start
+      self.ignore_number()
+      Invalid(e)
+    }
+    e => raise e
+  } noraise {
+    n => Number(n)
+  }
+}
+
+///|
+/// serde_json's `ignore_integer` / `ignore_decimal` / `ignore_exponent`:
+/// syntax only.
+fn Parser::ignore_number(self : Parser) -> Unit raise ParseError {
+  match self.next_char() {
+    '0' =>
+      if self.peek() is ('0'..='9') {
+        raise self.peek_error("invalid number")
+      }
+    '1'..='9' =>
+      while self.peek() is ('0'..='9') {
+        self.index += 1
+      }
+    -1 => raise self.error("EOF while parsing a value")
+    _ => raise self.error("invalid number")
+  }
+  if self.peek() == '.' {
+    self.index += 1
+    let mut digits = 0
+    while self.peek() is ('0'..='9') {
+      self.index += 1
+      digits += 1
+    }
+    if digits == 0 {
+      if self.peek() < 0 {
+        raise self.peek_error("EOF while parsing a value")
+      }
+      raise self.peek_error("invalid number")
+    }
+  }
+  if self.peek() is ('e' | 'E') {
+    self.index += 1
+    if self.peek() is ('+' | '-') {
+      self.index += 1
+    }
+    match self.next_char() {
+      '0'..='9' => ()
+      -1 => raise self.error("EOF while parsing a value")
+      _ => raise self.error("invalid number")
+    }
+    while self.peek() is ('0'..='9') {
+      self.index += 1
+    }
   }
 }
 
@@ -626,10 +764,25 @@ fn Parser::parse_long_integer(
 /// Parse JSON text exactly like `serde_json::from_str::<Value>`, including
 /// its error messages and positions.
 pub fn parse(text : StringView) -> Value raise ParseError {
+  parse_content(text).to_value()
+}
+
+///|
+/// Parse JSON text into an ordered document that keeps duplicate keys,
+/// number classes and key-escape information (serde's `Content` view of the
+/// input).
+pub fn parse_content(
+  text : StringView,
+  lenient? : Bool = false,
+) -> Content raise ParseError {
   let p = Parser::{
     src: @utf8.encode(text),
     index: 0,
     remaining_depth: recursion_limit,
+    last_escaped: false,
+    lenient,
+    pending: None,
+    unlimited: 0,
   }
   let v = p.parse_value()
   // Deserializer::end

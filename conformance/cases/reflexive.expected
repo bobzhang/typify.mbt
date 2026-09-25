@@ -1,0 +1,16 @@
+ERR invalid type: integer `1`, expected struct Node
+ERR invalid type: string "ok", expected struct Node
+ERR invalid type: string "😀", expected struct Node
+ERR invalid type: null, expected struct Node
+OK {"value":0}
+ERR invalid type: floating point `1e+300`, expected struct Node
+OK {}
+ERR invalid type: null, expected a sequence
+ERR invalid type: string "😀", expected struct Node
+ERR invalid type: integer `-1`, expected struct Node
+OK {"value":7}
+ERR invalid type: null, expected a sequence
+OK {"value":7}
+ERR invalid type: string "Hello, World", expected struct Node
+ERR invalid type: boolean `false`, expected struct Node
+OK {}

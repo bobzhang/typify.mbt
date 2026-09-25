@@ -1,0 +1,16 @@
+ERR unknown variant `cee`, expected `a` or `b`
+OK {"letter":"a"}
+OK {}
+OK {}
+ERR unknown variant `cee`, expected `a` or `b`
+OK {"letter":"b"}
+OK {}
+ERR invalid type: null, expected struct LetterBox
+OK {}
+OK {}
+OK {}
+OK {"letter":"a"}
+ERR unknown variant `cee`, expected `a` or `b`
+OK {}
+OK {"letter":"a"}
+ERR invalid type: null, expected struct LetterBox

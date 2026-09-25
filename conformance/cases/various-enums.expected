@@ -1,0 +1,496 @@
+OK "Choice2"
+OK "Choice3"
+OK "Choice2"
+ERR expected value
+OK "Choice2"
+OK "Choice1"
+OK "Choice3"
+ERR expected value
+OK "Choice2"
+OK "Choice1"
+OK "Choice3"
+ERR expected value
+OK "Choice1"
+OK "Choice3"
+OK "Choice2"
+ERR unknown variant `wrapped`, expected one of `Choice1`, `Choice2`, `Choice3`
+ERR unknown variant `😀`, there are no variants
+ERR unknown variant `null`, there are no variants
+ERR unknown variant `true`, there are no variants
+ERR expected value
+ERR unknown variant `a-b_c`, there are no variants
+ERR unknown variant `true`, there are no variants
+ERR unknown variant `with "quotes"`, there are no variants
+ERR expected value
+ERR unknown variant `😀`, there are no variants
+ERR unknown variant `with "quotes"`, there are no variants
+ERR unknown variant `abc`, there are no variants
+ERR expected value
+ERR unknown variant `a-b_c`, there are no variants
+ERR unknown variant `ok`, there are no variants
+ERR unknown variant `1234`, there are no variants
+ERR unknown variant `wrapped`, there are no variants
+ERR expected value
+ERR unknown variant `abc`, there are no variants
+ERR expected value
+ERR unknown variant `wrapped`, there are no variants
+ERR expected value
+ERR unknown variant `true`, there are no variants
+ERR unknown variant `k0`, there are no variants
+ERR expected value
+ERR unknown variant `😀`, there are no variants
+ERR expected value
+ERR unknown variant `k0`, there are no variants
+ERR unknown variant `k0`, there are no variants
+ERR expected value
+ERR unknown variant `k0`, there are no variants
+ERR expected value
+ERR expected value
+OK 2048
+OK 512
+OK 512
+ERR invalid type: floating point `0.1`, expected i64
+OK 2048
+OK 2048
+OK 4096
+ERR invalid type: sequence, expected i64
+OK 4096
+OK 2048
+OK 512
+ERR invalid type: sequence, expected i64
+OK 2048
+OK 4096
+OK 512
+ERR invalid type: map, expected i64
+OK {"alternate":"Choice1","state":"Detached"}
+OK {"alternate":"Choice1","state":"Destroyed"}
+OK {"alternate":"Choice2","state":"Faulted"}
+ERR unknown variant `wrapped`, expected one of `Choice1`, `Choice2`, `Choice3`
+OK {"alternate":"Choice1","state":"Detached"}
+OK {"alternate":"Choice3","state":"Destroyed"}
+OK {"alternate":"Choice1","state":"Faulted"}
+ERR expected value
+OK {"alternate":"Choice2","state":"Destroyed"}
+OK {"alternate":"Choice1","state":"Destroyed"}
+OK {"alternate":"Choice3","state":"Faulted"}
+ERR expected value
+OK {"alternate":"Choice3","state":"Destroyed"}
+OK {"alternate":"Choice2","state":"Faulted"}
+OK {"alternate":"Choice2","state":"Destroyed"}
+ERR missing field `state`
+OK {}
+OK {"prop":{}}
+OK {}
+OK {}
+OK {"prop":{}}
+OK {"prop":{}}
+OK {"prop":{}}
+OK {}
+OK {"prop":{}}
+OK {}
+OK {"prop":{}}
+OK {"prop":{}}
+OK {"prop":{}}
+OK {}
+OK {"prop":{}}
+OK {}
+OK "abc"
+OK "a"
+OK "true"
+ERR data did not match any variant of untagged enum IpNet
+OK "abc"
+OK "with \"quotes\""
+OK "1234"
+ERR data did not match any variant of untagged enum IpNet
+OK "UPPER"
+OK "😀"
+OK "with \"quotes\""
+ERR data did not match any variant of untagged enum IpNet
+OK "true"
+OK "0x10"
+OK "Hello, World"
+OK "1234"
+OK "0x10"
+OK "1234"
+OK "1234"
+ERR invalid type: null, expected a string
+OK "null"
+OK "UPPER"
+OK "1234"
+ERR invalid type: sequence, expected a string
+OK "a-b_c"
+OK "a-b_c"
+OK "x y"
+ERR invalid type: floating point `1.0`, expected a string
+OK "true"
+OK "ok"
+OK "x y"
+ERR invalid type: map, expected a string
+OK "null"
+OK "a-b_c"
+OK "with \"quotes\""
+ERR invalid type: null, expected a string
+OK "é中文"
+OK "Hello, World"
+OK "1234"
+ERR invalid type: boolean `false`, expected a string
+OK "null"
+OK "x y"
+OK "Hello, World"
+OK "a-b_c"
+OK "a"
+OK ""
+OK "UPPER"
+ERR invalid type: sequence, expected a string
+OK {}
+OK {"extra_key":2147483647}
+OK "0x10"
+ERR data did not match any variant of untagged enum JankNames
+ERR data did not match any variant of untagged enum JankNames
+OK {}
+OK {"extra_key":-129}
+ERR data did not match any variant of untagged enum JankNames
+OK {}
+OK "é中文"
+OK {"extra_key":2}
+ERR data did not match any variant of untagged enum JankNames
+OK "null"
+OK {}
+ERR data did not match any variant of untagged enum JankNames
+ERR data did not match any variant of untagged enum JankNames
+ERR expected value
+ERR unknown variant `k0`, there are no variants
+ERR expected value
+ERR expected value
+ERR unknown variant `0x10`, there are no variants
+ERR expected value
+ERR expected value
+ERR unknown variant `wrapped`, there are no variants
+ERR expected value
+ERR expected value
+ERR unknown variant `a-b_c`, there are no variants
+ERR unknown variant `k0`, there are no variants
+ERR expected value
+ERR expected value
+ERR expected value
+ERR expected value
+ERR expected value
+ERR unknown variant `abc`, there are no variants
+ERR expected value
+ERR unknown variant `wrapped`, there are no variants
+ERR unknown variant `UPPER`, there are no variants
+ERR expected value
+ERR expected value
+ERR expected value
+ERR expected value
+ERR expected value
+ERR expected value
+ERR unknown variant `wrapped`, there are no variants
+ERR expected value
+ERR unknown variant `UPPER`, there are no variants
+ERR expected value
+ERR expected value
+ERR unknown variant `ok`, there are no variants
+ERR expected value
+ERR expected value
+ERR unknown variant `Hello, World`, there are no variants
+ERR expected value
+ERR expected value
+ERR expected value
+ERR unknown variant `k0`, there are no variants
+ERR unknown variant `true`, there are no variants
+ERR expected value
+ERR unknown variant `é中文`, there are no variants
+ERR expected value
+ERR unknown variant `é中文`, there are no variants
+ERR expected value
+ERR unknown variant `with "quotes"`, there are no variants
+ERR unknown variant `k0`, there are no variants
+OK -128.0
+OK 1.0
+OK 4294967295.0
+ERR invalid type: null, expected f64
+OK 0.0
+OK 9007199254740992.0
+OK 7.0
+ERR invalid type: boolean `true`, expected f64
+OK 2147483647.0
+OK -129.0
+OK -32769.0
+ERR invalid type: null, expected f64
+OK 9007199254740992.0
+OK 4294967295.0
+OK 2147483648.0
+ERR invalid type: null, expected f64
+OK "a"
+OK "b"
+OK "a"
+ERR unknown variant `wrapped`, expected one of `a`, `b`, `c`
+OK "c"
+OK "c"
+OK "b"
+ERR unknown variant `wrapped`, expected one of `a`, `b`, `c`
+OK "b"
+OK "a"
+OK "a"
+ERR expected value
+OK "c"
+OK "b"
+OK "a"
+ERR expected value
+OK "abc"
+OK "true"
+OK "ok"
+ERR invalid type: null, expected a string
+OK "é中文"
+OK "null"
+OK "abc"
+ERR invalid type: map, expected a string
+OK "é中文"
+OK "😀"
+OK "a"
+ERR invalid type: map, expected a string
+OK "UPPER"
+OK "é中文"
+OK "0x10"
+ERR invalid type: sequence, expected a string
+OK {}
+OK {"extra_key":"1234"}
+OK {}
+ERR data did not match any variant of untagged enum References
+OK []
+OK []
+OK {"extra_key":"é中文"}
+ERR data did not match any variant of untagged enum References
+OK {}
+OK {}
+OK {"extra_key":"é中文"}
+ERR data did not match any variant of untagged enum References
+OK ["with \"quotes\""]
+OK {"extra_key":"😀"}
+OK {}
+OK {}
+OK {"reference":"abc"}
+OK {"reference":"a"}
+OK {"reference":"x y"}
+ERR data did not match any variant of untagged enum ShouldBeExclusive
+ERR data did not match any variant of untagged enum ShouldBeExclusive
+ERR data did not match any variant of untagged enum ShouldBeExclusive
+OK {"id":"x y"}
+ERR data did not match any variant of untagged enum ShouldBeExclusive
+OK {"id":"0x10"}
+ERR data did not match any variant of untagged enum ShouldBeExclusive
+OK {"id":"a"}
+ERR data did not match any variant of untagged enum ShouldBeExclusive
+ERR data did not match any variant of untagged enum ShouldBeExclusive
+OK {"id":"ok"}
+ERR data did not match any variant of untagged enum ShouldBeExclusive
+ERR data did not match any variant of untagged enum ShouldBeExclusive
+OK "a"
+OK "a-b_c"
+OK "x y"
+ERR invalid type: boolean `false`, expected a string
+OK "abc"
+OK "a"
+OK "null"
+ERR invalid type: sequence, expected a string
+OK "x y"
+OK "null"
+OK "x y"
+OK "true"
+OK "abc"
+OK "😀"
+OK "true"
+ERR invalid type: sequence, expected a string
+OK "C"
+OK "C"
+OK "B"
+ERR expected value
+OK "B"
+OK "A"
+OK "B"
+ERR expected value
+OK "B"
+OK "A"
+OK "C"
+ERR expected value
+OK "B"
+OK "C"
+OK "A"
+ERR unknown variant `😀`, expected one of `A`, `B`, `C`
+OK {"petType":"cat","purr":""}
+OK {"petType":"monkey","help":"with \"quotes\""}
+OK {"petType":"dog","bark":"x y"}
+OK {"petType":"cat","purr":"x y"}
+OK {"petType":"cat","purr":"true"}
+OK {"petType":"dog","bark":"1234"}
+OK {"petType":"monkey","help":"true"}
+ERR invalid type: null, expected a string
+OK {"petType":"cat","purr":"with \"quotes\""}
+OK {"petType":"monkey","help":"with \"quotes\""}
+OK {"petType":"fish","float":"with \"quotes\""}
+ERR invalid type: sequence, expected variant identifier
+OK {"petType":"cat","purr":"with \"quotes\""}
+OK {"petType":"dog","bark":"abc"}
+OK {"petType":"cat","purr":"😀"}
+ERR invalid type: null, expected variant identifier
+OK {}
+OK {}
+OK {"foo":"1234"}
+OK {}
+OK {}
+OK {"foo":"with \"quotes\""}
+OK {"foo":"😀"}
+ERR data did not match any variant of untagged enum OneOfMissingTitle
+OK {}
+OK {}
+OK {}
+OK {}
+OK {"foo":"with \"quotes\""}
+OK {}
+OK {}
+OK {}
+OK "true"
+OK "Hello, World"
+OK 32767
+ERR data did not match any variant of untagged enum OneOfRawType
+OK "a"
+OK -129
+OK "true"
+ERR data did not match any variant of untagged enum OneOfRawType
+OK "é中文"
+OK 65535
+OK -1
+ERR data did not match any variant of untagged enum OneOfRawType
+OK "Hello, World"
+OK ""
+OK -129
+ERR data did not match any variant of untagged enum OneOfRawType
+OK {"bar":-32769}
+ERR invalid type: floating point `1.0`, expected i64
+ERR invalid type: floating point `1.8446744073709552e+19`, expected i64
+ERR expected value
+OK {"bar":2147483647}
+OK {"bar":2}
+ERR invalid type: floating point `-9.223372036854776e+18`, expected i64
+ERR invalid type: boolean `true`, expected a string
+OK {"foo":"a-b_c"}
+OK {"foo":"x y"}
+ERR invalid value: integer `18446744073709551615`, expected i64
+ERR invalid type: null, expected a string
+OK {"foo":"0x10"}
+OK {"foo":"Hello, World"}
+OK {"foo":"😀"}
+ERR invalid type: floating point `1e+300`, expected i64
+OK ""
+OK "abc"
+OK null
+ERR invalid type: sequence, expected a string
+OK "é中文"
+OK "1234"
+OK ""
+ERR invalid type: boolean `false`, expected a string
+OK null
+OK null
+OK "a"
+OK "UPPER"
+OK null
+OK null
+OK null
+ERR invalid type: boolean `false`, expected a string
+OK null
+OK null
+OK null
+ERR invalid type: sequence, expected a string
+OK "abc"
+OK "null"
+OK "with \"quotes\""
+ERR invalid type: map, expected a string
+OK null
+OK null
+OK "with \"quotes\""
+OK ""
+OK null
+OK "x y"
+OK "ok"
+OK null
+OK "true"
+OK null
+OK "é中文"
+OK null
+OK null
+OK null
+OK null
+ERR invalid type: sequence, expected a string
+OK null
+OK ""
+OK "Hello, World"
+ERR invalid type: sequence, expected a string
+OK "with \"quotes\""
+OK "😀"
+OK null
+ERR invalid type: map, expected a string
+OK "true"
+OK null
+OK null
+OK null
+OK "a-b_c"
+OK null
+OK "Hello, World"
+ERR invalid type: map, expected a string
+OK "abc"
+OK null
+OK null
+ERR invalid type: sequence, expected a string
+OK "0x10"
+OK "Hello, World"
+OK "a-b_c"
+OK "a-b_c"
+OK "abc"
+OK null
+OK null
+OK null
+OK "😀"
+OK "true"
+OK null
+OK null
+OK "ok"
+OK "a-b_c"
+OK null
+OK null
+OK null
+OK null
+OK null
+ERR invalid type: boolean `true`, expected a string
+OK "with \"quotes\""
+OK "é中文"
+OK null
+ERR invalid type: map, expected a string
+OK null
+OK "😀"
+OK ""
+ERR invalid type: map, expected a string
+OK null
+OK "with \"quotes\""
+OK "null"
+OK "Hello, World"
+OK null
+OK null
+OK null
+OK "Hello, World"
+OK "2.5GBASE-T"
+OK "2.5GBASE-T"
+OK "25GBASE-T"
+ERR unknown variant `wrapped`, expected one of `2.5GBASE-T`, `25GBASE-T`, `2,5,GBASE,T`
+OK "2.5GBASE-T"
+OK "25GBASE-T"
+OK "2.5GBASE-T"
+ERR expected value
+OK "25GBASE-T"
+OK "2,5,GBASE,T"
+OK "2,5,GBASE,T"
+ERR unknown variant `abc`, expected one of `2.5GBASE-T`, `25GBASE-T`, `2,5,GBASE,T`
+OK "25GBASE-T"
+OK "25GBASE-T"
+OK "2,5,GBASE,T"
+ERR expected value

@@ -1,0 +1,416 @@
+OK {}
+OK {"bar":"null"}
+OK {}
+OK {}
+OK {}
+OK {}
+OK {"bar":1.0}
+OK {}
+OK {"bar":"a-b_c"}
+OK {}
+OK {"bar":[false,"abc"]}
+ERR invalid type: null, expected struct BarProp
+OK {}
+OK {}
+OK {"bar":{"k0":"é中文"}}
+ERR invalid type: string "a-b_c", expected struct BarProp
+ERR invalid type: null, expected struct CommentedTypeMerged
+OK {"y":true}
+OK {"y":"abc"}
+OK {}
+OK {"y":1}
+ERR invalid type: null, expected struct CommentedTypeMerged
+ERR invalid type: null, expected struct CommentedTypeMerged
+ERR invalid type: null, expected struct CommentedTypeMerged
+ERR invalid type: null, expected struct CommentedTypeMerged
+OK {"y":-0.0}
+OK {"y":"😀"}
+OK {"y":{"wrapped":"ok"}}
+ERR invalid type: null, expected struct CommentedTypeMerged
+OK {"y":0.1}
+OK {"y":-2.25}
+OK {}
+OK {"foo":"a-b_c"}
+OK {"foo":"1234"}
+ERR data did not match any variant of untagged enum HereAndThere
+OK {}
+ERR data did not match any variant of untagged enum HereAndThere
+OK {"foo":"a-b_c"}
+OK {"foo":"é中文"}
+OK {"foo":"a"}
+OK {"foo":"true"}
+OK {"foo":"😀"}
+OK {"foo":"UPPER"}
+ERR data did not match any variant of untagged enum HereAndThere
+OK {"foo":"x y"}
+ERR data did not match any variant of untagged enum HereAndThere
+ERR data did not match any variant of untagged enum HereAndThere
+ERR data did not match any variant of untagged enum HereAndThere
+OK {"result":"with \"quotes\""}
+OK {}
+OK {}
+OK {}
+OK {"result":"Hello, World"}
+OK {"result":""}
+OK {}
+OK {"result":"true"}
+OK {}
+OK {}
+OK {"result":"with \"quotes\""}
+OK {"result":"with \"quotes\""}
+OK {"result":"x y"}
+OK {"result":"ok"}
+OK {}
+OK {}
+OK {"msg":"0x10","result":"success"}
+ERR unknown variant `a-b_c`, expected `success`
+ERR expected value
+ERR expected value
+ERR invalid type: boolean `false`, expected a string
+ERR expected value
+OK {"msg":"Hello, World","result":"success"}
+ERR invalid type: integer `1`, expected a string
+OK {"msg":"a","result":"success"}
+ERR invalid type: null, expected a string
+ERR invalid type: boolean `true`, expected a string
+ERR unknown variant `a-b_c`, expected `success`
+OK {"msg":"0x10","result":"success"}
+ERR unknown variant `true`, expected `success`
+ERR expected value
+ERR unknown variant `null`, expected `success`
+OK {"msg":"true","result":"success"}
+OK {"msg":"Hello, World","result":"success"}
+OK {"msg":"x y","result":"success"}
+ERR unknown variant ``, expected `success`
+OK {"msg":"a","result":"success"}
+OK {"msg":"a","result":"success"}
+OK {"msg":"null","result":"success"}
+ERR invalid type: null, expected a string
+OK {"msg":"é中文","result":"success"}
+OK {"msg":"UPPER","result":"success"}
+OK {"msg":"x y","result":"success"}
+OK {"msg":"Hello, World","result":"success"}
+OK {"msg":"UPPER","result":"success"}
+OK {"msg":"😀","result":"success"}
+OK {"msg":"with \"quotes\"","result":"success"}
+ERR expected value
+OK {"bar":false,"baz":false}
+OK {"bar":10000000000.0,"baz":true}
+OK {"bar":"a","baz":false}
+ERR missing field `baz`
+ERR missing field `baz`
+ERR missing field `baz`
+OK {"baz":false}
+ERR missing field `baz`
+OK {"baz":false}
+ERR missing field `baz`
+OK {"baz":false}
+OK {"baz":true}
+OK {"baz":false}
+OK {"baz":false}
+ERR missing field `baz`
+ERR missing field `baz`
+ERR doesn't match pattern "(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)"
+OK "null"
+ERR doesn't match pattern "(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)"
+ERR invalid type: map, expected a string
+ERR doesn't match pattern "(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)"
+ERR doesn't match pattern "(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)"
+ERR doesn't match pattern "(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)"
+ERR invalid type: sequence, expected a string
+ERR doesn't match pattern "(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)"
+ERR doesn't match pattern "(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)"
+OK "null"
+ERR invalid type: sequence, expected a string
+ERR doesn't match pattern "(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)"
+ERR doesn't match pattern "(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)"
+ERR doesn't match pattern "(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)"
+ERR invalid type: floating point `123456789.125`, expected a string
+ERR unknown variant `x`, there are no variants
+ERR unknown variant `x`, there are no variants
+ERR unknown variant `x`, there are no variants
+ERR unknown variant `x`, there are no variants
+ERR unknown variant `x`, there are no variants
+ERR unknown variant `x`, there are no variants
+ERR unknown variant `x`, there are no variants
+ERR unknown variant `x`, there are no variants
+ERR unknown variant `x`, there are no variants
+ERR unknown variant `x`, there are no variants
+ERR unknown variant `x`, there are no variants
+ERR unknown variant `unexpected_field`, there are no variants
+ERR unknown variant `x`, there are no variants
+ERR unknown variant `x`, there are no variants
+ERR unknown variant `x`, there are no variants
+ERR unknown variant `x`, there are no variants
+OK {}
+OK {"this":{}}
+OK {}
+OK {}
+OK {}
+OK {"this":false}
+OK {"this":{"k0":"0x10"}}
+OK {}
+OK {}
+OK {}
+OK {"this":true}
+OK {"this":false}
+OK {"this":[1]}
+OK {}
+OK {}
+OK {}
+ERR unknown field `action`, there are no fields
+ERR unknown field `action`, there are no fields
+ERR invalid type: null, expected struct MergeEmpty
+ERR unknown field `token`, there are no fields
+ERR unknown field `action`, there are no fields
+ERR invalid type: null, expected struct MergeEmpty
+ERR unknown field `token`, there are no fields
+ERR unknown field `action`, there are no fields
+ERR unknown field `action`, there are no fields
+ERR unknown field `action`, there are no fields
+ERR unknown field `action`, there are no fields
+ERR unknown field `action`, there are no fields
+ERR invalid type: null, expected struct MergeEmpty
+ERR unknown field `action`, there are no fields
+ERR unknown field `action`, there are no fields
+ERR unknown field `action`, there are no fields
+OK 1.5
+OK 50.0
+OK 50.0
+OK 10000000000.0
+OK 123456789.125
+OK 0.1
+OK 1e+300
+ERR invalid type: null, expected f64
+OK 6.0
+OK 10000000000.0
+OK 123456789.125
+ERR invalid type: null, expected f64
+OK 51.0
+OK 1.5
+OK 1e+300
+ERR invalid type: map, expected f64
+ERR shorter than 5 characters
+ERR longer than 10 characters
+ERR longer than 10 characters
+ERR invalid type: map, expected a string
+OK "xxxxxxxxxx"
+ERR shorter than 5 characters
+OK "xxxxxxxxx"
+ERR invalid type: map, expected a string
+ERR longer than 10 characters
+ERR shorter than 5 characters
+OK "xxxxxxxxx"
+ERR invalid type: sequence, expected a string
+ERR shorter than 5 characters
+OK "xxxxxxxxxx"
+OK "UPPER"
+ERR invalid type: sequence, expected a string
+ERR invalid type: floating point `123456789.125`, expected a nonzero u64
+ERR invalid type: boolean `true`, expected a nonzero u64
+ERR invalid type: sequence, expected a nonzero u64
+ERR invalid type: string "abc", expected a nonzero u64
+ERR invalid type: string "a", expected a nonzero u64
+ERR invalid type: sequence, expected a nonzero u64
+ERR invalid type: null, expected a nonzero u64
+ERR invalid type: map, expected a nonzero u64
+OK 256
+ERR invalid type: string "true", expected a nonzero u64
+ERR invalid type: string "true", expected a nonzero u64
+ERR invalid type: null, expected a nonzero u64
+OK 1
+ERR invalid type: sequence, expected a nonzero u64
+ERR invalid type: boolean `false`, expected a nonzero u64
+ERR invalid type: null, expected a nonzero u64
+OK {"suspended_by":{}}
+OK {"suspended_by":{"email":"true"}}
+OK {"suspended_by":{}}
+ERR invalid type: null, expected struct PickingoneSuspendedBy
+OK {"suspended_by":{}}
+OK {"suspended_by":{"email":"UPPER"}}
+OK {"suspended_by":{}}
+ERR invalid type: null, expected struct PickingoneSuspendedBy
+OK {"suspended_by":{}}
+OK {"suspended_by":{}}
+OK {"suspended_by":{"email":"0x10"}}
+OK {"suspended_by":{}}
+OK {"suspended_by":{"email":"null"}}
+OK {"suspended_by":{}}
+OK {"suspended_by":{"email":"ok"}}
+ERR missing field `suspended_by`
+OK {}
+OK {}
+OK {"suspended_by":{}}
+ERR invalid type: floating point `-2.25`, expected struct PickingoneUser
+OK {"suspended_by":{}}
+OK {}
+OK {}
+OK {}
+OK {}
+OK {}
+OK {}
+OK {}
+OK {}
+OK {"suspended_by":{"email":"true"}}
+OK {}
+OK {"suspended_by":{}}
+OK {"email":"é中文"}
+OK {"email":"Hello, World"}
+OK {}
+ERR invalid type: map, expected a string
+OK {}
+OK {"email":"😀"}
+OK {}
+ERR invalid type: map, expected a string
+OK {"email":"a"}
+OK {"email":"true"}
+OK {}
+OK {}
+OK {"email":"Hello, World"}
+OK {"email":"é中文"}
+OK {}
+OK {}
+OK {"a":"UPPER"}
+OK {"a":"1234"}
+OK {"a":"ok"}
+OK {"a":null}
+OK {"a":false}
+OK {"a":{"k0":null}}
+OK {"a":{"k0":1.5}}
+OK {"a":{}}
+OK {"a":"abc"}
+OK {"a":"1234"}
+OK {"a":1.0}
+OK {"a":[]}
+OK {"a":[]}
+OK {"a":1.0}
+OK {"a":"1234"}
+OK {"a":"null"}
+OK {"tag":"something"}
+OK {"tag":"something"}
+OK {"tag":"something"}
+ERR missing field `tag`
+OK {"tag":"something"}
+OK {"tag":"something"}
+OK {"tag":"something"}
+ERR expected value
+OK {"tag":"something"}
+OK {"tag":"something"}
+OK {"tag":"something"}
+ERR missing field `tag`
+OK {"tag":"something"}
+OK {"tag":"something"}
+OK {"tag":"something"}
+OK {"tag":"something"}
+ERR unknown variant `bar`, there are no variants
+ERR unknown variant `foo`, there are no variants
+ERR unknown variant `bar`, there are no variants
+ERR expected value
+ERR unknown variant `bar`, there are no variants
+ERR unknown variant `bar`, there are no variants
+ERR unknown variant `foo`, there are no variants
+ERR unknown variant `bar`, there are no variants
+ERR unknown variant `bar`, there are no variants
+ERR unknown variant `bar`, there are no variants
+ERR unknown variant `bar`, there are no variants
+ERR unknown variant `bar`, there are no variants
+ERR unknown variant `foo`, there are no variants
+ERR unknown variant `bar`, there are no variants
+ERR unknown variant `bar`, there are no variants
+ERR unknown variant `wrapped`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+ERR unknown variant `action`, there are no variants
+OK {"action":"foo"}
+OK {}
+OK {"action":"foo"}
+OK {"action":"foo"}
+OK {"action":"foo"}
+OK {}
+OK {"action":"foo"}
+OK {}
+OK {"action":"foo"}
+OK {"action":"foo"}
+OK {}
+OK {}
+OK {}
+OK {}
+OK {"action":"foo"}
+OK {}
+OK "bar"
+OK "bar"
+OK "bar"
+ERR unknown variant `wrapped`, expected `bar`
+OK "bar"
+OK "bar"
+OK "bar"
+ERR unknown variant `wrapped`, expected `bar`
+OK "bar"
+OK "bar"
+OK "bar"
+ERR expected value
+OK "bar"
+OK "bar"
+OK "bar"
+ERR expected value
+OK "foo"
+OK "foo"
+OK "foo"
+ERR expected value
+OK "foo"
+OK "foo"
+OK "foo"
+ERR expected value
+OK "foo"
+OK "foo"
+OK "foo"
+ERR expected value
+OK "foo"
+OK "foo"
+OK "foo"
+ERR expected value
+OK {"pattern":"ok"}
+OK {"pattern":"ok"}
+OK {"pattern-either":"UPPER"}
+ERR data did not match any variant of untagged enum WeirdEnum
+OK {"pattern-either":"Hello, World"}
+ERR data did not match any variant of untagged enum WeirdEnum
+OK {"pattern":"a-b_c"}
+ERR data did not match any variant of untagged enum WeirdEnum
+ERR data did not match any variant of untagged enum WeirdEnum
+OK {"pattern-regex":"a"}
+ERR data did not match any variant of untagged enum WeirdEnum
+ERR data did not match any variant of untagged enum WeirdEnum
+ERR data did not match any variant of untagged enum WeirdEnum
+ERR data did not match any variant of untagged enum WeirdEnum
+ERR data did not match any variant of untagged enum WeirdEnum
+ERR data did not match any variant of untagged enum WeirdEnum

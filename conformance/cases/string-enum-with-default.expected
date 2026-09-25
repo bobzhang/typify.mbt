@@ -1,0 +1,16 @@
+OK "failure"
+OK "failure"
+OK "failure"
+ERR expected value
+OK "skipped"
+OK "failure"
+OK "failure"
+ERR unknown variant `wrapped`, expected one of `failure`, `skipped`, `success`
+OK "success"
+OK "skipped"
+OK "success"
+ERR unknown variant `wrapped`, expected one of `failure`, `skipped`, `success`
+OK "skipped"
+OK "skipped"
+OK "success"
+ERR expected value

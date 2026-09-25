@@ -1,0 +1,48 @@
+type-with-modified-generation	HandGeneratedType	"😀"
+type-with-modified-generation	HandGeneratedType	"0x10"
+type-with-modified-generation	HandGeneratedType	false
+type-with-modified-generation	HandGeneratedType	{"k0":null,"k1":[0.1,null],"unexpected_field":true}
+type-with-modified-generation	HandGeneratedType	{"k0":["abc","UPPER"]}
+type-with-modified-generation	HandGeneratedType	null
+type-with-modified-generation	HandGeneratedType	123456789.125
+type-with-modified-generation	HandGeneratedType	{"wrapped":"with \"quotes\""}
+type-with-modified-generation	HandGeneratedType	"1234"
+type-with-modified-generation	HandGeneratedType	"😀"
+type-with-modified-generation	HandGeneratedType	"x y"
+type-with-modified-generation	HandGeneratedType	["ok"]
+type-with-modified-generation	HandGeneratedType	0
+type-with-modified-generation	HandGeneratedType	1.5
+type-with-modified-generation	HandGeneratedType	true
+type-with-modified-generation	HandGeneratedType	{}
+type-with-modified-generation	TypeThatHasMoreDerives	{"extra_key":"1234"}
+type-with-modified-generation	TypeThatHasMoreDerives	{"extra_key":"Hello, World"}
+type-with-modified-generation	TypeThatHasMoreDerives	{"extra_key":"😀"}
+type-with-modified-generation	TypeThatHasMoreDerives	{"extra_key":null}
+type-with-modified-generation	TypeThatHasMoreDerives	{}
+type-with-modified-generation	TypeThatHasMoreDerives	{"extra_key":"x y"}
+type-with-modified-generation	TypeThatHasMoreDerives	{"extra_key":"a"}
+type-with-modified-generation	TypeThatHasMoreDerives	{"wrapped":{}}
+type-with-modified-generation	TypeThatHasMoreDerives	{"extra_key":"Hello, World"}
+type-with-modified-generation	TypeThatHasMoreDerives	{}
+type-with-modified-generation	TypeThatHasMoreDerives	{"extra_key":"abc"}
+type-with-modified-generation	TypeThatHasMoreDerives	[{}]
+type-with-modified-generation	TypeThatHasMoreDerives	{"extra_key":"abc"}
+type-with-modified-generation	TypeThatHasMoreDerives	{"extra_key":"Hello, World"}
+type-with-modified-generation	TypeThatHasMoreDerives	{"extra_key":"null"}
+type-with-modified-generation	TypeThatHasMoreDerives	[{}]
+type-with-modified-generation	TestType	{"converted_type":1,"patched_type":{},"replaced_type":"Hello, World"}
+type-with-modified-generation	TestType	{"converted_type":1,"patched_type":{},"replaced_type":3}
+type-with-modified-generation	TestType	{"converted_type":1,"patched_type":{},"replaced_type":-1}
+type-with-modified-generation	TestType	{"patched_type":{"extra_key":"é中文"},"replaced_type":""}
+type-with-modified-generation	TestType	{"converted_type":1,"patched_type":{"extra_key":"ok"},"replaced_type":null}
+type-with-modified-generation	TestType	{"converted_type":1,"patched_type":{"extra_key":"ok"},"replaced_type":false}
+type-with-modified-generation	TestType	{"converted_type":"one","patched_type":{},"replaced_type":""}
+type-with-modified-generation	TestType	{"converted_type":"one","patched_type":null,"replaced_type":false}
+type-with-modified-generation	TestType	{"converted_type":1,"patched_type":{"extra_key":"null"},"replaced_type":false}
+type-with-modified-generation	TestType	{"converted_type":1,"patched_type":{},"replaced_type":-2.25}
+type-with-modified-generation	TestType	{"converted_type":"one","patched_type":{"extra_key":"true"},"replaced_type":0.1}
+type-with-modified-generation	TestType	{"converted_type":"one","patched_type":true,"replaced_type":"😀"}
+type-with-modified-generation	TestType	{"converted_type":"one","patched_type":{"extra_key":"😀"},"replaced_type":-1}
+type-with-modified-generation	TestType	{"converted_type":"one","patched_type":{"extra_key":"x y"},"replaced_type":false}
+type-with-modified-generation	TestType	{"converted_type":"one","patched_type":{"extra_key":"with \"quotes\""},"replaced_type":"0x10"}
+type-with-modified-generation	TestType	{"converted_type":1,"patched_type":{},"replaced_type":"1234"}

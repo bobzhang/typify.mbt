@@ -28,6 +28,7 @@ pub fn roundtrip<T: serde::de::DeserializeOwned + serde::Serialize>(input: &str)
 }
 
 fn main() {
+    std::panic::set_hook(Box::new(|_| {}));
     let stdin = std::io::stdin();
     let stdout = std::io::stdout();
     let mut out = stdout.lock();
@@ -39,7 +40,9 @@ fn main() {
             parts.next().unwrap(),
             parts.next().unwrap_or(""),
         );
-        let result = dispatch(schema, ty, input).unwrap_or_else(|| "NOTYPE".to_string());
+        let result = std::panic::catch_unwind(|| dispatch(schema, ty, input))
+            .map(|r| r.unwrap_or_else(|| "NOTYPE".to_string()))
+            .unwrap_or_else(|_| "PANIC".to_string());
         writeln!(out, "{result}").unwrap();
     }
 }

@@ -1,0 +1,64 @@
+OK {"value":1}
+OK {"value":true}
+OK {"value":{"k0":null}}
+OK {"value":"😀"}
+OK {"value":1.5}
+OK {"value":false}
+OK {"value":false}
+ERR missing field `value`
+OK {"value":["Hello, World",-2.25]}
+OK {"value":[null,true]}
+OK {"value":null}
+OK {"value":{"wrapped":1.5}}
+OK {"value":""}
+OK {"value":"Hello, World"}
+OK {"value":{}}
+OK {"value":null}
+OK {"flush_timeout":1.5}
+OK {}
+OK {"flush_timeout":-2.25}
+OK {}
+OK {}
+OK {}
+OK {"flush_timeout":10000000000.0}
+OK {}
+OK {"flush_timeout":0.0}
+OK {"flush_timeout":null}
+OK {"flush_timeout":10000000000.0}
+OK {"flush_timeout":1.0}
+OK {"flush_timeout":1.0}
+OK {"flush_timeout":123456790.0}
+OK {"flush_timeout":123456790.0}
+ERR invalid type: map, expected f32
+OK "ok"
+OK "UPPER"
+OK "null"
+ERR invalid type: null, expected a string
+OK "x y"
+OK "a-b_c"
+OK "UPPER"
+ERR invalid type: null, expected a string
+OK "Hello, World"
+OK "Hello, World"
+OK "a"
+ERR invalid type: map, expected a string
+OK "é中文"
+OK "😀"
+OK "1234"
+ERR invalid type: map, expected a string
+ERR invalid value: integer `-128`, expected a nonzero u64
+ERR invalid type: floating point `-9.223372036854776e+18`, expected u64
+ERR invalid value: integer `0`, expected a nonzero u64
+ERR invalid type: string "with \"quotes\"", expected u64
+ERR invalid value: integer `0`, expected a nonzero u64
+ERR invalid type: floating point `1.0`, expected u64
+ERR invalid type: floating point `1.8446744073709552e+19`, expected a nonzero u64
+ERR invalid value: integer `-1`, expected a nonzero u64
+OK {"max":257,"min":1,"min_and_max":255,"min_non_zero":1,"min_uint_non_zero":9007199254740993,"no_bounds":9007199254740993}
+ERR invalid type: floating point `1.8446744073709552e+19`, expected u64
+ERR invalid value: integer `0`, expected a nonzero u64
+ERR invalid type: null, expected u64
+OK {"max":255,"min":127,"min_and_max":4294967295,"min_non_zero":4294967295,"min_uint_non_zero":65535,"no_bounds":9007199254740993}
+ERR invalid value: integer `-128`, expected u64
+ERR invalid type: floating point `2.5`, expected a nonzero u64
+ERR invalid value: integer `0`, expected a nonzero u64

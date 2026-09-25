@@ -1,0 +1,336 @@
+rust-collisions	Box	{"data":"Hello, World"}
+rust-collisions	Box	{"data":""}
+rust-collisions	Box	{"data":"a-b_c"}
+rust-collisions	Box	{"data":null}
+rust-collisions	Box	{"data":"ok"}
+rust-collisions	Box	{"data":"abc"}
+rust-collisions	Box	{"data":"a"}
+rust-collisions	Box	{"data":{"wrapped":"a"}}
+rust-collisions	Box	{"data":"abc"}
+rust-collisions	Box	{"data":"Hello, World"}
+rust-collisions	Box	{"data":"with \"quotes\""}
+rust-collisions	Box	{"data":true}
+rust-collisions	Box	{"data":"a-b_c"}
+rust-collisions	Box	{"data":"a-b_c"}
+rust-collisions	Box	{"data":"😀"}
+rust-collisions	Box	{}
+rust-collisions	Copy	{"value":9223372036854775808}
+rust-collisions	Copy	{"value":1.0}
+rust-collisions	Copy	{"value":9223372036854775807}
+rust-collisions	Copy	{"value":null}
+rust-collisions	Copy	{"value":2}
+rust-collisions	Copy	{"value":-128}
+rust-collisions	Copy	{"value":256}
+rust-collisions	Copy	{"value":null}
+rust-collisions	Copy	{"value":-129}
+rust-collisions	Copy	{"value":9223372036854775808}
+rust-collisions	Copy	{"value":1.0}
+rust-collisions	Copy	{"unexpected_field":null,"value":4294967295}
+rust-collisions	Copy	{"value":2147483648}
+rust-collisions	Copy	{"value":4294967295}
+rust-collisions	Copy	{"value":2147483648}
+rust-collisions	Copy	{"unexpected_field":true,"value":-32769}
+rust-collisions	DoubleOptionCollision	{"option":null}
+rust-collisions	DoubleOptionCollision	{"option":null}
+rust-collisions	DoubleOptionCollision	{"option":null}
+rust-collisions	DoubleOptionCollision	{"wrapped":{}}
+rust-collisions	DoubleOptionCollision	{}
+rust-collisions	DoubleOptionCollision	{}
+rust-collisions	DoubleOptionCollision	{"option":null}
+rust-collisions	DoubleOptionCollision	{"option":"x y"}
+rust-collisions	DoubleOptionCollision	{}
+rust-collisions	DoubleOptionCollision	{"option":null}
+rust-collisions	DoubleOptionCollision	{}
+rust-collisions	DoubleOptionCollision	{"option":false}
+rust-collisions	DoubleOptionCollision	{}
+rust-collisions	DoubleOptionCollision	{}
+rust-collisions	DoubleOptionCollision	{}
+rust-collisions	DoubleOptionCollision	{"wrapped":{}}
+rust-collisions	Drop	{"cleanup":false}
+rust-collisions	Drop	{"cleanup":true}
+rust-collisions	Drop	{"cleanup":false}
+rust-collisions	Drop	{}
+rust-collisions	Drop	{"cleanup":true}
+rust-collisions	Drop	{"cleanup":true}
+rust-collisions	Drop	{"cleanup":true}
+rust-collisions	Drop	{"cleanup":null}
+rust-collisions	Drop	{"cleanup":true}
+rust-collisions	Drop	{"cleanup":true}
+rust-collisions	Drop	{"cleanup":true}
+rust-collisions	Drop	{"cleanup":null}
+rust-collisions	Drop	{"cleanup":false}
+rust-collisions	Drop	{"cleanup":false}
+rust-collisions	Drop	{"cleanup":false}
+rust-collisions	Drop	{"cleanup":false,"unexpected_field":null}
+rust-collisions	FlattenedKeywords	{"extra_key":"with \"quotes\"","normal":"a"}
+rust-collisions	FlattenedKeywords	{"normal":"true"}
+rust-collisions	FlattenedKeywords	{"normal":"😀"}
+rust-collisions	FlattenedKeywords	{}
+rust-collisions	FlattenedKeywords	{"normal":"😀"}
+rust-collisions	FlattenedKeywords	{"extra_key":"😀","normal":"é中文"}
+rust-collisions	FlattenedKeywords	{"normal":"true"}
+rust-collisions	FlattenedKeywords	{"normal":null}
+rust-collisions	FlattenedKeywords	{"extra_key":"abc","normal":""}
+rust-collisions	FlattenedKeywords	{"normal":"😀"}
+rust-collisions	FlattenedKeywords	{"normal":"x y"}
+rust-collisions	FlattenedKeywords	{"normal":"abc","unexpected_field":true}
+rust-collisions	FlattenedKeywords	{"extra_key":"true","normal":"1234"}
+rust-collisions	FlattenedKeywords	{"normal":"UPPER"}
+rust-collisions	FlattenedKeywords	{"normal":"a"}
+rust-collisions	FlattenedKeywords	{}
+rust-collisions	KeywordFieldsEnum	["Hello, World","true"]
+rust-collisions	KeywordFieldsEnum	["null","é中文","null"]
+rust-collisions	KeywordFieldsEnum	["","null"]
+rust-collisions	KeywordFieldsEnum	{"impl":"ok","ref":false,"type":"a"}
+rust-collisions	KeywordFieldsEnum	{"impl":"null","match":2147483648,"ref":false,"type":"UPPER"}
+rust-collisions	KeywordFieldsEnum	{"impl":"a","match":1.0,"ref":true,"type":"1234"}
+rust-collisions	KeywordFieldsEnum	{"impl":"a-b_c","match":0,"ref":false,"type":"abc"}
+rust-collisions	KeywordFieldsEnum	null
+rust-collisions	KeywordFieldsEnum	["Hello, World","é中文"]
+rust-collisions	KeywordFieldsEnum	["","é中文"]
+rust-collisions	KeywordFieldsEnum	["Hello, World",""]
+rust-collisions	KeywordFieldsEnum	[null,"abc"]
+rust-collisions	KeywordFieldsEnum	{"impl":"a","match":65535,"ref":false,"type":"x y"}
+rust-collisions	KeywordFieldsEnum	["","null"]
+rust-collisions	KeywordFieldsEnum	["with \"quotes\"","UPPER"]
+rust-collisions	KeywordFieldsEnum	{"impl":"x y","match":null,"ref":false,"type":"null"}
+rust-collisions	MapOfKeywords	{"keyword_map":{"extra_key":"where"}}
+rust-collisions	MapOfKeywords	{"keyword_map":{}}
+rust-collisions	MapOfKeywords	{"keyword_map":{}}
+rust-collisions	MapOfKeywords	{"keyword_map":{"extra_key":"type"},"unexpected_field":true}
+rust-collisions	MapOfKeywords	{"keyword_map":{}}
+rust-collisions	MapOfKeywords	{"keyword_map":{}}
+rust-collisions	MapOfKeywords	{"keyword_map":{"extra_key":"where"}}
+rust-collisions	MapOfKeywords	{}
+rust-collisions	MapOfKeywords	{"keyword_map":{}}
+rust-collisions	MapOfKeywords	{"keyword_map":{"extra_key":"move"}}
+rust-collisions	MapOfKeywords	{"keyword_map":{}}
+rust-collisions	MapOfKeywords	{"keyword_map":"null"}
+rust-collisions	MapOfKeywords	{"keyword_map":{}}
+rust-collisions	MapOfKeywords	{"keyword_map":{"extra_key":"let"}}
+rust-collisions	MapOfKeywords	{"keyword_map":{"extra_key":"self"}}
+rust-collisions	MapOfKeywords	{"keyword_map":{"extra_key":"let"},"unexpected_field":"ok"}
+rust-collisions	NestedTypeCollisions	{"option_type":null,"type":{"boxed_field":{"data":"Hello, World"},"optional_field":"é中文"},"types":[{"boxed_field":{"data":"Hello, World"}},{"boxed_field":{"data":"😀"},"optional_field":null}]}
+rust-collisions	NestedTypeCollisions	{"option_type":{"type":""},"type":{"boxed_field":{"data":"with \"quotes\""}},"types":[{"boxed_field":{"data":"a-b_c"}}]}
+rust-collisions	NestedTypeCollisions	{"option_type":null,"type":{"boxed_field":{"data":"1234"},"optional_field":"true"},"types":[{"boxed_field":{"data":"ok"},"optional_field":"UPPER"},{"boxed_field":{"data":"é中文"},"optional_field":"a"},{"boxed_field":{"data":"a"},"optional_field":"true"}]}
+rust-collisions	NestedTypeCollisions	{"type":{"boxed_field":{"data":"a-b_c"}},"types":[{"boxed_field":{"data":"a-b_c"},"optional_field":null}]}
+rust-collisions	NestedTypeCollisions	{"option_type":{"type":"UPPER"},"type":{"boxed_field":{"data":"ok"}},"types":[{"boxed_field":{"data":"é中文"},"optional_field":"abc"}]}
+rust-collisions	NestedTypeCollisions	{"type":{"boxed_field":{"data":"é中文"}},"types":[{"boxed_field":{"data":"x y"},"optional_field":null}]}
+rust-collisions	NestedTypeCollisions	{"type":{"boxed_field":{"data":""}},"types":[{"boxed_field":{"data":"é中文"}}]}
+rust-collisions	NestedTypeCollisions	{"option_type":null,"type":{"boxed_field":{"data":"true"},"optional_field":null},"types":[{"boxed_field":{"data":"1234"}},{"boxed_field":{"data":"1234"}}]}
+rust-collisions	NestedTypeCollisions	{"type":{"boxed_field":{"data":"abc"}},"types":[]}
+rust-collisions	NestedTypeCollisions	{"type":{"boxed_field":{"data":"true"},"optional_field":"a-b_c"},"types":[{"boxed_field":{"data":"with \"quotes\""},"optional_field":"0x10"},{"boxed_field":{"data":"é中文"},"optional_field":"true"}]}
+rust-collisions	NestedTypeCollisions	{"type":{"boxed_field":{"data":"with \"quotes\""},"optional_field":null},"types":[{"boxed_field":{"data":"true"}},{"boxed_field":{"data":""}},{"boxed_field":{"data":"abc"}}]}
+rust-collisions	NestedTypeCollisions	{"option_type":{},"type":{"boxed_field":{"data":"with \"quotes\""}},"types":[{"boxed_field":{"data":"é中文"}},{"boxed_field":{"data":""},"optional_field":null},{"boxed_field":{"data":"abc"}}]}
+rust-collisions	NestedTypeCollisions	{"type":{"boxed_field":{"data":""}},"types":[{"boxed_field":{"data":"abc"},"optional_field":null}]}
+rust-collisions	NestedTypeCollisions	{"option_type":{"type":"UPPER"},"type":{"boxed_field":{"data":"Hello, World"},"optional_field":null},"types":[{"boxed_field":{"data":"x y"},"optional_field":null},{"boxed_field":{"data":"UPPER"},"optional_field":null},{"boxed_field":{"data":"a-b_c"},"optional_field":"UPPER"}]}
+rust-collisions	NestedTypeCollisions	{"option_type":null,"type":{"boxed_field":{"data":"x y"},"optional_field":"abc"},"types":[{"boxed_field":{"data":"😀"}},{"boxed_field":{"data":"UPPER"}},{"boxed_field":{"data":"1234"}}]}
+rust-collisions	NestedTypeCollisions	{"option_type":null,"type":{"boxed_field":{"data":"abc"},"optional_field":"é中文"},"types":[{"boxed_field":{"data":"Hello, World"},"optional_field":null},{"boxed_field":{"data":"1234"},"optional_field":"😀"}],"unexpected_field":"a"}
+rust-collisions	Option	{"maybe":"x y"}
+rust-collisions	Option	{"maybe":"UPPER"}
+rust-collisions	Option	{"maybe":"with \"quotes\""}
+rust-collisions	Option	{"maybe":["é中文"]}
+rust-collisions	Option	{"maybe":"Hello, World"}
+rust-collisions	Option	{"maybe":"😀"}
+rust-collisions	Option	{"maybe":"a"}
+rust-collisions	Option	{}
+rust-collisions	Option	{"maybe":"a"}
+rust-collisions	Option	{"maybe":"0x10"}
+rust-collisions	Option	{"maybe":"UPPER"}
+rust-collisions	Option	{"maybe":null}
+rust-collisions	Option	{"maybe":"0x10"}
+rust-collisions	Option	{"maybe":"😀"}
+rust-collisions	Option	{"maybe":"x y"}
+rust-collisions	Option	{}
+rust-collisions	Pin	{"pointer":"null"}
+rust-collisions	Pin	{"pointer":"ok"}
+rust-collisions	Pin	{"pointer":"Hello, World"}
+rust-collisions	Pin	{"pointer":"x y","unexpected_field":true}
+rust-collisions	Pin	{"pointer":"true"}
+rust-collisions	Pin	{"pointer":"a-b_c"}
+rust-collisions	Pin	{"pointer":"a"}
+rust-collisions	Pin	{"pointer":"1234","unexpected_field":"x y"}
+rust-collisions	Pin	{"pointer":"abc"}
+rust-collisions	Pin	{"pointer":"é中文"}
+rust-collisions	Pin	{"pointer":"a-b_c"}
+rust-collisions	Pin	{"pointer":"ok"}
+rust-collisions	Pin	{"pointer":"a-b_c"}
+rust-collisions	Pin	{"pointer":"true"}
+rust-collisions	Pin	{"pointer":"é中文"}
+rust-collisions	Pin	{"pointer":"é中文","unexpected_field":null}
+rust-collisions	RustKeywordMonster	{"abstract":"ok","as":"é中文","async":"é中文","await":"with \"quotes\"","become":"null","box":"UPPER","break":"x y","const":"é中文","continue":"😀","crate":"0x10","do":"null","dyn":"x y","else":"UPPER","enum":"x y","extern":"é中文","false":"a","final":"abc","fn":"ok","for":"ok","gen":"true","if":"ok","impl":"UPPER","in":"UPPER","let":"Hello, World","loop":"a-b_c","macro":"é中文","match":"x y","mod":"😀","move":"null","mut":"😀","override":"","priv":"0x10","pub":"null","ref":"ok","return":"0x10","self":"x y","static":"a","struct":"","super":"a","trait":"abc","true":"😀","try":"Hello, World","type":"abc","typeof":"true","unsafe":"1234","unsized":"ok","use":"true","virtual":"with \"quotes\"","where":"abc","while":"UPPER","yield":"UPPER"}
+rust-collisions	RustKeywordMonster	{"abstract":"true","as":"abc","async":"Hello, World","await":"","become":"a-b_c","box":"UPPER","break":"a-b_c","const":"with \"quotes\"","continue":"","crate":"null","do":"Hello, World","dyn":"😀","else":"é中文","enum":"1234","extern":"x y","false":"true","final":"x y","fn":"null","for":"0x10","gen":"true","if":"with \"quotes\"","impl":"1234","in":"null","let":"with \"quotes\"","loop":"ok","macro":"0x10","match":"😀","mod":"with \"quotes\"","move":"null","mut":"ok","override":"😀","priv":"abc","pub":"a","ref":"1234","return":"true","self":"😀","static":"true","struct":"x y","super":"with \"quotes\"","trait":"abc","true":"1234","try":"é中文","type":"","typeof":"Hello, World","unsafe":"é中文","unsized":"","use":"ok","virtual":"x y","where":"x y","while":"Hello, World","yield":"0x10"}
+rust-collisions	RustKeywordMonster	{"abstract":"0x10","as":"0x10","async":"Hello, World","await":"é中文","become":"ok","box":"ok","break":"with \"quotes\"","const":"with \"quotes\"","continue":"x y","crate":"ok","do":"😀","dyn":"with \"quotes\"","else":"null","enum":"😀","extern":"true","false":"a","final":"a-b_c","fn":"UPPER","for":"0x10","gen":"","if":"null","impl":"x y","in":"true","let":"é中文","loop":"ok","macro":"Hello, World","match":"0x10","mod":"Hello, World","move":"0x10","mut":"ok","override":"0x10","priv":"a","pub":"UPPER","ref":"a-b_c","return":"","self":"😀","static":"abc","struct":"null","super":"0x10","trait":"with \"quotes\"","true":"ok","try":"a-b_c","type":"ok","typeof":"0x10","unsafe":"1234","unsized":"Hello, World","use":"0x10","virtual":"","where":"é中文","while":"a-b_c","yield":"null"}
+rust-collisions	RustKeywordMonster	{"abstract":"ok","as":"0x10","async":"true","await":"x y","become":"x y","box":"a-b_c","break":"x y","const":"true","continue":"with \"quotes\"","crate":"abc","do":"abc","dyn":"true","else":"é中文","enum":"with \"quotes\"","extern":"","false":"ok","final":"1234","fn":"with \"quotes\"","for":"","gen":"","if":"null","impl":"Hello, World","in":"é中文","let":"UPPER","loop":"😀","macro":"","match":"é中文","mod":"é中文","move":"a","mut":"é中文","override":"UPPER","priv":"ok","pub":"abc","ref":"é中文","return":"ok","self":"UPPER","static":"a","struct":"é中文","super":"UPPER","trait":"abc","true":"with \"quotes\"","try":"0x10","type":"null","typeof":"é中文","unsafe":"😀","unsized":"😀","use":"UPPER","virtual":"a","where":"null","while":"ok","yield":"0x10"}
+rust-collisions	RustKeywordMonster	{"abstract":"😀","as":"0x10","async":"é中文","await":"UPPER","become":"ok","box":"abc","break":"é中文","const":"😀","continue":"x y","crate":"1234","do":"","dyn":"UPPER","else":"","enum":"a-b_c","extern":"abc","false":"abc","final":"ok","fn":"0x10","for":"a","gen":"null","if":"abc","impl":"abc","in":"a-b_c","let":"null","loop":"with \"quotes\"","macro":"Hello, World","match":"1234","mod":"abc","move":"true","mut":"","override":"UPPER","priv":"ok","pub":"ok","ref":"UPPER","return":"ok","self":"x y","static":"😀","struct":"x y","super":"é中文","trait":"null","true":"x y","try":"0x10","type":"0x10","typeof":"ok","unsafe":"ok","unsized":"","use":"a","virtual":"é中文","where":"true","while":"true","yield":"with \"quotes\""}
+rust-collisions	RustKeywordMonster	{"abstract":"0x10","as":"a","async":"null","await":"1234","become":"Hello, World","box":"1234","break":"😀","const":"0x10","continue":"x y","crate":"😀","do":"ok","dyn":"😀","else":"é中文","enum":"a","extern":"a","false":"1234","final":"null","fn":"a","for":"","gen":"x y","if":"x y","impl":"UPPER","in":"ok","let":"ok","loop":"","macro":"true","match":"0x10","mod":"x y","move":"true","mut":"ok","override":"Hello, World","priv":"é中文","pub":"x y","ref":"true","return":"Hello, World","self":"Hello, World","static":"true","struct":"😀","super":"a-b_c","trait":"true","true":"é中文","try":"a-b_c","type":"true","typeof":"😀","unsafe":"1234","unsized":"UPPER","use":"UPPER","virtual":"😀","where":"UPPER","while":"a","yield":"ok"}
+rust-collisions	RustKeywordMonster	{"abstract":"ok","as":"Hello, World","async":"abc","await":"with \"quotes\"","become":"0x10","box":"Hello, World","break":"null","const":"é中文","continue":"ok","crate":"null","do":"true","dyn":"1234","else":"a","enum":"0x10","extern":"abc","false":"ok","final":"a-b_c","fn":"","for":"null","gen":"true","if":"x y","impl":"with \"quotes\"","in":"é中文","let":"a-b_c","loop":"😀","macro":"0x10","match":"a","mod":"Hello, World","move":"null","mut":"0x10","override":"with \"quotes\"","priv":"UPPER","pub":"a-b_c","ref":"with \"quotes\"","return":"ok","self":"1234","static":"ok","struct":"","super":"😀","trait":"null","true":"ok","try":"abc","type":"with \"quotes\"","typeof":"0x10","unsafe":"true","unsized":"abc","use":"a-b_c","virtual":"null","where":"null","while":"é中文","yield":"😀"}
+rust-collisions	RustKeywordMonster	{"abstract":"","as":"UPPER","async":"Hello, World","await":"","become":"UPPER","box":"a","break":"abc","const":"x y","continue":"ok","crate":"null","do":"1234","dyn":"ok","else":"ok","enum":"UPPER","extern":"😀","false":"1234","final":"null","fn":"Hello, World","for":"ok","gen":"x y","if":"a","impl":"1234","in":"UPPER","let":"ok","loop":"😀","macro":"abc","match":"a-b_c","mod":"é中文","move":"x y","mut":"with \"quotes\"","override":"x y","priv":"a","pub":"abc","ref":"true","return":"ok","self":"😀","static":"UPPER","struct":"Hello, World","super":"0x10","trait":"x y","true":"null","try":"","type":"0x10","typeof":"ok","unexpected_field":null,"unsafe":"0x10","unsized":"null","use":"é中文","virtual":"x y","where":"abc","while":"abc","yield":"UPPER"}
+rust-collisions	RustKeywordMonster	{"abstract":"x y","as":"0x10","async":"1234","await":"true","become":"1234","box":"Hello, World","break":"0x10","const":"1234","continue":"x y","crate":"abc","do":"ok","dyn":"Hello, World","else":"abc","enum":"x y","extern":"0x10","false":"😀","final":"null","fn":"true","for":"true","gen":"null","if":"0x10","impl":"a","in":"é中文","let":"with \"quotes\"","loop":"ok","macro":"abc","match":"","mod":"abc","move":"a","mut":"😀","override":"x y","priv":"Hello, World","pub":"","ref":"0x10","return":"null","self":"","static":"0x10","struct":"with \"quotes\"","super":"0x10","trait":"é中文","true":"null","try":"1234","type":"1234","typeof":"with \"quotes\"","unsafe":"ok","unsized":"","use":"null","virtual":"x y","where":"😀","while":"a-b_c","yield":"é中文"}
+rust-collisions	RustKeywordMonster	{"abstract":"","as":"a-b_c","async":"null","await":"a-b_c","become":"with \"quotes\"","box":"abc","break":"Hello, World","const":"a-b_c","continue":"UPPER","crate":"","do":"0x10","dyn":"true","else":"true","enum":"null","extern":"a","false":"","final":"with \"quotes\"","fn":"abc","for":"UPPER","gen":"1234","if":"UPPER","impl":"abc","in":"1234","let":"é中文","loop":"é中文","macro":"UPPER","match":"x y","mod":"a","move":"null","mut":"abc","override":"x y","priv":"UPPER","pub":"1234","ref":"null","return":"1234","self":"0x10","static":"a","struct":"Hello, World","super":"abc","trait":"UPPER","true":"ok","try":"true","type":"x y","typeof":"a","unsafe":"ok","unsized":"ok","use":"true","virtual":"abc","where":"with \"quotes\"","while":"1234","yield":"0x10"}
+rust-collisions	RustKeywordMonster	{"abstract":"with \"quotes\"","as":"abc","async":"0x10","await":"UPPER","become":"Hello, World","box":"é中文","break":"0x10","const":"","continue":"0x10","crate":"abc","do":"x y","dyn":"😀","else":"abc","enum":"a-b_c","extern":"😀","false":"","final":"a-b_c","fn":"x y","for":"abc","gen":"a","if":"null","impl":"","in":"ok","let":"a","loop":"a","macro":"é中文","match":"null","mod":"abc","move":"a","mut":"ok","override":"😀","priv":"x y","pub":"a-b_c","ref":"","return":"a","self":"a","static":"é中文","struct":"0x10","super":"UPPER","trait":"0x10","true":"a-b_c","try":"ok","type":"ok","typeof":"ok","unsafe":"UPPER","unsized":"ok","use":"0x10","virtual":"ok","where":"x y","while":"0x10","yield":"a"}
+rust-collisions	RustKeywordMonster	{"abstract":"0x10","as":"é中文","async":"😀","await":"0x10","become":"1234","box":"UPPER","break":"true","const":"true","continue":"UPPER","crate":"true","do":"with \"quotes\"","dyn":"with \"quotes\"","else":"Hello, World","enum":"true","extern":"😀","false":"abc","final":"a-b_c","fn":null,"for":"Hello, World","gen":"with \"quotes\"","if":"a-b_c","impl":"with \"quotes\"","in":"a-b_c","let":"with \"quotes\"","loop":"a","macro":"😀","match":"0x10","mod":"é中文","move":"x y","mut":"é中文","override":"","priv":"1234","pub":"true","ref":"a","return":"Hello, World","self":"true","static":"abc","struct":"with \"quotes\"","super":"abc","trait":"null","true":"1234","try":"abc","type":"abc","typeof":"abc","unsafe":"abc","unsized":"ok","use":"a","virtual":"a","where":"true","while":"é中文","yield":"1234"}
+rust-collisions	RustKeywordMonster	{"abstract":"a","as":"with \"quotes\"","async":"x y","await":"a","become":"é中文","box":"with \"quotes\"","break":"1234","const":"1234","continue":"0x10","crate":"with \"quotes\"","do":"UPPER","dyn":"a-b_c","else":"UPPER","enum":"😀","extern":"0x10","false":"a-b_c","final":"null","fn":"true","for":"x y","gen":"","if":"UPPER","impl":"x y","in":"","let":"é中文","loop":"x y","macro":"null","match":"😀","mod":"true","move":"a","mut":"true","override":"true","priv":"a-b_c","pub":"true","ref":"abc","return":"x y","self":"é中文","static":"1234","struct":"ok","super":"😀","trait":"x y","true":"with \"quotes\"","try":"0x10","type":"Hello, World","typeof":"0x10","unsafe":"a-b_c","unsized":"a","use":"1234","virtual":"x y","where":"😀","while":"Hello, World","yield":"with \"quotes\""}
+rust-collisions	RustKeywordMonster	{"abstract":"😀","as":"Hello, World","async":"1234","await":"x y","become":"x y","box":"é中文","break":"1234","const":"😀","continue":"null","crate":"","do":"0x10","dyn":"Hello, World","else":"0x10","enum":"a-b_c","extern":"a-b_c","false":"x y","final":"UPPER","fn":"true","for":"a-b_c","gen":"UPPER","if":"1234","impl":"ok","in":"","let":"abc","loop":"ok","macro":"true","match":"Hello, World","mod":"null","move":"null","mut":"1234","override":"😀","priv":"abc","pub":"x y","ref":"true","return":"é中文","self":"null","static":"a-b_c","struct":"abc","super":"x y","trait":"0x10","true":"😀","try":"true","type":"true","typeof":"true","unsafe":"null","unsized":"1234","use":"ok","virtual":"","where":"é中文","while":"é中文","yield":"true"}
+rust-collisions	RustKeywordMonster	{"abstract":"ok","as":"a-b_c","async":"with \"quotes\"","await":"Hello, World","become":"1234","box":"x y","break":"x y","const":"Hello, World","continue":"with \"quotes\"","crate":"","do":"with \"quotes\"","dyn":"a-b_c","else":"UPPER","enum":"a-b_c","extern":"with \"quotes\"","false":"ok","final":"null","fn":"UPPER","for":"😀","gen":"with \"quotes\"","if":"😀","impl":"a-b_c","in":"","let":"1234","loop":"true","macro":"0x10","match":"null","mod":"ok","move":"with \"quotes\"","mut":"é中文","override":"ok","priv":"Hello, World","pub":"a-b_c","ref":"ok","return":"with \"quotes\"","self":"😀","static":"a-b_c","struct":"1234","super":"ok","trait":"😀","true":"0x10","try":"ok","type":"é中文","typeof":"é中文","unsafe":"x y","unsized":"a","use":"1234","virtual":"0x10","where":"x y","while":"😀","yield":"a"}
+rust-collisions	RustKeywordMonster	{"abstract":"ok","as":"é中文","async":"😀","await":"x y","become":"UPPER","box":"a","break":"0x10","const":"0x10","continue":"UPPER","crate":"😀","do":"","dyn":"","else":"x y","enum":"a","extern":"","false":"a","final":"é中文","fn":"a-b_c","for":"true","gen":"a","if":"é中文","impl":"a","in":"😀","let":"abc","loop":"é中文","macro":"x y","match":"0x10","mod":"a","move":"1234","mut":"é中文","override":"","priv":null,"pub":"Hello, World","ref":"abc","return":"","self":"1234","static":"abc","struct":"😀","super":"with \"quotes\"","trait":"UPPER","true":"null","try":"","type":"0x10","typeof":"UPPER","unsafe":"UPPER","unsized":"with \"quotes\"","use":"with \"quotes\"","virtual":"true","where":"true","while":"0x10","yield":"0x10"}
+rust-collisions	Send	{"message":"ok"}
+rust-collisions	Send	{"message":"true"}
+rust-collisions	Send	{"message":"Hello, World"}
+rust-collisions	Send	{"message":"😀","unexpected_field":"0x10"}
+rust-collisions	Send	{"message":"a-b_c"}
+rust-collisions	Send	{"message":"x y"}
+rust-collisions	Send	{"message":"a-b_c"}
+rust-collisions	Send	{"message":"abc"}
+rust-collisions	Send	{"message":"😀"}
+rust-collisions	Send	{"message":"0x10"}
+rust-collisions	Send	{"message":"UPPER"}
+rust-collisions	Send	{}
+rust-collisions	Send	{"message":"null"}
+rust-collisions	Send	{"message":"1234"}
+rust-collisions	Send	{"message":"true"}
+rust-collisions	Send	{"message":"é中文","unexpected_field":null}
+rust-collisions	String	{"text":"UPPER"}
+rust-collisions	String	{"text":"1234"}
+rust-collisions	String	{"text":""}
+rust-collisions	String	{"text":["UPPER"]}
+rust-collisions	String	{"text":"UPPER"}
+rust-collisions	String	{"text":"true"}
+rust-collisions	String	{"text":"with \"quotes\""}
+rust-collisions	String	{"text":"0x10","unexpected_field":"é中文"}
+rust-collisions	String	{"text":"0x10"}
+rust-collisions	String	{"text":"null"}
+rust-collisions	String	{"text":"true"}
+rust-collisions	String	{"text":"with \"quotes\""}
+rust-collisions	String	{"text":"1234"}
+rust-collisions	String	{"text":"UPPER"}
+rust-collisions	String	{"text":"a"}
+rust-collisions	String	{}
+rust-collisions	StringEnum	"two"
+rust-collisions	StringEnum	"three"
+rust-collisions	StringEnum	"one"
+rust-collisions	StringEnum	{"wrapped":"three"}
+rust-collisions	StringEnum	"three"
+rust-collisions	StringEnum	"two"
+rust-collisions	StringEnum	"two"
+rust-collisions	StringEnum	{"wrapped":"two"}
+rust-collisions	StringEnum	"one"
+rust-collisions	StringEnum	"two"
+rust-collisions	StringEnum	"one"
+rust-collisions	StringEnum	null
+rust-collisions	StringEnum	"two"
+rust-collisions	StringEnum	"two"
+rust-collisions	StringEnum	"three"
+rust-collisions	StringEnum	{"wrapped":"one"}
+rust-collisions	StringNewtype	"null"
+rust-collisions	StringNewtype	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+rust-collisions	StringNewtype	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+rust-collisions	StringNewtype	{"wrapped":"yy"}
+rust-collisions	StringNewtype	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+rust-collisions	StringNewtype	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+rust-collisions	StringNewtype	"y"
+rust-collisions	StringNewtype	null
+rust-collisions	StringNewtype	"Hello, World"
+rust-collisions	StringNewtype	""
+rust-collisions	StringNewtype	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+rust-collisions	StringNewtype	[null]
+rust-collisions	StringNewtype	"UPPER"
+rust-collisions	StringNewtype	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+rust-collisions	StringNewtype	"abc"
+rust-collisions	StringNewtype	{"wrapped":"ok"}
+rust-collisions	Sync	{"data":"true"}
+rust-collisions	Sync	{"data":"0x10"}
+rust-collisions	Sync	{"data":"UPPER"}
+rust-collisions	Sync	{"data":"Hello, World"}
+rust-collisions	Sync	{"data":"Hello, World"}
+rust-collisions	Sync	{"data":"true"}
+rust-collisions	Sync	{"data":"null"}
+rust-collisions	Sync	{}
+rust-collisions	Sync	{"data":"with \"quotes\""}
+rust-collisions	Sync	{"data":"1234"}
+rust-collisions	Sync	{"data":"a-b_c"}
+rust-collisions	Sync	{"data":null}
+rust-collisions	Sync	{"data":"a-b_c"}
+rust-collisions	Sync	{"data":"Hello, World"}
+rust-collisions	Sync	{"data":"1234"}
+rust-collisions	Sync	{}
+rust-collisions	TypeWithOptionField	{"boxed_field":{"data":"null"}}
+rust-collisions	TypeWithOptionField	{"boxed_field":{"data":"0x10"},"optional_field":null}
+rust-collisions	TypeWithOptionField	{"boxed_field":{"data":"😀"},"optional_field":null}
+rust-collisions	TypeWithOptionField	{}
+rust-collisions	TypeWithOptionField	{"boxed_field":{"data":"a"},"optional_field":null}
+rust-collisions	TypeWithOptionField	{"boxed_field":{"data":"x y"},"optional_field":"true"}
+rust-collisions	TypeWithOptionField	{"boxed_field":{"data":"a-b_c"},"optional_field":null}
+rust-collisions	TypeWithOptionField	{"boxed_field":{}}
+rust-collisions	TypeWithOptionField	{"boxed_field":{"data":"0x10"},"optional_field":"abc"}
+rust-collisions	TypeWithOptionField	{"boxed_field":{"data":"x y"},"optional_field":"true"}
+rust-collisions	TypeWithOptionField	{"boxed_field":{"data":"ok"},"optional_field":null}
+rust-collisions	TypeWithOptionField	{"boxed_field":{"data":"a-b_c"},"optional_field":["null"]}
+rust-collisions	TypeWithOptionField	{"boxed_field":{"data":"null"},"optional_field":"Hello, World"}
+rust-collisions	TypeWithOptionField	{"boxed_field":{"data":"x y"},"optional_field":""}
+rust-collisions	TypeWithOptionField	{"boxed_field":{"data":"😀"}}
+rust-collisions	TypeWithOptionField	{"boxed_field":{"data":"x y"},"optional_field":null}
+rust-collisions	Vec	{"items":["","😀","Hello, World"]}
+rust-collisions	Vec	{"items":[]}
+rust-collisions	Vec	{"items":["Hello, World","x y","ok"]}
+rust-collisions	Vec	{"items":null}
+rust-collisions	Vec	{"items":["ok","abc","Hello, World"]}
+rust-collisions	Vec	{"items":[]}
+rust-collisions	Vec	{"items":[]}
+rust-collisions	Vec	{"items":[["é中文","1234","abc"]]}
+rust-collisions	Vec	{"items":["a-b_c","with \"quotes\"","x y"]}
+rust-collisions	Vec	{"items":[]}
+rust-collisions	Vec	{"items":[""]}
+rust-collisions	Vec	{"items":["a-b_c","😀"],"unexpected_field":"ok"}
+rust-collisions	Vec	{"items":["","a-b_c","x y"]}
+rust-collisions	Vec	{"items":[]}
+rust-collisions	Vec	{"items":["ok","a-b_c","x y"]}
+rust-collisions	Vec	{}
+rust-collisions	FormatCollision	"{self}"
+rust-collisions	FormatCollision	"{self}"
+rust-collisions	FormatCollision	"quote\"unquote"
+rust-collisions	FormatCollision	{"wrapped":"quote\"unquote"}
+rust-collisions	FormatCollision	"{http://example.com/Foo}Thing"
+rust-collisions	FormatCollision	"{http://example.com/Foo}Thing"
+rust-collisions	FormatCollision	"quote\"unquote"
+rust-collisions	FormatCollision	["{abc}def"]
+rust-collisions	FormatCollision	"{http://example.com/Foo}Thing"
+rust-collisions	FormatCollision	"xyz"
+rust-collisions	FormatCollision	"{http://example.com/Foo}Thing"
+rust-collisions	FormatCollision	"UPPER"
+rust-collisions	FormatCollision	"quote\"unquote"
+rust-collisions	FormatCollision	"xyz"
+rust-collisions	FormatCollision	"{self}"
+rust-collisions	FormatCollision	{"wrapped":"{http://example.com/Foo}Thing"}
+rust-collisions	Std	{"boxed":{"value":"a"},"convert":{"value":"😀"},"fmt":{"value":"ok"},"option":{"value":"UPPER"},"result":{"value":"Hello, World"},"str":{"value":"with \"quotes\""},"string":{"value":"😀"}}
+rust-collisions	Std	{"boxed":{"value":"1234"},"convert":{"value":"a-b_c"},"fmt":{"value":"true"},"option":{"value":""},"result":{"value":"1234"},"str":{"value":"0x10"},"string":{"value":"😀"}}
+rust-collisions	Std	{"boxed":{"value":"a"},"convert":{"value":"abc"},"fmt":{"value":"abc"},"option":{"value":"1234"},"result":{"value":"a"},"str":{"value":"1234"},"string":{"value":"UPPER"}}
+rust-collisions	Std	{"boxed":{"value":"1234"},"convert":{"value":"1234"},"fmt":{"value":"0x10"},"option":{"value":""},"result":{"value":"null"},"str":null,"string":{"value":"é中文"}}
+rust-collisions	Std	{"boxed":{"value":"ok"},"convert":{"value":"ok"},"fmt":{"value":"ok"},"option":{"value":"Hello, World"},"result":{"value":"Hello, World"},"str":{"value":"0x10"},"string":{"value":"ok"}}
+rust-collisions	Std	{"boxed":{"value":"null"},"convert":{"value":"abc"},"fmt":{"value":"null"},"option":{"value":"a-b_c"},"result":{"value":"a"},"str":{"value":"ok"},"string":{"value":"0x10"}}
+rust-collisions	Std	{"boxed":{"value":"with \"quotes\""},"convert":{"value":"a-b_c"},"fmt":{"value":"a-b_c"},"option":{"value":"true"},"result":{"value":"1234"},"str":{"value":"é中文"},"string":{"value":"é中文"}}
+rust-collisions	Std	{"boxed":{"value":"1234"},"convert":{"value":"a"},"fmt":{"value":"a-b_c"},"option":{"value":"a-b_c"},"result":{"value":"😀"},"str":{"value":"a-b_c"},"string":true}
+rust-collisions	Std	{"boxed":{"value":"UPPER"},"convert":{"value":"UPPER"},"fmt":{"value":"0x10"},"option":{"value":"null"},"result":{"value":"é中文"},"str":{"value":"Hello, World"},"string":{"value":"true"}}
+rust-collisions	Std	{"boxed":{"value":"Hello, World"},"convert":{"value":"abc"},"fmt":{"value":"x y"},"option":{"value":"é中文"},"result":{"value":"abc"},"str":{"value":"a"},"string":{"value":""}}
+rust-collisions	Std	{"boxed":{"value":"é中文"},"convert":{"value":"a"},"fmt":{"value":"x y"},"option":{"value":"a-b_c"},"result":{"value":"Hello, World"},"str":{"value":"1234"},"string":{"value":"😀"}}
+rust-collisions	Std	{"boxed":{"value":"é中文"},"fmt":{"value":"😀"},"option":{"value":"1234"},"result":{"value":"true"},"str":{"value":"a-b_c"},"string":{"value":"ok"}}
+rust-collisions	Std	{"boxed":{"value":"with \"quotes\""},"convert":{"value":""},"fmt":{"value":"0x10"},"option":{"value":"UPPER"},"result":{"value":"UPPER"},"str":{"value":"1234"},"string":{"value":"UPPER"}}
+rust-collisions	Std	{"boxed":{"value":"abc"},"convert":{"value":"a-b_c"},"fmt":{"value":"abc"},"option":{"value":"é中文"},"result":{"value":"a-b_c"},"str":{"value":"a"},"string":{"value":"0x10"}}
+rust-collisions	Std	{"boxed":{"value":"a-b_c"},"convert":{"value":""},"fmt":{"value":"null"},"option":{"value":""},"result":{"value":"é中文"},"str":{"value":"Hello, World"},"string":{"value":"0x10"}}
+rust-collisions	Std	{"boxed":{"value":"ok"},"convert":{"value":"with \"quotes\""},"fmt":{"value":"ok"},"option":{"value":"1234"},"result":0,"str":{"value":"true"},"string":{"value":"with \"quotes\""}}
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	{"k0":"a","k1":1}
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	null
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	{}
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	{"wrapped":false}
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	false
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	"ok"
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	null
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	null
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	"abc"
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	["null",-0.0]
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	3
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	{"wrapped":"a"}
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	10000000000.0
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	[]
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	true
+rust-collisions	TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords	{"wrapped":1.0}

@@ -1,5 +1,7 @@
 import {
+  "bobzhang/typify",
   "bobzhang/typify/schema",
+  "moonbitlang/core/string",
   "bobzhang/typify/serde_json",
   "bobzhang/typify/collections",
   "moonbitlang/core/quickcheck/splitmix",
@@ -7,6 +9,4 @@ import {
   "moonbitlang/core/env",
 }
 
-options(
-  "is-main": true,
-)
+pkgtype(kind: "executable")

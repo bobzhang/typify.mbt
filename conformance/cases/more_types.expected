@@ -1,0 +1,80 @@
+OK {"foo":"x y"}
+OK {"foo":"ok"}
+OK {"foo":"1234"}
+OK {"foo":"😀"}
+OK {"foo":"Hello, World"}
+OK {"foo":"é中文"}
+OK {"foo":""}
+ERR unknown field `unexpected_field`, expected `foo`
+OK {"foo":"a"}
+OK {"foo":"a"}
+OK {"foo":"ok"}
+ERR invalid type: boolean `true`, expected a string
+OK {"foo":"UPPER"}
+OK {"foo":"UPPER"}
+OK {"foo":"a-b_c"}
+ERR invalid type: null, expected a string
+OK {"foo":"abc"}
+OK {"foo":"UPPER"}
+OK {"foo":"null"}
+ERR invalid type: null, expected a string
+OK {"foo":"a-b_c"}
+OK {"foo":"a"}
+OK {"foo":"UPPER"}
+ERR invalid type: null, expected a string
+OK {"foo":"UPPER"}
+OK {"foo":""}
+OK {"foo":"😀"}
+ERR invalid type: map, expected a string
+OK {"foo":"Hello, World"}
+OK {"foo":""}
+OK {"foo":"null"}
+OK {"foo":"ok"}
+OK {"foo":"x y","extra_key":"abc"}
+OK {"foo":"a","extra_key":"x y"}
+OK {"foo":"abc"}
+ERR invalid type: null, expected a string
+OK {"foo":"","extra_key":"0x10"}
+OK {"foo":"","extra_key":"é中文"}
+OK {"foo":"a"}
+ERR invalid type: null, expected a string
+OK {"foo":"ok","extra_key":"with \"quotes\""}
+OK {"foo":"😀","extra_key":"Hello, World"}
+OK {"foo":"UPPER","extra_key":"abc"}
+ERR invalid type: null, expected a string
+OK {"foo":"abc","extra_key":"true"}
+OK {"foo":"a","extra_key":"😀"}
+OK {"foo":"é中文","extra_key":"x y"}
+ERR invalid type: boolean `true`, expected a string
+OK {"foo":"","extra_key":["0x10"]}
+OK {"foo":"","extra_key":"UPPER"}
+OK {"foo":"Hello, World"}
+ERR missing field `foo`
+OK {"foo":"UPPER"}
+OK {"foo":"😀","extra_key":"with \"quotes\""}
+OK {"foo":"abc"}
+OK {"foo":"UPPER","extra_key":["","é中文"],"unexpected_field":false}
+OK {"foo":"true","extra_key":null}
+OK {"foo":"abc","extra_key":false}
+OK {"foo":"a-b_c","extra_key":null}
+ERR missing field `foo`
+OK {"foo":"with \"quotes\""}
+OK {"foo":"null","extra_key":[null,null]}
+OK {"foo":"","extra_key":[]}
+OK {"foo":"0x10","extra_key":true}
+OK {"foo":"UPPER"}
+OK {"foo":"a"}
+OK {"foo":"a-b_c"}
+ERR invalid type: null, expected a string
+OK {"foo":"1234"}
+OK {"foo":"null"}
+OK {"foo":""}
+ERR invalid type: null, expected a string
+OK {"foo":"1234"}
+OK {"foo":"UPPER"}
+OK {"foo":"UPPER"}
+ERR invalid type: null, expected a string
+OK {"foo":"with \"quotes\""}
+OK {"foo":"Hello, World"}
+OK {"foo":"a-b_c"}
+OK {"foo":""}

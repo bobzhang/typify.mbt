@@ -1,0 +1,48 @@
+OK [true,false,true]
+OK [false,false,false]
+OK [true,true,true,false]
+ERR invalid type: sequence, expected a boolean
+OK [false,true]
+OK []
+OK [false,false,false]
+OK [true,false,true]
+OK [false,false,false]
+OK []
+OK [false,false]
+ERR invalid type: map, expected a boolean
+OK [true,false]
+OK [true,true,true]
+OK [false,false]
+ERR invalid type: boolean `true`, expected a sequence
+ERR invalid type: floating point `-9.223372036854776e+18`, expected u64
+OK 255
+OK 1
+ERR invalid type: boolean `false`, expected u64
+ERR invalid value: integer `-1`, expected u64
+OK 2147483648
+OK 1
+ERR invalid type: boolean `false`, expected u64
+ERR invalid value: integer `-1`, expected u64
+ERR invalid type: floating point `1.0`, expected u64
+OK 9223372036854775807
+ERR invalid type: sequence, expected u64
+OK 0
+OK 0
+ERR invalid type: floating point `-9.223372036854776e+18`, expected u64
+ERR invalid type: null, expected u64
+OK {}
+OK {"ok":true}
+OK {"ok":false}
+ERR invalid type: map, expected a boolean
+OK {"ok":true}
+OK {}
+OK {"ok":false}
+ERR invalid type: null, expected struct ObjectBs
+OK {}
+OK {"ok":true}
+OK {"ok":true}
+ERR invalid type: map, expected a boolean
+OK {"ok":false}
+OK {}
+OK {}
+OK {}

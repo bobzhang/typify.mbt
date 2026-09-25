@@ -1,0 +1,16 @@
+deny-list	TestType	{"where_not":"with \"quotes\"","why_not":["abc",true]}
+deny-list	TestType	{"where_not":[-1,1],"why_not":""}
+deny-list	TestType	{"where_not":"é中文","why_not":{}}
+deny-list	TestType	{"where_not":null,"why_not":123456789.125}
+deny-list	TestType	{"where_not":{},"why_not":null}
+deny-list	TestType	{"where_not":null,"why_not":""}
+deny-list	TestType	{"where_not":{"k0":true},"why_not":[true]}
+deny-list	TestType	{"where_not":{"k0":1.0,"k1":1.0}}
+deny-list	TestType	{"where_not":"null","why_not":"null"}
+deny-list	TestType	{"where_not":true,"why_not":"0x10"}
+deny-list	TestType	{"where_not":"UPPER","why_not":true}
+deny-list	TestType	{"where_not":-1}
+deny-list	TestType	{"where_not":{},"why_not":["null","true"]}
+deny-list	TestType	{"where_not":["x y"],"why_not":{"k0":null,"k1":1.0}}
+deny-list	TestType	{"where_not":true,"why_not":"null"}
+deny-list	TestType	{"where_not":null,"why_not":false}

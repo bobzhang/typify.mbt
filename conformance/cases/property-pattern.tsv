@@ -1,0 +1,16 @@
+property-pattern	TestGrammarForPatternProperties	{"rules":{}}
+property-pattern	TestGrammarForPatternProperties	{"rules":{"abc":"1234"}}
+property-pattern	TestGrammarForPatternProperties	{"rules":{}}
+property-pattern	TestGrammarForPatternProperties	{"rules":false}
+property-pattern	TestGrammarForPatternProperties	{"rules":{}}
+property-pattern	TestGrammarForPatternProperties	{"rules":{"abc":"Hello, World"}}
+property-pattern	TestGrammarForPatternProperties	{"rules":{}}
+property-pattern	TestGrammarForPatternProperties	{"rules":null}
+property-pattern	TestGrammarForPatternProperties	{"rules":{}}
+property-pattern	TestGrammarForPatternProperties	{"rules":{}}
+property-pattern	TestGrammarForPatternProperties	{"rules":{"abc":"é中文"}}
+property-pattern	TestGrammarForPatternProperties	{"rules":{},"unexpected_field":"x y"}
+property-pattern	TestGrammarForPatternProperties	{"rules":{}}
+property-pattern	TestGrammarForPatternProperties	{"rules":{"abc":"with \"quotes\""}}
+property-pattern	TestGrammarForPatternProperties	{"rules":{}}
+property-pattern	TestGrammarForPatternProperties	{"rules":{"abc":"a"},"unexpected_field":"Hello, World"}

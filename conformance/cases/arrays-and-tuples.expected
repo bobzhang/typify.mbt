@@ -1,0 +1,112 @@
+OK [["Hello, World"]]
+OK [[null]]
+OK []
+ERR invalid type: map, expected a sequence
+OK [false,"abc"]
+OK [{}]
+OK ["",null]
+OK [null,"UPPER"]
+OK ["é中文"]
+OK []
+OK ["Hello, World"]
+OK [[]]
+OK [null,"UPPER"]
+OK []
+OK []
+OK [{"wrapped":true}]
+ERR trailing characters
+ERR trailing characters
+ERR trailing characters
+ERR invalid type: string "with \"quotes\"", expected a tuple of size 2
+ERR trailing characters
+ERR trailing characters
+ERR trailing characters
+ERR invalid type: null, expected a tuple of size 2
+ERR trailing characters
+ERR trailing characters
+ERR trailing characters
+ERR invalid type: map, expected a string
+ERR trailing characters
+ERR trailing characters
+ERR trailing characters
+ERR invalid type: map, expected a tuple of size 2
+OK ["1234"]
+OK ["a","null","😀","ok"]
+OK ["0x10","x y","é中文","with \"quotes\""]
+ERR invalid type: null, expected a sequence
+OK ["0x10","1234"]
+OK ["abc","a-b_c","with \"quotes\""]
+OK ["","x y"]
+ERR invalid type: string "", expected a sequence
+OK ["a"]
+OK ["😀","a","Hello, World","null"]
+OK ["ok"]
+ERR invalid type: sequence, expected a string
+OK ["1234","UPPER","Hello, World"]
+OK ["0x10"]
+OK ["null","with \"quotes\"","😀"]
+ERR invalid type: map, expected a string
+OK ["é中文","ok"]
+OK ["abc","1234"]
+OK ["true","with \"quotes\""]
+ERR invalid type: map, expected a string
+OK ["true","a"]
+OK ["a-b_c","é中文"]
+OK ["","null"]
+ERR invalid type: sequence, expected a string
+OK ["1234","abc"]
+OK ["ok","0x10"]
+OK ["","Hello, World"]
+ERR invalid type: boolean `false`, expected an array of length 2
+OK ["é中文","a"]
+OK ["😀","Hello, World"]
+OK ["😀","a"]
+ERR invalid type: null, expected an array of length 2
+ERR trailing characters
+ERR trailing characters
+ERR invalid length 1, expected a tuple of size 2
+ERR invalid type: map, expected a tuple of size 2
+OK ["a-b_c","abc"]
+ERR trailing characters
+OK ["a-b_c","a-b_c"]
+ERR invalid type: map, expected a string
+OK ["Hello, World","1234"]
+OK ["a-b_c","UPPER"]
+OK ["true","Hello, World"]
+ERR trailing characters
+OK ["ok","a"]
+ERR invalid length 1, expected a tuple of size 2
+OK ["x y","é中文"]
+ERR invalid type: sequence, expected a string
+ERR invalid length 1, expected a tuple of size 2
+ERR invalid length 1, expected a tuple of size 2
+ERR invalid length 1, expected a tuple of size 2
+ERR invalid type: null, expected a string
+ERR invalid length 1, expected a tuple of size 2
+ERR invalid length 0, expected a tuple of size 2
+OK ["Hello, World",""]
+ERR invalid type: sequence, expected a string
+ERR invalid length 1, expected a tuple of size 2
+ERR invalid length 1, expected a tuple of size 2
+OK ["with \"quotes\"","with \"quotes\""]
+ERR invalid type: map, expected a tuple of size 2
+ERR invalid length 1, expected a tuple of size 2
+ERR invalid length 1, expected a tuple of size 2
+ERR invalid length 1, expected a tuple of size 2
+ERR invalid length 1, expected a tuple of size 2
+ERR invalid length 1, expected an array of length 2
+ERR invalid length 0, expected an array of length 2
+OK [true,true]
+ERR invalid length 1, expected an array of length 2
+ERR invalid length 0, expected an array of length 2
+OK [false,"with \"quotes\""]
+ERR invalid length 1, expected an array of length 2
+ERR invalid length 1, expected an array of length 2
+OK [null,{"k0":false,"k1":0}]
+ERR invalid length 1, expected an array of length 2
+ERR invalid length 1, expected an array of length 2
+ERR invalid type: map, expected an array of length 2
+ERR invalid length 1, expected an array of length 2
+ERR invalid length 0, expected an array of length 2
+ERR invalid length 1, expected an array of length 2
+ERR invalid type: map, expected an array of length 2

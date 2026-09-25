@@ -1,0 +1,16 @@
+untyped-enum-with-null	TestType	{"value":"start"}
+untyped-enum-with-null	TestType	{"value":null}
+untyped-enum-with-null	TestType	{"value":"end"}
+untyped-enum-with-null	TestType	{"value":"true"}
+untyped-enum-with-null	TestType	{"value":"end"}
+untyped-enum-with-null	TestType	{"value":"start"}
+untyped-enum-with-null	TestType	{"value":"start"}
+untyped-enum-with-null	TestType	{}
+untyped-enum-with-null	TestType	{"value":null}
+untyped-enum-with-null	TestType	{"value":"end"}
+untyped-enum-with-null	TestType	{"value":null}
+untyped-enum-with-null	TestType	{"value":"null"}
+untyped-enum-with-null	TestType	{"value":"middle"}
+untyped-enum-with-null	TestType	{"value":"start"}
+untyped-enum-with-null	TestType	{"value":"end"}
+untyped-enum-with-null	TestType	{"unexpected_field":true,"value":"start"}

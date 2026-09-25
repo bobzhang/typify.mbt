@@ -1,0 +1,496 @@
+various-enums	AlternativeEnum	"Choice2"
+various-enums	AlternativeEnum	"Choice3"
+various-enums	AlternativeEnum	"Choice2"
+various-enums	AlternativeEnum	["Choice1"]
+various-enums	AlternativeEnum	"Choice2"
+various-enums	AlternativeEnum	"Choice1"
+various-enums	AlternativeEnum	"Choice3"
+various-enums	AlternativeEnum	null
+various-enums	AlternativeEnum	"Choice2"
+various-enums	AlternativeEnum	"Choice1"
+various-enums	AlternativeEnum	"Choice3"
+various-enums	AlternativeEnum	null
+various-enums	AlternativeEnum	"Choice1"
+various-enums	AlternativeEnum	"Choice3"
+various-enums	AlternativeEnum	"Choice2"
+various-enums	AlternativeEnum	{"wrapped":"Choice2"}
+various-enums	AnyOfNoStrings	"😀"
+various-enums	AnyOfNoStrings	"null"
+various-enums	AnyOfNoStrings	"true"
+various-enums	AnyOfNoStrings	null
+various-enums	AnyOfNoStrings	"a-b_c"
+various-enums	AnyOfNoStrings	"true"
+various-enums	AnyOfNoStrings	"with \"quotes\""
+various-enums	AnyOfNoStrings	null
+various-enums	AnyOfNoStrings	"😀"
+various-enums	AnyOfNoStrings	"with \"quotes\""
+various-enums	AnyOfNoStrings	"abc"
+various-enums	AnyOfNoStrings	["true"]
+various-enums	AnyOfNoStrings	"a-b_c"
+various-enums	AnyOfNoStrings	"ok"
+various-enums	AnyOfNoStrings	"1234"
+various-enums	AnyOfNoStrings	{"wrapped":"with \"quotes\""}
+various-enums	AnyOfNothing	null
+various-enums	AnyOfNothing	"abc"
+various-enums	AnyOfNothing	false
+various-enums	AnyOfNothing	{"wrapped":true}
+various-enums	AnyOfNothing	[]
+various-enums	AnyOfNothing	"true"
+various-enums	AnyOfNothing	{"k0":true}
+various-enums	AnyOfNothing	null
+various-enums	AnyOfNothing	"😀"
+various-enums	AnyOfNothing	true
+various-enums	AnyOfNothing	{"k0":"a","k1":""}
+various-enums	AnyOfNothing	{"k0":"with \"quotes\"","k1":null}
+various-enums	AnyOfNothing	false
+various-enums	AnyOfNothing	{"k0":-1}
+various-enums	AnyOfNothing	true
+various-enums	AnyOfNothing	null
+various-enums	BlockSize	2048
+various-enums	BlockSize	512
+various-enums	BlockSize	512
+various-enums	BlockSize	0.1
+various-enums	BlockSize	2048
+various-enums	BlockSize	2048
+various-enums	BlockSize	4096
+various-enums	BlockSize	[512]
+various-enums	BlockSize	4096
+various-enums	BlockSize	2048
+various-enums	BlockSize	512
+various-enums	BlockSize	[512]
+various-enums	BlockSize	2048
+various-enums	BlockSize	4096
+various-enums	BlockSize	512
+various-enums	BlockSize	{}
+various-enums	DiskAttachment	{"alternate":"Choice1","state":"Detached"}
+various-enums	DiskAttachment	{"alternate":"Choice1","state":"Destroyed"}
+various-enums	DiskAttachment	{"alternate":"Choice2","state":"Faulted"}
+various-enums	DiskAttachment	{"alternate":{"wrapped":"Choice3"},"state":"Faulted"}
+various-enums	DiskAttachment	{"alternate":"Choice1","state":"Detached"}
+various-enums	DiskAttachment	{"alternate":"Choice3","state":"Destroyed"}
+various-enums	DiskAttachment	{"alternate":"Choice1","state":"Faulted"}
+various-enums	DiskAttachment	{"alternate":"Choice1","state":null}
+various-enums	DiskAttachment	{"alternate":"Choice2","state":"Destroyed"}
+various-enums	DiskAttachment	{"alternate":"Choice1","state":"Destroyed"}
+various-enums	DiskAttachment	{"alternate":"Choice3","state":"Faulted"}
+various-enums	DiskAttachment	{"alternate":["Choice2"],"state":"Detached"}
+various-enums	DiskAttachment	{"alternate":"Choice3","state":"Destroyed"}
+various-enums	DiskAttachment	{"alternate":"Choice2","state":"Faulted"}
+various-enums	DiskAttachment	{"alternate":"Choice2","state":"Destroyed"}
+various-enums	DiskAttachment	{"alternate":"Choice2"}
+various-enums	EmptyObject	{}
+various-enums	EmptyObject	{"prop":{}}
+various-enums	EmptyObject	{}
+various-enums	EmptyObject	{"prop":null}
+various-enums	EmptyObject	{"prop":{}}
+various-enums	EmptyObject	{"prop":{}}
+various-enums	EmptyObject	{"prop":{}}
+various-enums	EmptyObject	{"prop":null}
+various-enums	EmptyObject	{"prop":{}}
+various-enums	EmptyObject	{}
+various-enums	EmptyObject	{"prop":{}}
+various-enums	EmptyObject	{"prop":{},"unexpected_field":true}
+various-enums	EmptyObject	{"prop":{}}
+various-enums	EmptyObject	{}
+various-enums	EmptyObject	{"prop":{}}
+various-enums	EmptyObject	{"prop":null}
+various-enums	IpNet	"abc"
+various-enums	IpNet	"a"
+various-enums	IpNet	"true"
+various-enums	IpNet	["Hello, World"]
+various-enums	IpNet	"abc"
+various-enums	IpNet	"with \"quotes\""
+various-enums	IpNet	"1234"
+various-enums	IpNet	{"wrapped":"UPPER"}
+various-enums	IpNet	"UPPER"
+various-enums	IpNet	"😀"
+various-enums	IpNet	"with \"quotes\""
+various-enums	IpNet	["1234"]
+various-enums	IpNet	"true"
+various-enums	IpNet	"0x10"
+various-enums	IpNet	"Hello, World"
+various-enums	IpNet	"1234"
+various-enums	Ipv4Net	"0x10"
+various-enums	Ipv4Net	"1234"
+various-enums	Ipv4Net	"1234"
+various-enums	Ipv4Net	null
+various-enums	Ipv4Net	"null"
+various-enums	Ipv4Net	"UPPER"
+various-enums	Ipv4Net	"1234"
+various-enums	Ipv4Net	["abc"]
+various-enums	Ipv4Net	"a-b_c"
+various-enums	Ipv4Net	"a-b_c"
+various-enums	Ipv4Net	"x y"
+various-enums	Ipv4Net	1.0
+various-enums	Ipv4Net	"true"
+various-enums	Ipv4Net	"ok"
+various-enums	Ipv4Net	"x y"
+various-enums	Ipv4Net	{"wrapped":"😀"}
+various-enums	Ipv6Net	"null"
+various-enums	Ipv6Net	"a-b_c"
+various-enums	Ipv6Net	"with \"quotes\""
+various-enums	Ipv6Net	null
+various-enums	Ipv6Net	"é中文"
+various-enums	Ipv6Net	"Hello, World"
+various-enums	Ipv6Net	"1234"
+various-enums	Ipv6Net	false
+various-enums	Ipv6Net	"null"
+various-enums	Ipv6Net	"x y"
+various-enums	Ipv6Net	"Hello, World"
+various-enums	Ipv6Net	"a-b_c"
+various-enums	Ipv6Net	"a"
+various-enums	Ipv6Net	""
+various-enums	Ipv6Net	"UPPER"
+various-enums	Ipv6Net	[""]
+various-enums	JankNames	{}
+various-enums	JankNames	{"extra_key":2147483647}
+various-enums	JankNames	"0x10"
+various-enums	JankNames	null
+various-enums	JankNames	{"extra_key":2.5}
+various-enums	JankNames	{}
+various-enums	JankNames	{"extra_key":-129}
+various-enums	JankNames	null
+various-enums	JankNames	{}
+various-enums	JankNames	"é中文"
+various-enums	JankNames	{"extra_key":2}
+various-enums	JankNames	{"extra_key":null}
+various-enums	JankNames	"null"
+various-enums	JankNames	{}
+various-enums	JankNames	{"extra_key":-9.223372036854776e+18}
+various-enums	JankNames	{"extra_key":"a-b_c","unexpected_field":null}
+various-enums	Never	-0.0
+various-enums	Never	{"k0":"UPPER","k1":"UPPER"}
+various-enums	Never	{}
+various-enums	Never	null
+various-enums	Never	"0x10"
+various-enums	Never	false
+various-enums	Never	-1
+various-enums	Never	{"wrapped":null}
+various-enums	Never	{}
+various-enums	Never	["1234"]
+various-enums	Never	"a-b_c"
+various-enums	Never	{"k0":[]}
+various-enums	Never	null
+various-enums	Never	[]
+various-enums	Never	null
+various-enums	Never	[]
+various-enums	NeverEver	null
+various-enums	NeverEver	"abc"
+various-enums	NeverEver	null
+various-enums	NeverEver	{"wrapped":"1234"}
+various-enums	NeverEver	"UPPER"
+various-enums	NeverEver	0
+various-enums	NeverEver	null
+various-enums	NeverEver	[{}]
+various-enums	NeverEver	true
+various-enums	NeverEver	[]
+various-enums	NeverEver	null
+various-enums	NeverEver	{"wrapped":null}
+various-enums	NeverEver	10000000000.0
+various-enums	NeverEver	"UPPER"
+various-enums	NeverEver	true
+various-enums	NeverEver	[false]
+various-enums	NeverEverForever	"ok"
+various-enums	NeverEverForever	[null,"Hello, World"]
+various-enums	NeverEverForever	null
+various-enums	NeverEverForever	"Hello, World"
+various-enums	NeverEverForever	{}
+various-enums	NeverEverForever	true
+various-enums	NeverEverForever	{}
+various-enums	NeverEverForever	{"k0":null}
+various-enums	NeverEverForever	"true"
+various-enums	NeverEverForever	true
+various-enums	NeverEverForever	"é中文"
+various-enums	NeverEverForever	[{}]
+various-enums	NeverEverForever	"é中文"
+various-enums	NeverEverForever	null
+various-enums	NeverEverForever	"with \"quotes\""
+various-enums	NeverEverForever	{"k0":false,"k1":true}
+various-enums	NotBlockSize	-128
+various-enums	NotBlockSize	1
+various-enums	NotBlockSize	4294967295
+various-enums	NotBlockSize	null
+various-enums	NotBlockSize	0
+various-enums	NotBlockSize	9007199254740993
+various-enums	NotBlockSize	7
+various-enums	NotBlockSize	true
+various-enums	NotBlockSize	2147483647
+various-enums	NotBlockSize	-129
+various-enums	NotBlockSize	-32769
+various-enums	NotBlockSize	null
+various-enums	NotBlockSize	9007199254740993
+various-enums	NotBlockSize	4294967295
+various-enums	NotBlockSize	2147483648
+various-enums	NotBlockSize	null
+various-enums	NullStringEnumWithUnknownFormat	"a"
+various-enums	NullStringEnumWithUnknownFormat	"b"
+various-enums	NullStringEnumWithUnknownFormat	"a"
+various-enums	NullStringEnumWithUnknownFormat	{"wrapped":"b"}
+various-enums	NullStringEnumWithUnknownFormat	"c"
+various-enums	NullStringEnumWithUnknownFormat	"c"
+various-enums	NullStringEnumWithUnknownFormat	"b"
+various-enums	NullStringEnumWithUnknownFormat	{"wrapped":"c"}
+various-enums	NullStringEnumWithUnknownFormat	"b"
+various-enums	NullStringEnumWithUnknownFormat	"a"
+various-enums	NullStringEnumWithUnknownFormat	"a"
+various-enums	NullStringEnumWithUnknownFormat	["c"]
+various-enums	NullStringEnumWithUnknownFormat	"c"
+various-enums	NullStringEnumWithUnknownFormat	"b"
+various-enums	NullStringEnumWithUnknownFormat	"a"
+various-enums	NullStringEnumWithUnknownFormat	["b"]
+various-enums	ReferenceDef	"abc"
+various-enums	ReferenceDef	"true"
+various-enums	ReferenceDef	"ok"
+various-enums	ReferenceDef	null
+various-enums	ReferenceDef	"é中文"
+various-enums	ReferenceDef	"null"
+various-enums	ReferenceDef	"abc"
+various-enums	ReferenceDef	{"wrapped":"UPPER"}
+various-enums	ReferenceDef	"é中文"
+various-enums	ReferenceDef	"😀"
+various-enums	ReferenceDef	"a"
+various-enums	ReferenceDef	{"wrapped":"abc"}
+various-enums	ReferenceDef	"UPPER"
+various-enums	ReferenceDef	"é中文"
+various-enums	ReferenceDef	"0x10"
+various-enums	ReferenceDef	["😀"]
+various-enums	References	{}
+various-enums	References	{"extra_key":"1234"}
+various-enums	References	{}
+various-enums	References	null
+various-enums	References	[]
+various-enums	References	[]
+various-enums	References	{"extra_key":"é中文"}
+various-enums	References	[{}]
+various-enums	References	{}
+various-enums	References	{}
+various-enums	References	{"extra_key":"é中文"}
+various-enums	References	{"wrapped":{}}
+various-enums	References	["with \"quotes\""]
+various-enums	References	{"extra_key":"😀"}
+various-enums	References	{}
+various-enums	References	{}
+various-enums	ShouldBeExclusive	{"reference":"abc"}
+various-enums	ShouldBeExclusive	{"reference":"a"}
+various-enums	ShouldBeExclusive	{"reference":"x y"}
+various-enums	ShouldBeExclusive	{"reference":false}
+various-enums	ShouldBeExclusive	{"id":true}
+various-enums	ShouldBeExclusive	{"id":1e+300}
+various-enums	ShouldBeExclusive	{"id":"x y"}
+various-enums	ShouldBeExclusive	{"id":null}
+various-enums	ShouldBeExclusive	{"id":"0x10"}
+various-enums	ShouldBeExclusive	{"id":false}
+various-enums	ShouldBeExclusive	{"id":"a"}
+various-enums	ShouldBeExclusive	{"reference":null}
+various-enums	ShouldBeExclusive	{"id":null}
+various-enums	ShouldBeExclusive	{"id":"ok"}
+various-enums	ShouldBeExclusive	{"id":null}
+various-enums	ShouldBeExclusive	{"reference":null,"unexpected_field":1.5}
+various-enums	StringVersion	"a"
+various-enums	StringVersion	"a-b_c"
+various-enums	StringVersion	"x y"
+various-enums	StringVersion	false
+various-enums	StringVersion	"abc"
+various-enums	StringVersion	"a"
+various-enums	StringVersion	"null"
+various-enums	StringVersion	["x y","ok"]
+various-enums	StringVersion	"x y"
+various-enums	StringVersion	"null"
+various-enums	StringVersion	"x y"
+various-enums	StringVersion	"true"
+various-enums	StringVersion	"abc"
+various-enums	StringVersion	"😀"
+various-enums	StringVersion	"true"
+various-enums	StringVersion	["é中文"]
+various-enums	CommentedVariants	"C"
+various-enums	CommentedVariants	"C"
+various-enums	CommentedVariants	"B"
+various-enums	CommentedVariants	["C"]
+various-enums	CommentedVariants	"B"
+various-enums	CommentedVariants	"A"
+various-enums	CommentedVariants	"B"
+various-enums	CommentedVariants	true
+various-enums	CommentedVariants	"B"
+various-enums	CommentedVariants	"A"
+various-enums	CommentedVariants	"C"
+various-enums	CommentedVariants	["A"]
+various-enums	CommentedVariants	"B"
+various-enums	CommentedVariants	"C"
+various-enums	CommentedVariants	"A"
+various-enums	CommentedVariants	"😀"
+various-enums	EnumAndConstant	{"petType":"cat","purr":""}
+various-enums	EnumAndConstant	{"help":"with \"quotes\"","petType":"monkey"}
+various-enums	EnumAndConstant	{"bark":"x y","petType":"dog"}
+various-enums	EnumAndConstant	{"petType":"cat","purr":"x y","unexpected_field":true}
+various-enums	EnumAndConstant	{"petType":"cat","purr":"true"}
+various-enums	EnumAndConstant	{"bark":"1234","petType":"dog"}
+various-enums	EnumAndConstant	{"help":"true","petType":"monkey"}
+various-enums	EnumAndConstant	{"float":null,"petType":"fish"}
+various-enums	EnumAndConstant	{"petType":"cat","purr":"with \"quotes\""}
+various-enums	EnumAndConstant	{"help":"with \"quotes\"","petType":"monkey"}
+various-enums	EnumAndConstant	{"float":"with \"quotes\"","petType":"fish"}
+various-enums	EnumAndConstant	{"float":"with \"quotes\"","petType":["fish"]}
+various-enums	EnumAndConstant	{"petType":"cat","purr":"with \"quotes\""}
+various-enums	EnumAndConstant	{"bark":"abc","petType":"dog"}
+various-enums	EnumAndConstant	{"petType":"cat","purr":"😀"}
+various-enums	EnumAndConstant	{"float":"a-b_c","petType":null}
+various-enums	OneOfMissingTitle	{"bar":-129}
+various-enums	OneOfMissingTitle	{"baz":2}
+various-enums	OneOfMissingTitle	{"foo":"1234"}
+various-enums	OneOfMissingTitle	{"foo":null}
+various-enums	OneOfMissingTitle	{"bar":9007199254740993,"baz":65536}
+various-enums	OneOfMissingTitle	{"foo":"with \"quotes\""}
+various-enums	OneOfMissingTitle	{"foo":"😀"}
+various-enums	OneOfMissingTitle	[{}]
+various-enums	OneOfMissingTitle	{}
+various-enums	OneOfMissingTitle	{"bar":4294967296,"baz":4294967296}
+various-enums	OneOfMissingTitle	{"baz":-9.223372036854776e+18}
+various-enums	OneOfMissingTitle	{}
+various-enums	OneOfMissingTitle	{"foo":"with \"quotes\""}
+various-enums	OneOfMissingTitle	{}
+various-enums	OneOfMissingTitle	{"bar":4294967295}
+various-enums	OneOfMissingTitle	{"foo":null}
+various-enums	OneOfRawType	"true"
+various-enums	OneOfRawType	"Hello, World"
+various-enums	OneOfRawType	32767
+various-enums	OneOfRawType	null
+various-enums	OneOfRawType	"a"
+various-enums	OneOfRawType	-129
+various-enums	OneOfRawType	"true"
+various-enums	OneOfRawType	{"wrapped":4294967295}
+various-enums	OneOfRawType	"é中文"
+various-enums	OneOfRawType	65535
+various-enums	OneOfRawType	-1
+various-enums	OneOfRawType	null
+various-enums	OneOfRawType	"Hello, World"
+various-enums	OneOfRawType	""
+various-enums	OneOfRawType	-129
+various-enums	OneOfRawType	null
+various-enums	OneOfTypes	{"bar":-32769}
+various-enums	OneOfTypes	{"bar":1.0}
+various-enums	OneOfTypes	{"bar":1.8446744073709552e+19}
+various-enums	OneOfTypes	{}
+various-enums	OneOfTypes	{"bar":2147483647}
+various-enums	OneOfTypes	{"bar":2}
+various-enums	OneOfTypes	{"bar":-9.223372036854776e+18}
+various-enums	OneOfTypes	{"foo":true}
+various-enums	OneOfTypes	{"foo":"a-b_c"}
+various-enums	OneOfTypes	{"foo":"x y"}
+various-enums	OneOfTypes	{"bar":18446744073709551615}
+various-enums	OneOfTypes	{"foo":null}
+various-enums	OneOfTypes	{"foo":"0x10"}
+various-enums	OneOfTypes	{"foo":"Hello, World"}
+various-enums	OneOfTypes	{"foo":"😀"}
+various-enums	OneOfTypes	{"bar":1e+300}
+various-enums	OptionAnyofConst	""
+various-enums	OptionAnyofConst	"abc"
+various-enums	OptionAnyofConst	null
+various-enums	OptionAnyofConst	["a"]
+various-enums	OptionAnyofConst	"é中文"
+various-enums	OptionAnyofConst	"1234"
+various-enums	OptionAnyofConst	""
+various-enums	OptionAnyofConst	false
+various-enums	OptionAnyofConst	null
+various-enums	OptionAnyofConst	null
+various-enums	OptionAnyofConst	"a"
+various-enums	OptionAnyofConst	"UPPER"
+various-enums	OptionAnyofConst	null
+various-enums	OptionAnyofConst	null
+various-enums	OptionAnyofConst	null
+various-enums	OptionAnyofConst	false
+various-enums	OptionAnyofEnum	null
+various-enums	OptionAnyofEnum	null
+various-enums	OptionAnyofEnum	null
+various-enums	OptionAnyofEnum	["1234"]
+various-enums	OptionAnyofEnum	"abc"
+various-enums	OptionAnyofEnum	"null"
+various-enums	OptionAnyofEnum	"with \"quotes\""
+various-enums	OptionAnyofEnum	{"wrapped":"a"}
+various-enums	OptionAnyofEnum	null
+various-enums	OptionAnyofEnum	null
+various-enums	OptionAnyofEnum	"with \"quotes\""
+various-enums	OptionAnyofEnum	""
+various-enums	OptionAnyofEnum	null
+various-enums	OptionAnyofEnum	"x y"
+various-enums	OptionAnyofEnum	"ok"
+various-enums	OptionAnyofEnum	null
+various-enums	OptionAnyofNull	"true"
+various-enums	OptionAnyofNull	null
+various-enums	OptionAnyofNull	"é中文"
+various-enums	OptionAnyofNull	null
+various-enums	OptionAnyofNull	null
+various-enums	OptionAnyofNull	null
+various-enums	OptionAnyofNull	null
+various-enums	OptionAnyofNull	[null]
+various-enums	OptionAnyofNull	null
+various-enums	OptionAnyofNull	""
+various-enums	OptionAnyofNull	"Hello, World"
+various-enums	OptionAnyofNull	["true"]
+various-enums	OptionAnyofNull	"with \"quotes\""
+various-enums	OptionAnyofNull	"😀"
+various-enums	OptionAnyofNull	null
+various-enums	OptionAnyofNull	{"wrapped":null}
+various-enums	OptionOneofConst	"true"
+various-enums	OptionOneofConst	null
+various-enums	OptionOneofConst	null
+various-enums	OptionOneofConst	null
+various-enums	OptionOneofConst	"a-b_c"
+various-enums	OptionOneofConst	null
+various-enums	OptionOneofConst	"Hello, World"
+various-enums	OptionOneofConst	{"wrapped":null}
+various-enums	OptionOneofConst	"abc"
+various-enums	OptionOneofConst	null
+various-enums	OptionOneofConst	null
+various-enums	OptionOneofConst	[false,""]
+various-enums	OptionOneofConst	"0x10"
+various-enums	OptionOneofConst	"Hello, World"
+various-enums	OptionOneofConst	"a-b_c"
+various-enums	OptionOneofConst	"a-b_c"
+various-enums	OptionOneofEnum	"abc"
+various-enums	OptionOneofEnum	null
+various-enums	OptionOneofEnum	null
+various-enums	OptionOneofEnum	null
+various-enums	OptionOneofEnum	"😀"
+various-enums	OptionOneofEnum	"true"
+various-enums	OptionOneofEnum	null
+various-enums	OptionOneofEnum	null
+various-enums	OptionOneofEnum	"ok"
+various-enums	OptionOneofEnum	"a-b_c"
+various-enums	OptionOneofEnum	null
+various-enums	OptionOneofEnum	null
+various-enums	OptionOneofEnum	null
+various-enums	OptionOneofEnum	null
+various-enums	OptionOneofEnum	null
+various-enums	OptionOneofEnum	true
+various-enums	OptionOneofNull	"with \"quotes\""
+various-enums	OptionOneofNull	"é中文"
+various-enums	OptionOneofNull	null
+various-enums	OptionOneofNull	{"wrapped":""}
+various-enums	OptionOneofNull	null
+various-enums	OptionOneofNull	"😀"
+various-enums	OptionOneofNull	""
+various-enums	OptionOneofNull	{"wrapped":null}
+various-enums	OptionOneofNull	null
+various-enums	OptionOneofNull	"with \"quotes\""
+various-enums	OptionOneofNull	"null"
+various-enums	OptionOneofNull	"Hello, World"
+various-enums	OptionOneofNull	null
+various-enums	OptionOneofNull	null
+various-enums	OptionOneofNull	null
+various-enums	OptionOneofNull	"Hello, World"
+various-enums	VariantsDifferByPunct	"2.5GBASE-T"
+various-enums	VariantsDifferByPunct	"2.5GBASE-T"
+various-enums	VariantsDifferByPunct	"25GBASE-T"
+various-enums	VariantsDifferByPunct	{"wrapped":"25GBASE-T"}
+various-enums	VariantsDifferByPunct	"2.5GBASE-T"
+various-enums	VariantsDifferByPunct	"25GBASE-T"
+various-enums	VariantsDifferByPunct	"2.5GBASE-T"
+various-enums	VariantsDifferByPunct	["25GBASE-T"]
+various-enums	VariantsDifferByPunct	"25GBASE-T"
+various-enums	VariantsDifferByPunct	"2,5,GBASE,T"
+various-enums	VariantsDifferByPunct	"2,5,GBASE,T"
+various-enums	VariantsDifferByPunct	"abc"
+various-enums	VariantsDifferByPunct	"25GBASE-T"
+various-enums	VariantsDifferByPunct	"25GBASE-T"
+various-enums	VariantsDifferByPunct	"2,5,GBASE,T"
+various-enums	VariantsDifferByPunct	null

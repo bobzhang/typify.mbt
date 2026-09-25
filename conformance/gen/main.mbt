@@ -35,15 +35,17 @@ fn int_value(n : Int64) -> @serde_json.Value {
 
 ///|
 let interesting_ints : Array[String] = [
-  "0", "1", "-1", "2", "7", "127", "128", "-128", "-129", "255", "256", "32767", "32768",
-  "65535", "65536", "-32769", "2147483647", "2147483648", "4294967295", "4294967296",
-  "9007199254740993", "9223372036854775807", "9223372036854775808", "18446744073709551615",
-  "18446744073709551616", "-9223372036854775808", "-9223372036854775809", "1.0", "2.5",
+  "0", "1", "-1", "2", "7", "127", "128", "-128", "-129", "255", "256", "32767",
+  "32768", "65535", "65536", "-32769", "2147483647", "2147483648", "4294967295",
+  "4294967296", "9007199254740993", "9223372036854775807", "9223372036854775808",
+  "18446744073709551615", "18446744073709551616", "-9223372036854775808", "-9223372036854775809",
+  "1.0", "2.5",
 ]
 
 ///|
 let interesting_numbers : Array[String] = [
-  "0", "1", "-1", "1.5", "-2.25", "1e10", "1.0", "0.1", "3", "1e300", "123456789.125", "-0.0",
+  "0", "1", "-1", "1.5", "-2.25", "1e10", "1.0", "0.1", "3", "1e300", "123456789.125",
+  "-0.0",
 ]
 
 ///|
@@ -81,9 +83,19 @@ fn Gen::any(self : Gen, depth : Int) -> @serde_json.Value {
 fn Gen::string_for(self : Gen, o : @schema.SchemaObject) -> @serde_json.Value {
   let formatted = match o.format {
     Some("uuid") =>
-      Some(self.pick(["67e55044-10b1-426f-9247-bb680e5fe0c8", "67E55044-10B1-426F-9247-BB680E5FE0C8", "67e5504410b1426f9247bb680e5fe0c8", "urn:uuid:67e55044-10b1-426f-9247-bb680e5fe0c8", "{67e55044-10b1-426f-9247-bb680e5fe0c8}", "not-a-uuid"]))
+      Some(
+        self.pick([
+          "67e55044-10b1-426f-9247-bb680e5fe0c8", "67E55044-10B1-426F-9247-BB680E5FE0C8",
+          "67e5504410b1426f9247bb680e5fe0c8", "urn:uuid:67e55044-10b1-426f-9247-bb680e5fe0c8",
+          "{67e55044-10b1-426f-9247-bb680e5fe0c8}", "not-a-uuid",
+        ]),
+      )
     Some("date") =>
-      Some(self.pick(["2024-02-29", "2023-02-29", "1999-12-31", "+10000-01-01", "2024-1-1", "20240101"]))
+      Some(
+        self.pick([
+          "2024-02-29", "2023-02-29", "1999-12-31", "+10000-01-01", "2024-1-1", "20240101",
+        ]),
+      )
     Some("date-time") =>
       Some(
         self.pick([
@@ -93,7 +105,12 @@ fn Gen::string_for(self : Gen, o : @schema.SchemaObject) -> @serde_json.Value {
         ]),
       )
     Some("ip") | Some("ipv4") | Some("ipv6") =>
-      Some(self.pick(["127.0.0.1", "0.0.0.0", "::1", "2001:db8::1", "2001:0db8:0000:0000:0000:ff00:0042:8329", "::ffff:1.2.3.4", "256.1.1.1", "fe80::1%eth0"]))
+      Some(
+        self.pick([
+          "127.0.0.1", "0.0.0.0", "::1", "2001:db8::1", "2001:0db8:0000:0000:0000:ff00:0042:8329",
+          "::ffff:1.2.3.4", "256.1.1.1", "fe80::1%eth0",
+        ]),
+      )
     _ => None
   }
   if formatted is Some(s) {
@@ -114,9 +131,18 @@ fn Gen::string_for(self : Gen, o : @schema.SchemaObject) -> @serde_json.Value {
 }
 
 ///|
-fn Gen::number_for(self : Gen, o : @schema.SchemaObject, integer : Bool) -> @serde_json.Value {
+fn Gen::number_for(
+  self : Gen,
+  o : @schema.SchemaObject,
+  integer : Bool,
+) -> @serde_json.Value {
   if self.chance(30) && o.number is Some(n) {
-    let candidates = [n.minimum, n.maximum, n.exclusive_minimum, n.exclusive_maximum].filter(x => x is Some(_))
+    let candidates = [
+      n.minimum,
+      n.maximum,
+      n.exclusive_minimum,
+      n.exclusive_maximum,
+    ].filter(x => x is Some(_))
     if candidates.length() > 0 {
       let v = self.pick(candidates).unwrap() + (self.below(3) - 1).to_double()
       return if integer && v == v.floor() {
@@ -148,7 +174,11 @@ fn Gen::of_type(
 }
 
 ///|
-fn Gen::array_for(self : Gen, o : @schema.SchemaObject, depth : Int) -> @serde_json.Value {
+fn Gen::array_for(
+  self : Gen,
+  o : @schema.SchemaObject,
+  depth : Int,
+) -> @serde_json.Value {
   match o.array {
     Some({ items: Some(Vec(items)), additional_items, .. }) => {
       let out = items.map(s => self.value(s, depth + 1))
@@ -167,7 +197,11 @@ fn Gen::array_for(self : Gen, o : @schema.SchemaObject, depth : Int) -> @serde_j
     Some({ items: Some(Single(item)), min_items, max_items, .. }) => {
       let min = min_items.map(u => u.reinterpret_as_int()).unwrap_or(0)
       let max = max_items.map(u => u.reinterpret_as_int()).unwrap_or(min + 3)
-      let n = if depth > 3 { min } else { min + self.below((max - min).min(3) + 1) }
+      let n = if depth > 3 {
+        min
+      } else {
+        min + self.below((max - min).min(3) + 1)
+      }
       let n = if self.chance(10) { n + 1 } else { n }
       Array(Array::makei(n.min(6), _ => self.value(item, depth + 1)))
     }
@@ -176,7 +210,11 @@ fn Gen::array_for(self : Gen, o : @schema.SchemaObject, depth : Int) -> @serde_j
 }
 
 ///|
-fn Gen::object_for(self : Gen, o : @schema.SchemaObject, depth : Int) -> @serde_json.Value {
+fn Gen::object_for(
+  self : Gen,
+  o : @schema.SchemaObject,
+  depth : Int,
+) -> @serde_json.Value {
   let out = @collections.StrMap::new()
   guard o.object is Some(v) else {
     if self.chance(50) {
@@ -202,7 +240,8 @@ fn Gen::object_for(self : Gen, o : @schema.SchemaObject, depth : Int) -> @serde_
     }
   }
   match v.additional_properties {
-    Some(Object(_) as s) if self.chance(60) => out.set("extra_key", self.value(s, depth + 1))
+    Some(Object(_) as s) if self.chance(60) =>
+      out.set("extra_key", self.value(s, depth + 1))
     _ => ()
   }
   Object(out)
@@ -210,7 +249,11 @@ fn Gen::object_for(self : Gen, o : @schema.SchemaObject, depth : Int) -> @serde_
 
 ///|
 /// A mostly-valid instance of a schema.
-fn Gen::value(self : Gen, schema : @schema.Schema, depth : Int) -> @serde_json.Value {
+fn Gen::value(
+  self : Gen,
+  schema : @schema.Schema,
+  depth : Int,
+) -> @serde_json.Value {
   guard schema is Object(o) else { return self.any(depth) }
   if depth > 6 {
     return Null
@@ -220,7 +263,10 @@ fn Gen::value(self : Gen, schema : @schema.Schema, depth : Int) -> @serde_json.V
       Some(i) => r.unsafe_substring(start=i + 1, end=r.length())
       None => r
     }
-    return match self.defs.get(key.replace_all(old="~1", new="/").replace_all(old="~0", new="~")) {
+    return match
+      self.defs.get(
+        key.replace_all(old="~1", new="/").replace_all(old="~0", new="~"),
+      ) {
       Some(def) => self.value(def, depth + 1)
       None => self.any(depth)
     }
@@ -240,7 +286,10 @@ fn Gen::value(self : Gen, schema : @schema.Schema, depth : Int) -> @serde_json.V
         for s in all {
           let v = self.value(s, depth + 1)
           match v {
-            Object(m) => for k, x in m { merged.set(k, x) }
+            Object(m) =>
+              for k, x in m {
+                merged.set(k, x)
+              }
             _ => last = v
           }
         }
@@ -306,7 +355,7 @@ fn Gen::mutate(self : Gen, v : @serde_json.Value) -> @serde_json.Value {
 /// The Rust type name of a definition (typify's `sanitize(name, Pascal)`,
 /// plus the rename patch used by the fixtures' settings).
 fn type_name_of(def : String) -> String {
-  let n = pascal(def)
+  let n = @typify.sanitize(def, Pascal)
   if n == "TypeThatNeedsMoreDerives" {
     "TypeThatHasMoreDerives"
   } else {
@@ -324,11 +373,23 @@ fn main {
   let path = args[1]
   let name = args[2]
   let out_path = args[3]
-  let per_type = if args.length() > 4 { @string_to_int(args[4]) } else { 16 }
-  let text = @fs.read_file_to_string(path) catch { e => abort("read \{path}: \{Repr(e)}") }
-  let root = @schema.RootSchema::from_json_str(text) catch { e => abort("parse \{path}: \{e}") }
-  let seed = name.iter().fold(init=0x9E3779B97F4A7C15UL, (h, c) => h * 31UL + c.to_int().to_uint64())
-  let gen : Gen = { rng: @splitmix.new(seed~), defs: root.definitions }
+  let per_type = if args.length() > 4 {
+    @string.parse_int(args[4]) catch {
+      _ => 16
+    }
+  } else {
+    16
+  }
+  let text = @fs.read_file_to_string(path) catch {
+    e => abort("read \{path}: \{Repr(e)}")
+  }
+  let root = @schema.RootSchema::from_json_str(text) catch {
+    e => abort("parse \{path}: \{e}")
+  }
+  let seed = name
+    .iter()
+    .fold(init=0x9E3779B97F4A7C15UL, (h, c) => h * 31UL + c.to_int().to_uint64())
+  let gen : Gen = { rng: @splitmix.new(seed~), defs: root.definitions, }
   let lines = []
   let emit = (ty : String, schema : @schema.Schema) => {
     for i in 0..<per_type {

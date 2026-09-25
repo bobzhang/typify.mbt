@@ -1,0 +1,96 @@
+OK "é中文"
+OK ""
+OK "UPPER"
+ERR invalid type: sequence, expected a string
+OK "null"
+OK "0x10"
+OK "with \"quotes\""
+ERR invalid type: sequence, expected a string
+OK "abc"
+OK "a"
+OK "UPPER"
+ERR invalid type: sequence, expected a string
+OK "UPPER"
+OK "abc"
+OK "with \"quotes\""
+ERR invalid type: sequence, expected a string
+OK {}
+ERR input contains invalid characters
+ERR input contains invalid characters
+ERR input contains invalid characters
+ERR input contains invalid characters
+ERR input contains invalid characters
+OK {}
+ERR input contains invalid characters
+OK {}
+OK {}
+OK {}
+ERR input contains invalid characters
+ERR input contains invalid characters
+ERR input contains invalid characters
+OK {}
+ERR invalid type: null, expected a map
+ERR input contains invalid characters
+ERR input contains invalid characters
+ERR input contains invalid characters
+ERR invalid type: null, expected a map
+OK {}
+ERR input contains invalid characters
+ERR input contains invalid characters
+ERR input contains invalid characters
+ERR input contains invalid characters
+OK {}
+ERR input contains invalid characters
+ERR input contains invalid characters
+ERR input contains invalid characters
+ERR input contains invalid characters
+OK {}
+OK {}
+OK {"extra_key":"a-b_c"}
+OK {}
+OK {"extra_key":"a"}
+ERR invalid type: sequence, expected a string
+OK {"extra_key":"with \"quotes\""}
+OK {}
+OK {}
+ERR invalid type: null, expected a string
+OK {"extra_key":"abc"}
+OK {"extra_key":"UPPER"}
+OK {"extra_key":"UPPER"}
+ERR invalid type: floating point `-2.25`, expected a string
+OK {}
+OK {"extra_key":"abc"}
+OK {"extra_key":"UPPER"}
+ERR invalid type: null, expected a string
+OK "Hello, World"
+OK "with \"quotes\""
+OK "with \"quotes\""
+OK "é中文"
+OK "a-b_c"
+OK "true"
+OK "abc"
+ERR invalid type: null, expected a string
+OK "a"
+OK "with \"quotes\""
+OK "😀"
+ERR invalid type: map, expected a string
+OK "0x10"
+OK "abc"
+OK "with \"quotes\""
+ERR invalid type: map, expected a string
+OK {"key":"x y"}
+OK {}
+OK {}
+OK {"wrapped":{}}
+OK {}
+OK {}
+OK {}
+ERR invalid type: null, expected a map
+OK {"key":-0.0}
+OK {}
+OK {"key":null}
+OK {"wrapped":{}}
+OK {"key":true}
+OK {"key":"abc"}
+OK {"key":false}
+OK {"key":"1234"}
