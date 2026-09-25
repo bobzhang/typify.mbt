@@ -1,8 +1,8 @@
 import {
-  "bobzhang/typify" @gen,
-  "bobzhang/typify/schema",
+  "bobzhang/typify/cli",
   "moonbitlang/x/fs",
   "moonbitlang/core/env",
+  "moonbitlang/x/sys",
 }
 
 pkgtype(kind: "executable")
