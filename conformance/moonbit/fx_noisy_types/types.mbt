@@ -19,11 +19,7 @@ pub impl @typify_rt.Serde for ArrayBs with fn serialize(self) {
 
 ///|
 pub extend ArrayBs with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -47,11 +43,7 @@ pub impl @typify_rt.Serde for IntegerBs with fn serialize(self) {
 
 ///|
 pub extend IntegerBs with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -71,28 +63,19 @@ let object_bs_fields : @typify_rt.Fields = @typify_rt.Fields::new(["ok"])
 ///|
 pub impl @typify_rt.Serde for ObjectBs with fn deserialize(d) {
   let mut f0 : Bool?? = None
-  let r = @typify_rt.de_fields(d, "struct ObjectBs", object_bs_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_bool))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct ObjectBs", object_bs_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_bool))
+    _ => ()
   })
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), @typify_rt.de_bool)
-  }
-  ObjectBs::{ ok: v0, }
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_bool) }
+  ObjectBs::{ ok: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for ObjectBs with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.ok is Some(_) {
-    o.field(
-      "ok",
-      @typify_rt.ser_option(self.ok, (v : Bool) => @typify_rt.ser_bool(v)),
-    )
+    o.field("ok", @typify_rt.ser_option(self.ok, (v : Bool) => @typify_rt.ser_bool(v)))
   }
 
   o.build()
@@ -100,14 +83,11 @@ pub impl @typify_rt.Serde for ObjectBs with fn serialize(self) {
 
 ///|
 pub extend ObjectBs with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for ObjectBs with fn to_json(self) {
   @typify_rt.json_of(self, "ObjectBs")
 }
+

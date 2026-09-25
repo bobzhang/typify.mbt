@@ -129,7 +129,7 @@ fn main {
     }
     @fs.write_string_to_file(
       "\{dir}/moon.pkg",
-      "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n}\n\nwarnings = \"-unused_value\"\n",
+      "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n}\n\nwarnings = \"-unused_value\"\n\n// Generated code is compared with the generator's output as is.\nformatter = { \"ignore\": [ \"types.mbt\" ] }\n",
     ) catch {
       e => abort("write: \{Repr(e)}")
     }

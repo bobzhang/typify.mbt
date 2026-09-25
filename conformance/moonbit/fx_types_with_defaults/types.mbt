@@ -14,23 +14,18 @@ let doodad_fields : @typify_rt.Fields = @typify_rt.Fields::new(["when"])
 
 ///|
 fn default_doodad_when() -> @typify_rt.DateTimeUtc raise @typify_rt.DeError {
-  @typify_rt.default_value(
-    "\"1970-01-01T00:00:00Z\"",
-    @typify_rt.DateTimeUtc::deserialize,
-  )
+  @typify_rt.default_value("\"1970-01-01T00:00:00Z\"", @typify_rt.DateTimeUtc::deserialize)
 }
 
 ///|
 pub impl @typify_rt.Serde for Doodad with fn deserialize(d) {
   let mut f0 : @typify_rt.DateTimeUtc? = None
-  let r = @typify_rt.de_fields(d, "struct Doodad", doodad_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.DateTimeUtc::deserialize(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct Doodad", doodad_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.DateTimeUtc::deserialize(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { default_doodad_when() }
-  Doodad::{ when: v0, }
+  Doodad::{ when: v0 }
 }
 
 ///|
@@ -43,11 +38,7 @@ pub impl @typify_rt.Serde for Doodad with fn serialize(self) {
 
 ///|
 pub extend Doodad with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -64,15 +55,11 @@ pub(all) struct MrDefaultNumbers {
 } derive(Debug, Eq)
 
 ///|
-let mr_default_numbers_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "big_nullable", "little_u16", "little_u8",
-])
+let mr_default_numbers_fields : @typify_rt.Fields = @typify_rt.Fields::new(["big_nullable", "little_u16", "little_u8"])
 
 ///|
 fn default_mr_default_numbers_big_nullable() -> UInt64? raise @typify_rt.DeError {
-  @typify_rt.default_value("1", (d : @typify_rt.De) => {
-    @typify_rt.de_option(d, @typify_rt.de_nonzero_u64)
-  })
+  @typify_rt.default_value("1", (d : @typify_rt.De) => @typify_rt.de_option(d, @typify_rt.de_nonzero_u64))
 }
 
 ///|
@@ -90,46 +77,22 @@ pub impl @typify_rt.Serde for MrDefaultNumbers with fn deserialize(d) {
   let mut f0 : UInt64?? = None
   let mut f1 : UInt16? = None
   let mut f2 : Byte? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct MrDefaultNumbers",
-    mr_default_numbers_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_nonzero_u64))
-        1 => f1 = Some(@typify_rt.de_nonzero_u16(v))
-        2 => f2 = Some(@typify_rt.de_nonzero_u8(v))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    default_mr_default_numbers_big_nullable()
-  }
-  let v1 = if f1 is Some(v) {
-    v
-  } else {
-    default_mr_default_numbers_little_u16()
-  }
-  let v2 = if f2 is Some(v) {
-    v
-  } else {
-    default_mr_default_numbers_little_u8()
-  }
-  MrDefaultNumbers::{ big_nullable: v0, little_u16: v1, little_u8: v2, }
+  let r = @typify_rt.de_fields(d, "struct MrDefaultNumbers", mr_default_numbers_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_nonzero_u64))
+    1 => f1 = Some(@typify_rt.de_nonzero_u16(v))
+    2 => f2 = Some(@typify_rt.de_nonzero_u8(v))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { default_mr_default_numbers_big_nullable() }
+  let v1 = if f1 is Some(v) { v } else { default_mr_default_numbers_little_u16() }
+  let v2 = if f2 is Some(v) { v } else { default_mr_default_numbers_little_u8() }
+  MrDefaultNumbers::{ big_nullable: v0, little_u16: v1, little_u8: v2 }
 }
 
 ///|
 pub impl @typify_rt.Serde for MrDefaultNumbers with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
-  o.field(
-    "big_nullable",
-    @typify_rt.ser_option(self.big_nullable, (v : UInt64) => {
-      @typify_rt.ser_u64(v)
-    }),
-  )
+  o.field("big_nullable", @typify_rt.ser_option(self.big_nullable, (v : UInt64) => @typify_rt.ser_u64(v)))
   o.field("little_u16", @typify_rt.ser_u16(self.little_u16))
   o.field("little_u8", @typify_rt.ser_byte(self.little_u8))
 
@@ -138,11 +101,7 @@ pub impl @typify_rt.Serde for MrDefaultNumbers with fn serialize(self) {
 
 ///|
 pub extend MrDefaultNumbers with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -162,31 +121,19 @@ let outer_thing_fields : @typify_rt.Fields = @typify_rt.Fields::new(["thing"])
 ///|
 pub impl @typify_rt.Serde for OuterThing with fn deserialize(d) {
   let mut f0 : ThingWithDefaults?? = None
-  let r = @typify_rt.de_fields(d, "struct OuterThing", outer_thing_fields, (
-    j,
-    v,
-  ) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_option(v, ThingWithDefaults::deserialize))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct OuterThing", outer_thing_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, ThingWithDefaults::deserialize))
+    _ => ()
   })
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), ThingWithDefaults::deserialize)
-  }
-  OuterThing::{ thing: v0, }
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), ThingWithDefaults::deserialize) }
+  OuterThing::{ thing: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for OuterThing with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.thing is Some(_) {
-    o.field(
-      "thing",
-      @typify_rt.ser_option(self.thing, ThingWithDefaults::serialize),
-    )
+    o.field("thing", @typify_rt.ser_option(self.thing, ThingWithDefaults::serialize))
   }
 
   o.build()
@@ -194,11 +141,7 @@ pub impl @typify_rt.Serde for OuterThing with fn serialize(self) {
 
 ///|
 pub extend OuterThing with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -218,42 +161,32 @@ let test_bed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["any", "id"])
 
 ///|
 fn default_test_bed_any() -> Array[Json] raise @typify_rt.DeError {
-  @typify_rt.default_value("[[8,6,7],[5,3,0,9]]", (d : @typify_rt.De) => {
-    @typify_rt.de_vec(d, @typify_rt.de_json)
-  })
+  @typify_rt.default_value("[[8,6,7],[5,3,0,9]]", (d : @typify_rt.De) => @typify_rt.de_vec(d, @typify_rt.de_json))
 }
 
 ///|
 fn default_test_bed_id() -> @typify_rt.Uuid raise @typify_rt.DeError {
-  @typify_rt.default_value(
-    "\"abc123-is-this-a-uuid\"",
-    @typify_rt.Uuid::deserialize,
-  )
+  @typify_rt.default_value("\"abc123-is-this-a-uuid\"", @typify_rt.Uuid::deserialize)
 }
 
 ///|
 pub impl @typify_rt.Serde for TestBed with fn deserialize(d) {
   let mut f0 : Array[Json]? = None
   let mut f1 : @typify_rt.Uuid? = None
-  let r = @typify_rt.de_fields(d, "struct TestBed", test_bed_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_vec(v, @typify_rt.de_json))
-      1 => f1 = Some(@typify_rt.Uuid::deserialize(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct TestBed", test_bed_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_vec(v, @typify_rt.de_json))
+    1 => f1 = Some(@typify_rt.Uuid::deserialize(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { default_test_bed_any() }
   let v1 = if f1 is Some(v) { v } else { default_test_bed_id() }
-  TestBed::{ any: v0, id: v1, }
+  TestBed::{ any: v0, id: v1 }
 }
 
 ///|
 pub impl @typify_rt.Serde for TestBed with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
-  o.field(
-    "any",
-    @typify_rt.ser_vec(self.any, (v : Json) => @typify_rt.ser_json(v)),
-  )
+  o.field("any", @typify_rt.ser_vec(self.any, (v : Json) => @typify_rt.ser_json(v)))
   o.field("id", @typify_rt.Uuid::serialize(self.id))
 
   o.build()
@@ -261,11 +194,7 @@ pub impl @typify_rt.Serde for TestBed with fn serialize(self) {
 
 ///|
 pub extend TestBed with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -289,11 +218,7 @@ pub impl @typify_rt.Serde for UInt_ with fn serialize(self) {
 
 ///|
 pub extend UInt_ with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -308,9 +233,7 @@ pub(all) struct UIntContainer {
 } derive(Debug, Eq)
 
 ///|
-let u_int_container_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "max_path",
-])
+let u_int_container_fields : @typify_rt.Fields = @typify_rt.Fields::new(["max_path"])
 
 ///|
 fn default_u_int_container_max_path() -> UInt_ raise @typify_rt.DeError {
@@ -320,19 +243,12 @@ fn default_u_int_container_max_path() -> UInt_ raise @typify_rt.DeError {
 ///|
 pub impl @typify_rt.Serde for UIntContainer with fn deserialize(d) {
   let mut f0 : UInt_? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct UIntContainer",
-    u_int_container_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(UInt_::deserialize(v))
-        _ => ()
-      }
-    },
-  )
+  let r = @typify_rt.de_fields(d, "struct UIntContainer", u_int_container_fields, (j, v) => match j {
+    0 => f0 = Some(UInt_::deserialize(v))
+    _ => ()
+  })
   let v0 = if f0 is Some(v) { v } else { default_u_int_container_max_path() }
-  UIntContainer::{ max_path: v0, }
+  UIntContainer::{ max_path: v0 }
 }
 
 ///|
@@ -345,11 +261,7 @@ pub impl @typify_rt.Serde for UIntContainer with fn serialize(self) {
 
 ///|
 pub extend UIntContainer with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -365,54 +277,30 @@ pub(all) struct ThingWithDefaults {
 } derive(Debug, Eq)
 
 ///|
-let thing_with_defaults_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "a", "type",
-])
+let thing_with_defaults_fields : @typify_rt.Fields = @typify_rt.Fields::new(["a", "type"])
 
 ///|
 pub impl @typify_rt.Serde for ThingWithDefaults with fn deserialize(d) {
   let mut f0 : String?? = None
   let mut f1 : String?? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct ThingWithDefaults",
-    thing_with_defaults_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-        1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-        _ => ()
-      }
-    },
-    deny=true,
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), @typify_rt.de_string)
-  }
-  let v1 = if f1 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(1), @typify_rt.de_string)
-  }
-  ThingWithDefaults::{ a: v0, type_: v1, }
+  let r = @typify_rt.de_fields(d, "struct ThingWithDefaults", thing_with_defaults_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+    1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+    _ => ()
+  }, deny=true)
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_string) }
+  let v1 = if f1 is Some(v) { v } else { @typify_rt.de_option(r.absent(1), @typify_rt.de_string) }
+  ThingWithDefaults::{ a: v0, type_: v1 }
 }
 
 ///|
 pub impl @typify_rt.Serde for ThingWithDefaults with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.a is Some(_) {
-    o.field(
-      "a",
-      @typify_rt.ser_option(self.a, (v : String) => @typify_rt.ser_string(v)),
-    )
+    o.field("a", @typify_rt.ser_option(self.a, (v : String) => @typify_rt.ser_string(v)))
   }
   if self.type_ is Some(_) {
-    o.field(
-      "type",
-      @typify_rt.ser_option(self.type_, (v : String) => @typify_rt.ser_string(v)),
-    )
+    o.field("type", @typify_rt.ser_option(self.type_, (v : String) => @typify_rt.ser_string(v)))
   }
 
   o.build()
@@ -428,14 +316,11 @@ pub fn ThingWithDefaults::default() -> ThingWithDefaults {
 
 ///|
 pub extend ThingWithDefaults with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for ThingWithDefaults with fn to_json(self) {
   @typify_rt.json_of(self, "ThingWithDefaults")
 }
+

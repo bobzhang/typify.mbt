@@ -11,32 +11,20 @@ pub(all) struct TestType {
 } derive(Debug, Eq)
 
 ///|
-let test_type_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "where_not", "why_not",
-])
+let test_type_fields : @typify_rt.Fields = @typify_rt.Fields::new(["where_not", "why_not"])
 
 ///|
 pub impl @typify_rt.Serde for TestType with fn deserialize(d) {
   let mut f0 : TestTypeWhereNot? = None
   let mut f1 : TestTypeWhyNot? = None
-  let r = @typify_rt.de_fields(d, "struct TestType", test_type_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(TestTypeWhereNot::deserialize(v))
-      1 => f1 = Some(TestTypeWhyNot::deserialize(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct TestType", test_type_fields, (j, v) => match j {
+    0 => f0 = Some(TestTypeWhereNot::deserialize(v))
+    1 => f1 = Some(TestTypeWhyNot::deserialize(v))
+    _ => ()
   })
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    TestTypeWhereNot::deserialize(r.absent(0))
-  }
-  let v1 = if f1 is Some(v) {
-    v
-  } else {
-    TestTypeWhyNot::deserialize(r.absent(1))
-  }
-  TestType::{ where_not: v0, why_not: v1, }
+  let v0 = if f0 is Some(v) { v } else { TestTypeWhereNot::deserialize(r.absent(0)) }
+  let v1 = if f1 is Some(v) { v } else { TestTypeWhyNot::deserialize(r.absent(1)) }
+  TestType::{ where_not: v0, why_not: v1 }
 }
 
 ///|
@@ -50,11 +38,7 @@ pub impl @typify_rt.Serde for TestType with fn serialize(self) {
 
 ///|
 pub extend TestType with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -75,12 +59,8 @@ let test_type_where_not_values : Array[@typify_rt.Content] = @typify_rt.enum_val
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn TestTypeWhereNot::new(
-  value : String,
-) -> TestTypeWhereNot raise @typify_rt.ConversionError {
-  let serialized = @typify_rt.ser_string(value) catch {
-    _ => @typify_rt.ser_null()
-  }
+pub fn TestTypeWhereNot::new(value : String) -> TestTypeWhereNot raise @typify_rt.ConversionError {
+  let serialized = (@typify_rt.ser_string(value)) catch { _ => @typify_rt.ser_null() }
   if @typify_rt.contains_value(test_type_where_not_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -103,11 +83,7 @@ pub impl @typify_rt.Serde for TestTypeWhereNot with fn serialize(self) {
 
 ///|
 pub extend TestTypeWhereNot with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -128,12 +104,8 @@ let test_type_why_not_values : Array[@typify_rt.Content] = @typify_rt.enum_value
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn TestTypeWhyNot::new(
-  value : String,
-) -> TestTypeWhyNot raise @typify_rt.ConversionError {
-  let serialized = @typify_rt.ser_string(value) catch {
-    _ => @typify_rt.ser_null()
-  }
+pub fn TestTypeWhyNot::new(value : String) -> TestTypeWhyNot raise @typify_rt.ConversionError {
+  let serialized = (@typify_rt.ser_string(value)) catch { _ => @typify_rt.ser_null() }
   if @typify_rt.contains_value(test_type_why_not_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -156,14 +128,11 @@ pub impl @typify_rt.Serde for TestTypeWhyNot with fn serialize(self) {
 
 ///|
 pub extend TestTypeWhyNot with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for TestTypeWhyNot with fn to_json(self) {
   @typify_rt.json_of(self, "TestTypeWhyNot")
 }
+

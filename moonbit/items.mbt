@@ -220,7 +220,7 @@ fn Gen::api_methods(self : Gen, out : StringBuilder, name : String) -> Unit {
       $|}
       $|
       $|///|
-      $|pub impl ToJson for \{name} with to_json(self) {
+      $|pub impl ToJson for \{name} with fn to_json(self) {
       $|  @typify_rt.json_of(self, \{str_lit(name)})
       $|}
       $|
@@ -288,12 +288,12 @@ fn Gen::output_struct(
   out.write_string(
     (
       $|///|
-      $|pub impl @typify_rt.Serde for \{name} with deserialize(d) {
+      $|pub impl @typify_rt.Serde for \{name} with fn deserialize(d) {
       $|\{indent(decode, 2)}
       $|}
       $|
       $|///|
-      $|pub impl @typify_rt.Serde for \{name} with serialize(self) {
+      $|pub impl @typify_rt.Serde for \{name} with fn serialize(self) {
       $|  let o = @typify_rt.ObjectBuilder::new()
       $|\{indent(self.struct_encode(d.properties, i => "self.\{fields[i]}"), 2)}
       $|  o.build()
@@ -382,7 +382,7 @@ fn Gen::output_newtype(
         $|}
         $|
         $|///|
-        $|pub impl @typify_rt.Serde for \{name} with deserialize(d) {
+        $|pub impl @typify_rt.Serde for \{name} with fn deserialize(d) {
         $|  let value = \{self.de_expr(d.type_id, "d")}
         $|  \{name}::new(value) catch {
         $|    @typify_rt.ConversionError(msg) => raise @typify_rt.DeError(msg)
@@ -396,7 +396,7 @@ fn Gen::output_newtype(
     out.write_string(
       (
         $|///|
-        $|pub impl @typify_rt.Serde for \{name} with deserialize(d) {
+        $|pub impl @typify_rt.Serde for \{name} with fn deserialize(d) {
         $|  \{name}(\{self.de_expr(d.type_id, "d")})
         $|}
         $|
@@ -407,7 +407,7 @@ fn Gen::output_newtype(
   out.write_string(
     (
       $|///|
-      $|pub impl @typify_rt.Serde for \{name} with serialize(self) {
+      $|pub impl @typify_rt.Serde for \{name} with fn serialize(self) {
       $|  \{self.ser_expr(d.type_id, "self.0")}
       $|}
       $|
@@ -664,7 +664,7 @@ fn Gen::output_enum(
   out.write_string(
     (
       $|///|
-      $|pub impl @typify_rt.Serde for \{name} with deserialize(d) {
+      $|pub impl @typify_rt.Serde for \{name} with fn deserialize(d) {
       $|\{indent(body, 2)}
       $|}
       $|
@@ -702,7 +702,7 @@ fn Gen::output_enum(
   out.write_string(
     (
       $|///|
-      $|pub impl @typify_rt.Serde for \{name} with serialize(self) {
+      $|pub impl @typify_rt.Serde for \{name} with fn serialize(self) {
       $|  match self {
       $|\{indent(enc_body.trim_end().to_owned(), 2)}
       $|  }

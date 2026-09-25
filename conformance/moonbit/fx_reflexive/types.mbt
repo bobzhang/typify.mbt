@@ -11,28 +11,20 @@ pub(all) struct Node {
 } derive(Debug, Eq)
 
 ///|
-let node_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "children", "value",
-])
+let node_fields : @typify_rt.Fields = @typify_rt.Fields::new(["children", "value"])
 
 ///|
 pub impl @typify_rt.Serde for Node with fn deserialize(d) {
   let mut f0 : Array[Node]? = None
   let mut f1 : Int64?? = None
-  let r = @typify_rt.de_fields(d, "struct Node", node_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_vec(v, Node::deserialize))
-      1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_i64))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct Node", node_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_vec(v, Node::deserialize))
+    1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_i64))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { [] }
-  let v1 = if f1 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(1), @typify_rt.de_i64)
-  }
-  Node::{ children: v0, value: v1, }
+  let v1 = if f1 is Some(v) { v } else { @typify_rt.de_option(r.absent(1), @typify_rt.de_i64) }
+  Node::{ children: v0, value: v1 }
 }
 
 ///|
@@ -42,10 +34,7 @@ pub impl @typify_rt.Serde for Node with fn serialize(self) {
     o.field("children", @typify_rt.ser_vec(self.children, Node::serialize))
   }
   if self.value is Some(_) {
-    o.field(
-      "value",
-      @typify_rt.ser_option(self.value, (v : Int64) => @typify_rt.ser_i64(v)),
-    )
+    o.field("value", @typify_rt.ser_option(self.value, (v : Int64) => @typify_rt.ser_i64(v)))
   }
 
   o.build()
@@ -53,14 +42,11 @@ pub impl @typify_rt.Serde for Node with fn serialize(self) {
 
 ///|
 pub extend Node with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for Node with fn to_json(self) {
   @typify_rt.json_of(self, "Node")
 }
+

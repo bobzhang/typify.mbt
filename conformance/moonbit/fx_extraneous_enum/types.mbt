@@ -15,28 +15,19 @@ let letter_box_fields : @typify_rt.Fields = @typify_rt.Fields::new(["letter"])
 ///|
 pub impl @typify_rt.Serde for LetterBox with fn deserialize(d) {
   let mut f0 : LetterBoxLetter?? = None
-  let r = @typify_rt.de_fields(d, "struct LetterBox", letter_box_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_option(v, LetterBoxLetter::deserialize))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct LetterBox", letter_box_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, LetterBoxLetter::deserialize))
+    _ => ()
   })
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), LetterBoxLetter::deserialize)
-  }
-  LetterBox::{ letter: v0, }
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), LetterBoxLetter::deserialize) }
+  LetterBox::{ letter: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for LetterBox with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.letter is Some(_) {
-    o.field(
-      "letter",
-      @typify_rt.ser_option(self.letter, LetterBoxLetter::serialize),
-    )
+    o.field("letter", @typify_rt.ser_option(self.letter, LetterBoxLetter::serialize))
   }
 
   o.build()
@@ -44,11 +35,7 @@ pub impl @typify_rt.Serde for LetterBox with fn serialize(self) {
 
 ///|
 pub extend LetterBox with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -67,14 +54,8 @@ pub(all) enum LetterBoxLetter {
 pub impl @typify_rt.Serde for LetterBoxLetter with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "LetterBoxLetter", ["a", "b"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      LetterBoxLetter::A
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      LetterBoxLetter::B
-    }
+    0 => { @typify_rt.variant_unit(payload); LetterBoxLetter::A }
+    1 => { @typify_rt.variant_unit(payload); LetterBoxLetter::B }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -109,9 +90,7 @@ pub fn LetterBoxLetter::to_string(self : LetterBoxLetter) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn LetterBoxLetter::parse(
-  value : StringView,
-) -> LetterBoxLetter raise @typify_rt.ConversionError {
+pub fn LetterBoxLetter::parse(value : StringView) -> LetterBoxLetter raise @typify_rt.ConversionError {
   match value {
     "a" => A
     "b" => B
@@ -121,14 +100,11 @@ pub fn LetterBoxLetter::parse(
 
 ///|
 pub extend LetterBoxLetter with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for LetterBoxLetter with fn to_json(self) {
   @typify_rt.json_of(self, "LetterBoxLetter")
 }
+

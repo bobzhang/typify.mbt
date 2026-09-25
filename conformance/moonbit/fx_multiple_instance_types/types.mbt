@@ -13,13 +13,17 @@ pub(all) enum IntOrStr {
 ///|
 pub impl @typify_rt.Serde for IntOrStr with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
-  try IntOrStr::Integer(@typify_rt.de_i64(c)) catch {
+  try {
+    IntOrStr::Integer(@typify_rt.de_i64(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try IntOrStr::String(@typify_rt.de_string(c)) catch {
+  try {
+    IntOrStr::String(@typify_rt.de_string(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -38,11 +42,7 @@ pub impl @typify_rt.Serde for IntOrStr with fn serialize(self) {
 
 ///|
 pub extend IntOrStr with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -65,43 +65,48 @@ pub(all) enum OneOfSeveral {
 pub impl @typify_rt.Serde for OneOfSeveral with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
   try {
-    @typify_rt.de_unit(c)
-    OneOfSeveral::Null
+    { @typify_rt.de_unit(c); OneOfSeveral::Null }
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try OneOfSeveral::Boolean(@typify_rt.de_bool(c)) catch {
+  try {
+    OneOfSeveral::Boolean(@typify_rt.de_bool(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try OneOfSeveral::Integer(@typify_rt.de_i64(c)) catch {
+  try {
+    OneOfSeveral::Integer(@typify_rt.de_i64(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try OneOfSeveral::String(@typify_rt.de_string(c)) catch {
+  try {
+    OneOfSeveral::String(@typify_rt.de_string(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try OneOfSeveral::Array(@typify_rt.de_vec(c, @typify_rt.de_json)) catch {
+  try {
+    OneOfSeveral::Array(@typify_rt.de_vec(c, @typify_rt.de_json))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try
-    OneOfSeveral::Object(
-      @typify_rt.de_map(c, @typify_rt.de_string, @typify_rt.de_json),
-    )
-  catch {
+  try {
+    OneOfSeveral::Object(@typify_rt.de_map(c, @typify_rt.de_string, @typify_rt.de_json))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -118,23 +123,13 @@ pub impl @typify_rt.Serde for OneOfSeveral with fn serialize(self) {
     Integer(p0) => @typify_rt.ser_i64(p0)
     String(p0) => @typify_rt.ser_string(p0)
     Array(p0) => @typify_rt.ser_vec(p0, (v : Json) => @typify_rt.ser_json(v))
-    Object(p0) =>
-      @typify_rt.ser_sorted_map(
-        p0,
-        @typify_rt.compare_keys,
-        (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-        (v : Json) => @typify_rt.ser_json(v),
-      )
+    Object(p0) => @typify_rt.ser_sorted_map(p0, @typify_rt.compare_keys, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Json) => @typify_rt.ser_json(v))
   }
 }
 
 ///|
 pub extend OneOfSeveral with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -158,11 +153,7 @@ pub impl @typify_rt.Serde for ReallyJustNull with fn serialize(self) {
 
 ///|
 pub extend ReallyJustNull with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -186,11 +177,7 @@ pub impl @typify_rt.Serde for SeriouslyAnything with fn serialize(self) {
 
 ///|
 pub extend SeriouslyAnything with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -206,39 +193,29 @@ pub(all) enum YesNoMaybe {
 } derive(Debug, Eq)
 
 ///|
-let yes_no_maybe_object_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "value",
-])
+let yes_no_maybe_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 
 ///|
 pub impl @typify_rt.Serde for YesNoMaybe with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
-  try YesNoMaybe::Boolean(@typify_rt.de_bool(c)) catch {
+  try {
+    YesNoMaybe::Boolean(@typify_rt.de_bool(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
   try {
-    let mut f0 : String?? = None
-    let r = @typify_rt.de_fields(
-      c,
-      "struct variant YesNoMaybe::Object",
-      yes_no_maybe_object_fields,
-      (j, v) => {
-        match j {
-          0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-          _ => ()
-        }
-      },
-      positional=false,
-    )
-    let v0 = if f0 is Some(v) {
-      v
-    } else {
-      @typify_rt.de_option(r.absent(0), @typify_rt.de_string)
+    {
+      let mut f0 : String?? = None
+      let r = @typify_rt.de_fields(c, "struct variant YesNoMaybe::Object", yes_no_maybe_object_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+        _ => ()
+      }, positional=false)
+      let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_string) }
+      YesNoMaybe::Object(value=v0)
     }
-    YesNoMaybe::Object(value=v0)
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
@@ -255,10 +232,7 @@ pub impl @typify_rt.Serde for YesNoMaybe with fn serialize(self) {
     Object(value=p0) => {
       let o = @typify_rt.ObjectBuilder::new()
       if p0 is Some(_) {
-        o.field(
-          "value",
-          @typify_rt.ser_option(p0, (v : String) => @typify_rt.ser_string(v)),
-        )
+        o.field("value", @typify_rt.ser_option(p0, (v : String) => @typify_rt.ser_string(v)))
       }
       o.build()
     }
@@ -267,14 +241,11 @@ pub impl @typify_rt.Serde for YesNoMaybe with fn serialize(self) {
 
 ///|
 pub extend YesNoMaybe with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for YesNoMaybe with fn to_json(self) {
   @typify_rt.json_of(self, "YesNoMaybe")
 }
+

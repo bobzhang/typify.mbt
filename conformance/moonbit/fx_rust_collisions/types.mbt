@@ -15,14 +15,12 @@ let box_fields : @typify_rt.Fields = @typify_rt.Fields::new(["data"])
 ///|
 pub impl @typify_rt.Serde for Box with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(d, "struct Box", box_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_string(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct Box", box_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  Box::{ data: v0, }
+  Box::{ data: v0 }
 }
 
 ///|
@@ -35,11 +33,7 @@ pub impl @typify_rt.Serde for Box with fn serialize(self) {
 
 ///|
 pub extend Box with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -59,14 +53,12 @@ let copy_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 ///|
 pub impl @typify_rt.Serde for Copy with fn deserialize(d) {
   let mut f0 : Int64? = None
-  let r = @typify_rt.de_fields(d, "struct Copy", copy_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_i64(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct Copy", copy_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_i64(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_i64(r.absent(0)) }
-  Copy::{ value: v0, }
+  Copy::{ value: v0 }
 }
 
 ///|
@@ -79,11 +71,7 @@ pub impl @typify_rt.Serde for Copy with fn serialize(self) {
 
 ///|
 pub extend Copy with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -98,44 +86,24 @@ pub(all) struct DoubleOptionCollision {
 } derive(Debug, Eq)
 
 ///|
-let double_option_collision_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "option",
-  ],
-)
+let double_option_collision_fields : @typify_rt.Fields = @typify_rt.Fields::new(["option"])
 
 ///|
 pub impl @typify_rt.Serde for DoubleOptionCollision with fn deserialize(d) {
   let mut f0 : DoubleOptionCollisionOption?? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct DoubleOptionCollision",
-    double_option_collision_fields,
-    (j, v) => {
-      match j {
-        0 =>
-          f0 = Some(
-            @typify_rt.de_option(v, DoubleOptionCollisionOption::deserialize),
-          )
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), DoubleOptionCollisionOption::deserialize)
-  }
-  DoubleOptionCollision::{ option: v0, }
+  let r = @typify_rt.de_fields(d, "struct DoubleOptionCollision", double_option_collision_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, DoubleOptionCollisionOption::deserialize))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), DoubleOptionCollisionOption::deserialize) }
+  DoubleOptionCollision::{ option: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for DoubleOptionCollision with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.option is Some(_) {
-    o.field(
-      "option",
-      @typify_rt.ser_option(self.option, DoubleOptionCollisionOption::serialize),
-    )
+    o.field("option", @typify_rt.ser_option(self.option, DoubleOptionCollisionOption::serialize))
   }
 
   o.build()
@@ -143,11 +111,7 @@ pub impl @typify_rt.Serde for DoubleOptionCollision with fn serialize(self) {
 
 ///|
 pub extend DoubleOptionCollision with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -167,14 +131,12 @@ let drop_fields : @typify_rt.Fields = @typify_rt.Fields::new(["cleanup"])
 ///|
 pub impl @typify_rt.Serde for Drop with fn deserialize(d) {
   let mut f0 : Bool? = None
-  let r = @typify_rt.de_fields(d, "struct Drop", drop_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_bool(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct Drop", drop_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_bool(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_bool(r.absent(0)) }
-  Drop::{ cleanup: v0, }
+  Drop::{ cleanup: v0 }
 }
 
 ///|
@@ -187,11 +149,7 @@ pub impl @typify_rt.Serde for Drop with fn serialize(self) {
 
 ///|
 pub extend Drop with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -207,56 +165,32 @@ pub(all) struct FlattenedKeywords {
 } derive(Debug, Eq)
 
 ///|
-let flattened_keywords_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "normal",
-])
+let flattened_keywords_fields : @typify_rt.Fields = @typify_rt.Fields::new(["normal"])
 
 ///|
 pub impl @typify_rt.Serde for FlattenedKeywords with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct FlattenedKeywords",
-    flattened_keywords_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_string(v))
-        _ => ()
-      }
-    },
-    flatten=true,
-  )
+  let r = @typify_rt.de_fields(d, "struct FlattenedKeywords", flattened_keywords_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
+  }, flatten=true)
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  let v1 = @typify_rt.de_map(
-    r.flat(),
-    @typify_rt.de_string,
-    @typify_rt.de_string,
-  )
-  FlattenedKeywords::{ normal: v0, extra: v1, }
+  let v1 = @typify_rt.de_map(r.flat(), @typify_rt.de_string, @typify_rt.de_string)
+  FlattenedKeywords::{ normal: v0, extra: v1 }
 }
 
 ///|
 pub impl @typify_rt.Serde for FlattenedKeywords with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("normal", @typify_rt.ser_string(self.normal))
-  o.flatten(
-    @typify_rt.ser_map(
-      self.extra,
-      (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-      (v : String) => @typify_rt.ser_string(v),
-    ),
-  )
+  o.flatten(@typify_rt.ser_map(self.extra, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : String) => @typify_rt.ser_string(v)))
 
   o.build()
 }
 
 ///|
 pub extend FlattenedKeywords with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -272,58 +206,39 @@ pub(all) enum KeywordFieldsEnum {
 } derive(Debug, Eq)
 
 ///|
-let keyword_fields_enum_object_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "impl", "match", "ref", "type",
-  ],
-)
+let keyword_fields_enum_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["impl", "match", "ref", "type"])
 
 ///|
 pub impl @typify_rt.Serde for KeywordFieldsEnum with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
   try {
-    let mut f0 : String? = None
-    let mut f1 : Int64? = None
-    let mut f2 : Bool? = None
-    let mut f3 : String? = None
-    let r = @typify_rt.de_fields(
-      c,
-      "struct variant KeywordFieldsEnum::Object",
-      keyword_fields_enum_object_fields,
-      (j, v) => {
-        match j {
-          0 => f0 = Some(@typify_rt.de_string(v))
-          1 => f1 = Some(@typify_rt.de_i64(v))
-          2 => f2 = Some(@typify_rt.de_bool(v))
-          3 => f3 = Some(@typify_rt.de_string(v))
-          _ => ()
-        }
-      },
-      positional=false,
-    )
-    let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-    let v1 = if f1 is Some(v) { v } else { @typify_rt.de_i64(r.absent(1)) }
-    let v2 = if f2 is Some(v) { v } else { @typify_rt.de_bool(r.absent(2)) }
-    let v3 = if f3 is Some(v) { v } else { @typify_rt.de_string(r.absent(3)) }
-    KeywordFieldsEnum::Object(impl_=v0, match_=v1, ref_=v2, type_=v3)
+    {
+      let mut f0 : String? = None
+      let mut f1 : Int64? = None
+      let mut f2 : Bool? = None
+      let mut f3 : String? = None
+      let r = @typify_rt.de_fields(c, "struct variant KeywordFieldsEnum::Object", keyword_fields_enum_object_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        1 => f1 = Some(@typify_rt.de_i64(v))
+        2 => f2 = Some(@typify_rt.de_bool(v))
+        3 => f3 = Some(@typify_rt.de_string(v))
+        _ => ()
+      }, positional=false)
+      let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
+      let v1 = if f1 is Some(v) { v } else { @typify_rt.de_i64(r.absent(1)) }
+      let v2 = if f2 is Some(v) { v } else { @typify_rt.de_bool(r.absent(2)) }
+      let v3 = if f3 is Some(v) { v } else { @typify_rt.de_string(r.absent(3)) }
+      KeywordFieldsEnum::Object(impl_=v0, match_=v1, ref_=v2, type_=v3)
+    }
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try
-    KeywordFieldsEnum::Array(
-      {
-        let s = @typify_rt.de_fixed(c, 2)
-        let xs = []
-        for _ in 0..<2 {
-          xs.push(@typify_rt.de_string(s.next()))
-        }
-        s.finish()
-        FixedArray::from_array(xs)
-      },
-    )
-  catch {
+  try {
+    KeywordFieldsEnum::Array({ let s = @typify_rt.de_fixed(c, 2); let xs = []; for _ in 0..<2 { xs.push(@typify_rt.de_string(s.next())) }; s.finish(); FixedArray::from_array(xs) })
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -343,18 +258,13 @@ pub impl @typify_rt.Serde for KeywordFieldsEnum with fn serialize(self) {
       o.field("type", @typify_rt.ser_string(p3))
       o.build()
     }
-    Array(p0) =>
-      @typify_rt.ser_vec(p0[:], (v : String) => @typify_rt.ser_string(v))
+    Array(p0) => @typify_rt.ser_vec(p0[:], (v : String) => @typify_rt.ser_string(v))
   }
 }
 
 ///|
 pub extend KeywordFieldsEnum with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -369,65 +279,30 @@ pub(all) struct MapOfKeywords {
 } derive(Debug, Eq)
 
 ///|
-let map_of_keywords_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "keyword_map",
-])
+let map_of_keywords_fields : @typify_rt.Fields = @typify_rt.Fields::new(["keyword_map"])
 
 ///|
 pub impl @typify_rt.Serde for MapOfKeywords with fn deserialize(d) {
   let mut f0 : Map[String, MapOfKeywordsKeywordMapValue]? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct MapOfKeywords",
-    map_of_keywords_fields,
-    (j, v) => {
-      match j {
-        0 =>
-          f0 = Some(
-            @typify_rt.de_map(
-              v,
-              @typify_rt.de_string,
-              MapOfKeywordsKeywordMapValue::deserialize,
-            ),
-          )
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_map(
-      r.absent(0),
-      @typify_rt.de_string,
-      MapOfKeywordsKeywordMapValue::deserialize,
-    )
-  }
-  MapOfKeywords::{ keyword_map: v0, }
+  let r = @typify_rt.de_fields(d, "struct MapOfKeywords", map_of_keywords_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_map(v, @typify_rt.de_string, MapOfKeywordsKeywordMapValue::deserialize))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_map(r.absent(0), @typify_rt.de_string, MapOfKeywordsKeywordMapValue::deserialize) }
+  MapOfKeywords::{ keyword_map: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for MapOfKeywords with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
-  o.field(
-    "keyword_map",
-    @typify_rt.ser_map(
-      self.keyword_map,
-      (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-      MapOfKeywordsKeywordMapValue::serialize,
-    ),
-  )
+  o.field("keyword_map", @typify_rt.ser_map(self.keyword_map, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), MapOfKeywordsKeywordMapValue::serialize))
 
   o.build()
 }
 
 ///|
 pub extend MapOfKeywords with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -444,80 +319,40 @@ pub(all) struct NestedTypeCollisions {
 } derive(Debug, Eq)
 
 ///|
-let nested_type_collisions_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "option_type", "type", "types",
-])
+let nested_type_collisions_fields : @typify_rt.Fields = @typify_rt.Fields::new(["option_type", "type", "types"])
 
 ///|
 pub impl @typify_rt.Serde for NestedTypeCollisions with fn deserialize(d) {
   let mut f0 : NestedTypeCollisionsOptionType?? = None
   let mut f1 : TypeWithOptionField? = None
   let mut f2 : Array[TypeWithOptionField]? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct NestedTypeCollisions",
-    nested_type_collisions_fields,
-    (j, v) => {
-      match j {
-        0 =>
-          f0 = Some(
-            @typify_rt.de_option(v, NestedTypeCollisionsOptionType::deserialize),
-          )
-        1 => f1 = Some(TypeWithOptionField::deserialize(v))
-        2 => f2 = Some(@typify_rt.de_vec(v, TypeWithOptionField::deserialize))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(
-      r.absent(0),
-      NestedTypeCollisionsOptionType::deserialize,
-    )
-  }
-  let v1 = if f1 is Some(v) {
-    v
-  } else {
-    TypeWithOptionField::deserialize(r.absent(1))
-  }
-  let v2 = if f2 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_vec(r.absent(2), TypeWithOptionField::deserialize)
-  }
-  NestedTypeCollisions::{ option_type: v0, type_: v1, types: v2, }
+  let r = @typify_rt.de_fields(d, "struct NestedTypeCollisions", nested_type_collisions_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, NestedTypeCollisionsOptionType::deserialize))
+    1 => f1 = Some(TypeWithOptionField::deserialize(v))
+    2 => f2 = Some(@typify_rt.de_vec(v, TypeWithOptionField::deserialize))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), NestedTypeCollisionsOptionType::deserialize) }
+  let v1 = if f1 is Some(v) { v } else { TypeWithOptionField::deserialize(r.absent(1)) }
+  let v2 = if f2 is Some(v) { v } else { @typify_rt.de_vec(r.absent(2), TypeWithOptionField::deserialize) }
+  NestedTypeCollisions::{ option_type: v0, type_: v1, types: v2 }
 }
 
 ///|
 pub impl @typify_rt.Serde for NestedTypeCollisions with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.option_type is Some(_) {
-    o.field(
-      "option_type",
-      @typify_rt.ser_option(
-        self.option_type,
-        NestedTypeCollisionsOptionType::serialize,
-      ),
-    )
+    o.field("option_type", @typify_rt.ser_option(self.option_type, NestedTypeCollisionsOptionType::serialize))
   }
   o.field("type", TypeWithOptionField::serialize(self.type_))
-  o.field(
-    "types",
-    @typify_rt.ser_vec(self.types, TypeWithOptionField::serialize),
-  )
+  o.field("types", @typify_rt.ser_vec(self.types, TypeWithOptionField::serialize))
 
   o.build()
 }
 
 ///|
 pub extend NestedTypeCollisions with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -537,14 +372,12 @@ let option_fields : @typify_rt.Fields = @typify_rt.Fields::new(["maybe"])
 ///|
 pub impl @typify_rt.Serde for Option_ with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(d, "struct Option", option_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_string(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct Option", option_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  Option_::{ maybe: v0, }
+  Option_::{ maybe: v0 }
 }
 
 ///|
@@ -557,11 +390,7 @@ pub impl @typify_rt.Serde for Option_ with fn serialize(self) {
 
 ///|
 pub extend Option_ with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -581,14 +410,12 @@ let pin_fields : @typify_rt.Fields = @typify_rt.Fields::new(["pointer"])
 ///|
 pub impl @typify_rt.Serde for Pin with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(d, "struct Pin", pin_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_string(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct Pin", pin_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  Pin::{ pointer: v0, }
+  Pin::{ pointer: v0 }
 }
 
 ///|
@@ -601,11 +428,7 @@ pub impl @typify_rt.Serde for Pin with fn serialize(self) {
 
 ///|
 pub extend Pin with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -670,14 +493,7 @@ pub(all) struct RustKeywordMonster {
 } derive(Debug, Eq)
 
 ///|
-let rust_keyword_monster_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "abstract", "as", "async", "await", "become", "box", "break", "const", "continue",
-  "crate", "do", "dyn", "else", "enum", "extern", "false", "final", "fn", "for",
-  "gen", "if", "impl", "in", "let", "loop", "macro", "match", "mod", "move", "mut",
-  "override", "priv", "pub", "ref", "return", "self", "static", "struct", "super",
-  "trait", "true", "try", "type", "typeof", "unsafe", "unsized", "use", "virtual",
-  "where", "while", "yield",
-])
+let rust_keyword_monster_fields : @typify_rt.Fields = @typify_rt.Fields::new(["abstract", "as", "async", "await", "become", "box", "break", "const", "continue", "crate", "do", "dyn", "else", "enum", "extern", "false", "final", "fn", "for", "gen", "if", "impl", "in", "let", "loop", "macro", "match", "mod", "move", "mut", "override", "priv", "pub", "ref", "return", "self", "static", "struct", "super", "trait", "true", "try", "type", "typeof", "unsafe", "unsized", "use", "virtual", "where", "while", "yield"])
 
 ///|
 pub impl @typify_rt.Serde for RustKeywordMonster with fn deserialize(d) {
@@ -732,67 +548,60 @@ pub impl @typify_rt.Serde for RustKeywordMonster with fn deserialize(d) {
   let mut f48 : String? = None
   let mut f49 : String? = None
   let mut f50 : String? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct RustKeywordMonster",
-    rust_keyword_monster_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_string(v))
-        1 => f1 = Some(@typify_rt.de_string(v))
-        2 => f2 = Some(@typify_rt.de_string(v))
-        3 => f3 = Some(@typify_rt.de_string(v))
-        4 => f4 = Some(@typify_rt.de_string(v))
-        5 => f5 = Some(@typify_rt.de_string(v))
-        6 => f6 = Some(@typify_rt.de_string(v))
-        7 => f7 = Some(@typify_rt.de_string(v))
-        8 => f8 = Some(@typify_rt.de_string(v))
-        9 => f9 = Some(@typify_rt.de_string(v))
-        10 => f10 = Some(@typify_rt.de_string(v))
-        11 => f11 = Some(@typify_rt.de_string(v))
-        12 => f12 = Some(@typify_rt.de_string(v))
-        13 => f13 = Some(@typify_rt.de_string(v))
-        14 => f14 = Some(@typify_rt.de_string(v))
-        15 => f15 = Some(@typify_rt.de_string(v))
-        16 => f16 = Some(@typify_rt.de_string(v))
-        17 => f17 = Some(@typify_rt.de_string(v))
-        18 => f18 = Some(@typify_rt.de_string(v))
-        19 => f19 = Some(@typify_rt.de_string(v))
-        20 => f20 = Some(@typify_rt.de_string(v))
-        21 => f21 = Some(@typify_rt.de_string(v))
-        22 => f22 = Some(@typify_rt.de_string(v))
-        23 => f23 = Some(@typify_rt.de_string(v))
-        24 => f24 = Some(@typify_rt.de_string(v))
-        25 => f25 = Some(@typify_rt.de_string(v))
-        26 => f26 = Some(@typify_rt.de_string(v))
-        27 => f27 = Some(@typify_rt.de_string(v))
-        28 => f28 = Some(@typify_rt.de_string(v))
-        29 => f29 = Some(@typify_rt.de_string(v))
-        30 => f30 = Some(@typify_rt.de_string(v))
-        31 => f31 = Some(@typify_rt.de_string(v))
-        32 => f32 = Some(@typify_rt.de_string(v))
-        33 => f33 = Some(@typify_rt.de_string(v))
-        34 => f34 = Some(@typify_rt.de_string(v))
-        35 => f35 = Some(@typify_rt.de_string(v))
-        36 => f36 = Some(@typify_rt.de_string(v))
-        37 => f37 = Some(@typify_rt.de_string(v))
-        38 => f38 = Some(@typify_rt.de_string(v))
-        39 => f39 = Some(@typify_rt.de_string(v))
-        40 => f40 = Some(@typify_rt.de_string(v))
-        41 => f41 = Some(@typify_rt.de_string(v))
-        42 => f42 = Some(@typify_rt.de_string(v))
-        43 => f43 = Some(@typify_rt.de_string(v))
-        44 => f44 = Some(@typify_rt.de_string(v))
-        45 => f45 = Some(@typify_rt.de_string(v))
-        46 => f46 = Some(@typify_rt.de_string(v))
-        47 => f47 = Some(@typify_rt.de_string(v))
-        48 => f48 = Some(@typify_rt.de_string(v))
-        49 => f49 = Some(@typify_rt.de_string(v))
-        50 => f50 = Some(@typify_rt.de_string(v))
-        _ => ()
-      }
-    },
-  )
+  let r = @typify_rt.de_fields(d, "struct RustKeywordMonster", rust_keyword_monster_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    1 => f1 = Some(@typify_rt.de_string(v))
+    2 => f2 = Some(@typify_rt.de_string(v))
+    3 => f3 = Some(@typify_rt.de_string(v))
+    4 => f4 = Some(@typify_rt.de_string(v))
+    5 => f5 = Some(@typify_rt.de_string(v))
+    6 => f6 = Some(@typify_rt.de_string(v))
+    7 => f7 = Some(@typify_rt.de_string(v))
+    8 => f8 = Some(@typify_rt.de_string(v))
+    9 => f9 = Some(@typify_rt.de_string(v))
+    10 => f10 = Some(@typify_rt.de_string(v))
+    11 => f11 = Some(@typify_rt.de_string(v))
+    12 => f12 = Some(@typify_rt.de_string(v))
+    13 => f13 = Some(@typify_rt.de_string(v))
+    14 => f14 = Some(@typify_rt.de_string(v))
+    15 => f15 = Some(@typify_rt.de_string(v))
+    16 => f16 = Some(@typify_rt.de_string(v))
+    17 => f17 = Some(@typify_rt.de_string(v))
+    18 => f18 = Some(@typify_rt.de_string(v))
+    19 => f19 = Some(@typify_rt.de_string(v))
+    20 => f20 = Some(@typify_rt.de_string(v))
+    21 => f21 = Some(@typify_rt.de_string(v))
+    22 => f22 = Some(@typify_rt.de_string(v))
+    23 => f23 = Some(@typify_rt.de_string(v))
+    24 => f24 = Some(@typify_rt.de_string(v))
+    25 => f25 = Some(@typify_rt.de_string(v))
+    26 => f26 = Some(@typify_rt.de_string(v))
+    27 => f27 = Some(@typify_rt.de_string(v))
+    28 => f28 = Some(@typify_rt.de_string(v))
+    29 => f29 = Some(@typify_rt.de_string(v))
+    30 => f30 = Some(@typify_rt.de_string(v))
+    31 => f31 = Some(@typify_rt.de_string(v))
+    32 => f32 = Some(@typify_rt.de_string(v))
+    33 => f33 = Some(@typify_rt.de_string(v))
+    34 => f34 = Some(@typify_rt.de_string(v))
+    35 => f35 = Some(@typify_rt.de_string(v))
+    36 => f36 = Some(@typify_rt.de_string(v))
+    37 => f37 = Some(@typify_rt.de_string(v))
+    38 => f38 = Some(@typify_rt.de_string(v))
+    39 => f39 = Some(@typify_rt.de_string(v))
+    40 => f40 = Some(@typify_rt.de_string(v))
+    41 => f41 = Some(@typify_rt.de_string(v))
+    42 => f42 = Some(@typify_rt.de_string(v))
+    43 => f43 = Some(@typify_rt.de_string(v))
+    44 => f44 = Some(@typify_rt.de_string(v))
+    45 => f45 = Some(@typify_rt.de_string(v))
+    46 => f46 = Some(@typify_rt.de_string(v))
+    47 => f47 = Some(@typify_rt.de_string(v))
+    48 => f48 = Some(@typify_rt.de_string(v))
+    49 => f49 = Some(@typify_rt.de_string(v))
+    50 => f50 = Some(@typify_rt.de_string(v))
+    _ => ()
+  })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
   let v1 = if f1 is Some(v) { v } else { @typify_rt.de_string(r.absent(1)) }
   let v2 = if f2 is Some(v) { v } else { @typify_rt.de_string(r.absent(2)) }
@@ -844,59 +653,7 @@ pub impl @typify_rt.Serde for RustKeywordMonster with fn deserialize(d) {
   let v48 = if f48 is Some(v) { v } else { @typify_rt.de_string(r.absent(48)) }
   let v49 = if f49 is Some(v) { v } else { @typify_rt.de_string(r.absent(49)) }
   let v50 = if f50 is Some(v) { v } else { @typify_rt.de_string(r.absent(50)) }
-  RustKeywordMonster::{
-    abstract_: v0,
-    as_: v1,
-    async_: v2,
-    await_: v3,
-    become_: v4,
-    box_: v5,
-    break_: v6,
-    const_: v7,
-    continue_: v8,
-    crate_: v9,
-    do_: v10,
-    dyn_: v11,
-    else_: v12,
-    enum_: v13,
-    extern_: v14,
-    false_: v15,
-    final_: v16,
-    fn_: v17,
-    for_: v18,
-    gen_: v19,
-    if_: v20,
-    impl_: v21,
-    in_: v22,
-    let_: v23,
-    loop_: v24,
-    macro_: v25,
-    match_: v26,
-    mod_: v27,
-    move_: v28,
-    mut_: v29,
-    override_: v30,
-    priv_: v31,
-    pub_: v32,
-    ref_: v33,
-    return_: v34,
-    self_: v35,
-    static_: v36,
-    struct_: v37,
-    super_: v38,
-    trait_: v39,
-    true_: v40,
-    try_: v41,
-    type_: v42,
-    typeof_: v43,
-    unsafe_: v44,
-    unsized_: v45,
-    use_: v46,
-    virtual_: v47,
-    where_: v48,
-    while_: v49,
-    yield_: v50,
-  }
+  RustKeywordMonster::{ abstract_: v0, as_: v1, async_: v2, await_: v3, become_: v4, box_: v5, break_: v6, const_: v7, continue_: v8, crate_: v9, do_: v10, dyn_: v11, else_: v12, enum_: v13, extern_: v14, false_: v15, final_: v16, fn_: v17, for_: v18, gen_: v19, if_: v20, impl_: v21, in_: v22, let_: v23, loop_: v24, macro_: v25, match_: v26, mod_: v27, move_: v28, mut_: v29, override_: v30, priv_: v31, pub_: v32, ref_: v33, return_: v34, self_: v35, static_: v36, struct_: v37, super_: v38, trait_: v39, true_: v40, try_: v41, type_: v42, typeof_: v43, unsafe_: v44, unsized_: v45, use_: v46, virtual_: v47, where_: v48, while_: v49, yield_: v50 }
 }
 
 ///|
@@ -959,11 +716,7 @@ pub impl @typify_rt.Serde for RustKeywordMonster with fn serialize(self) {
 
 ///|
 pub extend RustKeywordMonster with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -983,14 +736,12 @@ let send_fields : @typify_rt.Fields = @typify_rt.Fields::new(["message"])
 ///|
 pub impl @typify_rt.Serde for Send with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(d, "struct Send", send_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_string(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct Send", send_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  Send::{ message: v0, }
+  Send::{ message: v0 }
 }
 
 ///|
@@ -1003,11 +754,7 @@ pub impl @typify_rt.Serde for Send with fn serialize(self) {
 
 ///|
 pub extend Send with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1027,14 +774,12 @@ let string_fields : @typify_rt.Fields = @typify_rt.Fields::new(["text"])
 ///|
 pub impl @typify_rt.Serde for String_ with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(d, "struct String", string_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_string(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct String", string_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  String_::{ text: v0, }
+  String_::{ text: v0 }
 }
 
 ///|
@@ -1047,11 +792,7 @@ pub impl @typify_rt.Serde for String_ with fn serialize(self) {
 
 ///|
 pub extend String_ with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1069,22 +810,11 @@ pub(all) enum StringEnum {
 
 ///|
 pub impl @typify_rt.Serde for StringEnum with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "StringEnum", [
-    "one", "two", "three",
-  ])
+  let (idx, payload) = @typify_rt.de_enum(d, "StringEnum", ["one", "two", "three"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      StringEnum::One
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      StringEnum::Two
-    }
-    2 => {
-      @typify_rt.variant_unit(payload)
-      StringEnum::Three
-    }
+    0 => { @typify_rt.variant_unit(payload); StringEnum::One }
+    1 => { @typify_rt.variant_unit(payload); StringEnum::Two }
+    2 => { @typify_rt.variant_unit(payload); StringEnum::Three }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1122,9 +852,7 @@ pub fn StringEnum::to_string(self : StringEnum) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn StringEnum::parse(
-  value : StringView,
-) -> StringEnum raise @typify_rt.ConversionError {
+pub fn StringEnum::parse(value : StringView) -> StringEnum raise @typify_rt.ConversionError {
   match value {
     "one" => One
     "two" => Two
@@ -1135,11 +863,7 @@ pub fn StringEnum::parse(
 
 ///|
 pub extend StringEnum with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1153,9 +877,7 @@ pub(all) struct StringNewtype(String) derive(Debug, Eq, Hash)
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn StringNewtype::new(
-  value : String,
-) -> StringNewtype raise @typify_rt.ConversionError {
+pub fn StringNewtype::new(value : String) -> StringNewtype raise @typify_rt.ConversionError {
   if @typify_rt.char_count(value) > 100 {
     raise @typify_rt.ConversionError("longer than 100 characters")
   }
@@ -1181,11 +903,7 @@ pub impl @typify_rt.Serde for StringNewtype with fn serialize(self) {
 
 ///|
 pub extend StringNewtype with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1205,14 +923,12 @@ let sync_fields : @typify_rt.Fields = @typify_rt.Fields::new(["data"])
 ///|
 pub impl @typify_rt.Serde for Sync with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(d, "struct Sync", sync_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_string(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct Sync", sync_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  Sync::{ data: v0, }
+  Sync::{ data: v0 }
 }
 
 ///|
@@ -1225,11 +941,7 @@ pub impl @typify_rt.Serde for Sync with fn serialize(self) {
 
 ///|
 pub extend Sync with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1245,33 +957,20 @@ pub(all) struct TypeWithOptionField {
 } derive(Debug, Eq)
 
 ///|
-let type_with_option_field_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "boxed_field", "optional_field",
-])
+let type_with_option_field_fields : @typify_rt.Fields = @typify_rt.Fields::new(["boxed_field", "optional_field"])
 
 ///|
 pub impl @typify_rt.Serde for TypeWithOptionField with fn deserialize(d) {
   let mut f0 : Box? = None
   let mut f1 : String?? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct TypeWithOptionField",
-    type_with_option_field_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(Box::deserialize(v))
-        1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-        _ => ()
-      }
-    },
-  )
+  let r = @typify_rt.de_fields(d, "struct TypeWithOptionField", type_with_option_field_fields, (j, v) => match j {
+    0 => f0 = Some(Box::deserialize(v))
+    1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+    _ => ()
+  })
   let v0 = if f0 is Some(v) { v } else { Box::deserialize(r.absent(0)) }
-  let v1 = if f1 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(1), @typify_rt.de_string)
-  }
-  TypeWithOptionField::{ boxed_field: v0, optional_field: v1, }
+  let v1 = if f1 is Some(v) { v } else { @typify_rt.de_option(r.absent(1), @typify_rt.de_string) }
+  TypeWithOptionField::{ boxed_field: v0, optional_field: v1 }
 }
 
 ///|
@@ -1279,12 +978,7 @@ pub impl @typify_rt.Serde for TypeWithOptionField with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("boxed_field", Box::serialize(self.boxed_field))
   if self.optional_field is Some(_) {
-    o.field(
-      "optional_field",
-      @typify_rt.ser_option(self.optional_field, (v : String) => {
-        @typify_rt.ser_string(v)
-      }),
-    )
+    o.field("optional_field", @typify_rt.ser_option(self.optional_field, (v : String) => @typify_rt.ser_string(v)))
   }
 
   o.build()
@@ -1292,11 +986,7 @@ pub impl @typify_rt.Serde for TypeWithOptionField with fn serialize(self) {
 
 ///|
 pub extend TypeWithOptionField with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1316,38 +1006,25 @@ let vec_fields : @typify_rt.Fields = @typify_rt.Fields::new(["items"])
 ///|
 pub impl @typify_rt.Serde for Vec with fn deserialize(d) {
   let mut f0 : Array[String]? = None
-  let r = @typify_rt.de_fields(d, "struct Vec", vec_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_vec(v, @typify_rt.de_string))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct Vec", vec_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_vec(v, @typify_rt.de_string))
+    _ => ()
   })
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_vec(r.absent(0), @typify_rt.de_string)
-  }
-  Vec::{ items: v0, }
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_vec(r.absent(0), @typify_rt.de_string) }
+  Vec::{ items: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for Vec with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
-  o.field(
-    "items",
-    @typify_rt.ser_vec(self.items, (v : String) => @typify_rt.ser_string(v)),
-  )
+  o.field("items", @typify_rt.ser_vec(self.items, (v : String) => @typify_rt.ser_string(v)))
 
   o.build()
 }
 
 ///|
 pub extend Vec with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1367,30 +1044,13 @@ pub(all) enum FormatCollision {
 
 ///|
 pub impl @typify_rt.Serde for FormatCollision with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "FormatCollision", [
-    "{abc}def", "{http://example.com/Foo}Thing", "{self}", "quote\"unquote", "xyz",
-  ])
+  let (idx, payload) = @typify_rt.de_enum(d, "FormatCollision", ["{abc}def", "{http://example.com/Foo}Thing", "{self}", "quote\"unquote", "xyz"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      FormatCollision::AbcDef
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      FormatCollision::HttpExampleComFooThing
-    }
-    2 => {
-      @typify_rt.variant_unit(payload)
-      FormatCollision::Self_
-    }
-    3 => {
-      @typify_rt.variant_unit(payload)
-      FormatCollision::QuoteUnquote
-    }
-    4 => {
-      @typify_rt.variant_unit(payload)
-      FormatCollision::Xyz
-    }
+    0 => { @typify_rt.variant_unit(payload); FormatCollision::AbcDef }
+    1 => { @typify_rt.variant_unit(payload); FormatCollision::HttpExampleComFooThing }
+    2 => { @typify_rt.variant_unit(payload); FormatCollision::Self_ }
+    3 => { @typify_rt.variant_unit(payload); FormatCollision::QuoteUnquote }
+    4 => { @typify_rt.variant_unit(payload); FormatCollision::Xyz }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1401,8 +1061,7 @@ pub impl @typify_rt.Serde for FormatCollision with fn deserialize(d) {
 pub impl @typify_rt.Serde for FormatCollision with fn serialize(self) {
   match self {
     AbcDef => @typify_rt.ser_string("{abc}def")
-    HttpExampleComFooThing =>
-      @typify_rt.ser_string("{http://example.com/Foo}Thing")
+    HttpExampleComFooThing => @typify_rt.ser_string("{http://example.com/Foo}Thing")
     Self_ => @typify_rt.ser_string("{self}")
     QuoteUnquote => @typify_rt.ser_string("quote\"unquote")
     Xyz => @typify_rt.ser_string("xyz")
@@ -1435,9 +1094,7 @@ pub fn FormatCollision::to_string(self : FormatCollision) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn FormatCollision::parse(
-  value : StringView,
-) -> FormatCollision raise @typify_rt.ConversionError {
+pub fn FormatCollision::parse(value : StringView) -> FormatCollision raise @typify_rt.ConversionError {
   match value {
     "{abc}def" => AbcDef
     "{http://example.com/Foo}Thing" => HttpExampleComFooThing
@@ -1450,11 +1107,7 @@ pub fn FormatCollision::parse(
 
 ///|
 pub extend FormatCollision with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1475,9 +1128,7 @@ pub(all) struct Std {
 } derive(Debug, Eq)
 
 ///|
-let std_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "boxed", "convert", "fmt", "option", "result", "str", "string",
-])
+let std_fields : @typify_rt.Fields = @typify_rt.Fields::new(["boxed", "convert", "fmt", "option", "result", "str", "string"])
 
 ///|
 pub impl @typify_rt.Serde for Std with fn deserialize(d) {
@@ -1488,17 +1139,15 @@ pub impl @typify_rt.Serde for Std with fn deserialize(d) {
   let mut f4 : StdResult? = None
   let mut f5 : StdStr? = None
   let mut f6 : StdString? = None
-  let r = @typify_rt.de_fields(d, "struct Std", std_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(StdBoxed::deserialize(v))
-      1 => f1 = Some(StdConvert::deserialize(v))
-      2 => f2 = Some(StdFmt::deserialize(v))
-      3 => f3 = Some(StdOption::deserialize(v))
-      4 => f4 = Some(StdResult::deserialize(v))
-      5 => f5 = Some(StdStr::deserialize(v))
-      6 => f6 = Some(StdString::deserialize(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct Std", std_fields, (j, v) => match j {
+    0 => f0 = Some(StdBoxed::deserialize(v))
+    1 => f1 = Some(StdConvert::deserialize(v))
+    2 => f2 = Some(StdFmt::deserialize(v))
+    3 => f3 = Some(StdOption::deserialize(v))
+    4 => f4 = Some(StdResult::deserialize(v))
+    5 => f5 = Some(StdStr::deserialize(v))
+    6 => f6 = Some(StdString::deserialize(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { StdBoxed::deserialize(r.absent(0)) }
   let v1 = if f1 is Some(v) { v } else { StdConvert::deserialize(r.absent(1)) }
@@ -1507,15 +1156,7 @@ pub impl @typify_rt.Serde for Std with fn deserialize(d) {
   let v4 = if f4 is Some(v) { v } else { StdResult::deserialize(r.absent(4)) }
   let v5 = if f5 is Some(v) { v } else { StdStr::deserialize(r.absent(5)) }
   let v6 = if f6 is Some(v) { v } else { StdString::deserialize(r.absent(6)) }
-  Std::{
-    boxed: v0,
-    convert: v1,
-    fmt: v2,
-    option: v3,
-    result: v4,
-    str: v5,
-    string: v6,
-  }
+  Std::{ boxed: v0, convert: v1, fmt: v2, option: v3, result: v4, str: v5, string: v6 }
 }
 
 ///|
@@ -1534,11 +1175,7 @@ pub impl @typify_rt.Serde for Std with fn serialize(self) {
 
 ///|
 pub extend Std with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1548,42 +1185,26 @@ pub impl ToJson for Std with fn to_json(self) {
 
 ///|
 /// `TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords`
-pub(all) struct TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords(
-  Json
-) derive(Debug, Eq)
+pub(all) struct TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords(Json) derive(Debug, Eq)
 
 ///|
-pub impl @typify_rt.Serde for TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords with fn deserialize(
-  d,
-) {
-  TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords(
-    @typify_rt.de_json(d),
-  )
+pub impl @typify_rt.Serde for TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords with fn deserialize(d) {
+  TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords(@typify_rt.de_json(d))
 }
 
 ///|
-pub impl @typify_rt.Serde for TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords with fn serialize(
-  self,
-) {
+pub impl @typify_rt.Serde for TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords with fn serialize(self) {
   @typify_rt.ser_json(self.0)
 }
 
 ///|
 pub extend TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
-pub impl ToJson for TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords with fn to_json(
-  self,
-) {
-  @typify_rt.json_of(
-    self, "TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords",
-  )
+pub impl ToJson for TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords with fn to_json(self) {
+  @typify_rt.json_of(self, "TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords")
 }
 
 ///|
@@ -1593,45 +1214,24 @@ pub(all) struct DoubleOptionCollisionOption {
 } derive(Debug, Eq)
 
 ///|
-let double_option_collision_option_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "option",
-  ],
-)
+let double_option_collision_option_fields : @typify_rt.Fields = @typify_rt.Fields::new(["option"])
 
 ///|
 pub impl @typify_rt.Serde for DoubleOptionCollisionOption with fn deserialize(d) {
   let mut f0 : String?? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct DoubleOptionCollisionOption",
-    double_option_collision_option_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), @typify_rt.de_string)
-  }
-  DoubleOptionCollisionOption::{ option: v0, }
+  let r = @typify_rt.de_fields(d, "struct DoubleOptionCollisionOption", double_option_collision_option_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_string) }
+  DoubleOptionCollisionOption::{ option: v0 }
 }
 
 ///|
-pub impl @typify_rt.Serde for DoubleOptionCollisionOption with fn serialize(
-  self,
-) {
+pub impl @typify_rt.Serde for DoubleOptionCollisionOption with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.option is Some(_) {
-    o.field(
-      "option",
-      @typify_rt.ser_option(self.option, (v : String) => {
-        @typify_rt.ser_string(v)
-      }),
-    )
+    o.field("option", @typify_rt.ser_option(self.option, (v : String) => @typify_rt.ser_string(v)))
   }
 
   o.build()
@@ -1639,11 +1239,7 @@ pub impl @typify_rt.Serde for DoubleOptionCollisionOption with fn serialize(
 
 ///|
 pub extend DoubleOptionCollisionOption with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1671,70 +1267,23 @@ pub(all) enum MapOfKeywordsKeywordMapValue {
 } derive(Debug, Eq, Hash)
 
 ///|
-pub impl @typify_rt.Serde for MapOfKeywordsKeywordMapValue with fn deserialize(
-  d,
-) {
-  let (idx, payload) = @typify_rt.de_enum(d, "MapOfKeywordsKeywordMapValue", [
-    "type", "impl", "fn", "let", "match", "mod", "move", "pub", "ref", "self", "super",
-    "trait", "use", "where",
-  ])
+pub impl @typify_rt.Serde for MapOfKeywordsKeywordMapValue with fn deserialize(d) {
+  let (idx, payload) = @typify_rt.de_enum(d, "MapOfKeywordsKeywordMapValue", ["type", "impl", "fn", "let", "match", "mod", "move", "pub", "ref", "self", "super", "trait", "use", "where"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Type
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Impl
-    }
-    2 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Fn
-    }
-    3 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Let
-    }
-    4 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Match
-    }
-    5 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Mod
-    }
-    6 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Move
-    }
-    7 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Pub
-    }
-    8 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Ref
-    }
-    9 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Self_
-    }
-    10 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Super
-    }
-    11 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Trait
-    }
-    12 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Use
-    }
-    13 => {
-      @typify_rt.variant_unit(payload)
-      MapOfKeywordsKeywordMapValue::Where
-    }
+    0 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Type }
+    1 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Impl }
+    2 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Fn }
+    3 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Let }
+    4 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Match }
+    5 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Mod }
+    6 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Move }
+    7 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Pub }
+    8 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Ref }
+    9 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Self_ }
+    10 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Super }
+    11 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Trait }
+    12 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Use }
+    13 => { @typify_rt.variant_unit(payload); MapOfKeywordsKeywordMapValue::Where }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1742,9 +1291,7 @@ pub impl @typify_rt.Serde for MapOfKeywordsKeywordMapValue with fn deserialize(
 }
 
 ///|
-pub impl @typify_rt.Serde for MapOfKeywordsKeywordMapValue with fn serialize(
-  self,
-) {
+pub impl @typify_rt.Serde for MapOfKeywordsKeywordMapValue with fn serialize(self) {
   match self {
     Type => @typify_rt.ser_string("type")
     Impl => @typify_rt.ser_string("impl")
@@ -1765,9 +1312,7 @@ pub impl @typify_rt.Serde for MapOfKeywordsKeywordMapValue with fn serialize(
 
 ///|
 /// The variant's position in declaration order.
-pub fn MapOfKeywordsKeywordMapValue::variant_index(
-  self : MapOfKeywordsKeywordMapValue,
-) -> Int {
+pub fn MapOfKeywordsKeywordMapValue::variant_index(self : MapOfKeywordsKeywordMapValue) -> Int {
   match self {
     Type => 0
     Impl => 1
@@ -1788,9 +1333,7 @@ pub fn MapOfKeywordsKeywordMapValue::variant_index(
 
 ///|
 /// The serialized name (upstream `Display`).
-pub fn MapOfKeywordsKeywordMapValue::to_string(
-  self : MapOfKeywordsKeywordMapValue,
-) -> String {
+pub fn MapOfKeywordsKeywordMapValue::to_string(self : MapOfKeywordsKeywordMapValue) -> String {
   match self {
     Type => "type"
     Impl => "impl"
@@ -1811,9 +1354,7 @@ pub fn MapOfKeywordsKeywordMapValue::to_string(
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn MapOfKeywordsKeywordMapValue::parse(
-  value : StringView,
-) -> MapOfKeywordsKeywordMapValue raise @typify_rt.ConversionError {
+pub fn MapOfKeywordsKeywordMapValue::parse(value : StringView) -> MapOfKeywordsKeywordMapValue raise @typify_rt.ConversionError {
   match value {
     "type" => Type
     "impl" => Impl
@@ -1835,11 +1376,7 @@ pub fn MapOfKeywordsKeywordMapValue::parse(
 
 ///|
 pub extend MapOfKeywordsKeywordMapValue with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1854,45 +1391,24 @@ pub(all) struct NestedTypeCollisionsOptionType {
 } derive(Debug, Eq)
 
 ///|
-let nested_type_collisions_option_type_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "type",
-  ],
-)
+let nested_type_collisions_option_type_fields : @typify_rt.Fields = @typify_rt.Fields::new(["type"])
 
 ///|
-pub impl @typify_rt.Serde for NestedTypeCollisionsOptionType with fn deserialize(
-  d,
-) {
+pub impl @typify_rt.Serde for NestedTypeCollisionsOptionType with fn deserialize(d) {
   let mut f0 : String?? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct NestedTypeCollisionsOptionType",
-    nested_type_collisions_option_type_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), @typify_rt.de_string)
-  }
-  NestedTypeCollisionsOptionType::{ type_: v0, }
+  let r = @typify_rt.de_fields(d, "struct NestedTypeCollisionsOptionType", nested_type_collisions_option_type_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_string) }
+  NestedTypeCollisionsOptionType::{ type_: v0 }
 }
 
 ///|
-pub impl @typify_rt.Serde for NestedTypeCollisionsOptionType with fn serialize(
-  self,
-) {
+pub impl @typify_rt.Serde for NestedTypeCollisionsOptionType with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.type_ is Some(_) {
-    o.field(
-      "type",
-      @typify_rt.ser_option(self.type_, (v : String) => @typify_rt.ser_string(v)),
-    )
+    o.field("type", @typify_rt.ser_option(self.type_, (v : String) => @typify_rt.ser_string(v)))
   }
 
   o.build()
@@ -1900,11 +1416,7 @@ pub impl @typify_rt.Serde for NestedTypeCollisionsOptionType with fn serialize(
 
 ///|
 pub extend NestedTypeCollisionsOptionType with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1924,14 +1436,12 @@ let std_boxed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 ///|
 pub impl @typify_rt.Serde for StdBoxed with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(d, "struct StdBoxed", std_boxed_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_string(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct StdBoxed", std_boxed_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  StdBoxed::{ value: v0, }
+  StdBoxed::{ value: v0 }
 }
 
 ///|
@@ -1944,11 +1454,7 @@ pub impl @typify_rt.Serde for StdBoxed with fn serialize(self) {
 
 ///|
 pub extend StdBoxed with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1968,17 +1474,12 @@ let std_convert_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 ///|
 pub impl @typify_rt.Serde for StdConvert with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(d, "struct StdConvert", std_convert_fields, (
-    j,
-    v,
-  ) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_string(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct StdConvert", std_convert_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  StdConvert::{ value: v0, }
+  StdConvert::{ value: v0 }
 }
 
 ///|
@@ -1991,11 +1492,7 @@ pub impl @typify_rt.Serde for StdConvert with fn serialize(self) {
 
 ///|
 pub extend StdConvert with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -2015,14 +1512,12 @@ let std_fmt_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 ///|
 pub impl @typify_rt.Serde for StdFmt with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(d, "struct StdFmt", std_fmt_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_string(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct StdFmt", std_fmt_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  StdFmt::{ value: v0, }
+  StdFmt::{ value: v0 }
 }
 
 ///|
@@ -2035,11 +1530,7 @@ pub impl @typify_rt.Serde for StdFmt with fn serialize(self) {
 
 ///|
 pub extend StdFmt with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -2059,14 +1550,12 @@ let std_option_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 ///|
 pub impl @typify_rt.Serde for StdOption with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(d, "struct StdOption", std_option_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_string(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct StdOption", std_option_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  StdOption::{ value: v0, }
+  StdOption::{ value: v0 }
 }
 
 ///|
@@ -2079,11 +1568,7 @@ pub impl @typify_rt.Serde for StdOption with fn serialize(self) {
 
 ///|
 pub extend StdOption with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -2103,14 +1588,12 @@ let std_result_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 ///|
 pub impl @typify_rt.Serde for StdResult with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(d, "struct StdResult", std_result_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_string(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct StdResult", std_result_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  StdResult::{ value: v0, }
+  StdResult::{ value: v0 }
 }
 
 ///|
@@ -2123,11 +1606,7 @@ pub impl @typify_rt.Serde for StdResult with fn serialize(self) {
 
 ///|
 pub extend StdResult with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -2147,14 +1626,12 @@ let std_str_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 ///|
 pub impl @typify_rt.Serde for StdStr with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(d, "struct StdStr", std_str_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_string(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct StdStr", std_str_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  StdStr::{ value: v0, }
+  StdStr::{ value: v0 }
 }
 
 ///|
@@ -2167,11 +1644,7 @@ pub impl @typify_rt.Serde for StdStr with fn serialize(self) {
 
 ///|
 pub extend StdStr with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -2191,14 +1664,12 @@ let std_string_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 ///|
 pub impl @typify_rt.Serde for StdString with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(d, "struct StdString", std_string_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_string(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct StdString", std_string_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  StdString::{ value: v0, }
+  StdString::{ value: v0 }
 }
 
 ///|
@@ -2211,14 +1682,11 @@ pub impl @typify_rt.Serde for StdString with fn serialize(self) {
 
 ///|
 pub extend StdString with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for StdString with fn to_json(self) {
   @typify_rt.json_of(self, "StdString")
 }
+

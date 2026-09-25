@@ -13,13 +13,17 @@ pub(all) enum IdOrName {
 ///|
 pub impl @typify_rt.Serde for IdOrName with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
-  try IdOrName::Id(@typify_rt.Uuid::deserialize(c)) catch {
+  try {
+    IdOrName::Id(@typify_rt.Uuid::deserialize(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try IdOrName::Name(Name::deserialize(c)) catch {
+  try {
+    IdOrName::Name(Name::deserialize(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -38,11 +42,7 @@ pub impl @typify_rt.Serde for IdOrName with fn serialize(self) {
 
 ///|
 pub extend IdOrName with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -60,13 +60,17 @@ pub(all) enum IdOrNameRedundant {
 ///|
 pub impl @typify_rt.Serde for IdOrNameRedundant with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
-  try IdOrNameRedundant::Uuid(@typify_rt.Uuid::deserialize(c)) catch {
+  try {
+    IdOrNameRedundant::Uuid(@typify_rt.Uuid::deserialize(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try IdOrNameRedundant::String(Name::deserialize(c)) catch {
+  try {
+    IdOrNameRedundant::String(Name::deserialize(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -85,11 +89,7 @@ pub impl @typify_rt.Serde for IdOrNameRedundant with fn serialize(self) {
 
 ///|
 pub extend IdOrNameRedundant with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -107,13 +107,17 @@ pub(all) enum IdOrYolo {
 ///|
 pub impl @typify_rt.Serde for IdOrYolo with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
-  try IdOrYolo::Id(@typify_rt.Uuid::deserialize(c)) catch {
+  try {
+    IdOrYolo::Id(@typify_rt.Uuid::deserialize(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try IdOrYolo::Yolo(IdOrYoloYolo::deserialize(c)) catch {
+  try {
+    IdOrYolo::Yolo(IdOrYoloYolo::deserialize(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -132,11 +136,7 @@ pub impl @typify_rt.Serde for IdOrYolo with fn serialize(self) {
 
 ///|
 pub extend IdOrYolo with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -149,9 +149,7 @@ pub impl ToJson for IdOrYolo with fn to_json(self) {
 pub(all) struct Name(String) derive(Debug, Eq, Hash)
 
 ///|
-let name_pattern : @typify_rt.Regex = @typify_rt.regex(
-  "^(?![0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)^[a-z][a-z0-9-]*[a-zA-Z0-9]$",
-)
+let name_pattern : @typify_rt.Regex = @typify_rt.regex("^(?![0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)^[a-z][a-z0-9-]*[a-zA-Z0-9]$")
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
@@ -160,9 +158,7 @@ pub fn Name::new(value : String) -> Name raise @typify_rt.ConversionError {
     raise @typify_rt.ConversionError("longer than 63 characters")
   }
   if !name_pattern.is_match(value) {
-    raise @typify_rt.ConversionError(
-      "doesn't match pattern \"^(?![0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)^[a-z][a-z0-9-]*[a-zA-Z0-9]$\"",
-    )
+    raise @typify_rt.ConversionError("doesn't match pattern \"^(?![0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)^[a-z][a-z0-9-]*[a-zA-Z0-9]$\"")
   }
 
   Name(value)
@@ -183,11 +179,7 @@ pub impl @typify_rt.Serde for Name with fn serialize(self) {
 
 ///|
 pub extend Name with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -204,9 +196,7 @@ let id_or_yolo_yolo_pattern : @typify_rt.Regex = @typify_rt.regex(".*")
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn IdOrYoloYolo::new(
-  value : String,
-) -> IdOrYoloYolo raise @typify_rt.ConversionError {
+pub fn IdOrYoloYolo::new(value : String) -> IdOrYoloYolo raise @typify_rt.ConversionError {
   if !id_or_yolo_yolo_pattern.is_match(value) {
     raise @typify_rt.ConversionError("doesn't match pattern \".*\"")
   }
@@ -229,14 +219,11 @@ pub impl @typify_rt.Serde for IdOrYoloYolo with fn serialize(self) {
 
 ///|
 pub extend IdOrYoloYolo with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for IdOrYoloYolo with fn to_json(self) {
   @typify_rt.json_of(self, "IdOrYoloYolo")
 }
+

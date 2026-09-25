@@ -12,9 +12,7 @@ let pattern_string_pattern : @typify_rt.Regex = @typify_rt.regex("xx")
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn PatternString::new(
-  value : String,
-) -> PatternString raise @typify_rt.ConversionError {
+pub fn PatternString::new(value : String) -> PatternString raise @typify_rt.ConversionError {
   if !pattern_string_pattern.is_match(value) {
     raise @typify_rt.ConversionError("doesn't match pattern \"xx\"")
   }
@@ -37,11 +35,7 @@ pub impl @typify_rt.Serde for PatternString with fn serialize(self) {
 
 ///|
 pub extend PatternString with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -62,12 +56,8 @@ let sub10_primes_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn Sub10Primes::new(
-  value : UInt,
-) -> Sub10Primes raise @typify_rt.ConversionError {
-  let serialized = @typify_rt.ser_uint(value) catch {
-    _ => @typify_rt.ser_null()
-  }
+pub fn Sub10Primes::new(value : UInt) -> Sub10Primes raise @typify_rt.ConversionError {
+  let serialized = (@typify_rt.ser_uint(value)) catch { _ => @typify_rt.ser_null() }
   if !@typify_rt.contains_value(sub10_primes_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -90,14 +80,11 @@ pub impl @typify_rt.Serde for Sub10Primes with fn serialize(self) {
 
 ///|
 pub extend Sub10Primes with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for Sub10Primes with fn to_json(self) {
   @typify_rt.json_of(self, "Sub10Primes")
 }
+

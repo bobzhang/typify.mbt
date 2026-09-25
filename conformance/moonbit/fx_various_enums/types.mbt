@@ -13,22 +13,11 @@ pub(all) enum AlternativeEnum {
 
 ///|
 pub impl @typify_rt.Serde for AlternativeEnum with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AlternativeEnum", [
-    "Choice1", "Choice2", "Choice3",
-  ])
+  let (idx, payload) = @typify_rt.de_enum(d, "AlternativeEnum", ["Choice1", "Choice2", "Choice3"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      AlternativeEnum::Choice1
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      AlternativeEnum::Choice2
-    }
-    2 => {
-      @typify_rt.variant_unit(payload)
-      AlternativeEnum::Choice3
-    }
+    0 => { @typify_rt.variant_unit(payload); AlternativeEnum::Choice1 }
+    1 => { @typify_rt.variant_unit(payload); AlternativeEnum::Choice2 }
+    2 => { @typify_rt.variant_unit(payload); AlternativeEnum::Choice3 }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -66,9 +55,7 @@ pub fn AlternativeEnum::to_string(self : AlternativeEnum) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn AlternativeEnum::parse(
-  value : StringView,
-) -> AlternativeEnum raise @typify_rt.ConversionError {
+pub fn AlternativeEnum::parse(value : StringView) -> AlternativeEnum raise @typify_rt.ConversionError {
   match value {
     "Choice1" => Choice1
     "Choice2" => Choice2
@@ -87,11 +74,7 @@ pub fn AlternativeEnum::default() -> AlternativeEnum {
 
 ///|
 pub extend AlternativeEnum with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -101,12 +84,14 @@ pub impl ToJson for AlternativeEnum with fn to_json(self) {
 
 ///|
 /// `AnyOfNoStrings`
-pub(all) enum AnyOfNoStrings {} derive(Debug, Eq, Hash)
+pub(all) enum AnyOfNoStrings {
+} derive(Debug, Eq, Hash)
 
 ///|
 pub impl @typify_rt.Serde for AnyOfNoStrings with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "AnyOfNoStrings", [])
   let v = match idx {
+
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -122,11 +107,7 @@ pub impl @typify_rt.Serde for AnyOfNoStrings with fn serialize(self) {
 
 ///|
 pub extend AnyOfNoStrings with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -136,12 +117,14 @@ pub impl ToJson for AnyOfNoStrings with fn to_json(self) {
 
 ///|
 /// `AnyOfNothing`
-pub(all) enum AnyOfNothing {} derive(Debug, Eq, Hash)
+pub(all) enum AnyOfNothing {
+} derive(Debug, Eq, Hash)
 
 ///|
 pub impl @typify_rt.Serde for AnyOfNothing with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "AnyOfNothing", [])
   let v = match idx {
+
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -157,11 +140,7 @@ pub impl @typify_rt.Serde for AnyOfNothing with fn serialize(self) {
 
 ///|
 pub extend AnyOfNothing with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -182,12 +161,8 @@ let block_size_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn BlockSize::new(
-  value : Int64,
-) -> BlockSize raise @typify_rt.ConversionError {
-  let serialized = @typify_rt.ser_i64(value) catch {
-    _ => @typify_rt.ser_null()
-  }
+pub fn BlockSize::new(value : Int64) -> BlockSize raise @typify_rt.ConversionError {
+  let serialized = (@typify_rt.ser_i64(value)) catch { _ => @typify_rt.ser_null() }
   if !@typify_rt.contains_value(block_size_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -210,11 +185,7 @@ pub impl @typify_rt.Serde for BlockSize with fn serialize(self) {
 
 ///|
 pub extend BlockSize with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -230,37 +201,20 @@ pub(all) struct DiskAttachment {
 } derive(Debug, Eq)
 
 ///|
-let disk_attachment_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "alternate", "state",
-])
+let disk_attachment_fields : @typify_rt.Fields = @typify_rt.Fields::new(["alternate", "state"])
 
 ///|
 pub impl @typify_rt.Serde for DiskAttachment with fn deserialize(d) {
   let mut f0 : AlternativeEnum? = None
   let mut f1 : DiskAttachmentState? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct DiskAttachment",
-    disk_attachment_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(AlternativeEnum::deserialize(v))
-        1 => f1 = Some(DiskAttachmentState::deserialize(v))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    AlternativeEnum::deserialize(r.absent(0))
-  }
-  let v1 = if f1 is Some(v) {
-    v
-  } else {
-    DiskAttachmentState::deserialize(r.absent(1))
-  }
-  DiskAttachment::{ alternate: v0, state: v1, }
+  let r = @typify_rt.de_fields(d, "struct DiskAttachment", disk_attachment_fields, (j, v) => match j {
+    0 => f0 = Some(AlternativeEnum::deserialize(v))
+    1 => f1 = Some(DiskAttachmentState::deserialize(v))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { AlternativeEnum::deserialize(r.absent(0)) }
+  let v1 = if f1 is Some(v) { v } else { DiskAttachmentState::deserialize(r.absent(1)) }
+  DiskAttachment::{ alternate: v0, state: v1 }
 }
 
 ///|
@@ -274,11 +228,7 @@ pub impl @typify_rt.Serde for DiskAttachment with fn serialize(self) {
 
 ///|
 pub extend DiskAttachment with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -298,31 +248,19 @@ let empty_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["prop"])
 ///|
 pub impl @typify_rt.Serde for EmptyObject with fn deserialize(d) {
   let mut f0 : EmptyObjectProp?? = None
-  let r = @typify_rt.de_fields(d, "struct EmptyObject", empty_object_fields, (
-    j,
-    v,
-  ) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_option(v, EmptyObjectProp::deserialize))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct EmptyObject", empty_object_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, EmptyObjectProp::deserialize))
+    _ => ()
   })
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), EmptyObjectProp::deserialize)
-  }
-  EmptyObject::{ prop: v0, }
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), EmptyObjectProp::deserialize) }
+  EmptyObject::{ prop: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for EmptyObject with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.prop is Some(_) {
-    o.field(
-      "prop",
-      @typify_rt.ser_option(self.prop, EmptyObjectProp::serialize),
-    )
+    o.field("prop", @typify_rt.ser_option(self.prop, EmptyObjectProp::serialize))
   }
 
   o.build()
@@ -330,11 +268,7 @@ pub impl @typify_rt.Serde for EmptyObject with fn serialize(self) {
 
 ///|
 pub extend EmptyObject with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -352,13 +286,17 @@ pub(all) enum IpNet {
 ///|
 pub impl @typify_rt.Serde for IpNet with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
-  try IpNet::V4(Ipv4Net::deserialize(c)) catch {
+  try {
+    IpNet::V4(Ipv4Net::deserialize(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try IpNet::V6(Ipv6Net::deserialize(c)) catch {
+  try {
+    IpNet::V6(Ipv6Net::deserialize(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -377,11 +315,7 @@ pub impl @typify_rt.Serde for IpNet with fn serialize(self) {
 
 ///|
 pub extend IpNet with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -421,11 +355,7 @@ pub impl @typify_rt.Serde for Ipv4Net with fn serialize(self) {
 
 ///|
 pub extend Ipv4Net with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -465,11 +395,7 @@ pub impl @typify_rt.Serde for Ipv6Net with fn serialize(self) {
 
 ///|
 pub extend Ipv6Net with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -488,27 +414,25 @@ pub(all) enum JankNames {
 ///|
 pub impl @typify_rt.Serde for JankNames with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
-  try JankNames::Variant0(@typify_rt.de_string(c)) catch {
+  try {
+    JankNames::Variant0(@typify_rt.de_string(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try
-    JankNames::Variant1(
-      @typify_rt.de_map(c, @typify_rt.de_string, @typify_rt.de_string),
-    )
-  catch {
+  try {
+    JankNames::Variant1(@typify_rt.de_map(c, @typify_rt.de_string, @typify_rt.de_string))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try
-    JankNames::Variant2(
-      @typify_rt.de_map(c, @typify_rt.de_string, @typify_rt.de_i64),
-    )
-  catch {
+  try {
+    JankNames::Variant2(@typify_rt.de_map(c, @typify_rt.de_string, @typify_rt.de_i64))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -521,28 +445,14 @@ pub impl @typify_rt.Serde for JankNames with fn deserialize(d) {
 pub impl @typify_rt.Serde for JankNames with fn serialize(self) {
   match self {
     Variant0(p0) => @typify_rt.ser_string(p0)
-    Variant1(p0) =>
-      @typify_rt.ser_map(
-        p0,
-        (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-        (v : String) => @typify_rt.ser_string(v),
-      )
-    Variant2(p0) =>
-      @typify_rt.ser_map(
-        p0,
-        (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-        (v : Int64) => @typify_rt.ser_i64(v),
-      )
+    Variant1(p0) => @typify_rt.ser_map(p0, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : String) => @typify_rt.ser_string(v))
+    Variant2(p0) => @typify_rt.ser_map(p0, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Int64) => @typify_rt.ser_i64(v))
   }
 }
 
 ///|
 pub extend JankNames with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -552,12 +462,14 @@ pub impl ToJson for JankNames with fn to_json(self) {
 
 ///|
 /// `Never`
-pub(all) enum Never {} derive(Debug, Eq, Hash)
+pub(all) enum Never {
+} derive(Debug, Eq, Hash)
 
 ///|
 pub impl @typify_rt.Serde for Never with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "Never", [])
   let v = match idx {
+
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -573,11 +485,7 @@ pub impl @typify_rt.Serde for Never with fn serialize(self) {
 
 ///|
 pub extend Never with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -587,12 +495,14 @@ pub impl ToJson for Never with fn to_json(self) {
 
 ///|
 /// `NeverEver`
-pub(all) enum NeverEver {} derive(Debug, Eq, Hash)
+pub(all) enum NeverEver {
+} derive(Debug, Eq, Hash)
 
 ///|
 pub impl @typify_rt.Serde for NeverEver with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "NeverEver", [])
   let v = match idx {
+
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -608,11 +518,7 @@ pub impl @typify_rt.Serde for NeverEver with fn serialize(self) {
 
 ///|
 pub extend NeverEver with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -622,12 +528,14 @@ pub impl ToJson for NeverEver with fn to_json(self) {
 
 ///|
 /// `NeverEverForever`
-pub(all) enum NeverEverForever {} derive(Debug, Eq, Hash)
+pub(all) enum NeverEverForever {
+} derive(Debug, Eq, Hash)
 
 ///|
 pub impl @typify_rt.Serde for NeverEverForever with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "NeverEverForever", [])
   let v = match idx {
+
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -643,11 +551,7 @@ pub impl @typify_rt.Serde for NeverEverForever with fn serialize(self) {
 
 ///|
 pub extend NeverEverForever with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -668,12 +572,8 @@ let not_block_size_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn NotBlockSize::new(
-  value : Double,
-) -> NotBlockSize raise @typify_rt.ConversionError {
-  let serialized = @typify_rt.ser_f64(value) catch {
-    _ => @typify_rt.ser_null()
-  }
+pub fn NotBlockSize::new(value : Double) -> NotBlockSize raise @typify_rt.ConversionError {
+  let serialized = (@typify_rt.ser_f64(value)) catch { _ => @typify_rt.ser_null() }
   if @typify_rt.contains_value(not_block_size_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -696,11 +596,7 @@ pub impl @typify_rt.Serde for NotBlockSize with fn serialize(self) {
 
 ///|
 pub extend NotBlockSize with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -710,33 +606,21 @@ pub impl ToJson for NotBlockSize with fn to_json(self) {
 
 ///|
 /// `NullStringEnumWithUnknownFormat`
-pub(all) struct NullStringEnumWithUnknownFormat(
-  NullStringEnumWithUnknownFormatInner?
-) derive(Debug, Eq)
+pub(all) struct NullStringEnumWithUnknownFormat(NullStringEnumWithUnknownFormatInner?) derive(Debug, Eq)
 
 ///|
-pub impl @typify_rt.Serde for NullStringEnumWithUnknownFormat with fn deserialize(
-  d,
-) {
-  NullStringEnumWithUnknownFormat(
-    @typify_rt.de_option(d, NullStringEnumWithUnknownFormatInner::deserialize),
-  )
+pub impl @typify_rt.Serde for NullStringEnumWithUnknownFormat with fn deserialize(d) {
+  NullStringEnumWithUnknownFormat(@typify_rt.de_option(d, NullStringEnumWithUnknownFormatInner::deserialize))
 }
 
 ///|
-pub impl @typify_rt.Serde for NullStringEnumWithUnknownFormat with fn serialize(
-  self,
-) {
+pub impl @typify_rt.Serde for NullStringEnumWithUnknownFormat with fn serialize(self) {
   @typify_rt.ser_option(self.0, NullStringEnumWithUnknownFormatInner::serialize)
 }
 
 ///|
 pub extend NullStringEnumWithUnknownFormat with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -760,11 +644,7 @@ pub impl @typify_rt.Serde for ReferenceDef with fn serialize(self) {
 
 ///|
 pub extend ReferenceDef with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -782,21 +662,17 @@ pub(all) enum References {
 ///|
 pub impl @typify_rt.Serde for References with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
-  try References::Array(@typify_rt.de_vec(c, @typify_rt.de_string)) catch {
+  try {
+    References::Array(@typify_rt.de_vec(c, @typify_rt.de_string))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try
-    References::Object(
-      @typify_rt.de_map(
-        c,
-        @typify_rt.de_string,
-        ReferencesObjectValue::deserialize,
-      ),
-    )
-  catch {
+  try {
+    References::Object(@typify_rt.de_map(c, @typify_rt.de_string, ReferencesObjectValue::deserialize))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -808,24 +684,14 @@ pub impl @typify_rt.Serde for References with fn deserialize(d) {
 ///|
 pub impl @typify_rt.Serde for References with fn serialize(self) {
   match self {
-    Array(p0) =>
-      @typify_rt.ser_vec(p0, (v : String) => @typify_rt.ser_string(v))
-    Object(p0) =>
-      @typify_rt.ser_map(
-        p0,
-        (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-        ReferencesObjectValue::serialize,
-      )
+    Array(p0) => @typify_rt.ser_vec(p0, (v : String) => @typify_rt.ser_string(v))
+    Object(p0) => @typify_rt.ser_map(p0, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), ReferencesObjectValue::serialize)
   }
 }
 
 ///|
 pub extend References with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -841,36 +707,24 @@ pub(all) enum ShouldBeExclusive {
 } derive(Debug, Eq)
 
 ///|
-let should_be_exclusive_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "id",
-  ],
-)
+let should_be_exclusive_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["id"])
 
 ///|
-let should_be_exclusive_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "reference",
-  ],
-)
+let should_be_exclusive_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["reference"])
 
 ///|
 pub impl @typify_rt.Serde for ShouldBeExclusive with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
   try {
-    let mut f0 : String? = None
-    let r = @typify_rt.de_fields(
-      c,
-      "struct variant ShouldBeExclusive::Variant0",
-      should_be_exclusive_variant0_fields,
-      (j, v) => {
-        match j {
-          0 => f0 = Some(@typify_rt.de_string(v))
-          _ => ()
-        }
-      },
-      positional=false,
-    )
-    let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-    ShouldBeExclusive::Variant0(id=v0)
+    {
+      let mut f0 : String? = None
+      let r = @typify_rt.de_fields(c, "struct variant ShouldBeExclusive::Variant0", should_be_exclusive_variant0_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
+      }, positional=false)
+      let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
+      ShouldBeExclusive::Variant0(id=v0)
+    }
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
@@ -878,21 +732,15 @@ pub impl @typify_rt.Serde for ShouldBeExclusive with fn deserialize(d) {
     v => return v
   }
   try {
-    let mut f0 : String? = None
-    let r = @typify_rt.de_fields(
-      c,
-      "struct variant ShouldBeExclusive::Variant1",
-      should_be_exclusive_variant1_fields,
-      (j, v) => {
-        match j {
-          0 => f0 = Some(@typify_rt.de_string(v))
-          _ => ()
-        }
-      },
-      positional=false,
-    )
-    let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-    ShouldBeExclusive::Variant1(reference=v0)
+    {
+      let mut f0 : String? = None
+      let r = @typify_rt.de_fields(c, "struct variant ShouldBeExclusive::Variant1", should_be_exclusive_variant1_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
+      }, positional=false)
+      let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
+      ShouldBeExclusive::Variant1(reference=v0)
+    }
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
@@ -920,11 +768,7 @@ pub impl @typify_rt.Serde for ShouldBeExclusive with fn serialize(self) {
 
 ///|
 pub extend ShouldBeExclusive with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -948,11 +792,7 @@ pub impl @typify_rt.Serde for StringVersion with fn serialize(self) {
 
 ///|
 pub extend StringVersion with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -973,22 +813,11 @@ pub(all) enum CommentedVariants {
 
 ///|
 pub impl @typify_rt.Serde for CommentedVariants with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "CommentedVariants", [
-    "A", "B", "C",
-  ])
+  let (idx, payload) = @typify_rt.de_enum(d, "CommentedVariants", ["A", "B", "C"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      CommentedVariants::A
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      CommentedVariants::B
-    }
-    2 => {
-      @typify_rt.variant_unit(payload)
-      CommentedVariants::C
-    }
+    0 => { @typify_rt.variant_unit(payload); CommentedVariants::A }
+    1 => { @typify_rt.variant_unit(payload); CommentedVariants::B }
+    2 => { @typify_rt.variant_unit(payload); CommentedVariants::C }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1026,9 +855,7 @@ pub fn CommentedVariants::to_string(self : CommentedVariants) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn CommentedVariants::parse(
-  value : StringView,
-) -> CommentedVariants raise @typify_rt.ConversionError {
+pub fn CommentedVariants::parse(value : StringView) -> CommentedVariants raise @typify_rt.ConversionError {
   match value {
     "A" => A
     "B" => B
@@ -1039,11 +866,7 @@ pub fn CommentedVariants::parse(
 
 ///|
 pub extend CommentedVariants with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1061,93 +884,54 @@ pub(all) enum EnumAndConstant {
 } derive(Debug, Eq)
 
 ///|
-let enum_and_constant_dog_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "bark",
-])
+let enum_and_constant_dog_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bark"])
 
 ///|
-let enum_and_constant_cat_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "purr",
-])
+let enum_and_constant_cat_fields : @typify_rt.Fields = @typify_rt.Fields::new(["purr"])
 
 ///|
-let enum_and_constant_monkey_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "help",
-  ],
-)
+let enum_and_constant_monkey_fields : @typify_rt.Fields = @typify_rt.Fields::new(["help"])
 
 ///|
-let enum_and_constant_fish_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "float",
-])
+let enum_and_constant_fish_fields : @typify_rt.Fields = @typify_rt.Fields::new(["float"])
 
 ///|
 pub impl @typify_rt.Serde for EnumAndConstant with fn deserialize(d) {
-  let (idx, rest) = @typify_rt.de_internal(d, "EnumAndConstant", "petType", [
-    "dog", "cat", "monkey", "fish",
-  ])
+  let (idx, rest) = @typify_rt.de_internal(d, "EnumAndConstant", "petType", ["dog", "cat", "monkey", "fish"])
   match idx {
     0 => {
       let mut f0 : String? = None
-      let r = @typify_rt.de_fields(
-        rest,
-        "struct variant EnumAndConstant::Dog",
-        enum_and_constant_dog_fields,
-        (j, v) => {
-          match j {
-            0 => f0 = Some(@typify_rt.de_string(v))
-            _ => ()
-          }
-        },
-      )
+      let r = @typify_rt.de_fields(rest, "struct variant EnumAndConstant::Dog", enum_and_constant_dog_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
+      })
       let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
       EnumAndConstant::Dog(bark=v0)
     }
     1 => {
       let mut f0 : String? = None
-      let r = @typify_rt.de_fields(
-        rest,
-        "struct variant EnumAndConstant::Cat",
-        enum_and_constant_cat_fields,
-        (j, v) => {
-          match j {
-            0 => f0 = Some(@typify_rt.de_string(v))
-            _ => ()
-          }
-        },
-      )
+      let r = @typify_rt.de_fields(rest, "struct variant EnumAndConstant::Cat", enum_and_constant_cat_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
+      })
       let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
       EnumAndConstant::Cat(purr=v0)
     }
     2 => {
       let mut f0 : String? = None
-      let r = @typify_rt.de_fields(
-        rest,
-        "struct variant EnumAndConstant::Monkey",
-        enum_and_constant_monkey_fields,
-        (j, v) => {
-          match j {
-            0 => f0 = Some(@typify_rt.de_string(v))
-            _ => ()
-          }
-        },
-      )
+      let r = @typify_rt.de_fields(rest, "struct variant EnumAndConstant::Monkey", enum_and_constant_monkey_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
+      })
       let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
       EnumAndConstant::Monkey(help=v0)
     }
     3 => {
       let mut f0 : String? = None
-      let r = @typify_rt.de_fields(
-        rest,
-        "struct variant EnumAndConstant::Fish",
-        enum_and_constant_fish_fields,
-        (j, v) => {
-          match j {
-            0 => f0 = Some(@typify_rt.de_string(v))
-            _ => ()
-          }
-        },
-      )
+      let r = @typify_rt.de_fields(rest, "struct variant EnumAndConstant::Fish", enum_and_constant_fish_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
+      })
       let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
       EnumAndConstant::Fish(float=v0)
     }
@@ -1158,56 +942,32 @@ pub impl @typify_rt.Serde for EnumAndConstant with fn deserialize(d) {
 ///|
 pub impl @typify_rt.Serde for EnumAndConstant with fn serialize(self) {
   match self {
-    Dog(bark=p0) =>
-      @typify_rt.tagged(
-        "petType",
-        "dog",
-        {
-          let o = @typify_rt.ObjectBuilder::new()
-          o.field("bark", @typify_rt.ser_string(p0))
-          o.build()
-        },
-      )
-    Cat(purr=p0) =>
-      @typify_rt.tagged(
-        "petType",
-        "cat",
-        {
-          let o = @typify_rt.ObjectBuilder::new()
-          o.field("purr", @typify_rt.ser_string(p0))
-          o.build()
-        },
-      )
-    Monkey(help=p0) =>
-      @typify_rt.tagged(
-        "petType",
-        "monkey",
-        {
-          let o = @typify_rt.ObjectBuilder::new()
-          o.field("help", @typify_rt.ser_string(p0))
-          o.build()
-        },
-      )
-    Fish(float=p0) =>
-      @typify_rt.tagged(
-        "petType",
-        "fish",
-        {
-          let o = @typify_rt.ObjectBuilder::new()
-          o.field("float", @typify_rt.ser_string(p0))
-          o.build()
-        },
-      )
+    Dog(bark=p0) => @typify_rt.tagged("petType", "dog", {
+      let o = @typify_rt.ObjectBuilder::new()
+      o.field("bark", @typify_rt.ser_string(p0))
+      o.build()
+    })
+    Cat(purr=p0) => @typify_rt.tagged("petType", "cat", {
+      let o = @typify_rt.ObjectBuilder::new()
+      o.field("purr", @typify_rt.ser_string(p0))
+      o.build()
+    })
+    Monkey(help=p0) => @typify_rt.tagged("petType", "monkey", {
+      let o = @typify_rt.ObjectBuilder::new()
+      o.field("help", @typify_rt.ser_string(p0))
+      o.build()
+    })
+    Fish(float=p0) => @typify_rt.tagged("petType", "fish", {
+      let o = @typify_rt.ObjectBuilder::new()
+      o.field("float", @typify_rt.ser_string(p0))
+      o.build()
+    })
   }
 }
 
 ///|
 pub extend EnumAndConstant with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1224,46 +984,27 @@ pub(all) enum OneOfMissingTitle {
 } derive(Debug, Eq)
 
 ///|
-let one_of_missing_title_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "foo",
-  ],
-)
+let one_of_missing_title_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["foo"])
 
 ///|
-let one_of_missing_title_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "bar",
-  ],
-)
+let one_of_missing_title_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bar"])
 
 ///|
-let one_of_missing_title_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "bar", "baz",
-  ],
-)
+let one_of_missing_title_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bar", "baz"])
 
 ///|
 pub impl @typify_rt.Serde for OneOfMissingTitle with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
   try {
-    let mut f0 : String?? = None
-    let r = @typify_rt.de_fields(
-      c,
-      "struct variant OneOfMissingTitle::Variant0",
-      one_of_missing_title_variant0_fields,
-      (j, v) => {
-        match j {
-          0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-          _ => ()
-        }
-      },
-      positional=false,
-    )
-    let v0 = if f0 is Some(v) {
-      v
-    } else {
-      @typify_rt.de_option(r.absent(0), @typify_rt.de_string)
+    {
+      let mut f0 : String?? = None
+      let r = @typify_rt.de_fields(c, "struct variant OneOfMissingTitle::Variant0", one_of_missing_title_variant0_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+        _ => ()
+      }, positional=false)
+      let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_string) }
+      OneOfMissingTitle::Variant0(foo=v0)
     }
-    OneOfMissingTitle::Variant0(foo=v0)
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
@@ -1271,25 +1012,15 @@ pub impl @typify_rt.Serde for OneOfMissingTitle with fn deserialize(d) {
     v => return v
   }
   try {
-    let mut f0 : Int64?? = None
-    let r = @typify_rt.de_fields(
-      c,
-      "struct variant OneOfMissingTitle::Variant1",
-      one_of_missing_title_variant1_fields,
-      (j, v) => {
-        match j {
-          0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_i64))
-          _ => ()
-        }
-      },
-      positional=false,
-    )
-    let v0 = if f0 is Some(v) {
-      v
-    } else {
-      @typify_rt.de_option(r.absent(0), @typify_rt.de_i64)
+    {
+      let mut f0 : Int64?? = None
+      let r = @typify_rt.de_fields(c, "struct variant OneOfMissingTitle::Variant1", one_of_missing_title_variant1_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_i64))
+        _ => ()
+      }, positional=false)
+      let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_i64) }
+      OneOfMissingTitle::Variant1(bar=v0)
     }
-    OneOfMissingTitle::Variant1(bar=v0)
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
@@ -1297,32 +1028,18 @@ pub impl @typify_rt.Serde for OneOfMissingTitle with fn deserialize(d) {
     v => return v
   }
   try {
-    let mut f0 : Int64?? = None
-    let mut f1 : Int64?? = None
-    let r = @typify_rt.de_fields(
-      c,
-      "struct variant OneOfMissingTitle::Variant2",
-      one_of_missing_title_variant2_fields,
-      (j, v) => {
-        match j {
-          0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_i64))
-          1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_i64))
-          _ => ()
-        }
-      },
-      positional=false,
-    )
-    let v0 = if f0 is Some(v) {
-      v
-    } else {
-      @typify_rt.de_option(r.absent(0), @typify_rt.de_i64)
+    {
+      let mut f0 : Int64?? = None
+      let mut f1 : Int64?? = None
+      let r = @typify_rt.de_fields(c, "struct variant OneOfMissingTitle::Variant2", one_of_missing_title_variant2_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_i64))
+        1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_i64))
+        _ => ()
+      }, positional=false)
+      let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_i64) }
+      let v1 = if f1 is Some(v) { v } else { @typify_rt.de_option(r.absent(1), @typify_rt.de_i64) }
+      OneOfMissingTitle::Variant2(bar=v0, baz=v1)
     }
-    let v1 = if f1 is Some(v) {
-      v
-    } else {
-      @typify_rt.de_option(r.absent(1), @typify_rt.de_i64)
-    }
-    OneOfMissingTitle::Variant2(bar=v0, baz=v1)
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
@@ -1338,36 +1055,24 @@ pub impl @typify_rt.Serde for OneOfMissingTitle with fn serialize(self) {
     Variant0(foo=p0) => {
       let o = @typify_rt.ObjectBuilder::new()
       if p0 is Some(_) {
-        o.field(
-          "foo",
-          @typify_rt.ser_option(p0, (v : String) => @typify_rt.ser_string(v)),
-        )
+        o.field("foo", @typify_rt.ser_option(p0, (v : String) => @typify_rt.ser_string(v)))
       }
       o.build()
     }
     Variant1(bar=p0) => {
       let o = @typify_rt.ObjectBuilder::new()
       if p0 is Some(_) {
-        o.field(
-          "bar",
-          @typify_rt.ser_option(p0, (v : Int64) => @typify_rt.ser_i64(v)),
-        )
+        o.field("bar", @typify_rt.ser_option(p0, (v : Int64) => @typify_rt.ser_i64(v)))
       }
       o.build()
     }
     Variant2(bar=p0, baz=p1) => {
       let o = @typify_rt.ObjectBuilder::new()
       if p0 is Some(_) {
-        o.field(
-          "bar",
-          @typify_rt.ser_option(p0, (v : Int64) => @typify_rt.ser_i64(v)),
-        )
+        o.field("bar", @typify_rt.ser_option(p0, (v : Int64) => @typify_rt.ser_i64(v)))
       }
       if p1 is Some(_) {
-        o.field(
-          "baz",
-          @typify_rt.ser_option(p1, (v : Int64) => @typify_rt.ser_i64(v)),
-        )
+        o.field("baz", @typify_rt.ser_option(p1, (v : Int64) => @typify_rt.ser_i64(v)))
       }
       o.build()
     }
@@ -1376,11 +1081,7 @@ pub impl @typify_rt.Serde for OneOfMissingTitle with fn serialize(self) {
 
 ///|
 pub extend OneOfMissingTitle with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1398,13 +1099,17 @@ pub(all) enum OneOfRawType {
 ///|
 pub impl @typify_rt.Serde for OneOfRawType with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
-  try OneOfRawType::String(@typify_rt.de_string(c)) catch {
+  try {
+    OneOfRawType::String(@typify_rt.de_string(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try OneOfRawType::Integer(@typify_rt.de_i64(c)) catch {
+  try {
+    OneOfRawType::Integer(@typify_rt.de_i64(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -1423,11 +1128,7 @@ pub impl @typify_rt.Serde for OneOfRawType with fn serialize(self) {
 
 ///|
 pub extend OneOfRawType with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1446,18 +1147,8 @@ pub(all) enum OneOfTypes {
 pub impl @typify_rt.Serde for OneOfTypes with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "OneOfTypes", ["bar", "foo"])
   let v = match idx {
-    0 =>
-      OneOfTypes::Bar(
-        @typify_rt.de_i64(
-          @typify_rt.variant_payload(payload, "newtype variant"),
-        ),
-      )
-    1 =>
-      OneOfTypes::Foo(
-        @typify_rt.de_string(
-          @typify_rt.variant_payload(payload, "newtype variant"),
-        ),
-      )
+    0 => OneOfTypes::Bar(@typify_rt.de_i64(@typify_rt.variant_payload(payload, "newtype variant")))
+    1 => OneOfTypes::Foo(@typify_rt.de_string(@typify_rt.variant_payload(payload, "newtype variant")))
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1474,11 +1165,7 @@ pub impl @typify_rt.Serde for OneOfTypes with fn serialize(self) {
 
 ///|
 pub extend OneOfTypes with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1502,11 +1189,7 @@ pub impl @typify_rt.Serde for OptionAnyofConst with fn serialize(self) {
 
 ///|
 pub extend OptionAnyofConst with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1530,11 +1213,7 @@ pub impl @typify_rt.Serde for OptionAnyofEnum with fn serialize(self) {
 
 ///|
 pub extend OptionAnyofEnum with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1558,11 +1237,7 @@ pub impl @typify_rt.Serde for OptionAnyofNull with fn serialize(self) {
 
 ///|
 pub extend OptionAnyofNull with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1586,11 +1261,7 @@ pub impl @typify_rt.Serde for OptionOneofConst with fn serialize(self) {
 
 ///|
 pub extend OptionOneofConst with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1614,11 +1285,7 @@ pub impl @typify_rt.Serde for OptionOneofEnum with fn serialize(self) {
 
 ///|
 pub extend OptionOneofEnum with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1642,11 +1309,7 @@ pub impl @typify_rt.Serde for OptionOneofNull with fn serialize(self) {
 
 ///|
 pub extend OptionOneofNull with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1664,22 +1327,11 @@ pub(all) enum VariantsDifferByPunct {
 
 ///|
 pub impl @typify_rt.Serde for VariantsDifferByPunct with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "VariantsDifferByPunct", [
-    "2.5GBASE-T", "25GBASE-T", "2,5,GBASE,T",
-  ])
+  let (idx, payload) = @typify_rt.de_enum(d, "VariantsDifferByPunct", ["2.5GBASE-T", "25GBASE-T", "2,5,GBASE,T"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      VariantsDifferByPunct::X2x5gbasext
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      VariantsDifferByPunct::X25gbasext
-    }
-    2 => {
-      @typify_rt.variant_unit(payload)
-      VariantsDifferByPunct::X2x5xgbasext
-    }
+    0 => { @typify_rt.variant_unit(payload); VariantsDifferByPunct::X2x5gbasext }
+    1 => { @typify_rt.variant_unit(payload); VariantsDifferByPunct::X25gbasext }
+    2 => { @typify_rt.variant_unit(payload); VariantsDifferByPunct::X2x5xgbasext }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1697,9 +1349,7 @@ pub impl @typify_rt.Serde for VariantsDifferByPunct with fn serialize(self) {
 
 ///|
 /// The variant's position in declaration order.
-pub fn VariantsDifferByPunct::variant_index(
-  self : VariantsDifferByPunct,
-) -> Int {
+pub fn VariantsDifferByPunct::variant_index(self : VariantsDifferByPunct) -> Int {
   match self {
     X2x5gbasext => 0
     X25gbasext => 1
@@ -1719,9 +1369,7 @@ pub fn VariantsDifferByPunct::to_string(self : VariantsDifferByPunct) -> String 
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn VariantsDifferByPunct::parse(
-  value : StringView,
-) -> VariantsDifferByPunct raise @typify_rt.ConversionError {
+pub fn VariantsDifferByPunct::parse(value : StringView) -> VariantsDifferByPunct raise @typify_rt.ConversionError {
   match value {
     "2.5GBASE-T" => X2x5gbasext
     "25GBASE-T" => X25gbasext
@@ -1732,11 +1380,7 @@ pub fn VariantsDifferByPunct::parse(
 
 ///|
 pub extend VariantsDifferByPunct with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1754,22 +1398,11 @@ pub(all) enum DiskAttachmentState {
 
 ///|
 pub impl @typify_rt.Serde for DiskAttachmentState with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "DiskAttachmentState", [
-    "Detached", "Destroyed", "Faulted",
-  ])
+  let (idx, payload) = @typify_rt.de_enum(d, "DiskAttachmentState", ["Detached", "Destroyed", "Faulted"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      DiskAttachmentState::Detached
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      DiskAttachmentState::Destroyed
-    }
-    2 => {
-      @typify_rt.variant_unit(payload)
-      DiskAttachmentState::Faulted
-    }
+    0 => { @typify_rt.variant_unit(payload); DiskAttachmentState::Detached }
+    1 => { @typify_rt.variant_unit(payload); DiskAttachmentState::Destroyed }
+    2 => { @typify_rt.variant_unit(payload); DiskAttachmentState::Faulted }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1807,9 +1440,7 @@ pub fn DiskAttachmentState::to_string(self : DiskAttachmentState) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn DiskAttachmentState::parse(
-  value : StringView,
-) -> DiskAttachmentState raise @typify_rt.ConversionError {
+pub fn DiskAttachmentState::parse(value : StringView) -> DiskAttachmentState raise @typify_rt.ConversionError {
   match value {
     "Detached" => Detached
     "Destroyed" => Destroyed
@@ -1828,11 +1459,7 @@ pub fn DiskAttachmentState::default() -> DiskAttachmentState {
 
 ///|
 pub extend DiskAttachmentState with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1847,32 +1474,14 @@ pub(all) struct EmptyObjectProp(Map[String, Json]) derive(Debug, Eq)
 ///|
 let empty_object_prop_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
   ["{}"],
-  (d : @typify_rt.De) => {
-    @typify_rt.de_map(d, @typify_rt.de_string, @typify_rt.de_json)
-  },
-  (v : Map[String, Json]) => {
-    @typify_rt.ser_sorted_map(
-      v,
-      @typify_rt.compare_keys,
-      (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-      (v : Json) => @typify_rt.ser_json(v),
-    )
-  },
+  (d : @typify_rt.De) => @typify_rt.de_map(d, @typify_rt.de_string, @typify_rt.de_json),
+  (v : Map[String, Json]) => @typify_rt.ser_sorted_map(v, @typify_rt.compare_keys, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Json) => @typify_rt.ser_json(v)),
 )
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn EmptyObjectProp::new(
-  value : Map[String, Json],
-) -> EmptyObjectProp raise @typify_rt.ConversionError {
-  let serialized = @typify_rt.ser_sorted_map(
-    value,
-    @typify_rt.compare_keys,
-    (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-    (v : Json) => @typify_rt.ser_json(v),
-  ) catch {
-    _ => @typify_rt.ser_null()
-  }
+pub fn EmptyObjectProp::new(value : Map[String, Json]) -> EmptyObjectProp raise @typify_rt.ConversionError {
+  let serialized = (@typify_rt.ser_sorted_map(value, @typify_rt.compare_keys, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Json) => @typify_rt.ser_json(v))) catch { _ => @typify_rt.ser_null() }
   if !@typify_rt.contains_value(empty_object_prop_values, serialized) {
     raise @typify_rt.ConversionError("invalid value")
   }
@@ -1890,21 +1499,12 @@ pub impl @typify_rt.Serde for EmptyObjectProp with fn deserialize(d) {
 
 ///|
 pub impl @typify_rt.Serde for EmptyObjectProp with fn serialize(self) {
-  @typify_rt.ser_sorted_map(
-    self.0,
-    @typify_rt.compare_keys,
-    (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-    (v : Json) => @typify_rt.ser_json(v),
-  )
+  @typify_rt.ser_sorted_map(self.0, @typify_rt.compare_keys, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Json) => @typify_rt.ser_json(v))
 }
 
 ///|
 pub extend EmptyObjectProp with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1921,27 +1521,12 @@ pub(all) enum NullStringEnumWithUnknownFormatInner {
 } derive(Debug, Eq, Hash)
 
 ///|
-pub impl @typify_rt.Serde for NullStringEnumWithUnknownFormatInner with fn deserialize(
-  d,
-) {
-  let (idx, payload) = @typify_rt.de_enum(
-    d,
-    "NullStringEnumWithUnknownFormatInner",
-    ["a", "b", "c"],
-  )
+pub impl @typify_rt.Serde for NullStringEnumWithUnknownFormatInner with fn deserialize(d) {
+  let (idx, payload) = @typify_rt.de_enum(d, "NullStringEnumWithUnknownFormatInner", ["a", "b", "c"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      NullStringEnumWithUnknownFormatInner::A
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      NullStringEnumWithUnknownFormatInner::B
-    }
-    2 => {
-      @typify_rt.variant_unit(payload)
-      NullStringEnumWithUnknownFormatInner::C
-    }
+    0 => { @typify_rt.variant_unit(payload); NullStringEnumWithUnknownFormatInner::A }
+    1 => { @typify_rt.variant_unit(payload); NullStringEnumWithUnknownFormatInner::B }
+    2 => { @typify_rt.variant_unit(payload); NullStringEnumWithUnknownFormatInner::C }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1949,9 +1534,7 @@ pub impl @typify_rt.Serde for NullStringEnumWithUnknownFormatInner with fn deser
 }
 
 ///|
-pub impl @typify_rt.Serde for NullStringEnumWithUnknownFormatInner with fn serialize(
-  self,
-) {
+pub impl @typify_rt.Serde for NullStringEnumWithUnknownFormatInner with fn serialize(self) {
   match self {
     A => @typify_rt.ser_string("a")
     B => @typify_rt.ser_string("b")
@@ -1961,9 +1544,7 @@ pub impl @typify_rt.Serde for NullStringEnumWithUnknownFormatInner with fn seria
 
 ///|
 /// The variant's position in declaration order.
-pub fn NullStringEnumWithUnknownFormatInner::variant_index(
-  self : NullStringEnumWithUnknownFormatInner,
-) -> Int {
+pub fn NullStringEnumWithUnknownFormatInner::variant_index(self : NullStringEnumWithUnknownFormatInner) -> Int {
   match self {
     A => 0
     B => 1
@@ -1973,9 +1554,7 @@ pub fn NullStringEnumWithUnknownFormatInner::variant_index(
 
 ///|
 /// The serialized name (upstream `Display`).
-pub fn NullStringEnumWithUnknownFormatInner::to_string(
-  self : NullStringEnumWithUnknownFormatInner,
-) -> String {
+pub fn NullStringEnumWithUnknownFormatInner::to_string(self : NullStringEnumWithUnknownFormatInner) -> String {
   match self {
     A => "a"
     B => "b"
@@ -1985,9 +1564,7 @@ pub fn NullStringEnumWithUnknownFormatInner::to_string(
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn NullStringEnumWithUnknownFormatInner::parse(
-  value : StringView,
-) -> NullStringEnumWithUnknownFormatInner raise @typify_rt.ConversionError {
+pub fn NullStringEnumWithUnknownFormatInner::parse(value : StringView) -> NullStringEnumWithUnknownFormatInner raise @typify_rt.ConversionError {
   match value {
     "a" => A
     "b" => B
@@ -1998,11 +1575,7 @@ pub fn NullStringEnumWithUnknownFormatInner::parse(
 
 ///|
 pub extend NullStringEnumWithUnknownFormatInner with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -2020,15 +1593,17 @@ pub(all) enum ReferencesObjectValue {
 ///|
 pub impl @typify_rt.Serde for ReferencesObjectValue with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
-  try
+  try {
     ReferencesObjectValue::StringVersion(StringVersion::deserialize(c))
-  catch {
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
     v => return v
   }
-  try ReferencesObjectValue::ReferenceDef(ReferenceDef::deserialize(c)) catch {
+  try {
+    ReferencesObjectValue::ReferenceDef(ReferenceDef::deserialize(c))
+  } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
   } noraise {
@@ -2047,14 +1622,11 @@ pub impl @typify_rt.Serde for ReferencesObjectValue with fn serialize(self) {
 
 ///|
 pub extend ReferencesObjectValue with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for ReferencesObjectValue with fn to_json(self) {
   @typify_rt.json_of(self, "ReferencesObjectValue")
 }
+

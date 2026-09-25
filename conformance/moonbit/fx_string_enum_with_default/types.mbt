@@ -13,22 +13,11 @@ pub(all) enum TestEnum {
 
 ///|
 pub impl @typify_rt.Serde for TestEnum with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "TestEnum", [
-    "failure", "skipped", "success",
-  ])
+  let (idx, payload) = @typify_rt.de_enum(d, "TestEnum", ["failure", "skipped", "success"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      TestEnum::Failure
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      TestEnum::Skipped
-    }
-    2 => {
-      @typify_rt.variant_unit(payload)
-      TestEnum::Success
-    }
+    0 => { @typify_rt.variant_unit(payload); TestEnum::Failure }
+    1 => { @typify_rt.variant_unit(payload); TestEnum::Skipped }
+    2 => { @typify_rt.variant_unit(payload); TestEnum::Success }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -66,9 +55,7 @@ pub fn TestEnum::to_string(self : TestEnum) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn TestEnum::parse(
-  value : StringView,
-) -> TestEnum raise @typify_rt.ConversionError {
+pub fn TestEnum::parse(value : StringView) -> TestEnum raise @typify_rt.ConversionError {
   match value {
     "failure" => Failure
     "skipped" => Skipped
@@ -87,14 +74,11 @@ pub fn TestEnum::default() -> TestEnum {
 
 ///|
 pub extend TestEnum with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for TestEnum with fn to_json(self) {
   @typify_rt.json_of(self, "TestEnum")
 }
+

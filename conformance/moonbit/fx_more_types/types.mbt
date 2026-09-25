@@ -10,27 +10,17 @@ pub(all) struct ObjectWithNoExtra {
 } derive(Debug, Eq)
 
 ///|
-let object_with_no_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "foo",
-])
+let object_with_no_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new(["foo"])
 
 ///|
 pub impl @typify_rt.Serde for ObjectWithNoExtra with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct ObjectWithNoExtra",
-    object_with_no_extra_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_string(v))
-        _ => ()
-      }
-    },
-    deny=true,
-  )
+  let r = @typify_rt.de_fields(d, "struct ObjectWithNoExtra", object_with_no_extra_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
+  }, deny=true)
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  ObjectWithNoExtra::{ foo: v0, }
+  ObjectWithNoExtra::{ foo: v0 }
 }
 
 ///|
@@ -43,11 +33,7 @@ pub impl @typify_rt.Serde for ObjectWithNoExtra with fn serialize(self) {
 
 ///|
 pub extend ObjectWithNoExtra with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -62,26 +48,17 @@ pub(all) struct ObjectWithOkExtra {
 } derive(Debug, Eq)
 
 ///|
-let object_with_ok_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "foo",
-])
+let object_with_ok_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new(["foo"])
 
 ///|
 pub impl @typify_rt.Serde for ObjectWithOkExtra with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct ObjectWithOkExtra",
-    object_with_ok_extra_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_string(v))
-        _ => ()
-      }
-    },
-  )
+  let r = @typify_rt.de_fields(d, "struct ObjectWithOkExtra", object_with_ok_extra_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
+  })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  ObjectWithOkExtra::{ foo: v0, }
+  ObjectWithOkExtra::{ foo: v0 }
 }
 
 ///|
@@ -94,11 +71,7 @@ pub impl @typify_rt.Serde for ObjectWithOkExtra with fn serialize(self) {
 
 ///|
 pub extend ObjectWithOkExtra with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -114,57 +87,32 @@ pub(all) struct ObjectWithStringExtra {
 } derive(Debug, Eq)
 
 ///|
-let object_with_string_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "foo",
-  ],
-)
+let object_with_string_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new(["foo"])
 
 ///|
 pub impl @typify_rt.Serde for ObjectWithStringExtra with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct ObjectWithStringExtra",
-    object_with_string_extra_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_string(v))
-        _ => ()
-      }
-    },
-    flatten=true,
-  )
+  let r = @typify_rt.de_fields(d, "struct ObjectWithStringExtra", object_with_string_extra_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
+  }, flatten=true)
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  let v1 = @typify_rt.de_map(
-    r.flat(),
-    @typify_rt.de_string,
-    @typify_rt.de_string,
-  )
-  ObjectWithStringExtra::{ foo: v0, extra: v1, }
+  let v1 = @typify_rt.de_map(r.flat(), @typify_rt.de_string, @typify_rt.de_string)
+  ObjectWithStringExtra::{ foo: v0, extra: v1 }
 }
 
 ///|
 pub impl @typify_rt.Serde for ObjectWithStringExtra with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("foo", @typify_rt.ser_string(self.foo))
-  o.flatten(
-    @typify_rt.ser_map(
-      self.extra,
-      (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-      (v : String) => @typify_rt.ser_string(v),
-    ),
-  )
+  o.flatten(@typify_rt.ser_map(self.extra, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : String) => @typify_rt.ser_string(v)))
 
   o.build()
 }
 
 ///|
 pub extend ObjectWithStringExtra with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -180,54 +128,32 @@ pub(all) struct ObjectWithWhichExtra {
 } derive(Debug, Eq)
 
 ///|
-let object_with_which_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "foo",
-  ],
-)
+let object_with_which_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new(["foo"])
 
 ///|
 pub impl @typify_rt.Serde for ObjectWithWhichExtra with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct ObjectWithWhichExtra",
-    object_with_which_extra_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_string(v))
-        _ => ()
-      }
-    },
-    flatten=true,
-  )
+  let r = @typify_rt.de_fields(d, "struct ObjectWithWhichExtra", object_with_which_extra_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
+  }, flatten=true)
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
   let v1 = @typify_rt.de_map(r.flat(), @typify_rt.de_string, @typify_rt.de_json)
-  ObjectWithWhichExtra::{ foo: v0, extra: v1, }
+  ObjectWithWhichExtra::{ foo: v0, extra: v1 }
 }
 
 ///|
 pub impl @typify_rt.Serde for ObjectWithWhichExtra with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   o.field("foo", @typify_rt.ser_string(self.foo))
-  o.flatten(
-    @typify_rt.ser_sorted_map(
-      self.extra,
-      @typify_rt.compare_keys,
-      (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-      (v : Json) => @typify_rt.ser_json(v),
-    ),
-  )
+  o.flatten(@typify_rt.ser_sorted_map(self.extra, @typify_rt.compare_keys, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Json) => @typify_rt.ser_json(v)))
 
   o.build()
 }
 
 ///|
 pub extend ObjectWithWhichExtra with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -242,26 +168,17 @@ pub(all) struct ObjectWithYesExtra {
 } derive(Debug, Eq)
 
 ///|
-let object_with_yes_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "foo",
-])
+let object_with_yes_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new(["foo"])
 
 ///|
 pub impl @typify_rt.Serde for ObjectWithYesExtra with fn deserialize(d) {
   let mut f0 : String? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct ObjectWithYesExtra",
-    object_with_yes_extra_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_string(v))
-        _ => ()
-      }
-    },
-  )
+  let r = @typify_rt.de_fields(d, "struct ObjectWithYesExtra", object_with_yes_extra_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    _ => ()
+  })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  ObjectWithYesExtra::{ foo: v0, }
+  ObjectWithYesExtra::{ foo: v0 }
 }
 
 ///|
@@ -274,14 +191,11 @@ pub impl @typify_rt.Serde for ObjectWithYesExtra with fn serialize(self) {
 
 ///|
 pub extend ObjectWithYesExtra with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for ObjectWithYesExtra with fn to_json(self) {
   @typify_rt.json_of(self, "ObjectWithYesExtra")
 }
+

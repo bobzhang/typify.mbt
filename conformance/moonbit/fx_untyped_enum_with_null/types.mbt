@@ -15,14 +15,12 @@ let test_type_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 ///|
 pub impl @typify_rt.Serde for TestType with fn deserialize(d) {
   let mut f0 : TestTypeValue?? = None
-  let r = @typify_rt.de_fields(d, "struct TestType", test_type_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_option(v, TestTypeValue::deserialize))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct TestType", test_type_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, TestTypeValue::deserialize))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { raise r.absent_error(0) }
-  TestType::{ value: v0, }
+  TestType::{ value: v0 }
 }
 
 ///|
@@ -35,11 +33,7 @@ pub impl @typify_rt.Serde for TestType with fn serialize(self) {
 
 ///|
 pub extend TestType with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -57,22 +51,11 @@ pub(all) enum TestTypeValue {
 
 ///|
 pub impl @typify_rt.Serde for TestTypeValue with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "TestTypeValue", [
-    "start", "middle", "end",
-  ])
+  let (idx, payload) = @typify_rt.de_enum(d, "TestTypeValue", ["start", "middle", "end"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      TestTypeValue::Start
-    }
-    1 => {
-      @typify_rt.variant_unit(payload)
-      TestTypeValue::Middle
-    }
-    2 => {
-      @typify_rt.variant_unit(payload)
-      TestTypeValue::End
-    }
+    0 => { @typify_rt.variant_unit(payload); TestTypeValue::Start }
+    1 => { @typify_rt.variant_unit(payload); TestTypeValue::Middle }
+    2 => { @typify_rt.variant_unit(payload); TestTypeValue::End }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -110,9 +93,7 @@ pub fn TestTypeValue::to_string(self : TestTypeValue) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn TestTypeValue::parse(
-  value : StringView,
-) -> TestTypeValue raise @typify_rt.ConversionError {
+pub fn TestTypeValue::parse(value : StringView) -> TestTypeValue raise @typify_rt.ConversionError {
   match value {
     "start" => Start
     "middle" => Middle
@@ -123,14 +104,11 @@ pub fn TestTypeValue::parse(
 
 ///|
 pub extend TestTypeValue with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for TestTypeValue with fn to_json(self) {
   @typify_rt.json_of(self, "TestTypeValue")
 }
+

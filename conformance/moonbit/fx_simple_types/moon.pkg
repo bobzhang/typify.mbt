@@ -3,3 +3,6 @@ import {
 }
 
 warnings = "-unused_value"
+
+// Generated code is compared with the generator's output as is.
+formatter(ignore: [ "types.mbt" ])

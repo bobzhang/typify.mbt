@@ -9,27 +9,17 @@ pub(all) struct TypeThatHasMoreDerives(Map[String, String]) derive(Debug, Eq)
 
 ///|
 pub impl @typify_rt.Serde for TypeThatHasMoreDerives with fn deserialize(d) {
-  TypeThatHasMoreDerives(
-    @typify_rt.de_map(d, @typify_rt.de_string, @typify_rt.de_string),
-  )
+  TypeThatHasMoreDerives(@typify_rt.de_map(d, @typify_rt.de_string, @typify_rt.de_string))
 }
 
 ///|
 pub impl @typify_rt.Serde for TypeThatHasMoreDerives with fn serialize(self) {
-  @typify_rt.ser_map(
-    self.0,
-    (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-    (v : String) => @typify_rt.ser_string(v),
-  )
+  @typify_rt.ser_map(self.0, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : String) => @typify_rt.ser_string(v))
 }
 
 ///|
 pub extend TypeThatHasMoreDerives with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -46,31 +36,23 @@ pub(all) struct TestType {
 } derive(Debug, Eq)
 
 ///|
-let test_type_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "converted_type", "patched_type", "replaced_type",
-])
+let test_type_fields : @typify_rt.Fields = @typify_rt.Fields::new(["converted_type", "patched_type", "replaced_type"])
 
 ///|
 pub impl @typify_rt.Serde for TestType with fn deserialize(d) {
   let mut f0 : Json? = None
   let mut f1 : TypeThatHasMoreDerives? = None
   let mut f2 : String? = None
-  let r = @typify_rt.de_fields(d, "struct TestType", test_type_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_json(v))
-      1 => f1 = Some(TypeThatHasMoreDerives::deserialize(v))
-      2 => f2 = Some(@typify_rt.de_string(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct TestType", test_type_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_json(v))
+    1 => f1 = Some(TypeThatHasMoreDerives::deserialize(v))
+    2 => f2 = Some(@typify_rt.de_string(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_json(r.absent(0)) }
-  let v1 = if f1 is Some(v) {
-    v
-  } else {
-    TypeThatHasMoreDerives::deserialize(r.absent(1))
-  }
+  let v1 = if f1 is Some(v) { v } else { TypeThatHasMoreDerives::deserialize(r.absent(1)) }
   let v2 = if f2 is Some(v) { v } else { @typify_rt.de_string(r.absent(2)) }
-  TestType::{ converted_type: v0, patched_type: v1, replaced_type: v2, }
+  TestType::{ converted_type: v0, patched_type: v1, replaced_type: v2 }
 }
 
 ///|
@@ -85,14 +67,11 @@ pub impl @typify_rt.Serde for TestType with fn serialize(self) {
 
 ///|
 pub extend TestType with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for TestType with fn to_json(self) {
   @typify_rt.json_of(self, "TestType")
 }
+

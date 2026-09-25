@@ -1,0 +1,19 @@
+conformance/
+scripts/
+tests/
+docs/
+.repos/
+_build/
+target/
+# Tests that read fixtures from tests/, and large generated oracle tables.
+cli/cli_test.mbt
+schema/schema_test.mbt
+schema/oracle_test.mbt
+ir_oracle_test.mbt
+oracle_support_test.mbt
+rust/oracle_test.mbt
+serde_json/oracle_test.mbt
+serde_json/f32_oracle_test.mbt
+regex/oracle_test.mbt
+runtime/formats_oracle_test.mbt
+internal/heck/oracle_test.mbt

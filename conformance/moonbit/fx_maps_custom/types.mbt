@@ -19,11 +19,7 @@ pub impl @typify_rt.Serde for Eh with fn serialize(self) {
 
 ///|
 pub extend Eh with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -33,39 +29,21 @@ pub impl ToJson for Eh with fn to_json(self) {
 
 ///|
 /// `MapWithDateKeys`
-pub(all) struct MapWithDateKeys(Map[@typify_rt.NaiveDate, Value]) derive (
-  Debug,
-  Eq,
-)
+pub(all) struct MapWithDateKeys(Map[@typify_rt.NaiveDate, Value]) derive(Debug, Eq)
 
 ///|
 pub impl @typify_rt.Serde for MapWithDateKeys with fn deserialize(d) {
-  MapWithDateKeys(
-    @typify_rt.de_map(d, @typify_rt.NaiveDate::deserialize, Value::deserialize),
-  )
+  MapWithDateKeys(@typify_rt.de_map(d, @typify_rt.NaiveDate::deserialize, Value::deserialize))
 }
 
 ///|
 pub impl @typify_rt.Serde for MapWithDateKeys with fn serialize(self) {
-  @typify_rt.ser_sorted_map(
-    self.0,
-    (a : @typify_rt.NaiveDate, b : @typify_rt.NaiveDate) => {
-      @typify_rt.compare_keys(a.to_string(), b.to_string())
-    },
-    (k : @typify_rt.NaiveDate) => {
-      @typify_rt.map_key(@typify_rt.NaiveDate::serialize(k))
-    },
-    Value::serialize,
-  )
+  @typify_rt.ser_sorted_map(self.0, (a : @typify_rt.NaiveDate, b : @typify_rt.NaiveDate) => @typify_rt.compare_keys(a.to_string(), b.to_string()), (k : @typify_rt.NaiveDate) => @typify_rt.map_key(@typify_rt.NaiveDate::serialize(k)), Value::serialize)
 }
 
 ///|
 pub extend MapWithDateKeys with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -75,43 +53,21 @@ pub impl ToJson for MapWithDateKeys with fn to_json(self) {
 
 ///|
 /// `MapWithDateTimeKeys`
-pub(all) struct MapWithDateTimeKeys(Map[@typify_rt.DateTimeUtc, Value]) derive (
-  Debug,
-  Eq,
-)
+pub(all) struct MapWithDateTimeKeys(Map[@typify_rt.DateTimeUtc, Value]) derive(Debug, Eq)
 
 ///|
 pub impl @typify_rt.Serde for MapWithDateTimeKeys with fn deserialize(d) {
-  MapWithDateTimeKeys(
-    @typify_rt.de_map(
-      d,
-      @typify_rt.DateTimeUtc::deserialize,
-      Value::deserialize,
-    ),
-  )
+  MapWithDateTimeKeys(@typify_rt.de_map(d, @typify_rt.DateTimeUtc::deserialize, Value::deserialize))
 }
 
 ///|
 pub impl @typify_rt.Serde for MapWithDateTimeKeys with fn serialize(self) {
-  @typify_rt.ser_sorted_map(
-    self.0,
-    (a : @typify_rt.DateTimeUtc, b : @typify_rt.DateTimeUtc) => {
-      @typify_rt.compare_keys(a.to_string(), b.to_string())
-    },
-    (k : @typify_rt.DateTimeUtc) => {
-      @typify_rt.map_key(@typify_rt.DateTimeUtc::serialize(k))
-    },
-    Value::serialize,
-  )
+  @typify_rt.ser_sorted_map(self.0, (a : @typify_rt.DateTimeUtc, b : @typify_rt.DateTimeUtc) => @typify_rt.compare_keys(a.to_string(), b.to_string()), (k : @typify_rt.DateTimeUtc) => @typify_rt.map_key(@typify_rt.DateTimeUtc::serialize(k)), Value::serialize)
 }
 
 ///|
 pub extend MapWithDateTimeKeys with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -130,23 +86,12 @@ pub impl @typify_rt.Serde for MapWithKeys with fn deserialize(d) {
 
 ///|
 pub impl @typify_rt.Serde for MapWithKeys with fn serialize(self) {
-  @typify_rt.ser_sorted_map(
-    self.0,
-    (a : Eh, b : Eh) => {
-      @typify_rt.compare_keys(a.0.to_string(), b.0.to_string())
-    },
-    (k : Eh) => @typify_rt.map_key(Eh::serialize(k)),
-    Value::serialize,
-  )
+  @typify_rt.ser_sorted_map(self.0, (a : Eh, b : Eh) => @typify_rt.compare_keys(a.0.to_string(), b.0.to_string()), (k : Eh) => @typify_rt.map_key(Eh::serialize(k)), Value::serialize)
 }
 
 ///|
 pub extend MapWithKeys with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -170,11 +115,7 @@ pub impl @typify_rt.Serde for Value with fn serialize(self) {
 
 ///|
 pub extend Value with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -193,24 +134,16 @@ pub impl @typify_rt.Serde for DeadSimple with fn deserialize(d) {
 
 ///|
 pub impl @typify_rt.Serde for DeadSimple with fn serialize(self) {
-  @typify_rt.ser_sorted_map(
-    self.0,
-    @typify_rt.compare_keys,
-    (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-    (v : Json) => @typify_rt.ser_json(v),
-  )
+  @typify_rt.ser_sorted_map(self.0, @typify_rt.compare_keys, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : Json) => @typify_rt.ser_json(v))
 }
 
 ///|
 pub extend DeadSimple with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for DeadSimple with fn to_json(self) {
   @typify_rt.json_of(self, "DeadSimple")
 }
+

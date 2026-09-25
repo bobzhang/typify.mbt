@@ -15,28 +15,19 @@ let bar_prop_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bar"])
 ///|
 pub impl @typify_rt.Serde for BarProp with fn deserialize(d) {
   let mut f0 : Json?? = None
-  let r = @typify_rt.de_fields(d, "struct BarProp", bar_prop_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_json))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct BarProp", bar_prop_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_json))
+    _ => ()
   })
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), @typify_rt.de_json)
-  }
-  BarProp::{ bar: v0, }
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_json) }
+  BarProp::{ bar: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for BarProp with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.bar is Some(_) {
-    o.field(
-      "bar",
-      @typify_rt.ser_option(self.bar, (v : Json) => @typify_rt.ser_json(v)),
-    )
+    o.field("bar", @typify_rt.ser_option(self.bar, (v : Json) => @typify_rt.ser_json(v)))
   }
 
   o.build()
@@ -44,11 +35,7 @@ pub impl @typify_rt.Serde for BarProp with fn serialize(self) {
 
 ///|
 pub extend BarProp with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -64,53 +51,30 @@ pub(all) struct CommentedTypeMerged {
 } derive(Debug, Eq)
 
 ///|
-let commented_type_merged_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "x", "y",
-])
+let commented_type_merged_fields : @typify_rt.Fields = @typify_rt.Fields::new(["x", "y"])
 
 ///|
 pub impl @typify_rt.Serde for CommentedTypeMerged with fn deserialize(d) {
   let mut f0 : Json?? = None
   let mut f1 : Json?? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct CommentedTypeMerged",
-    commented_type_merged_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_json))
-        1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_json))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), @typify_rt.de_json)
-  }
-  let v1 = if f1 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(1), @typify_rt.de_json)
-  }
-  CommentedTypeMerged::{ x: v0, y: v1, }
+  let r = @typify_rt.de_fields(d, "struct CommentedTypeMerged", commented_type_merged_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_json))
+    1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_json))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_json) }
+  let v1 = if f1 is Some(v) { v } else { @typify_rt.de_option(r.absent(1), @typify_rt.de_json) }
+  CommentedTypeMerged::{ x: v0, y: v1 }
 }
 
 ///|
 pub impl @typify_rt.Serde for CommentedTypeMerged with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.x is Some(_) {
-    o.field(
-      "x",
-      @typify_rt.ser_option(self.x, (v : Json) => @typify_rt.ser_json(v)),
-    )
+    o.field("x", @typify_rt.ser_option(self.x, (v : Json) => @typify_rt.ser_json(v)))
   }
   if self.y is Some(_) {
-    o.field(
-      "y",
-      @typify_rt.ser_option(self.y, (v : Json) => @typify_rt.ser_json(v)),
-    )
+    o.field("y", @typify_rt.ser_option(self.y, (v : Json) => @typify_rt.ser_json(v)))
   }
 
   o.build()
@@ -118,11 +82,7 @@ pub impl @typify_rt.Serde for CommentedTypeMerged with fn serialize(self) {
 
 ///|
 pub extend CommentedTypeMerged with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -138,47 +98,27 @@ pub(all) enum HereAndThere {
 } derive(Debug, Eq)
 
 ///|
-let here_and_there_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "bar", "foo",
-  ],
-)
+let here_and_there_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bar", "foo"])
 
 ///|
-let here_and_there_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "baz", "foo",
-  ],
-)
+let here_and_there_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["baz", "foo"])
 
 ///|
 pub impl @typify_rt.Serde for HereAndThere with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
   try {
-    let mut f0 : String?? = None
-    let mut f1 : String?? = None
-    let r = @typify_rt.de_fields(
-      c,
-      "struct variant HereAndThere::Variant0",
-      here_and_there_variant0_fields,
-      (j, v) => {
-        match j {
-          0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-          1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-          _ => ()
-        }
-      },
-      positional=false,
-    )
-    let v0 = if f0 is Some(v) {
-      v
-    } else {
-      @typify_rt.de_option(r.absent(0), @typify_rt.de_string)
+    {
+      let mut f0 : String?? = None
+      let mut f1 : String?? = None
+      let r = @typify_rt.de_fields(c, "struct variant HereAndThere::Variant0", here_and_there_variant0_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+        1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+        _ => ()
+      }, positional=false)
+      let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_string) }
+      let v1 = if f1 is Some(v) { v } else { @typify_rt.de_option(r.absent(1), @typify_rt.de_string) }
+      HereAndThere::Variant0(bar=v0, foo=v1)
     }
-    let v1 = if f1 is Some(v) {
-      v
-    } else {
-      @typify_rt.de_option(r.absent(1), @typify_rt.de_string)
-    }
-    HereAndThere::Variant0(bar=v0, foo=v1)
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
@@ -186,32 +126,18 @@ pub impl @typify_rt.Serde for HereAndThere with fn deserialize(d) {
     v => return v
   }
   try {
-    let mut f0 : String?? = None
-    let mut f1 : String?? = None
-    let r = @typify_rt.de_fields(
-      c,
-      "struct variant HereAndThere::Variant1",
-      here_and_there_variant1_fields,
-      (j, v) => {
-        match j {
-          0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-          1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-          _ => ()
-        }
-      },
-      positional=false,
-    )
-    let v0 = if f0 is Some(v) {
-      v
-    } else {
-      @typify_rt.de_option(r.absent(0), @typify_rt.de_string)
+    {
+      let mut f0 : String?? = None
+      let mut f1 : String?? = None
+      let r = @typify_rt.de_fields(c, "struct variant HereAndThere::Variant1", here_and_there_variant1_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+        1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+        _ => ()
+      }, positional=false)
+      let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_string) }
+      let v1 = if f1 is Some(v) { v } else { @typify_rt.de_option(r.absent(1), @typify_rt.de_string) }
+      HereAndThere::Variant1(baz=v0, foo=v1)
     }
-    let v1 = if f1 is Some(v) {
-      v
-    } else {
-      @typify_rt.de_option(r.absent(1), @typify_rt.de_string)
-    }
-    HereAndThere::Variant1(baz=v0, foo=v1)
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
@@ -227,32 +153,20 @@ pub impl @typify_rt.Serde for HereAndThere with fn serialize(self) {
     Variant0(bar=p0, foo=p1) => {
       let o = @typify_rt.ObjectBuilder::new()
       if p0 is Some(_) {
-        o.field(
-          "bar",
-          @typify_rt.ser_option(p0, (v : String) => @typify_rt.ser_string(v)),
-        )
+        o.field("bar", @typify_rt.ser_option(p0, (v : String) => @typify_rt.ser_string(v)))
       }
       if p1 is Some(_) {
-        o.field(
-          "foo",
-          @typify_rt.ser_option(p1, (v : String) => @typify_rt.ser_string(v)),
-        )
+        o.field("foo", @typify_rt.ser_option(p1, (v : String) => @typify_rt.ser_string(v)))
       }
       o.build()
     }
     Variant1(baz=p0, foo=p1) => {
       let o = @typify_rt.ObjectBuilder::new()
       if p0 is Some(_) {
-        o.field(
-          "baz",
-          @typify_rt.ser_option(p0, (v : String) => @typify_rt.ser_string(v)),
-        )
+        o.field("baz", @typify_rt.ser_option(p0, (v : String) => @typify_rt.ser_string(v)))
       }
       if p1 is Some(_) {
-        o.field(
-          "foo",
-          @typify_rt.ser_option(p1, (v : String) => @typify_rt.ser_string(v)),
-        )
+        o.field("foo", @typify_rt.ser_option(p1, (v : String) => @typify_rt.ser_string(v)))
       }
       o.build()
     }
@@ -261,11 +175,7 @@ pub impl @typify_rt.Serde for HereAndThere with fn serialize(self) {
 
 ///|
 pub extend HereAndThere with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -280,42 +190,24 @@ pub(all) struct JsonResponseBase {
 } derive(Debug, Eq)
 
 ///|
-let json_response_base_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "result",
-])
+let json_response_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["result"])
 
 ///|
 pub impl @typify_rt.Serde for JsonResponseBase with fn deserialize(d) {
   let mut f0 : String?? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct JsonResponseBase",
-    json_response_base_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), @typify_rt.de_string)
-  }
-  JsonResponseBase::{ result: v0, }
+  let r = @typify_rt.de_fields(d, "struct JsonResponseBase", json_response_base_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_string) }
+  JsonResponseBase::{ result: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for JsonResponseBase with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.result is Some(_) {
-    o.field(
-      "result",
-      @typify_rt.ser_option(self.result, (v : String) => {
-        @typify_rt.ser_string(v)
-      }),
-    )
+    o.field("result", @typify_rt.ser_option(self.result, (v : String) => @typify_rt.ser_string(v)))
   }
 
   o.build()
@@ -323,11 +215,7 @@ pub impl @typify_rt.Serde for JsonResponseBase with fn serialize(self) {
 
 ///|
 pub extend JsonResponseBase with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -343,34 +231,20 @@ pub(all) struct JsonSuccess {
 } derive(Debug, Eq)
 
 ///|
-let json_success_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "msg", "result",
-])
+let json_success_fields : @typify_rt.Fields = @typify_rt.Fields::new(["msg", "result"])
 
 ///|
 pub impl @typify_rt.Serde for JsonSuccess with fn deserialize(d) {
   let mut f0 : String? = None
   let mut f1 : JsonSuccessResult? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct JsonSuccess",
-    json_success_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_string(v))
-        1 => f1 = Some(JsonSuccessResult::deserialize(v))
-        _ => ()
-      }
-    },
-    deny=true,
-  )
+  let r = @typify_rt.de_fields(d, "struct JsonSuccess", json_success_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    1 => f1 = Some(JsonSuccessResult::deserialize(v))
+    _ => ()
+  }, deny=true)
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  let v1 = if f1 is Some(v) {
-    v
-  } else {
-    JsonSuccessResult::deserialize(r.absent(1))
-  }
-  JsonSuccess::{ msg: v0, result: v1, }
+  let v1 = if f1 is Some(v) { v } else { JsonSuccessResult::deserialize(r.absent(1)) }
+  JsonSuccess::{ msg: v0, result: v1 }
 }
 
 ///|
@@ -384,11 +258,7 @@ pub impl @typify_rt.Serde for JsonSuccess with fn serialize(self) {
 
 ///|
 pub extend JsonSuccess with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -404,33 +274,20 @@ pub(all) struct JsonSuccessBase {
 } derive(Debug, Eq)
 
 ///|
-let json_success_base_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "msg", "result",
-])
+let json_success_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["msg", "result"])
 
 ///|
 pub impl @typify_rt.Serde for JsonSuccessBase with fn deserialize(d) {
   let mut f0 : String? = None
   let mut f1 : JsonSuccessBaseResult? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct JsonSuccessBase",
-    json_success_base_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_string(v))
-        1 => f1 = Some(JsonSuccessBaseResult::deserialize(v))
-        _ => ()
-      }
-    },
-  )
+  let r = @typify_rt.de_fields(d, "struct JsonSuccessBase", json_success_base_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_string(v))
+    1 => f1 = Some(JsonSuccessBaseResult::deserialize(v))
+    _ => ()
+  })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-  let v1 = if f1 is Some(v) {
-    v
-  } else {
-    JsonSuccessBaseResult::deserialize(r.absent(1))
-  }
-  JsonSuccessBase::{ msg: v0, result: v1, }
+  let v1 = if f1 is Some(v) { v } else { JsonSuccessBaseResult::deserialize(r.absent(1)) }
+  JsonSuccessBase::{ msg: v0, result: v1 }
 }
 
 ///|
@@ -444,11 +301,7 @@ pub impl @typify_rt.Serde for JsonSuccessBase with fn serialize(self) {
 
 ///|
 pub extend JsonSuccessBase with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -464,43 +317,27 @@ pub(all) struct OrderDependentMerge {
 } derive(Debug, Eq)
 
 ///|
-let order_dependent_merge_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "bar", "baz",
-])
+let order_dependent_merge_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bar", "baz"])
 
 ///|
 pub impl @typify_rt.Serde for OrderDependentMerge with fn deserialize(d) {
   let mut f0 : Json?? = None
   let mut f1 : Bool? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct OrderDependentMerge",
-    order_dependent_merge_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_json))
-        1 => f1 = Some(@typify_rt.de_bool(v))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), @typify_rt.de_json)
-  }
+  let r = @typify_rt.de_fields(d, "struct OrderDependentMerge", order_dependent_merge_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_json))
+    1 => f1 = Some(@typify_rt.de_bool(v))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_json) }
   let v1 = if f1 is Some(v) { v } else { @typify_rt.de_bool(r.absent(1)) }
-  OrderDependentMerge::{ bar: v0, baz: v1, }
+  OrderDependentMerge::{ bar: v0, baz: v1 }
 }
 
 ///|
 pub impl @typify_rt.Serde for OrderDependentMerge with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.bar is Some(_) {
-    o.field(
-      "bar",
-      @typify_rt.ser_option(self.bar, (v : Json) => @typify_rt.ser_json(v)),
-    )
+    o.field("bar", @typify_rt.ser_option(self.bar, (v : Json) => @typify_rt.ser_json(v)))
   }
   o.field("baz", @typify_rt.ser_bool(self.baz))
 
@@ -509,11 +346,7 @@ pub impl @typify_rt.Serde for OrderDependentMerge with fn serialize(self) {
 
 ///|
 pub extend OrderDependentMerge with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -526,19 +359,13 @@ pub impl ToJson for OrderDependentMerge with fn to_json(self) {
 pub(all) struct TriplePattern(String) derive(Debug, Eq, Hash)
 
 ///|
-let triple_pattern_pattern : @typify_rt.Regex = @typify_rt.regex(
-  "(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)",
-)
+let triple_pattern_pattern : @typify_rt.Regex = @typify_rt.regex("(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)")
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn TriplePattern::new(
-  value : String,
-) -> TriplePattern raise @typify_rt.ConversionError {
+pub fn TriplePattern::new(value : String) -> TriplePattern raise @typify_rt.ConversionError {
   if !triple_pattern_pattern.is_match(value) {
-    raise @typify_rt.ConversionError(
-      "doesn't match pattern \"(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)\"",
-    )
+    raise @typify_rt.ConversionError("doesn't match pattern \"(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)\"")
   }
 
   TriplePattern(value)
@@ -559,11 +386,7 @@ pub impl @typify_rt.Serde for TriplePattern with fn serialize(self) {
 
 ///|
 pub extend TriplePattern with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -573,12 +396,14 @@ pub impl ToJson for TriplePattern with fn to_json(self) {
 
 ///|
 /// `Unresolvable`
-pub(all) enum Unresolvable {} derive(Debug, Eq, Hash)
+pub(all) enum Unresolvable {
+} derive(Debug, Eq, Hash)
 
 ///|
 pub impl @typify_rt.Serde for Unresolvable with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "Unresolvable", [])
   let v = match idx {
+
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -594,11 +419,7 @@ pub impl @typify_rt.Serde for Unresolvable with fn serialize(self) {
 
 ///|
 pub extend Unresolvable with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -618,31 +439,19 @@ let but_not_that_fields : @typify_rt.Fields = @typify_rt.Fields::new(["this"])
 ///|
 pub impl @typify_rt.Serde for ButNotThat with fn deserialize(d) {
   let mut f0 : Json?? = None
-  let r = @typify_rt.de_fields(d, "struct ButNotThat", but_not_that_fields, (
-    j,
-    v,
-  ) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_json))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct ButNotThat", but_not_that_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_json))
+    _ => ()
   })
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), @typify_rt.de_json)
-  }
-  ButNotThat::{ this: v0, }
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_json) }
+  ButNotThat::{ this: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for ButNotThat with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.this is Some(_) {
-    o.field(
-      "this",
-      @typify_rt.ser_option(self.this, (v : Json) => @typify_rt.ser_json(v)),
-    )
+    o.field("this", @typify_rt.ser_option(self.this, (v : Json) => @typify_rt.ser_json(v)))
   }
 
   o.build()
@@ -650,11 +459,7 @@ pub impl @typify_rt.Serde for ButNotThat with fn serialize(self) {
 
 ///|
 pub extend ButNotThat with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -664,25 +469,18 @@ pub impl ToJson for ButNotThat with fn to_json(self) {
 
 ///|
 /// `MergeEmpty`
-pub(all) struct MergeEmpty {} derive(Debug, Eq)
+pub(all) struct MergeEmpty {
+} derive(Debug, Eq)
 
 ///|
 let merge_empty_fields : @typify_rt.Fields = @typify_rt.Fields::new([])
 
 ///|
 pub impl @typify_rt.Serde for MergeEmpty with fn deserialize(d) {
-  let r = @typify_rt.de_fields(
-    d,
-    "struct MergeEmpty",
-    merge_empty_fields,
-    (j, v) => {
-      match j {
-        _ => ()
-      }
-    },
-    deny=true,
-  )
-  MergeEmpty::{ }
+  let r = @typify_rt.de_fields(d, "struct MergeEmpty", merge_empty_fields, (j, v) => match j {
+    _ => ()
+  }, deny=true)
+  MergeEmpty::{  }
 }
 
 ///|
@@ -694,11 +492,7 @@ pub impl @typify_rt.Serde for MergeEmpty with fn serialize(self) {
 
 ///|
 pub extend MergeEmpty with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -722,11 +516,7 @@ pub impl @typify_rt.Serde for MergeNumberBounds with fn serialize(self) {
 
 ///|
 pub extend MergeNumberBounds with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -740,9 +530,7 @@ pub(all) struct MergeStringBounds(String) derive(Debug, Eq, Hash)
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
-pub fn MergeStringBounds::new(
-  value : String,
-) -> MergeStringBounds raise @typify_rt.ConversionError {
+pub fn MergeStringBounds::new(value : String) -> MergeStringBounds raise @typify_rt.ConversionError {
   if @typify_rt.char_count(value) > 10 {
     raise @typify_rt.ConversionError("longer than 10 characters")
   }
@@ -768,11 +556,7 @@ pub impl @typify_rt.Serde for MergeStringBounds with fn serialize(self) {
 
 ///|
 pub extend MergeStringBounds with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -796,11 +580,7 @@ pub impl @typify_rt.Serde for NarrowNumber with fn serialize(self) {
 
 ///|
 pub extend NarrowNumber with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -815,25 +595,17 @@ pub(all) struct Pickingone {
 } derive(Debug, Eq)
 
 ///|
-let pickingone_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "suspended_by",
-])
+let pickingone_fields : @typify_rt.Fields = @typify_rt.Fields::new(["suspended_by"])
 
 ///|
 pub impl @typify_rt.Serde for Pickingone with fn deserialize(d) {
   let mut f0 : PickingoneSuspendedBy? = None
-  let r = @typify_rt.de_fields(d, "struct Pickingone", pickingone_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(PickingoneSuspendedBy::deserialize(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct Pickingone", pickingone_fields, (j, v) => match j {
+    0 => f0 = Some(PickingoneSuspendedBy::deserialize(v))
+    _ => ()
   })
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    PickingoneSuspendedBy::deserialize(r.absent(0))
-  }
-  Pickingone::{ suspended_by: v0, }
+  let v0 = if f0 is Some(v) { v } else { PickingoneSuspendedBy::deserialize(r.absent(0)) }
+  Pickingone::{ suspended_by: v0 }
 }
 
 ///|
@@ -846,11 +618,7 @@ pub impl @typify_rt.Serde for Pickingone with fn serialize(self) {
 
 ///|
 pub extend Pickingone with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -865,41 +633,24 @@ pub(all) struct PickingoneInstallation {
 } derive(Debug, Eq)
 
 ///|
-let pickingone_installation_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "suspended_by",
-  ],
-)
+let pickingone_installation_fields : @typify_rt.Fields = @typify_rt.Fields::new(["suspended_by"])
 
 ///|
 pub impl @typify_rt.Serde for PickingoneInstallation with fn deserialize(d) {
   let mut f0 : PickingoneUser?? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct PickingoneInstallation",
-    pickingone_installation_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_option(v, PickingoneUser::deserialize))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), PickingoneUser::deserialize)
-  }
-  PickingoneInstallation::{ suspended_by: v0, }
+  let r = @typify_rt.de_fields(d, "struct PickingoneInstallation", pickingone_installation_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, PickingoneUser::deserialize))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), PickingoneUser::deserialize) }
+  PickingoneInstallation::{ suspended_by: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for PickingoneInstallation with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.suspended_by is Some(_) {
-    o.field(
-      "suspended_by",
-      @typify_rt.ser_option(self.suspended_by, PickingoneUser::serialize),
-    )
+    o.field("suspended_by", @typify_rt.ser_option(self.suspended_by, PickingoneUser::serialize))
   }
 
   o.build()
@@ -907,11 +658,7 @@ pub impl @typify_rt.Serde for PickingoneInstallation with fn serialize(self) {
 
 ///|
 pub extend PickingoneInstallation with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -926,40 +673,24 @@ pub(all) struct PickingoneUser {
 } derive(Debug, Eq)
 
 ///|
-let pickingone_user_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "email",
-])
+let pickingone_user_fields : @typify_rt.Fields = @typify_rt.Fields::new(["email"])
 
 ///|
 pub impl @typify_rt.Serde for PickingoneUser with fn deserialize(d) {
   let mut f0 : String?? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct PickingoneUser",
-    pickingone_user_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), @typify_rt.de_string)
-  }
-  PickingoneUser::{ email: v0, }
+  let r = @typify_rt.de_fields(d, "struct PickingoneUser", pickingone_user_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_string) }
+  PickingoneUser::{ email: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for PickingoneUser with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.email is Some(_) {
-    o.field(
-      "email",
-      @typify_rt.ser_option(self.email, (v : String) => @typify_rt.ser_string(v)),
-    )
+    o.field("email", @typify_rt.ser_option(self.email, (v : String) => @typify_rt.ser_string(v)))
   }
 
   o.build()
@@ -967,11 +698,7 @@ pub impl @typify_rt.Serde for PickingoneUser with fn serialize(self) {
 
 ///|
 pub extend PickingoneUser with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -991,14 +718,12 @@ let trim_fat_fields : @typify_rt.Fields = @typify_rt.Fields::new(["a"])
 ///|
 pub impl @typify_rt.Serde for TrimFat with fn deserialize(d) {
   let mut f0 : Json? = None
-  let r = @typify_rt.de_fields(d, "struct TrimFat", trim_fat_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_json(v))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct TrimFat", trim_fat_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_json(v))
+    _ => ()
   })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_json(r.absent(0)) }
-  TrimFat::{ a: v0, }
+  TrimFat::{ a: v0 }
 }
 
 ///|
@@ -1011,11 +736,7 @@ pub impl @typify_rt.Serde for TrimFat with fn serialize(self) {
 
 ///|
 pub extend TrimFat with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1030,30 +751,17 @@ pub(all) struct UnchangedByMerge {
 } derive(Debug, Eq)
 
 ///|
-let unchanged_by_merge_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "tag",
-])
+let unchanged_by_merge_fields : @typify_rt.Fields = @typify_rt.Fields::new(["tag"])
 
 ///|
 pub impl @typify_rt.Serde for UnchangedByMerge with fn deserialize(d) {
   let mut f0 : UnchangedByMergeTag? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct UnchangedByMerge",
-    unchanged_by_merge_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(UnchangedByMergeTag::deserialize(v))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    UnchangedByMergeTag::deserialize(r.absent(0))
-  }
-  UnchangedByMerge::{ tag: v0, }
+  let r = @typify_rt.de_fields(d, "struct UnchangedByMerge", unchanged_by_merge_fields, (j, v) => match j {
+    0 => f0 = Some(UnchangedByMergeTag::deserialize(v))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { UnchangedByMergeTag::deserialize(r.absent(0)) }
+  UnchangedByMerge::{ tag: v0 }
 }
 
 ///|
@@ -1066,11 +774,7 @@ pub impl @typify_rt.Serde for UnchangedByMerge with fn serialize(self) {
 
 ///|
 pub extend UnchangedByMerge with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1080,12 +784,14 @@ pub impl ToJson for UnchangedByMerge with fn to_json(self) {
 
 ///|
 /// `Unsatisfiable1`
-pub(all) enum Unsatisfiable1 {} derive(Debug, Eq, Hash)
+pub(all) enum Unsatisfiable1 {
+} derive(Debug, Eq, Hash)
 
 ///|
 pub impl @typify_rt.Serde for Unsatisfiable1 with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "Unsatisfiable1", [])
   let v = match idx {
+
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1101,11 +807,7 @@ pub impl @typify_rt.Serde for Unsatisfiable1 with fn serialize(self) {
 
 ///|
 pub extend Unsatisfiable1 with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1115,12 +817,14 @@ pub impl ToJson for Unsatisfiable1 with fn to_json(self) {
 
 ///|
 /// `Unsatisfiable2`
-pub(all) enum Unsatisfiable2 {} derive(Debug, Eq, Hash)
+pub(all) enum Unsatisfiable2 {
+} derive(Debug, Eq, Hash)
 
 ///|
 pub impl @typify_rt.Serde for Unsatisfiable2 with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "Unsatisfiable2", [])
   let v = match idx {
+
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1136,11 +840,7 @@ pub impl @typify_rt.Serde for Unsatisfiable2 with fn serialize(self) {
 
 ///|
 pub extend Unsatisfiable2 with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1150,12 +850,14 @@ pub impl ToJson for Unsatisfiable2 with fn to_json(self) {
 
 ///|
 /// `Unsatisfiable3`
-pub(all) enum Unsatisfiable3 {} derive(Debug, Eq, Hash)
+pub(all) enum Unsatisfiable3 {
+} derive(Debug, Eq, Hash)
 
 ///|
 pub impl @typify_rt.Serde for Unsatisfiable3 with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "Unsatisfiable3", [])
   let v = match idx {
+
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1171,11 +873,7 @@ pub impl @typify_rt.Serde for Unsatisfiable3 with fn serialize(self) {
 
 ///|
 pub extend Unsatisfiable3 with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1190,40 +888,24 @@ pub(all) struct Unsatisfiable3A {
 } derive(Debug, Eq)
 
 ///|
-let unsatisfiable3_a_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "action",
-])
+let unsatisfiable3_a_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action"])
 
 ///|
 pub impl @typify_rt.Serde for Unsatisfiable3A with fn deserialize(d) {
   let mut f0 : Unsatisfiable3C?? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct Unsatisfiable3A",
-    unsatisfiable3_a_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_option(v, Unsatisfiable3C::deserialize))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), Unsatisfiable3C::deserialize)
-  }
-  Unsatisfiable3A::{ action: v0, }
+  let r = @typify_rt.de_fields(d, "struct Unsatisfiable3A", unsatisfiable3_a_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, Unsatisfiable3C::deserialize))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), Unsatisfiable3C::deserialize) }
+  Unsatisfiable3A::{ action: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for Unsatisfiable3A with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.action is Some(_) {
-    o.field(
-      "action",
-      @typify_rt.ser_option(self.action, Unsatisfiable3C::serialize),
-    )
+    o.field("action", @typify_rt.ser_option(self.action, Unsatisfiable3C::serialize))
   }
 
   o.build()
@@ -1231,11 +913,7 @@ pub impl @typify_rt.Serde for Unsatisfiable3A with fn serialize(self) {
 
 ///|
 pub extend Unsatisfiable3A with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1253,10 +931,7 @@ pub(all) enum Unsatisfiable3B {
 pub impl @typify_rt.Serde for Unsatisfiable3B with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "Unsatisfiable3B", ["bar"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      Unsatisfiable3B::Bar
-    }
+    0 => { @typify_rt.variant_unit(payload); Unsatisfiable3B::Bar }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1288,9 +963,7 @@ pub fn Unsatisfiable3B::to_string(self : Unsatisfiable3B) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn Unsatisfiable3B::parse(
-  value : StringView,
-) -> Unsatisfiable3B raise @typify_rt.ConversionError {
+pub fn Unsatisfiable3B::parse(value : StringView) -> Unsatisfiable3B raise @typify_rt.ConversionError {
   match value {
     "bar" => Bar
     _ => raise @typify_rt.ConversionError("invalid value")
@@ -1299,11 +972,7 @@ pub fn Unsatisfiable3B::parse(
 
 ///|
 pub extend Unsatisfiable3B with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1321,10 +990,7 @@ pub(all) enum Unsatisfiable3C {
 pub impl @typify_rt.Serde for Unsatisfiable3C with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "Unsatisfiable3C", ["foo"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      Unsatisfiable3C::Foo
-    }
+    0 => { @typify_rt.variant_unit(payload); Unsatisfiable3C::Foo }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1356,9 +1022,7 @@ pub fn Unsatisfiable3C::to_string(self : Unsatisfiable3C) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn Unsatisfiable3C::parse(
-  value : StringView,
-) -> Unsatisfiable3C raise @typify_rt.ConversionError {
+pub fn Unsatisfiable3C::parse(value : StringView) -> Unsatisfiable3C raise @typify_rt.ConversionError {
   match value {
     "foo" => Foo
     _ => raise @typify_rt.ConversionError("invalid value")
@@ -1367,11 +1031,7 @@ pub fn Unsatisfiable3C::parse(
 
 ///|
 pub extend Unsatisfiable3C with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1389,44 +1049,30 @@ pub(all) enum WeirdEnum {
 } derive(Debug, Eq)
 
 ///|
-let weird_enum_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "pattern",
-])
+let weird_enum_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["pattern"])
 
 ///|
-let weird_enum_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "patterns",
-])
+let weird_enum_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["patterns"])
 
 ///|
-let weird_enum_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "pattern-either",
-])
+let weird_enum_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["pattern-either"])
 
 ///|
-let weird_enum_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "pattern-regex",
-])
+let weird_enum_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["pattern-regex"])
 
 ///|
 pub impl @typify_rt.Serde for WeirdEnum with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
   try {
-    let mut f0 : String? = None
-    let r = @typify_rt.de_fields(
-      c,
-      "struct variant WeirdEnum::Variant0",
-      weird_enum_variant0_fields,
-      (j, v) => {
-        match j {
-          0 => f0 = Some(@typify_rt.de_string(v))
-          _ => ()
-        }
-      },
-      positional=false,
-    )
-    let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-    WeirdEnum::Variant0(pattern=v0)
+    {
+      let mut f0 : String? = None
+      let r = @typify_rt.de_fields(c, "struct variant WeirdEnum::Variant0", weird_enum_variant0_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
+      }, positional=false)
+      let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
+      WeirdEnum::Variant0(pattern=v0)
+    }
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
@@ -1434,21 +1080,15 @@ pub impl @typify_rt.Serde for WeirdEnum with fn deserialize(d) {
     v => return v
   }
   try {
-    let mut f0 : String? = None
-    let r = @typify_rt.de_fields(
-      c,
-      "struct variant WeirdEnum::Variant1",
-      weird_enum_variant1_fields,
-      (j, v) => {
-        match j {
-          0 => f0 = Some(@typify_rt.de_string(v))
-          _ => ()
-        }
-      },
-      positional=false,
-    )
-    let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-    WeirdEnum::Variant1(patterns=v0)
+    {
+      let mut f0 : String? = None
+      let r = @typify_rt.de_fields(c, "struct variant WeirdEnum::Variant1", weird_enum_variant1_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
+      }, positional=false)
+      let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
+      WeirdEnum::Variant1(patterns=v0)
+    }
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
@@ -1456,21 +1096,15 @@ pub impl @typify_rt.Serde for WeirdEnum with fn deserialize(d) {
     v => return v
   }
   try {
-    let mut f0 : String? = None
-    let r = @typify_rt.de_fields(
-      c,
-      "struct variant WeirdEnum::Variant2",
-      weird_enum_variant2_fields,
-      (j, v) => {
-        match j {
-          0 => f0 = Some(@typify_rt.de_string(v))
-          _ => ()
-        }
-      },
-      positional=false,
-    )
-    let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-    WeirdEnum::Variant2(pattern_either=v0)
+    {
+      let mut f0 : String? = None
+      let r = @typify_rt.de_fields(c, "struct variant WeirdEnum::Variant2", weird_enum_variant2_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
+      }, positional=false)
+      let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
+      WeirdEnum::Variant2(pattern_either=v0)
+    }
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
@@ -1478,21 +1112,15 @@ pub impl @typify_rt.Serde for WeirdEnum with fn deserialize(d) {
     v => return v
   }
   try {
-    let mut f0 : String? = None
-    let r = @typify_rt.de_fields(
-      c,
-      "struct variant WeirdEnum::Variant3",
-      weird_enum_variant3_fields,
-      (j, v) => {
-        match j {
-          0 => f0 = Some(@typify_rt.de_string(v))
-          _ => ()
-        }
-      },
-      positional=false,
-    )
-    let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
-    WeirdEnum::Variant3(pattern_regex=v0)
+    {
+      let mut f0 : String? = None
+      let r = @typify_rt.de_fields(c, "struct variant WeirdEnum::Variant3", weird_enum_variant3_fields, (j, v) => match j {
+        0 => f0 = Some(@typify_rt.de_string(v))
+        _ => ()
+      }, positional=false)
+      let v0 = if f0 is Some(v) { v } else { @typify_rt.de_string(r.absent(0)) }
+      WeirdEnum::Variant3(pattern_regex=v0)
+    }
   } catch {
     @typify_rt.DeError(msg) if !msg.has_prefix("panic:") => ()
     e => raise e
@@ -1530,11 +1158,7 @@ pub impl @typify_rt.Serde for WeirdEnum with fn serialize(self) {
 
 ///|
 pub extend WeirdEnum with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1552,10 +1176,7 @@ pub(all) enum JsonSuccessResult {
 pub impl @typify_rt.Serde for JsonSuccessResult with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "JsonSuccessResult", ["success"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      JsonSuccessResult::Success
-    }
+    0 => { @typify_rt.variant_unit(payload); JsonSuccessResult::Success }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1587,9 +1208,7 @@ pub fn JsonSuccessResult::to_string(self : JsonSuccessResult) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn JsonSuccessResult::parse(
-  value : StringView,
-) -> JsonSuccessResult raise @typify_rt.ConversionError {
+pub fn JsonSuccessResult::parse(value : StringView) -> JsonSuccessResult raise @typify_rt.ConversionError {
   match value {
     "success" => Success
     _ => raise @typify_rt.ConversionError("invalid value")
@@ -1598,11 +1217,7 @@ pub fn JsonSuccessResult::parse(
 
 ///|
 pub extend JsonSuccessResult with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1618,14 +1233,9 @@ pub(all) enum JsonSuccessBaseResult {
 
 ///|
 pub impl @typify_rt.Serde for JsonSuccessBaseResult with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "JsonSuccessBaseResult", [
-    "success",
-  ])
+  let (idx, payload) = @typify_rt.de_enum(d, "JsonSuccessBaseResult", ["success"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      JsonSuccessBaseResult::Success
-    }
+    0 => { @typify_rt.variant_unit(payload); JsonSuccessBaseResult::Success }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1641,9 +1251,7 @@ pub impl @typify_rt.Serde for JsonSuccessBaseResult with fn serialize(self) {
 
 ///|
 /// The variant's position in declaration order.
-pub fn JsonSuccessBaseResult::variant_index(
-  self : JsonSuccessBaseResult,
-) -> Int {
+pub fn JsonSuccessBaseResult::variant_index(self : JsonSuccessBaseResult) -> Int {
   match self {
     Success => 0
   }
@@ -1659,9 +1267,7 @@ pub fn JsonSuccessBaseResult::to_string(self : JsonSuccessBaseResult) -> String 
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn JsonSuccessBaseResult::parse(
-  value : StringView,
-) -> JsonSuccessBaseResult raise @typify_rt.ConversionError {
+pub fn JsonSuccessBaseResult::parse(value : StringView) -> JsonSuccessBaseResult raise @typify_rt.ConversionError {
   match value {
     "success" => Success
     _ => raise @typify_rt.ConversionError("invalid value")
@@ -1670,11 +1276,7 @@ pub fn JsonSuccessBaseResult::parse(
 
 ///|
 pub extend JsonSuccessBaseResult with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1689,41 +1291,24 @@ pub(all) struct PickingoneSuspendedBy {
 } derive(Debug, Eq)
 
 ///|
-let pickingone_suspended_by_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "email",
-  ],
-)
+let pickingone_suspended_by_fields : @typify_rt.Fields = @typify_rt.Fields::new(["email"])
 
 ///|
 pub impl @typify_rt.Serde for PickingoneSuspendedBy with fn deserialize(d) {
   let mut f0 : String?? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct PickingoneSuspendedBy",
-    pickingone_suspended_by_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), @typify_rt.de_string)
-  }
-  PickingoneSuspendedBy::{ email: v0, }
+  let r = @typify_rt.de_fields(d, "struct PickingoneSuspendedBy", pickingone_suspended_by_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_string) }
+  PickingoneSuspendedBy::{ email: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for PickingoneSuspendedBy with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.email is Some(_) {
-    o.field(
-      "email",
-      @typify_rt.ser_option(self.email, (v : String) => @typify_rt.ser_string(v)),
-    )
+    o.field("email", @typify_rt.ser_option(self.email, (v : String) => @typify_rt.ser_string(v)))
   }
 
   o.build()
@@ -1731,11 +1316,7 @@ pub impl @typify_rt.Serde for PickingoneSuspendedBy with fn serialize(self) {
 
 ///|
 pub extend PickingoneSuspendedBy with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -1751,14 +1332,9 @@ pub(all) enum UnchangedByMergeTag {
 
 ///|
 pub impl @typify_rt.Serde for UnchangedByMergeTag with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "UnchangedByMergeTag", [
-    "something",
-  ])
+  let (idx, payload) = @typify_rt.de_enum(d, "UnchangedByMergeTag", ["something"])
   let v = match idx {
-    0 => {
-      @typify_rt.variant_unit(payload)
-      UnchangedByMergeTag::Something
-    }
+    0 => { @typify_rt.variant_unit(payload); UnchangedByMergeTag::Something }
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -1790,9 +1366,7 @@ pub fn UnchangedByMergeTag::to_string(self : UnchangedByMergeTag) -> String {
 
 ///|
 /// Parse a serialized name (upstream `FromStr`).
-pub fn UnchangedByMergeTag::parse(
-  value : StringView,
-) -> UnchangedByMergeTag raise @typify_rt.ConversionError {
+pub fn UnchangedByMergeTag::parse(value : StringView) -> UnchangedByMergeTag raise @typify_rt.ConversionError {
   match value {
     "something" => Something
     _ => raise @typify_rt.ConversionError("invalid value")
@@ -1801,14 +1375,11 @@ pub fn UnchangedByMergeTag::parse(
 
 ///|
 pub extend UnchangedByMergeTag with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for UnchangedByMergeTag with fn to_json(self) {
   @typify_rt.json_of(self, "UnchangedByMergeTag")
 }
+

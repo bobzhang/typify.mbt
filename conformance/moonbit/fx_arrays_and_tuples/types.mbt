@@ -19,11 +19,7 @@ pub impl @typify_rt.Serde for ArraySansItems with fn serialize(self) {
 
 ///|
 pub extend ArraySansItems with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -37,32 +33,17 @@ pub(all) struct LessSimpleTwoTuple((String, String)) derive(Debug, Eq)
 
 ///|
 pub impl @typify_rt.Serde for LessSimpleTwoTuple with fn deserialize(d) {
-  LessSimpleTwoTuple(
-    {
-      let s = @typify_rt.de_tuple(d, 2)
-      let t0 = @typify_rt.de_string(s.next())
-      let t1 = @typify_rt.de_string(s.next())
-      s.finish()
-      (t0, t1)
-    },
-  )
+  LessSimpleTwoTuple({ let s = @typify_rt.de_tuple(d, 2); let t0 = @typify_rt.de_string(s.next()); let t1 = @typify_rt.de_string(s.next()); s.finish(); (t0, t1) })
 }
 
 ///|
 pub impl @typify_rt.Serde for LessSimpleTwoTuple with fn serialize(self) {
-  @typify_rt.Content::Array([
-    @typify_rt.ser_string(self.0.0),
-    @typify_rt.ser_string(self.0.1),
-  ])
+  @typify_rt.Content::Array([@typify_rt.ser_string(self.0.0), @typify_rt.ser_string(self.0.1)])
 }
 
 ///|
 pub extend LessSimpleTwoTuple with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -86,11 +67,7 @@ pub impl @typify_rt.Serde for SetAvecItem with fn serialize(self) {
 
 ///|
 pub extend SetAvecItem with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -104,17 +81,7 @@ pub(all) struct SimpleTwoArray(FixedArray[String]) derive(Debug, Eq)
 
 ///|
 pub impl @typify_rt.Serde for SimpleTwoArray with fn deserialize(d) {
-  SimpleTwoArray(
-    {
-      let s = @typify_rt.de_fixed(d, 2)
-      let xs = []
-      for _ in 0..<2 {
-        xs.push(@typify_rt.de_string(s.next()))
-      }
-      s.finish()
-      FixedArray::from_array(xs)
-    },
-  )
+  SimpleTwoArray({ let s = @typify_rt.de_fixed(d, 2); let xs = []; for _ in 0..<2 { xs.push(@typify_rt.de_string(s.next())) }; s.finish(); FixedArray::from_array(xs) })
 }
 
 ///|
@@ -124,11 +91,7 @@ pub impl @typify_rt.Serde for SimpleTwoArray with fn serialize(self) {
 
 ///|
 pub extend SimpleTwoArray with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -142,32 +105,17 @@ pub(all) struct SimpleTwoTuple((String, String)) derive(Debug, Eq)
 
 ///|
 pub impl @typify_rt.Serde for SimpleTwoTuple with fn deserialize(d) {
-  SimpleTwoTuple(
-    {
-      let s = @typify_rt.de_tuple(d, 2)
-      let t0 = @typify_rt.de_string(s.next())
-      let t1 = @typify_rt.de_string(s.next())
-      s.finish()
-      (t0, t1)
-    },
-  )
+  SimpleTwoTuple({ let s = @typify_rt.de_tuple(d, 2); let t0 = @typify_rt.de_string(s.next()); let t1 = @typify_rt.de_string(s.next()); s.finish(); (t0, t1) })
 }
 
 ///|
 pub impl @typify_rt.Serde for SimpleTwoTuple with fn serialize(self) {
-  @typify_rt.Content::Array([
-    @typify_rt.ser_string(self.0.0),
-    @typify_rt.ser_string(self.0.1),
-  ])
+  @typify_rt.Content::Array([@typify_rt.ser_string(self.0.0), @typify_rt.ser_string(self.0.1)])
 }
 
 ///|
 pub extend SimpleTwoTuple with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -181,32 +129,17 @@ pub(all) struct UnsimpleTwoTuple((String, String)) derive(Debug, Eq)
 
 ///|
 pub impl @typify_rt.Serde for UnsimpleTwoTuple with fn deserialize(d) {
-  UnsimpleTwoTuple(
-    {
-      let s = @typify_rt.de_tuple(d, 2)
-      let t0 = @typify_rt.de_string(s.next())
-      let t1 = @typify_rt.de_string(s.next())
-      s.finish()
-      (t0, t1)
-    },
-  )
+  UnsimpleTwoTuple({ let s = @typify_rt.de_tuple(d, 2); let t0 = @typify_rt.de_string(s.next()); let t1 = @typify_rt.de_string(s.next()); s.finish(); (t0, t1) })
 }
 
 ///|
 pub impl @typify_rt.Serde for UnsimpleTwoTuple with fn serialize(self) {
-  @typify_rt.Content::Array([
-    @typify_rt.ser_string(self.0.0),
-    @typify_rt.ser_string(self.0.1),
-  ])
+  @typify_rt.Content::Array([@typify_rt.ser_string(self.0.0), @typify_rt.ser_string(self.0.1)])
 }
 
 ///|
 pub extend UnsimpleTwoTuple with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -220,17 +153,7 @@ pub(all) struct YoloTwoArray(FixedArray[Json]) derive(Debug, Eq)
 
 ///|
 pub impl @typify_rt.Serde for YoloTwoArray with fn deserialize(d) {
-  YoloTwoArray(
-    {
-      let s = @typify_rt.de_fixed(d, 2)
-      let xs = []
-      for _ in 0..<2 {
-        xs.push(@typify_rt.de_json(s.next()))
-      }
-      s.finish()
-      FixedArray::from_array(xs)
-    },
-  )
+  YoloTwoArray({ let s = @typify_rt.de_fixed(d, 2); let xs = []; for _ in 0..<2 { xs.push(@typify_rt.de_json(s.next())) }; s.finish(); FixedArray::from_array(xs) })
 }
 
 ///|
@@ -240,14 +163,11 @@ pub impl @typify_rt.Serde for YoloTwoArray with fn serialize(self) {
 
 ///|
 pub extend YoloTwoArray with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for YoloTwoArray with fn to_json(self) {
   @typify_rt.json_of(self, "YoloTwoArray")
 }
+

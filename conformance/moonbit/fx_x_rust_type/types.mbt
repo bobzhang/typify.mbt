@@ -11,62 +11,30 @@ pub(all) struct AllTheThings {
 } derive(Debug, Eq)
 
 ///|
-let all_the_things_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-  "option_marker", "path",
-])
+let all_the_things_fields : @typify_rt.Fields = @typify_rt.Fields::new(["option_marker", "path"])
 
 ///|
 pub impl @typify_rt.Serde for AllTheThings with fn deserialize(d) {
   let mut f0 : Marker??? = None
   let mut f1 : String?? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct AllTheThings",
-    all_the_things_fields,
-    (j, v) => {
-      match j {
-        0 =>
-          f0 = Some(
-            @typify_rt.de_option(v, (d : @typify_rt.De) => {
-              @typify_rt.de_option(d, Marker::deserialize)
-            }),
-          )
-        1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_path))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), (d : @typify_rt.De) => {
-      @typify_rt.de_option(d, Marker::deserialize)
-    })
-  }
-  let v1 = if f1 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(1), @typify_rt.de_path)
-  }
-  AllTheThings::{ option_marker: v0, path: v1, }
+  let r = @typify_rt.de_fields(d, "struct AllTheThings", all_the_things_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, (d : @typify_rt.De) => @typify_rt.de_option(d, Marker::deserialize)))
+    1 => f1 = Some(@typify_rt.de_option(v, @typify_rt.de_path))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), (d : @typify_rt.De) => @typify_rt.de_option(d, Marker::deserialize)) }
+  let v1 = if f1 is Some(v) { v } else { @typify_rt.de_option(r.absent(1), @typify_rt.de_path) }
+  AllTheThings::{ option_marker: v0, path: v1 }
 }
 
 ///|
 pub impl @typify_rt.Serde for AllTheThings with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.option_marker is Some(_) {
-    o.field(
-      "option_marker",
-      @typify_rt.ser_option(self.option_marker, (v : Marker?) => {
-        @typify_rt.ser_option(v, Marker::serialize)
-      }),
-    )
+    o.field("option_marker", @typify_rt.ser_option(self.option_marker, (v : Marker?) => @typify_rt.ser_option(v, Marker::serialize)))
   }
   if self.path is Some(_) {
-    o.field(
-      "path",
-      @typify_rt.ser_option(self.path, (v : String) => @typify_rt.ser_string(v)),
-    )
+    o.field("path", @typify_rt.ser_option(self.path, (v : String) => @typify_rt.ser_string(v)))
   }
 
   o.build()
@@ -74,11 +42,7 @@ pub impl @typify_rt.Serde for AllTheThings with fn serialize(self) {
 
 ///|
 pub extend AllTheThings with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -88,12 +52,14 @@ pub impl ToJson for AllTheThings with fn to_json(self) {
 
 ///|
 /// `Marker`
-pub(all) enum Marker {} derive(Debug, Eq, Hash)
+pub(all) enum Marker {
+} derive(Debug, Eq, Hash)
 
 ///|
 pub impl @typify_rt.Serde for Marker with fn deserialize(d) {
   let (idx, payload) = @typify_rt.de_enum(d, "Marker", [])
   let v = match idx {
+
     _ => abort("unreachable")
   }
   @typify_rt.end_enum_map(d)
@@ -109,14 +75,11 @@ pub impl @typify_rt.Serde for Marker with fn serialize(self) {
 
 ///|
 pub extend Marker with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for Marker with fn to_json(self) {
   @typify_rt.json_of(self, "Marker")
 }
+

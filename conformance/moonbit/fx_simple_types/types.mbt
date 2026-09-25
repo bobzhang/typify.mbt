@@ -15,19 +15,12 @@ let anything_works_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"]
 ///|
 pub impl @typify_rt.Serde for AnythingWorks with fn deserialize(d) {
   let mut f0 : Json? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct AnythingWorks",
-    anything_works_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_json(v))
-        _ => ()
-      }
-    },
-  )
+  let r = @typify_rt.de_fields(d, "struct AnythingWorks", anything_works_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_json(v))
+    _ => ()
+  })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_json(r.absent(0)) }
-  AnythingWorks::{ value: v0, }
+  AnythingWorks::{ value: v0 }
 }
 
 ///|
@@ -40,11 +33,7 @@ pub impl @typify_rt.Serde for AnythingWorks with fn serialize(self) {
 
 ///|
 pub extend AnythingWorks with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -59,43 +48,24 @@ pub(all) struct FloatsArentTerribleImTold {
 } derive(Debug, Eq)
 
 ///|
-let floats_arent_terrible_im_told_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "flush_timeout",
-  ],
-)
+let floats_arent_terrible_im_told_fields : @typify_rt.Fields = @typify_rt.Fields::new(["flush_timeout"])
 
 ///|
 pub impl @typify_rt.Serde for FloatsArentTerribleImTold with fn deserialize(d) {
   let mut f0 : Float?? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct FloatsArentTerribleImTold",
-    floats_arent_terrible_im_told_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_f32))
-        _ => ()
-      }
-    },
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), @typify_rt.de_f32)
-  }
-  FloatsArentTerribleImTold::{ flush_timeout: v0, }
+  let r = @typify_rt.de_fields(d, "struct FloatsArentTerribleImTold", floats_arent_terrible_im_told_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_f32))
+    _ => ()
+  })
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_f32) }
+  FloatsArentTerribleImTold::{ flush_timeout: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for FloatsArentTerribleImTold with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.flush_timeout is Some(_) {
-    o.field(
-      "flush_timeout",
-      @typify_rt.ser_option(self.flush_timeout, (v : Float) => {
-        @typify_rt.ser_f32(v)
-      }),
-    )
+    o.field("flush_timeout", @typify_rt.ser_option(self.flush_timeout, (v : Float) => @typify_rt.ser_f32(v)))
   }
 
   o.build()
@@ -103,11 +73,7 @@ pub impl @typify_rt.Serde for FloatsArentTerribleImTold with fn serialize(self) 
 
 ///|
 pub extend FloatsArentTerribleImTold with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -131,11 +97,7 @@ pub impl @typify_rt.Serde for JustOne with fn serialize(self) {
 
 ///|
 pub extend JustOne with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -155,10 +117,7 @@ pub(all) struct UintMinimumAndMaximum {
 } derive(Debug, Eq)
 
 ///|
-let uint_minimum_and_maximum_fields : @typify_rt.Fields = @typify_rt.Fields::new([
-    "max", "min", "min_and_max", "min_non_zero", "min_uint_non_zero", "no_bounds",
-  ],
-)
+let uint_minimum_and_maximum_fields : @typify_rt.Fields = @typify_rt.Fields::new(["max", "min", "min_and_max", "min_non_zero", "min_uint_non_zero", "no_bounds"])
 
 ///|
 pub impl @typify_rt.Serde for UintMinimumAndMaximum with fn deserialize(d) {
@@ -168,48 +127,22 @@ pub impl @typify_rt.Serde for UintMinimumAndMaximum with fn deserialize(d) {
   let mut f3 : UInt64? = None
   let mut f4 : UInt64? = None
   let mut f5 : UInt64? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct UintMinimumAndMaximum",
-    uint_minimum_and_maximum_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_u64(v))
-        1 => f1 = Some(@typify_rt.de_u64(v))
-        2 => f2 = Some(@typify_rt.de_nonzero_u64(v))
-        3 => f3 = Some(@typify_rt.de_nonzero_u64(v))
-        4 => f4 = Some(@typify_rt.de_nonzero_u64(v))
-        5 => f5 = Some(@typify_rt.de_u64(v))
-        _ => ()
-      }
-    },
-  )
+  let r = @typify_rt.de_fields(d, "struct UintMinimumAndMaximum", uint_minimum_and_maximum_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_u64(v))
+    1 => f1 = Some(@typify_rt.de_u64(v))
+    2 => f2 = Some(@typify_rt.de_nonzero_u64(v))
+    3 => f3 = Some(@typify_rt.de_nonzero_u64(v))
+    4 => f4 = Some(@typify_rt.de_nonzero_u64(v))
+    5 => f5 = Some(@typify_rt.de_u64(v))
+    _ => ()
+  })
   let v0 = if f0 is Some(v) { v } else { @typify_rt.de_u64(r.absent(0)) }
   let v1 = if f1 is Some(v) { v } else { @typify_rt.de_u64(r.absent(1)) }
-  let v2 = if f2 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_nonzero_u64(r.absent(2))
-  }
-  let v3 = if f3 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_nonzero_u64(r.absent(3))
-  }
-  let v4 = if f4 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_nonzero_u64(r.absent(4))
-  }
+  let v2 = if f2 is Some(v) { v } else { @typify_rt.de_nonzero_u64(r.absent(2)) }
+  let v3 = if f3 is Some(v) { v } else { @typify_rt.de_nonzero_u64(r.absent(3)) }
+  let v4 = if f4 is Some(v) { v } else { @typify_rt.de_nonzero_u64(r.absent(4)) }
   let v5 = if f5 is Some(v) { v } else { @typify_rt.de_u64(r.absent(5)) }
-  UintMinimumAndMaximum::{
-    max: v0,
-    min: v1,
-    min_and_max: v2,
-    min_non_zero: v3,
-    min_uint_non_zero: v4,
-    no_bounds: v5,
-  }
+  UintMinimumAndMaximum::{ max: v0, min: v1, min_and_max: v2, min_non_zero: v3, min_uint_non_zero: v4, no_bounds: v5 }
 }
 
 ///|
@@ -227,14 +160,11 @@ pub impl @typify_rt.Serde for UintMinimumAndMaximum with fn serialize(self) {
 
 ///|
 pub extend UintMinimumAndMaximum with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for UintMinimumAndMaximum with fn to_json(self) {
   @typify_rt.json_of(self, "UintMinimumAndMaximum")
 }
+

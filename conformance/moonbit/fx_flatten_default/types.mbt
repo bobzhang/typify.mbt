@@ -15,28 +15,19 @@ let container_fields : @typify_rt.Fields = @typify_rt.Fields::new(["thing"])
 ///|
 pub impl @typify_rt.Serde for Container with fn deserialize(d) {
   let mut f0 : ContainerThing?? = None
-  let r = @typify_rt.de_fields(d, "struct Container", container_fields, (j, v) => {
-    match j {
-      0 => f0 = Some(@typify_rt.de_option(v, ContainerThing::deserialize))
-      _ => ()
-    }
+  let r = @typify_rt.de_fields(d, "struct Container", container_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, ContainerThing::deserialize))
+    _ => ()
   })
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), ContainerThing::deserialize)
-  }
-  Container::{ thing: v0, }
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), ContainerThing::deserialize) }
+  Container::{ thing: v0 }
 }
 
 ///|
 pub impl @typify_rt.Serde for Container with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.thing is Some(_) {
-    o.field(
-      "thing",
-      @typify_rt.ser_option(self.thing, ContainerThing::serialize),
-    )
+    o.field("thing", @typify_rt.ser_option(self.thing, ContainerThing::serialize))
   }
 
   o.build()
@@ -44,11 +35,7 @@ pub impl @typify_rt.Serde for Container with fn serialize(self) {
 
 ///|
 pub extend Container with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
@@ -69,47 +56,22 @@ let container_thing_fields : @typify_rt.Fields = @typify_rt.Fields::new(["id"])
 ///|
 pub impl @typify_rt.Serde for ContainerThing with fn deserialize(d) {
   let mut f0 : String?? = None
-  let r = @typify_rt.de_fields(
-    d,
-    "struct ContainerThing",
-    container_thing_fields,
-    (j, v) => {
-      match j {
-        0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
-        _ => ()
-      }
-    },
-    flatten=true,
-  )
-  let v0 = if f0 is Some(v) {
-    v
-  } else {
-    @typify_rt.de_option(r.absent(0), @typify_rt.de_string)
-  }
-  let v1 = @typify_rt.de_map(
-    r.flat(),
-    @typify_rt.de_string,
-    @typify_rt.de_string,
-  )
-  ContainerThing::{ id: v0, extra: v1, }
+  let r = @typify_rt.de_fields(d, "struct ContainerThing", container_thing_fields, (j, v) => match j {
+    0 => f0 = Some(@typify_rt.de_option(v, @typify_rt.de_string))
+    _ => ()
+  }, flatten=true)
+  let v0 = if f0 is Some(v) { v } else { @typify_rt.de_option(r.absent(0), @typify_rt.de_string) }
+  let v1 = @typify_rt.de_map(r.flat(), @typify_rt.de_string, @typify_rt.de_string)
+  ContainerThing::{ id: v0, extra: v1 }
 }
 
 ///|
 pub impl @typify_rt.Serde for ContainerThing with fn serialize(self) {
   let o = @typify_rt.ObjectBuilder::new()
   if self.id is Some(_) {
-    o.field(
-      "id",
-      @typify_rt.ser_option(self.id, (v : String) => @typify_rt.ser_string(v)),
-    )
+    o.field("id", @typify_rt.ser_option(self.id, (v : String) => @typify_rt.ser_string(v)))
   }
-  o.flatten(
-    @typify_rt.ser_map(
-      self.extra,
-      (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)),
-      (v : String) => @typify_rt.ser_string(v),
-    ),
-  )
+  o.flatten(@typify_rt.ser_map(self.extra, (k : String) => @typify_rt.map_key(@typify_rt.ser_string(k)), (v : String) => @typify_rt.ser_string(v)))
 
   o.build()
 }
@@ -117,24 +79,18 @@ pub impl @typify_rt.Serde for ContainerThing with fn serialize(self) {
 ///|
 /// The schema's default value.
 pub fn ContainerThing::default() -> ContainerThing {
-  @typify_rt.default_value(
-    "{\"extra_key\":\"extra_value\",\"id\":\"abc\"}",
-    ContainerThing::deserialize,
-  ) catch {
+  @typify_rt.default_value("{\"extra_key\":\"extra_value\",\"id\":\"abc\"}", ContainerThing::deserialize) catch {
     e => abort("invalid default for ContainerThing: \{e}")
   }
 }
 
 ///|
 pub extend ContainerThing with @typify_rt.Serde::{
-  deserialize,
-  serialize,
-  from_json_str,
-  to_json_string,
-  from_json,
+  deserialize, serialize, from_json_str, to_json_string, from_json,
 }
 
 ///|
 pub impl ToJson for ContainerThing with fn to_json(self) {
   @typify_rt.json_of(self, "ContainerThing")
 }
+
