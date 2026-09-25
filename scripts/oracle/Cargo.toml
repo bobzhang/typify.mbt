@@ -7,5 +7,6 @@ publish = false
 [dependencies]
 heck = "=0.5.0"
 unicode-ident = "=1.0.26"
+serde_json = "=1.0.151"
 
 [workspace]

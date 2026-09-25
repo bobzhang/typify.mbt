@@ -1,0 +1,78 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/serde_json"
+
+import {
+  "bobzhang/typify/collections",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn format_f64(Double) -> String
+
+pub fn parse(StringView) -> Value raise ParseError
+
+pub fn write_escaped_str(StringBuilder, StringView) -> Unit
+
+// Errors
+pub(all) suberror ParseError {
+  ParseError(message~ : String, line~ : Int, column~ : Int)
+} derive(Eq, @debug.Debug)
+pub impl Show for ParseError
+
+// Types and methods
+pub(all) enum Number {
+  PosInt(UInt64)
+  NegInt(Int64)
+  Float(Double)
+} derive(@debug.Debug)
+pub fn Number::as_f64(Self) -> Double
+pub fn Number::as_i64(Self) -> Int64?
+pub fn Number::as_u64(Self) -> UInt64?
+pub fn Number::from_f64(Double) -> Self?
+pub fn Number::from_i64(Int64) -> Self
+pub fn Number::from_u64(UInt64) -> Self
+pub fn Number::is_f64(Self) -> Bool
+pub fn Number::is_i64(Self) -> Bool
+pub fn Number::is_u64(Self) -> Bool
+pub fn Number::to_string(Self) -> String
+pub impl Eq for Number
+pub impl Show for Number
+
+pub(all) enum Value {
+  Null
+  Bool(Bool)
+  Number(Number)
+  String(String)
+  Array(Array[Value])
+  Object(@collections.StrMap[Value])
+} derive(Eq, @debug.Debug)
+pub fn Value::as_array(Self) -> Array[Self]?
+pub fn Value::as_bool(Self) -> Bool?
+pub fn Value::as_f64(Self) -> Double?
+pub fn Value::as_i64(Self) -> Int64?
+pub fn Value::as_object(Self) -> @collections.StrMap[Self]?
+pub fn Value::as_str(Self) -> String?
+pub fn Value::as_u64(Self) -> UInt64?
+pub fn Value::from_f64(Double) -> Self
+pub fn Value::from_i64(Int64) -> Self
+pub fn Value::from_json(Json) -> Self
+pub fn Value::from_u64(UInt64) -> Self
+pub fn Value::get(Self, StringView) -> Self?
+pub fn Value::is_array(Self) -> Bool
+pub fn Value::is_boolean(Self) -> Bool
+pub fn Value::is_f64(Self) -> Bool
+pub fn Value::is_i64(Self) -> Bool
+pub fn Value::is_null(Self) -> Bool
+pub fn Value::is_number(Self) -> Bool
+pub fn Value::is_object(Self) -> Bool
+pub fn Value::is_string(Self) -> Bool
+pub fn Value::is_u64(Self) -> Bool
+pub fn Value::object(ArrayView[(String, Self)]) -> Self
+pub fn Value::to_json(Self) -> Json
+pub fn Value::to_string(Self) -> String
+pub fn Value::to_string_pretty(Self) -> String
+pub impl Show for Value
+
+// Type aliases
+
+// Traits

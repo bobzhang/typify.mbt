@@ -1,0 +1,10 @@
+import {
+  "bobzhang/typify/collections",
+  "moonbitlang/core/string",
+  "moonbitlang/core/encoding/utf8",
+}
+
+import {
+  "moonbitlang/core/quickcheck",
+  "moonbitlang/core/string",
+} for "test"
