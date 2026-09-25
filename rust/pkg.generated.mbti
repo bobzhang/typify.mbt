@@ -1,0 +1,93 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/rust"
+
+import {
+  "bobzhang/typify",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn builder_of(@typify.TypeSpace, @typify.TypeId) -> Tokens?
+
+pub fn concat(Array[Tokens]) -> Tokens
+
+pub fn ident(String) -> Tokens
+
+pub fn ident_of(@typify.TypeSpace, @typify.TypeId) -> Tokens
+
+pub fn join(Array[Tokens], Char) -> Tokens
+
+pub fn lit_bool(Bool) -> Tokens
+
+pub fn lit_int(Int) -> Tokens
+
+pub fn lit_raw(String) -> Tokens
+
+pub fn lit_str(String) -> Tokens
+
+pub fn lit_usize(Int) -> Tokens
+
+pub fn output_value(@typify.TypeSpace, @typify.TypeEntry, @serde_json.Value, Tokens) -> Tokens?
+
+pub fn parse_tokens(String) -> Tokens
+
+pub fn path_tokens(String) -> Tokens
+
+pub fn quote(String, args? : Map[String, Tokens]) -> Tokens
+
+pub fn terminated(Array[Tokens], Char) -> Tokens
+
+pub fn to_stream(@typify.TypeSpace) -> Tokens
+
+pub fn type_ident(@typify.TypeSpace, @typify.TypeEntry, String?) -> Tokens
+
+pub fn type_parameter_ident(@typify.TypeSpace, @typify.TypeEntry, lifetime? : String) -> Tokens
+
+// Errors
+
+// Types and methods
+pub(all) enum Delim {
+  Paren
+  Brace
+  Bracket
+  NoDelim
+} derive(Eq, @debug.Debug)
+
+pub struct OutputSpace {
+  // private fields
+}
+pub fn OutputSpace::add_item(Self, OutputSpaceMod, String, Tokens) -> Unit
+pub fn OutputSpace::contains(Self, String) -> Bool
+pub fn OutputSpace::into_stream(Self) -> Tokens
+pub fn OutputSpace::new() -> Self
+
+pub(all) enum OutputSpaceMod {
+  Crate
+  Builder
+  Defaults
+  Error
+} derive(Eq, @debug.Debug)
+
+pub(all) enum Token {
+  Ident(String)
+  Punct(Char, joint~ : Bool)
+  Literal(String)
+  Group(Delim, Tokens)
+} derive(Eq, @debug.Debug)
+
+pub struct Tokens {
+  // private fields
+} derive(Eq, @debug.Debug)
+pub fn Tokens::append(Self, Self) -> Unit
+pub fn Tokens::from_array(Array[Token]) -> Self
+pub fn Tokens::is_empty(Self) -> Bool
+pub fn Tokens::new() -> Self
+pub fn Tokens::push(Self, Token) -> Unit
+pub fn Tokens::to_string(Self) -> String
+pub fn Tokens::tokens(Self) -> Array[Token]
+pub impl Show for Tokens
+
+// Type aliases
+
+// Traits

@@ -23,7 +23,7 @@ fn ranges(pred: impl Fn(char) -> bool) -> Vec<(u32, u32)> {
 
 fn emit_ranges(out: &mut String, name: &str, doc: &str, rs: &[(u32, u32)]) {
     writeln!(out, "///|\n/// {doc}\n/// Flattened inclusive `[lo, hi]` pairs, sorted.").unwrap();
-    writeln!(out, "let {name} : FixedArray[Int] = [").unwrap();
+    writeln!(out, "let {name} : ReadOnlyArray[Int] = [").unwrap();
     for chunk in rs.chunks(6) {
         let line: Vec<String> = chunk
             .iter()
@@ -46,14 +46,14 @@ fn emit_mapping(out: &mut String, name: &str, doc: &str, f: impl Fn(char) -> Str
         }
     }
     writeln!(out, "///|\n/// {doc} (keys)").unwrap();
-    writeln!(out, "let {name}_keys : FixedArray[Int] = [").unwrap();
+    writeln!(out, "let {name}_keys : ReadOnlyArray[Int] = [").unwrap();
     for chunk in keys.chunks(10) {
         let line: Vec<String> = chunk.iter().map(|k| format!("0x{k:X}")).collect();
         writeln!(out, "  {},", line.join(", ")).unwrap();
     }
     writeln!(out, "]\n").unwrap();
     writeln!(out, "///|\n/// {doc} (values, parallel to keys)").unwrap();
-    writeln!(out, "let {name}_values : FixedArray[String] = [").unwrap();
+    writeln!(out, "let {name}_values : ReadOnlyArray[String] = [").unwrap();
     for chunk in vals.chunks(8) {
         let line: Vec<String> = chunk
             .iter()
@@ -80,6 +80,15 @@ fn main() {
     emit_ranges(&mut out, "alphanumeric_table", "Rust `char::is_alphanumeric`.", &ranges(char::is_alphanumeric));
     emit_ranges(&mut out, "lowercase_table", "Rust `char::is_lowercase`.", &ranges(char::is_lowercase));
     emit_ranges(&mut out, "uppercase_table", "Rust `char::is_uppercase`.", &ranges(char::is_uppercase));
+    emit_ranges(
+        &mut out,
+        "escape_debug_table",
+        "Chars that Rust's `char::escape_debug` renders as `\\u{..}` (not printable or grapheme-extending).",
+        &ranges(|c| {
+            let e: String = c.escape_debug().collect();
+            e.starts_with("\\u{")
+        }),
+    );
     emit_mapping(&mut out, "lower_map", "Rust `char::to_lowercase`", |c| c.to_lowercase().collect());
     emit_mapping(&mut out, "upper_map", "Rust `char::to_uppercase`", |c| c.to_uppercase().collect());
     print!("{out}");

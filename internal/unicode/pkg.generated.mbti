@@ -14,6 +14,8 @@ pub fn is_xid_continue(Char) -> Bool
 
 pub fn is_xid_start(Char) -> Bool
 
+pub fn needs_unicode_escape(Char) -> Bool
+
 pub fn to_lowercase(Char) -> String
 
 pub fn to_uppercase(Char) -> String

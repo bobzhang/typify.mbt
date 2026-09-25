@@ -1,6 +1,6 @@
 ///|
 /// Binary search in a flattened, sorted `[lo, hi]` range table.
-fn in_table(table : FixedArray[Int], c : Char) -> Bool {
+fn in_table(table : ReadOnlyArray[Int], c : Char) -> Bool {
   let cp = c.to_int()
   let n = table.length() / 2
   for lo = 0, hi = n; lo < hi; {
@@ -19,7 +19,7 @@ fn in_table(table : FixedArray[Int], c : Char) -> Bool {
 
 ///|
 /// Binary search in a sorted key table; returns the index of `c` if present.
-fn find_key(keys : FixedArray[Int], c : Char) -> Int? {
+fn find_key(keys : ReadOnlyArray[Int], c : Char) -> Int? {
   let cp = c.to_int()
   for lo = 0, hi = keys.length(); lo < hi; {
     let mid = lo + (hi - lo) / 2
@@ -129,4 +129,10 @@ pub fn case_mapped_code_points() -> Array[Int] {
   out.sort()
   out.dedup()
   out
+}
+
+///|
+/// Whether Rust's `char::escape_debug` renders `c` as a `\u{..}` escape.
+pub fn needs_unicode_escape(c : Char) -> Bool {
+  in_table(escape_debug_table, c)
 }
