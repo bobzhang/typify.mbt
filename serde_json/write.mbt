@@ -6,23 +6,35 @@ let hex_digits : String = "0123456789abcdef"
 /// `\` and control characters are escaped; everything else is emitted as-is.
 pub fn write_escaped_str(buf : StringBuilder, s : StringView) -> Unit {
   buf.write_char('"')
-  for c in s {
-    match c {
-      '"' => buf.write_string("\\\"")
-      '\\' => buf.write_string("\\\\")
-      '\b' => buf.write_string("\\b")
-      '\t' => buf.write_string("\\t")
-      '\n' => buf.write_string("\\n")
-      '\u{0C}' => buf.write_string("\\f")
-      '\r' => buf.write_string("\\r")
-      c if c.to_int() < 0x20 => {
-        let n = c.to_int()
-        buf.write_string("\\u00")
-        buf.write_char(hex_digits.get_char(n >> 4).unwrap())
-        buf.write_char(hex_digits.get_char(n & 0xF).unwrap())
-      }
-      c => buf.write_char(c)
+  // Copy runs of characters that need no escape in one step.
+  let n = s.length()
+  let mut start = 0
+  for i in 0..<n {
+    let u = s.unsafe_get(i).to_int()
+    if u >= 0x20 && u != 0x22 && u != 0x5C {
+      continue
     }
+    if start < i {
+      buf.write_view(s[start:i])
+    }
+    start = i + 1
+    match u {
+      0x22 => buf.write_string("\\\"")
+      0x5C => buf.write_string("\\\\")
+      0x08 => buf.write_string("\\b")
+      0x09 => buf.write_string("\\t")
+      0x0A => buf.write_string("\\n")
+      0x0C => buf.write_string("\\f")
+      0x0D => buf.write_string("\\r")
+      _ => {
+        buf.write_string("\\u00")
+        buf.write_char(hex_digits.get_char(u >> 4).unwrap())
+        buf.write_char(hex_digits.get_char(u & 0xF).unwrap())
+      }
+    }
+  }
+  if start < n {
+    buf.write_view(s[start:n])
   }
   buf.write_char('"')
 }

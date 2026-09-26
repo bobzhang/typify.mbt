@@ -116,7 +116,18 @@ fn generate_suite(
     let (name, root, settings, compile_only) = f
     let space = @typify.TypeSpace::new(settings)
     ignore(space.add_root_schema(root) catch { e => abort("\{name}: \{e}") })
-    let code = @moonbit.generate(space)
+    // `strict` (CONFORMANCE_STRICT=1): strict-warning, FromJson output, to
+    // check that those options only change how the code is written.
+    let code = if strict_mode() {
+      let options = @moonbit.Options::default()
+      options.strict_warnings = true
+      options.from_json = true
+      @moonbit.generate_with(space, options) catch {
+        e => abort("\{name}: \{e}")
+      }
+    } else {
+      @moonbit.generate(space)
+    }
     let pkg = package_name(name)
     let dir = "\{base}/\{pkg}"
     @fs.create_dir(dir) catch {
@@ -125,7 +136,7 @@ fn generate_suite(
     write("\{dir}/types.mbt", code)
     write(
       "\{dir}/moon.pkg",
-      "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n}\n\nwarnings = \"-unused_value\"\n\n// Generated code is compared with the generator's output as is.\nformatter = { \"ignore\": [ \"types.mbt\" ] }\n",
+      "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/core/json\",\n}\n\nwarnings = \"-unused_value-unused_package\"\n\n// Generated code is compared with the generator's output as is.\nformatter = { \"ignore\": [ \"types.mbt\" ] }\n",
     )
     imports.push("  \"bobzhang/typify/\{base}/\{pkg}\",")
     for pair in space.entries() {
@@ -294,6 +305,11 @@ fn recursive_flatten(space : @typify.TypeSpace) -> Bool {
     false
   }
   edges.keys().any(visit)
+}
+
+///|
+fn strict_mode() -> Bool {
+  @env.get_env_vars().get("CONFORMANCE_STRICT") is Some("1")
 }
 
 ///|

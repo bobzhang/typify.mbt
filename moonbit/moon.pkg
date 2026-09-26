@@ -1,5 +1,6 @@
 import {
   "bobzhang/typify",
+  "moonbitlang/core/json",
   "bobzhang/typify/serde_json",
 }
 

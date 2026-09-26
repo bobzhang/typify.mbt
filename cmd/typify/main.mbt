@@ -20,7 +20,22 @@ fn main {
           return
         }
       }
-      let code = @cli.convert(args, text) catch {
+      let moonbit_config = match args.moonbit_config {
+        Some(path) =>
+          Some(
+            @fs.read_file_to_string(path) catch {
+              e => {
+                println(
+                  "Error: Failed to open MoonBit config: \{path}: \{Repr(e)}",
+                )
+                @sys.exit(1)
+                return
+              }
+            },
+          )
+        None => None
+      }
+      let code = @cli.convert(args, text, moonbit_config?) catch {
         e => {
           println("Error: \{e}")
           @sys.exit(1)

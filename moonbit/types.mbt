@@ -98,6 +98,9 @@ fn native_kind(native : @typify.TypeEntryNative) -> NativeKind {
 ///|
 /// The MoonBit type expression for an IR type.
 fn Gen::mbt_type(self : Gen, id : @typify.TypeId) -> String {
+  if self.replaced.get(id.0) is Some((ty, _)) {
+    return ty
+  }
   let e = entry(self.space, id)
   match e.details {
     Enum(_) | Struct(_) | Newtype(_) => self.type_name(id)

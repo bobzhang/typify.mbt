@@ -136,14 +136,19 @@ fn Gen::struct_decode(
   // One callback decodes field `j` (in `named` order) as its key is read.
   buf.write_string(
     (if needs_input { "let r = " } else { "ignore(" }) +
-    "@typify_rt.de_fields(\{d}, \{str_lit(expecting)}, \{table}, (j, v) => match j {\n",
+    "@typify_rt.de_fields(\{d}, \{str_lit(expecting)}, \{table}, ",
   )
-  for j, n in named {
-    buf.write_string(
-      "  \{j} => f\{n.0} = Some(\{self.de_expr(props[n.0].type_id, "v")})\n",
-    )
+  if named.is_empty() {
+    buf.write_string("(_, _) => ()")
+  } else {
+    buf.write_string("(j, v) => match j {\n")
+    for j, n in named {
+      buf.write_string(
+        "  \{j} => f\{n.0} = Some(\{self.de_expr(props[n.0].type_id, "v")})\n",
+      )
+    }
+    buf.write_string("  _ => ()\n}")
   }
-  buf.write_string("  _ => ()\n}")
   if has_flatten {
     buf.write_string(", flatten=true")
   }
@@ -155,6 +160,9 @@ fn Gen::struct_decode(
   }
   if external_variant {
     buf.write_string(", external_variant=true")
+  }
+  if self.options.error_paths {
+    buf.write_string(", paths=true")
   }
   buf.write_string(if needs_input { ")\n" } else { "))\n" })
   // Absent fields, in declaration order: defaults, `None` for optional
@@ -221,22 +229,42 @@ fn Gen::struct_encode(
 
 ///|
 fn Gen::api_methods(self : Gen, out : StringBuilder, name : String) -> Unit {
-  ignore(self)
+  // With core `FromJson`, `from_json` is that trait's; don't also attach
+  // `Serde::from_json` under the same name.
+  let methods = if self.options.from_json {
+    "deserialize, serialize, from_json_str, to_json_string"
+  } else {
+    "deserialize, serialize, from_json_str, to_json_string, from_json"
+  }
   out.write_string(
     (
       $|///|
       $|pub extend \{name} with @typify_rt.Serde::{
-      $|  deserialize, serialize, from_json_str, to_json_string, from_json,
+      $|  \{methods},
       $|}
       $|
       $|///|
       $|pub impl ToJson for \{name} with fn to_json(self) {
-      $|  @typify_rt.json_of(self, \{str_lit(name)})
+      $|  @typify_rt.json_of(self, \{str_lit(name)}\{if self.ordered_json { ", preserve_order=true" } else { "" }})
       $|}
       $|
       $|
     ),
   )
+  if self.options.from_json {
+    out.write_string(
+      (
+        $|///|
+        $|pub impl FromJson for \{name} with fn from_json(json, path) {
+        $|  \{name}::deserialize(@typify_rt.De::from_json(json)) catch {
+        $|    \{self.qualify("@typify_rt.")}DeError(message) => raise \{self.qualify("@json.")}JsonDecodeError((path, message))
+        $|  }
+        $|}
+        $|
+        $|
+      ),
+    )
+  }
 }
 
 ///|
@@ -338,7 +366,7 @@ fn Gen::struct_constructor(
   let body = if inits.is_empty() {
     "  \{name}::{}"
   } else {
-    "  \{name}::{\n\{inits.map(s => "    " + s.replace_all(old="\n", new="\n  ")).join(",\n")},\n  }"
+    "  \{self.qualifier(name)}{\n\{inits.map(s => "    " + s.replace_all(old="\n", new="\n  ")).join(",\n")},\n  }"
   }
   out.write_string(
     "///|\n/// Construct a `\{name}` (fields with defaults are optional).\npub fn \{name}::\{name}(\{params.join(", ")}) -> \{name} {\n\{body}\n}\n\n",
@@ -354,6 +382,9 @@ fn Gen::default_literal(
   id : @typify.TypeId,
   v : @serde_json.Value,
 ) -> String? {
+  if self.replaced.contains(id.0) {
+    return None
+  }
   match (entry(self.space, id).details, v) {
     (Boolean, Bool(b)) => Some(b.to_string())
     (String, String(s)) => Some(str_lit(s))
@@ -437,9 +468,16 @@ fn Gen::output_struct(
     out.write_string("  \{fields[i]} : \{self.mbt_type(p.type_id)}\n")
   }
   out.write_string("} derive(Debug, Eq)\n\n")
-  self.struct_constructor(out, name, d, fields)
+  if self.constructor_enabled(id) {
+    self.struct_constructor(out, name, d, fields)
+  }
   let build = "{ \{fields.mapi((i, f) => "\{f}: v\{i}").join(", ")} }"
-  let build = "\{name}::" + build
+  // An empty struct literal needs its type: `{}` alone is a map.
+  let build = if fields.is_empty() {
+    "\{name}::{}"
+  } else {
+    self.qualifier(name) + build
+  }
   let decode = self.struct_decode(
     out,
     d.name,
@@ -458,7 +496,7 @@ fn Gen::output_struct(
       $|}
       $|
       $|///|
-      $|pub impl @typify_rt.Serde for \{name} with fn serialize(self) {
+      $|pub impl @typify_rt.Serde for \{name} with fn serialize(\{if d.properties.is_empty() { "_" } else { "self" }}) {
       $|  let o = @typify_rt.ObjectBuilder::new()
       $|\{indent(self.struct_encode(d.properties, i => "self.\{fields[i]}").trim_end().to_owned(), 2)}
       $|  o.build()
@@ -572,7 +610,7 @@ fn Gen::output_newtype(
   out.write_string(
     (
       $|///|
-      $|pub impl @typify_rt.Serde for \{name} with fn serialize(self) {
+      $|pub impl @typify_rt.Serde for \{name} with fn serialize(\{if self.ser_expr(d.type_id, "self.0").contains("self.0") { "self" } else { "_" }}) {
       $|  \{self.ser_expr(d.type_id, "self.0")}
       $|}
       $|
@@ -623,7 +661,13 @@ fn Gen::variant_payload_decode(
   external : Bool,
 ) -> String {
   let type_name = self.type_name(id)
-  let ctor = "\{type_name}::\{self.ctors.get(id.0).unwrap()[i]}"
+  // Strict mode leaves out the qualification where the expected type is
+  // known (every form but untagged trials).
+  let ctor = if self.options.strict_warnings && allow_seq {
+    self.ctors.get(id.0).unwrap()[i]
+  } else {
+    "\{type_name}::\{self.ctors.get(id.0).unwrap()[i]}"
+  }
   match v.details {
     Simple => "{ @typify_rt.de_unit(\{d}); \{ctor} }"
     Item(t) => "\{ctor}(\{self.de_expr(t, d)})"
@@ -722,7 +766,7 @@ fn Gen::output_enum(
         }
         let code = match v.details {
           Simple =>
-            "{ @typify_rt.variant_unit(payload); \{name}::\{self.ctors.get(id.0).unwrap()[i]} }"
+            "{ @typify_rt.variant_unit(payload); \{self.qualifier(name)}\{self.ctors.get(id.0).unwrap()[i]} }"
           _ =>
             self.variant_payload_decode(
               out,
@@ -739,8 +783,8 @@ fn Gen::output_enum(
         arms.write_string("  \{i} => \{indent(code, 2).trim_start()}\n")
       }
       (
-        $|let (idx, payload) = @typify_rt.de_enum(d, \{str_lit(d.name)}, \{str_array(raw_names)})
-        $|let v = match idx {
+        $|let (idx, \{if d.variants.is_empty() { "_" } else { "payload" }}) = @typify_rt.de_enum(d, \{str_lit(d.name)}, \{str_array(raw_names)})
+        $|let v\{if self.options.strict_warnings { " : \{name}" } else { "" }} = match idx {
         $|\{arms.to_string().trim_end()}
         $|  _ => abort("unreachable")
         $|}
@@ -804,7 +848,7 @@ fn Gen::output_enum(
         $|@typify_rt.de_adjacent(d, \{str_lit(d.name)}, \{str_lit(tag)}, \{str_lit(content)}, \{str_array(raw_names)}, \{d.deny_unknown_fields}, (idx, payload) => match idx {
         $|\{arms.to_string().trim_end()}
         $|  _ => abort("unreachable")
-        $|})
+        $|}\{if self.options.error_paths { ", paths=true" } else { "" }})
       )
     }
     Untagged => {
@@ -939,16 +983,33 @@ let header : String =
   #|//
   #|// Requires in moon.pkg:
   #|//   import { "bobzhang/typify/runtime" @typify_rt }
-  #|// With strict warning settings, also:
-  #|//   warnings = "-implicit_impl_as_method-unnecessary_annotation"
   #|
 
 ///|
 /// Generate MoonBit code for all types in the type space.
 pub fn generate(space : @typify.TypeSpace) -> String {
-  let gen = Gen::new(space)
+  // The default options name no types, so they cannot be rejected.
+  generate_with(space, Options::default()) catch {
+    e => abort("generate: \{e}")
+  }
+}
+
+///|
+/// Generate MoonBit code with backend options (visibility, replacement types,
+/// constructors, ...). Raises when the options name types or variants the
+/// schema does not have.
+pub fn generate_with(
+  space : @typify.TypeSpace,
+  options : Options,
+) -> String raise OptionsError {
+  let gen = Gen::new(space, options)
   let out = StringBuilder()
   out.write_string(header)
+  if !options.strict_warnings {
+    out.write_string(
+      "// With strict warning settings, also:\n//   warnings = \"-implicit_impl_as_method-unnecessary_annotation\"\n",
+    )
+  }
   // Rust types without a MoonBit counterpart (conversions, replacements,
   // `x-rust-type`) are represented as `Json`.
   let unknown = []
@@ -967,20 +1028,219 @@ pub fn generate(space : @typify.TypeSpace) -> String {
   out.write_string("\n")
   for pair in space.entries() {
     let (id, e) = pair
-    match e.details {
-      Struct(d) => gen.output_struct(out, id, d)
-      Enum(d) => gen.output_enum(out, id, d)
-      Newtype(d) => gen.output_newtype(out, id, d)
-      _ => ()
+    if !gen.emitted.contains(id.0) {
+      continue
     }
+    let item = StringBuilder()
+    let derives = match e.details {
+      Struct(d) => {
+        gen.output_struct(item, id, d)
+        "Debug, Eq"
+      }
+      Enum(d) => {
+        gen.output_enum(item, id, d)
+        if d.variants.iter().all(v => v.details is Simple) {
+          "Debug, Eq, Hash"
+        } else {
+          "Debug, Eq"
+        }
+      }
+      Newtype(d) => {
+        gen.output_newtype(item, id, d)
+        if entry(space, d.type_id).details is String {
+          "Debug, Eq, Hash"
+        } else {
+          "Debug, Eq"
+        }
+      }
+      _ => continue
+    }
+    out.write_string(gen.finish_item(id, item.to_string(), derives))
   }
   out.to_string()
 }
 
 ///|
+/// `Name::` before a struct literal or constructor, or nothing in strict
+/// mode, where the expected type is known.
+fn Gen::qualifier(self : Gen, name : String) -> String {
+  if self.options.strict_warnings {
+    ""
+  } else {
+    "\{name}::"
+  }
+}
+
+///|
+/// A package qualifier, left out in strict mode where it is not needed.
+fn Gen::qualify(self : Gen, prefix : String) -> String {
+  if self.options.strict_warnings {
+    ""
+  } else {
+    prefix
+  }
+}
+
+///|
+fn Gen::visibility(self : Gen, id : @typify.TypeId) -> Visibility {
+  match self.type_options.get(id.0) {
+    Some({ visibility: Some(v), .. }) => v
+    _ => self.options.visibility
+  }
+}
+
+///|
+fn Gen::constructor_enabled(self : Gen, id : @typify.TypeId) -> Bool {
+  match self.type_options.get(id.0) {
+    Some({ constructor: Some(c), .. }) => c
+    _ => self.options.constructor
+  }
+}
+
+///|
+/// Apply the type's visibility to its generated code and, for strict warning
+/// settings, declare the derived and trait methods the way the compiler asks
+/// (hidden and deprecated, so they are not promoted implicitly).
+fn Gen::finish_item(
+  self : Gen,
+  id : @typify.TypeId,
+  code : String,
+  derives : String,
+) -> String {
+  let name = self.type_name(id)
+  let vis = self.visibility(id)
+  let modifier = match vis {
+    Public => "pub(all) "
+    ReadOnly => "pub "
+    Abstract => ""
+    Private => "priv "
+  }
+  let mut code = code
+  for kind in ["struct", "enum"] {
+    for after in [" {", "("] {
+      code = code.replace(
+        old="pub(all) \{kind} \{name}\{after}",
+        new="\{modifier}\{kind} \{name}\{after}",
+      )
+    }
+  }
+  if self.options.strict_warnings {
+    let traits = ["Debug::{to_repr}", "Eq::{equal, not_equal}"]
+    if derives.contains("Hash") {
+      traits.push("Hash::{hash, hash_combine}")
+    }
+    traits.push("ToJson::{to_json}")
+    if self.options.from_json {
+      traits.push("FromJson::{from_json}")
+    }
+    let buf = StringBuilder()
+    buf.write_string(code)
+    for t in traits {
+      buf.write_string(
+        "///|\n#doc(hidden)\n#deprecated\npub extend \{name} with \{t}\n\n",
+      )
+    }
+    code = buf.to_string()
+  }
+  if self.options.package_codecs {
+    code = code
+      .replace_all(
+        old="pub impl @typify_rt.Serde for ",
+        new="impl @typify_rt.Serde for ",
+      )
+      .replace_all(
+        old="pub extend \{name} with @typify_rt.Serde::",
+        // Package-private conveniences need not all be used.
+        new="#warnings(\"-unused_value\")\nextend \{name} with @typify_rt.Serde::",
+      )
+  }
+  if self.options.strict_warnings {
+    // Error and document constructors resolve from their expected type.
+    for
+      pair in [
+        ("raise @typify_rt.DeError(", "raise DeError("),
+        ("@typify_rt.DeError(msg) ", "DeError(msg) "),
+        ("raise @typify_rt.ConversionError(", "raise ConversionError("),
+        ("@typify_rt.ConversionError(msg) ", "ConversionError(msg) "),
+        ("@typify_rt.Content::Array(", "Array("),
+      ] {
+      code = code.replace_all(old=pair.0, new=pair.1)
+    }
+  }
+  if self.options.strict_warnings && code.contains("::{}") {
+    // `T::{}` is required (`{}` is a map) but reported as unnecessary.
+    let blocks = code
+      .split("///|\n")
+      .map(block => {
+        let block = block.to_owned()
+        if !block.contains("::{}") {
+          return block
+        }
+        let lines = block.split("\n").map(l => l.to_owned()).collect()
+        match lines.search_by(l => !l.has_prefix("///") && !l.has_prefix("#")) {
+          Some(i) => {
+            lines.insert(i, "#warnings(\"-unnecessary_annotation\")")
+            lines.join("\n")
+          }
+          None => block
+        }
+      })
+    code = blocks.collect().join("///|\n")
+  }
+  if vis is Private && self.options.strict_warnings {
+    // A private type's generated helpers may go unused.
+    let out : Array[String] = []
+    for line in code.split("\n") {
+      let line = line.to_owned()
+      let is_decl = line.has_prefix("pub(all) ") ||
+        line.has_prefix("priv struct ") ||
+        line.has_prefix("priv enum ") ||
+        line.has_prefix("pub impl ") ||
+        line.has_prefix("pub fn ") ||
+        line.has_prefix("pub extend ") ||
+        line.has_prefix("let ") ||
+        line.has_prefix("fn ")
+      if is_decl {
+        // One `#warnings` attribute per declaration: merge with an earlier one.
+        match out.last() {
+          Some(prev) if prev.has_prefix("#warnings(\"") => {
+            let merged = prev.unsafe_substring(start=0, end=prev.length() - 2) +
+              "-unused_value\")"
+            out[out.length() - 1] = merged
+          }
+          _ => out.push("#warnings(\"-unused_value\")")
+        }
+      }
+      out.push(line)
+    }
+    code = out.join("\n")
+  }
+  if vis is Private {
+    // A private type's methods and impls are private too.
+    let lines = code
+      .split("\n")
+      .map(line => {
+        let line = line.to_owned()
+        if line.has_prefix("pub impl ") ||
+          line.has_prefix("pub fn ") ||
+          line.has_prefix("pub extend ") {
+          line.unsafe_substring(start=4, end=line.length())
+        } else {
+          line
+        }
+      })
+    code = lines.collect().join("\n")
+  }
+  code
+}
+
+///|
 /// The MoonBit name generated for a named type.
 pub fn type_name_of(space : @typify.TypeSpace, id : @typify.TypeId) -> String {
-  Gen::new(space).type_name(id)
+  let gen = Gen::new(space, Options::default()) catch {
+    e => abort("type_name_of: \{e}")
+  }
+  gen.type_name(id)
 }
 
 ///|

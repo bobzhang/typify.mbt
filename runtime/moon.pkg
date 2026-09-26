@@ -3,6 +3,7 @@ import {
   "bobzhang/typify/collections",
   "bobzhang/typify/regex",
   "moonbitlang/core/encoding/utf8",
+  "moonbitlang/core/json",
 }
 
 // Codecs share uniform signatures (`raise SerError`) so that generated code

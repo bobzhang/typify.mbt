@@ -7,7 +7,7 @@ import {
 }
 
 // Values
-pub fn convert(CliArgs, String) -> String raise
+pub fn convert(CliArgs, String, moonbit_config? : String) -> String raise
 
 pub let help : String
 
@@ -35,6 +35,7 @@ pub(all) struct CliArgs {
   map_type : String?
   unknown_crates : @typify.UnknownPolicy?
   preserve_order : Bool
+  moonbit_config : String?
 } derive(@debug.Debug)
 pub fn CliArgs::output_path(Self) -> String?
 pub fn CliArgs::settings(Self) -> @typify.TypeSpaceSettings

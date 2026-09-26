@@ -3,16 +3,58 @@ package "bobzhang/typify/moonbit"
 
 import {
   "bobzhang/typify",
+  "moonbitlang/core/debug",
 }
 
 // Values
 pub fn generate(@typify.TypeSpace) -> String
 
+pub fn generate_with(@typify.TypeSpace, Options) -> String raise OptionsError
+
 pub fn type_name_of(@typify.TypeSpace, @typify.TypeId) -> String
 
 // Errors
+pub(all) suberror OptionsError {
+  OptionsError(String)
+} derive(@debug.Debug)
+pub impl Show for OptionsError
 
 // Types and methods
+pub(all) enum Codec {
+  Serde
+  Json
+  Functions(decode~ : String, encode~ : String)
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Options {
+  types : Map[String, TypeOptions]
+  mut visibility : Visibility
+  mut constructor : Bool
+  roots : Array[String]
+  mut from_json : Bool
+  mut package_codecs : Bool
+  mut error_paths : Bool
+  mut strict_warnings : Bool
+} derive(@debug.Debug)
+pub fn Options::default() -> Self
+pub fn Options::for_type(Self, String) -> TypeOptions
+pub fn Options::from_json_str(String) -> Self raise OptionsError
+
+pub(all) struct TypeOptions {
+  mut name : String?
+  mut visibility : Visibility?
+  mut constructor : Bool?
+  variants : Map[String, String]
+  mut replace : (String, Codec)?
+} derive(@debug.Debug)
+pub fn TypeOptions::new() -> Self
+
+pub(all) enum Visibility {
+  Public
+  ReadOnly
+  Abstract
+  Private
+} derive(Eq, @debug.Debug)
 
 // Type aliases
 

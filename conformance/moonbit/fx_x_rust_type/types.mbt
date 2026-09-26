@@ -67,7 +67,7 @@ pub(all) enum Marker {
 
 ///|
 pub impl @typify_rt.Serde for Marker with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "Marker", [])
+  let (idx, _) = @typify_rt.de_enum(d, "Marker", [])
   let v = match idx {
 
     _ => abort("unreachable")

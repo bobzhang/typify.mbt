@@ -91,7 +91,7 @@ pub(all) enum AnyOfNoStrings {
 
 ///|
 pub impl @typify_rt.Serde for AnyOfNoStrings with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AnyOfNoStrings", [])
+  let (idx, _) = @typify_rt.de_enum(d, "AnyOfNoStrings", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -124,7 +124,7 @@ pub(all) enum AnyOfNothing {
 
 ///|
 pub impl @typify_rt.Serde for AnyOfNothing with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AnyOfNothing", [])
+  let (idx, _) = @typify_rt.de_enum(d, "AnyOfNothing", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -484,7 +484,7 @@ pub(all) enum Never {
 
 ///|
 pub impl @typify_rt.Serde for Never with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "Never", [])
+  let (idx, _) = @typify_rt.de_enum(d, "Never", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -517,7 +517,7 @@ pub(all) enum NeverEver {
 
 ///|
 pub impl @typify_rt.Serde for NeverEver with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "NeverEver", [])
+  let (idx, _) = @typify_rt.de_enum(d, "NeverEver", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -550,7 +550,7 @@ pub(all) enum NeverEverForever {
 
 ///|
 pub impl @typify_rt.Serde for NeverEverForever with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "NeverEverForever", [])
+  let (idx, _) = @typify_rt.de_enum(d, "NeverEverForever", [])
   let v = match idx {
 
     _ => abort("unreachable")

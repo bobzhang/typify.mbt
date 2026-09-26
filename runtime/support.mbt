@@ -48,8 +48,14 @@ pub fn De::from_json(json : Json) -> De {
 
 ///|
 /// Convert serialized content to builtin `Json` (duplicate keys: last wins).
-pub fn content_to_json(c : Content) -> Json raise SerError {
-  let v = c.to_value() catch {
+///
+/// `preserve_order` keeps object keys in document order (serde_json's
+/// `preserve_order`), as `--preserve-order` output expects.
+pub fn content_to_json(
+  c : Content,
+  preserve_order? : Bool = false,
+) -> Json raise SerError {
+  let v = c.to_value(preserve_order~) catch {
     @serde_json.ParseError(message~, ..) => raise SerError(message)
   }
   value_to_json(v)
@@ -172,7 +178,18 @@ pub fn[T] de_adjacent(
   variants : Array[String],
   deny : Bool,
   decode : (Int, VariantInput) -> T raise DeError,
+  paths? : Bool = false,
 ) -> T raise DeError {
+  // With `paths`, errors in the content say so (`error_at`).
+  let decode = if paths {
+    (i : Int, v : VariantInput) => {
+      decode(i, v) catch {
+        e => raise if v is Payload(_) { error_at(e, content) } else { e }
+      }
+    }
+  } else {
+    decode
+  }
   let fields = [tag, content]
   let expecting = "adjacently tagged enum \{name}"
   let entries : Array[() -> (String, De)] = match
@@ -271,4 +288,33 @@ pub fn adjacent_unit(
     Payload(MapKey(k, _)) => raise invalid_type_error(String(k), expecting)
     Payload(Flat(_)) => raise flatten_error()
   }
+}
+
+///|
+/// Decode a type through its core `FromJson` (a replacement type with the
+/// `json` codec). The value is read as `serde_json::Value` with its keys in
+/// document order; duplicate keys are resolved (last wins) before the type
+/// sees them.
+pub fn[T : @json.FromJson] de_from_json(d : De) -> T raise DeError {
+  let json = de_json_ordered(d)
+  @json.from_json(json) catch {
+    @json.JsonDecodeError((path, message)) => {
+      let at = path.to_string().trim().to_string()
+      let message = message.trim().to_string()
+      raise DeError(
+        if at == "" || at == "$" {
+          message
+        } else {
+          "\{message} at \{at}"
+        },
+      )
+    }
+  }
+}
+
+///|
+/// Encode a type through its core `ToJson` (a replacement type with the
+/// `json` codec), keeping its object keys in the order it builds them.
+pub fn[T : ToJson] ser_to_json(value : T) -> Content {
+  ser_json_ordered(value.to_json())
 }

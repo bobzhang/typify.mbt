@@ -1,8 +1,9 @@
 import {
   "bobzhang/typify/runtime" @typify_rt,
+  "moonbitlang/core/json",
 }
 
-warnings = "-unused_value"
+warnings = "-unused_value-unused_package"
 
 // Generated code is compared with the generator's output as is.
 formatter(ignore: [ "types.mbt" ])

@@ -449,7 +449,7 @@ pub(all) enum Unresolvable {
 
 ///|
 pub impl @typify_rt.Serde for Unresolvable with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "Unresolvable", [])
+  let (idx, _) = @typify_rt.de_enum(d, "Unresolvable", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -538,14 +538,12 @@ let merge_empty_fields : @typify_rt.Fields = @typify_rt.Fields::new([])
 
 ///|
 pub impl @typify_rt.Serde for MergeEmpty with fn deserialize(d) {
-  ignore(@typify_rt.de_fields(d, "struct MergeEmpty", merge_empty_fields, (j, v) => match j {
-    _ => ()
-  }, deny=true))
-  MergeEmpty::{  }
+  ignore(@typify_rt.de_fields(d, "struct MergeEmpty", merge_empty_fields, (_, _) => (), deny=true))
+  MergeEmpty::{}
 }
 
 ///|
-pub impl @typify_rt.Serde for MergeEmpty with fn serialize(self) {
+pub impl @typify_rt.Serde for MergeEmpty with fn serialize(_) {
   let o = @typify_rt.ObjectBuilder::new()
 
   o.build()
@@ -885,7 +883,7 @@ pub(all) enum Unsatisfiable1 {
 
 ///|
 pub impl @typify_rt.Serde for Unsatisfiable1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "Unsatisfiable1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "Unsatisfiable1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -918,7 +916,7 @@ pub(all) enum Unsatisfiable2 {
 
 ///|
 pub impl @typify_rt.Serde for Unsatisfiable2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "Unsatisfiable2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "Unsatisfiable2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -951,7 +949,7 @@ pub(all) enum Unsatisfiable3 {
 
 ///|
 pub impl @typify_rt.Serde for Unsatisfiable3 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "Unsatisfiable3", [])
+  let (idx, _) = @typify_rt.de_enum(d, "Unsatisfiable3", [])
   let v = match idx {
 
     _ => abort("unreachable")

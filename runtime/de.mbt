@@ -391,13 +391,53 @@ fn seq_elements(
 }
 
 ///|
-pub fn[T] de_vec(d : De, f : (De) -> T raise DeError) -> Array[T] raise DeError {
+///
+/// `paths`: report where an element failed (see `error_at`).
+pub fn[T] de_vec(
+  d : De,
+  f : (De) -> T raise DeError,
+  paths? : Bool = false,
+) -> Array[T] raise DeError {
   let (xs, mode) = seq_elements(d, "a sequence")
   let out = []
-  for x in xs {
-    out.push(f(Value(x, mode)))
+  for i, x in xs {
+    if paths {
+      out.push(
+        f(Value(x, mode)) catch {
+          e => raise error_at(e, i.to_string())
+        },
+      )
+    } else {
+      out.push(f(Value(x, mode)))
+    }
   }
   out
+}
+
+///|
+/// Add where an error happened to its message, as a JSON Pointer suffix:
+/// `missing field `a`` becomes `missing field `a` at /item`, and an error
+/// already `at /payload` becomes `at /item/payload`. serde's own messages
+/// carry no path (`serde_path_to_error` adds one in Rust); generated code
+/// uses this only with the `error_paths` option. Panics are left alone.
+pub fn error_at(error : DeError, segment : String) -> DeError {
+  let DeError(message) = error
+  if message.has_prefix("panic:") {
+    return error
+  }
+  let segment = segment
+    .replace_all(old="~", new="~0")
+    .replace_all(old="/", new="~1")
+  match message.rev_find(" at /") {
+    Some(i) =>
+      DeError(
+        message.unsafe_substring(start=0, end=i) +
+        " at /" +
+        segment +
+        message.unsafe_substring(start=i + 4, end=message.length()),
+      )
+    None => DeError("\{message} at /\{segment}")
+  }
 }
 
 ///|

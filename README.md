@@ -138,6 +138,21 @@ Structs, enums (external, internal, adjacent and untagged tagging), `flatten`,
 `deny_unknown_fields`, defaults, positional (array) struct input and
 duplicate-key rejection all follow serde's rules.
 
+## Fitting into an existing package
+
+`--moonbit-config <file>` lets the generated types *be* a package's own types. The
+file controls:
+- visibility (`pub(all)`, `pub`, abstract, `priv`);
+- whether constructors are generated;
+- variant and type names;
+- existing types to use instead of generated ones (with their own codecs);
+- which types to emit;
+- core `FromJson` impls, package-private codecs and error paths;
+- warning-free output under strict settings.
+
+See [docs/moonbit-config.md](docs/moonbit-config.md). openseek generates its session
+log types this way, keeping its hand-written constructors and methods.
+
 ## Evolving a schema
 
 [docs/schema-evolution.md](docs/schema-evolution.md) explains which schema changes are

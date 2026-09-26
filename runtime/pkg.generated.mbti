@@ -5,6 +5,7 @@ import {
   "bobzhang/typify/regex",
   "bobzhang/typify/serde_json",
   "moonbitlang/core/debug",
+  "moonbitlang/core/json",
 }
 
 // Values
@@ -26,9 +27,9 @@ pub fn contains_value(Array[@serde_json.Content], @serde_json.Content) -> Bool
 
 pub fn content_or_null(() -> @serde_json.Content raise SerError) -> @serde_json.Content
 
-pub fn content_to_json(@serde_json.Content) -> Json raise SerError
+pub fn content_to_json(@serde_json.Content, preserve_order? : Bool) -> Json raise SerError
 
-pub fn[T] de_adjacent(De, String, String, String, Array[String], Bool, (Int, VariantInput) -> T raise DeError) -> T raise DeError
+pub fn[T] de_adjacent(De, String, String, String, Array[String], Bool, (Int, VariantInput) -> T raise DeError, paths? : Bool) -> T raise DeError
 
 pub fn de_bool(De) -> Bool raise DeError
 
@@ -38,9 +39,11 @@ pub fn de_f32(De) -> Float raise DeError
 
 pub fn de_f64(De) -> Double raise DeError
 
-pub fn de_fields(De, String, Fields, (Int, De) -> Unit raise DeError, flatten? : Bool, deny? : Bool, positional? : Bool, external_variant? : Bool) -> FieldsInput raise DeError
+pub fn de_fields(De, String, Fields, (Int, De) -> Unit raise DeError, flatten? : Bool, deny? : Bool, positional? : Bool, external_variant? : Bool, paths? : Bool) -> FieldsInput raise DeError
 
 pub fn de_fixed(De, Int) -> SeqReader raise DeError
+
+pub fn[T : @json.FromJson] de_from_json(De) -> T raise DeError
 
 pub fn de_i16(De) -> Int16 raise DeError
 
@@ -102,7 +105,7 @@ pub fn de_unit(De) -> Unit raise DeError
 
 pub fn de_untagged(De) -> De raise DeError
 
-pub fn[T] de_vec(De, (De) -> T raise DeError) -> Array[T] raise DeError
+pub fn[T] de_vec(De, (De) -> T raise DeError, paths? : Bool) -> Array[T] raise DeError
 
 pub fn[T] default_value(String, (De) -> T raise DeError) -> T raise DeError
 
@@ -128,11 +131,13 @@ pub fn end_enum_map(De) -> Unit raise DeError
 
 pub fn[T] enum_values(Array[String], (De) -> T raise DeError, (T) -> @serde_json.Content raise SerError) -> Array[@serde_json.Content]
 
+pub fn error_at(DeError, String) -> DeError
+
 pub fn internal_unit(De, String, String) -> Unit raise DeError
 
 pub fn invalid_type_error(@serde_json.Content, String) -> DeError
 
-pub fn[T : Serde] json_of(T, String) -> Json
+pub fn[T : Serde] json_of(T, String, preserve_order? : Bool) -> Json
 
 pub fn json_to_value(Json, preserve_order? : Bool) -> @serde_json.Value
 
@@ -173,6 +178,8 @@ pub fn[T] ser_option(T?, (T) -> @serde_json.Content raise SerError) -> @serde_js
 pub fn[K, V] ser_sorted_map(Map[K, V], (K, K) -> Int, (K) -> String raise SerError, (V) -> @serde_json.Content raise SerError) -> @serde_json.Content raise SerError
 
 pub fn ser_string(String) -> @serde_json.Content
+
+pub fn[T : ToJson] ser_to_json(T) -> @serde_json.Content
 
 pub fn ser_u16(UInt16) -> @serde_json.Content
 

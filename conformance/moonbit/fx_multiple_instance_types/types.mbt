@@ -149,7 +149,7 @@ pub impl @typify_rt.Serde for ReallyJustNull with fn deserialize(d) {
 }
 
 ///|
-pub impl @typify_rt.Serde for ReallyJustNull with fn serialize(self) {
+pub impl @typify_rt.Serde for ReallyJustNull with fn serialize(_) {
   @typify_rt.ser_unit()
 }
 

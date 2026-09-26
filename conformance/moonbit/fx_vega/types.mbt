@@ -18519,7 +18519,7 @@ pub(all) enum AlignValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for AlignValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AlignValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "AlignValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -18552,7 +18552,7 @@ pub(all) enum AlignValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for AlignValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AlignValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "AlignValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -18942,7 +18942,7 @@ pub(all) enum AlignValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for AlignValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AlignValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "AlignValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -18975,7 +18975,7 @@ pub(all) enum AlignValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for AlignValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AlignValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "AlignValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -19383,7 +19383,7 @@ pub(all) enum AnchorValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for AnchorValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AnchorValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "AnchorValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -19416,7 +19416,7 @@ pub(all) enum AnchorValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for AnchorValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AnchorValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "AnchorValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -19806,7 +19806,7 @@ pub(all) enum AnchorValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for AnchorValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AnchorValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "AnchorValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -19839,7 +19839,7 @@ pub(all) enum AnchorValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for AnchorValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AnchorValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "AnchorValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -20176,7 +20176,7 @@ pub(all) enum AnyValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for AnyValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AnyValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "AnyValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -20209,7 +20209,7 @@ pub(all) enum AnyValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for AnyValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AnyValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "AnyValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -20528,7 +20528,7 @@ pub(all) enum AnyValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for AnyValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AnyValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "AnyValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -20561,7 +20561,7 @@ pub(all) enum AnyValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for AnyValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "AnyValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "AnyValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -20898,7 +20898,7 @@ pub(all) enum ArrayValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for ArrayValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "ArrayValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "ArrayValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -20931,7 +20931,7 @@ pub(all) enum ArrayValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for ArrayValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "ArrayValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "ArrayValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -21250,7 +21250,7 @@ pub(all) enum ArrayValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for ArrayValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "ArrayValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "ArrayValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -21283,7 +21283,7 @@ pub(all) enum ArrayValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for ArrayValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "ArrayValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "ArrayValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -25432,7 +25432,7 @@ pub(all) enum BaseColorValueVariant0Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for BaseColorValueVariant0Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "BaseColorValueVariant0Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "BaseColorValueVariant0Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -25465,7 +25465,7 @@ pub(all) enum BaseColorValueVariant0Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for BaseColorValueVariant0Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "BaseColorValueVariant0Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "BaseColorValueVariant0Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -25946,7 +25946,7 @@ pub(all) enum BaselineValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for BaselineValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "BaselineValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "BaselineValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -25979,7 +25979,7 @@ pub(all) enum BaselineValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for BaselineValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "BaselineValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "BaselineValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -26375,7 +26375,7 @@ pub(all) enum BaselineValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for BaselineValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "BaselineValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "BaselineValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -26408,7 +26408,7 @@ pub(all) enum BaselineValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for BaselineValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "BaselineValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "BaselineValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -28079,7 +28079,7 @@ pub(all) enum BlendValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for BlendValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "BlendValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "BlendValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -28112,7 +28112,7 @@ pub(all) enum BlendValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for BlendValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "BlendValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "BlendValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -28574,7 +28574,7 @@ pub(all) enum BlendValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for BlendValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "BlendValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "BlendValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -28607,7 +28607,7 @@ pub(all) enum BlendValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for BlendValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "BlendValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "BlendValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -28944,7 +28944,7 @@ pub(all) enum BooleanValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for BooleanValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "BooleanValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "BooleanValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -28977,7 +28977,7 @@ pub(all) enum BooleanValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for BooleanValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "BooleanValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "BooleanValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -29296,7 +29296,7 @@ pub(all) enum BooleanValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for BooleanValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "BooleanValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "BooleanValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -29329,7 +29329,7 @@ pub(all) enum BooleanValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for BooleanValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "BooleanValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "BooleanValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -33067,9 +33067,7 @@ pub impl @typify_rt.Serde for DataVariant2Format with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
   try {
     {
-      let r = @typify_rt.de_fields(c, "struct variant DataVariant2Format::Variant0", data_variant2_format_variant0_fields, (j, v) => match j {
-        _ => ()
-      }, flatten=true, positional=false)
+      let r = @typify_rt.de_fields(c, "struct variant DataVariant2Format::Variant0", data_variant2_format_variant0_fields, (_, _) => (), flatten=true, positional=false)
       let v0 = @typify_rt.de_option(r.flat(), DataVariant2FormatVariant0Subtype0::deserialize)
       let v1 = @typify_rt.de_option(r.flat(), DataVariant2FormatVariant0Subtype1::deserialize)
       let v2 = @typify_rt.de_option(r.flat(), DataVariant2FormatVariant0Subtype2::deserialize)
@@ -34978,9 +34976,7 @@ pub impl @typify_rt.Serde for DataVariant3Format with fn deserialize(d) {
   let c = @typify_rt.de_untagged(d)
   try {
     {
-      let r = @typify_rt.de_fields(c, "struct variant DataVariant3Format::Variant0", data_variant3_format_variant0_fields, (j, v) => match j {
-        _ => ()
-      }, flatten=true, positional=false)
+      let r = @typify_rt.de_fields(c, "struct variant DataVariant3Format::Variant0", data_variant3_format_variant0_fields, (_, _) => (), flatten=true, positional=false)
       let v0 = @typify_rt.de_option(r.flat(), DataVariant3FormatVariant0Subtype0::deserialize)
       let v1 = @typify_rt.de_option(r.flat(), DataVariant3FormatVariant0Subtype1::deserialize)
       let v2 = @typify_rt.de_option(r.flat(), DataVariant3FormatVariant0Subtype2::deserialize)
@@ -36460,7 +36456,7 @@ pub(all) enum DirectionValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for DirectionValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "DirectionValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "DirectionValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -36493,7 +36489,7 @@ pub(all) enum DirectionValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for DirectionValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "DirectionValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "DirectionValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -36877,7 +36873,7 @@ pub(all) enum DirectionValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for DirectionValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "DirectionValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "DirectionValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -36910,7 +36906,7 @@ pub(all) enum DirectionValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for DirectionValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "DirectionValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "DirectionValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -38617,7 +38613,7 @@ pub(all) enum FontWeightValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for FontWeightValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "FontWeightValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "FontWeightValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -38650,7 +38646,7 @@ pub(all) enum FontWeightValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for FontWeightValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "FontWeightValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "FontWeightValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -38969,7 +38965,7 @@ pub(all) enum FontWeightValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for FontWeightValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "FontWeightValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "FontWeightValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -39002,7 +38998,7 @@ pub(all) enum FontWeightValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for FontWeightValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "FontWeightValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "FontWeightValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -74397,7 +74393,7 @@ pub(all) enum NumberValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "NumberValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "NumberValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -74430,7 +74426,7 @@ pub(all) enum NumberValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "NumberValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "NumberValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -75800,7 +75796,7 @@ pub(all) enum NumberValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "NumberValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "NumberValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -75833,7 +75829,7 @@ pub(all) enum NumberValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "NumberValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "NumberValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -76896,7 +76892,7 @@ pub(all) enum OrientValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for OrientValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "OrientValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "OrientValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -76929,7 +76925,7 @@ pub(all) enum OrientValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for OrientValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "OrientValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "OrientValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -77325,7 +77321,7 @@ pub(all) enum OrientValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for OrientValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "OrientValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "OrientValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -77358,7 +77354,7 @@ pub(all) enum OrientValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for OrientValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "OrientValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "OrientValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -92511,7 +92507,7 @@ pub(all) enum StringValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for StringValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "StringValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "StringValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -92544,7 +92540,7 @@ pub(all) enum StringValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for StringValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "StringValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "StringValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -92863,7 +92859,7 @@ pub(all) enum StringValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for StringValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "StringValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "StringValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -92896,7 +92892,7 @@ pub(all) enum StringValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for StringValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "StringValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "StringValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -93304,7 +93300,7 @@ pub(all) enum StrokeCapValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for StrokeCapValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "StrokeCapValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "StrokeCapValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -93337,7 +93333,7 @@ pub(all) enum StrokeCapValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for StrokeCapValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "StrokeCapValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "StrokeCapValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -93727,7 +93723,7 @@ pub(all) enum StrokeCapValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for StrokeCapValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "StrokeCapValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "StrokeCapValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -93760,7 +93756,7 @@ pub(all) enum StrokeCapValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for StrokeCapValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "StrokeCapValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "StrokeCapValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -94168,7 +94164,7 @@ pub(all) enum StrokeJoinValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for StrokeJoinValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "StrokeJoinValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "StrokeJoinValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -94201,7 +94197,7 @@ pub(all) enum StrokeJoinValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for StrokeJoinValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "StrokeJoinValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "StrokeJoinValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -94591,7 +94587,7 @@ pub(all) enum StrokeJoinValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for StrokeJoinValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "StrokeJoinValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "StrokeJoinValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -94624,7 +94620,7 @@ pub(all) enum StrokeJoinValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for StrokeJoinValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "StrokeJoinValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "StrokeJoinValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -95055,7 +95051,7 @@ pub(all) enum TextValueVariant0ItemVariant1 {
 
 ///|
 pub impl @typify_rt.Serde for TextValueVariant0ItemVariant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "TextValueVariant0ItemVariant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "TextValueVariant0ItemVariant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -95088,7 +95084,7 @@ pub(all) enum TextValueVariant0ItemVariant2 {
 
 ///|
 pub impl @typify_rt.Serde for TextValueVariant0ItemVariant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "TextValueVariant0ItemVariant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "TextValueVariant0ItemVariant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -95454,7 +95450,7 @@ pub(all) enum TextValueVariant1Variant1 {
 
 ///|
 pub impl @typify_rt.Serde for TextValueVariant1Variant1 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "TextValueVariant1Variant1", [])
+  let (idx, _) = @typify_rt.de_enum(d, "TextValueVariant1Variant1", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -95487,7 +95483,7 @@ pub(all) enum TextValueVariant1Variant2 {
 
 ///|
 pub impl @typify_rt.Serde for TextValueVariant1Variant2 with fn deserialize(d) {
-  let (idx, payload) = @typify_rt.de_enum(d, "TextValueVariant1Variant2", [])
+  let (idx, _) = @typify_rt.de_enum(d, "TextValueVariant1Variant2", [])
   let v = match idx {
 
     _ => abort("unreachable")
@@ -97413,9 +97409,7 @@ let title_object_encode_fields : @typify_rt.Fields = @typify_rt.Fields::new([])
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectEncode with fn deserialize(d) {
-  let r = @typify_rt.de_fields(d, "struct TitleObjectEncode", title_object_encode_fields, (j, v) => match j {
-    _ => ()
-  }, flatten=true)
+  let r = @typify_rt.de_fields(d, "struct TitleObjectEncode", title_object_encode_fields, (_, _) => (), flatten=true)
   let v0 = @typify_rt.de_option(r.flat(), (d : @typify_rt.De) => @typify_rt.de_map(d, TitleObjectEncodeSubtype0Key::deserialize, EncodeEntry::deserialize))
   let v1 = @typify_rt.de_option(r.flat(), TitleObjectEncodeSubtype1::deserialize)
   TitleObjectEncode::{ subtype_0: v0, subtype_1: v1 }

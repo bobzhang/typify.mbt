@@ -35,8 +35,12 @@ impl Serde with fn from_json(json) {
 ///|
 /// `ToJson` for a `Serde` type (serialization errors, such as flattening a
 /// non-object, abort with the type's name).
-pub fn[T : Serde] json_of(value : T, type_name : String) -> Json {
-  content_to_json(value.serialize()) catch {
+pub fn[T : Serde] json_of(
+  value : T,
+  type_name : String,
+  preserve_order? : Bool = false,
+) -> Json {
+  content_to_json(value.serialize(), preserve_order~) catch {
     e => abort("\{type_name}::to_json: \{e}")
   }
 }

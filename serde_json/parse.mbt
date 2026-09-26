@@ -431,8 +431,28 @@ fn Parser::parse_escape(self : Parser, buf : Buffer) -> Unit raise ParseError {
 ///|
 /// `SliceRead::parse_str_bytes`; the opening quote has been consumed.
 fn Parser::parse_str(self : Parser) -> String raise ParseError {
-  let buf = Buffer()
   self.last_escaped = false
+  // Fast path: a string without escapes or control characters decodes
+  // straight from the input.
+  let start = self.index
+  let n = self.src.length()
+  let mut i = start
+  while i < n {
+    let b = self.src[i]
+    if b == b'"' || b == b'\\' || b < b'\x20' {
+      break
+    }
+    i += 1
+  }
+  if i < n && self.src[i] == b'"' {
+    self.index = i + 1
+    return @utf8.decode(self.src[start:i]) catch {
+      _ => abort("unreachable: the input is valid UTF-8")
+    }
+  }
+  let buf = Buffer()
+  buf.write_bytesview(self.src[start:i])
+  self.index = i
   for ;; {
     let c = self.peek()
     match c {

@@ -22,6 +22,8 @@ pub(all) struct CliArgs {
   unknown_crates : @typify.UnknownPolicy?
   /// Keep the schema's property order (an extension to upstream typify).
   preserve_order : Bool
+  /// A MoonBit backend config file (`--moonbit-config`).
+  moonbit_config : String?
 } derive(Debug)
 
 ///|
@@ -44,7 +46,7 @@ pub impl Show for CliError with fn output(self, logger) {
 }
 
 ///|
-pub let version : String = "0.1.5"
+pub let version : String = "0.2.0"
 
 ///|
 pub let help : String =
@@ -86,6 +88,11 @@ pub let help : String =
   #|
   #|      --map-type <MAP_TYPE>
   #|          Specify the map like type to use
+  #|
+  #|      --moonbit-config <FILE>
+  #|          A JSON file of MoonBit backend options: type visibility,
+  #|          constructors, variant names, replacement types, roots
+  #|          (see docs/moonbit-config.md)
   #|
   #|      --preserve-order
   #|          Keep the schema's property order for struct fields, and so for
@@ -158,6 +165,7 @@ pub fn parse_args(args : ArrayView[String]) -> Command raise CliError {
   let crates = []
   let mut map_type = None
   let mut preserve_order = false
+  let mut moonbit_config = None
   let mut unknown_crates = None
   let mut i = 0
   let value = (flag : String) => {
@@ -217,6 +225,7 @@ pub fn parse_args(args : ArrayView[String]) -> Command raise CliError {
       }
       "--map-type" => map_type = Some(take())
       "--preserve-order" => preserve_order = true
+      "--moonbit-config" => moonbit_config = Some(take())
       "--unknown-crates" =>
         unknown_crates = Some(
           match take() {
@@ -260,6 +269,7 @@ pub fn parse_args(args : ArrayView[String]) -> Command raise CliError {
     crates,
     map_type,
     preserve_order,
+    moonbit_config,
     unknown_crates,
   })
 }
@@ -324,7 +334,13 @@ pub let rust_intro : String =
 
 ///|
 /// Convert schema text to generated code.
-pub fn convert(args : CliArgs, schema_text : String) -> String raise {
+///
+/// `moonbit_config` is the text of the `--moonbit-config` file, if any.
+pub fn convert(
+  args : CliArgs,
+  schema_text : String,
+  moonbit_config? : String,
+) -> String raise {
   let root = @schema.RootSchema::from_json_str(
     schema_text,
     preserve_order=args.preserve_order,
@@ -339,6 +355,17 @@ pub fn convert(args : CliArgs, schema_text : String) -> String raise {
   )
   match args.lang {
     Rust => "\{rust_intro}\n\{@rust.to_stream(space)}"
-    MoonBit => @moonbit.generate(space)
+    MoonBit => {
+      let options = match moonbit_config {
+        Some(text) =>
+          @moonbit.Options::from_json_str(text) catch {
+            e => raise CliError("Invalid MoonBit config: \{e}")
+          }
+        None => @moonbit.Options::default()
+      }
+      @moonbit.generate_with(space, options) catch {
+        e => raise CliError("Invalid MoonBit config: \{e}")
+      }
+    }
   }
 }

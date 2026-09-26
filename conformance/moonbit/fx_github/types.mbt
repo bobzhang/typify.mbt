@@ -37955,14 +37955,12 @@ let deployment_created_deployment_payload_fields : @typify_rt.Fields = @typify_r
 
 ///|
 pub impl @typify_rt.Serde for DeploymentCreatedDeploymentPayload with fn deserialize(d) {
-  ignore(@typify_rt.de_fields(d, "struct DeploymentCreatedDeploymentPayload", deployment_created_deployment_payload_fields, (j, v) => match j {
-    _ => ()
-  }, deny=true))
-  DeploymentCreatedDeploymentPayload::{  }
+  ignore(@typify_rt.de_fields(d, "struct DeploymentCreatedDeploymentPayload", deployment_created_deployment_payload_fields, (_, _) => (), deny=true))
+  DeploymentCreatedDeploymentPayload::{}
 }
 
 ///|
-pub impl @typify_rt.Serde for DeploymentCreatedDeploymentPayload with fn serialize(self) {
+pub impl @typify_rt.Serde for DeploymentCreatedDeploymentPayload with fn serialize(_) {
   let o = @typify_rt.ObjectBuilder::new()
 
   o.build()
@@ -38190,14 +38188,12 @@ let deployment_status_created_deployment_payload_fields : @typify_rt.Fields = @t
 
 ///|
 pub impl @typify_rt.Serde for DeploymentStatusCreatedDeploymentPayload with fn deserialize(d) {
-  ignore(@typify_rt.de_fields(d, "struct DeploymentStatusCreatedDeploymentPayload", deployment_status_created_deployment_payload_fields, (j, v) => match j {
-    _ => ()
-  }, deny=true))
-  DeploymentStatusCreatedDeploymentPayload::{  }
+  ignore(@typify_rt.de_fields(d, "struct DeploymentStatusCreatedDeploymentPayload", deployment_status_created_deployment_payload_fields, (_, _) => (), deny=true))
+  DeploymentStatusCreatedDeploymentPayload::{}
 }
 
 ///|
-pub impl @typify_rt.Serde for DeploymentStatusCreatedDeploymentPayload with fn serialize(self) {
+pub impl @typify_rt.Serde for DeploymentStatusCreatedDeploymentPayload with fn serialize(_) {
   let o = @typify_rt.ObjectBuilder::new()
 
   o.build()
@@ -60805,7 +60801,7 @@ pub(all) struct IssuesUnlockedIssueActiveLockReason(Unit) derive(Debug, Eq)
 let issues_unlocked_issue_active_lock_reason_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
   ["null"],
   @typify_rt.de_unit,
-  (v : Unit) => @typify_rt.ser_unit(),
+  (_ : Unit) => @typify_rt.ser_unit(),
 )
 
 ///|
@@ -60828,7 +60824,7 @@ pub impl @typify_rt.Serde for IssuesUnlockedIssueActiveLockReason with fn deseri
 }
 
 ///|
-pub impl @typify_rt.Serde for IssuesUnlockedIssueActiveLockReason with fn serialize(self) {
+pub impl @typify_rt.Serde for IssuesUnlockedIssueActiveLockReason with fn serialize(_) {
   @typify_rt.ser_unit()
 }
 
@@ -73543,7 +73539,7 @@ pub(all) struct PullRequestOpenedPullRequestActiveLockReason(Unit) derive(Debug,
 let pull_request_opened_pull_request_active_lock_reason_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
   ["null"],
   @typify_rt.de_unit,
-  (v : Unit) => @typify_rt.ser_unit(),
+  (_ : Unit) => @typify_rt.ser_unit(),
 )
 
 ///|
@@ -73566,7 +73562,7 @@ pub impl @typify_rt.Serde for PullRequestOpenedPullRequestActiveLockReason with 
 }
 
 ///|
-pub impl @typify_rt.Serde for PullRequestOpenedPullRequestActiveLockReason with fn serialize(self) {
+pub impl @typify_rt.Serde for PullRequestOpenedPullRequestActiveLockReason with fn serialize(_) {
   @typify_rt.ser_unit()
 }
 
@@ -92954,7 +92950,7 @@ pub(all) struct WorkflowJobStartedWorkflowJobConclusion(Unit) derive(Debug, Eq)
 let workflow_job_started_workflow_job_conclusion_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
   ["null"],
   @typify_rt.de_unit,
-  (v : Unit) => @typify_rt.ser_unit(),
+  (_ : Unit) => @typify_rt.ser_unit(),
 )
 
 ///|
@@ -92977,7 +92973,7 @@ pub impl @typify_rt.Serde for WorkflowJobStartedWorkflowJobConclusion with fn de
 }
 
 ///|
-pub impl @typify_rt.Serde for WorkflowJobStartedWorkflowJobConclusion with fn serialize(self) {
+pub impl @typify_rt.Serde for WorkflowJobStartedWorkflowJobConclusion with fn serialize(_) {
   @typify_rt.ser_unit()
 }
 

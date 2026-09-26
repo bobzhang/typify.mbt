@@ -17,22 +17,81 @@ priv struct Gen {
   sorted_maps : Bool
   /// `serde_json` values keep insertion order (`--preserve-order`).
   ordered_json : Bool
+  /// Backend options (visibility, replacements, ...).
+  options : Options
+  /// Existing MoonBit types used instead of generated ones, by type id.
+  replaced : Map[Int, (String, Codec)]
+  /// Options per generated type id.
+  type_options : Map[Int, TypeOptions]
+  /// The types to emit.
+  emitted : Map[Int, Bool]
 }
 
 ///|
-fn Gen::new(space : @typify.TypeSpace) -> Gen {
+fn Gen::new(
+  space : @typify.TypeSpace,
+  options : Options,
+) -> Gen raise OptionsError {
+  // Named types by their typify names, to resolve the options.
+  let by_name : Map[String, Int] = Map([])
+  for pair in space.entries() {
+    match pair.1.details {
+      Enum({ name, .. }) | Struct({ name, .. }) | Newtype({ name, .. }) =>
+        by_name[name] = pair.0.0
+      _ => ()
+    }
+  }
+  let type_options : Map[Int, TypeOptions] = Map([])
+  let replaced : Map[Int, (String, Codec)] = Map([])
+  for name, opts in options.types {
+    guard by_name.get(name) is Some(id) else {
+      raise OptionsError(
+        "types.\{name}: no type of that name in the schema (known: \{by_name.keys().collect().join(", ")})",
+      )
+    }
+    type_options[id] = opts
+    if opts.replace is Some(r) {
+      replaced[id] = r
+    }
+  }
   let type_scope = Scope::new()
   let names : Map[Int, String] = Map([])
   let ctors : Map[Int, Array[String]] = Map([])
   let fields : Map[String, Array[String]] = Map([])
+  let type_name_for = (id : Int, name : String) => {
+    match type_options.get(id).map(o => o.name) {
+      Some(Some(custom)) => type_scope.alloc(custom)
+      _ => type_scope.alloc(upper_ident(name, reserved_type_names))
+    }
+  }
   for pair in space.entries() {
     let (id, e) = pair
+    if replaced.contains(id.0) {
+      continue
+    }
     match e.details {
       Enum(d) => {
-        names[id.0] = type_scope.alloc(upper_ident(d.name, reserved_type_names))
+        names[id.0] = type_name_for(id.0, d.name)
+        let renames = type_options
+          .get(id.0)
+          .map(o => o.variants)
+          .unwrap_or(Map([]))
+        for raw, _ in renames {
+          if !d.variants.iter().any(v => v.raw_name == raw) {
+            raise OptionsError(
+              "types.\{d.name}.variants: no variant `\{raw}` (variants: \{d.variants.map(v => v.raw_name).join(", ")})",
+            )
+          }
+        }
         let scope = Scope::new()
         ctors[id.0] = d.variants.map(v => {
-          scope.alloc(upper_ident(v.ident_name.unwrap(), reserved_ctor_names))
+          match renames.get(v.raw_name) {
+            Some(custom) => scope.alloc(custom)
+            None =>
+              scope.alloc(
+                upper_ident(v.ident_name.unwrap(), reserved_ctor_names),
+              )
+          }
         })
         for i, v in d.variants {
           if v.details is Struct(props) {
@@ -41,13 +100,19 @@ fn Gen::new(space : @typify.TypeSpace) -> Gen {
         }
       }
       Struct(d) => {
-        names[id.0] = type_scope.alloc(upper_ident(d.name, reserved_type_names))
+        names[id.0] = type_name_for(id.0, d.name)
         fields["\{id.0}/-1"] = alloc_fields(d.properties)
       }
-      Newtype(d) =>
-        names[id.0] = type_scope.alloc(upper_ident(d.name, reserved_type_names))
+      Newtype(d) => names[id.0] = type_name_for(id.0, d.name)
       _ => ()
     }
+  }
+  let roots : Array[Int] = []
+  for root in options.roots {
+    guard by_name.get(root) is Some(id) else {
+      raise OptionsError("roots: no type `\{root}` in the schema")
+    }
+    roots.push(id)
   }
   let map_type = space.settings.map_type
   {
@@ -59,7 +124,138 @@ fn Gen::new(space : @typify.TypeSpace) -> Gen {
     defaults: {},
     sorted_maps: map_type.contains("BTreeMap"),
     ordered_json: space.settings.preserve_property_order,
+    options,
+    replaced,
+    type_options,
+    emitted: emitted_types(space, roots, replaced),
   }
+}
+
+///|
+/// The named types (structs, enums, newtypes) an entry refers to, directly or
+/// through containers.
+fn named_refs(space : @typify.TypeSpace, id : @typify.TypeId) -> Array[Int] {
+  let out = []
+  let seen : Map[Int, Bool] = Map([])
+  fn walk(t : @typify.TypeId, top : Bool) -> Unit {
+    if seen.contains(t.0) {
+      return
+    }
+    seen[t.0] = true
+    let e = entry(space, t)
+    match e.details {
+      Struct(_) | Enum(_) | Newtype(_) if !top => out.push(t.0)
+      Struct(d) =>
+        for p in d.properties {
+          walk(p.type_id, false)
+        }
+      Enum(d) =>
+        for v in d.variants {
+          match v.details {
+            Simple => ()
+            Item(x) => walk(x, false)
+            Tuple(xs) =>
+              for x in xs {
+                walk(x, false)
+              }
+            Struct(props) =>
+              for p in props {
+                walk(p.type_id, false)
+              }
+          }
+        }
+      Newtype(d) => walk(d.type_id, false)
+      Option(x) | Box(x) | Vec(x) | Set(x) | Array(x, _) => walk(x, false)
+      Map(k, v) => {
+        walk(k, false)
+        walk(v, false)
+      }
+      Tuple(xs) =>
+        for x in xs {
+          walk(x, false)
+        }
+      Native(n) =>
+        for x in n.parameters {
+          walk(x, false)
+        }
+      _ => ()
+    }
+  }
+  walk(id, true)
+  out
+}
+
+///|
+/// The named types to emit. With `roots`, everything they reach; otherwise
+/// every type except those used only by replaced types. Replaced types are
+/// never emitted, nor entered.
+fn emitted_types(
+  space : @typify.TypeSpace,
+  roots : Array[Int],
+  replaced : Map[Int, (String, Codec)],
+) -> Map[Int, Bool] {
+  let named = []
+  for pair in space.entries() {
+    if pair.1.details is (Struct(_) | Enum(_) | Newtype(_)) {
+      named.push(pair.0)
+    }
+  }
+  let refs : Map[Int, Array[Int]] = Map([])
+  for id in named {
+    refs[id.0] = named_refs(space, id)
+  }
+  let emitted : Map[Int, Bool] = Map([])
+  if !roots.is_empty() {
+    let stack = roots.copy()
+    while stack.pop() is Some(id) {
+      if emitted.contains(id) || replaced.contains(id) {
+        continue
+      }
+      emitted[id] = true
+      for r in refs.get(id).unwrap_or([]) {
+        stack.push(r)
+      }
+    }
+    return emitted
+  }
+  // Exclude replaced types and, transitively, types referenced only by
+  // excluded ones.
+  let excluded : Map[Int, Bool] = Map([])
+  for id, _ in replaced {
+    excluded[id] = true
+  }
+  let incoming : Map[Int, Array[Int]] = Map([])
+  for id, rs in refs {
+    for r in rs {
+      if r != id {
+        match incoming.get(r) {
+          Some(xs) => xs.push(id)
+          None => incoming[r] = [id]
+        }
+      }
+    }
+  }
+  for changed = true; changed; {
+    let mut again = false
+    for id in named {
+      if excluded.contains(id.0) {
+        continue
+      }
+      if incoming.get(id.0) is Some(from) &&
+        from.length() > 0 &&
+        from.iter().all(f => excluded.contains(f)) {
+        excluded[id.0] = true
+        again = true
+      }
+    }
+    continue again
+  }
+  for id in named {
+    if !excluded.contains(id.0) {
+      emitted[id.0] = true
+    }
+  }
+  emitted
 }
 
 ///|
@@ -110,6 +306,12 @@ fn str_array(xs : Array[String]) -> String {
 ///|
 /// A function value decoding the type from a `@typify_rt.De`.
 fn Gen::de_fn(self : Gen, id : @typify.TypeId) -> String {
+  match self.replaced.get(id.0) {
+    Some((ty, Serde)) => return "\{ty}::deserialize"
+    Some((_, Json)) => return "@typify_rt.de_from_json"
+    Some((_, Functions(decode~, ..))) => return decode
+    None => ()
+  }
   let e = entry(self.space, id)
   match e.details {
     Enum(_) | Struct(_) | Newtype(_) => "\{self.type_name(id)}::deserialize"
@@ -164,7 +366,8 @@ fn Gen::de_expr(self : Gen, id : @typify.TypeId, d : String) -> String {
         Option(_) => self.de_expr(inner, d)
         _ => "@typify_rt.de_option(\{d}, \{self.de_fn(inner)})"
       }
-    Vec(inner) | Set(inner) => "@typify_rt.de_vec(\{d}, \{self.de_fn(inner)})"
+    Vec(inner) | Set(inner) =>
+      "@typify_rt.de_vec(\{d}, \{self.de_fn(inner)}\{if self.options.error_paths { ", paths=true" } else { "" }})"
     Map(k, v) => "@typify_rt.de_map(\{d}, \{self.de_fn(k)}, \{self.de_fn(v)})"
     Tuple(ids) => {
       let elems = ids.mapi((i, t) => {
@@ -213,7 +416,16 @@ fn Gen::ser_fn(self : Gen, id : @typify.TypeId) -> String {
 ///|
 /// The function called to serialize the type directly.
 fn Gen::ser_callee(self : Gen, id : @typify.TypeId) -> String {
+  match self.replaced.get(id.0) {
+    Some((ty, Serde)) => return "\{ty}::serialize"
+    Some((_, Json)) => return "@typify_rt.ser_to_json"
+    Some((_, Functions(encode~, ..))) => return encode
+    None => ()
+  }
   let e = entry(self.space, id)
+  if e.details is Unit {
+    return "(_ : Unit) => @typify_rt.ser_unit()"
+  }
   match e.details {
     Enum(_) | Struct(_) | Newtype(_) => "\{self.type_name(id)}::serialize"
     Box(inner) => self.ser_callee(inner)

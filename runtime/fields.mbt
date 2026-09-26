@@ -48,6 +48,7 @@ pub struct FieldsInput {
 /// - `deny`: `deny_unknown_fields`.
 /// - `positional`: whether a sequence of field values is accepted.
 /// - `external_variant`: the payload of an externally tagged struct variant.
+/// - `paths`: add the failing field's name to errors (see `error_at`).
 ///
 /// Duplicate keys are rejected before their second value is decoded.
 /// Positional elements past the last field are rejected after all fields
@@ -61,7 +62,18 @@ pub fn de_fields(
   deny? : Bool = false,
   positional? : Bool = true,
   external_variant? : Bool = false,
+  paths? : Bool = false,
 ) -> FieldsInput raise DeError {
+  // With `paths`, a failing field's error says where (`error_at`).
+  let on_field = if paths {
+    (i : Int, v : De) => {
+      on_field(i, v) catch {
+        e => raise error_at(e, fields.names[i])
+      }
+    }
+  } else {
+    on_field
+  }
   let input = de_struct(d, expecting, fields.names, flatten, external_variant~)
   match input {
     Claiming(entries) => {
