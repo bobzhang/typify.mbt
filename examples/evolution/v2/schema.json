@@ -1,0 +1,283 @@
+{
+  "$comment": "Version 2: each type from v1/schema.json with one change.",
+  "title": "Unused",
+  "type": "object",
+  "definitions": {
+    "AddOptional": {
+      "type": "object",
+      "required": [
+        "a"
+      ],
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "string"
+        }
+      }
+    },
+    "AddOptionalClosed": {
+      "type": "object",
+      "required": [
+        "a"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "string"
+        }
+      }
+    },
+    "AddOptionalDefault": {
+      "type": "object",
+      "required": [
+        "a"
+      ],
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "integer",
+          "default": 1
+        }
+      }
+    },
+    "AddRequired": {
+      "type": "object",
+      "required": [
+        "a",
+        "b"
+      ],
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "string"
+        }
+      }
+    },
+    "AddRequiredDefault": {
+      "type": "object",
+      "required": [
+        "a",
+        "b"
+      ],
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "integer",
+          "default": 1
+        }
+      }
+    },
+    "RemoveRequired": {
+      "type": "object",
+      "required": [
+        "a"
+      ],
+      "properties": {
+        "a": {
+          "type": "string"
+        }
+      }
+    },
+    "RemoveOptional": {
+      "type": "object",
+      "required": [
+        "a"
+      ],
+      "properties": {
+        "a": {
+          "type": "string"
+        }
+      }
+    },
+    "RequiredToOptional": {
+      "type": "object",
+      "required": [
+        "a"
+      ],
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "string"
+        }
+      }
+    },
+    "Rename": {
+      "type": "object",
+      "required": [
+        "full_name"
+      ],
+      "properties": {
+        "full_name": {
+          "type": "string"
+        }
+      }
+    },
+    "Tighten": {
+      "type": "object",
+      "required": [
+        "code"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "maxLength": 3
+        }
+      }
+    },
+    "Widen": {
+      "type": "object",
+      "required": [
+        "n"
+      ],
+      "properties": {
+        "n": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "ClosedEnum": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "shipped",
+        "cancelled"
+      ]
+    },
+    "OpenEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "pending",
+            "shipped",
+            "cancelled"
+          ]
+        },
+        {
+          "type": "string",
+          "not": {
+            "enum": [
+              "pending",
+              "shipped",
+              "cancelled"
+            ]
+          }
+        }
+      ]
+    },
+    "Preserve": {
+      "type": "object",
+      "required": [
+        "a"
+      ],
+      "additionalProperties": {},
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "string"
+        }
+      }
+    },
+    "RequiredToDefault": {
+      "type": "object",
+      "required": [
+        "a"
+      ],
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "integer",
+          "default": 0
+        }
+      }
+    },
+    "RenameOptional": {
+      "type": "object",
+      "properties": {
+        "full_name": {
+          "type": "string"
+        }
+      }
+    },
+    "OptionalToRequiredNullable": {
+      "type": "object",
+      "required": [
+        "a",
+        "b"
+      ],
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "TightenBound": {
+      "type": "object",
+      "required": [
+        "n"
+      ],
+      "properties": {
+        "n": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        }
+      }
+    },
+    "FixedLength": {
+      "type": "object",
+      "required": [
+        "xs"
+      ],
+      "properties": {
+        "xs": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "ChangeDefault": {
+      "type": "object",
+      "required": [
+        "a"
+      ],
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "integer",
+          "default": 2
+        }
+      }
+    }
+  }
+}

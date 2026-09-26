@@ -1,0 +1,6 @@
+import {
+  "bobzhang/typify/runtime" @typify_rt,
+}
+
+// Generated from schema.json by `typify --lang moonbit`.
+formatter(ignore: [ "types.mbt" ])

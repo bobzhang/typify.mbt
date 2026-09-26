@@ -1,0 +1,5 @@
+import {
+  "bobzhang/typify/runtime" @typify_rt,
+  "bobzhang/typify/examples/evolution/v1",
+  "bobzhang/typify/examples/evolution/v2",
+}

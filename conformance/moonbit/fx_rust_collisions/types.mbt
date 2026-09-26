@@ -194,7 +194,7 @@ pub(all) struct FlattenedKeywords {
 
 ///|
 /// Construct a `FlattenedKeywords` (fields with defaults are optional).
-pub fn FlattenedKeywords::FlattenedKeywords(normal~ : String, extra~ : Map[String, String]) -> FlattenedKeywords {
+pub fn FlattenedKeywords::FlattenedKeywords(normal~ : String, extra? : Map[String, String] = Map([])) -> FlattenedKeywords {
   FlattenedKeywords::{
     normal: normal,
     extra: extra,

@@ -1,0 +1,17 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/examples/evolution"
+
+import {
+  "bobzhang/typify/runtime",
+}
+
+// Values
+pub fn[T] read((StringView) -> T raise @runtime.DeError, (T) -> String raise @runtime.SerError, String) -> String
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

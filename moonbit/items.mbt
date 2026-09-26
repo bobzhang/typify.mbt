@@ -289,6 +289,11 @@ fn Gen::struct_constructor(
       "\{f}: match \{f} {\n    Some(v) => \{wrap}(v)\n    None => \{default_fn}() catch { e => abort(\"invalid default for \{name}.\{f}: \\{e}\") }\n  }"
     }
     match (p.state, entry(self.space, p.type_id).details) {
+      // A flattened map (`additionalProperties`): empty adds nothing.
+      (_, Map(_, _)) if p.rename is Flatten => {
+        params.push("\{f}? : \{ty} = Map([])")
+        inits.push("\{f}: \{f}")
+      }
       // An `Option` with a default: the argument is the inner value.
       (Default(v), Option(inner)) if !(v is Null) => {
         params.push(

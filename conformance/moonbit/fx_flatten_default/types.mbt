@@ -59,7 +59,7 @@ pub(all) struct ContainerThing {
 
 ///|
 /// Construct a `ContainerThing` (fields with defaults are optional).
-pub fn ContainerThing::ContainerThing(id? : String, extra~ : Map[String, String]) -> ContainerThing {
+pub fn ContainerThing::ContainerThing(id? : String, extra? : Map[String, String] = Map([])) -> ContainerThing {
   ContainerThing::{
     id: id,
     extra: extra,

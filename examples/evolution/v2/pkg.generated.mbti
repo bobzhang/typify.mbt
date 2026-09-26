@@ -1,0 +1,317 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/typify/examples/evolution/v2"
+
+import {
+  "bobzhang/typify/runtime",
+  "bobzhang/typify/serde_json",
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) struct AddOptional {
+  a : String
+  b : String?
+} derive(Eq, @debug.Debug)
+pub fn AddOptional::AddOptional(a~ : String, b? : String) -> Self
+pub fn AddOptional::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn AddOptional::from_json(Json) -> Self raise @runtime.DeError
+pub fn AddOptional::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn AddOptional::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn AddOptional::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for AddOptional
+pub impl ToJson for AddOptional
+
+pub(all) struct AddOptionalClosed {
+  a : String
+  b : String?
+} derive(Eq, @debug.Debug)
+pub fn AddOptionalClosed::AddOptionalClosed(a~ : String, b? : String) -> Self
+pub fn AddOptionalClosed::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn AddOptionalClosed::from_json(Json) -> Self raise @runtime.DeError
+pub fn AddOptionalClosed::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn AddOptionalClosed::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn AddOptionalClosed::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for AddOptionalClosed
+pub impl ToJson for AddOptionalClosed
+
+pub(all) struct AddOptionalDefault {
+  a : String
+  b : Int64
+} derive(Eq, @debug.Debug)
+pub fn AddOptionalDefault::AddOptionalDefault(a~ : String, b? : Int64) -> Self
+pub fn AddOptionalDefault::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn AddOptionalDefault::from_json(Json) -> Self raise @runtime.DeError
+pub fn AddOptionalDefault::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn AddOptionalDefault::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn AddOptionalDefault::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for AddOptionalDefault
+pub impl ToJson for AddOptionalDefault
+
+pub(all) struct AddRequired {
+  a : String
+  b : String
+} derive(Eq, @debug.Debug)
+pub fn AddRequired::AddRequired(a~ : String, b~ : String) -> Self
+pub fn AddRequired::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn AddRequired::from_json(Json) -> Self raise @runtime.DeError
+pub fn AddRequired::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn AddRequired::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn AddRequired::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for AddRequired
+pub impl ToJson for AddRequired
+
+pub(all) struct AddRequiredDefault {
+  a : String
+  b : Int64
+} derive(Eq, @debug.Debug)
+pub fn AddRequiredDefault::AddRequiredDefault(a~ : String, b~ : Int64) -> Self
+pub fn AddRequiredDefault::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn AddRequiredDefault::from_json(Json) -> Self raise @runtime.DeError
+pub fn AddRequiredDefault::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn AddRequiredDefault::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn AddRequiredDefault::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for AddRequiredDefault
+pub impl ToJson for AddRequiredDefault
+
+pub(all) struct ChangeDefault {
+  a : String
+  b : Int64
+} derive(Eq, @debug.Debug)
+pub fn ChangeDefault::ChangeDefault(a~ : String, b? : Int64) -> Self
+pub fn ChangeDefault::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn ChangeDefault::from_json(Json) -> Self raise @runtime.DeError
+pub fn ChangeDefault::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn ChangeDefault::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn ChangeDefault::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for ChangeDefault
+pub impl ToJson for ChangeDefault
+
+pub(all) enum ClosedEnum {
+  Pending
+  Shipped
+  Cancelled
+} derive(Eq, Hash, @debug.Debug)
+pub fn ClosedEnum::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn ClosedEnum::from_json(Json) -> Self raise @runtime.DeError
+pub fn ClosedEnum::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn ClosedEnum::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn ClosedEnum::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn ClosedEnum::to_json_string(Self) -> String raise @runtime.SerError
+pub fn ClosedEnum::to_string(Self) -> String
+pub fn ClosedEnum::variant_index(Self) -> Int
+pub impl @runtime.Serde for ClosedEnum
+pub impl ToJson for ClosedEnum
+
+pub(all) struct FixedLength {
+  xs : FixedArray[Int64]
+} derive(Eq, @debug.Debug)
+pub fn FixedLength::FixedLength(xs~ : FixedArray[Int64]) -> Self
+pub fn FixedLength::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn FixedLength::from_json(Json) -> Self raise @runtime.DeError
+pub fn FixedLength::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn FixedLength::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn FixedLength::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for FixedLength
+pub impl ToJson for FixedLength
+
+pub(all) enum OpenEnum {
+  Variant0(OpenEnumVariant0)
+  Variant1(OpenEnumVariant1)
+} derive(Eq, @debug.Debug)
+pub fn OpenEnum::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OpenEnum::from_json(Json) -> Self raise @runtime.DeError
+pub fn OpenEnum::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OpenEnum::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OpenEnum::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for OpenEnum
+pub impl ToJson for OpenEnum
+
+pub(all) enum OpenEnumVariant0 {
+  Pending
+  Shipped
+  Cancelled
+} derive(Eq, Hash, @debug.Debug)
+pub fn OpenEnumVariant0::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OpenEnumVariant0::from_json(Json) -> Self raise @runtime.DeError
+pub fn OpenEnumVariant0::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OpenEnumVariant0::parse(StringView) -> Self raise @runtime.ConversionError
+pub fn OpenEnumVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OpenEnumVariant0::to_json_string(Self) -> String raise @runtime.SerError
+pub fn OpenEnumVariant0::to_string(Self) -> String
+pub fn OpenEnumVariant0::variant_index(Self) -> Int
+pub impl @runtime.Serde for OpenEnumVariant0
+pub impl ToJson for OpenEnumVariant0
+
+pub(all) struct OpenEnumVariant1(String) derive(Eq, Hash, @debug.Debug)
+pub fn OpenEnumVariant1::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OpenEnumVariant1::from_json(Json) -> Self raise @runtime.DeError
+pub fn OpenEnumVariant1::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OpenEnumVariant1::new(String) -> Self raise @runtime.ConversionError
+pub fn OpenEnumVariant1::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OpenEnumVariant1::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for OpenEnumVariant1
+pub impl ToJson for OpenEnumVariant1
+
+pub(all) struct OptionalToRequiredNullable {
+  a : String
+  b : String?
+} derive(Eq, @debug.Debug)
+pub fn OptionalToRequiredNullable::OptionalToRequiredNullable(a~ : String, b? : String) -> Self
+pub fn OptionalToRequiredNullable::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn OptionalToRequiredNullable::from_json(Json) -> Self raise @runtime.DeError
+pub fn OptionalToRequiredNullable::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn OptionalToRequiredNullable::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn OptionalToRequiredNullable::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for OptionalToRequiredNullable
+pub impl ToJson for OptionalToRequiredNullable
+
+pub(all) struct Preserve {
+  a : String
+  b : String?
+  extra : Map[String, Json]
+} derive(Eq, @debug.Debug)
+pub fn Preserve::Preserve(a~ : String, b? : String, extra? : Map[String, Json]) -> Self
+pub fn Preserve::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Preserve::from_json(Json) -> Self raise @runtime.DeError
+pub fn Preserve::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Preserve::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Preserve::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Preserve
+pub impl ToJson for Preserve
+
+pub(all) struct RemoveOptional {
+  a : String
+} derive(Eq, @debug.Debug)
+pub fn RemoveOptional::RemoveOptional(a~ : String) -> Self
+pub fn RemoveOptional::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn RemoveOptional::from_json(Json) -> Self raise @runtime.DeError
+pub fn RemoveOptional::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn RemoveOptional::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn RemoveOptional::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for RemoveOptional
+pub impl ToJson for RemoveOptional
+
+pub(all) struct RemoveRequired {
+  a : String
+} derive(Eq, @debug.Debug)
+pub fn RemoveRequired::RemoveRequired(a~ : String) -> Self
+pub fn RemoveRequired::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn RemoveRequired::from_json(Json) -> Self raise @runtime.DeError
+pub fn RemoveRequired::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn RemoveRequired::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn RemoveRequired::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for RemoveRequired
+pub impl ToJson for RemoveRequired
+
+pub(all) struct Rename {
+  full_name : String
+} derive(Eq, @debug.Debug)
+pub fn Rename::Rename(full_name~ : String) -> Self
+pub fn Rename::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Rename::from_json(Json) -> Self raise @runtime.DeError
+pub fn Rename::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Rename::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Rename::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Rename
+pub impl ToJson for Rename
+
+pub(all) struct RenameOptional {
+  full_name : String?
+} derive(Eq, @debug.Debug)
+pub fn RenameOptional::RenameOptional(full_name? : String) -> Self
+pub fn RenameOptional::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn RenameOptional::from_json(Json) -> Self raise @runtime.DeError
+pub fn RenameOptional::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn RenameOptional::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn RenameOptional::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for RenameOptional
+pub impl ToJson for RenameOptional
+
+pub(all) struct RequiredToDefault {
+  a : String
+  b : Int64
+} derive(Eq, @debug.Debug)
+pub fn RequiredToDefault::RequiredToDefault(a~ : String, b? : Int64) -> Self
+pub fn RequiredToDefault::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn RequiredToDefault::from_json(Json) -> Self raise @runtime.DeError
+pub fn RequiredToDefault::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn RequiredToDefault::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn RequiredToDefault::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for RequiredToDefault
+pub impl ToJson for RequiredToDefault
+
+pub(all) struct RequiredToOptional {
+  a : String
+  b : String?
+} derive(Eq, @debug.Debug)
+pub fn RequiredToOptional::RequiredToOptional(a~ : String, b? : String) -> Self
+pub fn RequiredToOptional::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn RequiredToOptional::from_json(Json) -> Self raise @runtime.DeError
+pub fn RequiredToOptional::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn RequiredToOptional::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn RequiredToOptional::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for RequiredToOptional
+pub impl ToJson for RequiredToOptional
+
+pub(all) struct Tighten {
+  code : TightenCode
+} derive(Eq, @debug.Debug)
+pub fn Tighten::Tighten(code~ : TightenCode) -> Self
+pub fn Tighten::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Tighten::from_json(Json) -> Self raise @runtime.DeError
+pub fn Tighten::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Tighten::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Tighten::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Tighten
+pub impl ToJson for Tighten
+
+pub(all) struct TightenBound {
+  n : UInt64
+} derive(Eq, @debug.Debug)
+pub fn TightenBound::TightenBound(n~ : UInt64) -> Self
+pub fn TightenBound::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn TightenBound::from_json(Json) -> Self raise @runtime.DeError
+pub fn TightenBound::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn TightenBound::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn TightenBound::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for TightenBound
+pub impl ToJson for TightenBound
+
+pub(all) struct TightenCode(String) derive(Eq, Hash, @debug.Debug)
+pub fn TightenCode::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn TightenCode::from_json(Json) -> Self raise @runtime.DeError
+pub fn TightenCode::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn TightenCode::new(String) -> Self raise @runtime.ConversionError
+pub fn TightenCode::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn TightenCode::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for TightenCode
+pub impl ToJson for TightenCode
+
+pub(all) struct Unused(Map[String, Json]) derive(Eq, @debug.Debug)
+pub fn Unused::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Unused::from_json(Json) -> Self raise @runtime.DeError
+pub fn Unused::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Unused::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Unused::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Unused
+pub impl ToJson for Unused
+
+pub(all) struct Widen {
+  n : Int64
+} derive(Eq, @debug.Debug)
+pub fn Widen::Widen(n~ : Int64) -> Self
+pub fn Widen::deserialize(@runtime.De) -> Self raise @runtime.DeError
+pub fn Widen::from_json(Json) -> Self raise @runtime.DeError
+pub fn Widen::from_json_str(StringView) -> Self raise @runtime.DeError
+pub fn Widen::serialize(Self) -> @serde_json.Content raise @runtime.SerError
+pub fn Widen::to_json_string(Self) -> String raise @runtime.SerError
+pub impl @runtime.Serde for Widen
+pub impl ToJson for Widen
+
+// Type aliases
+
+// Traits

@@ -76,7 +76,7 @@ pub(all) struct FlattenedKeywords {
   normal : String
   extra : Map[String, String]
 } derive(Eq, @debug.Debug)
-pub fn FlattenedKeywords::FlattenedKeywords(normal~ : String, extra~ : Map[String, String]) -> Self
+pub fn FlattenedKeywords::FlattenedKeywords(normal~ : String, extra? : Map[String, String]) -> Self
 pub fn FlattenedKeywords::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn FlattenedKeywords::from_json(Json) -> Self raise @runtime.DeError
 pub fn FlattenedKeywords::from_json_str(StringView) -> Self raise @runtime.DeError

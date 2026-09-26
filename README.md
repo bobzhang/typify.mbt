@@ -129,6 +129,13 @@ Structs, enums (external, internal, adjacent and untagged tagging), `flatten`,
 `deny_unknown_fields`, defaults, positional (array) struct input and
 duplicate-key rejection all follow serde's rules.
 
+## Evolving a schema
+
+[docs/schema-evolution.md](docs/schema-evolution.md) explains which schema changes are
+backward and forward compatible, with recipes: optional additions, open enums,
+preserving unknown fields, staged removal and renames. Its claims are checked by the
+tests in [examples/evolution](examples/evolution).
+
 ## Library
 
 ```moonbit

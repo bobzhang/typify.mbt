@@ -102,7 +102,7 @@ pub(all) struct ObjectWithStringExtra {
 
 ///|
 /// Construct a `ObjectWithStringExtra` (fields with defaults are optional).
-pub fn ObjectWithStringExtra::ObjectWithStringExtra(foo~ : String, extra~ : Map[String, String]) -> ObjectWithStringExtra {
+pub fn ObjectWithStringExtra::ObjectWithStringExtra(foo~ : String, extra? : Map[String, String] = Map([])) -> ObjectWithStringExtra {
   ObjectWithStringExtra::{
     foo: foo,
     extra: extra,
@@ -151,7 +151,7 @@ pub(all) struct ObjectWithWhichExtra {
 
 ///|
 /// Construct a `ObjectWithWhichExtra` (fields with defaults are optional).
-pub fn ObjectWithWhichExtra::ObjectWithWhichExtra(foo~ : String, extra~ : Map[String, Json]) -> ObjectWithWhichExtra {
+pub fn ObjectWithWhichExtra::ObjectWithWhichExtra(foo~ : String, extra? : Map[String, Json] = Map([])) -> ObjectWithWhichExtra {
   ObjectWithWhichExtra::{
     foo: foo,
     extra: extra,
