@@ -51,3 +51,34 @@ test "struct constructor" {
   )
   assert_true(code.contains("    level: Some(level),\n"))
 }
+
+///|
+test "preserve property order" {
+  let schema =
+    #|{"title": "Header", "type": "object", "required": ["version", "id"],
+    #| "properties": {"version": {"type": "integer"}, "id": {"type": "string"},
+    #|   "data": {}}}
+  let gen_with = (preserve : Bool) => {
+    let space = @typify.TypeSpace::new(
+      @typify.TypeSpaceSettings::default().with_preserve_property_order(
+        preserve,
+      ),
+    )
+    ignore(
+      space.add_root_schema(
+        @schema.RootSchema::from_json_str(schema, preserve_order=preserve),
+      ),
+    )
+    @moonbit.generate(space)
+  }
+  let sorted = gen_with(false)
+  assert_true(
+    sorted.contains("  data : Json?\n  id : String\n  version : Int64\n"),
+  )
+  assert_true(sorted.contains("@typify_rt.de_json)"))
+  let ordered = gen_with(true)
+  assert_true(
+    ordered.contains("  version : Int64\n  id : String\n  data : Json?\n"),
+  )
+  assert_true(ordered.contains("@typify_rt.de_json_ordered"))
+}

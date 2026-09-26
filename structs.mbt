@@ -54,9 +54,15 @@ fn TypeSpace::struct_members(
       ),
     )
   }
-  let properties = stable_sort_by(properties, (a, b) => {
-    @collections.compare_str(a.name, b.name)
-  })
+  // Sorted by name for a deterministic result (upstream), unless the
+  // schema's own order is requested.
+  let properties = if self.settings.preserve_property_order {
+    properties
+  } else {
+    stable_sort_by(properties, (a, b) => {
+      @collections.compare_str(a.name, b.name)
+    })
+  }
   let deny_unknown_fields = match validation.additional_properties {
     Some(Bool(false)) => true
     Some(Bool(true)) | None => false

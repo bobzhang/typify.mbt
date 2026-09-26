@@ -37,6 +37,12 @@ The options are the same as `cargo typify`'s, plus `--lang`:
 | `--map-type <type>` | map type (default `::std::collections::HashMap`) |
 | `--unknown-crates <generate\|allow\|deny>` | policy for unknown `x-rust-type` crates |
 
+`--preserve-order` keeps each object's properties in schema order, so struct fields
+are declared, and JSON is written, in that order. `serde_json::Value` payloads keep
+their key order too. By default properties are sorted by name, as upstream typify
+always does; this option is an extension. It is useful when adopting typify for an
+existing format whose files should stay byte-for-byte the same.
+
 Rust output is printed as a token stream, exactly as upstream typify produces it.
 `cargo typify` runs rustfmt on it; you can do the same:
 
@@ -53,6 +59,9 @@ The generated file is one MoonBit package. It depends on the runtime package:
 import {
   "bobzhang/typify/runtime" @typify_rt,
 }
+
+// Only needed with strict warning settings, e.g. +implicit_impl_as_method:
+warnings = "-implicit_impl_as_method-unnecessary_annotation"
 ```
 
 Every generated type `T` has the following:

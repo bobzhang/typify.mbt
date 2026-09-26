@@ -34,6 +34,7 @@ pub(all) struct CliArgs {
   crates : Array[(String, @typify.CrateVers, String?)]
   map_type : String?
   unknown_crates : @typify.UnknownPolicy?
+  preserve_order : Bool
 } derive(@debug.Debug)
 pub fn CliArgs::output_path(Self) -> String?
 pub fn CliArgs::settings(Self) -> @typify.TypeSpaceSettings

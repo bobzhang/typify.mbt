@@ -20,6 +20,8 @@ pub(all) struct CliArgs {
   crates : Array[(String, @typify.CrateVers, String?)]
   map_type : String?
   unknown_crates : @typify.UnknownPolicy?
+  /// Keep the schema's property order (an extension to upstream typify).
+  preserve_order : Bool
 } derive(Debug)
 
 ///|
@@ -42,7 +44,7 @@ pub impl Show for CliError with fn output(self, logger) {
 }
 
 ///|
-pub let version : String = "0.1.4"
+pub let version : String = "0.1.5"
 
 ///|
 pub let help : String =
@@ -84,6 +86,11 @@ pub let help : String =
   #|
   #|      --map-type <MAP_TYPE>
   #|          Specify the map like type to use
+  #|
+  #|      --preserve-order
+  #|          Keep the schema's property order for struct fields, and so for
+  #|          serialized JSON. By default properties are sorted by name, as
+  #|          upstream typify always does (this option is an extension)
   #|
   #|      --unknown-crates <UNKNOWN_CRATES>
   #|          Specify the policy unknown crates found in schemas with the x-rust-type extension
@@ -150,6 +157,7 @@ pub fn parse_args(args : ArrayView[String]) -> Command raise CliError {
   let mut output = None
   let crates = []
   let mut map_type = None
+  let mut preserve_order = false
   let mut unknown_crates = None
   let mut i = 0
   let value = (flag : String) => {
@@ -208,6 +216,7 @@ pub fn parse_args(args : ArrayView[String]) -> Command raise CliError {
         }
       }
       "--map-type" => map_type = Some(take())
+      "--preserve-order" => preserve_order = true
       "--unknown-crates" =>
         unknown_crates = Some(
           match take() {
@@ -250,6 +259,7 @@ pub fn parse_args(args : ArrayView[String]) -> Command raise CliError {
     output,
     crates,
     map_type,
+    preserve_order,
     unknown_crates,
   })
 }
@@ -293,6 +303,7 @@ pub fn CliArgs::settings(self : CliArgs) -> @typify.TypeSpaceSettings {
     let (name, version, rename) = c
     ignore(settings.with_crate(name, version, rename?))
   }
+  ignore(settings.with_preserve_property_order(self.preserve_order))
   if self.map_type is Some(m) {
     ignore(settings.with_map_type(m))
   }
@@ -314,7 +325,10 @@ pub let rust_intro : String =
 ///|
 /// Convert schema text to generated code.
 pub fn convert(args : CliArgs, schema_text : String) -> String raise {
-  let root = @schema.RootSchema::from_json_str(schema_text) catch {
+  let root = @schema.RootSchema::from_json_str(
+    schema_text,
+    preserve_order=args.preserve_order,
+  ) catch {
     e => raise CliError("Failed to parse input file as JSON Schema: \{e}")
   }
   let space = @typify.TypeSpace::new(args.settings())

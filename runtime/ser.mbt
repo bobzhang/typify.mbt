@@ -224,6 +224,13 @@ pub fn ser_json(j : Json) -> Content {
 }
 
 ///|
+/// `serde_json::Value` payloads with serde_json's `preserve_order` feature:
+/// keys in insertion order (for generation with `--preserve-order`).
+pub fn ser_json_ordered(j : Json) -> Content {
+  json_to_value(j, preserve_order=true).to_content()
+}
+
+///|
 /// Render a document as compact JSON text (`serde_json::to_string`).
 pub fn to_json_string(c : Content) -> String {
   c.to_string()

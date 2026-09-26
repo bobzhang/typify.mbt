@@ -239,6 +239,7 @@ pub struct TypeSpaceSettings {
   mut map_type : String
   patch : Map[String, TypeSpacePatch]
   replace : Map[String, TypeSpaceReplace]
+  mut preserve_property_order : Bool
   // private fields
 }
 pub fn TypeSpaceSettings::default() -> Self
@@ -248,6 +249,7 @@ pub fn TypeSpaceSettings::with_crate(Self, String, CrateVers, rename? : String) 
 pub fn TypeSpaceSettings::with_derive(Self, String) -> Self
 pub fn TypeSpaceSettings::with_map_type(Self, String) -> Self
 pub fn TypeSpaceSettings::with_patch(Self, String, TypeSpacePatch) -> Self
+pub fn TypeSpaceSettings::with_preserve_property_order(Self, Bool) -> Self
 pub fn TypeSpaceSettings::with_replacement(Self, String, String, Array[TypeSpaceImpl]) -> Self
 pub fn TypeSpaceSettings::with_struct_builder(Self, Bool) -> Self
 pub fn TypeSpaceSettings::with_type_mod(Self, String) -> Self

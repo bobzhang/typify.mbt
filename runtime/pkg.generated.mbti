@@ -54,6 +54,8 @@ pub fn de_internal(De, String, String, Array[String]) -> (Int, De) raise DeError
 
 pub fn de_json(De) -> Json raise DeError
 
+pub fn de_json_ordered(De) -> Json raise DeError
+
 pub fn[K : Hash + Eq, V] de_map(De, (De) -> K raise DeError, (De) -> V raise DeError) -> Map[K, V] raise DeError
 
 pub fn de_map_entries(De) -> Array[(De, De)] raise DeError
@@ -132,7 +134,7 @@ pub fn invalid_type_error(@serde_json.Content, String) -> DeError
 
 pub fn[T : Serde] json_of(T, String) -> Json
 
-pub fn json_to_value(Json) -> @serde_json.Value
+pub fn json_to_value(Json, preserve_order? : Bool) -> @serde_json.Value
 
 pub fn map_key(@serde_json.Content) -> String raise SerError
 
@@ -159,6 +161,8 @@ pub fn ser_i64(Int64) -> @serde_json.Content
 pub fn ser_int(Int) -> @serde_json.Content
 
 pub fn ser_json(Json) -> @serde_json.Content
+
+pub fn ser_json_ordered(Json) -> @serde_json.Content
 
 pub fn[K, V] ser_map(Map[K, V], (K) -> String raise SerError, (V) -> @serde_json.Content raise SerError) -> @serde_json.Content raise SerError
 

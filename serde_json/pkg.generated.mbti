@@ -11,7 +11,7 @@ pub fn format_f32(Float) -> String
 
 pub fn format_f64(Double) -> String
 
-pub fn parse(StringView) -> Value raise ParseError
+pub fn parse(StringView, preserve_order? : Bool) -> Value raise ParseError
 
 pub fn parse_content(StringView, lenient? : Bool) -> Content raise ParseError
 
@@ -35,7 +35,7 @@ pub(all) enum Content {
   Float32(Float)
 } derive(Eq, @debug.Debug)
 pub fn Content::to_string(Self) -> String
-pub fn Content::to_value(Self) -> Value raise ParseError
+pub fn Content::to_value(Self, preserve_order? : Bool) -> Value raise ParseError
 pub impl Show for Content
 
 pub(all) struct Entry {

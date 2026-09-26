@@ -107,6 +107,9 @@ pub struct TypeSpaceSettings {
   patch : Map[String, TypeSpacePatch]
   replace : Map[String, TypeSpaceReplace]
   priv convert : Array[TypeSpaceConversion]
+  /// Keep struct properties in schema order instead of sorting them by name
+  /// (an extension: upstream typify always sorts).
+  mut preserve_property_order : Bool
 }
 
 ///|
@@ -122,6 +125,7 @@ pub fn TypeSpaceSettings::default() -> TypeSpaceSettings {
     patch: Map([]),
     replace: Map([]),
     convert: [],
+    preserve_property_order: false,
   }
 }
 
@@ -138,6 +142,7 @@ fn TypeSpaceSettings::copy(self : TypeSpaceSettings) -> TypeSpaceSettings {
     patch: self.patch.copy(),
     replace: self.replace.copy(),
     convert: self.convert.copy(),
+    preserve_property_order: self.preserve_property_order,
   }
 }
 
@@ -245,6 +250,20 @@ pub fn TypeSpaceSettings::with_crate(
 
 ///|
 /// The map-like type used in generated code.
+/// Keep struct properties in the order the schema lists them, so generated
+/// structs declare, and serde writes, fields in that order. Upstream typify
+/// always sorts properties by name; this is an extension, off by default.
+/// The schema must be parsed with `RootSchema::from_json_str(text,
+/// preserve_order=true)` for its order to be known.
+pub fn TypeSpaceSettings::with_preserve_property_order(
+  self : TypeSpaceSettings,
+  preserve : Bool,
+) -> TypeSpaceSettings {
+  self.preserve_property_order = preserve
+  self
+}
+
+///|
 pub fn TypeSpaceSettings::with_map_type(
   self : TypeSpaceSettings,
   map_type : String,

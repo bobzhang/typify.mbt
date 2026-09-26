@@ -539,10 +539,22 @@ pub fn[K : Hash + Eq, V] de_map(
 /// `serde_json::Value` (`deserialize_any` into a Value), as builtin `Json`
 /// with number classes in `repr` and keys in serde_json order.
 pub fn de_json(d : De) -> Json raise DeError {
+  de_json_with(d, false)
+}
+
+///|
+/// `serde_json::Value` with serde_json's `preserve_order` feature: object
+/// keys keep their document order (for generation with `--preserve-order`).
+pub fn de_json_ordered(d : De) -> Json raise DeError {
+  de_json_with(d, true)
+}
+
+///|
+fn de_json_with(d : De, preserve_order : Bool) -> Json raise DeError {
   match d {
     Value(c, _) => {
       let c = validated(c)
-      let v = c.to_value() catch {
+      let v = c.to_value(preserve_order~) catch {
         @serde_json.ParseError(message~, ..) => raise DeError(message)
       }
       value_to_json(v)
@@ -550,13 +562,17 @@ pub fn de_json(d : De) -> Json raise DeError {
     MapKey(k, _) => Json::string(k)
     Flat(_) => {
       let m : Map[String, Json] = Map([])
-      let o = @collections.StrMap::new()
+      let o = if preserve_order {
+        @collections.StrMap::new_ordered()
+      } else {
+        @collections.StrMap::new()
+      }
       for e in de_map_entries(d) {
         guard e.0 is Value(String(key), _) else { continue }
         o.set(key, e.1)
       }
       for key, v in o {
-        m[key] = de_json(v)
+        m[key] = de_json_with(v, preserve_order)
       }
       Json::object(m)
     }

@@ -31,8 +31,12 @@ pub(all) struct Entry {
 
 ///|
 /// The serde_json `Value` of a document (duplicate keys: the last wins; keys
-/// sorted).
-pub fn Content::to_value(self : Content) -> Value raise ParseError {
+/// sorted, or in document order with `preserve_order`, like serde_json's
+/// feature of that name).
+pub fn Content::to_value(
+  self : Content,
+  preserve_order? : Bool = false,
+) -> Value raise ParseError {
   match self {
     Invalid(e) => raise e
     Float32(f) =>
@@ -47,17 +51,21 @@ pub fn Content::to_value(self : Content) -> Value raise ParseError {
     Array(xs) => {
       let out = []
       for x in xs {
-        out.push(x.to_value())
+        out.push(x.to_value(preserve_order~))
       }
       Array(out)
     }
     Object(entries) => {
-      let o = @collections.StrMap::new()
+      let o = if preserve_order {
+        @collections.StrMap::new_ordered()
+      } else {
+        @collections.StrMap::new()
+      }
       for e in entries {
         if e.key_error is Some(err) {
           raise err
         }
-        o.set(e.key, e.value.to_value())
+        o.set(e.key, e.value.to_value(preserve_order~))
       }
       Object(o)
     }

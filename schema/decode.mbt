@@ -186,7 +186,8 @@ fn decode_schema_map(
   path : String,
 ) -> @collections.StrMap[Schema] raise SchemaError {
   let o = decode_object(v, path)
-  let out = @collections.StrMap::new()
+  // Keep the document's key order when the input preserves it.
+  let out = o.empty_like()
   for k, x in o {
     out.set(k, decode_schema(x, path=child(path, k)))
   }
@@ -521,6 +522,12 @@ pub fn RootSchema::from_value(
 
 ///|
 /// Parse and decode a root schema document from JSON text.
-pub fn RootSchema::from_json_str(text : StringView) -> RootSchema raise {
-  RootSchema::from_value(@serde_json.parse(text))
+/// `preserve_order` keeps maps (properties, definitions, ...) in document
+/// order, like schemars' `preserve_order` feature (see
+/// `TypeSpaceSettings::with_preserve_property_order`).
+pub fn RootSchema::from_json_str(
+  text : StringView,
+  preserve_order? : Bool = false,
+) -> RootSchema raise {
+  RootSchema::from_value(@serde_json.parse(text, preserve_order~))
 }

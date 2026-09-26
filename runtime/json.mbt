@@ -89,7 +89,13 @@ pub fn classify_number(d : Double, repr : String?) -> @serde_json.Number {
 ///|
 /// Convert `Json` to a serde_json value. Objects are key-sorted (serde_json
 /// `Map` order).
-pub fn json_to_value(j : Json) -> @serde_json.Value {
+///
+/// `preserve_order` keeps object keys in insertion order (serde_json's
+/// `preserve_order` feature) instead of sorting them.
+pub fn json_to_value(
+  j : Json,
+  preserve_order? : Bool = false,
+) -> @serde_json.Value {
   match j {
     Null => Null
     True => Bool(true)
@@ -101,11 +107,15 @@ pub fn json_to_value(j : Json) -> @serde_json.Value {
         Number(classify_number(d, repr))
       }
     String(s) => String(s)
-    Array(xs) => Array(xs.map(json_to_value))
+    Array(xs) => Array(xs.map(x => json_to_value(x, preserve_order~)))
     Object(m) => {
-      let o = @collections.StrMap::new()
+      let o = if preserve_order {
+        @collections.StrMap::new_ordered()
+      } else {
+        @collections.StrMap::new()
+      }
       for k, v in m {
-        o.set(k, json_to_value(v))
+        o.set(k, json_to_value(v, preserve_order~))
       }
       Object(o)
     }

@@ -91,3 +91,20 @@ test "StrMap behaves like a model map with sorted keys" {
     model.iter().all(kv => m.get(kv.0) == Some(kv.1))
   })
 }
+
+///|
+test "StrMap::new_ordered keeps insertion order" {
+  let m : @collections.StrMap[Int] = @collections.StrMap::new_ordered()
+  m.set("b", 1)
+  m.set("a", 2)
+  m.set("c", 3)
+  m.set("b", 4) // replacing keeps the position
+  inspect(m.keys(), content="[b, a, c]")
+  inspect(m.get("b"), content="Some(4)")
+  ignore(m.remove("a"))
+  inspect(m.keys(), content="[b, c]")
+  // Equality ignores order, as for IndexMap and BTreeMap.
+  let sorted = @collections.StrMap::from_array([("c", 3), ("b", 4)])
+  assert_true(m == sorted)
+  assert_true(m.map(x => x * 2).is_ordered())
+}

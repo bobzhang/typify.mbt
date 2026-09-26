@@ -16,17 +16,20 @@ pub struct StrMap[V] {
 }
 pub fn[V] StrMap::contains(Self[V], StringView) -> Bool
 pub fn[V] StrMap::copy(Self[V]) -> Self[V]
+pub fn[V, W] StrMap::empty_like(Self[V]) -> Self[W]
 pub fn[V] StrMap::first(Self[V]) -> (String, V)?
 pub fn[V] StrMap::from_array(ArrayView[(String, V)]) -> Self[V]
 pub fn[V] StrMap::get(Self[V], StringView) -> V?
 pub fn[V] StrMap::insert(Self[V], String, V) -> V?
 pub fn[V] StrMap::is_empty(Self[V]) -> Bool
+pub fn[V] StrMap::is_ordered(Self[V]) -> Bool
 pub fn[V] StrMap::iter(Self[V]) -> Iter[(String, V)]
 pub fn[V] StrMap::iter2(Self[V]) -> Iter2[String, V]
 pub fn[V] StrMap::keys(Self[V]) -> Array[String]
 pub fn[V] StrMap::length(Self[V]) -> Int
 pub fn[V, W] StrMap::map(Self[V], (V) -> W) -> Self[W]
 pub fn[V] StrMap::new() -> Self[V]
+pub fn[V] StrMap::new_ordered() -> Self[V]
 pub fn[V] StrMap::remove(Self[V], StringView) -> V?
 pub fn[V] StrMap::set(Self[V], String, V) -> Unit
 pub fn[V] StrMap::to_array(Self[V]) -> Array[(String, V)]

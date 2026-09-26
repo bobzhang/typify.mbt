@@ -15,6 +15,8 @@ priv struct Gen {
   defaults : Map[String, String]
   /// Whether maps serialize in key order (a `BTreeMap` map type).
   sorted_maps : Bool
+  /// `serde_json` values keep insertion order (`--preserve-order`).
+  ordered_json : Bool
 }
 
 ///|
@@ -56,6 +58,7 @@ fn Gen::new(space : @typify.TypeSpace) -> Gen {
     globals: Scope::new(),
     defaults: {},
     sorted_maps: map_type.contains("BTreeMap"),
+    ordered_json: space.settings.preserve_property_order,
   }
 }
 
@@ -113,7 +116,7 @@ fn Gen::de_fn(self : Gen, id : @typify.TypeId) -> String {
     Box(inner) => self.de_fn(inner)
     Boolean => "@typify_rt.de_bool"
     String => "@typify_rt.de_string"
-    JsonValue => "@typify_rt.de_json"
+    JsonValue => self.json_codec("de")
     Unit => "@typify_rt.de_unit"
     Float("f32") => "@typify_rt.de_f32"
     Float(_) => "@typify_rt.de_f64"
@@ -142,7 +145,7 @@ fn Gen::de_fn(self : Gen, id : @typify.TypeId) -> String {
         NIpv6 => "@typify_rt.Ipv6Addr::deserialize"
         NString => "@typify_rt.de_string"
         NPath => "@typify_rt.de_path"
-        NJson | NUnknown(_) => "@typify_rt.de_json"
+        NJson | NUnknown(_) => self.json_codec("de")
         NOption(p) =>
           "(d : @typify_rt.De) => @typify_rt.de_option(d, \{self.de_fn(p)})"
       }
@@ -216,7 +219,7 @@ fn Gen::ser_callee(self : Gen, id : @typify.TypeId) -> String {
     Box(inner) => self.ser_callee(inner)
     Boolean => "@typify_rt.ser_bool"
     String => "@typify_rt.ser_string"
-    JsonValue => "@typify_rt.ser_json"
+    JsonValue => self.json_codec("ser")
     Float("f32") => "@typify_rt.ser_f32"
     Float(_) => "@typify_rt.ser_f64"
     Integer(name) =>
@@ -245,7 +248,7 @@ fn Gen::ser_callee(self : Gen, id : @typify.TypeId) -> String {
         NIpv4 => "@typify_rt.Ipv4Addr::serialize"
         NIpv6 => "@typify_rt.Ipv6Addr::serialize"
         NString | NPath => "@typify_rt.ser_string"
-        NJson | NUnknown(_) => "@typify_rt.ser_json"
+        NJson | NUnknown(_) => self.json_codec("ser")
         NOption(p) =>
           "(v : \{self.mbt_type(id)}) => @typify_rt.ser_option(v, \{self.ser_fn(p)})"
       }
@@ -271,9 +274,11 @@ fn Gen::ser_expr(self : Gen, id : @typify.TypeId, v : String) -> String {
         !(entry(self.space, k).details is String &&
         entry(self.space, val).details is JsonValue) {
         "@typify_rt.ser_sorted_map(\{v}, \{self.key_cmp(k)}, \{key}, \{self.ser_fn(val)})"
-      } else if entry(self.space, k).details is String &&
+      } else if !self.ordered_json &&
+        entry(self.space, k).details is String &&
         entry(self.space, val).details is JsonValue {
-        // serde_json::Map serializes in key order.
+        // serde_json::Map serializes in key order (insertion order with
+        // `--preserve-order`, like serde_json's `preserve_order`).
         "@typify_rt.ser_sorted_map(\{v}, @typify_rt.compare_keys, \{key}, \{self.ser_fn(val)})"
       } else {
         "@typify_rt.ser_map(\{v}, \{key}, \{self.ser_fn(val)})"
@@ -313,5 +318,15 @@ fn Gen::key_cmp(self : Gen, k : @typify.TypeId) -> String {
       "(a : \{self.type_name(k)}, b : \{self.type_name(k)}) => @typify_rt.compare_keys(a.0.to_string(), b.0.to_string())"
     _ =>
       "(a : \{self.mbt_type(k)}, b : \{self.mbt_type(k)}) => @typify_rt.compare_keys(a.to_string(), b.to_string())"
+  }
+}
+
+///|
+/// The runtime codec for `serde_json::Value` (`prefix` is `de` or `ser`).
+fn Gen::json_codec(self : Gen, prefix : String) -> String {
+  if self.ordered_json {
+    "@typify_rt.\{prefix}_json_ordered"
+  } else {
+    "@typify_rt.\{prefix}_json"
   }
 }

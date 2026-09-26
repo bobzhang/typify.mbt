@@ -762,9 +762,13 @@ fn Parser::parse_long_integer(
 
 ///|
 /// Parse JSON text exactly like `serde_json::from_str::<Value>`, including
-/// its error messages and positions.
-pub fn parse(text : StringView) -> Value raise ParseError {
-  parse_content(text).to_value()
+/// its error messages and positions. `preserve_order` keeps object keys in
+/// document order (serde_json's `preserve_order` feature).
+pub fn parse(
+  text : StringView,
+  preserve_order? : Bool = false,
+) -> Value raise ParseError {
+  parse_content(text).to_value(preserve_order~)
 }
 
 ///|
