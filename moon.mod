@@ -1,10 +1,10 @@
 name = "bobzhang/typify"
 
-version = "0.1.0"
+version = "0.1.1"
 
 readme = "README.md"
 
-repository = ""
+repository = "https://github.com/bobzhang/typify.mbt"
 
 license = "Apache-2.0"
 
