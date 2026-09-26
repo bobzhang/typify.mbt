@@ -11,6 +11,15 @@ pub(all) struct Node {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Node` (fields with defaults are optional).
+pub fn Node::Node(children? : Array[Node] = [], value? : Int64) -> Node {
+  Node::{
+    children: children,
+    value: value,
+  }
+}
+
+///|
 let node_fields : @typify_rt.Fields = @typify_rt.Fields::new(["children", "value"])
 
 ///|

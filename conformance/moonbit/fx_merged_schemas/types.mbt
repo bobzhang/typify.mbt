@@ -10,6 +10,14 @@ pub(all) struct BarProp {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `BarProp` (fields with defaults are optional).
+pub fn BarProp::BarProp(bar? : Json) -> BarProp {
+  BarProp::{
+    bar: bar,
+  }
+}
+
+///|
 let bar_prop_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bar"])
 
 ///|
@@ -48,6 +56,15 @@ pub(all) struct CommentedTypeMerged {
   x : Json?
   y : Json?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CommentedTypeMerged` (fields with defaults are optional).
+pub fn CommentedTypeMerged::CommentedTypeMerged(x? : Json, y? : Json) -> CommentedTypeMerged {
+  CommentedTypeMerged::{
+    x: x,
+    y: y,
+  }
+}
 
 ///|
 let commented_type_merged_fields : @typify_rt.Fields = @typify_rt.Fields::new(["x", "y"])
@@ -188,6 +205,14 @@ pub(all) struct JsonResponseBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `JsonResponseBase` (fields with defaults are optional).
+pub fn JsonResponseBase::JsonResponseBase(result? : String) -> JsonResponseBase {
+  JsonResponseBase::{
+    result: result,
+  }
+}
+
+///|
 let json_response_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["result"])
 
 ///|
@@ -226,6 +251,15 @@ pub(all) struct JsonSuccess {
   msg : String
   result : JsonSuccessResult
 } derive(Debug, Eq)
+
+///|
+/// Construct a `JsonSuccess` (fields with defaults are optional).
+pub fn JsonSuccess::JsonSuccess(msg~ : String, result~ : JsonSuccessResult) -> JsonSuccess {
+  JsonSuccess::{
+    msg: msg,
+    result: result,
+  }
+}
 
 ///|
 let json_success_fields : @typify_rt.Fields = @typify_rt.Fields::new(["msg", "result"])
@@ -270,6 +304,15 @@ pub(all) struct JsonSuccessBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `JsonSuccessBase` (fields with defaults are optional).
+pub fn JsonSuccessBase::JsonSuccessBase(msg~ : String, result~ : JsonSuccessBaseResult) -> JsonSuccessBase {
+  JsonSuccessBase::{
+    msg: msg,
+    result: result,
+  }
+}
+
+///|
 let json_success_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["msg", "result"])
 
 ///|
@@ -310,6 +353,15 @@ pub(all) struct OrderDependentMerge {
   bar : Json?
   baz : Bool
 } derive(Debug, Eq)
+
+///|
+/// Construct a `OrderDependentMerge` (fields with defaults are optional).
+pub fn OrderDependentMerge::OrderDependentMerge(bar? : Json, baz~ : Bool) -> OrderDependentMerge {
+  OrderDependentMerge::{
+    bar: bar,
+    baz: baz,
+  }
+}
 
 ///|
 let order_dependent_merge_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bar", "baz"])
@@ -428,6 +480,14 @@ pub(all) struct ButNotThat {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ButNotThat` (fields with defaults are optional).
+pub fn ButNotThat::ButNotThat(this? : Json) -> ButNotThat {
+  ButNotThat::{
+    this: this,
+  }
+}
+
+///|
 let but_not_that_fields : @typify_rt.Fields = @typify_rt.Fields::new(["this"])
 
 ///|
@@ -464,6 +524,12 @@ pub impl ToJson for ButNotThat with fn to_json(self) {
 /// `MergeEmpty`
 pub(all) struct MergeEmpty {
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MergeEmpty` (fields with defaults are optional).
+pub fn MergeEmpty::MergeEmpty() -> MergeEmpty {
+  MergeEmpty::{}
+}
 
 ///|
 let merge_empty_fields : @typify_rt.Fields = @typify_rt.Fields::new([])
@@ -588,6 +654,14 @@ pub(all) struct Pickingone {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Pickingone` (fields with defaults are optional).
+pub fn Pickingone::Pickingone(suspended_by~ : PickingoneSuspendedBy) -> Pickingone {
+  Pickingone::{
+    suspended_by: suspended_by,
+  }
+}
+
+///|
 let pickingone_fields : @typify_rt.Fields = @typify_rt.Fields::new(["suspended_by"])
 
 ///|
@@ -623,6 +697,14 @@ pub impl ToJson for Pickingone with fn to_json(self) {
 pub(all) struct PickingoneInstallation {
   suspended_by : PickingoneUser?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PickingoneInstallation` (fields with defaults are optional).
+pub fn PickingoneInstallation::PickingoneInstallation(suspended_by? : PickingoneUser) -> PickingoneInstallation {
+  PickingoneInstallation::{
+    suspended_by: suspended_by,
+  }
+}
 
 ///|
 let pickingone_installation_fields : @typify_rt.Fields = @typify_rt.Fields::new(["suspended_by"])
@@ -664,6 +746,14 @@ pub(all) struct PickingoneUser {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PickingoneUser` (fields with defaults are optional).
+pub fn PickingoneUser::PickingoneUser(email? : String) -> PickingoneUser {
+  PickingoneUser::{
+    email: email,
+  }
+}
+
+///|
 let pickingone_user_fields : @typify_rt.Fields = @typify_rt.Fields::new(["email"])
 
 ///|
@@ -703,6 +793,14 @@ pub(all) struct TrimFat {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `TrimFat` (fields with defaults are optional).
+pub fn TrimFat::TrimFat(a~ : Json) -> TrimFat {
+  TrimFat::{
+    a: a,
+  }
+}
+
+///|
 let trim_fat_fields : @typify_rt.Fields = @typify_rt.Fields::new(["a"])
 
 ///|
@@ -738,6 +836,14 @@ pub impl ToJson for TrimFat with fn to_json(self) {
 pub(all) struct UnchangedByMerge {
   tag : UnchangedByMergeTag
 } derive(Debug, Eq)
+
+///|
+/// Construct a `UnchangedByMerge` (fields with defaults are optional).
+pub fn UnchangedByMerge::UnchangedByMerge(tag~ : UnchangedByMergeTag) -> UnchangedByMerge {
+  UnchangedByMerge::{
+    tag: tag,
+  }
+}
 
 ///|
 let unchanged_by_merge_fields : @typify_rt.Fields = @typify_rt.Fields::new(["tag"])
@@ -874,6 +980,14 @@ pub impl ToJson for Unsatisfiable3 with fn to_json(self) {
 pub(all) struct Unsatisfiable3A {
   action : Unsatisfiable3C?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `Unsatisfiable3A` (fields with defaults are optional).
+pub fn Unsatisfiable3A::Unsatisfiable3A(action? : Unsatisfiable3C) -> Unsatisfiable3A {
+  Unsatisfiable3A::{
+    action: action,
+  }
+}
 
 ///|
 let unsatisfiable3_a_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action"])
@@ -1276,6 +1390,14 @@ pub impl ToJson for JsonSuccessBaseResult with fn to_json(self) {
 pub(all) struct PickingoneSuspendedBy {
   email : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PickingoneSuspendedBy` (fields with defaults are optional).
+pub fn PickingoneSuspendedBy::PickingoneSuspendedBy(email? : String) -> PickingoneSuspendedBy {
+  PickingoneSuspendedBy::{
+    email: email,
+  }
+}
 
 ///|
 let pickingone_suspended_by_fields : @typify_rt.Fields = @typify_rt.Fields::new(["email"])

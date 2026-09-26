@@ -11,6 +11,8 @@ priv struct Gen {
   fields : Map[String, Array[String]]
   /// Global value names (defaults, patterns, allowed values).
   globals : Scope
+  /// Generated default functions, by `<type>/<property>`.
+  defaults : Map[String, String]
   /// Whether maps serialize in key order (a `BTreeMap` map type).
   sorted_maps : Bool
 }
@@ -52,6 +54,7 @@ fn Gen::new(space : @typify.TypeSpace) -> Gen {
     ctors,
     fields,
     globals: Scope::new(),
+    defaults: {},
     sorted_maps: map_type.contains("BTreeMap"),
   }
 }

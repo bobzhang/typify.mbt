@@ -10,6 +10,14 @@ pub(all) struct Box {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Box` (fields with defaults are optional).
+pub fn Box::Box(data~ : String) -> Box {
+  Box::{
+    data: data,
+  }
+}
+
+///|
 let box_fields : @typify_rt.Fields = @typify_rt.Fields::new(["data"])
 
 ///|
@@ -47,6 +55,14 @@ pub(all) struct Copy {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Copy` (fields with defaults are optional).
+pub fn Copy::Copy(value~ : Int64) -> Copy {
+  Copy::{
+    value: value,
+  }
+}
+
+///|
 let copy_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 
 ///|
@@ -82,6 +98,14 @@ pub impl ToJson for Copy with fn to_json(self) {
 pub(all) struct DoubleOptionCollision {
   option : DoubleOptionCollisionOption?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DoubleOptionCollision` (fields with defaults are optional).
+pub fn DoubleOptionCollision::DoubleOptionCollision(option? : DoubleOptionCollisionOption) -> DoubleOptionCollision {
+  DoubleOptionCollision::{
+    option: option,
+  }
+}
 
 ///|
 let double_option_collision_fields : @typify_rt.Fields = @typify_rt.Fields::new(["option"])
@@ -123,6 +147,14 @@ pub(all) struct Drop {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Drop` (fields with defaults are optional).
+pub fn Drop::Drop(cleanup~ : Bool) -> Drop {
+  Drop::{
+    cleanup: cleanup,
+  }
+}
+
+///|
 let drop_fields : @typify_rt.Fields = @typify_rt.Fields::new(["cleanup"])
 
 ///|
@@ -159,6 +191,15 @@ pub(all) struct FlattenedKeywords {
   normal : String
   extra : Map[String, String]
 } derive(Debug, Eq)
+
+///|
+/// Construct a `FlattenedKeywords` (fields with defaults are optional).
+pub fn FlattenedKeywords::FlattenedKeywords(normal~ : String, extra~ : Map[String, String]) -> FlattenedKeywords {
+  FlattenedKeywords::{
+    normal: normal,
+    extra: extra,
+  }
+}
 
 ///|
 let flattened_keywords_fields : @typify_rt.Fields = @typify_rt.Fields::new(["normal"])
@@ -274,6 +315,14 @@ pub(all) struct MapOfKeywords {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MapOfKeywords` (fields with defaults are optional).
+pub fn MapOfKeywords::MapOfKeywords(keyword_map~ : Map[String, MapOfKeywordsKeywordMapValue]) -> MapOfKeywords {
+  MapOfKeywords::{
+    keyword_map: keyword_map,
+  }
+}
+
+///|
 let map_of_keywords_fields : @typify_rt.Fields = @typify_rt.Fields::new(["keyword_map"])
 
 ///|
@@ -311,6 +360,16 @@ pub(all) struct NestedTypeCollisions {
   type_ : TypeWithOptionField
   types : Array[TypeWithOptionField]
 } derive(Debug, Eq)
+
+///|
+/// Construct a `NestedTypeCollisions` (fields with defaults are optional).
+pub fn NestedTypeCollisions::NestedTypeCollisions(option_type? : NestedTypeCollisionsOptionType, type_~ : TypeWithOptionField, types~ : Array[TypeWithOptionField]) -> NestedTypeCollisions {
+  NestedTypeCollisions::{
+    option_type: option_type,
+    type_: type_,
+    types: types,
+  }
+}
 
 ///|
 let nested_type_collisions_fields : @typify_rt.Fields = @typify_rt.Fields::new(["option_type", "type", "types"])
@@ -360,6 +419,14 @@ pub(all) struct Option_ {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Option_` (fields with defaults are optional).
+pub fn Option_::Option_(maybe~ : String) -> Option_ {
+  Option_::{
+    maybe: maybe,
+  }
+}
+
+///|
 let option_fields : @typify_rt.Fields = @typify_rt.Fields::new(["maybe"])
 
 ///|
@@ -395,6 +462,14 @@ pub impl ToJson for Option_ with fn to_json(self) {
 pub(all) struct Pin {
   pointer : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `Pin` (fields with defaults are optional).
+pub fn Pin::Pin(pointer~ : String) -> Pin {
+  Pin::{
+    pointer: pointer,
+  }
+}
 
 ///|
 let pin_fields : @typify_rt.Fields = @typify_rt.Fields::new(["pointer"])
@@ -482,6 +557,64 @@ pub(all) struct RustKeywordMonster {
   while_ : String
   yield_ : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RustKeywordMonster` (fields with defaults are optional).
+pub fn RustKeywordMonster::RustKeywordMonster(abstract_~ : String, as_~ : String, async_~ : String, await_~ : String, become_~ : String, box_~ : String, break_~ : String, const_~ : String, continue_~ : String, crate_~ : String, do_~ : String, dyn_~ : String, else_~ : String, enum_~ : String, extern_~ : String, false_~ : String, final_~ : String, fn_~ : String, for_~ : String, gen_~ : String, if_~ : String, impl_~ : String, in_~ : String, let_~ : String, loop_~ : String, macro_~ : String, match_~ : String, mod_~ : String, move_~ : String, mut_~ : String, override_~ : String, priv_~ : String, pub_~ : String, ref_~ : String, return_~ : String, self_~ : String, static_~ : String, struct_~ : String, super_~ : String, trait_~ : String, true_~ : String, try_~ : String, type_~ : String, typeof_~ : String, unsafe_~ : String, unsized_~ : String, use_~ : String, virtual_~ : String, where_~ : String, while_~ : String, yield_~ : String) -> RustKeywordMonster {
+  RustKeywordMonster::{
+    abstract_: abstract_,
+    as_: as_,
+    async_: async_,
+    await_: await_,
+    become_: become_,
+    box_: box_,
+    break_: break_,
+    const_: const_,
+    continue_: continue_,
+    crate_: crate_,
+    do_: do_,
+    dyn_: dyn_,
+    else_: else_,
+    enum_: enum_,
+    extern_: extern_,
+    false_: false_,
+    final_: final_,
+    fn_: fn_,
+    for_: for_,
+    gen_: gen_,
+    if_: if_,
+    impl_: impl_,
+    in_: in_,
+    let_: let_,
+    loop_: loop_,
+    macro_: macro_,
+    match_: match_,
+    mod_: mod_,
+    move_: move_,
+    mut_: mut_,
+    override_: override_,
+    priv_: priv_,
+    pub_: pub_,
+    ref_: ref_,
+    return_: return_,
+    self_: self_,
+    static_: static_,
+    struct_: struct_,
+    super_: super_,
+    trait_: trait_,
+    true_: true_,
+    try_: try_,
+    type_: type_,
+    typeof_: typeof_,
+    unsafe_: unsafe_,
+    unsized_: unsized_,
+    use_: use_,
+    virtual_: virtual_,
+    where_: where_,
+    while_: while_,
+    yield_: yield_,
+  }
+}
 
 ///|
 let rust_keyword_monster_fields : @typify_rt.Fields = @typify_rt.Fields::new(["abstract", "as", "async", "await", "become", "box", "break", "const", "continue", "crate", "do", "dyn", "else", "enum", "extern", "false", "final", "fn", "for", "gen", "if", "impl", "in", "let", "loop", "macro", "match", "mod", "move", "mut", "override", "priv", "pub", "ref", "return", "self", "static", "struct", "super", "trait", "true", "try", "type", "typeof", "unsafe", "unsized", "use", "virtual", "where", "while", "yield"])
@@ -721,6 +854,14 @@ pub(all) struct Send {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Send` (fields with defaults are optional).
+pub fn Send::Send(message~ : String) -> Send {
+  Send::{
+    message: message,
+  }
+}
+
+///|
 let send_fields : @typify_rt.Fields = @typify_rt.Fields::new(["message"])
 
 ///|
@@ -756,6 +897,14 @@ pub impl ToJson for Send with fn to_json(self) {
 pub(all) struct String_ {
   text : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `String_` (fields with defaults are optional).
+pub fn String_::String_(text~ : String) -> String_ {
+  String_::{
+    text: text,
+  }
+}
 
 ///|
 let string_fields : @typify_rt.Fields = @typify_rt.Fields::new(["text"])
@@ -906,6 +1055,14 @@ pub(all) struct Sync {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Sync` (fields with defaults are optional).
+pub fn Sync::Sync(data~ : String) -> Sync {
+  Sync::{
+    data: data,
+  }
+}
+
+///|
 let sync_fields : @typify_rt.Fields = @typify_rt.Fields::new(["data"])
 
 ///|
@@ -942,6 +1099,15 @@ pub(all) struct TypeWithOptionField {
   boxed_field : Box
   optional_field : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `TypeWithOptionField` (fields with defaults are optional).
+pub fn TypeWithOptionField::TypeWithOptionField(boxed_field~ : Box, optional_field? : String) -> TypeWithOptionField {
+  TypeWithOptionField::{
+    boxed_field: boxed_field,
+    optional_field: optional_field,
+  }
+}
 
 ///|
 let type_with_option_field_fields : @typify_rt.Fields = @typify_rt.Fields::new(["boxed_field", "optional_field"])
@@ -985,6 +1151,14 @@ pub impl ToJson for TypeWithOptionField with fn to_json(self) {
 pub(all) struct Vec {
   items : Array[String]
 } derive(Debug, Eq)
+
+///|
+/// Construct a `Vec` (fields with defaults are optional).
+pub fn Vec::Vec(items~ : Array[String]) -> Vec {
+  Vec::{
+    items: items,
+  }
+}
 
 ///|
 let vec_fields : @typify_rt.Fields = @typify_rt.Fields::new(["items"])
@@ -1113,6 +1287,20 @@ pub(all) struct Std {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Std` (fields with defaults are optional).
+pub fn Std::Std(boxed~ : StdBoxed, convert~ : StdConvert, fmt~ : StdFmt, option~ : StdOption, result~ : StdResult, str~ : StdStr, string~ : StdString) -> Std {
+  Std::{
+    boxed: boxed,
+    convert: convert,
+    fmt: fmt,
+    option: option,
+    result: result,
+    str: str,
+    string: string,
+  }
+}
+
+///|
 let std_fields : @typify_rt.Fields = @typify_rt.Fields::new(["boxed", "convert", "fmt", "option", "result", "str", "string"])
 
 ///|
@@ -1196,6 +1384,14 @@ pub impl ToJson for TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLi
 pub(all) struct DoubleOptionCollisionOption {
   option : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DoubleOptionCollisionOption` (fields with defaults are optional).
+pub fn DoubleOptionCollisionOption::DoubleOptionCollisionOption(option? : String) -> DoubleOptionCollisionOption {
+  DoubleOptionCollisionOption::{
+    option: option,
+  }
+}
 
 ///|
 let double_option_collision_option_fields : @typify_rt.Fields = @typify_rt.Fields::new(["option"])
@@ -1374,6 +1570,14 @@ pub(all) struct NestedTypeCollisionsOptionType {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `NestedTypeCollisionsOptionType` (fields with defaults are optional).
+pub fn NestedTypeCollisionsOptionType::NestedTypeCollisionsOptionType(type_? : String) -> NestedTypeCollisionsOptionType {
+  NestedTypeCollisionsOptionType::{
+    type_: type_,
+  }
+}
+
+///|
 let nested_type_collisions_option_type_fields : @typify_rt.Fields = @typify_rt.Fields::new(["type"])
 
 ///|
@@ -1413,6 +1617,14 @@ pub(all) struct StdBoxed {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `StdBoxed` (fields with defaults are optional).
+pub fn StdBoxed::StdBoxed(value~ : String) -> StdBoxed {
+  StdBoxed::{
+    value: value,
+  }
+}
+
+///|
 let std_boxed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 
 ///|
@@ -1448,6 +1660,14 @@ pub impl ToJson for StdBoxed with fn to_json(self) {
 pub(all) struct StdConvert {
   value : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `StdConvert` (fields with defaults are optional).
+pub fn StdConvert::StdConvert(value~ : String) -> StdConvert {
+  StdConvert::{
+    value: value,
+  }
+}
 
 ///|
 let std_convert_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
@@ -1487,6 +1707,14 @@ pub(all) struct StdFmt {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `StdFmt` (fields with defaults are optional).
+pub fn StdFmt::StdFmt(value~ : String) -> StdFmt {
+  StdFmt::{
+    value: value,
+  }
+}
+
+///|
 let std_fmt_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 
 ///|
@@ -1522,6 +1750,14 @@ pub impl ToJson for StdFmt with fn to_json(self) {
 pub(all) struct StdOption {
   value : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `StdOption` (fields with defaults are optional).
+pub fn StdOption::StdOption(value~ : String) -> StdOption {
+  StdOption::{
+    value: value,
+  }
+}
 
 ///|
 let std_option_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
@@ -1561,6 +1797,14 @@ pub(all) struct StdResult {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `StdResult` (fields with defaults are optional).
+pub fn StdResult::StdResult(value~ : String) -> StdResult {
+  StdResult::{
+    value: value,
+  }
+}
+
+///|
 let std_result_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 
 ///|
@@ -1598,6 +1842,14 @@ pub(all) struct StdStr {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `StdStr` (fields with defaults are optional).
+pub fn StdStr::StdStr(value~ : String) -> StdStr {
+  StdStr::{
+    value: value,
+  }
+}
+
+///|
 let std_str_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 
 ///|
@@ -1633,6 +1885,14 @@ pub impl ToJson for StdStr with fn to_json(self) {
 pub(all) struct StdString {
   value : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `StdString` (fields with defaults are optional).
+pub fn StdString::StdString(value~ : String) -> StdString {
+  StdString::{
+    value: value,
+  }
+}
 
 ///|
 let std_string_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])

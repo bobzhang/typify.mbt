@@ -15,6 +15,7 @@ import {
 pub(all) struct LetterBox {
   letter : LetterBoxLetter?
 } derive(Eq, @debug.Debug)
+pub fn LetterBox::LetterBox(letter? : LetterBoxLetter) -> Self
 pub fn LetterBox::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn LetterBox::from_json(Json) -> Self raise @runtime.DeError
 pub fn LetterBox::from_json_str(StringView) -> Self raise @runtime.DeError

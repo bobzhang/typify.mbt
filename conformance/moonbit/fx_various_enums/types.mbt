@@ -201,6 +201,15 @@ pub(all) struct DiskAttachment {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiskAttachment` (fields with defaults are optional).
+pub fn DiskAttachment::DiskAttachment(alternate~ : AlternativeEnum, state~ : DiskAttachmentState) -> DiskAttachment {
+  DiskAttachment::{
+    alternate: alternate,
+    state: state,
+  }
+}
+
+///|
 let disk_attachment_fields : @typify_rt.Fields = @typify_rt.Fields::new(["alternate", "state"])
 
 ///|
@@ -240,6 +249,14 @@ pub impl ToJson for DiskAttachment with fn to_json(self) {
 pub(all) struct EmptyObject {
   prop : EmptyObjectProp?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `EmptyObject` (fields with defaults are optional).
+pub fn EmptyObject::EmptyObject(prop? : EmptyObjectProp) -> EmptyObject {
+  EmptyObject::{
+    prop: prop,
+  }
+}
 
 ///|
 let empty_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["prop"])

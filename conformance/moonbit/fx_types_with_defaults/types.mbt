@@ -10,12 +10,23 @@ pub(all) struct Doodad {
 } derive(Debug, Eq)
 
 ///|
-let doodad_fields : @typify_rt.Fields = @typify_rt.Fields::new(["when"])
-
-///|
 fn default_doodad_when() -> @typify_rt.DateTimeUtc raise @typify_rt.DeError {
   @typify_rt.default_value("\"1970-01-01T00:00:00Z\"", @typify_rt.DateTimeUtc::deserialize)
 }
+
+///|
+/// Construct a `Doodad` (fields with defaults are optional).
+pub fn Doodad::Doodad(when? : @typify_rt.DateTimeUtc) -> Doodad {
+  Doodad::{
+    when: match when {
+      Some(v) => v
+      None => default_doodad_when() catch { e => abort("invalid default for Doodad.when: \{e}") }
+    },
+  }
+}
+
+///|
+let doodad_fields : @typify_rt.Fields = @typify_rt.Fields::new(["when"])
 
 ///|
 pub impl @typify_rt.Serde for Doodad with fn deserialize(d) {
@@ -54,9 +65,6 @@ pub(all) struct MrDefaultNumbers {
 } derive(Debug, Eq)
 
 ///|
-let mr_default_numbers_fields : @typify_rt.Fields = @typify_rt.Fields::new(["big_nullable", "little_u16", "little_u8"])
-
-///|
 fn default_mr_default_numbers_big_nullable() -> UInt64? raise @typify_rt.DeError {
   @typify_rt.default_value("1", (d : @typify_rt.De) => @typify_rt.de_option(d, @typify_rt.de_nonzero_u64))
 }
@@ -70,6 +78,28 @@ fn default_mr_default_numbers_little_u16() -> UInt16 raise @typify_rt.DeError {
 fn default_mr_default_numbers_little_u8() -> Byte raise @typify_rt.DeError {
   @typify_rt.default_value("2", @typify_rt.de_nonzero_u8)
 }
+
+///|
+/// Construct a `MrDefaultNumbers` (fields with defaults are optional).
+pub fn MrDefaultNumbers::MrDefaultNumbers(big_nullable? : UInt64?, little_u16? : UInt16, little_u8? : Byte) -> MrDefaultNumbers {
+  MrDefaultNumbers::{
+    big_nullable: match big_nullable {
+      Some(v) => v
+      None => default_mr_default_numbers_big_nullable() catch { e => abort("invalid default for MrDefaultNumbers.big_nullable: \{e}") }
+    },
+    little_u16: match little_u16 {
+      Some(v) => v
+      None => default_mr_default_numbers_little_u16() catch { e => abort("invalid default for MrDefaultNumbers.little_u16: \{e}") }
+    },
+    little_u8: match little_u8 {
+      Some(v) => v
+      None => default_mr_default_numbers_little_u8() catch { e => abort("invalid default for MrDefaultNumbers.little_u8: \{e}") }
+    },
+  }
+}
+
+///|
+let mr_default_numbers_fields : @typify_rt.Fields = @typify_rt.Fields::new(["big_nullable", "little_u16", "little_u8"])
 
 ///|
 pub impl @typify_rt.Serde for MrDefaultNumbers with fn deserialize(d) {
@@ -114,6 +144,14 @@ pub(all) struct OuterThing {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `OuterThing` (fields with defaults are optional).
+pub fn OuterThing::OuterThing(thing? : ThingWithDefaults) -> OuterThing {
+  OuterThing::{
+    thing: thing,
+  }
+}
+
+///|
 let outer_thing_fields : @typify_rt.Fields = @typify_rt.Fields::new(["thing"])
 
 ///|
@@ -154,9 +192,6 @@ pub(all) struct TestBed {
 } derive(Debug, Eq)
 
 ///|
-let test_bed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["any", "id"])
-
-///|
 fn default_test_bed_any() -> Array[Json] raise @typify_rt.DeError {
   @typify_rt.default_value("[[8,6,7],[5,3,0,9]]", (d : @typify_rt.De) => @typify_rt.de_vec(d, @typify_rt.de_json))
 }
@@ -165,6 +200,24 @@ fn default_test_bed_any() -> Array[Json] raise @typify_rt.DeError {
 fn default_test_bed_id() -> @typify_rt.Uuid raise @typify_rt.DeError {
   @typify_rt.default_value("\"abc123-is-this-a-uuid\"", @typify_rt.Uuid::deserialize)
 }
+
+///|
+/// Construct a `TestBed` (fields with defaults are optional).
+pub fn TestBed::TestBed(any? : Array[Json], id? : @typify_rt.Uuid) -> TestBed {
+  TestBed::{
+    any: match any {
+      Some(v) => v
+      None => default_test_bed_any() catch { e => abort("invalid default for TestBed.any: \{e}") }
+    },
+    id: match id {
+      Some(v) => v
+      None => default_test_bed_id() catch { e => abort("invalid default for TestBed.id: \{e}") }
+    },
+  }
+}
+
+///|
+let test_bed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["any", "id"])
 
 ///|
 pub impl @typify_rt.Serde for TestBed with fn deserialize(d) {
@@ -229,12 +282,23 @@ pub(all) struct UIntContainer {
 } derive(Debug, Eq)
 
 ///|
-let u_int_container_fields : @typify_rt.Fields = @typify_rt.Fields::new(["max_path"])
-
-///|
 fn default_u_int_container_max_path() -> UInt_ raise @typify_rt.DeError {
   @typify_rt.default_value("1", UInt_::deserialize)
 }
+
+///|
+/// Construct a `UIntContainer` (fields with defaults are optional).
+pub fn UIntContainer::UIntContainer(max_path? : UInt_) -> UIntContainer {
+  UIntContainer::{
+    max_path: match max_path {
+      Some(v) => v
+      None => default_u_int_container_max_path() catch { e => abort("invalid default for UIntContainer.max_path: \{e}") }
+    },
+  }
+}
+
+///|
+let u_int_container_fields : @typify_rt.Fields = @typify_rt.Fields::new(["max_path"])
 
 ///|
 pub impl @typify_rt.Serde for UIntContainer with fn deserialize(d) {
@@ -270,6 +334,15 @@ pub(all) struct ThingWithDefaults {
   a : String?
   type_ : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ThingWithDefaults` (fields with defaults are optional).
+pub fn ThingWithDefaults::ThingWithDefaults(a? : String, type_? : String) -> ThingWithDefaults {
+  ThingWithDefaults::{
+    a: a,
+    type_: type_,
+  }
+}
 
 ///|
 let thing_with_defaults_fields : @typify_rt.Fields = @typify_rt.Fields::new(["a", "type"])

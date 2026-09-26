@@ -57,6 +57,12 @@ import {
 
 Every generated type `T` has the following:
 
+- For structs, a constructor `T(...)`, the counterpart of the Rust builder:
+  - fields without a default are required labelled arguments;
+  - `Option` fields default to `None`;
+  - fields with a serde or schema default use that default.
+
+  For example, `Veggie(veggie_name="leek", veggie_like=true)` or `Veggies()`.
 - `T::from_json_str(text)`: decode JSON text, like `serde_json::from_str`.
 - `value.to_json_string()`: encode as compact JSON, like `serde_json::to_string`.
 - `T::from_json(json)` and `value.to_json()`: conversions to and from the builtin `Json`.
@@ -91,6 +97,9 @@ For example, with this schema (upstream typify's README example):
 the generated MoonBit can be used like this:
 
 ```moonbit
+let leek = Veggie(veggie_name="leek", veggie_like=true)
+println(Veggies(vegetables=[leek]).to_json_string())
+// {"vegetables":[{"veggieLike":true,"veggieName":"leek"}]}
 let veggies = Veggies::from_json_str(
   "{\"fruits\":[\"apple\"],\"vegetables\":[{\"veggieName\":\"leek\",\"veggieLike\":true}]}",
 )

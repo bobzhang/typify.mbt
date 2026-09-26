@@ -16,6 +16,7 @@ pub(all) struct TestType {
   where_not : TestTypeWhereNot
   why_not : TestTypeWhyNot
 } derive(Eq, @debug.Debug)
+pub fn TestType::TestType(where_not~ : TestTypeWhereNot, why_not~ : TestTypeWhyNot) -> Self
 pub fn TestType::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn TestType::from_json(Json) -> Self raise @runtime.DeError
 pub fn TestType::from_json_str(StringView) -> Self raise @runtime.DeError

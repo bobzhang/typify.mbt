@@ -15,6 +15,7 @@ import {
 pub(all) struct Box {
   data : String
 } derive(Eq, @debug.Debug)
+pub fn Box::Box(data~ : String) -> Self
 pub fn Box::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Box::from_json(Json) -> Self raise @runtime.DeError
 pub fn Box::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -26,6 +27,7 @@ pub impl ToJson for Box
 pub(all) struct Copy {
   value : Int64
 } derive(Eq, @debug.Debug)
+pub fn Copy::Copy(value~ : Int64) -> Self
 pub fn Copy::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Copy::from_json(Json) -> Self raise @runtime.DeError
 pub fn Copy::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -37,6 +39,7 @@ pub impl ToJson for Copy
 pub(all) struct DoubleOptionCollision {
   option : DoubleOptionCollisionOption?
 } derive(Eq, @debug.Debug)
+pub fn DoubleOptionCollision::DoubleOptionCollision(option? : DoubleOptionCollisionOption) -> Self
 pub fn DoubleOptionCollision::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn DoubleOptionCollision::from_json(Json) -> Self raise @runtime.DeError
 pub fn DoubleOptionCollision::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -48,6 +51,7 @@ pub impl ToJson for DoubleOptionCollision
 pub(all) struct DoubleOptionCollisionOption {
   option : String?
 } derive(Eq, @debug.Debug)
+pub fn DoubleOptionCollisionOption::DoubleOptionCollisionOption(option? : String) -> Self
 pub fn DoubleOptionCollisionOption::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn DoubleOptionCollisionOption::from_json(Json) -> Self raise @runtime.DeError
 pub fn DoubleOptionCollisionOption::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -59,6 +63,7 @@ pub impl ToJson for DoubleOptionCollisionOption
 pub(all) struct Drop {
   cleanup : Bool
 } derive(Eq, @debug.Debug)
+pub fn Drop::Drop(cleanup~ : Bool) -> Self
 pub fn Drop::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Drop::from_json(Json) -> Self raise @runtime.DeError
 pub fn Drop::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -71,6 +76,7 @@ pub(all) struct FlattenedKeywords {
   normal : String
   extra : Map[String, String]
 } derive(Eq, @debug.Debug)
+pub fn FlattenedKeywords::FlattenedKeywords(normal~ : String, extra~ : Map[String, String]) -> Self
 pub fn FlattenedKeywords::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn FlattenedKeywords::from_json(Json) -> Self raise @runtime.DeError
 pub fn FlattenedKeywords::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -112,6 +118,7 @@ pub impl ToJson for KeywordFieldsEnum
 pub(all) struct MapOfKeywords {
   keyword_map : Map[String, MapOfKeywordsKeywordMapValue]
 } derive(Eq, @debug.Debug)
+pub fn MapOfKeywords::MapOfKeywords(keyword_map~ : Map[String, MapOfKeywordsKeywordMapValue]) -> Self
 pub fn MapOfKeywords::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn MapOfKeywords::from_json(Json) -> Self raise @runtime.DeError
 pub fn MapOfKeywords::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -152,6 +159,7 @@ pub(all) struct NestedTypeCollisions {
   type_ : TypeWithOptionField
   types : Array[TypeWithOptionField]
 } derive(Eq, @debug.Debug)
+pub fn NestedTypeCollisions::NestedTypeCollisions(option_type? : NestedTypeCollisionsOptionType, type_~ : TypeWithOptionField, types~ : Array[TypeWithOptionField]) -> Self
 pub fn NestedTypeCollisions::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn NestedTypeCollisions::from_json(Json) -> Self raise @runtime.DeError
 pub fn NestedTypeCollisions::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -163,6 +171,7 @@ pub impl ToJson for NestedTypeCollisions
 pub(all) struct NestedTypeCollisionsOptionType {
   type_ : String?
 } derive(Eq, @debug.Debug)
+pub fn NestedTypeCollisionsOptionType::NestedTypeCollisionsOptionType(type_? : String) -> Self
 pub fn NestedTypeCollisionsOptionType::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn NestedTypeCollisionsOptionType::from_json(Json) -> Self raise @runtime.DeError
 pub fn NestedTypeCollisionsOptionType::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -174,6 +183,7 @@ pub impl ToJson for NestedTypeCollisionsOptionType
 pub(all) struct Option_ {
   maybe : String
 } derive(Eq, @debug.Debug)
+pub fn Option_::Option_(maybe~ : String) -> Self
 pub fn Option_::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Option_::from_json(Json) -> Self raise @runtime.DeError
 pub fn Option_::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -185,6 +195,7 @@ pub impl ToJson for Option_
 pub(all) struct Pin {
   pointer : String
 } derive(Eq, @debug.Debug)
+pub fn Pin::Pin(pointer~ : String) -> Self
 pub fn Pin::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Pin::from_json(Json) -> Self raise @runtime.DeError
 pub fn Pin::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -246,6 +257,7 @@ pub(all) struct RustKeywordMonster {
   while_ : String
   yield_ : String
 } derive(Eq, @debug.Debug)
+pub fn RustKeywordMonster::RustKeywordMonster(abstract_~ : String, as_~ : String, async_~ : String, await_~ : String, become_~ : String, box_~ : String, break_~ : String, const_~ : String, continue_~ : String, crate_~ : String, do_~ : String, dyn_~ : String, else_~ : String, enum_~ : String, extern_~ : String, false_~ : String, final_~ : String, fn_~ : String, for_~ : String, gen_~ : String, if_~ : String, impl_~ : String, in_~ : String, let_~ : String, loop_~ : String, macro_~ : String, match_~ : String, mod_~ : String, move_~ : String, mut_~ : String, override_~ : String, priv_~ : String, pub_~ : String, ref_~ : String, return_~ : String, self_~ : String, static_~ : String, struct_~ : String, super_~ : String, trait_~ : String, true_~ : String, try_~ : String, type_~ : String, typeof_~ : String, unsafe_~ : String, unsized_~ : String, use_~ : String, virtual_~ : String, where_~ : String, while_~ : String, yield_~ : String) -> Self
 pub fn RustKeywordMonster::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn RustKeywordMonster::from_json(Json) -> Self raise @runtime.DeError
 pub fn RustKeywordMonster::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -257,6 +269,7 @@ pub impl ToJson for RustKeywordMonster
 pub(all) struct Send {
   message : String
 } derive(Eq, @debug.Debug)
+pub fn Send::Send(message~ : String) -> Self
 pub fn Send::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Send::from_json(Json) -> Self raise @runtime.DeError
 pub fn Send::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -274,6 +287,7 @@ pub(all) struct Std {
   str : StdStr
   string : StdString
 } derive(Eq, @debug.Debug)
+pub fn Std::Std(boxed~ : StdBoxed, convert~ : StdConvert, fmt~ : StdFmt, option~ : StdOption, result~ : StdResult, str~ : StdStr, string~ : StdString) -> Self
 pub fn Std::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Std::from_json(Json) -> Self raise @runtime.DeError
 pub fn Std::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -285,6 +299,7 @@ pub impl ToJson for Std
 pub(all) struct StdBoxed {
   value : String
 } derive(Eq, @debug.Debug)
+pub fn StdBoxed::StdBoxed(value~ : String) -> Self
 pub fn StdBoxed::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn StdBoxed::from_json(Json) -> Self raise @runtime.DeError
 pub fn StdBoxed::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -296,6 +311,7 @@ pub impl ToJson for StdBoxed
 pub(all) struct StdConvert {
   value : String
 } derive(Eq, @debug.Debug)
+pub fn StdConvert::StdConvert(value~ : String) -> Self
 pub fn StdConvert::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn StdConvert::from_json(Json) -> Self raise @runtime.DeError
 pub fn StdConvert::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -307,6 +323,7 @@ pub impl ToJson for StdConvert
 pub(all) struct StdFmt {
   value : String
 } derive(Eq, @debug.Debug)
+pub fn StdFmt::StdFmt(value~ : String) -> Self
 pub fn StdFmt::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn StdFmt::from_json(Json) -> Self raise @runtime.DeError
 pub fn StdFmt::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -318,6 +335,7 @@ pub impl ToJson for StdFmt
 pub(all) struct StdOption {
   value : String
 } derive(Eq, @debug.Debug)
+pub fn StdOption::StdOption(value~ : String) -> Self
 pub fn StdOption::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn StdOption::from_json(Json) -> Self raise @runtime.DeError
 pub fn StdOption::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -329,6 +347,7 @@ pub impl ToJson for StdOption
 pub(all) struct StdResult {
   value : String
 } derive(Eq, @debug.Debug)
+pub fn StdResult::StdResult(value~ : String) -> Self
 pub fn StdResult::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn StdResult::from_json(Json) -> Self raise @runtime.DeError
 pub fn StdResult::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -340,6 +359,7 @@ pub impl ToJson for StdResult
 pub(all) struct StdStr {
   value : String
 } derive(Eq, @debug.Debug)
+pub fn StdStr::StdStr(value~ : String) -> Self
 pub fn StdStr::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn StdStr::from_json(Json) -> Self raise @runtime.DeError
 pub fn StdStr::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -351,6 +371,7 @@ pub impl ToJson for StdStr
 pub(all) struct StdString {
   value : String
 } derive(Eq, @debug.Debug)
+pub fn StdString::StdString(value~ : String) -> Self
 pub fn StdString::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn StdString::from_json(Json) -> Self raise @runtime.DeError
 pub fn StdString::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -388,6 +409,7 @@ pub impl ToJson for StringNewtype
 pub(all) struct String_ {
   text : String
 } derive(Eq, @debug.Debug)
+pub fn String_::String_(text~ : String) -> Self
 pub fn String_::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn String_::from_json(Json) -> Self raise @runtime.DeError
 pub fn String_::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -399,6 +421,7 @@ pub impl ToJson for String_
 pub(all) struct Sync {
   data : String
 } derive(Eq, @debug.Debug)
+pub fn Sync::Sync(data~ : String) -> Self
 pub fn Sync::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Sync::from_json(Json) -> Self raise @runtime.DeError
 pub fn Sync::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -420,6 +443,7 @@ pub(all) struct TypeWithOptionField {
   boxed_field : Box
   optional_field : String?
 } derive(Eq, @debug.Debug)
+pub fn TypeWithOptionField::TypeWithOptionField(boxed_field~ : Box, optional_field? : String) -> Self
 pub fn TypeWithOptionField::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn TypeWithOptionField::from_json(Json) -> Self raise @runtime.DeError
 pub fn TypeWithOptionField::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -431,6 +455,7 @@ pub impl ToJson for TypeWithOptionField
 pub(all) struct Vec {
   items : Array[String]
 } derive(Eq, @debug.Debug)
+pub fn Vec::Vec(items~ : Array[String]) -> Self
 pub fn Vec::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Vec::from_json(Json) -> Self raise @runtime.DeError
 pub fn Vec::from_json_str(StringView) -> Self raise @runtime.DeError

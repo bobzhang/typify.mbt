@@ -64,6 +64,10 @@ fn Gen::default_fn(
   id : @typify.TypeId,
   value : @serde_json.Value,
 ) -> String {
+  let key = "\{type_name}/\{prop_name}"
+  if self.defaults.get(key) is Some(name) {
+    return name
+  }
   let name = self.globals.alloc(
     lower_ident(@typify.sanitize("default_\{type_name}_\{prop_name}", Snake)),
   )
@@ -77,6 +81,7 @@ fn Gen::default_fn(
       $|
     ),
   )
+  self.defaults[key] = name
   name
 }
 
@@ -262,6 +267,67 @@ fn Gen::type_default(
 // Structs
 
 ///|
+/// The struct constructor `T(...)` (the counterpart of upstream's builder):
+/// fields without a serde default are required labelled arguments, `Option`
+/// fields are optional arguments defaulting to `None`, and fields with a
+/// serde default are optional arguments defaulting to that value.
+fn Gen::struct_constructor(
+  self : Gen,
+  out : StringBuilder,
+  name : String,
+  d : @typify.TypeEntryStruct,
+  fields : Array[String],
+) -> Unit {
+  let params = []
+  let inits = []
+  for i, p in d.properties {
+    let f = fields[i]
+    let ty = self.mbt_type(p.type_id)
+    match (p.state, entry(self.space, p.type_id).details) {
+      (Default(v), _) => {
+        let default_fn = self.default_fn(out, d.name, p.name, p.type_id, v)
+        params.push("\{f}? : \{ty}")
+        inits.push(
+          "\{f}: match \{f} {\n    Some(v) => v\n    None => \{default_fn}() catch { e => abort(\"invalid default for \{name}.\{f}: \\{e}\") }\n  }",
+        )
+      }
+      (_, Option(inner)) => {
+        // `f? : Inner` makes `f` an `Inner?` defaulting to `None`.
+        ignore(inner)
+        params.push("\{f}? : \{option_inner(ty)}")
+        inits.push("\{f}: \{f}")
+      }
+      (Optional, _) => {
+        params.push("\{f}? : \{ty} = \{self.zero_value(p.type_id)}")
+        inits.push("\{f}: \{f}")
+      }
+      (Required, _) => {
+        params.push("\{f}~ : \{ty}")
+        inits.push("\{f}: \{f}")
+      }
+    }
+  }
+  let body = if inits.is_empty() {
+    "  \{name}::{}"
+  } else {
+    "  \{name}::{\n\{inits.map(s => "    " + s.replace_all(old="\n", new="\n  ")).join(",\n")},\n  }"
+  }
+  out.write_string(
+    "///|\n/// Construct a `\{name}` (fields with defaults are optional).\npub fn \{name}::\{name}(\{params.join(", ")}) -> \{name} {\n\{body}\n}\n\n",
+  )
+}
+
+///|
+/// `T` for an optional type expression `T?`.
+fn option_inner(ty : String) -> String {
+  if ty.has_suffix("?") {
+    ty.unsafe_substring(start=0, end=ty.length() - 1)
+  } else {
+    ty
+  }
+}
+
+///|
 fn Gen::output_struct(
   self : Gen,
   out : StringBuilder,
@@ -278,6 +344,7 @@ fn Gen::output_struct(
     out.write_string("  \{fields[i]} : \{self.mbt_type(p.type_id)}\n")
   }
   out.write_string("} derive(Debug, Eq)\n\n")
+  self.struct_constructor(out, name, d, fields)
   let build = "{ \{fields.mapi((i, f) => "\{f}: v\{i}").join(", ")} }"
   let build = "\{name}::" + build
   let decode = self.struct_decode(

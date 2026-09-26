@@ -10,6 +10,14 @@ pub(all) struct TestType {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `TestType` (fields with defaults are optional).
+pub fn TestType::TestType(value? : TestTypeValue) -> TestType {
+  TestType::{
+    value: value,
+  }
+}
+
+///|
 let test_type_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 
 ///|

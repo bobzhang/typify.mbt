@@ -33,6 +33,7 @@ pub impl ToJson for IntegerBs
 pub(all) struct ObjectBs {
   ok : Bool?
 } derive(Eq, @debug.Debug)
+pub fn ObjectBs::ObjectBs(ok? : Bool) -> Self
 pub fn ObjectBs::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ObjectBs::from_json(Json) -> Self raise @runtime.DeError
 pub fn ObjectBs::from_json_str(StringView) -> Self raise @runtime.DeError

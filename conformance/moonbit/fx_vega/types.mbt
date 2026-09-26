@@ -20,12 +20,31 @@ pub(all) struct AggregateTransform {
 } derive(Debug, Eq)
 
 ///|
-let aggregate_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "cross", "drop", "fields", "groupby", "key", "ops", "signal", "type"])
-
-///|
 fn default_aggregate_transform_drop() -> AggregateTransformDrop raise @typify_rt.DeError {
   @typify_rt.default_value("true", AggregateTransformDrop::deserialize)
 }
+
+///|
+/// Construct a `AggregateTransform` (fields with defaults are optional).
+pub fn AggregateTransform::AggregateTransform(as_? : AggregateTransformAs, cross? : AggregateTransformCross, drop? : AggregateTransformDrop, fields? : AggregateTransformFields, groupby? : AggregateTransformGroupby, key? : AggregateTransformKey, ops? : AggregateTransformOps, signal? : String, type_~ : AggregateTransformType) -> AggregateTransform {
+  AggregateTransform::{
+    as_: as_,
+    cross: cross,
+    drop: match drop {
+      Some(v) => v
+      None => default_aggregate_transform_drop() catch { e => abort("invalid default for AggregateTransform.drop: \{e}") }
+    },
+    fields: fields,
+    groupby: groupby,
+    key: key,
+    ops: ops,
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
+let aggregate_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "cross", "drop", "fields", "groupby", "key", "ops", "signal", "type"])
 
 ///|
 pub impl @typify_rt.Serde for AggregateTransform with fn deserialize(d) {
@@ -503,6 +522,92 @@ pub(all) struct Axis {
   values : ArrayOrSignal?
   zindex : Double?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `Axis` (fields with defaults are optional).
+pub fn Axis::Axis(aria? : Bool, band_position? : AxisBandPosition, description? : String, domain? : Bool, domain_cap? : AxisDomainCap, domain_color? : AxisDomainColor, domain_dash? : AxisDomainDash, domain_dash_offset? : AxisDomainDashOffset, domain_opacity? : AxisDomainOpacity, domain_width? : AxisDomainWidth, encode? : AxisEncode, format? : AxisFormat, format_type? : AxisFormatType, grid? : Bool, grid_cap? : AxisGridCap, grid_color? : AxisGridColor, grid_dash? : AxisGridDash, grid_dash_offset? : AxisGridDashOffset, grid_opacity? : AxisGridOpacity, grid_scale? : String, grid_width? : AxisGridWidth, label_align? : AxisLabelAlign, label_angle? : AxisLabelAngle, label_baseline? : AxisLabelBaseline, label_bound? : AxisLabelBound, label_color? : AxisLabelColor, label_flush? : AxisLabelFlush, label_flush_offset? : NumberOrSignal, label_font? : AxisLabelFont, label_font_size? : AxisLabelFontSize, label_font_style? : AxisLabelFontStyle, label_font_weight? : AxisLabelFontWeight, label_limit? : AxisLabelLimit, label_line_height? : AxisLabelLineHeight, label_offset? : AxisLabelOffset, label_opacity? : AxisLabelOpacity, label_overlap? : LabelOverlap, label_padding? : AxisLabelPadding, label_separation? : NumberOrSignal, labels? : Bool, max_extent? : AxisMaxExtent, min_extent? : AxisMinExtent, offset? : AxisOffset, orient~ : AxisOrient, position? : AxisPosition, scale~ : String, tick_band? : TickBand, tick_cap? : AxisTickCap, tick_color? : AxisTickColor, tick_count? : TickCount, tick_dash? : AxisTickDash, tick_dash_offset? : AxisTickDashOffset, tick_extra? : BooleanOrSignal, tick_min_step? : NumberOrSignal, tick_offset? : AxisTickOffset, tick_opacity? : AxisTickOpacity, tick_round? : AxisTickRound, tick_size? : AxisTickSize, tick_width? : AxisTickWidth, ticks? : Bool, title? : TextOrSignal, title_align? : AxisTitleAlign, title_anchor? : AxisTitleAnchor, title_angle? : AxisTitleAngle, title_baseline? : AxisTitleBaseline, title_color? : AxisTitleColor, title_font? : AxisTitleFont, title_font_size? : AxisTitleFontSize, title_font_style? : AxisTitleFontStyle, title_font_weight? : AxisTitleFontWeight, title_limit? : AxisTitleLimit, title_line_height? : AxisTitleLineHeight, title_opacity? : AxisTitleOpacity, title_padding? : AxisTitlePadding, title_x? : AxisTitleX, title_y? : AxisTitleY, translate? : AxisTranslate, values? : ArrayOrSignal, zindex? : Double) -> Axis {
+  Axis::{
+    aria: aria,
+    band_position: band_position,
+    description: description,
+    domain: domain,
+    domain_cap: domain_cap,
+    domain_color: domain_color,
+    domain_dash: domain_dash,
+    domain_dash_offset: domain_dash_offset,
+    domain_opacity: domain_opacity,
+    domain_width: domain_width,
+    encode: encode,
+    format: format,
+    format_type: format_type,
+    grid: grid,
+    grid_cap: grid_cap,
+    grid_color: grid_color,
+    grid_dash: grid_dash,
+    grid_dash_offset: grid_dash_offset,
+    grid_opacity: grid_opacity,
+    grid_scale: grid_scale,
+    grid_width: grid_width,
+    label_align: label_align,
+    label_angle: label_angle,
+    label_baseline: label_baseline,
+    label_bound: label_bound,
+    label_color: label_color,
+    label_flush: label_flush,
+    label_flush_offset: label_flush_offset,
+    label_font: label_font,
+    label_font_size: label_font_size,
+    label_font_style: label_font_style,
+    label_font_weight: label_font_weight,
+    label_limit: label_limit,
+    label_line_height: label_line_height,
+    label_offset: label_offset,
+    label_opacity: label_opacity,
+    label_overlap: label_overlap,
+    label_padding: label_padding,
+    label_separation: label_separation,
+    labels: labels,
+    max_extent: max_extent,
+    min_extent: min_extent,
+    offset: offset,
+    orient: orient,
+    position: position,
+    scale: scale,
+    tick_band: tick_band,
+    tick_cap: tick_cap,
+    tick_color: tick_color,
+    tick_count: tick_count,
+    tick_dash: tick_dash,
+    tick_dash_offset: tick_dash_offset,
+    tick_extra: tick_extra,
+    tick_min_step: tick_min_step,
+    tick_offset: tick_offset,
+    tick_opacity: tick_opacity,
+    tick_round: tick_round,
+    tick_size: tick_size,
+    tick_width: tick_width,
+    ticks: ticks,
+    title: title,
+    title_align: title_align,
+    title_anchor: title_anchor,
+    title_angle: title_angle,
+    title_baseline: title_baseline,
+    title_color: title_color,
+    title_font: title_font,
+    title_font_size: title_font_size,
+    title_font_style: title_font_style,
+    title_font_weight: title_font_weight,
+    title_limit: title_limit,
+    title_line_height: title_line_height,
+    title_opacity: title_opacity,
+    title_padding: title_padding,
+    title_x: title_x,
+    title_y: title_y,
+    translate: translate,
+    values: values,
+    zindex: zindex,
+  }
+}
 
 ///|
 let axis_fields : @typify_rt.Fields = @typify_rt.Fields::new(["aria", "bandPosition", "description", "domain", "domainCap", "domainColor", "domainDash", "domainDashOffset", "domainOpacity", "domainWidth", "encode", "format", "formatType", "grid", "gridCap", "gridColor", "gridDash", "gridDashOffset", "gridOpacity", "gridScale", "gridWidth", "labelAlign", "labelAngle", "labelBaseline", "labelBound", "labelColor", "labelFlush", "labelFlushOffset", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", "labelLimit", "labelLineHeight", "labelOffset", "labelOpacity", "labelOverlap", "labelPadding", "labelSeparation", "labels", "maxExtent", "minExtent", "offset", "orient", "position", "scale", "tickBand", "tickCap", "tickColor", "tickCount", "tickDash", "tickDashOffset", "tickExtra", "tickMinStep", "tickOffset", "tickOpacity", "tickRound", "tickSize", "tickWidth", "ticks", "title", "titleAlign", "titleAnchor", "titleAngle", "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", "titlePadding", "titleX", "titleY", "translate", "values", "zindex"])
@@ -1249,9 +1354,6 @@ pub(all) struct BinTransform {
 } derive(Debug, Eq)
 
 ///|
-let bin_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["anchor", "as", "base", "divide", "extent", "field", "interval", "maxbins", "minstep", "name", "nice", "signal", "span", "step", "steps", "type"])
-
-///|
 fn default_bin_transform_as() -> BinTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"bin0\",\"bin1\"]", BinTransformAs::deserialize)
 }
@@ -1280,6 +1382,50 @@ fn default_bin_transform_maxbins() -> BinTransformMaxbins raise @typify_rt.DeErr
 fn default_bin_transform_nice() -> BinTransformNice raise @typify_rt.DeError {
   @typify_rt.default_value("true", BinTransformNice::deserialize)
 }
+
+///|
+/// Construct a `BinTransform` (fields with defaults are optional).
+pub fn BinTransform::BinTransform(anchor? : BinTransformAnchor, as_? : BinTransformAs, base? : BinTransformBase, divide? : BinTransformDivide, extent~ : BinTransformExtent, field~ : BinTransformField, interval? : BinTransformInterval, maxbins? : BinTransformMaxbins, minstep? : BinTransformMinstep, name? : BinTransformName, nice? : BinTransformNice, signal? : String, span? : BinTransformSpan, step? : BinTransformStep, steps? : BinTransformSteps, type_~ : BinTransformType) -> BinTransform {
+  BinTransform::{
+    anchor: anchor,
+    as_: match as_ {
+      Some(v) => v
+      None => default_bin_transform_as() catch { e => abort("invalid default for BinTransform.as_: \{e}") }
+    },
+    base: match base {
+      Some(v) => v
+      None => default_bin_transform_base() catch { e => abort("invalid default for BinTransform.base: \{e}") }
+    },
+    divide: match divide {
+      Some(v) => v
+      None => default_bin_transform_divide() catch { e => abort("invalid default for BinTransform.divide: \{e}") }
+    },
+    extent: extent,
+    field: field,
+    interval: match interval {
+      Some(v) => v
+      None => default_bin_transform_interval() catch { e => abort("invalid default for BinTransform.interval: \{e}") }
+    },
+    maxbins: match maxbins {
+      Some(v) => v
+      None => default_bin_transform_maxbins() catch { e => abort("invalid default for BinTransform.maxbins: \{e}") }
+    },
+    minstep: minstep,
+    name: name,
+    nice: match nice {
+      Some(v) => v
+      None => default_bin_transform_nice() catch { e => abort("invalid default for BinTransform.nice: \{e}") }
+    },
+    signal: signal,
+    span: span,
+    step: step,
+    steps: steps,
+    type_: type_,
+  }
+}
+
+///|
+let bin_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["anchor", "as", "base", "divide", "extent", "field", "interval", "maxbins", "minstep", "name", "nice", "signal", "span", "step", "steps", "type"])
 
 ///|
 pub impl @typify_rt.Serde for BinTransform with fn deserialize(d) {
@@ -1797,6 +1943,16 @@ pub(all) struct CollectTransform {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CollectTransform` (fields with defaults are optional).
+pub fn CollectTransform::CollectTransform(signal? : String, sort? : Compare_, type_~ : CollectTransformType) -> CollectTransform {
+  CollectTransform::{
+    signal: signal,
+    sort: sort,
+    type_: type_,
+  }
+}
+
+///|
 let collect_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["signal", "sort", "type"])
 
 ///|
@@ -1848,6 +2004,16 @@ pub(all) struct ColorHcl {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ColorHcl` (fields with defaults are optional).
+pub fn ColorHcl::ColorHcl(c~ : NumberValue, h~ : NumberValue, l~ : NumberValue) -> ColorHcl {
+  ColorHcl::{
+    c: c,
+    h: h,
+    l: l,
+  }
+}
+
+///|
 let color_hcl_fields : @typify_rt.Fields = @typify_rt.Fields::new(["c", "h", "l"])
 
 ///|
@@ -1893,6 +2059,16 @@ pub(all) struct ColorHsl {
   l : NumberValue
   s : NumberValue
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ColorHsl` (fields with defaults are optional).
+pub fn ColorHsl::ColorHsl(h~ : NumberValue, l~ : NumberValue, s~ : NumberValue) -> ColorHsl {
+  ColorHsl::{
+    h: h,
+    l: l,
+    s: s,
+  }
+}
 
 ///|
 let color_hsl_fields : @typify_rt.Fields = @typify_rt.Fields::new(["h", "l", "s"])
@@ -1942,6 +2118,16 @@ pub(all) struct ColorLab {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ColorLab` (fields with defaults are optional).
+pub fn ColorLab::ColorLab(a~ : NumberValue, b~ : NumberValue, l~ : NumberValue) -> ColorLab {
+  ColorLab::{
+    a: a,
+    b: b,
+    l: l,
+  }
+}
+
+///|
 let color_lab_fields : @typify_rt.Fields = @typify_rt.Fields::new(["a", "b", "l"])
 
 ///|
@@ -1987,6 +2173,16 @@ pub(all) struct ColorRgb {
   g : NumberValue
   r : NumberValue
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ColorRgb` (fields with defaults are optional).
+pub fn ColorRgb::ColorRgb(b~ : NumberValue, g~ : NumberValue, r~ : NumberValue) -> ColorRgb {
+  ColorRgb::{
+    b: b,
+    g: g,
+    r: r,
+  }
+}
 
 ///|
 let color_rgb_fields : @typify_rt.Fields = @typify_rt.Fields::new(["b", "g", "r"])
@@ -2139,12 +2335,35 @@ pub(all) struct ContourTransform {
 } derive(Debug, Eq)
 
 ///|
-let contour_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bandwidth", "cellSize", "count", "nice", "signal", "size", "smooth", "thresholds", "type", "values", "weight", "x", "y"])
-
-///|
 fn default_contour_transform_smooth() -> ContourTransformSmooth raise @typify_rt.DeError {
   @typify_rt.default_value("true", ContourTransformSmooth::deserialize)
 }
+
+///|
+/// Construct a `ContourTransform` (fields with defaults are optional).
+pub fn ContourTransform::ContourTransform(bandwidth? : ContourTransformBandwidth, cell_size? : ContourTransformCellSize, count? : ContourTransformCount, nice? : ContourTransformNice, signal? : String, size~ : ContourTransformSize, smooth? : ContourTransformSmooth, thresholds? : ContourTransformThresholds, type_~ : ContourTransformType, values? : ContourTransformValues, weight? : ContourTransformWeight, x? : ContourTransformX, y? : ContourTransformY) -> ContourTransform {
+  ContourTransform::{
+    bandwidth: bandwidth,
+    cell_size: cell_size,
+    count: count,
+    nice: nice,
+    signal: signal,
+    size: size,
+    smooth: match smooth {
+      Some(v) => v
+      None => default_contour_transform_smooth() catch { e => abort("invalid default for ContourTransform.smooth: \{e}") }
+    },
+    thresholds: thresholds,
+    type_: type_,
+    values: values,
+    weight: weight,
+    x: x,
+    y: y,
+  }
+}
+
+///|
+let contour_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bandwidth", "cellSize", "count", "nice", "signal", "size", "smooth", "thresholds", "type", "values", "weight", "x", "y"])
 
 ///|
 pub impl @typify_rt.Serde for ContourTransform with fn deserialize(d) {
@@ -2255,9 +2474,6 @@ pub(all) struct CountpatternTransform {
 } derive(Debug, Eq)
 
 ///|
-let countpattern_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "case", "field", "pattern", "signal", "stopwords", "type"])
-
-///|
 fn default_countpattern_transform_as() -> CountpatternTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"text\",\"count\"]", CountpatternTransformAs::deserialize)
 }
@@ -2271,6 +2487,32 @@ fn default_countpattern_transform_case() -> CountpatternTransformCase raise @typ
 fn default_countpattern_transform_pattern() -> CountpatternTransformPattern raise @typify_rt.DeError {
   @typify_rt.default_value("\"[\\\\w\\\"]+\"", CountpatternTransformPattern::deserialize)
 }
+
+///|
+/// Construct a `CountpatternTransform` (fields with defaults are optional).
+pub fn CountpatternTransform::CountpatternTransform(as_? : CountpatternTransformAs, case? : CountpatternTransformCase, field~ : CountpatternTransformField, pattern? : CountpatternTransformPattern, signal? : String, stopwords? : CountpatternTransformStopwords, type_~ : CountpatternTransformType) -> CountpatternTransform {
+  CountpatternTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_countpattern_transform_as() catch { e => abort("invalid default for CountpatternTransform.as_: \{e}") }
+    },
+    case: match case {
+      Some(v) => v
+      None => default_countpattern_transform_case() catch { e => abort("invalid default for CountpatternTransform.case: \{e}") }
+    },
+    field: field,
+    pattern: match pattern {
+      Some(v) => v
+      None => default_countpattern_transform_pattern() catch { e => abort("invalid default for CountpatternTransform.pattern: \{e}") }
+    },
+    signal: signal,
+    stopwords: stopwords,
+    type_: type_,
+  }
+}
+
+///|
+let countpattern_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "case", "field", "pattern", "signal", "stopwords", "type"])
 
 ///|
 pub impl @typify_rt.Serde for CountpatternTransform with fn deserialize(d) {
@@ -2338,12 +2580,26 @@ pub(all) struct CrossTransform {
 } derive(Debug, Eq)
 
 ///|
-let cross_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "filter", "signal", "type"])
-
-///|
 fn default_cross_transform_as() -> CrossTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"a\",\"b\"]", CrossTransformAs::deserialize)
 }
+
+///|
+/// Construct a `CrossTransform` (fields with defaults are optional).
+pub fn CrossTransform::CrossTransform(as_? : CrossTransformAs, filter? : ExprString, signal? : String, type_~ : CrossTransformType) -> CrossTransform {
+  CrossTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_cross_transform_as() catch { e => abort("invalid default for CrossTransform.as_: \{e}") }
+    },
+    filter: filter,
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
+let cross_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "filter", "signal", "type"])
 
 ///|
 pub impl @typify_rt.Serde for CrossTransform with fn deserialize(d) {
@@ -2397,6 +2653,17 @@ pub(all) struct CrossfilterTransform {
   signal : String?
   type_ : CrossfilterTransformType
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CrossfilterTransform` (fields with defaults are optional).
+pub fn CrossfilterTransform::CrossfilterTransform(fields~ : CrossfilterTransformFields, query~ : CrossfilterTransformQuery, signal? : String, type_~ : CrossfilterTransformType) -> CrossfilterTransform {
+  CrossfilterTransform::{
+    fields: fields,
+    query: query,
+    signal: signal,
+    type_: type_,
+  }
+}
 
 ///|
 let crossfilter_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["fields", "query", "signal", "type"])
@@ -2669,9 +2936,6 @@ pub(all) struct DensityTransform {
 } derive(Debug, Eq)
 
 ///|
-let density_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "distribution", "extent", "maxsteps", "method", "minsteps", "signal", "steps", "type"])
-
-///|
 fn default_density_transform_as() -> DensityTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"value\",\"density\"]", DensityTransformAs::deserialize)
 }
@@ -2690,6 +2954,37 @@ fn default_density_transform_method() -> DensityTransformMethod raise @typify_rt
 fn default_density_transform_minsteps() -> DensityTransformMinsteps raise @typify_rt.DeError {
   @typify_rt.default_value("25", DensityTransformMinsteps::deserialize)
 }
+
+///|
+/// Construct a `DensityTransform` (fields with defaults are optional).
+pub fn DensityTransform::DensityTransform(as_? : DensityTransformAs, distribution? : DensityTransformDistribution, extent? : DensityTransformExtent, maxsteps? : DensityTransformMaxsteps, method_? : DensityTransformMethod, minsteps? : DensityTransformMinsteps, signal? : String, steps? : DensityTransformSteps, type_~ : DensityTransformType) -> DensityTransform {
+  DensityTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_density_transform_as() catch { e => abort("invalid default for DensityTransform.as_: \{e}") }
+    },
+    distribution: distribution,
+    extent: extent,
+    maxsteps: match maxsteps {
+      Some(v) => v
+      None => default_density_transform_maxsteps() catch { e => abort("invalid default for DensityTransform.maxsteps: \{e}") }
+    },
+    method_: match method_ {
+      Some(v) => v
+      None => default_density_transform_method() catch { e => abort("invalid default for DensityTransform.method_: \{e}") }
+    },
+    minsteps: match minsteps {
+      Some(v) => v
+      None => default_density_transform_minsteps() catch { e => abort("invalid default for DensityTransform.minsteps: \{e}") }
+    },
+    signal: signal,
+    steps: steps,
+    type_: type_,
+  }
+}
+
+///|
+let density_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "distribution", "extent", "maxsteps", "method", "minsteps", "signal", "steps", "type"])
 
 ///|
 pub impl @typify_rt.Serde for DensityTransform with fn deserialize(d) {
@@ -2819,12 +3114,29 @@ pub(all) struct DotbinTransform {
 } derive(Debug, Eq)
 
 ///|
-let dotbin_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "groupby", "signal", "smooth", "step", "type"])
-
-///|
 fn default_dotbin_transform_as() -> DotbinTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("\"bin\"", DotbinTransformAs::deserialize)
 }
+
+///|
+/// Construct a `DotbinTransform` (fields with defaults are optional).
+pub fn DotbinTransform::DotbinTransform(as_? : DotbinTransformAs, field~ : DotbinTransformField, groupby? : DotbinTransformGroupby, signal? : String, smooth? : DotbinTransformSmooth, step? : DotbinTransformStep, type_~ : DotbinTransformType) -> DotbinTransform {
+  DotbinTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_dotbin_transform_as() catch { e => abort("invalid default for DotbinTransform.as_: \{e}") }
+    },
+    field: field,
+    groupby: groupby,
+    signal: signal,
+    smooth: smooth,
+    step: step,
+    type_: type_,
+  }
+}
+
+///|
+let dotbin_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "groupby", "signal", "smooth", "step", "type"])
 
 ///|
 pub impl @typify_rt.Serde for DotbinTransform with fn deserialize(d) {
@@ -3007,6 +3319,82 @@ pub(all) struct EncodeEntry {
   yc : NumberValue?
   zindex : NumberValue?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `EncodeEntry` (fields with defaults are optional).
+pub fn EncodeEntry::EncodeEntry(align? : AlignValue, angle? : NumberValue, aria? : BooleanValue, aria_role? : StringValue, aria_role_description? : StringValue, aspect? : BooleanValue, baseline? : BaselineValue, blend? : BlendValue, clip? : BooleanValue, corner_radius? : NumberValue, corner_radius_bottom_left? : NumberValue, corner_radius_bottom_right? : NumberValue, corner_radius_top_left? : NumberValue, corner_radius_top_right? : NumberValue, cursor? : StringValue, defined? : BooleanValue, description? : StringValue, dir? : StringValue, dx? : NumberValue, dy? : NumberValue, ellipsis? : StringValue, end_angle? : NumberValue, fill? : Json, fill_opacity? : NumberValue, font? : StringValue, font_size? : NumberValue, font_style? : StringValue, font_weight? : FontWeightValue, height? : NumberValue, inner_radius? : NumberValue, interpolate? : StringValue, limit? : NumberValue, line_break? : StringValue, line_height? : NumberValue, opacity? : NumberValue, orient? : DirectionValue, outer_radius? : NumberValue, pad_angle? : NumberValue, path? : StringValue, radius? : NumberValue, scale_x? : NumberValue, scale_y? : NumberValue, shape? : StringValue, size? : NumberValue, smooth? : BooleanValue, start_angle? : NumberValue, stroke? : Json, stroke_cap? : StrokeCapValue, stroke_dash? : ArrayValue, stroke_dash_offset? : NumberValue, stroke_foreground? : BooleanValue, stroke_join? : StrokeJoinValue, stroke_miter_limit? : NumberValue, stroke_offset? : NumberValue, stroke_opacity? : NumberValue, stroke_width? : NumberValue, tension? : NumberValue, text? : TextValue, theta? : NumberValue, tooltip? : AnyValue, url? : StringValue, width? : NumberValue, x? : NumberValue, x2? : NumberValue, xc? : NumberValue, y? : NumberValue, y2? : NumberValue, yc? : NumberValue, zindex? : NumberValue) -> EncodeEntry {
+  EncodeEntry::{
+    align: align,
+    angle: angle,
+    aria: aria,
+    aria_role: aria_role,
+    aria_role_description: aria_role_description,
+    aspect: aspect,
+    baseline: baseline,
+    blend: blend,
+    clip: clip,
+    corner_radius: corner_radius,
+    corner_radius_bottom_left: corner_radius_bottom_left,
+    corner_radius_bottom_right: corner_radius_bottom_right,
+    corner_radius_top_left: corner_radius_top_left,
+    corner_radius_top_right: corner_radius_top_right,
+    cursor: cursor,
+    defined: defined,
+    description: description,
+    dir: dir,
+    dx: dx,
+    dy: dy,
+    ellipsis: ellipsis,
+    end_angle: end_angle,
+    fill: fill,
+    fill_opacity: fill_opacity,
+    font: font,
+    font_size: font_size,
+    font_style: font_style,
+    font_weight: font_weight,
+    height: height,
+    inner_radius: inner_radius,
+    interpolate: interpolate,
+    limit: limit,
+    line_break: line_break,
+    line_height: line_height,
+    opacity: opacity,
+    orient: orient,
+    outer_radius: outer_radius,
+    pad_angle: pad_angle,
+    path: path,
+    radius: radius,
+    scale_x: scale_x,
+    scale_y: scale_y,
+    shape: shape,
+    size: size,
+    smooth: smooth,
+    start_angle: start_angle,
+    stroke: stroke,
+    stroke_cap: stroke_cap,
+    stroke_dash: stroke_dash,
+    stroke_dash_offset: stroke_dash_offset,
+    stroke_foreground: stroke_foreground,
+    stroke_join: stroke_join,
+    stroke_miter_limit: stroke_miter_limit,
+    stroke_offset: stroke_offset,
+    stroke_opacity: stroke_opacity,
+    stroke_width: stroke_width,
+    tension: tension,
+    text: text,
+    theta: theta,
+    tooltip: tooltip,
+    url: url,
+    width: width,
+    x: x,
+    x2: x2,
+    xc: xc,
+    y: y,
+    y2: y2,
+    yc: yc,
+    zindex: zindex,
+  }
+}
 
 ///|
 let encode_entry_fields : @typify_rt.Fields = @typify_rt.Fields::new(["align", "angle", "aria", "ariaRole", "ariaRoleDescription", "aspect", "baseline", "blend", "clip", "cornerRadius", "cornerRadiusBottomLeft", "cornerRadiusBottomRight", "cornerRadiusTopLeft", "cornerRadiusTopRight", "cursor", "defined", "description", "dir", "dx", "dy", "ellipsis", "endAngle", "fill", "fillOpacity", "font", "fontSize", "fontStyle", "fontWeight", "height", "innerRadius", "interpolate", "limit", "lineBreak", "lineHeight", "opacity", "orient", "outerRadius", "padAngle", "path", "radius", "scaleX", "scaleY", "shape", "size", "smooth", "startAngle", "stroke", "strokeCap", "strokeDash", "strokeDashOffset", "strokeForeground", "strokeJoin", "strokeMiterLimit", "strokeOffset", "strokeOpacity", "strokeWidth", "tension", "text", "theta", "tooltip", "url", "width", "x", "x2", "xc", "y", "y2", "yc", "zindex"])
@@ -3457,6 +3845,15 @@ pub(all) struct Expr {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Expr` (fields with defaults are optional).
+pub fn Expr::Expr(as_? : String, expr~ : String) -> Expr {
+  Expr::{
+    as_: as_,
+    expr: expr,
+  }
+}
+
+///|
 let expr_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "expr"])
 
 ///|
@@ -3526,6 +3923,16 @@ pub(all) struct ExtentTransform {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ExtentTransform` (fields with defaults are optional).
+pub fn ExtentTransform::ExtentTransform(field~ : ExtentTransformField, signal? : String, type_~ : ExtentTransformType) -> ExtentTransform {
+  ExtentTransform::{
+    field: field,
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
 let extent_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["field", "signal", "type"])
 
 ///|
@@ -3572,6 +3979,15 @@ pub(all) struct Facet {
   data : String?
   facet : FacetFacet
 } derive(Debug, Eq)
+
+///|
+/// Construct a `Facet` (fields with defaults are optional).
+pub fn Facet::Facet(data? : String, facet~ : FacetFacet) -> Facet {
+  Facet::{
+    data: data,
+    facet: facet,
+  }
+}
 
 ///|
 let facet_fields : @typify_rt.Fields = @typify_rt.Fields::new(["data", "facet"])
@@ -3753,6 +4169,16 @@ pub(all) struct FilterTransform {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `FilterTransform` (fields with defaults are optional).
+pub fn FilterTransform::FilterTransform(expr~ : ExprString, signal? : String, type_~ : FilterTransformType) -> FilterTransform {
+  FilterTransform::{
+    expr: expr,
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
 let filter_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["expr", "signal", "type"])
 
 ///|
@@ -3802,6 +4228,18 @@ pub(all) struct FlattenTransform {
   signal : String?
   type_ : FlattenTransformType
 } derive(Debug, Eq)
+
+///|
+/// Construct a `FlattenTransform` (fields with defaults are optional).
+pub fn FlattenTransform::FlattenTransform(as_? : FlattenTransformAs, fields~ : FlattenTransformFields, index? : FlattenTransformIndex, signal? : String, type_~ : FlattenTransformType) -> FlattenTransform {
+  FlattenTransform::{
+    as_: as_,
+    fields: fields,
+    index: index,
+    signal: signal,
+    type_: type_,
+  }
+}
 
 ///|
 let flatten_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "fields", "index", "signal", "type"])
@@ -3866,12 +4304,26 @@ pub(all) struct FoldTransform {
 } derive(Debug, Eq)
 
 ///|
-let fold_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "fields", "signal", "type"])
-
-///|
 fn default_fold_transform_as() -> FoldTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"key\",\"value\"]", FoldTransformAs::deserialize)
 }
+
+///|
+/// Construct a `FoldTransform` (fields with defaults are optional).
+pub fn FoldTransform::FoldTransform(as_? : FoldTransformAs, fields~ : FoldTransformFields, signal? : String, type_~ : FoldTransformType) -> FoldTransform {
+  FoldTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_fold_transform_as() catch { e => abort("invalid default for FoldTransform.as_: \{e}") }
+    },
+    fields: fields,
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
+let fold_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "fields", "signal", "type"])
 
 ///|
 pub impl @typify_rt.Serde for FoldTransform with fn deserialize(d) {
@@ -3979,9 +4431,6 @@ pub(all) struct ForceTransform {
 } derive(Debug, Eq)
 
 ///|
-let force_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["alpha", "alphaMin", "alphaTarget", "as", "forces", "iterations", "restart", "signal", "static", "type", "velocityDecay"])
-
-///|
 fn default_force_transform_alpha() -> ForceTransformAlpha raise @typify_rt.DeError {
   @typify_rt.default_value("1", ForceTransformAlpha::deserialize)
 }
@@ -4005,6 +4454,42 @@ fn default_force_transform_iterations() -> ForceTransformIterations raise @typif
 fn default_force_transform_velocity_decay() -> ForceTransformVelocityDecay raise @typify_rt.DeError {
   @typify_rt.default_value("0.4", ForceTransformVelocityDecay::deserialize)
 }
+
+///|
+/// Construct a `ForceTransform` (fields with defaults are optional).
+pub fn ForceTransform::ForceTransform(alpha? : ForceTransformAlpha, alpha_min? : ForceTransformAlphaMin, alpha_target? : ForceTransformAlphaTarget, as_? : ForceTransformAs, forces? : Array[ForceTransformForcesItem] = [], iterations? : ForceTransformIterations, restart? : ForceTransformRestart, signal? : String, static_? : ForceTransformStatic, type_~ : ForceTransformType, velocity_decay? : ForceTransformVelocityDecay) -> ForceTransform {
+  ForceTransform::{
+    alpha: match alpha {
+      Some(v) => v
+      None => default_force_transform_alpha() catch { e => abort("invalid default for ForceTransform.alpha: \{e}") }
+    },
+    alpha_min: match alpha_min {
+      Some(v) => v
+      None => default_force_transform_alpha_min() catch { e => abort("invalid default for ForceTransform.alpha_min: \{e}") }
+    },
+    alpha_target: alpha_target,
+    as_: match as_ {
+      Some(v) => v
+      None => default_force_transform_as() catch { e => abort("invalid default for ForceTransform.as_: \{e}") }
+    },
+    forces: forces,
+    iterations: match iterations {
+      Some(v) => v
+      None => default_force_transform_iterations() catch { e => abort("invalid default for ForceTransform.iterations: \{e}") }
+    },
+    restart: restart,
+    signal: signal,
+    static_: static_,
+    type_: type_,
+    velocity_decay: match velocity_decay {
+      Some(v) => v
+      None => default_force_transform_velocity_decay() catch { e => abort("invalid default for ForceTransform.velocity_decay: \{e}") }
+    },
+  }
+}
+
+///|
+let force_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["alpha", "alphaMin", "alphaTarget", "as", "forces", "iterations", "restart", "signal", "static", "type", "velocityDecay"])
 
 ///|
 pub impl @typify_rt.Serde for ForceTransform with fn deserialize(d) {
@@ -4095,6 +4580,18 @@ pub(all) struct FormulaTransform {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `FormulaTransform` (fields with defaults are optional).
+pub fn FormulaTransform::FormulaTransform(as_~ : FormulaTransformAs, expr~ : ExprString, initonly? : FormulaTransformInitonly, signal? : String, type_~ : FormulaTransformType) -> FormulaTransform {
+  FormulaTransform::{
+    as_: as_,
+    expr: expr,
+    initonly: initonly,
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
 let formula_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "expr", "initonly", "signal", "type"])
 
 ///|
@@ -4152,6 +4649,14 @@ pub(all) struct From {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `From` (fields with defaults are optional).
+pub fn From::From(data? : String) -> From {
+  From::{
+    data: data,
+  }
+}
+
+///|
 let from_fields : @typify_rt.Fields = @typify_rt.Fields::new(["data"])
 
 ///|
@@ -4192,6 +4697,17 @@ pub(all) struct GeojsonTransform {
   signal : String?
   type_ : GeojsonTransformType
 } derive(Debug, Eq)
+
+///|
+/// Construct a `GeojsonTransform` (fields with defaults are optional).
+pub fn GeojsonTransform::GeojsonTransform(fields? : GeojsonTransformFields, geojson? : GeojsonTransformGeojson, signal? : String, type_~ : GeojsonTransformType) -> GeojsonTransform {
+  GeojsonTransform::{
+    fields: fields,
+    geojson: geojson,
+    signal: signal,
+    type_: type_,
+  }
+}
 
 ///|
 let geojson_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["fields", "geojson", "signal", "type"])
@@ -4254,12 +4770,28 @@ pub(all) struct GeopathTransform {
 } derive(Debug, Eq)
 
 ///|
-let geopath_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "pointRadius", "projection", "signal", "type"])
-
-///|
 fn default_geopath_transform_as() -> GeopathTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("\"path\"", GeopathTransformAs::deserialize)
 }
+
+///|
+/// Construct a `GeopathTransform` (fields with defaults are optional).
+pub fn GeopathTransform::GeopathTransform(as_? : GeopathTransformAs, field? : GeopathTransformField, point_radius? : GeopathTransformPointRadius, projection? : String, signal? : String, type_~ : GeopathTransformType) -> GeopathTransform {
+  GeopathTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_geopath_transform_as() catch { e => abort("invalid default for GeopathTransform.as_: \{e}") }
+    },
+    field: field,
+    point_radius: point_radius,
+    projection: projection,
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
+let geopath_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "pointRadius", "projection", "signal", "type"])
 
 ///|
 pub impl @typify_rt.Serde for GeopathTransform with fn deserialize(d) {
@@ -4328,12 +4860,27 @@ pub(all) struct GeopointTransform {
 } derive(Debug, Eq)
 
 ///|
-let geopoint_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "fields", "projection", "signal", "type"])
-
-///|
 fn default_geopoint_transform_as() -> GeopointTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"x\",\"y\"]", GeopointTransformAs::deserialize)
 }
+
+///|
+/// Construct a `GeopointTransform` (fields with defaults are optional).
+pub fn GeopointTransform::GeopointTransform(as_? : GeopointTransformAs, fields~ : GeopointTransformFields, projection~ : String, signal? : String, type_~ : GeopointTransformType) -> GeopointTransform {
+  GeopointTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_geopoint_transform_as() catch { e => abort("invalid default for GeopointTransform.as_: \{e}") }
+    },
+    fields: fields,
+    projection: projection,
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
+let geopoint_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "fields", "projection", "signal", "type"])
 
 ///|
 pub impl @typify_rt.Serde for GeopointTransform with fn deserialize(d) {
@@ -4393,9 +4940,6 @@ pub(all) struct GeoshapeTransform {
 } derive(Debug, Eq)
 
 ///|
-let geoshape_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "pointRadius", "projection", "signal", "type"])
-
-///|
 fn default_geoshape_transform_as() -> GeoshapeTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("\"shape\"", GeoshapeTransformAs::deserialize)
 }
@@ -4404,6 +4948,28 @@ fn default_geoshape_transform_as() -> GeoshapeTransformAs raise @typify_rt.DeErr
 fn default_geoshape_transform_field() -> GeoshapeTransformField raise @typify_rt.DeError {
   @typify_rt.default_value("\"datum\"", GeoshapeTransformField::deserialize)
 }
+
+///|
+/// Construct a `GeoshapeTransform` (fields with defaults are optional).
+pub fn GeoshapeTransform::GeoshapeTransform(as_? : GeoshapeTransformAs, field? : GeoshapeTransformField, point_radius? : GeoshapeTransformPointRadius, projection? : String, signal? : String, type_~ : GeoshapeTransformType) -> GeoshapeTransform {
+  GeoshapeTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_geoshape_transform_as() catch { e => abort("invalid default for GeoshapeTransform.as_: \{e}") }
+    },
+    field: match field {
+      Some(v) => v
+      None => default_geoshape_transform_field() catch { e => abort("invalid default for GeoshapeTransform.field: \{e}") }
+    },
+    point_radius: point_radius,
+    projection: projection,
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
+let geoshape_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "pointRadius", "projection", "signal", "type"])
 
 ///|
 pub impl @typify_rt.Serde for GeoshapeTransform with fn deserialize(d) {
@@ -4498,9 +5064,6 @@ pub(all) struct GraticuleTransform {
 } derive(Debug, Eq)
 
 ///|
-let graticule_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["extent", "extentMajor", "extentMinor", "precision", "signal", "step", "stepMajor", "stepMinor", "type"])
-
-///|
 fn default_graticule_transform_precision() -> GraticuleTransformPrecision raise @typify_rt.DeError {
   @typify_rt.default_value("2.5", GraticuleTransformPrecision::deserialize)
 }
@@ -4514,6 +5077,34 @@ fn default_graticule_transform_step_major() -> GraticuleTransformStepMajor raise
 fn default_graticule_transform_step_minor() -> GraticuleTransformStepMinor raise @typify_rt.DeError {
   @typify_rt.default_value("[10,10]", GraticuleTransformStepMinor::deserialize)
 }
+
+///|
+/// Construct a `GraticuleTransform` (fields with defaults are optional).
+pub fn GraticuleTransform::GraticuleTransform(extent? : GraticuleTransformExtent, extent_major? : GraticuleTransformExtentMajor, extent_minor? : GraticuleTransformExtentMinor, precision? : GraticuleTransformPrecision, signal? : String, step? : GraticuleTransformStep, step_major? : GraticuleTransformStepMajor, step_minor? : GraticuleTransformStepMinor, type_~ : GraticuleTransformType) -> GraticuleTransform {
+  GraticuleTransform::{
+    extent: extent,
+    extent_major: extent_major,
+    extent_minor: extent_minor,
+    precision: match precision {
+      Some(v) => v
+      None => default_graticule_transform_precision() catch { e => abort("invalid default for GraticuleTransform.precision: \{e}") }
+    },
+    signal: signal,
+    step: step,
+    step_major: match step_major {
+      Some(v) => v
+      None => default_graticule_transform_step_major() catch { e => abort("invalid default for GraticuleTransform.step_major: \{e}") }
+    },
+    step_minor: match step_minor {
+      Some(v) => v
+      None => default_graticule_transform_step_minor() catch { e => abort("invalid default for GraticuleTransform.step_minor: \{e}") }
+    },
+    type_: type_,
+  }
+}
+
+///|
+let graticule_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["extent", "extentMajor", "extentMinor", "precision", "signal", "step", "stepMajor", "stepMinor", "type"])
 
 ///|
 pub impl @typify_rt.Serde for GraticuleTransform with fn deserialize(d) {
@@ -4594,6 +5185,16 @@ pub(all) struct GuideEncode {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `GuideEncode` (fields with defaults are optional).
+pub fn GuideEncode::GuideEncode(interactive? : Bool = false, name? : String, style? : Style) -> GuideEncode {
+  GuideEncode::{
+    interactive: interactive,
+    name: name,
+    style: style,
+  }
+}
+
+///|
 let guide_encode_fields : @typify_rt.Fields = @typify_rt.Fields::new(["interactive", "name", "style"])
 
 ///|
@@ -4649,9 +5250,6 @@ pub(all) struct HeatmapTransform {
 } derive(Debug, Eq)
 
 ///|
-let heatmap_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "color", "field", "opacity", "resolve", "signal", "type"])
-
-///|
 fn default_heatmap_transform_as() -> HeatmapTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("\"image\"", HeatmapTransformAs::deserialize)
 }
@@ -4660,6 +5258,29 @@ fn default_heatmap_transform_as() -> HeatmapTransformAs raise @typify_rt.DeError
 fn default_heatmap_transform_resolve() -> HeatmapTransformResolve raise @typify_rt.DeError {
   @typify_rt.default_value("\"independent\"", HeatmapTransformResolve::deserialize)
 }
+
+///|
+/// Construct a `HeatmapTransform` (fields with defaults are optional).
+pub fn HeatmapTransform::HeatmapTransform(as_? : HeatmapTransformAs, color? : HeatmapTransformColor, field? : HeatmapTransformField, opacity? : HeatmapTransformOpacity, resolve? : HeatmapTransformResolve, signal? : String, type_~ : HeatmapTransformType) -> HeatmapTransform {
+  HeatmapTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_heatmap_transform_as() catch { e => abort("invalid default for HeatmapTransform.as_: \{e}") }
+    },
+    color: color,
+    field: field,
+    opacity: opacity,
+    resolve: match resolve {
+      Some(v) => v
+      None => default_heatmap_transform_resolve() catch { e => abort("invalid default for HeatmapTransform.resolve: \{e}") }
+    },
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
+let heatmap_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "color", "field", "opacity", "resolve", "signal", "type"])
 
 ///|
 pub impl @typify_rt.Serde for HeatmapTransform with fn deserialize(d) {
@@ -4730,6 +5351,16 @@ pub(all) struct IdentifierTransform {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IdentifierTransform` (fields with defaults are optional).
+pub fn IdentifierTransform::IdentifierTransform(as_~ : IdentifierTransformAs, signal? : String, type_~ : IdentifierTransformType) -> IdentifierTransform {
+  IdentifierTransform::{
+    as_: as_,
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
 let identifier_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "signal", "type"])
 
 ///|
@@ -4784,12 +5415,30 @@ pub(all) struct ImputeTransform {
 } derive(Debug, Eq)
 
 ///|
-let impute_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["field", "groupby", "key", "keyvals", "method", "signal", "type", "value"])
-
-///|
 fn default_impute_transform_method() -> ImputeTransformMethod raise @typify_rt.DeError {
   @typify_rt.default_value("\"value\"", ImputeTransformMethod::deserialize)
 }
+
+///|
+/// Construct a `ImputeTransform` (fields with defaults are optional).
+pub fn ImputeTransform::ImputeTransform(field~ : ImputeTransformField, groupby? : ImputeTransformGroupby, key~ : ImputeTransformKey, keyvals? : ImputeTransformKeyvals, method_? : ImputeTransformMethod, signal? : String, type_~ : ImputeTransformType, value? : Json) -> ImputeTransform {
+  ImputeTransform::{
+    field: field,
+    groupby: groupby,
+    key: key,
+    keyvals: keyvals,
+    method_: match method_ {
+      Some(v) => v
+      None => default_impute_transform_method() catch { e => abort("invalid default for ImputeTransform.method_: \{e}") }
+    },
+    signal: signal,
+    type_: type_,
+    value: value,
+  }
+}
+
+///|
+let impute_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["field", "groupby", "key", "keyvals", "method", "signal", "type", "value"])
 
 ///|
 pub impl @typify_rt.Serde for ImputeTransform with fn deserialize(d) {
@@ -4873,9 +5522,6 @@ pub(all) struct IsocontourTransform {
 } derive(Debug, Eq)
 
 ///|
-let isocontour_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "levels", "nice", "resolve", "scale", "signal", "smooth", "thresholds", "translate", "type", "zero"])
-
-///|
 fn default_isocontour_transform_as() -> IsocontourTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("\"contour\"", IsocontourTransformAs::deserialize)
 }
@@ -4894,6 +5540,40 @@ fn default_isocontour_transform_smooth() -> IsocontourTransformSmooth raise @typ
 fn default_isocontour_transform_zero() -> IsocontourTransformZero raise @typify_rt.DeError {
   @typify_rt.default_value("true", IsocontourTransformZero::deserialize)
 }
+
+///|
+/// Construct a `IsocontourTransform` (fields with defaults are optional).
+pub fn IsocontourTransform::IsocontourTransform(as_? : IsocontourTransformAs, field? : IsocontourTransformField, levels? : IsocontourTransformLevels, nice? : IsocontourTransformNice, resolve? : IsocontourTransformResolve, scale? : IsocontourTransformScale, signal? : String, smooth? : IsocontourTransformSmooth, thresholds? : IsocontourTransformThresholds, translate? : IsocontourTransformTranslate, type_~ : IsocontourTransformType, zero? : IsocontourTransformZero) -> IsocontourTransform {
+  IsocontourTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_isocontour_transform_as() catch { e => abort("invalid default for IsocontourTransform.as_: \{e}") }
+    },
+    field: field,
+    levels: levels,
+    nice: nice,
+    resolve: match resolve {
+      Some(v) => v
+      None => default_isocontour_transform_resolve() catch { e => abort("invalid default for IsocontourTransform.resolve: \{e}") }
+    },
+    scale: scale,
+    signal: signal,
+    smooth: match smooth {
+      Some(v) => v
+      None => default_isocontour_transform_smooth() catch { e => abort("invalid default for IsocontourTransform.smooth: \{e}") }
+    },
+    thresholds: thresholds,
+    translate: translate,
+    type_: type_,
+    zero: match zero {
+      Some(v) => v
+      None => default_isocontour_transform_zero() catch { e => abort("invalid default for IsocontourTransform.zero: \{e}") }
+    },
+  }
+}
+
+///|
+let isocontour_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "levels", "nice", "resolve", "scale", "signal", "smooth", "thresholds", "translate", "type", "zero"])
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransform with fn deserialize(d) {
@@ -4994,6 +5674,20 @@ pub(all) struct JoinaggregateTransform {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `JoinaggregateTransform` (fields with defaults are optional).
+pub fn JoinaggregateTransform::JoinaggregateTransform(as_? : JoinaggregateTransformAs, fields? : JoinaggregateTransformFields, groupby? : JoinaggregateTransformGroupby, key? : JoinaggregateTransformKey, ops? : JoinaggregateTransformOps, signal? : String, type_~ : JoinaggregateTransformType) -> JoinaggregateTransform {
+  JoinaggregateTransform::{
+    as_: as_,
+    fields: fields,
+    groupby: groupby,
+    key: key,
+    ops: ops,
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
 let joinaggregate_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "fields", "groupby", "key", "ops", "signal", "type"])
 
 ///|
@@ -5077,12 +5771,33 @@ pub(all) struct Kde2dTransform {
 } derive(Debug, Eq)
 
 ///|
-let kde2d_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "bandwidth", "cellSize", "counts", "groupby", "signal", "size", "type", "weight", "x", "y"])
-
-///|
 fn default_kde2d_transform_as() -> Kde2dTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("\"grid\"", Kde2dTransformAs::deserialize)
 }
+
+///|
+/// Construct a `Kde2dTransform` (fields with defaults are optional).
+pub fn Kde2dTransform::Kde2dTransform(as_? : Kde2dTransformAs, bandwidth? : Kde2dTransformBandwidth, cell_size? : Kde2dTransformCellSize, counts? : Kde2dTransformCounts, groupby? : Kde2dTransformGroupby, signal? : String, size~ : Kde2dTransformSize, type_~ : Kde2dTransformType, weight? : Kde2dTransformWeight, x~ : Kde2dTransformX, y~ : Kde2dTransformY) -> Kde2dTransform {
+  Kde2dTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_kde2d_transform_as() catch { e => abort("invalid default for Kde2dTransform.as_: \{e}") }
+    },
+    bandwidth: bandwidth,
+    cell_size: cell_size,
+    counts: counts,
+    groupby: groupby,
+    signal: signal,
+    size: size,
+    type_: type_,
+    weight: weight,
+    x: x,
+    y: y,
+  }
+}
+
+///|
+let kde2d_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "bandwidth", "cellSize", "counts", "groupby", "signal", "size", "type", "weight", "x", "y"])
 
 ///|
 pub impl @typify_rt.Serde for Kde2dTransform with fn deserialize(d) {
@@ -5183,9 +5898,6 @@ pub(all) struct KdeTransform {
 } derive(Debug, Eq)
 
 ///|
-let kde_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "bandwidth", "counts", "cumulative", "extent", "field", "groupby", "maxsteps", "minsteps", "resolve", "signal", "steps", "type"])
-
-///|
 fn default_kde_transform_as() -> KdeTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"value\",\"density\"]", KdeTransformAs::deserialize)
 }
@@ -5204,6 +5916,41 @@ fn default_kde_transform_minsteps() -> KdeTransformMinsteps raise @typify_rt.DeE
 fn default_kde_transform_resolve() -> KdeTransformResolve raise @typify_rt.DeError {
   @typify_rt.default_value("\"independent\"", KdeTransformResolve::deserialize)
 }
+
+///|
+/// Construct a `KdeTransform` (fields with defaults are optional).
+pub fn KdeTransform::KdeTransform(as_? : KdeTransformAs, bandwidth? : KdeTransformBandwidth, counts? : KdeTransformCounts, cumulative? : KdeTransformCumulative, extent? : KdeTransformExtent, field~ : KdeTransformField, groupby? : KdeTransformGroupby, maxsteps? : KdeTransformMaxsteps, minsteps? : KdeTransformMinsteps, resolve? : KdeTransformResolve, signal? : String, steps? : KdeTransformSteps, type_~ : KdeTransformType) -> KdeTransform {
+  KdeTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_kde_transform_as() catch { e => abort("invalid default for KdeTransform.as_: \{e}") }
+    },
+    bandwidth: bandwidth,
+    counts: counts,
+    cumulative: cumulative,
+    extent: extent,
+    field: field,
+    groupby: groupby,
+    maxsteps: match maxsteps {
+      Some(v) => v
+      None => default_kde_transform_maxsteps() catch { e => abort("invalid default for KdeTransform.maxsteps: \{e}") }
+    },
+    minsteps: match minsteps {
+      Some(v) => v
+      None => default_kde_transform_minsteps() catch { e => abort("invalid default for KdeTransform.minsteps: \{e}") }
+    },
+    resolve: match resolve {
+      Some(v) => v
+      None => default_kde_transform_resolve() catch { e => abort("invalid default for KdeTransform.resolve: \{e}") }
+    },
+    signal: signal,
+    steps: steps,
+    type_: type_,
+  }
+}
+
+///|
+let kde_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "bandwidth", "counts", "cumulative", "extent", "field", "groupby", "maxsteps", "minsteps", "resolve", "signal", "steps", "type"])
 
 ///|
 pub impl @typify_rt.Serde for KdeTransform with fn deserialize(d) {
@@ -5371,9 +6118,6 @@ pub(all) struct LabelTransform {
 } derive(Debug, Eq)
 
 ///|
-let label_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["anchor", "as", "avoidBaseMark", "avoidMarks", "lineAnchor", "markIndex", "method", "offset", "padding", "signal", "size", "sort", "type"])
-
-///|
 fn default_label_transform_anchor() -> LabelTransformAnchor raise @typify_rt.DeError {
   @typify_rt.default_value("[\"top-left\",\"left\",\"bottom-left\",\"top\",\"bottom\",\"top-right\",\"right\",\"bottom-right\"]", LabelTransformAnchor::deserialize)
 }
@@ -5402,6 +6146,47 @@ fn default_label_transform_method() -> LabelTransformMethod raise @typify_rt.DeE
 fn default_label_transform_offset() -> LabelTransformOffset raise @typify_rt.DeError {
   @typify_rt.default_value("[1]", LabelTransformOffset::deserialize)
 }
+
+///|
+/// Construct a `LabelTransform` (fields with defaults are optional).
+pub fn LabelTransform::LabelTransform(anchor? : LabelTransformAnchor, as_? : LabelTransformAs, avoid_base_mark? : LabelTransformAvoidBaseMark, avoid_marks? : LabelTransformAvoidMarks, line_anchor? : LabelTransformLineAnchor, mark_index? : LabelTransformMarkIndex, method_? : LabelTransformMethod, offset? : LabelTransformOffset, padding? : LabelTransformPadding, signal? : String, size~ : LabelTransformSize, sort? : Compare_, type_~ : LabelTransformType) -> LabelTransform {
+  LabelTransform::{
+    anchor: match anchor {
+      Some(v) => v
+      None => default_label_transform_anchor() catch { e => abort("invalid default for LabelTransform.anchor: \{e}") }
+    },
+    as_: match as_ {
+      Some(v) => v
+      None => default_label_transform_as() catch { e => abort("invalid default for LabelTransform.as_: \{e}") }
+    },
+    avoid_base_mark: match avoid_base_mark {
+      Some(v) => v
+      None => default_label_transform_avoid_base_mark() catch { e => abort("invalid default for LabelTransform.avoid_base_mark: \{e}") }
+    },
+    avoid_marks: avoid_marks,
+    line_anchor: match line_anchor {
+      Some(v) => v
+      None => default_label_transform_line_anchor() catch { e => abort("invalid default for LabelTransform.line_anchor: \{e}") }
+    },
+    mark_index: mark_index,
+    method_: match method_ {
+      Some(v) => v
+      None => default_label_transform_method() catch { e => abort("invalid default for LabelTransform.method_: \{e}") }
+    },
+    offset: match offset {
+      Some(v) => v
+      None => default_label_transform_offset() catch { e => abort("invalid default for LabelTransform.offset: \{e}") }
+    },
+    padding: padding,
+    signal: signal,
+    size: size,
+    sort: sort,
+    type_: type_,
+  }
+}
+
+///|
+let label_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["anchor", "as", "avoidBaseMark", "avoidMarks", "lineAnchor", "markIndex", "method", "offset", "padding", "signal", "size", "sort", "type"])
 
 ///|
 pub impl @typify_rt.Serde for LabelTransform with fn deserialize(d) {
@@ -8552,6 +9337,20 @@ pub(all) struct LinearGradient {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `LinearGradient` (fields with defaults are optional).
+pub fn LinearGradient::LinearGradient(gradient~ : LinearGradientGradient, id? : String, stops~ : GradientStops, x1? : Double, x2? : Double, y1? : Double, y2? : Double) -> LinearGradient {
+  LinearGradient::{
+    gradient: gradient,
+    id: id,
+    stops: stops,
+    x1: x1,
+    x2: x2,
+    y1: y1,
+    y2: y2,
+  }
+}
+
+///|
 let linear_gradient_fields : @typify_rt.Fields = @typify_rt.Fields::new(["gradient", "id", "stops", "x1", "x2", "y1", "y2"])
 
 ///|
@@ -8632,9 +9431,6 @@ pub(all) struct LinkpathTransform {
 } derive(Debug, Eq)
 
 ///|
-let linkpath_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "orient", "require", "shape", "signal", "sourceX", "sourceY", "targetX", "targetY", "type"])
-
-///|
 fn default_linkpath_transform_as() -> LinkpathTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("\"path\"", LinkpathTransformAs::deserialize)
 }
@@ -8668,6 +9464,47 @@ fn default_linkpath_transform_target_x() -> LinkpathTransformTargetX raise @typi
 fn default_linkpath_transform_target_y() -> LinkpathTransformTargetY raise @typify_rt.DeError {
   @typify_rt.default_value("\"target.y\"", LinkpathTransformTargetY::deserialize)
 }
+
+///|
+/// Construct a `LinkpathTransform` (fields with defaults are optional).
+pub fn LinkpathTransform::LinkpathTransform(as_? : LinkpathTransformAs, orient? : LinkpathTransformOrient, require? : SignalRef, shape? : LinkpathTransformShape, signal? : String, source_x? : LinkpathTransformSourceX, source_y? : LinkpathTransformSourceY, target_x? : LinkpathTransformTargetX, target_y? : LinkpathTransformTargetY, type_~ : LinkpathTransformType) -> LinkpathTransform {
+  LinkpathTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_linkpath_transform_as() catch { e => abort("invalid default for LinkpathTransform.as_: \{e}") }
+    },
+    orient: match orient {
+      Some(v) => v
+      None => default_linkpath_transform_orient() catch { e => abort("invalid default for LinkpathTransform.orient: \{e}") }
+    },
+    require: require,
+    shape: match shape {
+      Some(v) => v
+      None => default_linkpath_transform_shape() catch { e => abort("invalid default for LinkpathTransform.shape: \{e}") }
+    },
+    signal: signal,
+    source_x: match source_x {
+      Some(v) => v
+      None => default_linkpath_transform_source_x() catch { e => abort("invalid default for LinkpathTransform.source_x: \{e}") }
+    },
+    source_y: match source_y {
+      Some(v) => v
+      None => default_linkpath_transform_source_y() catch { e => abort("invalid default for LinkpathTransform.source_y: \{e}") }
+    },
+    target_x: match target_x {
+      Some(v) => v
+      None => default_linkpath_transform_target_x() catch { e => abort("invalid default for LinkpathTransform.target_x: \{e}") }
+    },
+    target_y: match target_y {
+      Some(v) => v
+      None => default_linkpath_transform_target_y() catch { e => abort("invalid default for LinkpathTransform.target_y: \{e}") }
+    },
+    type_: type_,
+  }
+}
+
+///|
+let linkpath_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "orient", "require", "shape", "signal", "sourceX", "sourceY", "targetX", "targetY", "type"])
 
 ///|
 pub impl @typify_rt.Serde for LinkpathTransform with fn deserialize(d) {
@@ -8822,12 +9659,29 @@ pub(all) struct LoessTransform {
 } derive(Debug, Eq)
 
 ///|
-let loess_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "bandwidth", "groupby", "signal", "type", "x", "y"])
-
-///|
 fn default_loess_transform_bandwidth() -> LoessTransformBandwidth raise @typify_rt.DeError {
   @typify_rt.default_value("0.3", LoessTransformBandwidth::deserialize)
 }
+
+///|
+/// Construct a `LoessTransform` (fields with defaults are optional).
+pub fn LoessTransform::LoessTransform(as_? : LoessTransformAs, bandwidth? : LoessTransformBandwidth, groupby? : LoessTransformGroupby, signal? : String, type_~ : LoessTransformType, x~ : LoessTransformX, y~ : LoessTransformY) -> LoessTransform {
+  LoessTransform::{
+    as_: as_,
+    bandwidth: match bandwidth {
+      Some(v) => v
+      None => default_loess_transform_bandwidth() catch { e => abort("invalid default for LoessTransform.bandwidth: \{e}") }
+    },
+    groupby: groupby,
+    signal: signal,
+    type_: type_,
+    x: x,
+    y: y,
+  }
+}
+
+///|
+let loess_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "bandwidth", "groupby", "signal", "type", "x", "y"])
 
 ///|
 pub impl @typify_rt.Serde for LoessTransform with fn deserialize(d) {
@@ -8899,6 +9753,21 @@ pub(all) struct LookupTransform {
   type_ : LookupTransformType
   values : LookupTransformValues?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `LookupTransform` (fields with defaults are optional).
+pub fn LookupTransform::LookupTransform(as_? : LookupTransformAs, default? : Json, fields~ : LookupTransformFields, from~ : String, key~ : LookupTransformKey, signal? : String, type_~ : LookupTransformType, values? : LookupTransformValues) -> LookupTransform {
+  LookupTransform::{
+    as_: as_,
+    default: default,
+    fields: fields,
+    from: from,
+    key: key,
+    signal: signal,
+    type_: type_,
+    values: values,
+  }
+}
 
 ///|
 let lookup_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "default", "fields", "from", "key", "signal", "type", "values"])
@@ -8984,6 +9853,26 @@ pub(all) struct Mark {
   transform : Array[TransformMark]
   type_ : Marktype
 } derive(Debug, Eq)
+
+///|
+/// Construct a `Mark` (fields with defaults are optional).
+pub fn Mark::Mark(aria? : Bool, clip? : Markclip, description? : String, encode? : Encode, interactive? : BooleanOrSignal, key? : String, name? : String, on? : OnMarkTrigger, role? : String, sort? : Compare_, style? : Style, transform? : Array[TransformMark] = [], type_~ : Marktype) -> Mark {
+  Mark::{
+    aria: aria,
+    clip: clip,
+    description: description,
+    encode: encode,
+    interactive: interactive,
+    key: key,
+    name: name,
+    on: on,
+    role: role,
+    sort: sort,
+    style: style,
+    transform: transform,
+    type_: type_,
+  }
+}
 
 ///|
 let mark_fields : @typify_rt.Fields = @typify_rt.Fields::new(["aria", "clip", "description", "encode", "interactive", "key", "name", "on", "role", "sort", "style", "transform", "type"])
@@ -9116,6 +10005,37 @@ pub(all) struct MarkGroup {
   type_ : MarkGroupType
   usermeta : Map[String, Json]
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarkGroup` (fields with defaults are optional).
+pub fn MarkGroup::MarkGroup(aria? : Bool, axes? : Array[Axis] = [], clip? : Markclip, data? : Array[Data] = [], description? : String, encode? : Encode, from? : MarkGroupFrom, interactive? : BooleanOrSignal, key? : String, layout? : Layout, legends? : Array[Legend] = [], marks? : Array[MarkGroupMarksItem] = [], name? : String, on? : OnMarkTrigger, projections? : Array[Projection] = [], role? : String, scales? : Array[Scale] = [], signals? : Array[Signal] = [], sort? : Compare_, style? : Style, title? : Title, transform? : Array[TransformMark] = [], type_~ : MarkGroupType, usermeta? : Map[String, Json] = Map([])) -> MarkGroup {
+  MarkGroup::{
+    aria: aria,
+    axes: axes,
+    clip: clip,
+    data: data,
+    description: description,
+    encode: encode,
+    from: from,
+    interactive: interactive,
+    key: key,
+    layout: layout,
+    legends: legends,
+    marks: marks,
+    name: name,
+    on: on,
+    projections: projections,
+    role: role,
+    scales: scales,
+    signals: signals,
+    sort: sort,
+    style: style,
+    title: title,
+    transform: transform,
+    type_: type_,
+    usermeta: usermeta,
+  }
+}
 
 ///|
 let mark_group_fields : @typify_rt.Fields = @typify_rt.Fields::new(["aria", "axes", "clip", "data", "description", "encode", "from", "interactive", "key", "layout", "legends", "marks", "name", "on", "projections", "role", "scales", "signals", "sort", "style", "title", "transform", "type", "usermeta"])
@@ -9304,6 +10224,27 @@ pub(all) struct MarkVisual {
   transform : Array[TransformMark]
   type_ : Marktype
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarkVisual` (fields with defaults are optional).
+pub fn MarkVisual::MarkVisual(aria? : Bool, clip? : Markclip, description? : String, encode? : Encode, from? : From, interactive? : BooleanOrSignal, key? : String, name? : String, on? : OnMarkTrigger, role? : String, sort? : Compare_, style? : Style, transform? : Array[TransformMark] = [], type_~ : Marktype) -> MarkVisual {
+  MarkVisual::{
+    aria: aria,
+    clip: clip,
+    description: description,
+    encode: encode,
+    from: from,
+    interactive: interactive,
+    key: key,
+    name: name,
+    on: on,
+    role: role,
+    sort: sort,
+    style: style,
+    transform: transform,
+    type_: type_,
+  }
+}
 
 ///|
 let mark_visual_fields : @typify_rt.Fields = @typify_rt.Fields::new(["aria", "clip", "description", "encode", "from", "interactive", "key", "name", "on", "role", "sort", "style", "transform", "type"])
@@ -9535,6 +10476,17 @@ pub(all) struct NestTransform {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `NestTransform` (fields with defaults are optional).
+pub fn NestTransform::NestTransform(generate? : NestTransformGenerate, keys? : NestTransformKeys, signal? : String, type_~ : NestTransformType) -> NestTransform {
+  NestTransform::{
+    generate: generate,
+    keys: keys,
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
 let nest_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["generate", "keys", "signal", "type"])
 
 ///|
@@ -9594,6 +10546,20 @@ pub(all) struct NumberModifiers {
   round : Bool
   scale : Field?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `NumberModifiers` (fields with defaults are optional).
+pub fn NumberModifiers::NumberModifiers(band? : NumberModifiersBand, exponent? : NumberModifiersExponent, extra? : Bool, mult? : NumberModifiersMult, offset? : NumberModifiersOffset, round? : Bool = false, scale? : Field) -> NumberModifiers {
+  NumberModifiers::{
+    band: band,
+    exponent: exponent,
+    extra: extra,
+    mult: mult,
+    offset: offset,
+    round: round,
+    scale: scale,
+  }
+}
 
 ///|
 let number_modifiers_fields : @typify_rt.Fields = @typify_rt.Fields::new(["band", "exponent", "extra", "mult", "offset", "round", "scale"])
@@ -9889,12 +10855,30 @@ pub(all) struct PackTransform {
 } derive(Debug, Eq)
 
 ///|
-let pack_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "padding", "radius", "signal", "size", "sort", "type"])
-
-///|
 fn default_pack_transform_as() -> PackTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"x\",\"y\",\"r\",\"depth\",\"children\"]", PackTransformAs::deserialize)
 }
+
+///|
+/// Construct a `PackTransform` (fields with defaults are optional).
+pub fn PackTransform::PackTransform(as_? : PackTransformAs, field? : PackTransformField, padding? : PackTransformPadding, radius? : PackTransformRadius, signal? : String, size? : PackTransformSize, sort? : Compare_, type_~ : PackTransformType) -> PackTransform {
+  PackTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_pack_transform_as() catch { e => abort("invalid default for PackTransform.as_: \{e}") }
+    },
+    field: field,
+    padding: padding,
+    radius: radius,
+    signal: signal,
+    size: size,
+    sort: sort,
+    type_: type_,
+  }
+}
+
+///|
+let pack_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "padding", "radius", "signal", "size", "sort", "type"])
 
 ///|
 pub impl @typify_rt.Serde for PackTransform with fn deserialize(d) {
@@ -10064,6 +11048,15 @@ pub(all) struct ParamField {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ParamField` (fields with defaults are optional).
+pub fn ParamField::ParamField(as_? : String, field~ : String) -> ParamField {
+  ParamField::{
+    as_: as_,
+    field: field,
+  }
+}
+
+///|
 let param_field_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field"])
 
 ///|
@@ -10114,12 +11107,30 @@ pub(all) struct PartitionTransform {
 } derive(Debug, Eq)
 
 ///|
-let partition_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "padding", "round", "signal", "size", "sort", "type"])
-
-///|
 fn default_partition_transform_as() -> PartitionTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"x0\",\"y0\",\"x1\",\"y1\",\"depth\",\"children\"]", PartitionTransformAs::deserialize)
 }
+
+///|
+/// Construct a `PartitionTransform` (fields with defaults are optional).
+pub fn PartitionTransform::PartitionTransform(as_? : PartitionTransformAs, field? : PartitionTransformField, padding? : PartitionTransformPadding, round? : PartitionTransformRound, signal? : String, size? : PartitionTransformSize, sort? : Compare_, type_~ : PartitionTransformType) -> PartitionTransform {
+  PartitionTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_partition_transform_as() catch { e => abort("invalid default for PartitionTransform.as_: \{e}") }
+    },
+    field: field,
+    padding: padding,
+    round: round,
+    signal: signal,
+    size: size,
+    sort: sort,
+    type_: type_,
+  }
+}
+
+///|
+let partition_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "padding", "round", "signal", "size", "sort", "type"])
 
 ///|
 pub impl @typify_rt.Serde for PartitionTransform with fn deserialize(d) {
@@ -10202,9 +11213,6 @@ pub(all) struct PieTransform {
 } derive(Debug, Eq)
 
 ///|
-let pie_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "endAngle", "field", "signal", "sort", "startAngle", "type"])
-
-///|
 fn default_pie_transform_as() -> PieTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"startAngle\",\"endAngle\"]", PieTransformAs::deserialize)
 }
@@ -10213,6 +11221,29 @@ fn default_pie_transform_as() -> PieTransformAs raise @typify_rt.DeError {
 fn default_pie_transform_end_angle() -> PieTransformEndAngle raise @typify_rt.DeError {
   @typify_rt.default_value("6.283185307179586", PieTransformEndAngle::deserialize)
 }
+
+///|
+/// Construct a `PieTransform` (fields with defaults are optional).
+pub fn PieTransform::PieTransform(as_? : PieTransformAs, end_angle? : PieTransformEndAngle, field? : PieTransformField, signal? : String, sort? : PieTransformSort, start_angle? : PieTransformStartAngle, type_~ : PieTransformType) -> PieTransform {
+  PieTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_pie_transform_as() catch { e => abort("invalid default for PieTransform.as_: \{e}") }
+    },
+    end_angle: match end_angle {
+      Some(v) => v
+      None => default_pie_transform_end_angle() catch { e => abort("invalid default for PieTransform.end_angle: \{e}") }
+    },
+    field: field,
+    signal: signal,
+    sort: sort,
+    start_angle: start_angle,
+    type_: type_,
+  }
+}
+
+///|
+let pie_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "endAngle", "field", "signal", "sort", "startAngle", "type"])
 
 ///|
 pub impl @typify_rt.Serde for PieTransform with fn deserialize(d) {
@@ -10288,12 +11319,30 @@ pub(all) struct PivotTransform {
 } derive(Debug, Eq)
 
 ///|
-let pivot_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["field", "groupby", "key", "limit", "op", "signal", "type", "value"])
-
-///|
 fn default_pivot_transform_op() -> PivotTransformOp raise @typify_rt.DeError {
   @typify_rt.default_value("\"sum\"", PivotTransformOp::deserialize)
 }
+
+///|
+/// Construct a `PivotTransform` (fields with defaults are optional).
+pub fn PivotTransform::PivotTransform(field~ : PivotTransformField, groupby? : PivotTransformGroupby, key? : PivotTransformKey, limit? : PivotTransformLimit, op? : PivotTransformOp, signal? : String, type_~ : PivotTransformType, value~ : PivotTransformValue) -> PivotTransform {
+  PivotTransform::{
+    field: field,
+    groupby: groupby,
+    key: key,
+    limit: limit,
+    op: match op {
+      Some(v) => v
+      None => default_pivot_transform_op() catch { e => abort("invalid default for PivotTransform.op: \{e}") }
+    },
+    signal: signal,
+    type_: type_,
+    value: value,
+  }
+}
+
+///|
+let pivot_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["field", "groupby", "key", "limit", "op", "signal", "type", "value"])
 
 ///|
 pub impl @typify_rt.Serde for PivotTransform with fn deserialize(d) {
@@ -10369,6 +11418,17 @@ pub(all) struct ProjectTransform {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ProjectTransform` (fields with defaults are optional).
+pub fn ProjectTransform::ProjectTransform(as_? : ProjectTransformAs, fields? : ProjectTransformFields, signal? : String, type_~ : ProjectTransformType) -> ProjectTransform {
+  ProjectTransform::{
+    as_: as_,
+    fields: fields,
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
 let project_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "fields", "signal", "type"])
 
 ///|
@@ -10435,6 +11495,27 @@ pub(all) struct Projection {
   translate : ProjectionTranslate?
   type_ : StringOrSignal?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `Projection` (fields with defaults are optional).
+pub fn Projection::Projection(center? : ProjectionCenter, clip_angle? : NumberOrSignal, clip_extent? : ProjectionClipExtent, extent? : ProjectionExtent, fit? : ProjectionFit, name~ : String, parallels? : ProjectionParallels, point_radius? : NumberOrSignal, precision? : NumberOrSignal, rotate? : ProjectionRotate, scale? : NumberOrSignal, size? : ProjectionSize, translate? : ProjectionTranslate, type_? : StringOrSignal) -> Projection {
+  Projection::{
+    center: center,
+    clip_angle: clip_angle,
+    clip_extent: clip_extent,
+    extent: extent,
+    fit: fit,
+    name: name,
+    parallels: parallels,
+    point_radius: point_radius,
+    precision: precision,
+    rotate: rotate,
+    scale: scale,
+    size: size,
+    translate: translate,
+    type_: type_,
+  }
+}
 
 ///|
 let projection_fields : @typify_rt.Fields = @typify_rt.Fields::new(["center", "clipAngle", "clipExtent", "extent", "fit", "name", "parallels", "pointRadius", "precision", "rotate", "scale", "size", "translate", "type"])
@@ -10558,9 +11639,6 @@ pub(all) struct QuantileTransform {
 } derive(Debug, Eq)
 
 ///|
-let quantile_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "groupby", "probs", "signal", "step", "type"])
-
-///|
 fn default_quantile_transform_as() -> QuantileTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"prob\",\"value\"]", QuantileTransformAs::deserialize)
 }
@@ -10569,6 +11647,29 @@ fn default_quantile_transform_as() -> QuantileTransformAs raise @typify_rt.DeErr
 fn default_quantile_transform_step() -> QuantileTransformStep raise @typify_rt.DeError {
   @typify_rt.default_value("0.01", QuantileTransformStep::deserialize)
 }
+
+///|
+/// Construct a `QuantileTransform` (fields with defaults are optional).
+pub fn QuantileTransform::QuantileTransform(as_? : QuantileTransformAs, field~ : QuantileTransformField, groupby? : QuantileTransformGroupby, probs? : QuantileTransformProbs, signal? : String, step? : QuantileTransformStep, type_~ : QuantileTransformType) -> QuantileTransform {
+  QuantileTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_quantile_transform_as() catch { e => abort("invalid default for QuantileTransform.as_: \{e}") }
+    },
+    field: field,
+    groupby: groupby,
+    probs: probs,
+    signal: signal,
+    step: match step {
+      Some(v) => v
+      None => default_quantile_transform_step() catch { e => abort("invalid default for QuantileTransform.step: \{e}") }
+    },
+    type_: type_,
+  }
+}
+
+///|
+let quantile_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "groupby", "probs", "signal", "step", "type"])
 
 ///|
 pub impl @typify_rt.Serde for QuantileTransform with fn deserialize(d) {
@@ -10641,6 +11742,22 @@ pub(all) struct RadialGradient {
   y1 : Double?
   y2 : Double?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RadialGradient` (fields with defaults are optional).
+pub fn RadialGradient::RadialGradient(gradient~ : RadialGradientGradient, id? : String, r1? : Double, r2? : Double, stops~ : GradientStops, x1? : Double, x2? : Double, y1? : Double, y2? : Double) -> RadialGradient {
+  RadialGradient::{
+    gradient: gradient,
+    id: id,
+    r1: r1,
+    r2: r2,
+    stops: stops,
+    x1: x1,
+    x2: x2,
+    y1: y1,
+    y2: y2,
+  }
+}
 
 ///|
 let radial_gradient_fields : @typify_rt.Fields = @typify_rt.Fields::new(["gradient", "id", "r1", "r2", "stops", "x1", "x2", "y1", "y2"])
@@ -10735,9 +11852,6 @@ pub(all) struct RegressionTransform {
 } derive(Debug, Eq)
 
 ///|
-let regression_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "extent", "groupby", "method", "order", "params", "signal", "type", "x", "y"])
-
-///|
 fn default_regression_transform_method() -> RegressionTransformMethod raise @typify_rt.DeError {
   @typify_rt.default_value("\"linear\"", RegressionTransformMethod::deserialize)
 }
@@ -10746,6 +11860,32 @@ fn default_regression_transform_method() -> RegressionTransformMethod raise @typ
 fn default_regression_transform_order() -> RegressionTransformOrder raise @typify_rt.DeError {
   @typify_rt.default_value("3", RegressionTransformOrder::deserialize)
 }
+
+///|
+/// Construct a `RegressionTransform` (fields with defaults are optional).
+pub fn RegressionTransform::RegressionTransform(as_? : RegressionTransformAs, extent? : RegressionTransformExtent, groupby? : RegressionTransformGroupby, method_? : RegressionTransformMethod, order? : RegressionTransformOrder, params? : RegressionTransformParams, signal? : String, type_~ : RegressionTransformType, x~ : RegressionTransformX, y~ : RegressionTransformY) -> RegressionTransform {
+  RegressionTransform::{
+    as_: as_,
+    extent: extent,
+    groupby: groupby,
+    method_: match method_ {
+      Some(v) => v
+      None => default_regression_transform_method() catch { e => abort("invalid default for RegressionTransform.method_: \{e}") }
+    },
+    order: match order {
+      Some(v) => v
+      None => default_regression_transform_order() catch { e => abort("invalid default for RegressionTransform.order: \{e}") }
+    },
+    params: params,
+    signal: signal,
+    type_: type_,
+    x: x,
+    y: y,
+  }
+}
+
+///|
+let regression_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "extent", "groupby", "method", "order", "params", "signal", "type", "x", "y"])
 
 ///|
 pub impl @typify_rt.Serde for RegressionTransform with fn deserialize(d) {
@@ -10831,6 +11971,17 @@ pub(all) struct ResolvefilterTransform {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ResolvefilterTransform` (fields with defaults are optional).
+pub fn ResolvefilterTransform::ResolvefilterTransform(filter~ : Json, ignore~ : ResolvefilterTransformIgnore, signal? : String, type_~ : ResolvefilterTransformType) -> ResolvefilterTransform {
+  ResolvefilterTransform::{
+    filter: filter,
+    ignore: ignore,
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
 let resolvefilter_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["filter", "ignore", "signal", "type"])
 
 ///|
@@ -10882,6 +12033,14 @@ pub(all) struct Rule {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Rule` (fields with defaults are optional).
+pub fn Rule::Rule(test_? : String) -> Rule {
+  Rule::{
+    test_: test_,
+  }
+}
+
+///|
 let rule_fields : @typify_rt.Fields = @typify_rt.Fields::new(["test"])
 
 ///|
@@ -10923,12 +12082,25 @@ pub(all) struct SampleTransform {
 } derive(Debug, Eq)
 
 ///|
-let sample_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["signal", "size", "type"])
-
-///|
 fn default_sample_transform_size() -> SampleTransformSize raise @typify_rt.DeError {
   @typify_rt.default_value("1000", SampleTransformSize::deserialize)
 }
+
+///|
+/// Construct a `SampleTransform` (fields with defaults are optional).
+pub fn SampleTransform::SampleTransform(signal? : String, size? : SampleTransformSize, type_~ : SampleTransformType) -> SampleTransform {
+  SampleTransform::{
+    signal: signal,
+    size: match size {
+      Some(v) => v
+      None => default_sample_transform_size() catch { e => abort("invalid default for SampleTransform.size: \{e}") }
+    },
+    type_: type_,
+  }
+}
+
+///|
+let sample_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["signal", "size", "type"])
 
 ///|
 pub impl @typify_rt.Serde for SampleTransform with fn deserialize(d) {
@@ -12534,6 +13706,24 @@ pub(all) struct Scope {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Scope` (fields with defaults are optional).
+pub fn Scope::Scope(axes? : Array[Axis] = [], data? : Array[Data] = [], encode? : Encode, layout? : Layout, legends? : Array[Legend] = [], marks? : Array[ScopeMarksItem] = [], projections? : Array[Projection] = [], scales? : Array[Scale] = [], signals? : Array[Signal] = [], title? : Title, usermeta? : Map[String, Json] = Map([])) -> Scope {
+  Scope::{
+    axes: axes,
+    data: data,
+    encode: encode,
+    layout: layout,
+    legends: legends,
+    marks: marks,
+    projections: projections,
+    scales: scales,
+    signals: signals,
+    title: title,
+    usermeta: usermeta,
+  }
+}
+
+///|
 let scope_fields : @typify_rt.Fields = @typify_rt.Fields::new(["axes", "data", "encode", "layout", "legends", "marks", "projections", "scales", "signals", "title", "usermeta"])
 
 ///|
@@ -12662,9 +13852,6 @@ pub(all) struct SequenceTransform {
 } derive(Debug, Eq)
 
 ///|
-let sequence_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "signal", "start", "step", "stop", "type"])
-
-///|
 fn default_sequence_transform_as() -> SequenceTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("\"data\"", SequenceTransformAs::deserialize)
 }
@@ -12673,6 +13860,28 @@ fn default_sequence_transform_as() -> SequenceTransformAs raise @typify_rt.DeErr
 fn default_sequence_transform_step() -> SequenceTransformStep raise @typify_rt.DeError {
   @typify_rt.default_value("1", SequenceTransformStep::deserialize)
 }
+
+///|
+/// Construct a `SequenceTransform` (fields with defaults are optional).
+pub fn SequenceTransform::SequenceTransform(as_? : SequenceTransformAs, signal? : String, start~ : SequenceTransformStart, step? : SequenceTransformStep, stop~ : SequenceTransformStop, type_~ : SequenceTransformType) -> SequenceTransform {
+  SequenceTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_sequence_transform_as() catch { e => abort("invalid default for SequenceTransform.as_: \{e}") }
+    },
+    signal: signal,
+    start: start,
+    step: match step {
+      Some(v) => v
+      None => default_sequence_transform_step() catch { e => abort("invalid default for SequenceTransform.step: \{e}") }
+    },
+    stop: stop,
+    type_: type_,
+  }
+}
+
+///|
+let sequence_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "signal", "start", "step", "stop", "type"])
 
 ///|
 pub impl @typify_rt.Serde for SequenceTransform with fn deserialize(d) {
@@ -12961,6 +14170,14 @@ pub(all) struct SignalRef {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SignalRef` (fields with defaults are optional).
+pub fn SignalRef::SignalRef(signal~ : String) -> SignalRef {
+  SignalRef::{
+    signal: signal,
+  }
+}
+
+///|
 let signal_ref_fields : @typify_rt.Fields = @typify_rt.Fields::new(["signal"])
 
 ///|
@@ -13051,9 +14268,6 @@ pub(all) struct StackTransform {
 } derive(Debug, Eq)
 
 ///|
-let stack_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "groupby", "offset", "signal", "sort", "type"])
-
-///|
 fn default_stack_transform_as() -> StackTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"y0\",\"y1\"]", StackTransformAs::deserialize)
 }
@@ -13062,6 +14276,29 @@ fn default_stack_transform_as() -> StackTransformAs raise @typify_rt.DeError {
 fn default_stack_transform_offset() -> StackTransformOffset raise @typify_rt.DeError {
   @typify_rt.default_value("\"zero\"", StackTransformOffset::deserialize)
 }
+
+///|
+/// Construct a `StackTransform` (fields with defaults are optional).
+pub fn StackTransform::StackTransform(as_? : StackTransformAs, field? : StackTransformField, groupby? : StackTransformGroupby, offset? : StackTransformOffset, signal? : String, sort? : Compare_, type_~ : StackTransformType) -> StackTransform {
+  StackTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_stack_transform_as() catch { e => abort("invalid default for StackTransform.as_: \{e}") }
+    },
+    field: field,
+    groupby: groupby,
+    offset: match offset {
+      Some(v) => v
+      None => default_stack_transform_offset() catch { e => abort("invalid default for StackTransform.offset: \{e}") }
+    },
+    signal: signal,
+    sort: sort,
+    type_: type_,
+  }
+}
+
+///|
+let stack_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "groupby", "offset", "signal", "sort", "type"])
 
 ///|
 pub impl @typify_rt.Serde for StackTransform with fn deserialize(d) {
@@ -13131,6 +14368,17 @@ pub(all) struct StratifyTransform {
   signal : String?
   type_ : StratifyTransformType
 } derive(Debug, Eq)
+
+///|
+/// Construct a `StratifyTransform` (fields with defaults are optional).
+pub fn StratifyTransform::StratifyTransform(key~ : StratifyTransformKey, parent_key~ : StratifyTransformParentKey, signal? : String, type_~ : StratifyTransformType) -> StratifyTransform {
+  StratifyTransform::{
+    key: key,
+    parent_key: parent_key,
+    signal: signal,
+    type_: type_,
+  }
+}
 
 ///|
 let stratify_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["key", "parentKey", "signal", "type"])
@@ -13416,6 +14664,14 @@ pub impl ToJson for Stream with fn to_json(self) {
 pub(all) struct StringModifiers {
   scale : Field?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `StringModifiers` (fields with defaults are optional).
+pub fn StringModifiers::StringModifiers(scale? : Field) -> StringModifiers {
+  StringModifiers::{
+    scale: scale,
+  }
+}
 
 ///|
 let string_modifiers_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale"])
@@ -13930,9 +15186,6 @@ pub(all) struct TimeunitTransform {
 } derive(Debug, Eq)
 
 ///|
-let timeunit_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "extent", "field", "interval", "maxbins", "signal", "step", "timezone", "type", "units"])
-
-///|
 fn default_timeunit_transform_as() -> TimeunitTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"unit0\",\"unit1\"]", TimeunitTransformAs::deserialize)
 }
@@ -13956,6 +15209,41 @@ fn default_timeunit_transform_step() -> TimeunitTransformStep raise @typify_rt.D
 fn default_timeunit_transform_timezone() -> TimeunitTransformTimezone raise @typify_rt.DeError {
   @typify_rt.default_value("\"local\"", TimeunitTransformTimezone::deserialize)
 }
+
+///|
+/// Construct a `TimeunitTransform` (fields with defaults are optional).
+pub fn TimeunitTransform::TimeunitTransform(as_? : TimeunitTransformAs, extent? : TimeunitTransformExtent, field~ : TimeunitTransformField, interval? : TimeunitTransformInterval, maxbins? : TimeunitTransformMaxbins, signal? : String, step? : TimeunitTransformStep, timezone? : TimeunitTransformTimezone, type_~ : TimeunitTransformType, units? : TimeunitTransformUnits) -> TimeunitTransform {
+  TimeunitTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_timeunit_transform_as() catch { e => abort("invalid default for TimeunitTransform.as_: \{e}") }
+    },
+    extent: extent,
+    field: field,
+    interval: match interval {
+      Some(v) => v
+      None => default_timeunit_transform_interval() catch { e => abort("invalid default for TimeunitTransform.interval: \{e}") }
+    },
+    maxbins: match maxbins {
+      Some(v) => v
+      None => default_timeunit_transform_maxbins() catch { e => abort("invalid default for TimeunitTransform.maxbins: \{e}") }
+    },
+    signal: signal,
+    step: match step {
+      Some(v) => v
+      None => default_timeunit_transform_step() catch { e => abort("invalid default for TimeunitTransform.step: \{e}") }
+    },
+    timezone: match timezone {
+      Some(v) => v
+      None => default_timeunit_transform_timezone() catch { e => abort("invalid default for TimeunitTransform.timezone: \{e}") }
+    },
+    type_: type_,
+    units: units,
+  }
+}
+
+///|
+let timeunit_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "extent", "field", "interval", "maxbins", "signal", "step", "timezone", "type", "units"])
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransform with fn deserialize(d) {
@@ -15150,9 +16438,6 @@ pub(all) struct TreeTransform {
 } derive(Debug, Eq)
 
 ///|
-let tree_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "method", "nodeSize", "separation", "signal", "size", "sort", "type"])
-
-///|
 fn default_tree_transform_as() -> TreeTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"x\",\"y\",\"depth\",\"children\"]", TreeTransformAs::deserialize)
 }
@@ -15166,6 +16451,34 @@ fn default_tree_transform_method() -> TreeTransformMethod raise @typify_rt.DeErr
 fn default_tree_transform_separation() -> TreeTransformSeparation raise @typify_rt.DeError {
   @typify_rt.default_value("true", TreeTransformSeparation::deserialize)
 }
+
+///|
+/// Construct a `TreeTransform` (fields with defaults are optional).
+pub fn TreeTransform::TreeTransform(as_? : TreeTransformAs, field? : TreeTransformField, method_? : TreeTransformMethod, node_size? : TreeTransformNodeSize, separation? : TreeTransformSeparation, signal? : String, size? : TreeTransformSize, sort? : Compare_, type_~ : TreeTransformType) -> TreeTransform {
+  TreeTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_tree_transform_as() catch { e => abort("invalid default for TreeTransform.as_: \{e}") }
+    },
+    field: field,
+    method_: match method_ {
+      Some(v) => v
+      None => default_tree_transform_method() catch { e => abort("invalid default for TreeTransform.method_: \{e}") }
+    },
+    node_size: node_size,
+    separation: match separation {
+      Some(v) => v
+      None => default_tree_transform_separation() catch { e => abort("invalid default for TreeTransform.separation: \{e}") }
+    },
+    signal: signal,
+    size: size,
+    sort: sort,
+    type_: type_,
+  }
+}
+
+///|
+let tree_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "method", "nodeSize", "separation", "signal", "size", "sort", "type"])
 
 ///|
 pub impl @typify_rt.Serde for TreeTransform with fn deserialize(d) {
@@ -15245,6 +16558,15 @@ pub(all) struct TreelinksTransform {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `TreelinksTransform` (fields with defaults are optional).
+pub fn TreelinksTransform::TreelinksTransform(signal? : String, type_~ : TreelinksTransformType) -> TreelinksTransform {
+  TreelinksTransform::{
+    signal: signal,
+    type_: type_,
+  }
+}
+
+///|
 let treelinks_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["signal", "type"])
 
 ///|
@@ -15303,9 +16625,6 @@ pub(all) struct TreemapTransform {
 } derive(Debug, Eq)
 
 ///|
-let treemap_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "method", "padding", "paddingBottom", "paddingInner", "paddingLeft", "paddingOuter", "paddingRight", "paddingTop", "ratio", "round", "signal", "size", "sort", "type"])
-
-///|
 fn default_treemap_transform_as() -> TreemapTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"x0\",\"y0\",\"x1\",\"y1\",\"depth\",\"children\"]", TreemapTransformAs::deserialize)
 }
@@ -15319,6 +16638,41 @@ fn default_treemap_transform_method() -> TreemapTransformMethod raise @typify_rt
 fn default_treemap_transform_ratio() -> TreemapTransformRatio raise @typify_rt.DeError {
   @typify_rt.default_value("1.618033988749895", TreemapTransformRatio::deserialize)
 }
+
+///|
+/// Construct a `TreemapTransform` (fields with defaults are optional).
+pub fn TreemapTransform::TreemapTransform(as_? : TreemapTransformAs, field? : TreemapTransformField, method_? : TreemapTransformMethod, padding? : TreemapTransformPadding, padding_bottom? : TreemapTransformPaddingBottom, padding_inner? : TreemapTransformPaddingInner, padding_left? : TreemapTransformPaddingLeft, padding_outer? : TreemapTransformPaddingOuter, padding_right? : TreemapTransformPaddingRight, padding_top? : TreemapTransformPaddingTop, ratio? : TreemapTransformRatio, round? : TreemapTransformRound, signal? : String, size? : TreemapTransformSize, sort? : Compare_, type_~ : TreemapTransformType) -> TreemapTransform {
+  TreemapTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_treemap_transform_as() catch { e => abort("invalid default for TreemapTransform.as_: \{e}") }
+    },
+    field: field,
+    method_: match method_ {
+      Some(v) => v
+      None => default_treemap_transform_method() catch { e => abort("invalid default for TreemapTransform.method_: \{e}") }
+    },
+    padding: padding,
+    padding_bottom: padding_bottom,
+    padding_inner: padding_inner,
+    padding_left: padding_left,
+    padding_outer: padding_outer,
+    padding_right: padding_right,
+    padding_top: padding_top,
+    ratio: match ratio {
+      Some(v) => v
+      None => default_treemap_transform_ratio() catch { e => abort("invalid default for TreemapTransform.ratio: \{e}") }
+    },
+    round: round,
+    signal: signal,
+    size: size,
+    sort: sort,
+    type_: type_,
+  }
+}
+
+///|
+let treemap_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "field", "method", "padding", "paddingBottom", "paddingInner", "paddingLeft", "paddingOuter", "paddingRight", "paddingTop", "ratio", "round", "signal", "size", "sort", "type"])
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransform with fn deserialize(d) {
@@ -15445,9 +16799,6 @@ pub(all) struct VoronoiTransform {
 } derive(Debug, Eq)
 
 ///|
-let voronoi_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "extent", "signal", "size", "type", "x", "y"])
-
-///|
 fn default_voronoi_transform_as() -> VoronoiTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("\"path\"", VoronoiTransformAs::deserialize)
 }
@@ -15456,6 +16807,29 @@ fn default_voronoi_transform_as() -> VoronoiTransformAs raise @typify_rt.DeError
 fn default_voronoi_transform_extent() -> VoronoiTransformExtent raise @typify_rt.DeError {
   @typify_rt.default_value("[[-100000,-100000],[100000,100000]]", VoronoiTransformExtent::deserialize)
 }
+
+///|
+/// Construct a `VoronoiTransform` (fields with defaults are optional).
+pub fn VoronoiTransform::VoronoiTransform(as_? : VoronoiTransformAs, extent? : VoronoiTransformExtent, signal? : String, size? : VoronoiTransformSize, type_~ : VoronoiTransformType, x~ : VoronoiTransformX, y~ : VoronoiTransformY) -> VoronoiTransform {
+  VoronoiTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_voronoi_transform_as() catch { e => abort("invalid default for VoronoiTransform.as_: \{e}") }
+    },
+    extent: match extent {
+      Some(v) => v
+      None => default_voronoi_transform_extent() catch { e => abort("invalid default for VoronoiTransform.extent: \{e}") }
+    },
+    signal: signal,
+    size: size,
+    type_: type_,
+    x: x,
+    y: y,
+  }
+}
+
+///|
+let voronoi_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "extent", "signal", "size", "type", "x", "y"])
 
 ///|
 pub impl @typify_rt.Serde for VoronoiTransform with fn deserialize(d) {
@@ -15529,12 +16903,32 @@ pub(all) struct WindowTransform {
 } derive(Debug, Eq)
 
 ///|
-let window_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "fields", "frame", "groupby", "ignorePeers", "ops", "params", "signal", "sort", "type"])
-
-///|
 fn default_window_transform_frame() -> WindowTransformFrame raise @typify_rt.DeError {
   @typify_rt.default_value("[null,0]", WindowTransformFrame::deserialize)
 }
+
+///|
+/// Construct a `WindowTransform` (fields with defaults are optional).
+pub fn WindowTransform::WindowTransform(as_? : WindowTransformAs, fields? : WindowTransformFields, frame? : WindowTransformFrame, groupby? : WindowTransformGroupby, ignore_peers? : WindowTransformIgnorePeers, ops? : WindowTransformOps, params? : WindowTransformParams, signal? : String, sort? : Compare_, type_~ : WindowTransformType) -> WindowTransform {
+  WindowTransform::{
+    as_: as_,
+    fields: fields,
+    frame: match frame {
+      Some(v) => v
+      None => default_window_transform_frame() catch { e => abort("invalid default for WindowTransform.frame: \{e}") }
+    },
+    groupby: groupby,
+    ignore_peers: ignore_peers,
+    ops: ops,
+    params: params,
+    signal: signal,
+    sort: sort,
+    type_: type_,
+  }
+}
+
+///|
+let window_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "fields", "frame", "groupby", "ignorePeers", "ops", "params", "signal", "sort", "type"])
 
 ///|
 pub impl @typify_rt.Serde for WindowTransform with fn deserialize(d) {
@@ -15635,9 +17029,6 @@ pub(all) struct WordcloudTransform {
 } derive(Debug, Eq)
 
 ///|
-let wordcloud_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "font", "fontSize", "fontSizeRange", "fontStyle", "fontWeight", "padding", "rotate", "signal", "size", "spiral", "text", "type"])
-
-///|
 fn default_wordcloud_transform_as() -> WordcloudTransformAs raise @typify_rt.DeError {
   @typify_rt.default_value("[\"x\",\"y\",\"font\",\"fontSize\",\"fontStyle\",\"fontWeight\",\"angle\"]", WordcloudTransformAs::deserialize)
 }
@@ -15666,6 +17057,47 @@ fn default_wordcloud_transform_font_style() -> WordcloudTransformFontStyle raise
 fn default_wordcloud_transform_font_weight() -> WordcloudTransformFontWeight raise @typify_rt.DeError {
   @typify_rt.default_value("\"normal\"", WordcloudTransformFontWeight::deserialize)
 }
+
+///|
+/// Construct a `WordcloudTransform` (fields with defaults are optional).
+pub fn WordcloudTransform::WordcloudTransform(as_? : WordcloudTransformAs, font? : WordcloudTransformFont, font_size? : WordcloudTransformFontSize, font_size_range? : WordcloudTransformFontSizeRange, font_style? : WordcloudTransformFontStyle, font_weight? : WordcloudTransformFontWeight, padding? : WordcloudTransformPadding, rotate? : WordcloudTransformRotate, signal? : String, size? : WordcloudTransformSize, spiral? : WordcloudTransformSpiral, text? : WordcloudTransformText, type_~ : WordcloudTransformType) -> WordcloudTransform {
+  WordcloudTransform::{
+    as_: match as_ {
+      Some(v) => v
+      None => default_wordcloud_transform_as() catch { e => abort("invalid default for WordcloudTransform.as_: \{e}") }
+    },
+    font: match font {
+      Some(v) => v
+      None => default_wordcloud_transform_font() catch { e => abort("invalid default for WordcloudTransform.font: \{e}") }
+    },
+    font_size: match font_size {
+      Some(v) => v
+      None => default_wordcloud_transform_font_size() catch { e => abort("invalid default for WordcloudTransform.font_size: \{e}") }
+    },
+    font_size_range: match font_size_range {
+      Some(v) => v
+      None => default_wordcloud_transform_font_size_range() catch { e => abort("invalid default for WordcloudTransform.font_size_range: \{e}") }
+    },
+    font_style: match font_style {
+      Some(v) => v
+      None => default_wordcloud_transform_font_style() catch { e => abort("invalid default for WordcloudTransform.font_style: \{e}") }
+    },
+    font_weight: match font_weight {
+      Some(v) => v
+      None => default_wordcloud_transform_font_weight() catch { e => abort("invalid default for WordcloudTransform.font_weight: \{e}") }
+    },
+    padding: padding,
+    rotate: rotate,
+    signal: signal,
+    size: size,
+    spiral: spiral,
+    text: text,
+    type_: type_,
+  }
+}
+
+///|
+let wordcloud_transform_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "font", "fontSize", "fontSizeRange", "fontStyle", "fontWeight", "padding", "rotate", "signal", "size", "spiral", "text", "type"])
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransform with fn deserialize(d) {
@@ -15779,6 +17211,33 @@ pub(all) struct Everything {
   usermeta : Map[String, Json]
   width : NumberOrSignal?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `Everything` (fields with defaults are optional).
+pub fn Everything::Everything(autosize? : Autosize, axes? : Array[Axis] = [], background? : Background, config? : Map[String, Json] = Map([]), data? : Array[Data] = [], description? : String, encode? : Encode, height? : NumberOrSignal, layout? : Layout, legends? : Array[Legend] = [], marks? : Array[EverythingMarksItem] = [], padding? : Padding, projections? : Array[Projection] = [], scales? : Array[Scale] = [], schema? : String, signals? : Array[Signal] = [], style? : Style, title? : Title, usermeta? : Map[String, Json] = Map([]), width? : NumberOrSignal) -> Everything {
+  Everything::{
+    autosize: autosize,
+    axes: axes,
+    background: background,
+    config: config,
+    data: data,
+    description: description,
+    encode: encode,
+    height: height,
+    layout: layout,
+    legends: legends,
+    marks: marks,
+    padding: padding,
+    projections: projections,
+    scales: scales,
+    schema: schema,
+    signals: signals,
+    style: style,
+    title: title,
+    usermeta: usermeta,
+    width: width,
+  }
+}
 
 ///|
 let everything_fields : @typify_rt.Fields = @typify_rt.Fields::new(["autosize", "axes", "background", "config", "data", "description", "encode", "height", "layout", "legends", "marks", "padding", "projections", "scales", "$schema", "signals", "style", "title", "usermeta", "width"])
@@ -20518,6 +21977,19 @@ pub(all) struct AxisEncode {
   ticks : GuideEncode?
   title : GuideEncode?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `AxisEncode` (fields with defaults are optional).
+pub fn AxisEncode::AxisEncode(axis? : GuideEncode, domain? : GuideEncode, grid? : GuideEncode, labels? : GuideEncode, ticks? : GuideEncode, title? : GuideEncode) -> AxisEncode {
+  AxisEncode::{
+    axis: axis,
+    domain: domain,
+    grid: grid,
+    labels: labels,
+    ticks: ticks,
+    title: title,
+  }
+}
 
 ///|
 let axis_encode_fields : @typify_rt.Fields = @typify_rt.Fields::new(["axis", "domain", "grid", "labels", "ticks", "title"])
@@ -30023,6 +31495,15 @@ pub(all) struct DataVariant2FormatVariant0Subtype0 {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DataVariant2FormatVariant0Subtype0` (fields with defaults are optional).
+pub fn DataVariant2FormatVariant0Subtype0::DataVariant2FormatVariant0Subtype0(parse? : DataVariant2FormatVariant0Subtype0Parse, type_? : StringOrSignal) -> DataVariant2FormatVariant0Subtype0 {
+  DataVariant2FormatVariant0Subtype0::{
+    parse: parse,
+    type_: type_,
+  }
+}
+
+///|
 let data_variant2_format_variant0_subtype0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["parse", "type"])
 
 ///|
@@ -30408,6 +31889,17 @@ pub(all) struct DataVariant2FormatVariant0Subtype1 {
   property : StringOrSignal?
   type_ : DataVariant2FormatVariant0Subtype1Type?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DataVariant2FormatVariant0Subtype1` (fields with defaults are optional).
+pub fn DataVariant2FormatVariant0Subtype1::DataVariant2FormatVariant0Subtype1(copy? : BooleanOrSignal, parse? : DataVariant2FormatVariant0Subtype1Parse, property? : StringOrSignal, type_? : DataVariant2FormatVariant0Subtype1Type) -> DataVariant2FormatVariant0Subtype1 {
+  DataVariant2FormatVariant0Subtype1::{
+    copy: copy,
+    parse: parse,
+    property: property,
+    type_: type_,
+  }
+}
 
 ///|
 let data_variant2_format_variant0_subtype1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["copy", "parse", "property", "type"])
@@ -30814,6 +32306,16 @@ pub(all) struct DataVariant2FormatVariant0Subtype2 {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DataVariant2FormatVariant0Subtype2` (fields with defaults are optional).
+pub fn DataVariant2FormatVariant0Subtype2::DataVariant2FormatVariant0Subtype2(header? : Array[String] = [], parse? : DataVariant2FormatVariant0Subtype2Parse, type_~ : DataVariant2FormatVariant0Subtype2Type) -> DataVariant2FormatVariant0Subtype2 {
+  DataVariant2FormatVariant0Subtype2::{
+    header: header,
+    parse: parse,
+    type_: type_,
+  }
+}
+
+///|
 let data_variant2_format_variant0_subtype2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["header", "parse", "type"])
 
 ///|
@@ -31203,6 +32705,17 @@ pub(all) struct DataVariant2FormatVariant0Subtype3 {
   parse : DataVariant2FormatVariant0Subtype3Parse?
   type_ : DataVariant2FormatVariant0Subtype3Type
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DataVariant2FormatVariant0Subtype3` (fields with defaults are optional).
+pub fn DataVariant2FormatVariant0Subtype3::DataVariant2FormatVariant0Subtype3(delimiter~ : String, header? : Array[String] = [], parse? : DataVariant2FormatVariant0Subtype3Parse, type_~ : DataVariant2FormatVariant0Subtype3Type) -> DataVariant2FormatVariant0Subtype3 {
+  DataVariant2FormatVariant0Subtype3::{
+    delimiter: delimiter,
+    header: header,
+    parse: parse,
+    type_: type_,
+  }
+}
 
 ///|
 let data_variant2_format_variant0_subtype3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["delimiter", "header", "parse", "type"])
@@ -31893,6 +33406,15 @@ pub(all) struct DataVariant3FormatVariant0Subtype0 {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DataVariant3FormatVariant0Subtype0` (fields with defaults are optional).
+pub fn DataVariant3FormatVariant0Subtype0::DataVariant3FormatVariant0Subtype0(parse? : DataVariant3FormatVariant0Subtype0Parse, type_? : StringOrSignal) -> DataVariant3FormatVariant0Subtype0 {
+  DataVariant3FormatVariant0Subtype0::{
+    parse: parse,
+    type_: type_,
+  }
+}
+
+///|
 let data_variant3_format_variant0_subtype0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["parse", "type"])
 
 ///|
@@ -32278,6 +33800,17 @@ pub(all) struct DataVariant3FormatVariant0Subtype1 {
   property : StringOrSignal?
   type_ : DataVariant3FormatVariant0Subtype1Type?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DataVariant3FormatVariant0Subtype1` (fields with defaults are optional).
+pub fn DataVariant3FormatVariant0Subtype1::DataVariant3FormatVariant0Subtype1(copy? : BooleanOrSignal, parse? : DataVariant3FormatVariant0Subtype1Parse, property? : StringOrSignal, type_? : DataVariant3FormatVariant0Subtype1Type) -> DataVariant3FormatVariant0Subtype1 {
+  DataVariant3FormatVariant0Subtype1::{
+    copy: copy,
+    parse: parse,
+    property: property,
+    type_: type_,
+  }
+}
 
 ///|
 let data_variant3_format_variant0_subtype1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["copy", "parse", "property", "type"])
@@ -32684,6 +34217,16 @@ pub(all) struct DataVariant3FormatVariant0Subtype2 {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DataVariant3FormatVariant0Subtype2` (fields with defaults are optional).
+pub fn DataVariant3FormatVariant0Subtype2::DataVariant3FormatVariant0Subtype2(header? : Array[String] = [], parse? : DataVariant3FormatVariant0Subtype2Parse, type_~ : DataVariant3FormatVariant0Subtype2Type) -> DataVariant3FormatVariant0Subtype2 {
+  DataVariant3FormatVariant0Subtype2::{
+    header: header,
+    parse: parse,
+    type_: type_,
+  }
+}
+
+///|
 let data_variant3_format_variant0_subtype2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["header", "parse", "type"])
 
 ///|
@@ -33073,6 +34616,17 @@ pub(all) struct DataVariant3FormatVariant0Subtype3 {
   parse : DataVariant3FormatVariant0Subtype3Parse?
   type_ : DataVariant3FormatVariant0Subtype3Type
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DataVariant3FormatVariant0Subtype3` (fields with defaults are optional).
+pub fn DataVariant3FormatVariant0Subtype3::DataVariant3FormatVariant0Subtype3(delimiter~ : String, header? : Array[String] = [], parse? : DataVariant3FormatVariant0Subtype3Parse, type_~ : DataVariant3FormatVariant0Subtype3Type) -> DataVariant3FormatVariant0Subtype3 {
+  DataVariant3FormatVariant0Subtype3::{
+    delimiter: delimiter,
+    header: header,
+    parse: parse,
+    type_: type_,
+  }
+}
 
 ///|
 let data_variant3_format_variant0_subtype3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["delimiter", "header", "parse", "type"])
@@ -35995,6 +37549,17 @@ pub(all) struct FacetFacetVariant1Aggregate {
   fields : Array[String]
   ops : Array[String]
 } derive(Debug, Eq)
+
+///|
+/// Construct a `FacetFacetVariant1Aggregate` (fields with defaults are optional).
+pub fn FacetFacetVariant1Aggregate::FacetFacetVariant1Aggregate(as_? : Array[String] = [], cross? : Bool, fields? : Array[String] = [], ops? : Array[String] = []) -> FacetFacetVariant1Aggregate {
+  FacetFacetVariant1Aggregate::{
+    as_: as_,
+    cross: cross,
+    fields: fields,
+    ops: ops,
+  }
+}
 
 ///|
 let facet_facet_variant1_aggregate_fields : @typify_rt.Fields = @typify_rt.Fields::new(["as", "cross", "fields", "ops"])
@@ -40001,6 +41566,15 @@ pub(all) struct GradientStopsItem {
   color : String
   offset : Double
 } derive(Debug, Eq)
+
+///|
+/// Construct a `GradientStopsItem` (fields with defaults are optional).
+pub fn GradientStopsItem::GradientStopsItem(color~ : String, offset~ : Double) -> GradientStopsItem {
+  GradientStopsItem::{
+    color: color,
+    offset: offset,
+  }
+}
 
 ///|
 let gradient_stops_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["color", "offset"])
@@ -47007,6 +48581,19 @@ pub(all) struct LegendVariant0Encode {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `LegendVariant0Encode` (fields with defaults are optional).
+pub fn LegendVariant0Encode::LegendVariant0Encode(entries? : GuideEncode, gradient? : GuideEncode, labels? : GuideEncode, legend? : GuideEncode, symbols? : GuideEncode, title? : GuideEncode) -> LegendVariant0Encode {
+  LegendVariant0Encode::{
+    entries: entries,
+    gradient: gradient,
+    labels: labels,
+    legend: legend,
+    symbols: symbols,
+    title: title,
+  }
+}
+
+///|
 let legend_variant0_encode_fields : @typify_rt.Fields = @typify_rt.Fields::new(["entries", "gradient", "labels", "legend", "symbols", "title"])
 
 ///|
@@ -50239,6 +51826,19 @@ pub(all) struct LegendVariant1Encode {
   symbols : GuideEncode?
   title : GuideEncode?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `LegendVariant1Encode` (fields with defaults are optional).
+pub fn LegendVariant1Encode::LegendVariant1Encode(entries? : GuideEncode, gradient? : GuideEncode, labels? : GuideEncode, legend? : GuideEncode, symbols? : GuideEncode, title? : GuideEncode) -> LegendVariant1Encode {
+  LegendVariant1Encode::{
+    entries: entries,
+    gradient: gradient,
+    labels: labels,
+    legend: legend,
+    symbols: symbols,
+    title: title,
+  }
+}
 
 ///|
 let legend_variant1_encode_fields : @typify_rt.Fields = @typify_rt.Fields::new(["entries", "gradient", "labels", "legend", "symbols", "title"])
@@ -53475,6 +55075,19 @@ pub(all) struct LegendVariant2Encode {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `LegendVariant2Encode` (fields with defaults are optional).
+pub fn LegendVariant2Encode::LegendVariant2Encode(entries? : GuideEncode, gradient? : GuideEncode, labels? : GuideEncode, legend? : GuideEncode, symbols? : GuideEncode, title? : GuideEncode) -> LegendVariant2Encode {
+  LegendVariant2Encode::{
+    entries: entries,
+    gradient: gradient,
+    labels: labels,
+    legend: legend,
+    symbols: symbols,
+    title: title,
+  }
+}
+
+///|
 let legend_variant2_encode_fields : @typify_rt.Fields = @typify_rt.Fields::new(["entries", "gradient", "labels", "legend", "symbols", "title"])
 
 ///|
@@ -56707,6 +58320,19 @@ pub(all) struct LegendVariant3Encode {
   symbols : GuideEncode?
   title : GuideEncode?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `LegendVariant3Encode` (fields with defaults are optional).
+pub fn LegendVariant3Encode::LegendVariant3Encode(entries? : GuideEncode, gradient? : GuideEncode, labels? : GuideEncode, legend? : GuideEncode, symbols? : GuideEncode, title? : GuideEncode) -> LegendVariant3Encode {
+  LegendVariant3Encode::{
+    entries: entries,
+    gradient: gradient,
+    labels: labels,
+    legend: legend,
+    symbols: symbols,
+    title: title,
+  }
+}
 
 ///|
 let legend_variant3_encode_fields : @typify_rt.Fields = @typify_rt.Fields::new(["entries", "gradient", "labels", "legend", "symbols", "title"])
@@ -59943,6 +61569,19 @@ pub(all) struct LegendVariant4Encode {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `LegendVariant4Encode` (fields with defaults are optional).
+pub fn LegendVariant4Encode::LegendVariant4Encode(entries? : GuideEncode, gradient? : GuideEncode, labels? : GuideEncode, legend? : GuideEncode, symbols? : GuideEncode, title? : GuideEncode) -> LegendVariant4Encode {
+  LegendVariant4Encode::{
+    entries: entries,
+    gradient: gradient,
+    labels: labels,
+    legend: legend,
+    symbols: symbols,
+    title: title,
+  }
+}
+
+///|
 let legend_variant4_encode_fields : @typify_rt.Fields = @typify_rt.Fields::new(["entries", "gradient", "labels", "legend", "symbols", "title"])
 
 ///|
@@ -63177,6 +64816,19 @@ pub(all) struct LegendVariant5Encode {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `LegendVariant5Encode` (fields with defaults are optional).
+pub fn LegendVariant5Encode::LegendVariant5Encode(entries? : GuideEncode, gradient? : GuideEncode, labels? : GuideEncode, legend? : GuideEncode, symbols? : GuideEncode, title? : GuideEncode) -> LegendVariant5Encode {
+  LegendVariant5Encode::{
+    entries: entries,
+    gradient: gradient,
+    labels: labels,
+    legend: legend,
+    symbols: symbols,
+    title: title,
+  }
+}
+
+///|
 let legend_variant5_encode_fields : @typify_rt.Fields = @typify_rt.Fields::new(["entries", "gradient", "labels", "legend", "symbols", "title"])
 
 ///|
@@ -66409,6 +68061,19 @@ pub(all) struct LegendVariant6Encode {
   symbols : GuideEncode?
   title : GuideEncode?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `LegendVariant6Encode` (fields with defaults are optional).
+pub fn LegendVariant6Encode::LegendVariant6Encode(entries? : GuideEncode, gradient? : GuideEncode, labels? : GuideEncode, legend? : GuideEncode, symbols? : GuideEncode, title? : GuideEncode) -> LegendVariant6Encode {
+  LegendVariant6Encode::{
+    entries: entries,
+    gradient: gradient,
+    labels: labels,
+    legend: legend,
+    symbols: symbols,
+    title: title,
+  }
+}
 
 ///|
 let legend_variant6_encode_fields : @typify_rt.Fields = @typify_rt.Fields::new(["entries", "gradient", "labels", "legend", "symbols", "title"])
@@ -74739,6 +76404,16 @@ pub(all) struct OnMarkTriggerItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `OnMarkTriggerItem` (fields with defaults are optional).
+pub fn OnMarkTriggerItem::OnMarkTriggerItem(modify? : ExprString, trigger~ : ExprString, values? : ExprString) -> OnMarkTriggerItem {
+  OnMarkTriggerItem::{
+    modify: modify,
+    trigger: trigger,
+    values: values,
+  }
+}
+
+///|
 let on_mark_trigger_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["modify", "trigger", "values"])
 
 ///|
@@ -74838,6 +76513,19 @@ pub(all) struct OnTriggerItem {
   trigger : ExprString
   values : ExprString?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `OnTriggerItem` (fields with defaults are optional).
+pub fn OnTriggerItem::OnTriggerItem(insert? : ExprString, modify? : ExprString, remove? : OnTriggerItemRemove, toggle? : ExprString, trigger~ : ExprString, values? : ExprString) -> OnTriggerItem {
+  OnTriggerItem::{
+    insert: insert,
+    modify: modify,
+    remove: remove,
+    toggle: toggle,
+    trigger: trigger,
+    values: values,
+  }
+}
 
 ///|
 let on_trigger_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["insert", "modify", "remove", "toggle", "trigger", "values"])
@@ -95648,6 +97336,16 @@ pub(all) struct TitleObjectEncodeSubtype1 {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `TitleObjectEncodeSubtype1` (fields with defaults are optional).
+pub fn TitleObjectEncodeSubtype1::TitleObjectEncodeSubtype1(group? : GuideEncode, subtitle? : GuideEncode, title? : GuideEncode) -> TitleObjectEncodeSubtype1 {
+  TitleObjectEncodeSubtype1::{
+    group: group,
+    subtitle: subtitle,
+    title: title,
+  }
+}
+
+///|
 let title_object_encode_subtype1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["group", "subtitle", "title"])
 
 ///|
@@ -95698,6 +97396,15 @@ pub(all) struct TitleObjectEncode {
   subtype_0 : Map[TitleObjectEncodeSubtype0Key, EncodeEntry]?
   subtype_1 : TitleObjectEncodeSubtype1?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `TitleObjectEncode` (fields with defaults are optional).
+pub fn TitleObjectEncode::TitleObjectEncode(subtype_0? : Map[TitleObjectEncodeSubtype0Key, EncodeEntry], subtype_1? : TitleObjectEncodeSubtype1) -> TitleObjectEncode {
+  TitleObjectEncode::{
+    subtype_0: subtype_0,
+    subtype_1: subtype_1,
+  }
+}
 
 ///|
 let title_object_encode_fields : @typify_rt.Fields = @typify_rt.Fields::new([])

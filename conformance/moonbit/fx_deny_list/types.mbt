@@ -11,6 +11,15 @@ pub(all) struct TestType {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `TestType` (fields with defaults are optional).
+pub fn TestType::TestType(where_not~ : TestTypeWhereNot, why_not~ : TestTypeWhyNot) -> TestType {
+  TestType::{
+    where_not: where_not,
+    why_not: why_not,
+  }
+}
+
+///|
 let test_type_fields : @typify_rt.Fields = @typify_rt.Fields::new(["where_not", "why_not"])
 
 ///|

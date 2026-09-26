@@ -11,6 +11,15 @@ pub(all) struct AllTheThings {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `AllTheThings` (fields with defaults are optional).
+pub fn AllTheThings::AllTheThings(option_marker? : Marker?, path? : String) -> AllTheThings {
+  AllTheThings::{
+    option_marker: option_marker,
+    path: path,
+  }
+}
+
+///|
 let all_the_things_fields : @typify_rt.Fields = @typify_rt.Fields::new(["option_marker", "path"])
 
 ///|

@@ -15,6 +15,7 @@ import {
 pub(all) struct TestType {
   value : TestTypeValue?
 } derive(Eq, @debug.Debug)
+pub fn TestType::TestType(value? : TestTypeValue) -> Self
 pub fn TestType::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn TestType::from_json(Json) -> Self raise @runtime.DeError
 pub fn TestType::from_json_str(StringView) -> Self raise @runtime.DeError

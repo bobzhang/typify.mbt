@@ -10,6 +10,14 @@ pub(all) struct ObjectWithNoExtra {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ObjectWithNoExtra` (fields with defaults are optional).
+pub fn ObjectWithNoExtra::ObjectWithNoExtra(foo~ : String) -> ObjectWithNoExtra {
+  ObjectWithNoExtra::{
+    foo: foo,
+  }
+}
+
+///|
 let object_with_no_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new(["foo"])
 
 ///|
@@ -45,6 +53,14 @@ pub impl ToJson for ObjectWithNoExtra with fn to_json(self) {
 pub(all) struct ObjectWithOkExtra {
   foo : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ObjectWithOkExtra` (fields with defaults are optional).
+pub fn ObjectWithOkExtra::ObjectWithOkExtra(foo~ : String) -> ObjectWithOkExtra {
+  ObjectWithOkExtra::{
+    foo: foo,
+  }
+}
 
 ///|
 let object_with_ok_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new(["foo"])
@@ -83,6 +99,15 @@ pub(all) struct ObjectWithStringExtra {
   foo : String
   extra : Map[String, String]
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ObjectWithStringExtra` (fields with defaults are optional).
+pub fn ObjectWithStringExtra::ObjectWithStringExtra(foo~ : String, extra~ : Map[String, String]) -> ObjectWithStringExtra {
+  ObjectWithStringExtra::{
+    foo: foo,
+    extra: extra,
+  }
+}
 
 ///|
 let object_with_string_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new(["foo"])
@@ -125,6 +150,15 @@ pub(all) struct ObjectWithWhichExtra {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ObjectWithWhichExtra` (fields with defaults are optional).
+pub fn ObjectWithWhichExtra::ObjectWithWhichExtra(foo~ : String, extra~ : Map[String, Json]) -> ObjectWithWhichExtra {
+  ObjectWithWhichExtra::{
+    foo: foo,
+    extra: extra,
+  }
+}
+
+///|
 let object_with_which_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new(["foo"])
 
 ///|
@@ -162,6 +196,14 @@ pub impl ToJson for ObjectWithWhichExtra with fn to_json(self) {
 pub(all) struct ObjectWithYesExtra {
   foo : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ObjectWithYesExtra` (fields with defaults are optional).
+pub fn ObjectWithYesExtra::ObjectWithYesExtra(foo~ : String) -> ObjectWithYesExtra {
+  ObjectWithYesExtra::{
+    foo: foo,
+  }
+}
 
 ///|
 let object_with_yes_extra_fields : @typify_rt.Fields = @typify_rt.Fields::new(["foo"])

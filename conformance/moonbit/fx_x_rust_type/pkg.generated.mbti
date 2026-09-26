@@ -16,6 +16,7 @@ pub(all) struct AllTheThings {
   option_marker : Marker??
   path : String?
 } derive(Eq, @debug.Debug)
+pub fn AllTheThings::AllTheThings(option_marker? : Marker?, path? : String) -> Self
 pub fn AllTheThings::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn AllTheThings::from_json(Json) -> Self raise @runtime.DeError
 pub fn AllTheThings::from_json_str(StringView) -> Self raise @runtime.DeError

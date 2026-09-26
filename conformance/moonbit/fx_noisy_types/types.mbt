@@ -58,6 +58,14 @@ pub(all) struct ObjectBs {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ObjectBs` (fields with defaults are optional).
+pub fn ObjectBs::ObjectBs(ok? : Bool) -> ObjectBs {
+  ObjectBs::{
+    ok: ok,
+  }
+}
+
+///|
 let object_bs_fields : @typify_rt.Fields = @typify_rt.Fields::new(["ok"])
 
 ///|

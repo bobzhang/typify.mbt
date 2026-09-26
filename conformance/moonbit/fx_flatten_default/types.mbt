@@ -10,6 +10,14 @@ pub(all) struct Container {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Container` (fields with defaults are optional).
+pub fn Container::Container(thing? : ContainerThing) -> Container {
+  Container::{
+    thing: thing,
+  }
+}
+
+///|
 let container_fields : @typify_rt.Fields = @typify_rt.Fields::new(["thing"])
 
 ///|
@@ -48,6 +56,15 @@ pub(all) struct ContainerThing {
   id : String?
   extra : Map[String, String]
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ContainerThing` (fields with defaults are optional).
+pub fn ContainerThing::ContainerThing(id? : String, extra~ : Map[String, String]) -> ContainerThing {
+  ContainerThing::{
+    id: id,
+    extra: extra,
+  }
+}
 
 ///|
 let container_thing_fields : @typify_rt.Fields = @typify_rt.Fields::new(["id"])

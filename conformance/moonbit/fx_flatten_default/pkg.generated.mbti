@@ -15,6 +15,7 @@ import {
 pub(all) struct Container {
   thing : ContainerThing?
 } derive(Eq, @debug.Debug)
+pub fn Container::Container(thing? : ContainerThing) -> Self
 pub fn Container::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Container::from_json(Json) -> Self raise @runtime.DeError
 pub fn Container::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -27,6 +28,7 @@ pub(all) struct ContainerThing {
   id : String?
   extra : Map[String, String]
 } derive(Eq, @debug.Debug)
+pub fn ContainerThing::ContainerThing(id? : String, extra~ : Map[String, String]) -> Self
 pub fn ContainerThing::default() -> Self
 pub fn ContainerThing::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ContainerThing::from_json(Json) -> Self raise @runtime.DeError

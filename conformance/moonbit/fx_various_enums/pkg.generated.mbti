@@ -79,6 +79,7 @@ pub(all) struct DiskAttachment {
   alternate : AlternativeEnum
   state : DiskAttachmentState
 } derive(Eq, @debug.Debug)
+pub fn DiskAttachment::DiskAttachment(alternate~ : AlternativeEnum, state~ : DiskAttachmentState) -> Self
 pub fn DiskAttachment::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn DiskAttachment::from_json(Json) -> Self raise @runtime.DeError
 pub fn DiskAttachment::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -107,6 +108,7 @@ pub impl ToJson for DiskAttachmentState
 pub(all) struct EmptyObject {
   prop : EmptyObjectProp?
 } derive(Eq, @debug.Debug)
+pub fn EmptyObject::EmptyObject(prop? : EmptyObjectProp) -> Self
 pub fn EmptyObject::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn EmptyObject::from_json(Json) -> Self raise @runtime.DeError
 pub fn EmptyObject::from_json_str(StringView) -> Self raise @runtime.DeError

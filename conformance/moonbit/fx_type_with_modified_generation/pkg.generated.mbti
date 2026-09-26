@@ -17,6 +17,7 @@ pub(all) struct TestType {
   patched_type : TypeThatHasMoreDerives
   replaced_type : String
 } derive(Eq, @debug.Debug)
+pub fn TestType::TestType(converted_type~ : Json, patched_type~ : TypeThatHasMoreDerives, replaced_type~ : String) -> Self
 pub fn TestType::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn TestType::from_json(Json) -> Self raise @runtime.DeError
 pub fn TestType::from_json_str(StringView) -> Self raise @runtime.DeError

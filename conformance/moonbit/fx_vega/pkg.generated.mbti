@@ -23,6 +23,7 @@ pub(all) struct AggregateTransform {
   signal : String?
   type_ : AggregateTransformType
 } derive(Eq, @debug.Debug)
+pub fn AggregateTransform::AggregateTransform(as_? : AggregateTransformAs, cross? : AggregateTransformCross, drop? : AggregateTransformDrop, fields? : AggregateTransformFields, groupby? : AggregateTransformGroupby, key? : AggregateTransformKey, ops? : AggregateTransformOps, signal? : String, type_~ : AggregateTransformType) -> Self
 pub fn AggregateTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn AggregateTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn AggregateTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -970,6 +971,7 @@ pub(all) struct Axis {
   values : ArrayOrSignal?
   zindex : Double?
 } derive(Eq, @debug.Debug)
+pub fn Axis::Axis(aria? : Bool, band_position? : AxisBandPosition, description? : String, domain? : Bool, domain_cap? : AxisDomainCap, domain_color? : AxisDomainColor, domain_dash? : AxisDomainDash, domain_dash_offset? : AxisDomainDashOffset, domain_opacity? : AxisDomainOpacity, domain_width? : AxisDomainWidth, encode? : AxisEncode, format? : AxisFormat, format_type? : AxisFormatType, grid? : Bool, grid_cap? : AxisGridCap, grid_color? : AxisGridColor, grid_dash? : AxisGridDash, grid_dash_offset? : AxisGridDashOffset, grid_opacity? : AxisGridOpacity, grid_scale? : String, grid_width? : AxisGridWidth, label_align? : AxisLabelAlign, label_angle? : AxisLabelAngle, label_baseline? : AxisLabelBaseline, label_bound? : AxisLabelBound, label_color? : AxisLabelColor, label_flush? : AxisLabelFlush, label_flush_offset? : NumberOrSignal, label_font? : AxisLabelFont, label_font_size? : AxisLabelFontSize, label_font_style? : AxisLabelFontStyle, label_font_weight? : AxisLabelFontWeight, label_limit? : AxisLabelLimit, label_line_height? : AxisLabelLineHeight, label_offset? : AxisLabelOffset, label_opacity? : AxisLabelOpacity, label_overlap? : LabelOverlap, label_padding? : AxisLabelPadding, label_separation? : NumberOrSignal, labels? : Bool, max_extent? : AxisMaxExtent, min_extent? : AxisMinExtent, offset? : AxisOffset, orient~ : AxisOrient, position? : AxisPosition, scale~ : String, tick_band? : TickBand, tick_cap? : AxisTickCap, tick_color? : AxisTickColor, tick_count? : TickCount, tick_dash? : AxisTickDash, tick_dash_offset? : AxisTickDashOffset, tick_extra? : BooleanOrSignal, tick_min_step? : NumberOrSignal, tick_offset? : AxisTickOffset, tick_opacity? : AxisTickOpacity, tick_round? : AxisTickRound, tick_size? : AxisTickSize, tick_width? : AxisTickWidth, ticks? : Bool, title? : TextOrSignal, title_align? : AxisTitleAlign, title_anchor? : AxisTitleAnchor, title_angle? : AxisTitleAngle, title_baseline? : AxisTitleBaseline, title_color? : AxisTitleColor, title_font? : AxisTitleFont, title_font_size? : AxisTitleFontSize, title_font_style? : AxisTitleFontStyle, title_font_weight? : AxisTitleFontWeight, title_limit? : AxisTitleLimit, title_line_height? : AxisTitleLineHeight, title_opacity? : AxisTitleOpacity, title_padding? : AxisTitlePadding, title_x? : AxisTitleX, title_y? : AxisTitleY, translate? : AxisTranslate, values? : ArrayOrSignal, zindex? : Double) -> Self
 pub fn Axis::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Axis::from_json(Json) -> Self raise @runtime.DeError
 pub fn Axis::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -1071,6 +1073,7 @@ pub(all) struct AxisEncode {
   ticks : GuideEncode?
   title : GuideEncode?
 } derive(Eq, @debug.Debug)
+pub fn AxisEncode::AxisEncode(axis? : GuideEncode, domain? : GuideEncode, grid? : GuideEncode, labels? : GuideEncode, ticks? : GuideEncode, title? : GuideEncode) -> Self
 pub fn AxisEncode::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn AxisEncode::from_json(Json) -> Self raise @runtime.DeError
 pub fn AxisEncode::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -2123,6 +2126,7 @@ pub(all) struct BinTransform {
   steps : BinTransformSteps?
   type_ : BinTransformType
 } derive(Eq, @debug.Debug)
+pub fn BinTransform::BinTransform(anchor? : BinTransformAnchor, as_? : BinTransformAs, base? : BinTransformBase, divide? : BinTransformDivide, extent~ : BinTransformExtent, field~ : BinTransformField, interval? : BinTransformInterval, maxbins? : BinTransformMaxbins, minstep? : BinTransformMinstep, name? : BinTransformName, nice? : BinTransformNice, signal? : String, span? : BinTransformSpan, step? : BinTransformStep, steps? : BinTransformSteps, type_~ : BinTransformType) -> Self
 pub fn BinTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn BinTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn BinTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -2773,6 +2777,7 @@ pub(all) struct CollectTransform {
   sort : Compare_?
   type_ : CollectTransformType
 } derive(Eq, @debug.Debug)
+pub fn CollectTransform::CollectTransform(signal? : String, sort? : Compare_, type_~ : CollectTransformType) -> Self
 pub fn CollectTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn CollectTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn CollectTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -2800,6 +2805,7 @@ pub(all) struct ColorHcl {
   h : NumberValue
   l : NumberValue
 } derive(Eq, @debug.Debug)
+pub fn ColorHcl::ColorHcl(c~ : NumberValue, h~ : NumberValue, l~ : NumberValue) -> Self
 pub fn ColorHcl::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ColorHcl::from_json(Json) -> Self raise @runtime.DeError
 pub fn ColorHcl::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -2813,6 +2819,7 @@ pub(all) struct ColorHsl {
   l : NumberValue
   s : NumberValue
 } derive(Eq, @debug.Debug)
+pub fn ColorHsl::ColorHsl(h~ : NumberValue, l~ : NumberValue, s~ : NumberValue) -> Self
 pub fn ColorHsl::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ColorHsl::from_json(Json) -> Self raise @runtime.DeError
 pub fn ColorHsl::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -2826,6 +2833,7 @@ pub(all) struct ColorLab {
   b : NumberValue
   l : NumberValue
 } derive(Eq, @debug.Debug)
+pub fn ColorLab::ColorLab(a~ : NumberValue, b~ : NumberValue, l~ : NumberValue) -> Self
 pub fn ColorLab::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ColorLab::from_json(Json) -> Self raise @runtime.DeError
 pub fn ColorLab::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -2839,6 +2847,7 @@ pub(all) struct ColorRgb {
   g : NumberValue
   r : NumberValue
 } derive(Eq, @debug.Debug)
+pub fn ColorRgb::ColorRgb(b~ : NumberValue, g~ : NumberValue, r~ : NumberValue) -> Self
 pub fn ColorRgb::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ColorRgb::from_json(Json) -> Self raise @runtime.DeError
 pub fn ColorRgb::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -2898,6 +2907,7 @@ pub(all) struct ContourTransform {
   x : ContourTransformX?
   y : ContourTransformY?
 } derive(Eq, @debug.Debug)
+pub fn ContourTransform::ContourTransform(bandwidth? : ContourTransformBandwidth, cell_size? : ContourTransformCellSize, count? : ContourTransformCount, nice? : ContourTransformNice, signal? : String, size~ : ContourTransformSize, smooth? : ContourTransformSmooth, thresholds? : ContourTransformThresholds, type_~ : ContourTransformType, values? : ContourTransformValues, weight? : ContourTransformWeight, x? : ContourTransformX, y? : ContourTransformY) -> Self
 pub fn ContourTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ContourTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn ContourTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -3101,6 +3111,7 @@ pub(all) struct CountpatternTransform {
   stopwords : CountpatternTransformStopwords?
   type_ : CountpatternTransformType
 } derive(Eq, @debug.Debug)
+pub fn CountpatternTransform::CountpatternTransform(as_? : CountpatternTransformAs, case? : CountpatternTransformCase, field~ : CountpatternTransformField, pattern? : CountpatternTransformPattern, signal? : String, stopwords? : CountpatternTransformStopwords, type_~ : CountpatternTransformType) -> Self
 pub fn CountpatternTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn CountpatternTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn CountpatternTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -3221,6 +3232,7 @@ pub(all) struct CrossTransform {
   signal : String?
   type_ : CrossTransformType
 } derive(Eq, @debug.Debug)
+pub fn CrossTransform::CrossTransform(as_? : CrossTransformAs, filter? : ExprString, signal? : String, type_~ : CrossTransformType) -> Self
 pub fn CrossTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn CrossTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn CrossTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -3274,6 +3286,7 @@ pub(all) struct CrossfilterTransform {
   signal : String?
   type_ : CrossfilterTransformType
 } derive(Eq, @debug.Debug)
+pub fn CrossfilterTransform::CrossfilterTransform(fields~ : CrossfilterTransformFields, query~ : CrossfilterTransformQuery, signal? : String, type_~ : CrossfilterTransformType) -> Self
 pub fn CrossfilterTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn CrossfilterTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn CrossfilterTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -3375,6 +3388,7 @@ pub(all) struct DataVariant2FormatVariant0Subtype0 {
   parse : DataVariant2FormatVariant0Subtype0Parse?
   type_ : StringOrSignal?
 } derive(Eq, @debug.Debug)
+pub fn DataVariant2FormatVariant0Subtype0::DataVariant2FormatVariant0Subtype0(parse? : DataVariant2FormatVariant0Subtype0Parse, type_? : StringOrSignal) -> Self
 pub fn DataVariant2FormatVariant0Subtype0::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn DataVariant2FormatVariant0Subtype0::from_json(Json) -> Self raise @runtime.DeError
 pub fn DataVariant2FormatVariant0Subtype0::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -3455,6 +3469,7 @@ pub(all) struct DataVariant2FormatVariant0Subtype1 {
   property : StringOrSignal?
   type_ : DataVariant2FormatVariant0Subtype1Type?
 } derive(Eq, @debug.Debug)
+pub fn DataVariant2FormatVariant0Subtype1::DataVariant2FormatVariant0Subtype1(copy? : BooleanOrSignal, parse? : DataVariant2FormatVariant0Subtype1Parse, property? : StringOrSignal, type_? : DataVariant2FormatVariant0Subtype1Type) -> Self
 pub fn DataVariant2FormatVariant0Subtype1::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn DataVariant2FormatVariant0Subtype1::from_json(Json) -> Self raise @runtime.DeError
 pub fn DataVariant2FormatVariant0Subtype1::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -3548,6 +3563,7 @@ pub(all) struct DataVariant2FormatVariant0Subtype2 {
   parse : DataVariant2FormatVariant0Subtype2Parse?
   type_ : DataVariant2FormatVariant0Subtype2Type
 } derive(Eq, @debug.Debug)
+pub fn DataVariant2FormatVariant0Subtype2::DataVariant2FormatVariant0Subtype2(header? : Array[String], parse? : DataVariant2FormatVariant0Subtype2Parse, type_~ : DataVariant2FormatVariant0Subtype2Type) -> Self
 pub fn DataVariant2FormatVariant0Subtype2::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn DataVariant2FormatVariant0Subtype2::from_json(Json) -> Self raise @runtime.DeError
 pub fn DataVariant2FormatVariant0Subtype2::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -3643,6 +3659,7 @@ pub(all) struct DataVariant2FormatVariant0Subtype3 {
   parse : DataVariant2FormatVariant0Subtype3Parse?
   type_ : DataVariant2FormatVariant0Subtype3Type
 } derive(Eq, @debug.Debug)
+pub fn DataVariant2FormatVariant0Subtype3::DataVariant2FormatVariant0Subtype3(delimiter~ : String, header? : Array[String], parse? : DataVariant2FormatVariant0Subtype3Parse, type_~ : DataVariant2FormatVariant0Subtype3Type) -> Self
 pub fn DataVariant2FormatVariant0Subtype3::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn DataVariant2FormatVariant0Subtype3::from_json(Json) -> Self raise @runtime.DeError
 pub fn DataVariant2FormatVariant0Subtype3::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -3802,6 +3819,7 @@ pub(all) struct DataVariant3FormatVariant0Subtype0 {
   parse : DataVariant3FormatVariant0Subtype0Parse?
   type_ : StringOrSignal?
 } derive(Eq, @debug.Debug)
+pub fn DataVariant3FormatVariant0Subtype0::DataVariant3FormatVariant0Subtype0(parse? : DataVariant3FormatVariant0Subtype0Parse, type_? : StringOrSignal) -> Self
 pub fn DataVariant3FormatVariant0Subtype0::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn DataVariant3FormatVariant0Subtype0::from_json(Json) -> Self raise @runtime.DeError
 pub fn DataVariant3FormatVariant0Subtype0::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -3882,6 +3900,7 @@ pub(all) struct DataVariant3FormatVariant0Subtype1 {
   property : StringOrSignal?
   type_ : DataVariant3FormatVariant0Subtype1Type?
 } derive(Eq, @debug.Debug)
+pub fn DataVariant3FormatVariant0Subtype1::DataVariant3FormatVariant0Subtype1(copy? : BooleanOrSignal, parse? : DataVariant3FormatVariant0Subtype1Parse, property? : StringOrSignal, type_? : DataVariant3FormatVariant0Subtype1Type) -> Self
 pub fn DataVariant3FormatVariant0Subtype1::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn DataVariant3FormatVariant0Subtype1::from_json(Json) -> Self raise @runtime.DeError
 pub fn DataVariant3FormatVariant0Subtype1::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -3975,6 +3994,7 @@ pub(all) struct DataVariant3FormatVariant0Subtype2 {
   parse : DataVariant3FormatVariant0Subtype2Parse?
   type_ : DataVariant3FormatVariant0Subtype2Type
 } derive(Eq, @debug.Debug)
+pub fn DataVariant3FormatVariant0Subtype2::DataVariant3FormatVariant0Subtype2(header? : Array[String], parse? : DataVariant3FormatVariant0Subtype2Parse, type_~ : DataVariant3FormatVariant0Subtype2Type) -> Self
 pub fn DataVariant3FormatVariant0Subtype2::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn DataVariant3FormatVariant0Subtype2::from_json(Json) -> Self raise @runtime.DeError
 pub fn DataVariant3FormatVariant0Subtype2::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -4070,6 +4090,7 @@ pub(all) struct DataVariant3FormatVariant0Subtype3 {
   parse : DataVariant3FormatVariant0Subtype3Parse?
   type_ : DataVariant3FormatVariant0Subtype3Type
 } derive(Eq, @debug.Debug)
+pub fn DataVariant3FormatVariant0Subtype3::DataVariant3FormatVariant0Subtype3(delimiter~ : String, header? : Array[String], parse? : DataVariant3FormatVariant0Subtype3Parse, type_~ : DataVariant3FormatVariant0Subtype3Type) -> Self
 pub fn DataVariant3FormatVariant0Subtype3::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn DataVariant3FormatVariant0Subtype3::from_json(Json) -> Self raise @runtime.DeError
 pub fn DataVariant3FormatVariant0Subtype3::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -4236,6 +4257,7 @@ pub(all) struct DensityTransform {
   steps : DensityTransformSteps?
   type_ : DensityTransformType
 } derive(Eq, @debug.Debug)
+pub fn DensityTransform::DensityTransform(as_? : DensityTransformAs, distribution? : DensityTransformDistribution, extent? : DensityTransformExtent, maxsteps? : DensityTransformMaxsteps, method_? : DensityTransformMethod, minsteps? : DensityTransformMinsteps, signal? : String, steps? : DensityTransformSteps, type_~ : DensityTransformType) -> Self
 pub fn DensityTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn DensityTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn DensityTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -4655,6 +4677,7 @@ pub(all) struct DotbinTransform {
   step : DotbinTransformStep?
   type_ : DotbinTransformType
 } derive(Eq, @debug.Debug)
+pub fn DotbinTransform::DotbinTransform(as_? : DotbinTransformAs, field~ : DotbinTransformField, groupby? : DotbinTransformGroupby, signal? : String, smooth? : DotbinTransformSmooth, step? : DotbinTransformStep, type_~ : DotbinTransformType) -> Self
 pub fn DotbinTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn DotbinTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn DotbinTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -4841,6 +4864,7 @@ pub(all) struct EncodeEntry {
   yc : NumberValue?
   zindex : NumberValue?
 } derive(Eq, @debug.Debug)
+pub fn EncodeEntry::EncodeEntry(align? : AlignValue, angle? : NumberValue, aria? : BooleanValue, aria_role? : StringValue, aria_role_description? : StringValue, aspect? : BooleanValue, baseline? : BaselineValue, blend? : BlendValue, clip? : BooleanValue, corner_radius? : NumberValue, corner_radius_bottom_left? : NumberValue, corner_radius_bottom_right? : NumberValue, corner_radius_top_left? : NumberValue, corner_radius_top_right? : NumberValue, cursor? : StringValue, defined? : BooleanValue, description? : StringValue, dir? : StringValue, dx? : NumberValue, dy? : NumberValue, ellipsis? : StringValue, end_angle? : NumberValue, fill? : Json, fill_opacity? : NumberValue, font? : StringValue, font_size? : NumberValue, font_style? : StringValue, font_weight? : FontWeightValue, height? : NumberValue, inner_radius? : NumberValue, interpolate? : StringValue, limit? : NumberValue, line_break? : StringValue, line_height? : NumberValue, opacity? : NumberValue, orient? : DirectionValue, outer_radius? : NumberValue, pad_angle? : NumberValue, path? : StringValue, radius? : NumberValue, scale_x? : NumberValue, scale_y? : NumberValue, shape? : StringValue, size? : NumberValue, smooth? : BooleanValue, start_angle? : NumberValue, stroke? : Json, stroke_cap? : StrokeCapValue, stroke_dash? : ArrayValue, stroke_dash_offset? : NumberValue, stroke_foreground? : BooleanValue, stroke_join? : StrokeJoinValue, stroke_miter_limit? : NumberValue, stroke_offset? : NumberValue, stroke_opacity? : NumberValue, stroke_width? : NumberValue, tension? : NumberValue, text? : TextValue, theta? : NumberValue, tooltip? : AnyValue, url? : StringValue, width? : NumberValue, x? : NumberValue, x2? : NumberValue, xc? : NumberValue, y? : NumberValue, y2? : NumberValue, yc? : NumberValue, zindex? : NumberValue) -> Self
 pub fn EncodeEntry::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn EncodeEntry::from_json(Json) -> Self raise @runtime.DeError
 pub fn EncodeEntry::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -4881,6 +4905,7 @@ pub(all) struct Everything {
   usermeta : Map[String, Json]
   width : NumberOrSignal?
 } derive(Eq, @debug.Debug)
+pub fn Everything::Everything(autosize? : Autosize, axes? : Array[Axis], background? : Background, config? : Map[String, Json], data? : Array[Data], description? : String, encode? : Encode, height? : NumberOrSignal, layout? : Layout, legends? : Array[Legend], marks? : Array[EverythingMarksItem], padding? : Padding, projections? : Array[Projection], scales? : Array[Scale], schema? : String, signals? : Array[Signal], style? : Style, title? : Title, usermeta? : Map[String, Json], width? : NumberOrSignal) -> Self
 pub fn Everything::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Everything::from_json(Json) -> Self raise @runtime.DeError
 pub fn Everything::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -4905,6 +4930,7 @@ pub(all) struct Expr {
   as_ : String?
   expr : String
 } derive(Eq, @debug.Debug)
+pub fn Expr::Expr(as_? : String, expr~ : String) -> Self
 pub fn Expr::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Expr::from_json(Json) -> Self raise @runtime.DeError
 pub fn Expr::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -4927,6 +4953,7 @@ pub(all) struct ExtentTransform {
   signal : String?
   type_ : ExtentTransformType
 } derive(Eq, @debug.Debug)
+pub fn ExtentTransform::ExtentTransform(field~ : ExtentTransformField, signal? : String, type_~ : ExtentTransformType) -> Self
 pub fn ExtentTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ExtentTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn ExtentTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -4966,6 +4993,7 @@ pub(all) struct Facet {
   data : String?
   facet : FacetFacet
 } derive(Eq, @debug.Debug)
+pub fn Facet::Facet(data? : String, facet~ : FacetFacet) -> Self
 pub fn Facet::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Facet::from_json(Json) -> Self raise @runtime.DeError
 pub fn Facet::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -4992,6 +5020,7 @@ pub(all) struct FacetFacetVariant1Aggregate {
   fields : Array[String]
   ops : Array[String]
 } derive(Eq, @debug.Debug)
+pub fn FacetFacetVariant1Aggregate::FacetFacetVariant1Aggregate(as_? : Array[String], cross? : Bool, fields? : Array[String], ops? : Array[String]) -> Self
 pub fn FacetFacetVariant1Aggregate::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn FacetFacetVariant1Aggregate::from_json(Json) -> Self raise @runtime.DeError
 pub fn FacetFacetVariant1Aggregate::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -5032,6 +5061,7 @@ pub(all) struct FilterTransform {
   signal : String?
   type_ : FilterTransformType
 } derive(Eq, @debug.Debug)
+pub fn FilterTransform::FilterTransform(expr~ : ExprString, signal? : String, type_~ : FilterTransformType) -> Self
 pub fn FilterTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn FilterTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn FilterTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -5061,6 +5091,7 @@ pub(all) struct FlattenTransform {
   signal : String?
   type_ : FlattenTransformType
 } derive(Eq, @debug.Debug)
+pub fn FlattenTransform::FlattenTransform(as_? : FlattenTransformAs, fields~ : FlattenTransformFields, index? : FlattenTransformIndex, signal? : String, type_~ : FlattenTransformType) -> Self
 pub fn FlattenTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn FlattenTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn FlattenTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -5150,6 +5181,7 @@ pub(all) struct FoldTransform {
   signal : String?
   type_ : FoldTransformType
 } derive(Eq, @debug.Debug)
+pub fn FoldTransform::FoldTransform(as_? : FoldTransformAs, fields~ : FoldTransformFields, signal? : String, type_~ : FoldTransformType) -> Self
 pub fn FoldTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn FoldTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn FoldTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -5367,6 +5399,7 @@ pub(all) struct ForceTransform {
   type_ : ForceTransformType
   velocity_decay : ForceTransformVelocityDecay
 } derive(Eq, @debug.Debug)
+pub fn ForceTransform::ForceTransform(alpha? : ForceTransformAlpha, alpha_min? : ForceTransformAlphaMin, alpha_target? : ForceTransformAlphaTarget, as_? : ForceTransformAs, forces? : Array[ForceTransformForcesItem], iterations? : ForceTransformIterations, restart? : ForceTransformRestart, signal? : String, static_? : ForceTransformStatic, type_~ : ForceTransformType, velocity_decay? : ForceTransformVelocityDecay) -> Self
 pub fn ForceTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ForceTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn ForceTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -5655,6 +5688,7 @@ pub(all) struct FormulaTransform {
   signal : String?
   type_ : FormulaTransformType
 } derive(Eq, @debug.Debug)
+pub fn FormulaTransform::FormulaTransform(as_~ : FormulaTransformAs, expr~ : ExprString, initonly? : FormulaTransformInitonly, signal? : String, type_~ : FormulaTransformType) -> Self
 pub fn FormulaTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn FormulaTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn FormulaTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -5704,6 +5738,7 @@ pub impl ToJson for FormulaTransformType
 pub(all) struct From {
   data : String?
 } derive(Eq, @debug.Debug)
+pub fn From::From(data? : String) -> Self
 pub fn From::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn From::from_json(Json) -> Self raise @runtime.DeError
 pub fn From::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -5718,6 +5753,7 @@ pub(all) struct GeojsonTransform {
   signal : String?
   type_ : GeojsonTransformType
 } derive(Eq, @debug.Debug)
+pub fn GeojsonTransform::GeojsonTransform(fields? : GeojsonTransformFields, geojson? : GeojsonTransformGeojson, signal? : String, type_~ : GeojsonTransformType) -> Self
 pub fn GeojsonTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn GeojsonTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn GeojsonTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -5786,6 +5822,7 @@ pub(all) struct GeopathTransform {
   signal : String?
   type_ : GeopathTransformType
 } derive(Eq, @debug.Debug)
+pub fn GeopathTransform::GeopathTransform(as_? : GeopathTransformAs, field? : GeopathTransformField, point_radius? : GeopathTransformPointRadius, projection? : String, signal? : String, type_~ : GeopathTransformType) -> Self
 pub fn GeopathTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn GeopathTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn GeopathTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -5855,6 +5892,7 @@ pub(all) struct GeopointTransform {
   signal : String?
   type_ : GeopointTransformType
 } derive(Eq, @debug.Debug)
+pub fn GeopointTransform::GeopointTransform(as_? : GeopointTransformAs, fields~ : GeopointTransformFields, projection~ : String, signal? : String, type_~ : GeopointTransformType) -> Self
 pub fn GeopointTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn GeopointTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn GeopointTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -5935,6 +5973,7 @@ pub(all) struct GeoshapeTransform {
   signal : String?
   type_ : GeoshapeTransformType
 } derive(Eq, @debug.Debug)
+pub fn GeoshapeTransform::GeoshapeTransform(as_? : GeoshapeTransformAs, field? : GeoshapeTransformField, point_radius? : GeoshapeTransformPointRadius, projection? : String, signal? : String, type_~ : GeoshapeTransformType) -> Self
 pub fn GeoshapeTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn GeoshapeTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn GeoshapeTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -6011,6 +6050,7 @@ pub(all) struct GradientStopsItem {
   color : String
   offset : Double
 } derive(Eq, @debug.Debug)
+pub fn GradientStopsItem::GradientStopsItem(color~ : String, offset~ : Double) -> Self
 pub fn GradientStopsItem::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn GradientStopsItem::from_json(Json) -> Self raise @runtime.DeError
 pub fn GradientStopsItem::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -6030,6 +6070,7 @@ pub(all) struct GraticuleTransform {
   step_minor : GraticuleTransformStepMinor
   type_ : GraticuleTransformType
 } derive(Eq, @debug.Debug)
+pub fn GraticuleTransform::GraticuleTransform(extent? : GraticuleTransformExtent, extent_major? : GraticuleTransformExtentMajor, extent_minor? : GraticuleTransformExtentMinor, precision? : GraticuleTransformPrecision, signal? : String, step? : GraticuleTransformStep, step_major? : GraticuleTransformStepMajor, step_minor? : GraticuleTransformStepMinor, type_~ : GraticuleTransformType) -> Self
 pub fn GraticuleTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn GraticuleTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn GraticuleTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -6180,6 +6221,7 @@ pub(all) struct GuideEncode {
   name : String?
   style : Style?
 } derive(Eq, @debug.Debug)
+pub fn GuideEncode::GuideEncode(interactive? : Bool, name? : String, style? : Style) -> Self
 pub fn GuideEncode::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn GuideEncode::from_json(Json) -> Self raise @runtime.DeError
 pub fn GuideEncode::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -6197,6 +6239,7 @@ pub(all) struct HeatmapTransform {
   signal : String?
   type_ : HeatmapTransformType
 } derive(Eq, @debug.Debug)
+pub fn HeatmapTransform::HeatmapTransform(as_? : HeatmapTransformAs, color? : HeatmapTransformColor, field? : HeatmapTransformField, opacity? : HeatmapTransformOpacity, resolve? : HeatmapTransformResolve, signal? : String, type_~ : HeatmapTransformType) -> Self
 pub fn HeatmapTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn HeatmapTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn HeatmapTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -6306,6 +6349,7 @@ pub(all) struct IdentifierTransform {
   signal : String?
   type_ : IdentifierTransformType
 } derive(Eq, @debug.Debug)
+pub fn IdentifierTransform::IdentifierTransform(as_~ : IdentifierTransformAs, signal? : String, type_~ : IdentifierTransformType) -> Self
 pub fn IdentifierTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn IdentifierTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn IdentifierTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -6350,6 +6394,7 @@ pub(all) struct ImputeTransform {
   type_ : ImputeTransformType
   value : Json?
 } derive(Eq, @debug.Debug)
+pub fn ImputeTransform::ImputeTransform(field~ : ImputeTransformField, groupby? : ImputeTransformGroupby, key~ : ImputeTransformKey, keyvals? : ImputeTransformKeyvals, method_? : ImputeTransformMethod, signal? : String, type_~ : ImputeTransformType, value? : Json) -> Self
 pub fn ImputeTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ImputeTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn ImputeTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -6480,6 +6525,7 @@ pub(all) struct IsocontourTransform {
   type_ : IsocontourTransformType
   zero : IsocontourTransformZero
 } derive(Eq, @debug.Debug)
+pub fn IsocontourTransform::IsocontourTransform(as_? : IsocontourTransformAs, field? : IsocontourTransformField, levels? : IsocontourTransformLevels, nice? : IsocontourTransformNice, resolve? : IsocontourTransformResolve, scale? : IsocontourTransformScale, signal? : String, smooth? : IsocontourTransformSmooth, thresholds? : IsocontourTransformThresholds, translate? : IsocontourTransformTranslate, type_~ : IsocontourTransformType, zero? : IsocontourTransformZero) -> Self
 pub fn IsocontourTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn IsocontourTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn IsocontourTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -6680,6 +6726,7 @@ pub(all) struct JoinaggregateTransform {
   signal : String?
   type_ : JoinaggregateTransformType
 } derive(Eq, @debug.Debug)
+pub fn JoinaggregateTransform::JoinaggregateTransform(as_? : JoinaggregateTransformAs, fields? : JoinaggregateTransformFields, groupby? : JoinaggregateTransformGroupby, key? : JoinaggregateTransformKey, ops? : JoinaggregateTransformOps, signal? : String, type_~ : JoinaggregateTransformType) -> Self
 pub fn JoinaggregateTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn JoinaggregateTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn JoinaggregateTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -6865,6 +6912,7 @@ pub(all) struct Kde2dTransform {
   x : Kde2dTransformX
   y : Kde2dTransformY
 } derive(Eq, @debug.Debug)
+pub fn Kde2dTransform::Kde2dTransform(as_? : Kde2dTransformAs, bandwidth? : Kde2dTransformBandwidth, cell_size? : Kde2dTransformCellSize, counts? : Kde2dTransformCounts, groupby? : Kde2dTransformGroupby, signal? : String, size~ : Kde2dTransformSize, type_~ : Kde2dTransformType, weight? : Kde2dTransformWeight, x~ : Kde2dTransformX, y~ : Kde2dTransformY) -> Self
 pub fn Kde2dTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Kde2dTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn Kde2dTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -7051,6 +7099,7 @@ pub(all) struct KdeTransform {
   steps : KdeTransformSteps?
   type_ : KdeTransformType
 } derive(Eq, @debug.Debug)
+pub fn KdeTransform::KdeTransform(as_? : KdeTransformAs, bandwidth? : KdeTransformBandwidth, counts? : KdeTransformCounts, cumulative? : KdeTransformCumulative, extent? : KdeTransformExtent, field~ : KdeTransformField, groupby? : KdeTransformGroupby, maxsteps? : KdeTransformMaxsteps, minsteps? : KdeTransformMinsteps, resolve? : KdeTransformResolve, signal? : String, steps? : KdeTransformSteps, type_~ : KdeTransformType) -> Self
 pub fn KdeTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn KdeTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn KdeTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -7305,6 +7354,7 @@ pub(all) struct LabelTransform {
   sort : Compare_?
   type_ : LabelTransformType
 } derive(Eq, @debug.Debug)
+pub fn LabelTransform::LabelTransform(anchor? : LabelTransformAnchor, as_? : LabelTransformAs, avoid_base_mark? : LabelTransformAvoidBaseMark, avoid_marks? : LabelTransformAvoidMarks, line_anchor? : LabelTransformLineAnchor, mark_index? : LabelTransformMarkIndex, method_? : LabelTransformMethod, offset? : LabelTransformOffset, padding? : LabelTransformPadding, signal? : String, size~ : LabelTransformSize, sort? : Compare_, type_~ : LabelTransformType) -> Self
 pub fn LabelTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn LabelTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn LabelTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -7860,6 +7910,7 @@ pub(all) struct LegendVariant0Encode {
   symbols : GuideEncode?
   title : GuideEncode?
 } derive(Eq, @debug.Debug)
+pub fn LegendVariant0Encode::LegendVariant0Encode(entries? : GuideEncode, gradient? : GuideEncode, labels? : GuideEncode, legend? : GuideEncode, symbols? : GuideEncode, title? : GuideEncode) -> Self
 pub fn LegendVariant0Encode::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn LegendVariant0Encode::from_json(Json) -> Self raise @runtime.DeError
 pub fn LegendVariant0Encode::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -8623,6 +8674,7 @@ pub(all) struct LegendVariant1Encode {
   symbols : GuideEncode?
   title : GuideEncode?
 } derive(Eq, @debug.Debug)
+pub fn LegendVariant1Encode::LegendVariant1Encode(entries? : GuideEncode, gradient? : GuideEncode, labels? : GuideEncode, legend? : GuideEncode, symbols? : GuideEncode, title? : GuideEncode) -> Self
 pub fn LegendVariant1Encode::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn LegendVariant1Encode::from_json(Json) -> Self raise @runtime.DeError
 pub fn LegendVariant1Encode::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -9386,6 +9438,7 @@ pub(all) struct LegendVariant2Encode {
   symbols : GuideEncode?
   title : GuideEncode?
 } derive(Eq, @debug.Debug)
+pub fn LegendVariant2Encode::LegendVariant2Encode(entries? : GuideEncode, gradient? : GuideEncode, labels? : GuideEncode, legend? : GuideEncode, symbols? : GuideEncode, title? : GuideEncode) -> Self
 pub fn LegendVariant2Encode::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn LegendVariant2Encode::from_json(Json) -> Self raise @runtime.DeError
 pub fn LegendVariant2Encode::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -10149,6 +10202,7 @@ pub(all) struct LegendVariant3Encode {
   symbols : GuideEncode?
   title : GuideEncode?
 } derive(Eq, @debug.Debug)
+pub fn LegendVariant3Encode::LegendVariant3Encode(entries? : GuideEncode, gradient? : GuideEncode, labels? : GuideEncode, legend? : GuideEncode, symbols? : GuideEncode, title? : GuideEncode) -> Self
 pub fn LegendVariant3Encode::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn LegendVariant3Encode::from_json(Json) -> Self raise @runtime.DeError
 pub fn LegendVariant3Encode::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -10912,6 +10966,7 @@ pub(all) struct LegendVariant4Encode {
   symbols : GuideEncode?
   title : GuideEncode?
 } derive(Eq, @debug.Debug)
+pub fn LegendVariant4Encode::LegendVariant4Encode(entries? : GuideEncode, gradient? : GuideEncode, labels? : GuideEncode, legend? : GuideEncode, symbols? : GuideEncode, title? : GuideEncode) -> Self
 pub fn LegendVariant4Encode::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn LegendVariant4Encode::from_json(Json) -> Self raise @runtime.DeError
 pub fn LegendVariant4Encode::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -11675,6 +11730,7 @@ pub(all) struct LegendVariant5Encode {
   symbols : GuideEncode?
   title : GuideEncode?
 } derive(Eq, @debug.Debug)
+pub fn LegendVariant5Encode::LegendVariant5Encode(entries? : GuideEncode, gradient? : GuideEncode, labels? : GuideEncode, legend? : GuideEncode, symbols? : GuideEncode, title? : GuideEncode) -> Self
 pub fn LegendVariant5Encode::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn LegendVariant5Encode::from_json(Json) -> Self raise @runtime.DeError
 pub fn LegendVariant5Encode::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -12438,6 +12494,7 @@ pub(all) struct LegendVariant6Encode {
   symbols : GuideEncode?
   title : GuideEncode?
 } derive(Eq, @debug.Debug)
+pub fn LegendVariant6Encode::LegendVariant6Encode(entries? : GuideEncode, gradient? : GuideEncode, labels? : GuideEncode, legend? : GuideEncode, symbols? : GuideEncode, title? : GuideEncode) -> Self
 pub fn LegendVariant6Encode::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn LegendVariant6Encode::from_json(Json) -> Self raise @runtime.DeError
 pub fn LegendVariant6Encode::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -13175,6 +13232,7 @@ pub(all) struct LinearGradient {
   y1 : Double?
   y2 : Double?
 } derive(Eq, @debug.Debug)
+pub fn LinearGradient::LinearGradient(gradient~ : LinearGradientGradient, id? : String, stops~ : GradientStops, x1? : Double, x2? : Double, y1? : Double, y2? : Double) -> Self
 pub fn LinearGradient::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn LinearGradient::from_json(Json) -> Self raise @runtime.DeError
 pub fn LinearGradient::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -13209,6 +13267,7 @@ pub(all) struct LinkpathTransform {
   target_y : LinkpathTransformTargetY
   type_ : LinkpathTransformType
 } derive(Eq, @debug.Debug)
+pub fn LinkpathTransform::LinkpathTransform(as_? : LinkpathTransformAs, orient? : LinkpathTransformOrient, require? : SignalRef, shape? : LinkpathTransformShape, signal? : String, source_x? : LinkpathTransformSourceX, source_y? : LinkpathTransformSourceY, target_x? : LinkpathTransformTargetX, target_y? : LinkpathTransformTargetY, type_~ : LinkpathTransformType) -> Self
 pub fn LinkpathTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn LinkpathTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn LinkpathTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -13382,6 +13441,7 @@ pub(all) struct LoessTransform {
   x : LoessTransformX
   y : LoessTransformY
 } derive(Eq, @debug.Debug)
+pub fn LoessTransform::LoessTransform(as_? : LoessTransformAs, bandwidth? : LoessTransformBandwidth, groupby? : LoessTransformGroupby, signal? : String, type_~ : LoessTransformType, x~ : LoessTransformX, y~ : LoessTransformY) -> Self
 pub fn LoessTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn LoessTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn LoessTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -13502,6 +13562,7 @@ pub(all) struct LookupTransform {
   type_ : LookupTransformType
   values : LookupTransformValues?
 } derive(Eq, @debug.Debug)
+pub fn LookupTransform::LookupTransform(as_? : LookupTransformAs, default? : Json, fields~ : LookupTransformFields, from~ : String, key~ : LookupTransformKey, signal? : String, type_~ : LookupTransformType, values? : LookupTransformValues) -> Self
 pub fn LookupTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn LookupTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn LookupTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -13626,6 +13687,7 @@ pub(all) struct Mark {
   transform : Array[TransformMark]
   type_ : Marktype
 } derive(Eq, @debug.Debug)
+pub fn Mark::Mark(aria? : Bool, clip? : Markclip, description? : String, encode? : Encode, interactive? : BooleanOrSignal, key? : String, name? : String, on? : OnMarkTrigger, role? : String, sort? : Compare_, style? : Style, transform? : Array[TransformMark], type_~ : Marktype) -> Self
 pub fn Mark::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Mark::from_json(Json) -> Self raise @runtime.DeError
 pub fn Mark::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -13660,6 +13722,7 @@ pub(all) struct MarkGroup {
   type_ : MarkGroupType
   usermeta : Map[String, Json]
 } derive(Eq, @debug.Debug)
+pub fn MarkGroup::MarkGroup(aria? : Bool, axes? : Array[Axis], clip? : Markclip, data? : Array[Data], description? : String, encode? : Encode, from? : MarkGroupFrom, interactive? : BooleanOrSignal, key? : String, layout? : Layout, legends? : Array[Legend], marks? : Array[MarkGroupMarksItem], name? : String, on? : OnMarkTrigger, projections? : Array[Projection], role? : String, scales? : Array[Scale], signals? : Array[Signal], sort? : Compare_, style? : Style, title? : Title, transform? : Array[TransformMark], type_~ : MarkGroupType, usermeta? : Map[String, Json]) -> Self
 pub fn MarkGroup::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn MarkGroup::from_json(Json) -> Self raise @runtime.DeError
 pub fn MarkGroup::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -13722,6 +13785,7 @@ pub(all) struct MarkVisual {
   transform : Array[TransformMark]
   type_ : Marktype
 } derive(Eq, @debug.Debug)
+pub fn MarkVisual::MarkVisual(aria? : Bool, clip? : Markclip, description? : String, encode? : Encode, from? : From, interactive? : BooleanOrSignal, key? : String, name? : String, on? : OnMarkTrigger, role? : String, sort? : Compare_, style? : Style, transform? : Array[TransformMark], type_~ : Marktype) -> Self
 pub fn MarkVisual::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn MarkVisual::from_json(Json) -> Self raise @runtime.DeError
 pub fn MarkVisual::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -13758,6 +13822,7 @@ pub(all) struct NestTransform {
   signal : String?
   type_ : NestTransformType
 } derive(Eq, @debug.Debug)
+pub fn NestTransform::NestTransform(generate? : NestTransformGenerate, keys? : NestTransformKeys, signal? : String, type_~ : NestTransformType) -> Self
 pub fn NestTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn NestTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn NestTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -13826,6 +13891,7 @@ pub(all) struct NumberModifiers {
   round : Bool
   scale : Field?
 } derive(Eq, @debug.Debug)
+pub fn NumberModifiers::NumberModifiers(band? : NumberModifiersBand, exponent? : NumberModifiersExponent, extra? : Bool, mult? : NumberModifiersMult, offset? : NumberModifiersOffset, round? : Bool, scale? : Field) -> Self
 pub fn NumberModifiers::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn NumberModifiers::from_json(Json) -> Self raise @runtime.DeError
 pub fn NumberModifiers::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -14557,6 +14623,7 @@ pub(all) struct OnMarkTriggerItem {
   trigger : ExprString
   values : ExprString?
 } derive(Eq, @debug.Debug)
+pub fn OnMarkTriggerItem::OnMarkTriggerItem(modify? : ExprString, trigger~ : ExprString, values? : ExprString) -> Self
 pub fn OnMarkTriggerItem::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn OnMarkTriggerItem::from_json(Json) -> Self raise @runtime.DeError
 pub fn OnMarkTriggerItem::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -14582,6 +14649,7 @@ pub(all) struct OnTriggerItem {
   trigger : ExprString
   values : ExprString?
 } derive(Eq, @debug.Debug)
+pub fn OnTriggerItem::OnTriggerItem(insert? : ExprString, modify? : ExprString, remove? : OnTriggerItemRemove, toggle? : ExprString, trigger~ : ExprString, values? : ExprString) -> Self
 pub fn OnTriggerItem::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn OnTriggerItem::from_json(Json) -> Self raise @runtime.DeError
 pub fn OnTriggerItem::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -14778,6 +14846,7 @@ pub(all) struct PackTransform {
   sort : Compare_?
   type_ : PackTransformType
 } derive(Eq, @debug.Debug)
+pub fn PackTransform::PackTransform(as_? : PackTransformAs, field? : PackTransformField, padding? : PackTransformPadding, radius? : PackTransformRadius, signal? : String, size? : PackTransformSize, sort? : Compare_, type_~ : PackTransformType) -> Self
 pub fn PackTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn PackTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn PackTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -14904,6 +14973,7 @@ pub(all) struct ParamField {
   as_ : String?
   field : String
 } derive(Eq, @debug.Debug)
+pub fn ParamField::ParamField(as_? : String, field~ : String) -> Self
 pub fn ParamField::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ParamField::from_json(Json) -> Self raise @runtime.DeError
 pub fn ParamField::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -14922,6 +14992,7 @@ pub(all) struct PartitionTransform {
   sort : Compare_?
   type_ : PartitionTransformType
 } derive(Eq, @debug.Debug)
+pub fn PartitionTransform::PartitionTransform(as_? : PartitionTransformAs, field? : PartitionTransformField, padding? : PartitionTransformPadding, round? : PartitionTransformRound, signal? : String, size? : PartitionTransformSize, sort? : Compare_, type_~ : PartitionTransformType) -> Self
 pub fn PartitionTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn PartitionTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn PartitionTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -15039,6 +15110,7 @@ pub(all) struct PieTransform {
   start_angle : PieTransformStartAngle?
   type_ : PieTransformType
 } derive(Eq, @debug.Debug)
+pub fn PieTransform::PieTransform(as_? : PieTransformAs, end_angle? : PieTransformEndAngle, field? : PieTransformField, signal? : String, sort? : PieTransformSort, start_angle? : PieTransformStartAngle, type_~ : PieTransformType) -> Self
 pub fn PieTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn PieTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn PieTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -15146,6 +15218,7 @@ pub(all) struct PivotTransform {
   type_ : PivotTransformType
   value : PivotTransformValue
 } derive(Eq, @debug.Debug)
+pub fn PivotTransform::PivotTransform(field~ : PivotTransformField, groupby? : PivotTransformGroupby, key? : PivotTransformKey, limit? : PivotTransformLimit, op? : PivotTransformOp, signal? : String, type_~ : PivotTransformType, value~ : PivotTransformValue) -> Self
 pub fn PivotTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn PivotTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn PivotTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -15300,6 +15373,7 @@ pub(all) struct ProjectTransform {
   signal : String?
   type_ : ProjectTransformType
 } derive(Eq, @debug.Debug)
+pub fn ProjectTransform::ProjectTransform(as_? : ProjectTransformAs, fields? : ProjectTransformFields, signal? : String, type_~ : ProjectTransformType) -> Self
 pub fn ProjectTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ProjectTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn ProjectTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -15388,6 +15462,7 @@ pub(all) struct Projection {
   translate : ProjectionTranslate?
   type_ : StringOrSignal?
 } derive(Eq, @debug.Debug)
+pub fn Projection::Projection(center? : ProjectionCenter, clip_angle? : NumberOrSignal, clip_extent? : ProjectionClipExtent, extent? : ProjectionExtent, fit? : ProjectionFit, name~ : String, parallels? : ProjectionParallels, point_radius? : NumberOrSignal, precision? : NumberOrSignal, rotate? : ProjectionRotate, scale? : NumberOrSignal, size? : ProjectionSize, translate? : ProjectionTranslate, type_? : StringOrSignal) -> Self
 pub fn Projection::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Projection::from_json(Json) -> Self raise @runtime.DeError
 pub fn Projection::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -15525,6 +15600,7 @@ pub(all) struct QuantileTransform {
   step : QuantileTransformStep
   type_ : QuantileTransformType
 } derive(Eq, @debug.Debug)
+pub fn QuantileTransform::QuantileTransform(as_? : QuantileTransformAs, field~ : QuantileTransformField, groupby? : QuantileTransformGroupby, probs? : QuantileTransformProbs, signal? : String, step? : QuantileTransformStep, type_~ : QuantileTransformType) -> Self
 pub fn QuantileTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn QuantileTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn QuantileTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -15658,6 +15734,7 @@ pub(all) struct RadialGradient {
   y1 : Double?
   y2 : Double?
 } derive(Eq, @debug.Debug)
+pub fn RadialGradient::RadialGradient(gradient~ : RadialGradientGradient, id? : String, r1? : Double, r2? : Double, stops~ : GradientStops, x1? : Double, x2? : Double, y1? : Double, y2? : Double) -> Self
 pub fn RadialGradient::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn RadialGradient::from_json(Json) -> Self raise @runtime.DeError
 pub fn RadialGradient::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -15692,6 +15769,7 @@ pub(all) struct RegressionTransform {
   x : RegressionTransformX
   y : RegressionTransformY
 } derive(Eq, @debug.Debug)
+pub fn RegressionTransform::RegressionTransform(as_? : RegressionTransformAs, extent? : RegressionTransformExtent, groupby? : RegressionTransformGroupby, method_? : RegressionTransformMethod, order? : RegressionTransformOrder, params? : RegressionTransformParams, signal? : String, type_~ : RegressionTransformType, x~ : RegressionTransformX, y~ : RegressionTransformY) -> Self
 pub fn RegressionTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn RegressionTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn RegressionTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -15857,6 +15935,7 @@ pub(all) struct ResolvefilterTransform {
   signal : String?
   type_ : ResolvefilterTransformType
 } derive(Eq, @debug.Debug)
+pub fn ResolvefilterTransform::ResolvefilterTransform(filter~ : Json, ignore~ : ResolvefilterTransformIgnore, signal? : String, type_~ : ResolvefilterTransformType) -> Self
 pub fn ResolvefilterTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ResolvefilterTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn ResolvefilterTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -15894,6 +15973,7 @@ pub impl ToJson for ResolvefilterTransformType
 pub(all) struct Rule {
   test_ : String?
 } derive(Eq, @debug.Debug)
+pub fn Rule::Rule(test_? : String) -> Self
 pub fn Rule::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Rule::from_json(Json) -> Self raise @runtime.DeError
 pub fn Rule::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -15907,6 +15987,7 @@ pub(all) struct SampleTransform {
   size : SampleTransformSize
   type_ : SampleTransformType
 } derive(Eq, @debug.Debug)
+pub fn SampleTransform::SampleTransform(signal? : String, size? : SampleTransformSize, type_~ : SampleTransformType) -> Self
 pub fn SampleTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn SampleTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn SampleTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -17989,6 +18070,7 @@ pub(all) struct Scope {
   title : Title?
   usermeta : Map[String, Json]
 } derive(Eq, @debug.Debug)
+pub fn Scope::Scope(axes? : Array[Axis], data? : Array[Data], encode? : Encode, layout? : Layout, legends? : Array[Legend], marks? : Array[ScopeMarksItem], projections? : Array[Projection], scales? : Array[Scale], signals? : Array[Signal], title? : Title, usermeta? : Map[String, Json]) -> Self
 pub fn Scope::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Scope::from_json(Json) -> Self raise @runtime.DeError
 pub fn Scope::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -18026,6 +18108,7 @@ pub(all) struct SequenceTransform {
   stop : SequenceTransformStop
   type_ : SequenceTransformType
 } derive(Eq, @debug.Debug)
+pub fn SequenceTransform::SequenceTransform(as_? : SequenceTransformAs, signal? : String, start~ : SequenceTransformStart, step? : SequenceTransformStep, stop~ : SequenceTransformStop, type_~ : SequenceTransformType) -> Self
 pub fn SequenceTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn SequenceTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn SequenceTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -18124,6 +18207,7 @@ pub impl ToJson for SignalName
 pub(all) struct SignalRef {
   signal : String
 } derive(Eq, @debug.Debug)
+pub fn SignalRef::SignalRef(signal~ : String) -> Self
 pub fn SignalRef::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn SignalRef::from_json(Json) -> Self raise @runtime.DeError
 pub fn SignalRef::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -18182,6 +18266,7 @@ pub(all) struct StackTransform {
   sort : Compare_?
   type_ : StackTransformType
 } derive(Eq, @debug.Debug)
+pub fn StackTransform::StackTransform(as_? : StackTransformAs, field? : StackTransformField, groupby? : StackTransformGroupby, offset? : StackTransformOffset, signal? : String, sort? : Compare_, type_~ : StackTransformType) -> Self
 pub fn StackTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn StackTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn StackTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -18302,6 +18387,7 @@ pub(all) struct StratifyTransform {
   signal : String?
   type_ : StratifyTransformType
 } derive(Eq, @debug.Debug)
+pub fn StratifyTransform::StratifyTransform(key~ : StratifyTransformKey, parent_key~ : StratifyTransformParentKey, signal? : String, type_~ : StratifyTransformType) -> Self
 pub fn StratifyTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn StratifyTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn StratifyTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -18402,6 +18488,7 @@ pub impl ToJson for StreamVariant2Filter
 pub(all) struct StringModifiers {
   scale : Field?
 } derive(Eq, @debug.Debug)
+pub fn StringModifiers::StringModifiers(scale? : Field) -> Self
 pub fn StringModifiers::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn StringModifiers::from_json(Json) -> Self raise @runtime.DeError
 pub fn StringModifiers::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -19181,6 +19268,7 @@ pub(all) struct TimeunitTransform {
   type_ : TimeunitTransformType
   units : TimeunitTransformUnits?
 } derive(Eq, @debug.Debug)
+pub fn TimeunitTransform::TimeunitTransform(as_? : TimeunitTransformAs, extent? : TimeunitTransformExtent, field~ : TimeunitTransformField, interval? : TimeunitTransformInterval, maxbins? : TimeunitTransformMaxbins, signal? : String, step? : TimeunitTransformStep, timezone? : TimeunitTransformTimezone, type_~ : TimeunitTransformType, units? : TimeunitTransformUnits) -> Self
 pub fn TimeunitTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn TimeunitTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn TimeunitTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -19532,6 +19620,7 @@ pub(all) struct TitleObjectEncode {
   subtype_0 : Map[TitleObjectEncodeSubtype0Key, EncodeEntry]?
   subtype_1 : TitleObjectEncodeSubtype1?
 } derive(Eq, @debug.Debug)
+pub fn TitleObjectEncode::TitleObjectEncode(subtype_0? : Map[TitleObjectEncodeSubtype0Key, EncodeEntry], subtype_1? : TitleObjectEncodeSubtype1) -> Self
 pub fn TitleObjectEncode::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn TitleObjectEncode::from_json(Json) -> Self raise @runtime.DeError
 pub fn TitleObjectEncode::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -19555,6 +19644,7 @@ pub(all) struct TitleObjectEncodeSubtype1 {
   subtitle : GuideEncode?
   title : GuideEncode?
 } derive(Eq, @debug.Debug)
+pub fn TitleObjectEncodeSubtype1::TitleObjectEncodeSubtype1(group? : GuideEncode, subtitle? : GuideEncode, title? : GuideEncode) -> Self
 pub fn TitleObjectEncodeSubtype1::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn TitleObjectEncodeSubtype1::from_json(Json) -> Self raise @runtime.DeError
 pub fn TitleObjectEncodeSubtype1::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -19889,6 +19979,7 @@ pub(all) struct TreeTransform {
   sort : Compare_?
   type_ : TreeTransformType
 } derive(Eq, @debug.Debug)
+pub fn TreeTransform::TreeTransform(as_? : TreeTransformAs, field? : TreeTransformField, method_? : TreeTransformMethod, node_size? : TreeTransformNodeSize, separation? : TreeTransformSeparation, signal? : String, size? : TreeTransformSize, sort? : Compare_, type_~ : TreeTransformType) -> Self
 pub fn TreeTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn TreeTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn TreeTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -20042,6 +20133,7 @@ pub(all) struct TreelinksTransform {
   signal : String?
   type_ : TreelinksTransformType
 } derive(Eq, @debug.Debug)
+pub fn TreelinksTransform::TreelinksTransform(signal? : String, type_~ : TreelinksTransformType) -> Self
 pub fn TreelinksTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn TreelinksTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn TreelinksTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -20082,6 +20174,7 @@ pub(all) struct TreemapTransform {
   sort : Compare_?
   type_ : TreemapTransformType
 } derive(Eq, @debug.Debug)
+pub fn TreemapTransform::TreemapTransform(as_? : TreemapTransformAs, field? : TreemapTransformField, method_? : TreemapTransformMethod, padding? : TreemapTransformPadding, padding_bottom? : TreemapTransformPaddingBottom, padding_inner? : TreemapTransformPaddingInner, padding_left? : TreemapTransformPaddingLeft, padding_outer? : TreemapTransformPaddingOuter, padding_right? : TreemapTransformPaddingRight, padding_top? : TreemapTransformPaddingTop, ratio? : TreemapTransformRatio, round? : TreemapTransformRound, signal? : String, size? : TreemapTransformSize, sort? : Compare_, type_~ : TreemapTransformType) -> Self
 pub fn TreemapTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn TreemapTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn TreemapTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -20316,6 +20409,7 @@ pub(all) struct VoronoiTransform {
   x : VoronoiTransformX
   y : VoronoiTransformY
 } derive(Eq, @debug.Debug)
+pub fn VoronoiTransform::VoronoiTransform(as_? : VoronoiTransformAs, extent? : VoronoiTransformExtent, signal? : String, size? : VoronoiTransformSize, type_~ : VoronoiTransformType, x~ : VoronoiTransformX, y~ : VoronoiTransformY) -> Self
 pub fn VoronoiTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn VoronoiTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn VoronoiTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -20426,6 +20520,7 @@ pub(all) struct WindowTransform {
   sort : Compare_?
   type_ : WindowTransformType
 } derive(Eq, @debug.Debug)
+pub fn WindowTransform::WindowTransform(as_? : WindowTransformAs, fields? : WindowTransformFields, frame? : WindowTransformFrame, groupby? : WindowTransformGroupby, ignore_peers? : WindowTransformIgnorePeers, ops? : WindowTransformOps, params? : WindowTransformParams, signal? : String, sort? : Compare_, type_~ : WindowTransformType) -> Self
 pub fn WindowTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn WindowTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn WindowTransform::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -20676,6 +20771,7 @@ pub(all) struct WordcloudTransform {
   text : WordcloudTransformText?
   type_ : WordcloudTransformType
 } derive(Eq, @debug.Debug)
+pub fn WordcloudTransform::WordcloudTransform(as_? : WordcloudTransformAs, font? : WordcloudTransformFont, font_size? : WordcloudTransformFontSize, font_size_range? : WordcloudTransformFontSizeRange, font_style? : WordcloudTransformFontStyle, font_weight? : WordcloudTransformFontWeight, padding? : WordcloudTransformPadding, rotate? : WordcloudTransformRotate, signal? : String, size? : WordcloudTransformSize, spiral? : WordcloudTransformSpiral, text? : WordcloudTransformText, type_~ : WordcloudTransformType) -> Self
 pub fn WordcloudTransform::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn WordcloudTransform::from_json(Json) -> Self raise @runtime.DeError
 pub fn WordcloudTransform::from_json_str(StringView) -> Self raise @runtime.DeError

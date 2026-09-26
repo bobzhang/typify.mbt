@@ -34,3 +34,17 @@ test "serde errors" {
     content="invalid type: integer `1`, expected a string",
   )
 }
+
+///|
+test "constructors" {
+  let veggies = @veggies.Veggies(vegetables=[
+    @veggies.Veggie(veggie_name="leek", veggie_like=true),
+  ])
+  inspect(
+    veggies.to_json_string(),
+    content=(
+      #|{"vegetables":[{"veggieLike":true,"veggieName":"leek"}]}
+    ),
+  )
+  inspect(@veggies.Veggies().to_json_string(), content="{}")
+}

@@ -15,6 +15,7 @@ import {
 pub(all) struct AnythingWorks {
   value : Json
 } derive(Eq, @debug.Debug)
+pub fn AnythingWorks::AnythingWorks(value~ : Json) -> Self
 pub fn AnythingWorks::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn AnythingWorks::from_json(Json) -> Self raise @runtime.DeError
 pub fn AnythingWorks::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -26,6 +27,7 @@ pub impl ToJson for AnythingWorks
 pub(all) struct FloatsArentTerribleImTold {
   flush_timeout : Float?
 } derive(Eq, @debug.Debug)
+pub fn FloatsArentTerribleImTold::FloatsArentTerribleImTold(flush_timeout? : Float) -> Self
 pub fn FloatsArentTerribleImTold::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn FloatsArentTerribleImTold::from_json(Json) -> Self raise @runtime.DeError
 pub fn FloatsArentTerribleImTold::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -51,6 +53,7 @@ pub(all) struct UintMinimumAndMaximum {
   min_uint_non_zero : UInt64
   no_bounds : UInt64
 } derive(Eq, @debug.Debug)
+pub fn UintMinimumAndMaximum::UintMinimumAndMaximum(max~ : UInt64, min~ : UInt64, min_and_max~ : UInt64, min_non_zero~ : UInt64, min_uint_non_zero~ : UInt64, no_bounds~ : UInt64) -> Self
 pub fn UintMinimumAndMaximum::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn UintMinimumAndMaximum::from_json(Json) -> Self raise @runtime.DeError
 pub fn UintMinimumAndMaximum::from_json_str(StringView) -> Self raise @runtime.DeError

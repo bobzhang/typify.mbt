@@ -11,6 +11,15 @@ pub(all) struct Veggie {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Veggie` (fields with defaults are optional).
+pub fn Veggie::Veggie(veggie_like~ : Bool, veggie_name~ : String) -> Veggie {
+  Veggie::{
+    veggie_like: veggie_like,
+    veggie_name: veggie_name,
+  }
+}
+
+///|
 let veggie_fields : @typify_rt.Fields = @typify_rt.Fields::new(["veggieLike", "veggieName"])
 
 ///|
@@ -51,6 +60,15 @@ pub(all) struct Veggies {
   fruits : Array[String]
   vegetables : Array[Veggie]
 } derive(Debug, Eq)
+
+///|
+/// Construct a `Veggies` (fields with defaults are optional).
+pub fn Veggies::Veggies(fruits? : Array[String] = [], vegetables? : Array[Veggie] = []) -> Veggies {
+  Veggies::{
+    fruits: fruits,
+    vegetables: vegetables,
+  }
+}
 
 ///|
 let veggies_fields : @typify_rt.Fields = @typify_rt.Fields::new(["fruits", "vegetables"])

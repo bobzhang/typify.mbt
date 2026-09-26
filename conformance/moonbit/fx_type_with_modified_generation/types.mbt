@@ -36,6 +36,16 @@ pub(all) struct TestType {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `TestType` (fields with defaults are optional).
+pub fn TestType::TestType(converted_type~ : Json, patched_type~ : TypeThatHasMoreDerives, replaced_type~ : String) -> TestType {
+  TestType::{
+    converted_type: converted_type,
+    patched_type: patched_type,
+    replaced_type: replaced_type,
+  }
+}
+
+///|
 let test_type_fields : @typify_rt.Fields = @typify_rt.Fields::new(["converted_type", "patched_type", "replaced_type"])
 
 ///|

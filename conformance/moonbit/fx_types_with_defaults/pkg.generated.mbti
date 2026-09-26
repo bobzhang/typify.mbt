@@ -15,6 +15,7 @@ import {
 pub(all) struct Doodad {
   when : @runtime.DateTimeUtc
 } derive(Eq, @debug.Debug)
+pub fn Doodad::Doodad(when? : @runtime.DateTimeUtc) -> Self
 pub fn Doodad::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Doodad::from_json(Json) -> Self raise @runtime.DeError
 pub fn Doodad::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -28,6 +29,7 @@ pub(all) struct MrDefaultNumbers {
   little_u16 : UInt16
   little_u8 : Byte
 } derive(Eq, @debug.Debug)
+pub fn MrDefaultNumbers::MrDefaultNumbers(big_nullable? : UInt64?, little_u16? : UInt16, little_u8? : Byte) -> Self
 pub fn MrDefaultNumbers::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn MrDefaultNumbers::from_json(Json) -> Self raise @runtime.DeError
 pub fn MrDefaultNumbers::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -39,6 +41,7 @@ pub impl ToJson for MrDefaultNumbers
 pub(all) struct OuterThing {
   thing : ThingWithDefaults?
 } derive(Eq, @debug.Debug)
+pub fn OuterThing::OuterThing(thing? : ThingWithDefaults) -> Self
 pub fn OuterThing::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn OuterThing::from_json(Json) -> Self raise @runtime.DeError
 pub fn OuterThing::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -51,6 +54,7 @@ pub(all) struct TestBed {
   any : Array[Json]
   id : @runtime.Uuid
 } derive(Eq, @debug.Debug)
+pub fn TestBed::TestBed(any? : Array[Json], id? : @runtime.Uuid) -> Self
 pub fn TestBed::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn TestBed::from_json(Json) -> Self raise @runtime.DeError
 pub fn TestBed::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -63,6 +67,7 @@ pub(all) struct ThingWithDefaults {
   a : String?
   type_ : String?
 } derive(Eq, @debug.Debug)
+pub fn ThingWithDefaults::ThingWithDefaults(a? : String, type_? : String) -> Self
 pub fn ThingWithDefaults::default() -> Self
 pub fn ThingWithDefaults::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ThingWithDefaults::from_json(Json) -> Self raise @runtime.DeError
@@ -75,6 +80,7 @@ pub impl ToJson for ThingWithDefaults
 pub(all) struct UIntContainer {
   max_path : UInt_
 } derive(Eq, @debug.Debug)
+pub fn UIntContainer::UIntContainer(max_path? : UInt_) -> Self
 pub fn UIntContainer::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn UIntContainer::from_json(Json) -> Self raise @runtime.DeError
 pub fn UIntContainer::from_json_str(StringView) -> Self raise @runtime.DeError

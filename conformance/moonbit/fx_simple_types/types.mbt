@@ -10,6 +10,14 @@ pub(all) struct AnythingWorks {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `AnythingWorks` (fields with defaults are optional).
+pub fn AnythingWorks::AnythingWorks(value~ : Json) -> AnythingWorks {
+  AnythingWorks::{
+    value: value,
+  }
+}
+
+///|
 let anything_works_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
 
 ///|
@@ -45,6 +53,14 @@ pub impl ToJson for AnythingWorks with fn to_json(self) {
 pub(all) struct FloatsArentTerribleImTold {
   flush_timeout : Float?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `FloatsArentTerribleImTold` (fields with defaults are optional).
+pub fn FloatsArentTerribleImTold::FloatsArentTerribleImTold(flush_timeout? : Float) -> FloatsArentTerribleImTold {
+  FloatsArentTerribleImTold::{
+    flush_timeout: flush_timeout,
+  }
+}
 
 ///|
 let floats_arent_terrible_im_told_fields : @typify_rt.Fields = @typify_rt.Fields::new(["flush_timeout"])
@@ -113,6 +129,19 @@ pub(all) struct UintMinimumAndMaximum {
   min_uint_non_zero : UInt64
   no_bounds : UInt64
 } derive(Debug, Eq)
+
+///|
+/// Construct a `UintMinimumAndMaximum` (fields with defaults are optional).
+pub fn UintMinimumAndMaximum::UintMinimumAndMaximum(max~ : UInt64, min~ : UInt64, min_and_max~ : UInt64, min_non_zero~ : UInt64, min_uint_non_zero~ : UInt64, no_bounds~ : UInt64) -> UintMinimumAndMaximum {
+  UintMinimumAndMaximum::{
+    max: max,
+    min: min,
+    min_and_max: min_and_max,
+    min_non_zero: min_non_zero,
+    min_uint_non_zero: min_uint_non_zero,
+    no_bounds: no_bounds,
+  }
+}
 
 ///|
 let uint_minimum_and_maximum_fields : @typify_rt.Fields = @typify_rt.Fields::new(["max", "min", "min_and_max", "min_non_zero", "min_uint_non_zero", "no_bounds"])

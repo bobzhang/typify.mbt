@@ -10,6 +10,14 @@ pub(all) struct LetterBox {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `LetterBox` (fields with defaults are optional).
+pub fn LetterBox::LetterBox(letter? : LetterBoxLetter) -> LetterBox {
+  LetterBox::{
+    letter: letter,
+  }
+}
+
+///|
 let letter_box_fields : @typify_rt.Fields = @typify_rt.Fields::new(["letter"])
 
 ///|

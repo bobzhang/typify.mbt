@@ -21,6 +21,21 @@ pub(all) struct AlertInstance {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `AlertInstance` (fields with defaults are optional).
+pub fn AlertInstance::AlertInstance(analysis_key~ : String, classifications? : Array[String] = [], commit_sha? : String, environment~ : String, location? : AlertInstanceLocation, message? : AlertInstanceMessage, ref_~ : String, state~ : AlertInstanceState) -> AlertInstance {
+  AlertInstance::{
+    analysis_key: analysis_key,
+    classifications: classifications,
+    commit_sha: commit_sha,
+    environment: environment,
+    location: location,
+    message: message,
+    ref_: ref_,
+    state: state,
+  }
+}
+
+///|
 let alert_instance_fields : @typify_rt.Fields = @typify_rt.Fields::new(["analysis_key", "classifications", "commit_sha", "environment", "location", "message", "ref", "state"])
 
 ///|
@@ -107,6 +122,25 @@ pub(all) struct App {
   slug : String?
   updated_at : @typify_rt.DateTimeUtc
 } derive(Debug, Eq)
+
+///|
+/// Construct a `App` (fields with defaults are optional).
+pub fn App::App(created_at~ : @typify_rt.DateTimeUtc, description? : String, events? : Array[AppEventsItem] = [], external_url~ : String, html_url~ : String, id~ : Int64, name~ : String, node_id~ : String, owner~ : User, permissions? : AppPermissions, slug? : String, updated_at~ : @typify_rt.DateTimeUtc) -> App {
+  App::{
+    created_at: created_at,
+    description: description,
+    events: events,
+    external_url: external_url,
+    html_url: html_url,
+    id: id,
+    name: name,
+    node_id: node_id,
+    owner: owner,
+    permissions: permissions,
+    slug: slug,
+    updated_at: updated_at,
+  }
+}
 
 ///|
 let app_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "description", "events", "external_url", "html_url", "id", "name", "node_id", "owner", "permissions", "slug", "updated_at"])
@@ -320,6 +354,37 @@ pub(all) struct BranchProtectionRule {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `BranchProtectionRule` (fields with defaults are optional).
+pub fn BranchProtectionRule::BranchProtectionRule(admin_enforced~ : Bool, allow_deletions_enforcement_level~ : BranchProtectionRuleAllowDeletionsEnforcementLevel, allow_force_pushes_enforcement_level~ : BranchProtectionRuleAllowForcePushesEnforcementLevel, authorized_actor_names~ : Array[String], authorized_actors_only~ : Bool, authorized_dismissal_actors_only~ : Bool, created_at~ : @typify_rt.DateTimeUtc, dismiss_stale_reviews_on_push~ : Bool, id~ : Int64, ignore_approvals_from_contributors~ : Bool, linear_history_requirement_enforcement_level~ : BranchProtectionRuleLinearHistoryRequirementEnforcementLevel, merge_queue_enforcement_level~ : BranchProtectionRuleMergeQueueEnforcementLevel, name~ : String, pull_request_reviews_enforcement_level~ : BranchProtectionRulePullRequestReviewsEnforcementLevel, repository_id~ : Int64, require_code_owner_review~ : Bool, required_approving_review_count~ : Int64, required_conversation_resolution_level~ : BranchProtectionRuleRequiredConversationResolutionLevel, required_deployments_enforcement_level~ : BranchProtectionRuleRequiredDeploymentsEnforcementLevel, required_status_checks~ : Array[String], required_status_checks_enforcement_level~ : BranchProtectionRuleRequiredStatusChecksEnforcementLevel, signature_requirement_enforcement_level~ : BranchProtectionRuleSignatureRequirementEnforcementLevel, strict_required_status_checks_policy~ : Bool, updated_at~ : @typify_rt.DateTimeUtc) -> BranchProtectionRule {
+  BranchProtectionRule::{
+    admin_enforced: admin_enforced,
+    allow_deletions_enforcement_level: allow_deletions_enforcement_level,
+    allow_force_pushes_enforcement_level: allow_force_pushes_enforcement_level,
+    authorized_actor_names: authorized_actor_names,
+    authorized_actors_only: authorized_actors_only,
+    authorized_dismissal_actors_only: authorized_dismissal_actors_only,
+    created_at: created_at,
+    dismiss_stale_reviews_on_push: dismiss_stale_reviews_on_push,
+    id: id,
+    ignore_approvals_from_contributors: ignore_approvals_from_contributors,
+    linear_history_requirement_enforcement_level: linear_history_requirement_enforcement_level,
+    merge_queue_enforcement_level: merge_queue_enforcement_level,
+    name: name,
+    pull_request_reviews_enforcement_level: pull_request_reviews_enforcement_level,
+    repository_id: repository_id,
+    require_code_owner_review: require_code_owner_review,
+    required_approving_review_count: required_approving_review_count,
+    required_conversation_resolution_level: required_conversation_resolution_level,
+    required_deployments_enforcement_level: required_deployments_enforcement_level,
+    required_status_checks: required_status_checks,
+    required_status_checks_enforcement_level: required_status_checks_enforcement_level,
+    signature_requirement_enforcement_level: signature_requirement_enforcement_level,
+    strict_required_status_checks_policy: strict_required_status_checks_policy,
+    updated_at: updated_at,
+  }
+}
+
+///|
 let branch_protection_rule_fields : @typify_rt.Fields = @typify_rt.Fields::new(["admin_enforced", "allow_deletions_enforcement_level", "allow_force_pushes_enforcement_level", "authorized_actor_names", "authorized_actors_only", "authorized_dismissal_actors_only", "created_at", "dismiss_stale_reviews_on_push", "id", "ignore_approvals_from_contributors", "linear_history_requirement_enforcement_level", "merge_queue_enforcement_level", "name", "pull_request_reviews_enforcement_level", "repository_id", "require_code_owner_review", "required_approving_review_count", "required_conversation_resolution_level", "required_deployments_enforcement_level", "required_status_checks", "required_status_checks_enforcement_level", "signature_requirement_enforcement_level", "strict_required_status_checks_policy", "updated_at"])
 
 ///|
@@ -454,6 +519,19 @@ pub(all) struct BranchProtectionRuleCreated {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `BranchProtectionRuleCreated` (fields with defaults are optional).
+pub fn BranchProtectionRuleCreated::BranchProtectionRuleCreated(action~ : BranchProtectionRuleCreatedAction, installation? : InstallationLite, organization? : Organization, repository~ : Repository, rule~ : BranchProtectionRule, sender~ : User) -> BranchProtectionRuleCreated {
+  BranchProtectionRuleCreated::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    rule: rule,
+    sender: sender,
+  }
+}
+
+///|
 let branch_protection_rule_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "rule", "sender"])
 
 ///|
@@ -518,6 +596,19 @@ pub(all) struct BranchProtectionRuleDeleted {
   rule : BranchProtectionRule
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `BranchProtectionRuleDeleted` (fields with defaults are optional).
+pub fn BranchProtectionRuleDeleted::BranchProtectionRuleDeleted(action~ : BranchProtectionRuleDeletedAction, installation? : InstallationLite, organization? : Organization, repository~ : Repository, rule~ : BranchProtectionRule, sender~ : User) -> BranchProtectionRuleDeleted {
+  BranchProtectionRuleDeleted::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    rule: rule,
+    sender: sender,
+  }
+}
 
 ///|
 let branch_protection_rule_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "rule", "sender"])
@@ -585,6 +676,20 @@ pub(all) struct BranchProtectionRuleEdited {
   rule : BranchProtectionRule
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `BranchProtectionRuleEdited` (fields with defaults are optional).
+pub fn BranchProtectionRuleEdited::BranchProtectionRuleEdited(action~ : BranchProtectionRuleEditedAction, changes~ : BranchProtectionRuleEditedChanges, installation? : InstallationLite, organization? : Organization, repository~ : Repository, rule~ : BranchProtectionRule, sender~ : User) -> BranchProtectionRuleEdited {
+  BranchProtectionRuleEdited::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    rule: rule,
+    sender: sender,
+  }
+}
 
 ///|
 let branch_protection_rule_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "organization", "repository", "rule", "sender"])
@@ -719,6 +824,24 @@ pub(all) struct CheckRunDeployment {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunDeployment` (fields with defaults are optional).
+pub fn CheckRunDeployment::CheckRunDeployment(created_at~ : @typify_rt.DateTimeUtc, description? : String, environment~ : String, id~ : Int64, node_id~ : String, original_environment~ : String, repository_url~ : String, statuses_url~ : String, task~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> CheckRunDeployment {
+  CheckRunDeployment::{
+    created_at: created_at,
+    description: description,
+    environment: environment,
+    id: id,
+    node_id: node_id,
+    original_environment: original_environment,
+    repository_url: repository_url,
+    statuses_url: statuses_url,
+    task: task,
+    updated_at: updated_at,
+    url: url,
+  }
+}
+
+///|
 let check_run_deployment_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "description", "environment", "id", "node_id", "original_environment", "repository_url", "statuses_url", "task", "updated_at", "url"])
 
 ///|
@@ -800,6 +923,18 @@ pub(all) struct CheckRunPullRequest {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunPullRequest` (fields with defaults are optional).
+pub fn CheckRunPullRequest::CheckRunPullRequest(base~ : CheckRunPullRequestBase, head~ : CheckRunPullRequestHead, id~ : Int64, number~ : Int64, url~ : String) -> CheckRunPullRequest {
+  CheckRunPullRequest::{
+    base: base,
+    head: head,
+    id: id,
+    number: number,
+    url: url,
+  }
+}
+
+///|
 let check_run_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["base", "head", "id", "number", "url"])
 
 ///|
@@ -858,6 +993,20 @@ pub(all) struct CheckRunCompleted {
   requested_action : CheckRunCompletedRequestedAction?
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CheckRunCompleted` (fields with defaults are optional).
+pub fn CheckRunCompleted::CheckRunCompleted(action~ : CheckRunCompletedAction, check_run~ : CheckRunCompletedCheckRun, installation? : InstallationLite, organization? : Organization, repository~ : Repository, requested_action? : CheckRunCompletedRequestedAction, sender~ : User) -> CheckRunCompleted {
+  CheckRunCompleted::{
+    action: action,
+    check_run: check_run,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    requested_action: requested_action,
+    sender: sender,
+  }
+}
 
 ///|
 let check_run_completed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "check_run", "installation", "organization", "repository", "requested_action", "sender"])
@@ -934,6 +1083,20 @@ pub(all) struct CheckRunCreated {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunCreated` (fields with defaults are optional).
+pub fn CheckRunCreated::CheckRunCreated(action~ : CheckRunCreatedAction, check_run~ : CheckRunCreatedCheckRun, installation? : InstallationLite, organization? : Organization, repository~ : Repository, requested_action? : CheckRunCreatedRequestedAction, sender~ : User) -> CheckRunCreated {
+  CheckRunCreated::{
+    action: action,
+    check_run: check_run,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    requested_action: requested_action,
+    sender: sender,
+  }
+}
+
+///|
 let check_run_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "check_run", "installation", "organization", "repository", "requested_action", "sender"])
 
 ///|
@@ -1007,6 +1170,20 @@ pub(all) struct CheckRunRequestedAction {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunRequestedAction` (fields with defaults are optional).
+pub fn CheckRunRequestedAction::CheckRunRequestedAction(action~ : CheckRunRequestedActionAction, check_run~ : CheckRunRequestedActionCheckRun, installation? : InstallationLite, organization? : Organization, repository~ : Repository, requested_action~ : CheckRunRequestedActionRequestedAction, sender~ : User) -> CheckRunRequestedAction {
+  CheckRunRequestedAction::{
+    action: action,
+    check_run: check_run,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    requested_action: requested_action,
+    sender: sender,
+  }
+}
+
+///|
 let check_run_requested_action_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "check_run", "installation", "organization", "repository", "requested_action", "sender"])
 
 ///|
@@ -1077,6 +1254,20 @@ pub(all) struct CheckRunRerequested {
   requested_action : CheckRunRerequestedRequestedAction?
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CheckRunRerequested` (fields with defaults are optional).
+pub fn CheckRunRerequested::CheckRunRerequested(action~ : CheckRunRerequestedAction, check_run~ : CheckRunRerequestedCheckRun, installation? : InstallationLite, organization? : Organization, repository~ : Repository, requested_action? : CheckRunRerequestedRequestedAction, sender~ : User) -> CheckRunRerequested {
+  CheckRunRerequested::{
+    action: action,
+    check_run: check_run,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    requested_action: requested_action,
+    sender: sender,
+  }
+}
 
 ///|
 let check_run_rerequested_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "check_run", "installation", "organization", "repository", "requested_action", "sender"])
@@ -1218,6 +1409,19 @@ pub(all) struct CheckSuiteCompleted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckSuiteCompleted` (fields with defaults are optional).
+pub fn CheckSuiteCompleted::CheckSuiteCompleted(action~ : CheckSuiteCompletedAction, check_suite~ : CheckSuiteCompletedCheckSuite, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> CheckSuiteCompleted {
+  CheckSuiteCompleted::{
+    action: action,
+    check_suite: check_suite,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let check_suite_completed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "check_suite", "installation", "organization", "repository", "sender"])
 
 ///|
@@ -1284,6 +1488,19 @@ pub(all) struct CheckSuiteRequested {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckSuiteRequested` (fields with defaults are optional).
+pub fn CheckSuiteRequested::CheckSuiteRequested(action~ : CheckSuiteRequestedAction, check_suite~ : CheckSuiteRequestedCheckSuite, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> CheckSuiteRequested {
+  CheckSuiteRequested::{
+    action: action,
+    check_suite: check_suite,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let check_suite_requested_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "check_suite", "installation", "organization", "repository", "sender"])
 
 ///|
@@ -1348,6 +1565,19 @@ pub(all) struct CheckSuiteRerequested {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CheckSuiteRerequested` (fields with defaults are optional).
+pub fn CheckSuiteRerequested::CheckSuiteRerequested(action~ : CheckSuiteRerequestedAction, check_suite~ : CheckSuiteRerequestedCheckSuite, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> CheckSuiteRerequested {
+  CheckSuiteRerequested::{
+    action: action,
+    check_suite: check_suite,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let check_suite_rerequested_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "check_suite", "installation", "organization", "repository", "sender"])
@@ -1477,6 +1707,21 @@ pub(all) struct CodeScanningAlertAppearedInBranch {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertAppearedInBranch` (fields with defaults are optional).
+pub fn CodeScanningAlertAppearedInBranch::CodeScanningAlertAppearedInBranch(action~ : CodeScanningAlertAppearedInBranchAction, alert~ : CodeScanningAlertAppearedInBranchAlert, commit_oid~ : String, installation? : InstallationLite, organization? : Organization, ref_~ : String, repository~ : Repository, sender~ : GithubOrg) -> CodeScanningAlertAppearedInBranch {
+  CodeScanningAlertAppearedInBranch::{
+    action: action,
+    alert: alert,
+    commit_oid: commit_oid,
+    installation: installation,
+    organization: organization,
+    ref_: ref_,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let code_scanning_alert_appeared_in_branch_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "alert", "commit_oid", "installation", "organization", "ref", "repository", "sender"])
 
 ///|
@@ -1553,6 +1798,21 @@ pub(all) struct CodeScanningAlertClosedByUser {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertClosedByUser` (fields with defaults are optional).
+pub fn CodeScanningAlertClosedByUser::CodeScanningAlertClosedByUser(action~ : CodeScanningAlertClosedByUserAction, alert~ : CodeScanningAlertClosedByUserAlert, commit_oid~ : String, installation? : InstallationLite, organization? : Organization, ref_~ : String, repository~ : Repository, sender~ : User) -> CodeScanningAlertClosedByUser {
+  CodeScanningAlertClosedByUser::{
+    action: action,
+    alert: alert,
+    commit_oid: commit_oid,
+    installation: installation,
+    organization: organization,
+    ref_: ref_,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let code_scanning_alert_closed_by_user_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "alert", "commit_oid", "installation", "organization", "ref", "repository", "sender"])
@@ -1633,6 +1893,21 @@ pub(all) struct CodeScanningAlertCreated {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertCreated` (fields with defaults are optional).
+pub fn CodeScanningAlertCreated::CodeScanningAlertCreated(action~ : CodeScanningAlertCreatedAction, alert~ : CodeScanningAlertCreatedAlert, commit_oid~ : String, installation? : InstallationLite, organization? : Organization, ref_~ : String, repository~ : Repository, sender~ : GithubOrg) -> CodeScanningAlertCreated {
+  CodeScanningAlertCreated::{
+    action: action,
+    alert: alert,
+    commit_oid: commit_oid,
+    installation: installation,
+    organization: organization,
+    ref_: ref_,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let code_scanning_alert_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "alert", "commit_oid", "installation", "organization", "ref", "repository", "sender"])
 
 ///|
@@ -1709,6 +1984,21 @@ pub(all) struct CodeScanningAlertFixed {
   repository : Repository
   sender : GithubOrg
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertFixed` (fields with defaults are optional).
+pub fn CodeScanningAlertFixed::CodeScanningAlertFixed(action~ : CodeScanningAlertFixedAction, alert~ : CodeScanningAlertFixedAlert, commit_oid~ : String, installation? : InstallationLite, organization? : Organization, ref_~ : String, repository~ : Repository, sender~ : GithubOrg) -> CodeScanningAlertFixed {
+  CodeScanningAlertFixed::{
+    action: action,
+    alert: alert,
+    commit_oid: commit_oid,
+    installation: installation,
+    organization: organization,
+    ref_: ref_,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let code_scanning_alert_fixed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "alert", "commit_oid", "installation", "organization", "ref", "repository", "sender"])
@@ -1789,6 +2079,21 @@ pub(all) struct CodeScanningAlertReopened {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertReopened` (fields with defaults are optional).
+pub fn CodeScanningAlertReopened::CodeScanningAlertReopened(action~ : CodeScanningAlertReopenedAction, alert~ : CodeScanningAlertReopenedAlert, commit_oid~ : String, installation? : InstallationLite, organization? : Organization, ref_~ : String, repository~ : Repository, sender~ : GithubOrg) -> CodeScanningAlertReopened {
+  CodeScanningAlertReopened::{
+    action: action,
+    alert: alert,
+    commit_oid: commit_oid,
+    installation: installation,
+    organization: organization,
+    ref_: ref_,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let code_scanning_alert_reopened_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "alert", "commit_oid", "installation", "organization", "ref", "repository", "sender"])
 
 ///|
@@ -1865,6 +2170,21 @@ pub(all) struct CodeScanningAlertReopenedByUser {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertReopenedByUser` (fields with defaults are optional).
+pub fn CodeScanningAlertReopenedByUser::CodeScanningAlertReopenedByUser(action~ : CodeScanningAlertReopenedByUserAction, alert~ : CodeScanningAlertReopenedByUserAlert, commit_oid~ : String, installation? : InstallationLite, organization? : Organization, ref_~ : String, repository~ : Repository, sender~ : User) -> CodeScanningAlertReopenedByUser {
+  CodeScanningAlertReopenedByUser::{
+    action: action,
+    alert: alert,
+    commit_oid: commit_oid,
+    installation: installation,
+    organization: organization,
+    ref_: ref_,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let code_scanning_alert_reopened_by_user_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "alert", "commit_oid", "installation", "organization", "ref", "repository", "sender"])
@@ -2040,6 +2360,24 @@ pub(all) struct Commit {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Commit` (fields with defaults are optional).
+pub fn Commit::Commit(added~ : Array[String], author~ : Committer, committer~ : Committer, distinct~ : Bool, id~ : String, message~ : String, modified~ : Array[String], removed~ : Array[String], timestamp~ : String, tree_id~ : String, url~ : String) -> Commit {
+  Commit::{
+    added: added,
+    author: author,
+    committer: committer,
+    distinct: distinct,
+    id: id,
+    message: message,
+    modified: modified,
+    removed: removed,
+    timestamp: timestamp,
+    tree_id: tree_id,
+    url: url,
+  }
+}
+
+///|
 let commit_fields : @typify_rt.Fields = @typify_rt.Fields::new(["added", "author", "committer", "distinct", "id", "message", "modified", "removed", "timestamp", "tree_id", "url"])
 
 ///|
@@ -2122,6 +2460,19 @@ pub(all) struct CommitSimple {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CommitSimple` (fields with defaults are optional).
+pub fn CommitSimple::CommitSimple(author~ : Committer, committer~ : Committer, id~ : String, message~ : String, timestamp~ : String, tree_id~ : String) -> CommitSimple {
+  CommitSimple::{
+    author: author,
+    committer: committer,
+    id: id,
+    message: message,
+    timestamp: timestamp,
+    tree_id: tree_id,
+  }
+}
+
+///|
 let commit_simple_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author", "committer", "id", "message", "timestamp", "tree_id"])
 
 ///|
@@ -2183,6 +2534,19 @@ pub(all) struct CommitCommentCreated {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CommitCommentCreated` (fields with defaults are optional).
+pub fn CommitCommentCreated::CommitCommentCreated(action~ : CommitCommentCreatedAction, comment~ : CommitCommentCreatedComment, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> CommitCommentCreated {
+  CommitCommentCreated::{
+    action: action,
+    comment: comment,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let commit_comment_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "comment", "installation", "organization", "repository", "sender"])
@@ -2275,6 +2639,17 @@ pub(all) struct Committer {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Committer` (fields with defaults are optional).
+pub fn Committer::Committer(date? : @typify_rt.DateTimeUtc, email? : String, name~ : String, username? : String) -> Committer {
+  Committer::{
+    date: date,
+    email: email,
+    name: name,
+    username: username,
+  }
+}
+
+///|
 let committer_fields : @typify_rt.Fields = @typify_rt.Fields::new(["date", "email", "name", "username"])
 
 ///|
@@ -2331,6 +2706,19 @@ pub(all) struct ContentReferenceCreated {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ContentReferenceCreated` (fields with defaults are optional).
+pub fn ContentReferenceCreated::ContentReferenceCreated(action~ : ContentReferenceCreatedAction, content_reference~ : ContentReferenceCreatedContentReference, installation~ : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> ContentReferenceCreated {
+  ContentReferenceCreated::{
+    action: action,
+    content_reference: content_reference,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let content_reference_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "content_reference", "installation", "organization", "repository", "sender"])
@@ -2429,6 +2817,22 @@ pub(all) struct CreateEvent {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CreateEvent` (fields with defaults are optional).
+pub fn CreateEvent::CreateEvent(description? : String, installation? : InstallationLite, master_branch~ : String, organization? : Organization, pusher_type~ : String, ref_~ : String, ref_type~ : CreateEventRefType, repository~ : Repository, sender~ : User) -> CreateEvent {
+  CreateEvent::{
+    description: description,
+    installation: installation,
+    master_branch: master_branch,
+    organization: organization,
+    pusher_type: pusher_type,
+    ref_: ref_,
+    ref_type: ref_type,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let create_event_fields : @typify_rt.Fields = @typify_rt.Fields::new(["description", "installation", "master_branch", "organization", "pusher_type", "ref", "ref_type", "repository", "sender"])
 
 ///|
@@ -2511,6 +2915,20 @@ pub(all) struct DeleteEvent {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DeleteEvent` (fields with defaults are optional).
+pub fn DeleteEvent::DeleteEvent(installation? : InstallationLite, organization? : Organization, pusher_type~ : String, ref_~ : String, ref_type~ : DeleteEventRefType, repository~ : Repository, sender~ : User) -> DeleteEvent {
+  DeleteEvent::{
+    installation: installation,
+    organization: organization,
+    pusher_type: pusher_type,
+    ref_: ref_,
+    ref_type: ref_type,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let delete_event_fields : @typify_rt.Fields = @typify_rt.Fields::new(["installation", "organization", "pusher_type", "ref", "ref_type", "repository", "sender"])
 
 ///|
@@ -2581,6 +2999,19 @@ pub(all) struct DeployKeyCreated {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DeployKeyCreated` (fields with defaults are optional).
+pub fn DeployKeyCreated::DeployKeyCreated(action~ : DeployKeyCreatedAction, installation? : InstallationLite, key~ : DeployKeyCreatedKey, organization? : Organization, repository~ : Repository, sender~ : User) -> DeployKeyCreated {
+  DeployKeyCreated::{
+    action: action,
+    installation: installation,
+    key: key,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let deploy_key_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "key", "organization", "repository", "sender"])
 
 ///|
@@ -2645,6 +3076,19 @@ pub(all) struct DeployKeyDeleted {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DeployKeyDeleted` (fields with defaults are optional).
+pub fn DeployKeyDeleted::DeployKeyDeleted(action~ : DeployKeyDeletedAction, installation? : InstallationLite, key~ : DeployKeyDeletedKey, organization? : Organization, repository~ : Repository, sender~ : User) -> DeployKeyDeleted {
+  DeployKeyDeleted::{
+    action: action,
+    installation: installation,
+    key: key,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let deploy_key_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "key", "organization", "repository", "sender"])
@@ -2762,6 +3206,21 @@ pub(all) struct DeploymentCreated {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DeploymentCreated` (fields with defaults are optional).
+pub fn DeploymentCreated::DeploymentCreated(action~ : DeploymentCreatedAction, deployment~ : DeploymentCreatedDeployment, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User, workflow~ : Unit, workflow_run~ : Unit) -> DeploymentCreated {
+  DeploymentCreated::{
+    action: action,
+    deployment: deployment,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    workflow: workflow,
+    workflow_run: workflow_run,
+  }
+}
+
+///|
 let deployment_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "deployment", "installation", "organization", "repository", "sender", "workflow", "workflow_run"])
 
 ///|
@@ -2859,6 +3318,20 @@ pub(all) struct DeploymentStatusCreated {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DeploymentStatusCreated` (fields with defaults are optional).
+pub fn DeploymentStatusCreated::DeploymentStatusCreated(action~ : DeploymentStatusCreatedAction, deployment~ : DeploymentStatusCreatedDeployment, deployment_status~ : DeploymentStatusCreatedDeploymentStatus, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> DeploymentStatusCreated {
+  DeploymentStatusCreated::{
+    action: action,
+    deployment: deployment,
+    deployment_status: deployment_status,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let deployment_status_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "deployment", "deployment_status", "installation", "organization", "repository", "sender"])
@@ -2966,6 +3439,32 @@ pub(all) struct Discussion {
   updated_at : @typify_rt.DateTimeUtc
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `Discussion` (fields with defaults are optional).
+pub fn Discussion::Discussion(active_lock_reason? : String, answer_chosen_at? : String, answer_chosen_by? : User, answer_html_url? : String, author_association~ : AuthorAssociation, body~ : String, category~ : DiscussionCategory, comments~ : Int64, created_at~ : @typify_rt.DateTimeUtc, html_url~ : String, id~ : Int64, locked~ : Bool, node_id~ : String, number~ : Int64, repository_url~ : String, state~ : DiscussionState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, user~ : User) -> Discussion {
+  Discussion::{
+    active_lock_reason: active_lock_reason,
+    answer_chosen_at: answer_chosen_at,
+    answer_chosen_by: answer_chosen_by,
+    answer_html_url: answer_html_url,
+    author_association: author_association,
+    body: body,
+    category: category,
+    comments: comments,
+    created_at: created_at,
+    html_url: html_url,
+    id: id,
+    locked: locked,
+    node_id: node_id,
+    number: number,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    user: user,
+  }
+}
 
 ///|
 let discussion_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "answer_chosen_at", "answer_chosen_by", "answer_html_url", "author_association", "body", "category", "comments", "created_at", "html_url", "id", "locked", "node_id", "number", "repository_url", "state", "title", "updated_at", "user"])
@@ -3083,6 +3582,20 @@ pub(all) struct DiscussionAnswered {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionAnswered` (fields with defaults are optional).
+pub fn DiscussionAnswered::DiscussionAnswered(action~ : DiscussionAnsweredAction, answer~ : DiscussionAnsweredAnswer, discussion~ : DiscussionAnsweredDiscussion, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionAnswered {
+  DiscussionAnswered::{
+    action: action,
+    answer: answer,
+    discussion: discussion,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let discussion_answered_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "answer", "discussion", "installation", "organization", "repository", "sender"])
 
 ///|
@@ -3152,6 +3665,20 @@ pub(all) struct DiscussionCategoryChanged {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionCategoryChanged` (fields with defaults are optional).
+pub fn DiscussionCategoryChanged::DiscussionCategoryChanged(action~ : DiscussionCategoryChangedAction, changes~ : DiscussionCategoryChangedChanges, discussion~ : Discussion, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionCategoryChanged {
+  DiscussionCategoryChanged::{
+    action: action,
+    changes: changes,
+    discussion: discussion,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let discussion_category_changed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "discussion", "installation", "organization", "repository", "sender"])
@@ -3224,6 +3751,19 @@ pub(all) struct DiscussionCreated {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionCreated` (fields with defaults are optional).
+pub fn DiscussionCreated::DiscussionCreated(action~ : DiscussionCreatedAction, discussion~ : DiscussionCreatedDiscussion, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionCreated {
+  DiscussionCreated::{
+    action: action,
+    discussion: discussion,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let discussion_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "discussion", "installation", "organization", "repository", "sender"])
 
 ///|
@@ -3288,6 +3828,19 @@ pub(all) struct DiscussionDeleted {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionDeleted` (fields with defaults are optional).
+pub fn DiscussionDeleted::DiscussionDeleted(action~ : DiscussionDeletedAction, discussion~ : Discussion, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionDeleted {
+  DiscussionDeleted::{
+    action: action,
+    discussion: discussion,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let discussion_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "discussion", "installation", "organization", "repository", "sender"])
@@ -3355,6 +3908,20 @@ pub(all) struct DiscussionEdited {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionEdited` (fields with defaults are optional).
+pub fn DiscussionEdited::DiscussionEdited(action~ : DiscussionEditedAction, changes? : DiscussionEditedChanges, discussion~ : Discussion, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionEdited {
+  DiscussionEdited::{
+    action: action,
+    changes: changes,
+    discussion: discussion,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let discussion_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "discussion", "installation", "organization", "repository", "sender"])
@@ -3430,6 +3997,20 @@ pub(all) struct DiscussionLabeled {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionLabeled` (fields with defaults are optional).
+pub fn DiscussionLabeled::DiscussionLabeled(action~ : DiscussionLabeledAction, discussion~ : Discussion, installation? : InstallationLite, label~ : Label, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionLabeled {
+  DiscussionLabeled::{
+    action: action,
+    discussion: discussion,
+    installation: installation,
+    label: label,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let discussion_labeled_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "discussion", "installation", "label", "organization", "repository", "sender"])
 
 ///|
@@ -3500,6 +4081,19 @@ pub(all) struct DiscussionLocked {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionLocked` (fields with defaults are optional).
+pub fn DiscussionLocked::DiscussionLocked(action~ : DiscussionLockedAction, discussion~ : DiscussionLockedDiscussion, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionLocked {
+  DiscussionLocked::{
+    action: action,
+    discussion: discussion,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let discussion_locked_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "discussion", "installation", "organization", "repository", "sender"])
 
 ///|
@@ -3564,6 +4158,19 @@ pub(all) struct DiscussionPinned {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionPinned` (fields with defaults are optional).
+pub fn DiscussionPinned::DiscussionPinned(action~ : DiscussionPinnedAction, discussion~ : Discussion, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionPinned {
+  DiscussionPinned::{
+    action: action,
+    discussion: discussion,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let discussion_pinned_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "discussion", "installation", "organization", "repository", "sender"])
@@ -3631,6 +4238,20 @@ pub(all) struct DiscussionTransferred {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionTransferred` (fields with defaults are optional).
+pub fn DiscussionTransferred::DiscussionTransferred(action~ : DiscussionTransferredAction, changes~ : DiscussionTransferredChanges, discussion~ : Discussion, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionTransferred {
+  DiscussionTransferred::{
+    action: action,
+    changes: changes,
+    discussion: discussion,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let discussion_transferred_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "discussion", "installation", "organization", "repository", "sender"])
@@ -3704,6 +4325,20 @@ pub(all) struct DiscussionUnanswered {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionUnanswered` (fields with defaults are optional).
+pub fn DiscussionUnanswered::DiscussionUnanswered(action~ : DiscussionUnansweredAction, discussion~ : DiscussionUnansweredDiscussion, installation? : InstallationLite, old_answer~ : DiscussionUnansweredOldAnswer, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionUnanswered {
+  DiscussionUnanswered::{
+    action: action,
+    discussion: discussion,
+    installation: installation,
+    old_answer: old_answer,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let discussion_unanswered_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "discussion", "installation", "old_answer", "organization", "repository", "sender"])
 
 ///|
@@ -3773,6 +4408,20 @@ pub(all) struct DiscussionUnlabeled {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionUnlabeled` (fields with defaults are optional).
+pub fn DiscussionUnlabeled::DiscussionUnlabeled(action~ : DiscussionUnlabeledAction, discussion~ : Discussion, installation? : InstallationLite, label~ : Label, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionUnlabeled {
+  DiscussionUnlabeled::{
+    action: action,
+    discussion: discussion,
+    installation: installation,
+    label: label,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let discussion_unlabeled_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "discussion", "installation", "label", "organization", "repository", "sender"])
@@ -3845,6 +4494,19 @@ pub(all) struct DiscussionUnlocked {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionUnlocked` (fields with defaults are optional).
+pub fn DiscussionUnlocked::DiscussionUnlocked(action~ : DiscussionUnlockedAction, discussion~ : DiscussionUnlockedDiscussion, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionUnlocked {
+  DiscussionUnlocked::{
+    action: action,
+    discussion: discussion,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let discussion_unlocked_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "discussion", "installation", "organization", "repository", "sender"])
 
 ///|
@@ -3909,6 +4571,19 @@ pub(all) struct DiscussionUnpinned {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionUnpinned` (fields with defaults are optional).
+pub fn DiscussionUnpinned::DiscussionUnpinned(action~ : DiscussionUnpinnedAction, discussion~ : Discussion, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionUnpinned {
+  DiscussionUnpinned::{
+    action: action,
+    discussion: discussion,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let discussion_unpinned_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "discussion", "installation", "organization", "repository", "sender"])
@@ -3976,6 +4651,20 @@ pub(all) struct DiscussionCommentCreated {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionCommentCreated` (fields with defaults are optional).
+pub fn DiscussionCommentCreated::DiscussionCommentCreated(action~ : DiscussionCommentCreatedAction, comment~ : DiscussionCommentCreatedComment, discussion~ : Discussion, installation~ : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionCommentCreated {
+  DiscussionCommentCreated::{
+    action: action,
+    comment: comment,
+    discussion: discussion,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let discussion_comment_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "comment", "discussion", "installation", "organization", "repository", "sender"])
@@ -4047,6 +4736,20 @@ pub(all) struct DiscussionCommentDeleted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionCommentDeleted` (fields with defaults are optional).
+pub fn DiscussionCommentDeleted::DiscussionCommentDeleted(action~ : DiscussionCommentDeletedAction, comment~ : DiscussionCommentDeletedComment, discussion~ : Discussion, installation~ : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionCommentDeleted {
+  DiscussionCommentDeleted::{
+    action: action,
+    comment: comment,
+    discussion: discussion,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let discussion_comment_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "comment", "discussion", "installation", "organization", "repository", "sender"])
 
 ///|
@@ -4115,6 +4818,21 @@ pub(all) struct DiscussionCommentEdited {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionCommentEdited` (fields with defaults are optional).
+pub fn DiscussionCommentEdited::DiscussionCommentEdited(action~ : DiscussionCommentEditedAction, changes~ : DiscussionCommentEditedChanges, comment~ : DiscussionCommentEditedComment, discussion~ : Discussion, installation~ : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> DiscussionCommentEdited {
+  DiscussionCommentEdited::{
+    action: action,
+    changes: changes,
+    comment: comment,
+    discussion: discussion,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let discussion_comment_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "comment", "discussion", "installation", "organization", "repository", "sender"])
@@ -4402,6 +5120,18 @@ pub(all) struct ForkEvent {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ForkEvent` (fields with defaults are optional).
+pub fn ForkEvent::ForkEvent(forkee~ : ForkEventForkee, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> ForkEvent {
+  ForkEvent::{
+    forkee: forkee,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let fork_event_fields : @typify_rt.Fields = @typify_rt.Fields::new(["forkee", "installation", "organization", "repository", "sender"])
 
 ///|
@@ -4476,6 +5206,33 @@ pub(all) struct GithubOrg {
   type_ : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `GithubOrg` (fields with defaults are optional).
+pub fn GithubOrg::GithubOrg(avatar_url~ : String, email? : Unit = (), events_url~ : String, followers_url~ : String, following_url~ : String, gists_url~ : String, gravatar_id~ : String, html_url~ : String, id~ : Int64, login~ : String, name? : String, node_id~ : String, organizations_url~ : String, received_events_url~ : String, repos_url~ : String, site_admin~ : Bool, starred_url~ : String, subscriptions_url~ : String, type_~ : String, url~ : String) -> GithubOrg {
+  GithubOrg::{
+    avatar_url: avatar_url,
+    email: email,
+    events_url: events_url,
+    followers_url: followers_url,
+    following_url: following_url,
+    gists_url: gists_url,
+    gravatar_id: gravatar_id,
+    html_url: html_url,
+    id: id,
+    login: login,
+    name: name,
+    node_id: node_id,
+    organizations_url: organizations_url,
+    received_events_url: received_events_url,
+    repos_url: repos_url,
+    site_admin: site_admin,
+    starred_url: starred_url,
+    subscriptions_url: subscriptions_url,
+    type_: type_,
+    url: url,
+  }
+}
 
 ///|
 let github_org_fields : @typify_rt.Fields = @typify_rt.Fields::new(["avatar_url", "email", "events_url", "followers_url", "following_url", "gists_url", "gravatar_id", "html_url", "id", "login", "name", "node_id", "organizations_url", "received_events_url", "repos_url", "site_admin", "starred_url", "subscriptions_url", "type", "url"])
@@ -4594,6 +5351,15 @@ pub(all) struct GithubAppAuthorizationRevoked {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `GithubAppAuthorizationRevoked` (fields with defaults are optional).
+pub fn GithubAppAuthorizationRevoked::GithubAppAuthorizationRevoked(action~ : GithubAppAuthorizationRevokedAction, sender~ : User) -> GithubAppAuthorizationRevoked {
+  GithubAppAuthorizationRevoked::{
+    action: action,
+    sender: sender,
+  }
+}
+
+///|
 let github_app_authorization_revoked_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "sender"])
 
 ///|
@@ -4662,6 +5428,18 @@ pub(all) struct GollumEvent {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `GollumEvent` (fields with defaults are optional).
+pub fn GollumEvent::GollumEvent(installation? : InstallationLite, organization? : Organization, pages~ : Array[GollumEventPagesItem], repository~ : Repository, sender~ : User) -> GollumEvent {
+  GollumEvent::{
+    installation: installation,
+    organization: organization,
+    pages: pages,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let gollum_event_fields : @typify_rt.Fields = @typify_rt.Fields::new(["installation", "organization", "pages", "repository", "sender"])
@@ -4740,6 +5518,32 @@ pub(all) struct Installation {
   target_type : InstallationTargetType
   updated_at : InstallationUpdatedAt
 } derive(Debug, Eq)
+
+///|
+/// Construct a `Installation` (fields with defaults are optional).
+pub fn Installation::Installation(access_tokens_url~ : String, account~ : User, app_id~ : Int64, app_slug? : String, created_at~ : InstallationCreatedAt, events~ : Array[InstallationEventsItem], has_multiple_single_files? : Bool, html_url~ : String, id~ : Int64, permissions~ : InstallationPermissions, repositories_url~ : String, repository_selection~ : InstallationRepositorySelection, single_file_name? : String, single_file_paths? : Array[String] = [], suspended_at? : @typify_rt.DateTimeUtc, suspended_by? : User, target_id~ : Int64, target_type~ : InstallationTargetType, updated_at~ : InstallationUpdatedAt) -> Installation {
+  Installation::{
+    access_tokens_url: access_tokens_url,
+    account: account,
+    app_id: app_id,
+    app_slug: app_slug,
+    created_at: created_at,
+    events: events,
+    has_multiple_single_files: has_multiple_single_files,
+    html_url: html_url,
+    id: id,
+    permissions: permissions,
+    repositories_url: repositories_url,
+    repository_selection: repository_selection,
+    single_file_name: single_file_name,
+    single_file_paths: single_file_paths,
+    suspended_at: suspended_at,
+    suspended_by: suspended_by,
+    target_id: target_id,
+    target_type: target_type,
+    updated_at: updated_at,
+  }
+}
 
 ///|
 let installation_fields : @typify_rt.Fields = @typify_rt.Fields::new(["access_tokens_url", "account", "app_id", "app_slug", "created_at", "events", "has_multiple_single_files", "html_url", "id", "permissions", "repositories_url", "repository_selection", "single_file_name", "single_file_paths", "suspended_at", "suspended_by", "target_id", "target_type", "updated_at"])
@@ -4862,6 +5666,18 @@ pub(all) struct InstallationCreated {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationCreated` (fields with defaults are optional).
+pub fn InstallationCreated::InstallationCreated(action~ : InstallationCreatedAction, installation~ : Installation, repositories? : Array[InstallationCreatedRepositoriesItem] = [], requester? : User, sender~ : User) -> InstallationCreated {
+  InstallationCreated::{
+    action: action,
+    installation: installation,
+    repositories: repositories,
+    requester: requester,
+    sender: sender,
+  }
+}
+
+///|
 let installation_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "repositories", "requester", "sender"])
 
 ///|
@@ -4924,6 +5740,18 @@ pub(all) struct InstallationDeleted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationDeleted` (fields with defaults are optional).
+pub fn InstallationDeleted::InstallationDeleted(action~ : InstallationDeletedAction, installation~ : Installation, repositories? : Array[InstallationDeletedRepositoriesItem] = [], requester? : Unit = (), sender~ : User) -> InstallationDeleted {
+  InstallationDeleted::{
+    action: action,
+    installation: installation,
+    repositories: repositories,
+    requester: requester,
+    sender: sender,
+  }
+}
+
+///|
 let installation_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "repositories", "requester", "sender"])
 
 ///|
@@ -4982,6 +5810,18 @@ pub(all) struct InstallationNewPermissionsAccepted {
   requester : Unit
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `InstallationNewPermissionsAccepted` (fields with defaults are optional).
+pub fn InstallationNewPermissionsAccepted::InstallationNewPermissionsAccepted(action~ : InstallationNewPermissionsAcceptedAction, installation~ : Installation, repositories? : Array[InstallationNewPermissionsAcceptedRepositoriesItem] = [], requester? : Unit = (), sender~ : User) -> InstallationNewPermissionsAccepted {
+  InstallationNewPermissionsAccepted::{
+    action: action,
+    installation: installation,
+    repositories: repositories,
+    requester: requester,
+    sender: sender,
+  }
+}
 
 ///|
 let installation_new_permissions_accepted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "repositories", "requester", "sender"])
@@ -5044,6 +5884,18 @@ pub(all) struct InstallationSuspend {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationSuspend` (fields with defaults are optional).
+pub fn InstallationSuspend::InstallationSuspend(action~ : InstallationSuspendAction, installation~ : InstallationSuspendInstallation, repositories? : Array[InstallationSuspendRepositoriesItem] = [], requester? : Unit = (), sender~ : User) -> InstallationSuspend {
+  InstallationSuspend::{
+    action: action,
+    installation: installation,
+    repositories: repositories,
+    requester: requester,
+    sender: sender,
+  }
+}
+
+///|
 let installation_suspend_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "repositories", "requester", "sender"])
 
 ///|
@@ -5104,6 +5956,18 @@ pub(all) struct InstallationUnsuspend {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationUnsuspend` (fields with defaults are optional).
+pub fn InstallationUnsuspend::InstallationUnsuspend(action~ : InstallationUnsuspendAction, installation~ : InstallationUnsuspendInstallation, repositories? : Array[InstallationUnsuspendRepositoriesItem] = [], requester? : Unit = (), sender~ : User) -> InstallationUnsuspend {
+  InstallationUnsuspend::{
+    action: action,
+    installation: installation,
+    repositories: repositories,
+    requester: requester,
+    sender: sender,
+  }
+}
+
+///|
 let installation_unsuspend_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "repositories", "requester", "sender"])
 
 ///|
@@ -5159,6 +6023,15 @@ pub(all) struct InstallationLite {
   id : Int64
   node_id : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `InstallationLite` (fields with defaults are optional).
+pub fn InstallationLite::InstallationLite(id~ : Int64, node_id~ : String) -> InstallationLite {
+  InstallationLite::{
+    id: id,
+    node_id: node_id,
+  }
+}
 
 ///|
 let installation_lite_fields : @typify_rt.Fields = @typify_rt.Fields::new(["id", "node_id"])
@@ -5288,6 +6161,20 @@ pub(all) struct InstallationRepositoriesAdded {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationRepositoriesAdded` (fields with defaults are optional).
+pub fn InstallationRepositoriesAdded::InstallationRepositoriesAdded(action~ : InstallationRepositoriesAddedAction, installation~ : Installation, repositories_added~ : Array[InstallationRepositoriesAddedRepositoriesAddedItem], repositories_removed~ : Array[InstallationRepositoriesAddedRepositoriesRemovedItem], repository_selection~ : InstallationRepositoriesAddedRepositorySelection, requester? : User, sender~ : User) -> InstallationRepositoriesAdded {
+  InstallationRepositoriesAdded::{
+    action: action,
+    installation: installation,
+    repositories_added: repositories_added,
+    repositories_removed: repositories_removed,
+    repository_selection: repository_selection,
+    requester: requester,
+    sender: sender,
+  }
+}
+
+///|
 let installation_repositories_added_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "repositories_added", "repositories_removed", "repository_selection", "requester", "sender"])
 
 ///|
@@ -5356,6 +6243,20 @@ pub(all) struct InstallationRepositoriesRemoved {
   requester : User?
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `InstallationRepositoriesRemoved` (fields with defaults are optional).
+pub fn InstallationRepositoriesRemoved::InstallationRepositoriesRemoved(action~ : InstallationRepositoriesRemovedAction, installation~ : Installation, repositories_added~ : Array[InstallationRepositoriesRemovedRepositoriesAddedItem], repositories_removed~ : Array[InstallationRepositoriesRemovedRepositoriesRemovedItem], repository_selection~ : InstallationRepositoriesRemovedRepositorySelection, requester? : User, sender~ : User) -> InstallationRepositoriesRemoved {
+  InstallationRepositoriesRemoved::{
+    action: action,
+    installation: installation,
+    repositories_added: repositories_added,
+    repositories_removed: repositories_removed,
+    repository_selection: repository_selection,
+    requester: requester,
+    sender: sender,
+  }
+}
 
 ///|
 let installation_repositories_removed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "repositories_added", "repositories_removed", "repository_selection", "requester", "sender"])
@@ -5493,6 +6394,39 @@ pub(all) struct Issue {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `Issue` (fields with defaults are optional).
+pub fn Issue::Issue(active_lock_reason? : IssueActiveLockReason, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, body? : String, closed_at? : @typify_rt.DateTimeUtc, comments~ : Int64, comments_url~ : String, created_at~ : @typify_rt.DateTimeUtc, events_url~ : String, html_url~ : String, id~ : Int64, labels? : Array[Label] = [], labels_url~ : String, locked? : Bool, milestone? : Milestone, node_id~ : String, number~ : Int64, performed_via_github_app? : App, pull_request? : IssuePullRequest, repository_url~ : String, state? : IssueState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> Issue {
+  Issue::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    body: body,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    created_at: created_at,
+    events_url: events_url,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    labels_url: labels_url,
+    locked: locked,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    performed_via_github_app: performed_via_github_app,
+    pull_request: pull_request,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let issue_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "body", "closed_at", "comments", "comments_url", "created_at", "events_url", "html_url", "id", "labels", "labels_url", "locked", "milestone", "node_id", "number", "performed_via_github_app", "pull_request", "repository_url", "state", "title", "updated_at", "url", "user"])
@@ -5657,6 +6591,24 @@ pub(all) struct IssueComment {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssueComment` (fields with defaults are optional).
+pub fn IssueComment::IssueComment(author_association~ : AuthorAssociation, body~ : String, created_at~ : @typify_rt.DateTimeUtc, html_url~ : String, id~ : Int64, issue_url~ : String, node_id~ : String, performed_via_github_app? : App, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> IssueComment {
+  IssueComment::{
+    author_association: author_association,
+    body: body,
+    created_at: created_at,
+    html_url: html_url,
+    id: id,
+    issue_url: issue_url,
+    node_id: node_id,
+    performed_via_github_app: performed_via_github_app,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
+
+///|
 let issue_comment_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author_association", "body", "created_at", "html_url", "id", "issue_url", "node_id", "performed_via_github_app", "updated_at", "url", "user"])
 
 ///|
@@ -5740,6 +6692,20 @@ pub(all) struct IssueCommentCreated {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssueCommentCreated` (fields with defaults are optional).
+pub fn IssueCommentCreated::IssueCommentCreated(action~ : IssueCommentCreatedAction, comment~ : IssueComment, installation? : InstallationLite, issue~ : IssueCommentCreatedIssue, organization? : Organization, repository~ : Repository, sender~ : User) -> IssueCommentCreated {
+  IssueCommentCreated::{
+    action: action,
+    comment: comment,
+    installation: installation,
+    issue: issue,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let issue_comment_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "comment", "installation", "issue", "organization", "repository", "sender"])
 
 ///|
@@ -5809,6 +6775,20 @@ pub(all) struct IssueCommentDeleted {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssueCommentDeleted` (fields with defaults are optional).
+pub fn IssueCommentDeleted::IssueCommentDeleted(action~ : IssueCommentDeletedAction, comment~ : IssueComment, installation? : InstallationLite, issue~ : IssueCommentDeletedIssue, organization? : Organization, repository~ : Repository, sender~ : User) -> IssueCommentDeleted {
+  IssueCommentDeleted::{
+    action: action,
+    comment: comment,
+    installation: installation,
+    issue: issue,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let issue_comment_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "comment", "installation", "issue", "organization", "repository", "sender"])
@@ -5881,6 +6861,21 @@ pub(all) struct IssueCommentEdited {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssueCommentEdited` (fields with defaults are optional).
+pub fn IssueCommentEdited::IssueCommentEdited(action~ : IssueCommentEditedAction, changes~ : IssueCommentEditedChanges, comment~ : IssueComment, installation? : InstallationLite, issue~ : IssueCommentEditedIssue, organization? : Organization, repository~ : Repository, sender~ : User) -> IssueCommentEdited {
+  IssueCommentEdited::{
+    action: action,
+    changes: changes,
+    comment: comment,
+    installation: installation,
+    issue: issue,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let issue_comment_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "comment", "installation", "issue", "organization", "repository", "sender"])
@@ -6017,6 +7012,20 @@ pub(all) struct IssuesAssigned {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesAssigned` (fields with defaults are optional).
+pub fn IssuesAssigned::IssuesAssigned(action~ : IssuesAssignedAction, assignee? : User, installation? : InstallationLite, issue~ : Issue, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesAssigned {
+  IssuesAssigned::{
+    action: action,
+    assignee: assignee,
+    installation: installation,
+    issue: issue,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let issues_assigned_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "assignee", "installation", "issue", "organization", "repository", "sender"])
 
 ///|
@@ -6090,6 +7099,19 @@ pub(all) struct IssuesClosed {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesClosed` (fields with defaults are optional).
+pub fn IssuesClosed::IssuesClosed(action~ : IssuesClosedAction, installation? : InstallationLite, issue~ : IssuesClosedIssue, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesClosed {
+  IssuesClosed::{
+    action: action,
+    installation: installation,
+    issue: issue,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let issues_closed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "issue", "organization", "repository", "sender"])
 
 ///|
@@ -6154,6 +7176,19 @@ pub(all) struct IssuesDeleted {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesDeleted` (fields with defaults are optional).
+pub fn IssuesDeleted::IssuesDeleted(action~ : IssuesDeletedAction, installation? : InstallationLite, issue~ : Issue, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesDeleted {
+  IssuesDeleted::{
+    action: action,
+    installation: installation,
+    issue: issue,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let issues_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "issue", "organization", "repository", "sender"])
@@ -6221,6 +7256,20 @@ pub(all) struct IssuesDemilestoned {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesDemilestoned` (fields with defaults are optional).
+pub fn IssuesDemilestoned::IssuesDemilestoned(action~ : IssuesDemilestonedAction, installation? : InstallationLite, issue~ : IssuesDemilestonedIssue, milestone~ : Milestone, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesDemilestoned {
+  IssuesDemilestoned::{
+    action: action,
+    installation: installation,
+    issue: issue,
+    milestone: milestone,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let issues_demilestoned_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "issue", "milestone", "organization", "repository", "sender"])
@@ -6293,6 +7342,21 @@ pub(all) struct IssuesEdited {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesEdited` (fields with defaults are optional).
+pub fn IssuesEdited::IssuesEdited(action~ : IssuesEditedAction, changes~ : IssuesEditedChanges, installation? : InstallationLite, issue~ : Issue, label? : Label, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesEdited {
+  IssuesEdited::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    issue: issue,
+    label: label,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let issues_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "issue", "label", "organization", "repository", "sender"])
@@ -6373,6 +7437,20 @@ pub(all) struct IssuesLabeled {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesLabeled` (fields with defaults are optional).
+pub fn IssuesLabeled::IssuesLabeled(action~ : IssuesLabeledAction, installation? : InstallationLite, issue~ : Issue, label? : Label, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesLabeled {
+  IssuesLabeled::{
+    action: action,
+    installation: installation,
+    issue: issue,
+    label: label,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let issues_labeled_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "issue", "label", "organization", "repository", "sender"])
 
 ///|
@@ -6445,6 +7523,19 @@ pub(all) struct IssuesLocked {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesLocked` (fields with defaults are optional).
+pub fn IssuesLocked::IssuesLocked(action~ : IssuesLockedAction, installation? : InstallationLite, issue~ : IssuesLockedIssue, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesLocked {
+  IssuesLocked::{
+    action: action,
+    installation: installation,
+    issue: issue,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let issues_locked_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "issue", "organization", "repository", "sender"])
 
 ///|
@@ -6510,6 +7601,20 @@ pub(all) struct IssuesMilestoned {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesMilestoned` (fields with defaults are optional).
+pub fn IssuesMilestoned::IssuesMilestoned(action~ : IssuesMilestonedAction, installation? : InstallationLite, issue~ : IssuesMilestonedIssue, milestone~ : Milestone, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesMilestoned {
+  IssuesMilestoned::{
+    action: action,
+    installation: installation,
+    issue: issue,
+    milestone: milestone,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let issues_milestoned_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "issue", "milestone", "organization", "repository", "sender"])
@@ -6581,6 +7686,20 @@ pub(all) struct IssuesOpened {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesOpened` (fields with defaults are optional).
+pub fn IssuesOpened::IssuesOpened(action~ : IssuesOpenedAction, changes? : IssuesOpenedChanges, installation? : InstallationLite, issue~ : IssuesOpenedIssue, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesOpened {
+  IssuesOpened::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    issue: issue,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let issues_opened_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "issue", "organization", "repository", "sender"])
@@ -6655,6 +7774,19 @@ pub(all) struct IssuesPinned {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesPinned` (fields with defaults are optional).
+pub fn IssuesPinned::IssuesPinned(action~ : IssuesPinnedAction, installation? : InstallationLite, issue~ : Issue, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesPinned {
+  IssuesPinned::{
+    action: action,
+    installation: installation,
+    issue: issue,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let issues_pinned_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "issue", "organization", "repository", "sender"])
 
 ///|
@@ -6719,6 +7851,19 @@ pub(all) struct IssuesReopened {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesReopened` (fields with defaults are optional).
+pub fn IssuesReopened::IssuesReopened(action~ : IssuesReopenedAction, installation? : InstallationLite, issue~ : IssuesReopenedIssue, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesReopened {
+  IssuesReopened::{
+    action: action,
+    installation: installation,
+    issue: issue,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let issues_reopened_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "issue", "organization", "repository", "sender"])
@@ -6786,6 +7931,20 @@ pub(all) struct IssuesTransferred {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesTransferred` (fields with defaults are optional).
+pub fn IssuesTransferred::IssuesTransferred(action~ : IssuesTransferredAction, changes~ : IssuesTransferredChanges, installation? : InstallationLite, issue~ : Issue, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesTransferred {
+  IssuesTransferred::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    issue: issue,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let issues_transferred_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "issue", "organization", "repository", "sender"])
@@ -6859,6 +8018,20 @@ pub(all) struct IssuesUnassigned {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesUnassigned` (fields with defaults are optional).
+pub fn IssuesUnassigned::IssuesUnassigned(action~ : IssuesUnassignedAction, assignee? : User, installation? : InstallationLite, issue~ : Issue, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesUnassigned {
+  IssuesUnassigned::{
+    action: action,
+    assignee: assignee,
+    installation: installation,
+    issue: issue,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let issues_unassigned_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "assignee", "installation", "issue", "organization", "repository", "sender"])
@@ -6935,6 +8108,20 @@ pub(all) struct IssuesUnlabeled {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesUnlabeled` (fields with defaults are optional).
+pub fn IssuesUnlabeled::IssuesUnlabeled(action~ : IssuesUnlabeledAction, installation? : InstallationLite, issue~ : Issue, label? : Label, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesUnlabeled {
+  IssuesUnlabeled::{
+    action: action,
+    installation: installation,
+    issue: issue,
+    label: label,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let issues_unlabeled_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "issue", "label", "organization", "repository", "sender"])
 
 ///|
@@ -7007,6 +8194,19 @@ pub(all) struct IssuesUnlocked {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesUnlocked` (fields with defaults are optional).
+pub fn IssuesUnlocked::IssuesUnlocked(action~ : IssuesUnlockedAction, installation? : InstallationLite, issue~ : IssuesUnlockedIssue, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesUnlocked {
+  IssuesUnlocked::{
+    action: action,
+    installation: installation,
+    issue: issue,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let issues_unlocked_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "issue", "organization", "repository", "sender"])
 
 ///|
@@ -7071,6 +8271,19 @@ pub(all) struct IssuesUnpinned {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesUnpinned` (fields with defaults are optional).
+pub fn IssuesUnpinned::IssuesUnpinned(action~ : IssuesUnpinnedAction, installation? : InstallationLite, issue~ : Issue, organization? : Organization, repository~ : Repository, sender~ : User) -> IssuesUnpinned {
+  IssuesUnpinned::{
+    action: action,
+    installation: installation,
+    issue: issue,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let issues_unpinned_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "issue", "organization", "repository", "sender"])
@@ -7330,6 +8543,20 @@ pub(all) struct Label {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Label` (fields with defaults are optional).
+pub fn Label::Label(color~ : String, default~ : Bool, description? : String, id~ : Int64, name~ : String, node_id~ : String, url~ : String) -> Label {
+  Label::{
+    color: color,
+    default: default,
+    description: description,
+    id: id,
+    name: name,
+    node_id: node_id,
+    url: url,
+  }
+}
+
+///|
 let label_fields : @typify_rt.Fields = @typify_rt.Fields::new(["color", "default", "description", "id", "name", "node_id", "url"])
 
 ///|
@@ -7395,6 +8622,19 @@ pub(all) struct LabelCreated {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `LabelCreated` (fields with defaults are optional).
+pub fn LabelCreated::LabelCreated(action~ : LabelCreatedAction, installation? : InstallationLite, label~ : Label, organization? : Organization, repository~ : Repository, sender~ : User) -> LabelCreated {
+  LabelCreated::{
+    action: action,
+    installation: installation,
+    label: label,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let label_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "label", "organization", "repository", "sender"])
@@ -7464,6 +8704,19 @@ pub(all) struct LabelDeleted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `LabelDeleted` (fields with defaults are optional).
+pub fn LabelDeleted::LabelDeleted(action~ : LabelDeletedAction, installation? : InstallationLite, label~ : Label, organization? : Organization, repository~ : Repository, sender~ : User) -> LabelDeleted {
+  LabelDeleted::{
+    action: action,
+    installation: installation,
+    label: label,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let label_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "label", "organization", "repository", "sender"])
 
 ///|
@@ -7530,6 +8783,20 @@ pub(all) struct LabelEdited {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `LabelEdited` (fields with defaults are optional).
+pub fn LabelEdited::LabelEdited(action~ : LabelEditedAction, changes? : LabelEditedChanges, installation? : InstallationLite, label~ : Label, organization? : Organization, repository~ : Repository, sender~ : User) -> LabelEdited {
+  LabelEdited::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    label: label,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let label_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "label", "organization", "repository", "sender"])
@@ -7660,6 +8927,18 @@ pub(all) struct License {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `License` (fields with defaults are optional).
+pub fn License::License(key~ : String, name~ : String, node_id~ : String, spdx_id~ : String, url? : String) -> License {
+  License::{
+    key: key,
+    name: name,
+    node_id: node_id,
+    spdx_id: spdx_id,
+    url: url,
+  }
+}
+
+///|
 let license_fields : @typify_rt.Fields = @typify_rt.Fields::new(["key", "name", "node_id", "spdx_id", "url"])
 
 ///|
@@ -7713,6 +8992,14 @@ pub(all) struct Link {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Link` (fields with defaults are optional).
+pub fn Link::Link(href~ : String) -> Link {
+  Link::{
+    href: href,
+  }
+}
+
+///|
 let link_fields : @typify_rt.Fields = @typify_rt.Fields::new(["href"])
 
 ///|
@@ -7754,6 +9041,20 @@ pub(all) struct MarketplacePurchase {
   plan : MarketplacePurchasePlan
   unit_count : Int64
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchase` (fields with defaults are optional).
+pub fn MarketplacePurchase::MarketplacePurchase(account~ : MarketplacePurchaseAccount, billing_cycle~ : String, free_trial_ends_on~ : Unit, next_billing_date? : String, on_free_trial~ : Bool, plan~ : MarketplacePurchasePlan, unit_count~ : Int64) -> MarketplacePurchase {
+  MarketplacePurchase::{
+    account: account,
+    billing_cycle: billing_cycle,
+    free_trial_ends_on: free_trial_ends_on,
+    next_billing_date: next_billing_date,
+    on_free_trial: on_free_trial,
+    plan: plan,
+    unit_count: unit_count,
+  }
+}
 
 ///|
 let marketplace_purchase_fields : @typify_rt.Fields = @typify_rt.Fields::new(["account", "billing_cycle", "free_trial_ends_on", "next_billing_date", "on_free_trial", "plan", "unit_count"])
@@ -7823,6 +9124,18 @@ pub(all) struct MarketplacePurchaseCancelled {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MarketplacePurchaseCancelled` (fields with defaults are optional).
+pub fn MarketplacePurchaseCancelled::MarketplacePurchaseCancelled(action~ : MarketplacePurchaseCancelledAction, effective_date~ : String, marketplace_purchase~ : MarketplacePurchaseCancelledMarketplacePurchase, previous_marketplace_purchase? : MarketplacePurchase, sender~ : MarketplacePurchaseCancelledSender) -> MarketplacePurchaseCancelled {
+  MarketplacePurchaseCancelled::{
+    action: action,
+    effective_date: effective_date,
+    marketplace_purchase: marketplace_purchase,
+    previous_marketplace_purchase: previous_marketplace_purchase,
+    sender: sender,
+  }
+}
+
+///|
 let marketplace_purchase_cancelled_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "effective_date", "marketplace_purchase", "previous_marketplace_purchase", "sender"])
 
 ///|
@@ -7880,6 +9193,18 @@ pub(all) struct MarketplacePurchaseChanged {
   previous_marketplace_purchase : MarketplacePurchase?
   sender : MarketplacePurchaseChangedSender
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchaseChanged` (fields with defaults are optional).
+pub fn MarketplacePurchaseChanged::MarketplacePurchaseChanged(action~ : MarketplacePurchaseChangedAction, effective_date~ : String, marketplace_purchase~ : MarketplacePurchaseChangedMarketplacePurchase, previous_marketplace_purchase? : MarketplacePurchase, sender~ : MarketplacePurchaseChangedSender) -> MarketplacePurchaseChanged {
+  MarketplacePurchaseChanged::{
+    action: action,
+    effective_date: effective_date,
+    marketplace_purchase: marketplace_purchase,
+    previous_marketplace_purchase: previous_marketplace_purchase,
+    sender: sender,
+  }
+}
 
 ///|
 let marketplace_purchase_changed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "effective_date", "marketplace_purchase", "previous_marketplace_purchase", "sender"])
@@ -7941,6 +9266,18 @@ pub(all) struct MarketplacePurchasePendingChange {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MarketplacePurchasePendingChange` (fields with defaults are optional).
+pub fn MarketplacePurchasePendingChange::MarketplacePurchasePendingChange(action~ : MarketplacePurchasePendingChangeAction, effective_date~ : String, marketplace_purchase~ : MarketplacePurchasePendingChangeMarketplacePurchase, previous_marketplace_purchase? : MarketplacePurchase, sender~ : MarketplacePurchasePendingChangeSender) -> MarketplacePurchasePendingChange {
+  MarketplacePurchasePendingChange::{
+    action: action,
+    effective_date: effective_date,
+    marketplace_purchase: marketplace_purchase,
+    previous_marketplace_purchase: previous_marketplace_purchase,
+    sender: sender,
+  }
+}
+
+///|
 let marketplace_purchase_pending_change_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "effective_date", "marketplace_purchase", "previous_marketplace_purchase", "sender"])
 
 ///|
@@ -8000,6 +9337,18 @@ pub(all) struct MarketplacePurchasePendingChangeCancelled {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MarketplacePurchasePendingChangeCancelled` (fields with defaults are optional).
+pub fn MarketplacePurchasePendingChangeCancelled::MarketplacePurchasePendingChangeCancelled(action~ : MarketplacePurchasePendingChangeCancelledAction, effective_date~ : String, marketplace_purchase~ : MarketplacePurchasePendingChangeCancelledMarketplacePurchase, previous_marketplace_purchase? : MarketplacePurchase, sender~ : MarketplacePurchasePendingChangeCancelledSender) -> MarketplacePurchasePendingChangeCancelled {
+  MarketplacePurchasePendingChangeCancelled::{
+    action: action,
+    effective_date: effective_date,
+    marketplace_purchase: marketplace_purchase,
+    previous_marketplace_purchase: previous_marketplace_purchase,
+    sender: sender,
+  }
+}
+
+///|
 let marketplace_purchase_pending_change_cancelled_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "effective_date", "marketplace_purchase", "previous_marketplace_purchase", "sender"])
 
 ///|
@@ -8057,6 +9406,18 @@ pub(all) struct MarketplacePurchasePurchased {
   previous_marketplace_purchase : MarketplacePurchase?
   sender : MarketplacePurchasePurchasedSender
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchasePurchased` (fields with defaults are optional).
+pub fn MarketplacePurchasePurchased::MarketplacePurchasePurchased(action~ : MarketplacePurchasePurchasedAction, effective_date~ : String, marketplace_purchase~ : MarketplacePurchasePurchasedMarketplacePurchase, previous_marketplace_purchase? : MarketplacePurchase, sender~ : MarketplacePurchasePurchasedSender) -> MarketplacePurchasePurchased {
+  MarketplacePurchasePurchased::{
+    action: action,
+    effective_date: effective_date,
+    marketplace_purchase: marketplace_purchase,
+    previous_marketplace_purchase: previous_marketplace_purchase,
+    sender: sender,
+  }
+}
 
 ///|
 let marketplace_purchase_purchased_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "effective_date", "marketplace_purchase", "previous_marketplace_purchase", "sender"])
@@ -8197,6 +9558,19 @@ pub(all) struct MemberAdded {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MemberAdded` (fields with defaults are optional).
+pub fn MemberAdded::MemberAdded(action~ : MemberAddedAction, changes? : MemberAddedChanges, installation? : InstallationLite, member_~ : User, repository~ : Repository, sender~ : User) -> MemberAdded {
+  MemberAdded::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    member_: member_,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let member_added_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "member", "repository", "sender"])
 
 ///|
@@ -8264,6 +9638,19 @@ pub(all) struct MemberEdited {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MemberEdited` (fields with defaults are optional).
+pub fn MemberEdited::MemberEdited(action~ : MemberEditedAction, changes~ : MemberEditedChanges, installation? : InstallationLite, member_~ : User, repository~ : Repository, sender~ : User) -> MemberEdited {
+  MemberEdited::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    member_: member_,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let member_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "member", "repository", "sender"])
 
 ///|
@@ -8326,6 +9713,18 @@ pub(all) struct MemberRemoved {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MemberRemoved` (fields with defaults are optional).
+pub fn MemberRemoved::MemberRemoved(action~ : MemberRemovedAction, installation? : InstallationLite, member_~ : User, repository~ : Repository, sender~ : User) -> MemberRemoved {
+  MemberRemoved::{
+    action: action,
+    installation: installation,
+    member_: member_,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let member_removed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "member", "repository", "sender"])
@@ -8444,6 +9843,18 @@ pub(all) struct Membership {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Membership` (fields with defaults are optional).
+pub fn Membership::Membership(organization_url~ : String, role~ : String, state~ : String, url~ : String, user~ : User) -> Membership {
+  Membership::{
+    organization_url: organization_url,
+    role: role,
+    state: state,
+    url: url,
+    user: user,
+  }
+}
+
+///|
 let membership_fields : @typify_rt.Fields = @typify_rt.Fields::new(["organization_url", "role", "state", "url", "user"])
 
 ///|
@@ -8504,6 +9915,20 @@ pub(all) struct MembershipAdded {
   /// The [team](https://docs.github.com/en/rest/reference/teams) for the membership.
   team : Team
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MembershipAdded` (fields with defaults are optional).
+pub fn MembershipAdded::MembershipAdded(action~ : MembershipAddedAction, installation? : InstallationLite, member_~ : User, organization~ : Organization, scope~ : MembershipAddedScope, sender~ : User, team~ : Team) -> MembershipAdded {
+  MembershipAdded::{
+    action: action,
+    installation: installation,
+    member_: member_,
+    organization: organization,
+    scope: scope,
+    sender: sender,
+    team: team,
+  }
+}
 
 ///|
 let membership_added_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "member", "organization", "scope", "sender", "team"])
@@ -8576,6 +10001,20 @@ pub(all) struct MembershipRemoved {
   /// The [team](https://docs.github.com/en/rest/reference/teams) for the membership.
   team : MembershipRemovedTeam
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MembershipRemoved` (fields with defaults are optional).
+pub fn MembershipRemoved::MembershipRemoved(action~ : MembershipRemovedAction, installation? : InstallationLite, member_~ : User, organization~ : Organization, scope~ : MembershipRemovedScope, sender~ : User, team~ : MembershipRemovedTeam) -> MembershipRemoved {
+  MembershipRemoved::{
+    action: action,
+    installation: installation,
+    member_: member_,
+    organization: organization,
+    scope: scope,
+    sender: sender,
+    team: team,
+  }
+}
 
 ///|
 let membership_removed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "member", "organization", "scope", "sender", "team"])
@@ -8693,6 +10132,18 @@ pub(all) struct MetaDeleted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MetaDeleted` (fields with defaults are optional).
+pub fn MetaDeleted::MetaDeleted(action~ : MetaDeletedAction, hook~ : MetaDeletedHook, hook_id~ : Int64, repository~ : Repository, sender~ : User) -> MetaDeleted {
+  MetaDeleted::{
+    action: action,
+    hook: hook,
+    hook_id: hook_id,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let meta_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "hook", "hook_id", "repository", "sender"])
 
 ///|
@@ -8786,6 +10237,29 @@ pub(all) struct Milestone {
   updated_at : @typify_rt.DateTimeUtc
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `Milestone` (fields with defaults are optional).
+pub fn Milestone::Milestone(closed_at? : @typify_rt.DateTimeUtc, closed_issues~ : Int64, created_at~ : @typify_rt.DateTimeUtc, creator~ : User, description? : String, due_on? : @typify_rt.DateTimeUtc, html_url~ : String, id~ : Int64, labels_url~ : String, node_id~ : String, number~ : Int64, open_issues~ : Int64, state~ : MilestoneState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> Milestone {
+  Milestone::{
+    closed_at: closed_at,
+    closed_issues: closed_issues,
+    created_at: created_at,
+    creator: creator,
+    description: description,
+    due_on: due_on,
+    html_url: html_url,
+    id: id,
+    labels_url: labels_url,
+    node_id: node_id,
+    number: number,
+    open_issues: open_issues,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+  }
+}
 
 ///|
 let milestone_fields : @typify_rt.Fields = @typify_rt.Fields::new(["closed_at", "closed_issues", "created_at", "creator", "description", "due_on", "html_url", "id", "labels_url", "node_id", "number", "open_issues", "state", "title", "updated_at", "url"])
@@ -8890,6 +10364,19 @@ pub(all) struct MilestoneClosed {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MilestoneClosed` (fields with defaults are optional).
+pub fn MilestoneClosed::MilestoneClosed(action~ : MilestoneClosedAction, installation? : InstallationLite, milestone~ : MilestoneClosedMilestone, organization? : Organization, repository~ : Repository, sender~ : User) -> MilestoneClosed {
+  MilestoneClosed::{
+    action: action,
+    installation: installation,
+    milestone: milestone,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let milestone_closed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "milestone", "organization", "repository", "sender"])
 
 ///|
@@ -8954,6 +10441,19 @@ pub(all) struct MilestoneCreated {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MilestoneCreated` (fields with defaults are optional).
+pub fn MilestoneCreated::MilestoneCreated(action~ : MilestoneCreatedAction, installation? : InstallationLite, milestone~ : MilestoneCreatedMilestone, organization? : Organization, repository~ : Repository, sender~ : User) -> MilestoneCreated {
+  MilestoneCreated::{
+    action: action,
+    installation: installation,
+    milestone: milestone,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let milestone_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "milestone", "organization", "repository", "sender"])
@@ -9022,6 +10522,19 @@ pub(all) struct MilestoneDeleted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MilestoneDeleted` (fields with defaults are optional).
+pub fn MilestoneDeleted::MilestoneDeleted(action~ : MilestoneDeletedAction, installation? : InstallationLite, milestone~ : Milestone, organization? : Organization, repository~ : Repository, sender~ : User) -> MilestoneDeleted {
+  MilestoneDeleted::{
+    action: action,
+    installation: installation,
+    milestone: milestone,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let milestone_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "milestone", "organization", "repository", "sender"])
 
 ///|
@@ -9087,6 +10600,20 @@ pub(all) struct MilestoneEdited {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MilestoneEdited` (fields with defaults are optional).
+pub fn MilestoneEdited::MilestoneEdited(action~ : MilestoneEditedAction, changes~ : MilestoneEditedChanges, installation? : InstallationLite, milestone~ : Milestone, organization? : Organization, repository~ : Repository, sender~ : User) -> MilestoneEdited {
+  MilestoneEdited::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    milestone: milestone,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let milestone_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "milestone", "organization", "repository", "sender"])
@@ -9157,6 +10684,19 @@ pub(all) struct MilestoneOpened {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MilestoneOpened` (fields with defaults are optional).
+pub fn MilestoneOpened::MilestoneOpened(action~ : MilestoneOpenedAction, installation? : InstallationLite, milestone~ : MilestoneOpenedMilestone, organization? : Organization, repository~ : Repository, sender~ : User) -> MilestoneOpened {
+  MilestoneOpened::{
+    action: action,
+    installation: installation,
+    milestone: milestone,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let milestone_opened_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "milestone", "organization", "repository", "sender"])
@@ -9302,6 +10842,18 @@ pub(all) struct OrgBlockBlocked {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `OrgBlockBlocked` (fields with defaults are optional).
+pub fn OrgBlockBlocked::OrgBlockBlocked(action~ : OrgBlockBlockedAction, blocked_user~ : User, installation? : InstallationLite, organization~ : Organization, sender~ : User) -> OrgBlockBlocked {
+  OrgBlockBlocked::{
+    action: action,
+    blocked_user: blocked_user,
+    installation: installation,
+    organization: organization,
+    sender: sender,
+  }
+}
+
+///|
 let org_block_blocked_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "blocked_user", "installation", "organization", "sender"])
 
 ///|
@@ -9360,6 +10912,18 @@ pub(all) struct OrgBlockUnblocked {
   organization : Organization
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `OrgBlockUnblocked` (fields with defaults are optional).
+pub fn OrgBlockUnblocked::OrgBlockUnblocked(action~ : OrgBlockUnblockedAction, blocked_user~ : User, installation? : InstallationLite, organization~ : Organization, sender~ : User) -> OrgBlockUnblocked {
+  OrgBlockUnblocked::{
+    action: action,
+    blocked_user: blocked_user,
+    installation: installation,
+    organization: organization,
+    sender: sender,
+  }
+}
 
 ///|
 let org_block_unblocked_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "blocked_user", "installation", "organization", "sender"])
@@ -9476,6 +11040,26 @@ pub(all) struct Organization {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Organization` (fields with defaults are optional).
+pub fn Organization::Organization(avatar_url~ : String, description? : String, events_url~ : String, hooks_url~ : String, html_url? : String, id~ : Int64, issues_url~ : String, login~ : String, members_url~ : String, node_id~ : String, public_members_url~ : String, repos_url~ : String, url~ : String) -> Organization {
+  Organization::{
+    avatar_url: avatar_url,
+    description: description,
+    events_url: events_url,
+    hooks_url: hooks_url,
+    html_url: html_url,
+    id: id,
+    issues_url: issues_url,
+    login: login,
+    members_url: members_url,
+    node_id: node_id,
+    public_members_url: public_members_url,
+    repos_url: repos_url,
+    url: url,
+  }
+}
+
+///|
 let organization_fields : @typify_rt.Fields = @typify_rt.Fields::new(["avatar_url", "description", "events_url", "hooks_url", "html_url", "id", "issues_url", "login", "members_url", "node_id", "public_members_url", "repos_url", "url"])
 
 ///|
@@ -9567,6 +11151,18 @@ pub(all) struct OrganizationDeleted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `OrganizationDeleted` (fields with defaults are optional).
+pub fn OrganizationDeleted::OrganizationDeleted(action~ : OrganizationDeletedAction, installation? : InstallationLite, membership~ : Membership, organization~ : Organization, sender~ : User) -> OrganizationDeleted {
+  OrganizationDeleted::{
+    action: action,
+    installation: installation,
+    membership: membership,
+    organization: organization,
+    sender: sender,
+  }
+}
+
+///|
 let organization_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "membership", "organization", "sender"])
 
 ///|
@@ -9624,6 +11220,18 @@ pub(all) struct OrganizationMemberAdded {
   organization : Organization
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `OrganizationMemberAdded` (fields with defaults are optional).
+pub fn OrganizationMemberAdded::OrganizationMemberAdded(action~ : OrganizationMemberAddedAction, installation? : InstallationLite, membership~ : Membership, organization~ : Organization, sender~ : User) -> OrganizationMemberAdded {
+  OrganizationMemberAdded::{
+    action: action,
+    installation: installation,
+    membership: membership,
+    organization: organization,
+    sender: sender,
+  }
+}
 
 ///|
 let organization_member_added_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "membership", "organization", "sender"])
@@ -9684,6 +11292,19 @@ pub(all) struct OrganizationMemberInvited {
   sender : User
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `OrganizationMemberInvited` (fields with defaults are optional).
+pub fn OrganizationMemberInvited::OrganizationMemberInvited(action~ : OrganizationMemberInvitedAction, installation? : InstallationLite, invitation~ : OrganizationMemberInvitedInvitation, organization~ : Organization, sender~ : User, user~ : User) -> OrganizationMemberInvited {
+  OrganizationMemberInvited::{
+    action: action,
+    installation: installation,
+    invitation: invitation,
+    organization: organization,
+    sender: sender,
+    user: user,
+  }
+}
 
 ///|
 let organization_member_invited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "invitation", "organization", "sender", "user"])
@@ -9749,6 +11370,18 @@ pub(all) struct OrganizationMemberRemoved {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `OrganizationMemberRemoved` (fields with defaults are optional).
+pub fn OrganizationMemberRemoved::OrganizationMemberRemoved(action~ : OrganizationMemberRemovedAction, installation? : InstallationLite, membership~ : Membership, organization~ : Organization, sender~ : User) -> OrganizationMemberRemoved {
+  OrganizationMemberRemoved::{
+    action: action,
+    installation: installation,
+    membership: membership,
+    organization: organization,
+    sender: sender,
+  }
+}
+
+///|
 let organization_member_removed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "membership", "organization", "sender"])
 
 ///|
@@ -9806,6 +11439,18 @@ pub(all) struct OrganizationRenamed {
   organization : Organization
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `OrganizationRenamed` (fields with defaults are optional).
+pub fn OrganizationRenamed::OrganizationRenamed(action~ : OrganizationRenamedAction, installation? : InstallationLite, membership~ : Membership, organization~ : Organization, sender~ : User) -> OrganizationRenamed {
+  OrganizationRenamed::{
+    action: action,
+    installation: installation,
+    membership: membership,
+    organization: organization,
+    sender: sender,
+  }
+}
 
 ///|
 let organization_renamed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "membership", "organization", "sender"])
@@ -9944,6 +11589,18 @@ pub(all) struct PackagePublished {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PackagePublished` (fields with defaults are optional).
+pub fn PackagePublished::PackagePublished(action~ : PackagePublishedAction, organization? : Organization, package_~ : PackagePublishedPackage, repository~ : Repository, sender~ : User) -> PackagePublished {
+  PackagePublished::{
+    action: action,
+    organization: organization,
+    package_: package_,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let package_published_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "organization", "package", "repository", "sender"])
 
 ///|
@@ -10001,6 +11658,18 @@ pub(all) struct PackageUpdated {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PackageUpdated` (fields with defaults are optional).
+pub fn PackageUpdated::PackageUpdated(action~ : PackageUpdatedAction, organization? : Organization, package_~ : PackageUpdatedPackage, repository~ : Repository, sender~ : User) -> PackageUpdated {
+  PackageUpdated::{
+    action: action,
+    organization: organization,
+    package_: package_,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let package_updated_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "organization", "package", "repository", "sender"])
@@ -10110,6 +11779,19 @@ pub(all) struct PageBuildEvent {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PageBuildEvent` (fields with defaults are optional).
+pub fn PageBuildEvent::PageBuildEvent(build~ : PageBuildEventBuild, id~ : Int64, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> PageBuildEvent {
+  PageBuildEvent::{
+    build: build,
+    id: id,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let page_build_event_fields : @typify_rt.Fields = @typify_rt.Fields::new(["build", "id", "installation", "organization", "repository", "sender"])
 
 ///|
@@ -10175,6 +11857,19 @@ pub(all) struct PingEvent {
   sender : User?
   zen : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PingEvent` (fields with defaults are optional).
+pub fn PingEvent::PingEvent(hook~ : PingEventHook, hook_id~ : Int64, organization? : Organization, repository? : Repository, sender? : User, zen~ : String) -> PingEvent {
+  PingEvent::{
+    hook: hook,
+    hook_id: hook_id,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    zen: zen,
+  }
+}
 
 ///|
 let ping_event_fields : @typify_rt.Fields = @typify_rt.Fields::new(["hook", "hook_id", "organization", "repository", "sender", "zen"])
@@ -10253,6 +11948,26 @@ pub(all) struct Project {
   updated_at : @typify_rt.DateTimeUtc
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `Project` (fields with defaults are optional).
+pub fn Project::Project(body? : String, columns_url~ : String, created_at~ : @typify_rt.DateTimeUtc, creator~ : User, html_url~ : String, id~ : Int64, name~ : String, node_id~ : String, number~ : Int64, owner_url~ : String, state~ : ProjectState, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> Project {
+  Project::{
+    body: body,
+    columns_url: columns_url,
+    created_at: created_at,
+    creator: creator,
+    html_url: html_url,
+    id: id,
+    name: name,
+    node_id: node_id,
+    number: number,
+    owner_url: owner_url,
+    state: state,
+    updated_at: updated_at,
+    url: url,
+  }
+}
 
 ///|
 let project_fields : @typify_rt.Fields = @typify_rt.Fields::new(["body", "columns_url", "created_at", "creator", "html_url", "id", "name", "node_id", "number", "owner_url", "state", "updated_at", "url"])
@@ -10345,6 +12060,19 @@ pub(all) struct ProjectClosed {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ProjectClosed` (fields with defaults are optional).
+pub fn ProjectClosed::ProjectClosed(action~ : ProjectClosedAction, installation? : InstallationLite, organization? : Organization, project~ : Project, repository~ : Repository, sender~ : User) -> ProjectClosed {
+  ProjectClosed::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    project: project,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let project_closed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "project", "repository", "sender"])
 
 ///|
@@ -10409,6 +12137,19 @@ pub(all) struct ProjectCreated {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectCreated` (fields with defaults are optional).
+pub fn ProjectCreated::ProjectCreated(action~ : ProjectCreatedAction, installation? : InstallationLite, organization? : Organization, project~ : Project, repository~ : Repository, sender~ : User) -> ProjectCreated {
+  ProjectCreated::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    project: project,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let project_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "project", "repository", "sender"])
@@ -10477,6 +12218,19 @@ pub(all) struct ProjectDeleted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ProjectDeleted` (fields with defaults are optional).
+pub fn ProjectDeleted::ProjectDeleted(action~ : ProjectDeletedAction, installation? : InstallationLite, organization? : Organization, project~ : Project, repository~ : Repository, sender~ : User) -> ProjectDeleted {
+  ProjectDeleted::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    project: project,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let project_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "project", "repository", "sender"])
 
 ///|
@@ -10542,6 +12296,20 @@ pub(all) struct ProjectEdited {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectEdited` (fields with defaults are optional).
+pub fn ProjectEdited::ProjectEdited(action~ : ProjectEditedAction, changes~ : ProjectEditedChanges, installation? : InstallationLite, organization? : Organization, project~ : Project, repository~ : Repository, sender~ : User) -> ProjectEdited {
+  ProjectEdited::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    organization: organization,
+    project: project,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let project_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "organization", "project", "repository", "sender"])
@@ -10612,6 +12380,19 @@ pub(all) struct ProjectReopened {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectReopened` (fields with defaults are optional).
+pub fn ProjectReopened::ProjectReopened(action~ : ProjectReopenedAction, installation? : InstallationLite, organization? : Organization, project~ : Project, repository~ : Repository, sender~ : User) -> ProjectReopened {
+  ProjectReopened::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    project: project,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let project_reopened_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "project", "repository", "sender"])
@@ -10687,6 +12468,26 @@ pub(all) struct ProjectCard {
   updated_at : @typify_rt.DateTimeUtc
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectCard` (fields with defaults are optional).
+pub fn ProjectCard::ProjectCard(after_id? : Unit = (), archived~ : Bool, column_id~ : Int64, column_url~ : String, content_url? : String, created_at~ : @typify_rt.DateTimeUtc, creator~ : User, id~ : Int64, node_id~ : String, note? : String, project_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> ProjectCard {
+  ProjectCard::{
+    after_id: after_id,
+    archived: archived,
+    column_id: column_id,
+    column_url: column_url,
+    content_url: content_url,
+    created_at: created_at,
+    creator: creator,
+    id: id,
+    node_id: node_id,
+    note: note,
+    project_url: project_url,
+    updated_at: updated_at,
+    url: url,
+  }
+}
 
 ///|
 let project_card_fields : @typify_rt.Fields = @typify_rt.Fields::new(["after_id", "archived", "column_id", "column_url", "content_url", "created_at", "creator", "id", "node_id", "note", "project_url", "updated_at", "url"])
@@ -10785,6 +12586,21 @@ pub(all) struct ProjectColumn {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ProjectColumn` (fields with defaults are optional).
+pub fn ProjectColumn::ProjectColumn(cards_url~ : String, created_at~ : @typify_rt.DateTimeUtc, id~ : Int64, name~ : String, node_id~ : String, project_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> ProjectColumn {
+  ProjectColumn::{
+    cards_url: cards_url,
+    created_at: created_at,
+    id: id,
+    name: name,
+    node_id: node_id,
+    project_url: project_url,
+    updated_at: updated_at,
+    url: url,
+  }
+}
+
+///|
 let project_column_fields : @typify_rt.Fields = @typify_rt.Fields::new(["cards_url", "created_at", "id", "name", "node_id", "project_url", "updated_at", "url"])
 
 ///|
@@ -10854,6 +12670,20 @@ pub(all) struct ProjectCardConverted {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectCardConverted` (fields with defaults are optional).
+pub fn ProjectCardConverted::ProjectCardConverted(action~ : ProjectCardConvertedAction, changes~ : ProjectCardConvertedChanges, installation? : InstallationLite, organization? : Organization, project_card~ : ProjectCard, repository~ : Repository, sender~ : User) -> ProjectCardConverted {
+  ProjectCardConverted::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    organization: organization,
+    project_card: project_card,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let project_card_converted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "organization", "project_card", "repository", "sender"])
@@ -10926,6 +12756,19 @@ pub(all) struct ProjectCardCreated {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ProjectCardCreated` (fields with defaults are optional).
+pub fn ProjectCardCreated::ProjectCardCreated(action~ : ProjectCardCreatedAction, installation? : InstallationLite, organization? : Organization, project_card~ : ProjectCard, repository~ : Repository, sender~ : User) -> ProjectCardCreated {
+  ProjectCardCreated::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    project_card: project_card,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let project_card_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "project_card", "repository", "sender"])
 
 ///|
@@ -10990,6 +12833,19 @@ pub(all) struct ProjectCardDeleted {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectCardDeleted` (fields with defaults are optional).
+pub fn ProjectCardDeleted::ProjectCardDeleted(action~ : ProjectCardDeletedAction, installation? : InstallationLite, organization? : Organization, project_card~ : ProjectCard, repository~ : Repository, sender~ : User) -> ProjectCardDeleted {
+  ProjectCardDeleted::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    project_card: project_card,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let project_card_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "project_card", "repository", "sender"])
@@ -11057,6 +12913,20 @@ pub(all) struct ProjectCardEdited {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectCardEdited` (fields with defaults are optional).
+pub fn ProjectCardEdited::ProjectCardEdited(action~ : ProjectCardEditedAction, changes~ : ProjectCardEditedChanges, installation? : InstallationLite, organization? : Organization, project_card~ : ProjectCard, repository~ : Repository, sender~ : User) -> ProjectCardEdited {
+  ProjectCardEdited::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    organization: organization,
+    project_card: project_card,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let project_card_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "organization", "project_card", "repository", "sender"])
@@ -11128,6 +12998,20 @@ pub(all) struct ProjectCardMoved {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectCardMoved` (fields with defaults are optional).
+pub fn ProjectCardMoved::ProjectCardMoved(action~ : ProjectCardMovedAction, changes~ : ProjectCardMovedChanges, installation? : InstallationLite, organization? : Organization, project_card~ : ProjectCardMovedProjectCard, repository~ : Repository, sender~ : User) -> ProjectCardMoved {
+  ProjectCardMoved::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    organization: organization,
+    project_card: project_card,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let project_card_moved_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "organization", "project_card", "repository", "sender"])
@@ -11277,6 +13161,19 @@ pub(all) struct ProjectColumnCreated {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ProjectColumnCreated` (fields with defaults are optional).
+pub fn ProjectColumnCreated::ProjectColumnCreated(action~ : ProjectColumnCreatedAction, installation? : InstallationLite, organization? : Organization, project_column~ : ProjectColumn, repository~ : Repository, sender~ : User) -> ProjectColumnCreated {
+  ProjectColumnCreated::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    project_column: project_column,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let project_column_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "project_column", "repository", "sender"])
 
 ///|
@@ -11341,6 +13238,19 @@ pub(all) struct ProjectColumnDeleted {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectColumnDeleted` (fields with defaults are optional).
+pub fn ProjectColumnDeleted::ProjectColumnDeleted(action~ : ProjectColumnDeletedAction, installation? : InstallationLite, organization? : Organization, project_column~ : ProjectColumn, repository~ : Repository, sender~ : User) -> ProjectColumnDeleted {
+  ProjectColumnDeleted::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    project_column: project_column,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let project_column_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "project_column", "repository", "sender"])
@@ -11408,6 +13318,20 @@ pub(all) struct ProjectColumnEdited {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectColumnEdited` (fields with defaults are optional).
+pub fn ProjectColumnEdited::ProjectColumnEdited(action~ : ProjectColumnEditedAction, changes~ : ProjectColumnEditedChanges, installation? : InstallationLite, organization? : Organization, project_column~ : ProjectColumn, repository~ : Repository, sender~ : User) -> ProjectColumnEdited {
+  ProjectColumnEdited::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    organization: organization,
+    project_column: project_column,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let project_column_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "organization", "project_column", "repository", "sender"])
@@ -11478,6 +13402,19 @@ pub(all) struct ProjectColumnMoved {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectColumnMoved` (fields with defaults are optional).
+pub fn ProjectColumnMoved::ProjectColumnMoved(action~ : ProjectColumnMovedAction, installation? : InstallationLite, organization? : Organization, project_column~ : ProjectColumn, repository~ : Repository, sender~ : User) -> ProjectColumnMoved {
+  ProjectColumnMoved::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    project_column: project_column,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let project_column_moved_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "project_column", "repository", "sender"])
@@ -11688,6 +13625,17 @@ pub(all) struct PublicEvent {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PublicEvent` (fields with defaults are optional).
+pub fn PublicEvent::PublicEvent(installation? : InstallationLite, organization? : Organization, repository~ : PublicEventRepository, sender~ : User) -> PublicEvent {
+  PublicEvent::{
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let public_event_fields : @typify_rt.Fields = @typify_rt.Fields::new(["installation", "organization", "repository", "sender"])
 
 ///|
@@ -11791,6 +13739,61 @@ pub(all) struct PullRequest {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequest` (fields with defaults are optional).
+pub fn PullRequest::PullRequest(active_lock_reason? : PullRequestActiveLockReason, additions~ : Int64, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, auto_merge~ : Unit, base~ : PullRequestBase, body? : String, changed_files~ : Int64, closed_at? : @typify_rt.DateTimeUtc, comments~ : Int64, comments_url~ : String, commits~ : Int64, commits_url~ : String, created_at~ : @typify_rt.DateTimeUtc, deletions~ : Int64, diff_url~ : String, draft~ : Bool, head~ : PullRequestHead, html_url~ : String, id~ : Int64, issue_url~ : String, labels~ : Array[Label], links~ : PullRequestLinks, locked~ : Bool, maintainer_can_modify~ : Bool, merge_commit_sha? : String, mergeable? : Bool, mergeable_state~ : String, merged? : Bool, merged_at? : @typify_rt.DateTimeUtc, merged_by? : User, milestone? : Milestone, node_id~ : String, number~ : Int64, patch_url~ : String, rebaseable? : Bool, requested_reviewers~ : Array[PullRequestRequestedReviewersItem], requested_teams~ : Array[Team], review_comment_url~ : String, review_comments~ : Int64, review_comments_url~ : String, state~ : PullRequestState, statuses_url~ : String, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> PullRequest {
+  PullRequest::{
+    active_lock_reason: active_lock_reason,
+    additions: additions,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    auto_merge: auto_merge,
+    base: base,
+    body: body,
+    changed_files: changed_files,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    commits: commits,
+    commits_url: commits_url,
+    created_at: created_at,
+    deletions: deletions,
+    diff_url: diff_url,
+    draft: draft,
+    head: head,
+    html_url: html_url,
+    id: id,
+    issue_url: issue_url,
+    labels: labels,
+    links: links,
+    locked: locked,
+    maintainer_can_modify: maintainer_can_modify,
+    merge_commit_sha: merge_commit_sha,
+    mergeable: mergeable,
+    mergeable_state: mergeable_state,
+    merged: merged,
+    merged_at: merged_at,
+    merged_by: merged_by,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    patch_url: patch_url,
+    rebaseable: rebaseable,
+    requested_reviewers: requested_reviewers,
+    requested_teams: requested_teams,
+    review_comment_url: review_comment_url,
+    review_comments: review_comments,
+    review_comments_url: review_comments_url,
+    state: state,
+    statuses_url: statuses_url,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "additions", "assignee", "assignees", "author_association", "auto_merge", "base", "body", "changed_files", "closed_at", "comments", "comments_url", "commits", "commits_url", "created_at", "deletions", "diff_url", "draft", "head", "html_url", "id", "issue_url", "labels", "_links", "locked", "maintainer_can_modify", "merge_commit_sha", "mergeable", "mergeable_state", "merged", "merged_at", "merged_by", "milestone", "node_id", "number", "patch_url", "rebaseable", "requested_reviewers", "requested_teams", "review_comment_url", "review_comments", "review_comments_url", "state", "statuses_url", "title", "updated_at", "url", "user"])
@@ -12062,6 +14065,38 @@ pub(all) struct PullRequestReviewComment {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReviewComment` (fields with defaults are optional).
+pub fn PullRequestReviewComment::PullRequestReviewComment(author_association~ : AuthorAssociation, body~ : String, commit_id~ : String, created_at~ : @typify_rt.DateTimeUtc, diff_hunk~ : String, html_url~ : String, id~ : Int64, in_reply_to_id? : Int64, line? : Int64, links~ : PullRequestReviewCommentLinks, node_id~ : String, original_commit_id~ : String, original_line~ : Int64, original_position~ : Int64, original_start_line? : Int64, path~ : String, position? : Int64, pull_request_review_id~ : Int64, pull_request_url~ : String, side~ : PullRequestReviewCommentSide, start_line? : Int64, start_side? : PullRequestReviewCommentStartSide, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> PullRequestReviewComment {
+  PullRequestReviewComment::{
+    author_association: author_association,
+    body: body,
+    commit_id: commit_id,
+    created_at: created_at,
+    diff_hunk: diff_hunk,
+    html_url: html_url,
+    id: id,
+    in_reply_to_id: in_reply_to_id,
+    line: line,
+    links: links,
+    node_id: node_id,
+    original_commit_id: original_commit_id,
+    original_line: original_line,
+    original_position: original_position,
+    original_start_line: original_start_line,
+    path: path,
+    position: position,
+    pull_request_review_id: pull_request_review_id,
+    pull_request_url: pull_request_url,
+    side: side,
+    start_line: start_line,
+    start_side: start_side,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
+
+///|
 let pull_request_review_comment_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author_association", "body", "commit_id", "created_at", "diff_hunk", "html_url", "id", "in_reply_to_id", "line", "_links", "node_id", "original_commit_id", "original_line", "original_position", "original_start_line", "path", "position", "pull_request_review_id", "pull_request_url", "side", "start_line", "start_side", "updated_at", "url", "user"])
 
 ///|
@@ -12205,6 +14240,21 @@ pub(all) struct PullRequestAssigned {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestAssigned` (fields with defaults are optional).
+pub fn PullRequestAssigned::PullRequestAssigned(action~ : PullRequestAssignedAction, assignee~ : User, installation? : InstallationLite, number~ : Int64, organization? : Organization, pull_request~ : PullRequest, repository~ : Repository, sender~ : User) -> PullRequestAssigned {
+  PullRequestAssigned::{
+    action: action,
+    assignee: assignee,
+    installation: installation,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let pull_request_assigned_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "assignee", "installation", "number", "organization", "pull_request", "repository", "sender"])
 
 ///|
@@ -12280,6 +14330,20 @@ pub(all) struct PullRequestAutoMergeDisabled {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestAutoMergeDisabled` (fields with defaults are optional).
+pub fn PullRequestAutoMergeDisabled::PullRequestAutoMergeDisabled(action~ : PullRequestAutoMergeDisabledAction, installation? : InstallationLite, number~ : Int64, organization? : Organization, pull_request~ : PullRequest, repository~ : Repository, sender~ : User) -> PullRequestAutoMergeDisabled {
+  PullRequestAutoMergeDisabled::{
+    action: action,
+    installation: installation,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let pull_request_auto_merge_disabled_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "number", "organization", "pull_request", "repository", "sender"])
 
 ///|
@@ -12349,6 +14413,20 @@ pub(all) struct PullRequestAutoMergeEnabled {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestAutoMergeEnabled` (fields with defaults are optional).
+pub fn PullRequestAutoMergeEnabled::PullRequestAutoMergeEnabled(action~ : PullRequestAutoMergeEnabledAction, installation? : InstallationLite, number~ : Int64, organization? : Organization, pull_request~ : PullRequest, repository~ : Repository, sender~ : User) -> PullRequestAutoMergeEnabled {
+  PullRequestAutoMergeEnabled::{
+    action: action,
+    installation: installation,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let pull_request_auto_merge_enabled_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "number", "organization", "pull_request", "repository", "sender"])
@@ -12423,6 +14501,20 @@ pub(all) struct PullRequestClosed {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestClosed` (fields with defaults are optional).
+pub fn PullRequestClosed::PullRequestClosed(action~ : PullRequestClosedAction, installation? : InstallationLite, number~ : Int64, organization? : Organization, pull_request~ : PullRequestClosedPullRequest, repository~ : Repository, sender~ : User) -> PullRequestClosed {
+  PullRequestClosed::{
+    action: action,
+    installation: installation,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let pull_request_closed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "number", "organization", "pull_request", "repository", "sender"])
 
 ///|
@@ -12493,6 +14585,20 @@ pub(all) struct PullRequestConvertedToDraft {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestConvertedToDraft` (fields with defaults are optional).
+pub fn PullRequestConvertedToDraft::PullRequestConvertedToDraft(action~ : PullRequestConvertedToDraftAction, installation? : InstallationLite, number~ : Int64, organization? : Organization, pull_request~ : PullRequestConvertedToDraftPullRequest, repository~ : Repository, sender~ : User) -> PullRequestConvertedToDraft {
+  PullRequestConvertedToDraft::{
+    action: action,
+    installation: installation,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let pull_request_converted_to_draft_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "number", "organization", "pull_request", "repository", "sender"])
@@ -12566,6 +14672,21 @@ pub(all) struct PullRequestEdited {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestEdited` (fields with defaults are optional).
+pub fn PullRequestEdited::PullRequestEdited(action~ : PullRequestEditedAction, changes~ : PullRequestEditedChanges, installation? : InstallationLite, number~ : Int64, organization? : Organization, pull_request~ : PullRequest, repository~ : Repository, sender~ : User) -> PullRequestEdited {
+  PullRequestEdited::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let pull_request_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "number", "organization", "pull_request", "repository", "sender"])
@@ -12645,6 +14766,21 @@ pub(all) struct PullRequestLabeled {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestLabeled` (fields with defaults are optional).
+pub fn PullRequestLabeled::PullRequestLabeled(action~ : PullRequestLabeledAction, installation? : InstallationLite, label~ : Label, number~ : Int64, organization? : Organization, pull_request~ : PullRequest, repository~ : Repository, sender~ : User) -> PullRequestLabeled {
+  PullRequestLabeled::{
+    action: action,
+    installation: installation,
+    label: label,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let pull_request_labeled_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "label", "number", "organization", "pull_request", "repository", "sender"])
 
 ///|
@@ -12721,6 +14857,20 @@ pub(all) struct PullRequestLocked {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestLocked` (fields with defaults are optional).
+pub fn PullRequestLocked::PullRequestLocked(action~ : PullRequestLockedAction, installation? : InstallationLite, number~ : Int64, organization? : Organization, pull_request~ : PullRequest, repository~ : Repository, sender~ : User) -> PullRequestLocked {
+  PullRequestLocked::{
+    action: action,
+    installation: installation,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let pull_request_locked_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "number", "organization", "pull_request", "repository", "sender"])
 
 ///|
@@ -12791,6 +14941,20 @@ pub(all) struct PullRequestOpened {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestOpened` (fields with defaults are optional).
+pub fn PullRequestOpened::PullRequestOpened(action~ : PullRequestOpenedAction, installation? : InstallationLite, number~ : Int64, organization? : Organization, pull_request~ : PullRequestOpenedPullRequest, repository~ : Repository, sender~ : User) -> PullRequestOpened {
+  PullRequestOpened::{
+    action: action,
+    installation: installation,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let pull_request_opened_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "number", "organization", "pull_request", "repository", "sender"])
@@ -12865,6 +15029,20 @@ pub(all) struct PullRequestReadyForReview {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReadyForReview` (fields with defaults are optional).
+pub fn PullRequestReadyForReview::PullRequestReadyForReview(action~ : PullRequestReadyForReviewAction, installation? : InstallationLite, number~ : Int64, organization? : Organization, pull_request~ : PullRequestReadyForReviewPullRequest, repository~ : Repository, sender~ : User) -> PullRequestReadyForReview {
+  PullRequestReadyForReview::{
+    action: action,
+    installation: installation,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let pull_request_ready_for_review_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "number", "organization", "pull_request", "repository", "sender"])
 
 ///|
@@ -12935,6 +15113,20 @@ pub(all) struct PullRequestReopened {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReopened` (fields with defaults are optional).
+pub fn PullRequestReopened::PullRequestReopened(action~ : PullRequestReopenedAction, installation? : InstallationLite, number~ : Int64, organization? : Organization, pull_request~ : PullRequestReopenedPullRequest, repository~ : Repository, sender~ : User) -> PullRequestReopened {
+  PullRequestReopened::{
+    action: action,
+    installation: installation,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let pull_request_reopened_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "number", "organization", "pull_request", "repository", "sender"])
@@ -13293,6 +15485,22 @@ pub(all) struct PullRequestSynchronize {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestSynchronize` (fields with defaults are optional).
+pub fn PullRequestSynchronize::PullRequestSynchronize(action~ : PullRequestSynchronizeAction, after~ : String, before~ : String, installation? : InstallationLite, number~ : Int64, organization? : Organization, pull_request~ : PullRequest, repository~ : Repository, sender~ : User) -> PullRequestSynchronize {
+  PullRequestSynchronize::{
+    action: action,
+    after: after,
+    before: before,
+    installation: installation,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let pull_request_synchronize_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "after", "before", "installation", "number", "organization", "pull_request", "repository", "sender"])
 
 ///|
@@ -13374,6 +15582,21 @@ pub(all) struct PullRequestUnassigned {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestUnassigned` (fields with defaults are optional).
+pub fn PullRequestUnassigned::PullRequestUnassigned(action~ : PullRequestUnassignedAction, assignee~ : User, installation? : InstallationLite, number~ : Int64, organization? : Organization, pull_request~ : PullRequest, repository~ : Repository, sender~ : User) -> PullRequestUnassigned {
+  PullRequestUnassigned::{
+    action: action,
+    assignee: assignee,
+    installation: installation,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let pull_request_unassigned_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "assignee", "installation", "number", "organization", "pull_request", "repository", "sender"])
 
 ///|
@@ -13451,6 +15674,21 @@ pub(all) struct PullRequestUnlabeled {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestUnlabeled` (fields with defaults are optional).
+pub fn PullRequestUnlabeled::PullRequestUnlabeled(action~ : PullRequestUnlabeledAction, installation? : InstallationLite, label~ : Label, number~ : Int64, organization? : Organization, pull_request~ : PullRequest, repository~ : Repository, sender~ : User) -> PullRequestUnlabeled {
+  PullRequestUnlabeled::{
+    action: action,
+    installation: installation,
+    label: label,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let pull_request_unlabeled_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "label", "number", "organization", "pull_request", "repository", "sender"])
 
 ///|
@@ -13525,6 +15763,20 @@ pub(all) struct PullRequestUnlocked {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestUnlocked` (fields with defaults are optional).
+pub fn PullRequestUnlocked::PullRequestUnlocked(action~ : PullRequestUnlockedAction, installation? : InstallationLite, number~ : Int64, organization? : Organization, pull_request~ : PullRequest, repository~ : Repository, sender~ : User) -> PullRequestUnlocked {
+  PullRequestUnlocked::{
+    action: action,
+    installation: installation,
+    number: number,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let pull_request_unlocked_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "number", "organization", "pull_request", "repository", "sender"])
@@ -13795,6 +16047,20 @@ pub(all) struct PullRequestReviewDismissed {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReviewDismissed` (fields with defaults are optional).
+pub fn PullRequestReviewDismissed::PullRequestReviewDismissed(action~ : PullRequestReviewDismissedAction, installation? : InstallationLite, organization? : Organization, pull_request~ : SimplePullRequest, repository~ : Repository, review~ : PullRequestReviewDismissedReview, sender~ : User) -> PullRequestReviewDismissed {
+  PullRequestReviewDismissed::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    review: review,
+    sender: sender,
+  }
+}
+
+///|
 let pull_request_review_dismissed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "pull_request", "repository", "review", "sender"])
 
 ///|
@@ -13865,6 +16131,21 @@ pub(all) struct PullRequestReviewEdited {
   review : PullRequestReviewEditedReview
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewEdited` (fields with defaults are optional).
+pub fn PullRequestReviewEdited::PullRequestReviewEdited(action~ : PullRequestReviewEditedAction, changes~ : PullRequestReviewEditedChanges, installation? : InstallationLite, organization? : Organization, pull_request~ : SimplePullRequest, repository~ : Repository, review~ : PullRequestReviewEditedReview, sender~ : User) -> PullRequestReviewEdited {
+  PullRequestReviewEdited::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    review: review,
+    sender: sender,
+  }
+}
 
 ///|
 let pull_request_review_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "organization", "pull_request", "repository", "review", "sender"])
@@ -13942,6 +16223,20 @@ pub(all) struct PullRequestReviewSubmitted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReviewSubmitted` (fields with defaults are optional).
+pub fn PullRequestReviewSubmitted::PullRequestReviewSubmitted(action~ : PullRequestReviewSubmittedAction, installation? : InstallationLite, organization? : Organization, pull_request~ : SimplePullRequest, repository~ : Repository, review~ : PullRequestReviewSubmittedReview, sender~ : User) -> PullRequestReviewSubmitted {
+  PullRequestReviewSubmitted::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    review: review,
+    sender: sender,
+  }
+}
+
+///|
 let pull_request_review_submitted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "pull_request", "repository", "review", "sender"])
 
 ///|
@@ -14011,6 +16306,20 @@ pub(all) struct PullRequestReviewCommentCreated {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewCommentCreated` (fields with defaults are optional).
+pub fn PullRequestReviewCommentCreated::PullRequestReviewCommentCreated(action~ : PullRequestReviewCommentCreatedAction, comment~ : PullRequestReviewComment, installation? : InstallationLite, organization? : Organization, pull_request~ : PullRequestReviewCommentCreatedPullRequest, repository~ : Repository, sender~ : User) -> PullRequestReviewCommentCreated {
+  PullRequestReviewCommentCreated::{
+    action: action,
+    comment: comment,
+    installation: installation,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let pull_request_review_comment_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "comment", "installation", "organization", "pull_request", "repository", "sender"])
@@ -14084,6 +16393,20 @@ pub(all) struct PullRequestReviewCommentDeleted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReviewCommentDeleted` (fields with defaults are optional).
+pub fn PullRequestReviewCommentDeleted::PullRequestReviewCommentDeleted(action~ : PullRequestReviewCommentDeletedAction, comment~ : PullRequestReviewComment, installation? : InstallationLite, organization? : Organization, pull_request~ : PullRequestReviewCommentDeletedPullRequest, repository~ : Repository, sender~ : User) -> PullRequestReviewCommentDeleted {
+  PullRequestReviewCommentDeleted::{
+    action: action,
+    comment: comment,
+    installation: installation,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let pull_request_review_comment_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "comment", "installation", "organization", "pull_request", "repository", "sender"])
 
 ///|
@@ -14154,6 +16477,21 @@ pub(all) struct PullRequestReviewCommentEdited {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewCommentEdited` (fields with defaults are optional).
+pub fn PullRequestReviewCommentEdited::PullRequestReviewCommentEdited(action~ : PullRequestReviewCommentEditedAction, changes~ : PullRequestReviewCommentEditedChanges, comment~ : PullRequestReviewComment, installation? : InstallationLite, organization? : Organization, pull_request~ : PullRequestReviewCommentEditedPullRequest, repository~ : Repository, sender~ : User) -> PullRequestReviewCommentEdited {
+  PullRequestReviewCommentEdited::{
+    action: action,
+    changes: changes,
+    comment: comment,
+    installation: installation,
+    organization: organization,
+    pull_request: pull_request,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let pull_request_review_comment_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "comment", "installation", "organization", "pull_request", "repository", "sender"])
@@ -14357,6 +16695,28 @@ pub(all) struct PushEvent {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PushEvent` (fields with defaults are optional).
+pub fn PushEvent::PushEvent(after~ : String, base_ref? : String, before~ : String, commits~ : Array[Commit], compare~ : String, created~ : Bool, deleted~ : Bool, forced~ : Bool, head_commit? : Commit, installation? : InstallationLite, organization? : Organization, pusher~ : Committer, ref_~ : String, repository~ : Repository, sender~ : User) -> PushEvent {
+  PushEvent::{
+    after: after,
+    base_ref: base_ref,
+    before: before,
+    commits: commits,
+    compare: compare,
+    created: created,
+    deleted: deleted,
+    forced: forced,
+    head_commit: head_commit,
+    installation: installation,
+    organization: organization,
+    pusher: pusher,
+    ref_: ref_,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let push_event_fields : @typify_rt.Fields = @typify_rt.Fields::new(["after", "base_ref", "before", "commits", "compare", "created", "deleted", "forced", "head_commit", "installation", "organization", "pusher", "ref", "repository", "sender"])
 
 ///|
@@ -14475,6 +16835,31 @@ pub(all) struct Release {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Release` (fields with defaults are optional).
+pub fn Release::Release(assets~ : Array[ReleaseAsset], assets_url~ : String, author~ : User, body~ : String, created_at? : @typify_rt.DateTimeUtc, draft~ : Bool, html_url~ : String, id~ : Int64, name~ : String, node_id~ : String, prerelease~ : Bool, published_at? : @typify_rt.DateTimeUtc, tag_name~ : String, tarball_url? : String, target_commitish~ : String, upload_url~ : String, url~ : String, zipball_url? : String) -> Release {
+  Release::{
+    assets: assets,
+    assets_url: assets_url,
+    author: author,
+    body: body,
+    created_at: created_at,
+    draft: draft,
+    html_url: html_url,
+    id: id,
+    name: name,
+    node_id: node_id,
+    prerelease: prerelease,
+    published_at: published_at,
+    tag_name: tag_name,
+    tarball_url: tarball_url,
+    target_commitish: target_commitish,
+    upload_url: upload_url,
+    url: url,
+    zipball_url: zipball_url,
+  }
+}
+
+///|
 let release_fields : @typify_rt.Fields = @typify_rt.Fields::new(["assets", "assets_url", "author", "body", "created_at", "draft", "html_url", "id", "name", "node_id", "prerelease", "published_at", "tag_name", "tarball_url", "target_commitish", "upload_url", "url", "zipball_url"])
 
 ///|
@@ -14585,6 +16970,19 @@ pub(all) struct ReleaseCreated {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ReleaseCreated` (fields with defaults are optional).
+pub fn ReleaseCreated::ReleaseCreated(action~ : ReleaseCreatedAction, installation? : InstallationLite, organization? : Organization, release~ : Release, repository~ : Repository, sender~ : User) -> ReleaseCreated {
+  ReleaseCreated::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    release: release,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let release_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "release", "repository", "sender"])
 
 ///|
@@ -14649,6 +17047,19 @@ pub(all) struct ReleaseDeleted {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ReleaseDeleted` (fields with defaults are optional).
+pub fn ReleaseDeleted::ReleaseDeleted(action~ : ReleaseDeletedAction, installation? : InstallationLite, organization? : Organization, release~ : Release, repository~ : Repository, sender~ : User) -> ReleaseDeleted {
+  ReleaseDeleted::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    release: release,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let release_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "release", "repository", "sender"])
@@ -14716,6 +17127,20 @@ pub(all) struct ReleaseEdited {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ReleaseEdited` (fields with defaults are optional).
+pub fn ReleaseEdited::ReleaseEdited(action~ : ReleaseEditedAction, changes~ : ReleaseEditedChanges, installation? : InstallationLite, organization? : Organization, release~ : Release, repository~ : Repository, sender~ : User) -> ReleaseEdited {
+  ReleaseEdited::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    organization: organization,
+    release: release,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let release_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "organization", "release", "repository", "sender"])
@@ -14788,6 +17213,19 @@ pub(all) struct ReleasePrereleased {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ReleasePrereleased` (fields with defaults are optional).
+pub fn ReleasePrereleased::ReleasePrereleased(action~ : ReleasePrereleasedAction, installation? : InstallationLite, organization? : Organization, release~ : ReleasePrereleasedRelease, repository~ : Repository, sender~ : User) -> ReleasePrereleased {
+  ReleasePrereleased::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    release: release,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let release_prereleased_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "release", "repository", "sender"])
 
 ///|
@@ -14852,6 +17290,19 @@ pub(all) struct ReleasePublished {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ReleasePublished` (fields with defaults are optional).
+pub fn ReleasePublished::ReleasePublished(action~ : ReleasePublishedAction, installation? : InstallationLite, organization? : Organization, release~ : ReleasePublishedRelease, repository~ : Repository, sender~ : User) -> ReleasePublished {
+  ReleasePublished::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    release: release,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let release_published_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "release", "repository", "sender"])
@@ -14920,6 +17371,19 @@ pub(all) struct ReleaseReleased {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ReleaseReleased` (fields with defaults are optional).
+pub fn ReleaseReleased::ReleaseReleased(action~ : ReleaseReleasedAction, installation? : InstallationLite, organization? : Organization, release~ : Release, repository~ : Repository, sender~ : User) -> ReleaseReleased {
+  ReleaseReleased::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    release: release,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let release_released_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "release", "repository", "sender"])
 
 ///|
@@ -14984,6 +17448,19 @@ pub(all) struct ReleaseUnpublished {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ReleaseUnpublished` (fields with defaults are optional).
+pub fn ReleaseUnpublished::ReleaseUnpublished(action~ : ReleaseUnpublishedAction, installation? : InstallationLite, organization? : Organization, release~ : ReleaseUnpublishedRelease, repository~ : Repository, sender~ : User) -> ReleaseUnpublished {
+  ReleaseUnpublished::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    release: release,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let release_unpublished_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "release", "repository", "sender"])
@@ -15059,6 +17536,26 @@ pub(all) struct ReleaseAsset {
   uploader : User?
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ReleaseAsset` (fields with defaults are optional).
+pub fn ReleaseAsset::ReleaseAsset(browser_download_url~ : String, content_type~ : String, created_at~ : @typify_rt.DateTimeUtc, download_count~ : Int64, id~ : Int64, label? : String, name~ : String, node_id~ : String, size~ : Int64, state~ : ReleaseAssetState, updated_at~ : @typify_rt.DateTimeUtc, uploader? : User, url~ : String) -> ReleaseAsset {
+  ReleaseAsset::{
+    browser_download_url: browser_download_url,
+    content_type: content_type,
+    created_at: created_at,
+    download_count: download_count,
+    id: id,
+    label: label,
+    name: name,
+    node_id: node_id,
+    size: size,
+    state: state,
+    updated_at: updated_at,
+    uploader: uploader,
+    url: url,
+  }
+}
 
 ///|
 let release_asset_fields : @typify_rt.Fields = @typify_rt.Fields::new(["browser_download_url", "content_type", "created_at", "download_count", "id", "label", "name", "node_id", "size", "state", "updated_at", "uploader", "url"])
@@ -15247,6 +17744,16 @@ pub(all) struct RepoRef {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepoRef` (fields with defaults are optional).
+pub fn RepoRef::RepoRef(id~ : Int64, name~ : String, url~ : String) -> RepoRef {
+  RepoRef::{
+    id: id,
+    name: name,
+    url: url,
+  }
+}
+
+///|
 let repo_ref_fields : @typify_rt.Fields = @typify_rt.Fields::new(["id", "name", "url"])
 
 ///|
@@ -15391,9 +17898,6 @@ pub(all) struct Repository {
 } derive(Debug, Eq)
 
 ///|
-let repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
-
-///|
 fn default_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
   @typify_rt.default_value("true", @typify_rt.de_bool)
 }
@@ -15407,6 +17911,109 @@ fn default_repository_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
 fn default_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
   @typify_rt.default_value("true", @typify_rt.de_bool)
 }
+
+///|
+/// Construct a `Repository` (fields with defaults are optional).
+pub fn Repository::Repository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool, allow_rebase_merge? : Bool, allow_squash_merge? : Bool, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> Repository {
+  Repository::{
+    allow_auto_merge: allow_auto_merge,
+    allow_forking: allow_forking,
+    allow_merge_commit: match allow_merge_commit {
+      Some(v) => v
+      None => default_repository_allow_merge_commit() catch { e => abort("invalid default for Repository.allow_merge_commit: \{e}") }
+    },
+    allow_rebase_merge: match allow_rebase_merge {
+      Some(v) => v
+      None => default_repository_allow_rebase_merge() catch { e => abort("invalid default for Repository.allow_rebase_merge: \{e}") }
+    },
+    allow_squash_merge: match allow_squash_merge {
+      Some(v) => v
+      None => default_repository_allow_squash_merge() catch { e => abort("invalid default for Repository.allow_squash_merge: \{e}") }
+    },
+    archive_url: archive_url,
+    archived: archived,
+    assignees_url: assignees_url,
+    blobs_url: blobs_url,
+    branches_url: branches_url,
+    clone_url: clone_url,
+    collaborators_url: collaborators_url,
+    comments_url: comments_url,
+    commits_url: commits_url,
+    compare_url: compare_url,
+    contents_url: contents_url,
+    contributors_url: contributors_url,
+    created_at: created_at,
+    default_branch: default_branch,
+    delete_branch_on_merge: delete_branch_on_merge,
+    deployments_url: deployments_url,
+    description: description,
+    disabled: disabled,
+    downloads_url: downloads_url,
+    events_url: events_url,
+    fork: fork,
+    forks: forks,
+    forks_count: forks_count,
+    forks_url: forks_url,
+    full_name: full_name,
+    git_commits_url: git_commits_url,
+    git_refs_url: git_refs_url,
+    git_tags_url: git_tags_url,
+    git_url: git_url,
+    has_downloads: has_downloads,
+    has_issues: has_issues,
+    has_pages: has_pages,
+    has_projects: has_projects,
+    has_wiki: has_wiki,
+    homepage: homepage,
+    hooks_url: hooks_url,
+    html_url: html_url,
+    id: id,
+    issue_comment_url: issue_comment_url,
+    issue_events_url: issue_events_url,
+    issues_url: issues_url,
+    keys_url: keys_url,
+    labels_url: labels_url,
+    language: language,
+    languages_url: languages_url,
+    license: license,
+    master_branch: master_branch,
+    merges_url: merges_url,
+    milestones_url: milestones_url,
+    mirror_url: mirror_url,
+    name: name,
+    node_id: node_id,
+    notifications_url: notifications_url,
+    open_issues: open_issues,
+    open_issues_count: open_issues_count,
+    organization: organization,
+    owner: owner,
+    permissions: permissions,
+    private: private,
+    public: public,
+    pulls_url: pulls_url,
+    pushed_at: pushed_at,
+    releases_url: releases_url,
+    size: size,
+    ssh_url: ssh_url,
+    stargazers: stargazers,
+    stargazers_count: stargazers_count,
+    stargazers_url: stargazers_url,
+    statuses_url: statuses_url,
+    subscribers_url: subscribers_url,
+    subscription_url: subscription_url,
+    svn_url: svn_url,
+    tags_url: tags_url,
+    teams_url: teams_url,
+    trees_url: trees_url,
+    updated_at: updated_at,
+    url: url,
+    watchers: watchers,
+    watchers_count: watchers_count,
+  }
+}
+
+///|
+let repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
 
 ///|
 pub impl @typify_rt.Serde for Repository with fn deserialize(d) {
@@ -15793,6 +18400,18 @@ pub(all) struct RepositoryArchived {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryArchived` (fields with defaults are optional).
+pub fn RepositoryArchived::RepositoryArchived(action~ : RepositoryArchivedAction, installation? : InstallationLite, organization? : Organization, repository~ : RepositoryArchivedRepository, sender~ : User) -> RepositoryArchived {
+  RepositoryArchived::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let repository_archived_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender"])
 
 ///|
@@ -15852,6 +18471,18 @@ pub(all) struct RepositoryCreated {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryCreated` (fields with defaults are optional).
+pub fn RepositoryCreated::RepositoryCreated(action~ : RepositoryCreatedAction, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> RepositoryCreated {
+  RepositoryCreated::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let repository_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender"])
@@ -15915,6 +18546,18 @@ pub(all) struct RepositoryDeleted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryDeleted` (fields with defaults are optional).
+pub fn RepositoryDeleted::RepositoryDeleted(action~ : RepositoryDeletedAction, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> RepositoryDeleted {
+  RepositoryDeleted::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let repository_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender"])
 
 ///|
@@ -15975,6 +18618,19 @@ pub(all) struct RepositoryEdited {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryEdited` (fields with defaults are optional).
+pub fn RepositoryEdited::RepositoryEdited(action~ : RepositoryEditedAction, changes~ : RepositoryEditedChanges, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> RepositoryEdited {
+  RepositoryEdited::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let repository_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "organization", "repository", "sender"])
@@ -16042,6 +18698,18 @@ pub(all) struct RepositoryPrivatized {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryPrivatized` (fields with defaults are optional).
+pub fn RepositoryPrivatized::RepositoryPrivatized(action~ : RepositoryPrivatizedAction, installation? : InstallationLite, organization? : Organization, repository~ : RepositoryPrivatizedRepository, sender~ : User) -> RepositoryPrivatized {
+  RepositoryPrivatized::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let repository_privatized_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender"])
 
 ///|
@@ -16101,6 +18769,18 @@ pub(all) struct RepositoryPublicized {
   repository : RepositoryPublicizedRepository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryPublicized` (fields with defaults are optional).
+pub fn RepositoryPublicized::RepositoryPublicized(action~ : RepositoryPublicizedAction, installation? : InstallationLite, organization? : Organization, repository~ : RepositoryPublicizedRepository, sender~ : User) -> RepositoryPublicized {
+  RepositoryPublicized::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let repository_publicized_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender"])
@@ -16163,6 +18843,19 @@ pub(all) struct RepositoryRenamed {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryRenamed` (fields with defaults are optional).
+pub fn RepositoryRenamed::RepositoryRenamed(action~ : RepositoryRenamedAction, changes~ : RepositoryRenamedChanges, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> RepositoryRenamed {
+  RepositoryRenamed::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let repository_renamed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "organization", "repository", "sender"])
@@ -16231,6 +18924,19 @@ pub(all) struct RepositoryTransferred {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryTransferred` (fields with defaults are optional).
+pub fn RepositoryTransferred::RepositoryTransferred(action~ : RepositoryTransferredAction, changes~ : RepositoryTransferredChanges, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> RepositoryTransferred {
+  RepositoryTransferred::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let repository_transferred_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "organization", "repository", "sender"])
 
 ///|
@@ -16294,6 +19000,18 @@ pub(all) struct RepositoryUnarchived {
   repository : RepositoryUnarchivedRepository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryUnarchived` (fields with defaults are optional).
+pub fn RepositoryUnarchived::RepositoryUnarchived(action~ : RepositoryUnarchivedAction, installation? : InstallationLite, organization? : Organization, repository~ : RepositoryUnarchivedRepository, sender~ : User) -> RepositoryUnarchived {
+  RepositoryUnarchived::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let repository_unarchived_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender"])
@@ -16399,6 +19117,59 @@ pub(all) struct RepositoryLite {
   trees_url : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryLite` (fields with defaults are optional).
+pub fn RepositoryLite::RepositoryLite(archive_url~ : String, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, deployments_url~ : String, description? : String, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, languages_url~ : String, merges_url~ : String, milestones_url~ : String, name~ : String, node_id~ : String, notifications_url~ : String, owner~ : User, private~ : Bool, pulls_url~ : String, releases_url~ : String, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, url~ : String) -> RepositoryLite {
+  RepositoryLite::{
+    archive_url: archive_url,
+    assignees_url: assignees_url,
+    blobs_url: blobs_url,
+    branches_url: branches_url,
+    collaborators_url: collaborators_url,
+    comments_url: comments_url,
+    commits_url: commits_url,
+    compare_url: compare_url,
+    contents_url: contents_url,
+    contributors_url: contributors_url,
+    deployments_url: deployments_url,
+    description: description,
+    downloads_url: downloads_url,
+    events_url: events_url,
+    fork: fork,
+    forks_url: forks_url,
+    full_name: full_name,
+    git_commits_url: git_commits_url,
+    git_refs_url: git_refs_url,
+    git_tags_url: git_tags_url,
+    hooks_url: hooks_url,
+    html_url: html_url,
+    id: id,
+    issue_comment_url: issue_comment_url,
+    issue_events_url: issue_events_url,
+    issues_url: issues_url,
+    keys_url: keys_url,
+    labels_url: labels_url,
+    languages_url: languages_url,
+    merges_url: merges_url,
+    milestones_url: milestones_url,
+    name: name,
+    node_id: node_id,
+    notifications_url: notifications_url,
+    owner: owner,
+    private: private,
+    pulls_url: pulls_url,
+    releases_url: releases_url,
+    stargazers_url: stargazers_url,
+    statuses_url: statuses_url,
+    subscribers_url: subscribers_url,
+    subscription_url: subscription_url,
+    tags_url: tags_url,
+    teams_url: teams_url,
+    trees_url: trees_url,
+    url: url,
+  }
+}
 
 ///|
 let repository_lite_fields : @typify_rt.Fields = @typify_rt.Fields::new(["archive_url", "assignees_url", "blobs_url", "branches_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "deployments_url", "description", "downloads_url", "events_url", "fork", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "languages_url", "merges_url", "milestones_url", "name", "node_id", "notifications_url", "owner", "private", "pulls_url", "releases_url", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "tags_url", "teams_url", "trees_url", "url"])
@@ -16624,6 +19395,20 @@ pub(all) struct RepositoryDispatchOnDemandTest {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryDispatchOnDemandTest` (fields with defaults are optional).
+pub fn RepositoryDispatchOnDemandTest::RepositoryDispatchOnDemandTest(action~ : RepositoryDispatchOnDemandTestAction, branch~ : String, client_payload~ : Map[String, Json], installation~ : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> RepositoryDispatchOnDemandTest {
+  RepositoryDispatchOnDemandTest::{
+    action: action,
+    branch: branch,
+    client_payload: client_payload,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let repository_dispatch_on_demand_test_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "branch", "client_payload", "installation", "organization", "repository", "sender"])
 
 ///|
@@ -16832,6 +19617,18 @@ pub(all) struct RepositoryImportEvent {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryImportEvent` (fields with defaults are optional).
+pub fn RepositoryImportEvent::RepositoryImportEvent(installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User, status~ : RepositoryImportEventStatus) -> RepositoryImportEvent {
+  RepositoryImportEvent::{
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    status: status,
+  }
+}
+
+///|
 let repository_import_event_fields : @typify_rt.Fields = @typify_rt.Fields::new(["installation", "organization", "repository", "sender", "status"])
 
 ///|
@@ -16893,6 +19690,18 @@ pub(all) struct RepositoryVulnerabilityAlertCreate {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryVulnerabilityAlertCreate` (fields with defaults are optional).
+pub fn RepositoryVulnerabilityAlertCreate::RepositoryVulnerabilityAlertCreate(action~ : RepositoryVulnerabilityAlertCreateAction, alert~ : RepositoryVulnerabilityAlertCreateAlert, organization? : Organization, repository~ : Repository, sender~ : User) -> RepositoryVulnerabilityAlertCreate {
+  RepositoryVulnerabilityAlertCreate::{
+    action: action,
+    alert: alert,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let repository_vulnerability_alert_create_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "alert", "organization", "repository", "sender"])
 
 ///|
@@ -16952,6 +19761,18 @@ pub(all) struct RepositoryVulnerabilityAlertDismiss {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryVulnerabilityAlertDismiss` (fields with defaults are optional).
+pub fn RepositoryVulnerabilityAlertDismiss::RepositoryVulnerabilityAlertDismiss(action~ : RepositoryVulnerabilityAlertDismissAction, alert~ : RepositoryVulnerabilityAlertDismissAlert, organization? : Organization, repository~ : Repository, sender~ : User) -> RepositoryVulnerabilityAlertDismiss {
+  RepositoryVulnerabilityAlertDismiss::{
+    action: action,
+    alert: alert,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
+
+///|
 let repository_vulnerability_alert_dismiss_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "alert", "organization", "repository", "sender"])
 
 ///|
@@ -17009,6 +19830,18 @@ pub(all) struct RepositoryVulnerabilityAlertResolve {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryVulnerabilityAlertResolve` (fields with defaults are optional).
+pub fn RepositoryVulnerabilityAlertResolve::RepositoryVulnerabilityAlertResolve(action~ : RepositoryVulnerabilityAlertResolveAction, alert~ : RepositoryVulnerabilityAlertResolveAlert, organization? : Organization, repository~ : Repository, sender~ : User) -> RepositoryVulnerabilityAlertResolve {
+  RepositoryVulnerabilityAlertResolve::{
+    action: action,
+    alert: alert,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let repository_vulnerability_alert_resolve_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "alert", "organization", "repository", "sender"])
@@ -17127,6 +19960,18 @@ pub(all) struct SecretScanningAlertCreated {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecretScanningAlertCreated` (fields with defaults are optional).
+pub fn SecretScanningAlertCreated::SecretScanningAlertCreated(action~ : SecretScanningAlertCreatedAction, alert~ : SecretScanningAlertCreatedAlert, installation? : InstallationLite, organization? : Organization, repository~ : Repository) -> SecretScanningAlertCreated {
+  SecretScanningAlertCreated::{
+    action: action,
+    alert: alert,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+  }
+}
+
+///|
 let secret_scanning_alert_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "alert", "installation", "organization", "repository"])
 
 ///|
@@ -17187,6 +20032,19 @@ pub(all) struct SecretScanningAlertReopened {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecretScanningAlertReopened` (fields with defaults are optional).
+pub fn SecretScanningAlertReopened::SecretScanningAlertReopened(action~ : SecretScanningAlertReopenedAction, alert~ : SecretScanningAlertReopenedAlert, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> SecretScanningAlertReopened {
+  SecretScanningAlertReopened::{
+    action: action,
+    alert: alert,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let secret_scanning_alert_reopened_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "alert", "installation", "organization", "repository", "sender"])
@@ -17253,6 +20111,19 @@ pub(all) struct SecretScanningAlertResolved {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecretScanningAlertResolved` (fields with defaults are optional).
+pub fn SecretScanningAlertResolved::SecretScanningAlertResolved(action~ : SecretScanningAlertResolvedAction, alert~ : SecretScanningAlertResolvedAlert, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> SecretScanningAlertResolved {
+  SecretScanningAlertResolved::{
+    action: action,
+    alert: alert,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let secret_scanning_alert_resolved_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "alert", "installation", "organization", "repository", "sender"])
@@ -17374,6 +20245,15 @@ pub(all) struct SecurityAdvisoryPerformed {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecurityAdvisoryPerformed` (fields with defaults are optional).
+pub fn SecurityAdvisoryPerformed::SecurityAdvisoryPerformed(action~ : SecurityAdvisoryPerformedAction, security_advisory~ : SecurityAdvisoryPerformedSecurityAdvisory) -> SecurityAdvisoryPerformed {
+  SecurityAdvisoryPerformed::{
+    action: action,
+    security_advisory: security_advisory,
+  }
+}
+
+///|
 let security_advisory_performed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "security_advisory"])
 
 ///|
@@ -17414,6 +20294,15 @@ pub(all) struct SecurityAdvisoryPublished {
   action : SecurityAdvisoryPublishedAction
   security_advisory : SecurityAdvisoryPublishedSecurityAdvisory
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryPublished` (fields with defaults are optional).
+pub fn SecurityAdvisoryPublished::SecurityAdvisoryPublished(action~ : SecurityAdvisoryPublishedAction, security_advisory~ : SecurityAdvisoryPublishedSecurityAdvisory) -> SecurityAdvisoryPublished {
+  SecurityAdvisoryPublished::{
+    action: action,
+    security_advisory: security_advisory,
+  }
+}
 
 ///|
 let security_advisory_published_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "security_advisory"])
@@ -17458,6 +20347,15 @@ pub(all) struct SecurityAdvisoryUpdated {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecurityAdvisoryUpdated` (fields with defaults are optional).
+pub fn SecurityAdvisoryUpdated::SecurityAdvisoryUpdated(action~ : SecurityAdvisoryUpdatedAction, security_advisory~ : SecurityAdvisoryUpdatedSecurityAdvisory) -> SecurityAdvisoryUpdated {
+  SecurityAdvisoryUpdated::{
+    action: action,
+    security_advisory: security_advisory,
+  }
+}
+
+///|
 let security_advisory_updated_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "security_advisory"])
 
 ///|
@@ -17498,6 +20396,15 @@ pub(all) struct SecurityAdvisoryWithdrawn {
   action : SecurityAdvisoryWithdrawnAction
   security_advisory : SecurityAdvisoryWithdrawnSecurityAdvisory
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryWithdrawn` (fields with defaults are optional).
+pub fn SecurityAdvisoryWithdrawn::SecurityAdvisoryWithdrawn(action~ : SecurityAdvisoryWithdrawnAction, security_advisory~ : SecurityAdvisoryWithdrawnSecurityAdvisory) -> SecurityAdvisoryWithdrawn {
+  SecurityAdvisoryWithdrawn::{
+    action: action,
+    security_advisory: security_advisory,
+  }
+}
 
 ///|
 let security_advisory_withdrawn_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "security_advisory"])
@@ -17641,6 +20548,49 @@ pub(all) struct SimplePullRequest {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SimplePullRequest` (fields with defaults are optional).
+pub fn SimplePullRequest::SimplePullRequest(active_lock_reason? : SimplePullRequestActiveLockReason, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, auto_merge~ : Unit, base~ : SimplePullRequestBase, body~ : String, closed_at? : String, comments_url~ : String, commits_url~ : String, created_at~ : String, diff_url~ : String, draft~ : Bool, head~ : SimplePullRequestHead, html_url~ : String, id~ : Int64, issue_url~ : String, labels~ : Array[Label], links~ : SimplePullRequestLinks, locked~ : Bool, merge_commit_sha? : String, merged_at? : String, milestone? : Milestone, node_id~ : String, number~ : Int64, patch_url~ : String, requested_reviewers~ : Array[SimplePullRequestRequestedReviewersItem], requested_teams~ : Array[Team], review_comment_url~ : String, review_comments_url~ : String, state~ : SimplePullRequestState, statuses_url~ : String, title~ : String, updated_at~ : String, url~ : String, user~ : User) -> SimplePullRequest {
+  SimplePullRequest::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    auto_merge: auto_merge,
+    base: base,
+    body: body,
+    closed_at: closed_at,
+    comments_url: comments_url,
+    commits_url: commits_url,
+    created_at: created_at,
+    diff_url: diff_url,
+    draft: draft,
+    head: head,
+    html_url: html_url,
+    id: id,
+    issue_url: issue_url,
+    labels: labels,
+    links: links,
+    locked: locked,
+    merge_commit_sha: merge_commit_sha,
+    merged_at: merged_at,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    patch_url: patch_url,
+    requested_reviewers: requested_reviewers,
+    requested_teams: requested_teams,
+    review_comment_url: review_comment_url,
+    review_comments_url: review_comments_url,
+    state: state,
+    statuses_url: statuses_url,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let simple_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "auto_merge", "base", "body", "closed_at", "comments_url", "commits_url", "created_at", "diff_url", "draft", "head", "html_url", "id", "issue_url", "labels", "_links", "locked", "merge_commit_sha", "merged_at", "milestone", "node_id", "number", "patch_url", "requested_reviewers", "requested_teams", "review_comment_url", "review_comments_url", "state", "statuses_url", "title", "updated_at", "url", "user"])
@@ -17822,6 +20772,16 @@ pub(all) struct SponsorshipCancelled {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SponsorshipCancelled` (fields with defaults are optional).
+pub fn SponsorshipCancelled::SponsorshipCancelled(action~ : SponsorshipCancelledAction, sender~ : User, sponsorship~ : SponsorshipCancelledSponsorship) -> SponsorshipCancelled {
+  SponsorshipCancelled::{
+    action: action,
+    sender: sender,
+    sponsorship: sponsorship,
+  }
+}
+
+///|
 let sponsorship_cancelled_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "sender", "sponsorship"])
 
 ///|
@@ -17867,6 +20827,16 @@ pub(all) struct SponsorshipCreated {
   sender : User
   sponsorship : SponsorshipCreatedSponsorship
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SponsorshipCreated` (fields with defaults are optional).
+pub fn SponsorshipCreated::SponsorshipCreated(action~ : SponsorshipCreatedAction, sender~ : User, sponsorship~ : SponsorshipCreatedSponsorship) -> SponsorshipCreated {
+  SponsorshipCreated::{
+    action: action,
+    sender: sender,
+    sponsorship: sponsorship,
+  }
+}
 
 ///|
 let sponsorship_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "sender", "sponsorship"])
@@ -17915,6 +20885,17 @@ pub(all) struct SponsorshipEdited {
   sender : User
   sponsorship : SponsorshipEditedSponsorship
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SponsorshipEdited` (fields with defaults are optional).
+pub fn SponsorshipEdited::SponsorshipEdited(action~ : SponsorshipEditedAction, changes~ : SponsorshipEditedChanges, sender~ : User, sponsorship~ : SponsorshipEditedSponsorship) -> SponsorshipEdited {
+  SponsorshipEdited::{
+    action: action,
+    changes: changes,
+    sender: sender,
+    sponsorship: sponsorship,
+  }
+}
 
 ///|
 let sponsorship_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "sender", "sponsorship"])
@@ -17968,6 +20949,17 @@ pub(all) struct SponsorshipPendingCancellation {
   sender : User
   sponsorship : SponsorshipPendingCancellationSponsorship
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SponsorshipPendingCancellation` (fields with defaults are optional).
+pub fn SponsorshipPendingCancellation::SponsorshipPendingCancellation(action~ : SponsorshipPendingCancellationAction, effective_date? : String, sender~ : User, sponsorship~ : SponsorshipPendingCancellationSponsorship) -> SponsorshipPendingCancellation {
+  SponsorshipPendingCancellation::{
+    action: action,
+    effective_date: effective_date,
+    sender: sender,
+    sponsorship: sponsorship,
+  }
+}
 
 ///|
 let sponsorship_pending_cancellation_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "effective_date", "sender", "sponsorship"])
@@ -18024,6 +21016,18 @@ pub(all) struct SponsorshipPendingTierChange {
   sender : User
   sponsorship : SponsorshipPendingTierChangeSponsorship
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SponsorshipPendingTierChange` (fields with defaults are optional).
+pub fn SponsorshipPendingTierChange::SponsorshipPendingTierChange(action~ : SponsorshipPendingTierChangeAction, changes~ : SponsorshipPendingTierChangeChanges, effective_date? : String, sender~ : User, sponsorship~ : SponsorshipPendingTierChangeSponsorship) -> SponsorshipPendingTierChange {
+  SponsorshipPendingTierChange::{
+    action: action,
+    changes: changes,
+    effective_date: effective_date,
+    sender: sender,
+    sponsorship: sponsorship,
+  }
+}
 
 ///|
 let sponsorship_pending_tier_change_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "effective_date", "sender", "sponsorship"])
@@ -18084,6 +21088,17 @@ pub(all) struct SponsorshipTierChanged {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SponsorshipTierChanged` (fields with defaults are optional).
+pub fn SponsorshipTierChanged::SponsorshipTierChanged(action~ : SponsorshipTierChangedAction, changes~ : SponsorshipTierChangedChanges, sender~ : User, sponsorship~ : SponsorshipTierChangedSponsorship) -> SponsorshipTierChanged {
+  SponsorshipTierChanged::{
+    action: action,
+    changes: changes,
+    sender: sender,
+    sponsorship: sponsorship,
+  }
+}
+
+///|
 let sponsorship_tier_changed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "sender", "sponsorship"])
 
 ///|
@@ -18138,6 +21153,21 @@ pub(all) struct SponsorshipTier {
   name : String
   node_id : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SponsorshipTier` (fields with defaults are optional).
+pub fn SponsorshipTier::SponsorshipTier(created_at~ : String, description~ : String, is_custom_ammount~ : Bool, is_one_time~ : Bool, monthly_price_in_cents~ : Int64, monthly_price_in_dollars~ : Int64, name~ : String, node_id~ : String) -> SponsorshipTier {
+  SponsorshipTier::{
+    created_at: created_at,
+    description: description,
+    is_custom_ammount: is_custom_ammount,
+    is_one_time: is_one_time,
+    monthly_price_in_cents: monthly_price_in_cents,
+    monthly_price_in_dollars: monthly_price_in_dollars,
+    name: name,
+    node_id: node_id,
+  }
+}
 
 ///|
 let sponsorship_tier_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "description", "is_custom_ammount", "is_one_time", "monthly_price_in_cents", "monthly_price_in_dollars", "name", "node_id"])
@@ -18298,6 +21328,19 @@ pub(all) struct StarCreated {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `StarCreated` (fields with defaults are optional).
+pub fn StarCreated::StarCreated(action~ : StarCreatedAction, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User, starred_at~ : String) -> StarCreated {
+  StarCreated::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    starred_at: starred_at,
+  }
+}
+
+///|
 let star_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender", "starred_at"])
 
 ///|
@@ -18363,6 +21406,19 @@ pub(all) struct StarDeleted {
   /// The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action.
   starred_at : Unit
 } derive(Debug, Eq)
+
+///|
+/// Construct a `StarDeleted` (fields with defaults are optional).
+pub fn StarDeleted::StarDeleted(action~ : StarDeletedAction, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User, starred_at~ : Unit) -> StarDeleted {
+  StarDeleted::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    starred_at: starred_at,
+  }
+}
 
 ///|
 let star_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender", "starred_at"])
@@ -18494,6 +21550,29 @@ pub(all) struct StatusEvent {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `StatusEvent` (fields with defaults are optional).
+pub fn StatusEvent::StatusEvent(avatar_url? : String, branches~ : Array[StatusEventBranchesItem], commit~ : StatusEventCommit, context~ : String, created_at~ : String, description? : String, id~ : Int64, installation? : InstallationLite, name~ : String, organization? : Organization, repository~ : Repository, sender~ : User, sha~ : String, state~ : StatusEventState, target_url? : String, updated_at~ : String) -> StatusEvent {
+  StatusEvent::{
+    avatar_url: avatar_url,
+    branches: branches,
+    commit: commit,
+    context: context,
+    created_at: created_at,
+    description: description,
+    id: id,
+    installation: installation,
+    name: name,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    sha: sha,
+    state: state,
+    target_url: target_url,
+    updated_at: updated_at,
+  }
+}
+
+///|
 let status_event_fields : @typify_rt.Fields = @typify_rt.Fields::new(["avatar_url", "branches", "commit", "context", "created_at", "description", "id", "installation", "name", "organization", "repository", "sender", "sha", "state", "target_url", "updated_at"])
 
 ///|
@@ -18613,6 +21692,25 @@ pub(all) struct Team {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Team` (fields with defaults are optional).
+pub fn Team::Team(description? : String, html_url~ : String, id~ : Int64, members_url~ : String, name~ : String, node_id~ : String, parent? : TeamParent, permission~ : String, privacy~ : TeamPrivacy, repositories_url~ : String, slug~ : String, url~ : String) -> Team {
+  Team::{
+    description: description,
+    html_url: html_url,
+    id: id,
+    members_url: members_url,
+    name: name,
+    node_id: node_id,
+    parent: parent,
+    permission: permission,
+    privacy: privacy,
+    repositories_url: repositories_url,
+    slug: slug,
+    url: url,
+  }
+}
+
+///|
 let team_fields : @typify_rt.Fields = @typify_rt.Fields::new(["description", "html_url", "id", "members_url", "name", "node_id", "parent", "permission", "privacy", "repositories_url", "slug", "url"])
 
 ///|
@@ -18701,6 +21799,19 @@ pub(all) struct TeamAddedToRepository {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `TeamAddedToRepository` (fields with defaults are optional).
+pub fn TeamAddedToRepository::TeamAddedToRepository(action~ : TeamAddedToRepositoryAction, installation? : InstallationLite, organization~ : Organization, repository? : Repository, sender~ : User, team~ : Team) -> TeamAddedToRepository {
+  TeamAddedToRepository::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    team: team,
+  }
+}
+
+///|
 let team_added_to_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender", "team"])
 
 ///|
@@ -18765,6 +21876,19 @@ pub(all) struct TeamCreated {
   sender : User
   team : Team
 } derive(Debug, Eq)
+
+///|
+/// Construct a `TeamCreated` (fields with defaults are optional).
+pub fn TeamCreated::TeamCreated(action~ : TeamCreatedAction, installation? : InstallationLite, organization~ : Organization, repository? : Repository, sender~ : User, team~ : Team) -> TeamCreated {
+  TeamCreated::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    team: team,
+  }
+}
 
 ///|
 let team_created_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender", "team"])
@@ -18833,6 +21957,19 @@ pub(all) struct TeamDeleted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `TeamDeleted` (fields with defaults are optional).
+pub fn TeamDeleted::TeamDeleted(action~ : TeamDeletedAction, installation? : InstallationLite, organization~ : Organization, repository? : Repository, sender~ : User, team~ : Team) -> TeamDeleted {
+  TeamDeleted::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    team: team,
+  }
+}
+
+///|
 let team_deleted_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender", "team"])
 
 ///|
@@ -18898,6 +22035,20 @@ pub(all) struct TeamEdited {
   sender : User
   team : Team
 } derive(Debug, Eq)
+
+///|
+/// Construct a `TeamEdited` (fields with defaults are optional).
+pub fn TeamEdited::TeamEdited(action~ : TeamEditedAction, changes~ : TeamEditedChanges, installation? : InstallationLite, organization~ : Organization, repository? : Repository, sender~ : User, team~ : Team) -> TeamEdited {
+  TeamEdited::{
+    action: action,
+    changes: changes,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    team: team,
+  }
+}
 
 ///|
 let team_edited_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "changes", "installation", "organization", "repository", "sender", "team"])
@@ -18970,6 +22121,19 @@ pub(all) struct TeamRemovedFromRepository {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `TeamRemovedFromRepository` (fields with defaults are optional).
+pub fn TeamRemovedFromRepository::TeamRemovedFromRepository(action~ : TeamRemovedFromRepositoryAction, installation? : InstallationLite, organization~ : Organization, repository? : Repository, sender~ : User, team~ : Team) -> TeamRemovedFromRepository {
+  TeamRemovedFromRepository::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    team: team,
+  }
+}
+
+///|
 let team_removed_from_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender", "team"])
 
 ///|
@@ -19033,6 +22197,18 @@ pub(all) struct TeamAddEvent {
   sender : User
   team : Team
 } derive(Debug, Eq)
+
+///|
+/// Construct a `TeamAddEvent` (fields with defaults are optional).
+pub fn TeamAddEvent::TeamAddEvent(installation? : InstallationLite, organization~ : Organization, repository~ : Repository, sender~ : User, team~ : Team) -> TeamAddEvent {
+  TeamAddEvent::{
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    team: team,
+  }
+}
 
 ///|
 let team_add_event_fields : @typify_rt.Fields = @typify_rt.Fields::new(["installation", "organization", "repository", "sender", "team"])
@@ -19186,6 +22362,33 @@ pub(all) struct User {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `User` (fields with defaults are optional).
+pub fn User::User(avatar_url~ : String, email? : String, events_url~ : String, followers_url~ : String, following_url~ : String, gists_url~ : String, gravatar_id~ : String, html_url~ : String, id~ : Int64, login~ : String, name? : String, node_id~ : String, organizations_url~ : String, received_events_url~ : String, repos_url~ : String, site_admin~ : Bool, starred_url~ : String, subscriptions_url~ : String, type_~ : UserType, url~ : String) -> User {
+  User::{
+    avatar_url: avatar_url,
+    email: email,
+    events_url: events_url,
+    followers_url: followers_url,
+    following_url: following_url,
+    gists_url: gists_url,
+    gravatar_id: gravatar_id,
+    html_url: html_url,
+    id: id,
+    login: login,
+    name: name,
+    node_id: node_id,
+    organizations_url: organizations_url,
+    received_events_url: received_events_url,
+    repos_url: repos_url,
+    site_admin: site_admin,
+    starred_url: starred_url,
+    subscriptions_url: subscriptions_url,
+    type_: type_,
+    url: url,
+  }
+}
+
+///|
 let user_fields : @typify_rt.Fields = @typify_rt.Fields::new(["avatar_url", "email", "events_url", "followers_url", "following_url", "gists_url", "gravatar_id", "html_url", "id", "login", "name", "node_id", "organizations_url", "received_events_url", "repos_url", "site_admin", "starred_url", "subscriptions_url", "type", "url"])
 
 ///|
@@ -19305,6 +22508,18 @@ pub(all) struct WatchStarted {
   repository : Repository
   sender : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `WatchStarted` (fields with defaults are optional).
+pub fn WatchStarted::WatchStarted(action~ : WatchStartedAction, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User) -> WatchStarted {
+  WatchStarted::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+  }
+}
 
 ///|
 let watch_started_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender"])
@@ -19444,6 +22659,23 @@ pub(all) struct Workflow {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `Workflow` (fields with defaults are optional).
+pub fn Workflow::Workflow(badge_url~ : String, created_at~ : String, html_url~ : String, id~ : Int64, name~ : String, node_id~ : String, path~ : String, state~ : String, updated_at~ : String, url~ : String) -> Workflow {
+  Workflow::{
+    badge_url: badge_url,
+    created_at: created_at,
+    html_url: html_url,
+    id: id,
+    name: name,
+    node_id: node_id,
+    path: path,
+    state: state,
+    updated_at: updated_at,
+    url: url,
+  }
+}
+
+///|
 let workflow_fields : @typify_rt.Fields = @typify_rt.Fields::new(["badge_url", "created_at", "html_url", "id", "name", "node_id", "path", "state", "updated_at", "url"])
 
 ///|
@@ -19529,6 +22761,28 @@ pub(all) struct WorkflowJob {
   steps : Array[WorkflowStep]
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `WorkflowJob` (fields with defaults are optional).
+pub fn WorkflowJob::WorkflowJob(check_run_url~ : String, completed_at? : String, conclusion? : WorkflowJobConclusion, head_sha~ : String, html_url~ : String, id~ : Int64, labels~ : Array[String], name~ : String, node_id~ : String, run_id~ : Double, run_url~ : String, started_at~ : String, status~ : WorkflowJobStatus, steps~ : Array[WorkflowStep], url~ : String) -> WorkflowJob {
+  WorkflowJob::{
+    check_run_url: check_run_url,
+    completed_at: completed_at,
+    conclusion: conclusion,
+    head_sha: head_sha,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    name: name,
+    node_id: node_id,
+    run_id: run_id,
+    run_url: run_url,
+    started_at: started_at,
+    status: status,
+    steps: steps,
+    url: url,
+  }
+}
 
 ///|
 let workflow_job_fields : @typify_rt.Fields = @typify_rt.Fields::new(["check_run_url", "completed_at", "conclusion", "head_sha", "html_url", "id", "labels", "name", "node_id", "run_id", "run_url", "started_at", "status", "steps", "url"])
@@ -19648,6 +22902,40 @@ pub(all) struct WorkflowRun {
   workflow_id : Int64
   workflow_url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `WorkflowRun` (fields with defaults are optional).
+pub fn WorkflowRun::WorkflowRun(artifacts_url~ : String, cancel_url~ : String, check_suite_id~ : Int64, check_suite_node_id~ : String, check_suite_url~ : String, conclusion? : WorkflowRunConclusion, created_at~ : @typify_rt.DateTimeUtc, event~ : String, head_branch~ : String, head_commit~ : CommitSimple, head_repository~ : RepositoryLite, head_sha~ : String, html_url~ : String, id~ : Int64, jobs_url~ : String, logs_url~ : String, name~ : String, node_id~ : String, pull_requests~ : Array[WorkflowRunPullRequestsItem], repository~ : RepositoryLite, rerun_url~ : String, run_number~ : Int64, status~ : WorkflowRunStatus, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, workflow_id~ : Int64, workflow_url~ : String) -> WorkflowRun {
+  WorkflowRun::{
+    artifacts_url: artifacts_url,
+    cancel_url: cancel_url,
+    check_suite_id: check_suite_id,
+    check_suite_node_id: check_suite_node_id,
+    check_suite_url: check_suite_url,
+    conclusion: conclusion,
+    created_at: created_at,
+    event: event,
+    head_branch: head_branch,
+    head_commit: head_commit,
+    head_repository: head_repository,
+    head_sha: head_sha,
+    html_url: html_url,
+    id: id,
+    jobs_url: jobs_url,
+    logs_url: logs_url,
+    name: name,
+    node_id: node_id,
+    pull_requests: pull_requests,
+    repository: repository,
+    rerun_url: rerun_url,
+    run_number: run_number,
+    status: status,
+    updated_at: updated_at,
+    url: url,
+    workflow_id: workflow_id,
+    workflow_url: workflow_url,
+  }
+}
 
 ///|
 let workflow_run_fields : @typify_rt.Fields = @typify_rt.Fields::new(["artifacts_url", "cancel_url", "check_suite_id", "check_suite_node_id", "check_suite_url", "conclusion", "created_at", "event", "head_branch", "head_commit", "head_repository", "head_sha", "html_url", "id", "jobs_url", "logs_url", "name", "node_id", "pull_requests", "repository", "rerun_url", "run_number", "status", "updated_at", "url", "workflow_id", "workflow_url"])
@@ -19843,6 +23131,19 @@ pub(all) struct WorkflowStepCompleted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `WorkflowStepCompleted` (fields with defaults are optional).
+pub fn WorkflowStepCompleted::WorkflowStepCompleted(completed_at~ : String, conclusion~ : WorkflowStepCompletedConclusion, name~ : String, number~ : Int64, started_at~ : String, status~ : WorkflowStepCompletedStatus) -> WorkflowStepCompleted {
+  WorkflowStepCompleted::{
+    completed_at: completed_at,
+    conclusion: conclusion,
+    name: name,
+    number: number,
+    started_at: started_at,
+    status: status,
+  }
+}
+
+///|
 let workflow_step_completed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["completed_at", "conclusion", "name", "number", "started_at", "status"])
 
 ///|
@@ -19903,6 +23204,19 @@ pub(all) struct WorkflowStepInProgress {
   started_at : String
   status : WorkflowStepInProgressStatus
 } derive(Debug, Eq)
+
+///|
+/// Construct a `WorkflowStepInProgress` (fields with defaults are optional).
+pub fn WorkflowStepInProgress::WorkflowStepInProgress(completed_at~ : Unit, conclusion~ : Unit, name~ : String, number~ : Int64, started_at~ : String, status~ : WorkflowStepInProgressStatus) -> WorkflowStepInProgress {
+  WorkflowStepInProgress::{
+    completed_at: completed_at,
+    conclusion: conclusion,
+    name: name,
+    number: number,
+    started_at: started_at,
+    status: status,
+  }
+}
 
 ///|
 let workflow_step_in_progress_fields : @typify_rt.Fields = @typify_rt.Fields::new(["completed_at", "conclusion", "name", "number", "started_at", "status"])
@@ -19966,6 +23280,20 @@ pub(all) struct WorkflowDispatchEvent {
   sender : User
   workflow : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `WorkflowDispatchEvent` (fields with defaults are optional).
+pub fn WorkflowDispatchEvent::WorkflowDispatchEvent(inputs? : Map[String, Json], installation? : InstallationLite, organization? : Organization, ref_~ : String, repository~ : Repository, sender~ : User, workflow~ : String) -> WorkflowDispatchEvent {
+  WorkflowDispatchEvent::{
+    inputs: inputs,
+    installation: installation,
+    organization: organization,
+    ref_: ref_,
+    repository: repository,
+    sender: sender,
+    workflow: workflow,
+  }
+}
 
 ///|
 let workflow_dispatch_event_fields : @typify_rt.Fields = @typify_rt.Fields::new(["inputs", "installation", "organization", "ref", "repository", "sender", "workflow"])
@@ -20038,6 +23366,19 @@ pub(all) struct WorkflowJobCompleted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `WorkflowJobCompleted` (fields with defaults are optional).
+pub fn WorkflowJobCompleted::WorkflowJobCompleted(action~ : WorkflowJobCompletedAction, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User, workflow_job~ : WorkflowJobCompletedWorkflowJob) -> WorkflowJobCompleted {
+  WorkflowJobCompleted::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    workflow_job: workflow_job,
+  }
+}
+
+///|
 let workflow_job_completed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender", "workflow_job"])
 
 ///|
@@ -20104,6 +23445,19 @@ pub(all) struct WorkflowJobQueued {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `WorkflowJobQueued` (fields with defaults are optional).
+pub fn WorkflowJobQueued::WorkflowJobQueued(action~ : WorkflowJobQueuedAction, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User, workflow_job~ : WorkflowJobQueuedWorkflowJob) -> WorkflowJobQueued {
+  WorkflowJobQueued::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    workflow_job: workflow_job,
+  }
+}
+
+///|
 let workflow_job_queued_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender", "workflow_job"])
 
 ///|
@@ -20168,6 +23522,19 @@ pub(all) struct WorkflowJobStarted {
   sender : User
   workflow_job : WorkflowJobStartedWorkflowJob
 } derive(Debug, Eq)
+
+///|
+/// Construct a `WorkflowJobStarted` (fields with defaults are optional).
+pub fn WorkflowJobStarted::WorkflowJobStarted(action~ : WorkflowJobStartedAction, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User, workflow_job~ : WorkflowJobStartedWorkflowJob) -> WorkflowJobStarted {
+  WorkflowJobStarted::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    workflow_job: workflow_job,
+  }
+}
 
 ///|
 let workflow_job_started_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender", "workflow_job"])
@@ -20294,6 +23661,20 @@ pub(all) struct WorkflowRunCompleted {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `WorkflowRunCompleted` (fields with defaults are optional).
+pub fn WorkflowRunCompleted::WorkflowRunCompleted(action~ : WorkflowRunCompletedAction, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User, workflow~ : Workflow, workflow_run~ : WorkflowRunCompletedWorkflowRun) -> WorkflowRunCompleted {
+  WorkflowRunCompleted::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    workflow: workflow,
+    workflow_run: workflow_run,
+  }
+}
+
+///|
 let workflow_run_completed_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender", "workflow", "workflow_run"])
 
 ///|
@@ -20363,6 +23744,20 @@ pub(all) struct WorkflowRunRequested {
   workflow : Workflow
   workflow_run : WorkflowRun
 } derive(Debug, Eq)
+
+///|
+/// Construct a `WorkflowRunRequested` (fields with defaults are optional).
+pub fn WorkflowRunRequested::WorkflowRunRequested(action~ : WorkflowRunRequestedAction, installation? : InstallationLite, organization? : Organization, repository~ : Repository, sender~ : User, workflow~ : Workflow, workflow_run~ : WorkflowRun) -> WorkflowRunRequested {
+  WorkflowRunRequested::{
+    action: action,
+    installation: installation,
+    organization: organization,
+    repository: repository,
+    sender: sender,
+    workflow: workflow,
+    workflow_run: workflow_run,
+  }
+}
 
 ///|
 let workflow_run_requested_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "organization", "repository", "sender", "workflow", "workflow_run"])
@@ -21058,6 +24453,18 @@ pub(all) struct AlertInstanceLocation {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `AlertInstanceLocation` (fields with defaults are optional).
+pub fn AlertInstanceLocation::AlertInstanceLocation(end_column? : Int64, end_line? : Int64, path? : String, start_column? : Int64, start_line? : Int64) -> AlertInstanceLocation {
+  AlertInstanceLocation::{
+    end_column: end_column,
+    end_line: end_line,
+    path: path,
+    start_column: start_column,
+    start_line: start_line,
+  }
+}
+
+///|
 let alert_instance_location_fields : @typify_rt.Fields = @typify_rt.Fields::new(["end_column", "end_line", "path", "start_column", "start_line"])
 
 ///|
@@ -21119,6 +24526,14 @@ pub impl ToJson for AlertInstanceLocation with fn to_json(self) {
 pub(all) struct AlertInstanceMessage {
   text : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `AlertInstanceMessage` (fields with defaults are optional).
+pub fn AlertInstanceMessage::AlertInstanceMessage(text? : String) -> AlertInstanceMessage {
+  AlertInstanceMessage::{
+    text: text,
+  }
+}
 
 ///|
 let alert_instance_message_fields : @typify_rt.Fields = @typify_rt.Fields::new(["text"])
@@ -23791,6 +27206,47 @@ pub(all) struct AppPermissions {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `AppPermissions` (fields with defaults are optional).
+pub fn AppPermissions::AppPermissions(actions? : AppPermissionsActions, administration? : AppPermissionsAdministration, checks? : AppPermissionsChecks, content_references? : AppPermissionsContentReferences, contents? : AppPermissionsContents, deployments? : AppPermissionsDeployments, discussions? : AppPermissionsDiscussions, emails? : AppPermissionsEmails, environments? : AppPermissionsEnvironments, issues? : AppPermissionsIssues, members? : AppPermissionsMembers, metadata? : AppPermissionsMetadata, organization_administration? : AppPermissionsOrganizationAdministration, organization_hooks? : AppPermissionsOrganizationHooks, organization_packages? : AppPermissionsOrganizationPackages, organization_plan? : AppPermissionsOrganizationPlan, organization_projects? : AppPermissionsOrganizationProjects, organization_secrets? : AppPermissionsOrganizationSecrets, organization_self_hosted_runners? : AppPermissionsOrganizationSelfHostedRunners, organization_user_blocking? : AppPermissionsOrganizationUserBlocking, packages? : AppPermissionsPackages, pages? : AppPermissionsPages, pull_requests? : AppPermissionsPullRequests, repository_hooks? : AppPermissionsRepositoryHooks, repository_projects? : AppPermissionsRepositoryProjects, secret_scanning_alerts? : AppPermissionsSecretScanningAlerts, secrets? : AppPermissionsSecrets, security_events? : AppPermissionsSecurityEvents, security_scanning_alert? : AppPermissionsSecurityScanningAlert, single_file? : AppPermissionsSingleFile, statuses? : AppPermissionsStatuses, team_discussions? : AppPermissionsTeamDiscussions, vulnerability_alerts? : AppPermissionsVulnerabilityAlerts, workflows? : AppPermissionsWorkflows) -> AppPermissions {
+  AppPermissions::{
+    actions: actions,
+    administration: administration,
+    checks: checks,
+    content_references: content_references,
+    contents: contents,
+    deployments: deployments,
+    discussions: discussions,
+    emails: emails,
+    environments: environments,
+    issues: issues,
+    members: members,
+    metadata: metadata,
+    organization_administration: organization_administration,
+    organization_hooks: organization_hooks,
+    organization_packages: organization_packages,
+    organization_plan: organization_plan,
+    organization_projects: organization_projects,
+    organization_secrets: organization_secrets,
+    organization_self_hosted_runners: organization_self_hosted_runners,
+    organization_user_blocking: organization_user_blocking,
+    packages: packages,
+    pages: pages,
+    pull_requests: pull_requests,
+    repository_hooks: repository_hooks,
+    repository_projects: repository_projects,
+    secret_scanning_alerts: secret_scanning_alerts,
+    secrets: secrets,
+    security_events: security_events,
+    security_scanning_alert: security_scanning_alert,
+    single_file: single_file,
+    statuses: statuses,
+    team_discussions: team_discussions,
+    vulnerability_alerts: vulnerability_alerts,
+    workflows: workflows,
+  }
+}
+
+///|
 let app_permissions_fields : @typify_rt.Fields = @typify_rt.Fields::new(["actions", "administration", "checks", "content_references", "contents", "deployments", "discussions", "emails", "environments", "issues", "members", "metadata", "organization_administration", "organization_hooks", "organization_packages", "organization_plan", "organization_projects", "organization_secrets", "organization_self_hosted_runners", "organization_user_blocking", "packages", "pages", "pull_requests", "repository_hooks", "repository_projects", "secret_scanning_alerts", "secrets", "security_events", "security_scanning_alert", "single_file", "statuses", "team_discussions", "vulnerability_alerts", "workflows"])
 
 ///|
@@ -24844,6 +28300,14 @@ pub(all) struct BranchProtectionRuleEditedChangesAuthorizedActorNames {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `BranchProtectionRuleEditedChangesAuthorizedActorNames` (fields with defaults are optional).
+pub fn BranchProtectionRuleEditedChangesAuthorizedActorNames::BranchProtectionRuleEditedChangesAuthorizedActorNames(from~ : Array[String]) -> BranchProtectionRuleEditedChangesAuthorizedActorNames {
+  BranchProtectionRuleEditedChangesAuthorizedActorNames::{
+    from: from,
+  }
+}
+
+///|
 let branch_protection_rule_edited_changes_authorized_actor_names_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -24879,6 +28343,14 @@ pub impl ToJson for BranchProtectionRuleEditedChangesAuthorizedActorNames with f
 pub(all) struct BranchProtectionRuleEditedChangesAuthorizedActorsOnly {
   from : Bool
 } derive(Debug, Eq)
+
+///|
+/// Construct a `BranchProtectionRuleEditedChangesAuthorizedActorsOnly` (fields with defaults are optional).
+pub fn BranchProtectionRuleEditedChangesAuthorizedActorsOnly::BranchProtectionRuleEditedChangesAuthorizedActorsOnly(from~ : Bool) -> BranchProtectionRuleEditedChangesAuthorizedActorsOnly {
+  BranchProtectionRuleEditedChangesAuthorizedActorsOnly::{
+    from: from,
+  }
+}
 
 ///|
 let branch_protection_rule_edited_changes_authorized_actors_only_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
@@ -24917,6 +28389,15 @@ pub(all) struct BranchProtectionRuleEditedChanges {
   authorized_actor_names : BranchProtectionRuleEditedChangesAuthorizedActorNames?
   authorized_actors_only : BranchProtectionRuleEditedChangesAuthorizedActorsOnly?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `BranchProtectionRuleEditedChanges` (fields with defaults are optional).
+pub fn BranchProtectionRuleEditedChanges::BranchProtectionRuleEditedChanges(authorized_actor_names? : BranchProtectionRuleEditedChangesAuthorizedActorNames, authorized_actors_only? : BranchProtectionRuleEditedChangesAuthorizedActorsOnly) -> BranchProtectionRuleEditedChanges {
+  BranchProtectionRuleEditedChanges::{
+    authorized_actor_names: authorized_actor_names,
+    authorized_actors_only: authorized_actors_only,
+  }
+}
 
 ///|
 let branch_protection_rule_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["authorized_actor_names", "authorized_actors_only"])
@@ -24966,6 +28447,16 @@ pub(all) struct CheckRunPullRequestBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunPullRequestBase` (fields with defaults are optional).
+pub fn CheckRunPullRequestBase::CheckRunPullRequestBase(ref_~ : String, repo~ : RepoRef, sha~ : String) -> CheckRunPullRequestBase {
+  CheckRunPullRequestBase::{
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+  }
+}
+
+///|
 let check_run_pull_request_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["ref", "repo", "sha"])
 
 ///|
@@ -25011,6 +28502,16 @@ pub(all) struct CheckRunPullRequestHead {
   repo : RepoRef
   sha : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CheckRunPullRequestHead` (fields with defaults are optional).
+pub fn CheckRunPullRequestHead::CheckRunPullRequestHead(ref_~ : String, repo~ : RepoRef, sha~ : String) -> CheckRunPullRequestHead {
+  CheckRunPullRequestHead::{
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+  }
+}
 
 ///|
 let check_run_pull_request_head_fields : @typify_rt.Fields = @typify_rt.Fields::new(["ref", "repo", "sha"])
@@ -25299,6 +28800,27 @@ pub(all) struct CheckRunCompletedCheckRunCheckSuite {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunCompletedCheckRunCheckSuite` (fields with defaults are optional).
+pub fn CheckRunCompletedCheckRunCheckSuite::CheckRunCompletedCheckRunCheckSuite(after? : String, app~ : App, before? : String, conclusion? : CheckRunCompletedCheckRunCheckSuiteConclusion, created_at~ : @typify_rt.DateTimeUtc, deployment? : CheckRunDeployment, head_branch? : String, head_sha~ : String, id~ : Int64, node_id? : String, pull_requests~ : Array[CheckRunPullRequest], status~ : CheckRunCompletedCheckRunCheckSuiteStatus, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> CheckRunCompletedCheckRunCheckSuite {
+  CheckRunCompletedCheckRunCheckSuite::{
+    after: after,
+    app: app,
+    before: before,
+    conclusion: conclusion,
+    created_at: created_at,
+    deployment: deployment,
+    head_branch: head_branch,
+    head_sha: head_sha,
+    id: id,
+    node_id: node_id,
+    pull_requests: pull_requests,
+    status: status,
+    updated_at: updated_at,
+    url: url,
+  }
+}
+
+///|
 let check_run_completed_check_run_check_suite_fields : @typify_rt.Fields = @typify_rt.Fields::new(["after", "app", "before", "conclusion", "created_at", "deployment", "head_branch", "head_sha", "id", "node_id", "pull_requests", "status", "updated_at", "url"])
 
 ///|
@@ -25497,6 +29019,18 @@ pub(all) struct CheckRunCompletedCheckRunOutput {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunCompletedCheckRunOutput` (fields with defaults are optional).
+pub fn CheckRunCompletedCheckRunOutput::CheckRunCompletedCheckRunOutput(annotations_count~ : Int64, annotations_url~ : String, summary? : String, text? : String, title? : String) -> CheckRunCompletedCheckRunOutput {
+  CheckRunCompletedCheckRunOutput::{
+    annotations_count: annotations_count,
+    annotations_url: annotations_url,
+    summary: summary,
+    text: text,
+    title: title,
+  }
+}
+
+///|
 let check_run_completed_check_run_output_fields : @typify_rt.Fields = @typify_rt.Fields::new(["annotations_count", "annotations_url", "summary", "text", "title"])
 
 ///|
@@ -25633,6 +29167,29 @@ pub(all) struct CheckRunCompletedCheckRun {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunCompletedCheckRun` (fields with defaults are optional).
+pub fn CheckRunCompletedCheckRun::CheckRunCompletedCheckRun(app~ : App, check_suite~ : CheckRunCompletedCheckRunCheckSuite, completed_at~ : String, conclusion? : CheckRunCompletedCheckRunConclusion, details_url? : String, external_id~ : String, head_sha~ : String, html_url~ : String, id~ : Int64, name~ : String, node_id? : String, output~ : CheckRunCompletedCheckRunOutput, pull_requests~ : Array[CheckRunPullRequest], started_at~ : String, status~ : CheckRunCompletedCheckRunStatus, url~ : String) -> CheckRunCompletedCheckRun {
+  CheckRunCompletedCheckRun::{
+    app: app,
+    check_suite: check_suite,
+    completed_at: completed_at,
+    conclusion: conclusion,
+    details_url: details_url,
+    external_id: external_id,
+    head_sha: head_sha,
+    html_url: html_url,
+    id: id,
+    name: name,
+    node_id: node_id,
+    output: output,
+    pull_requests: pull_requests,
+    started_at: started_at,
+    status: status,
+    url: url,
+  }
+}
+
+///|
 let check_run_completed_check_run_fields : @typify_rt.Fields = @typify_rt.Fields::new(["app", "check_suite", "completed_at", "conclusion", "details_url", "external_id", "head_sha", "html_url", "id", "name", "node_id", "output", "pull_requests", "started_at", "status", "url"])
 
 ///|
@@ -25733,6 +29290,14 @@ pub(all) struct CheckRunCompletedRequestedAction {
   /// The integrator reference of the action requested by the user.
   identifier : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CheckRunCompletedRequestedAction` (fields with defaults are optional).
+pub fn CheckRunCompletedRequestedAction::CheckRunCompletedRequestedAction(identifier? : String) -> CheckRunCompletedRequestedAction {
+  CheckRunCompletedRequestedAction::{
+    identifier: identifier,
+  }
+}
 
 ///|
 let check_run_completed_requested_action_fields : @typify_rt.Fields = @typify_rt.Fields::new(["identifier"])
@@ -26015,6 +29580,27 @@ pub(all) struct CheckRunCreatedCheckRunCheckSuite {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunCreatedCheckRunCheckSuite` (fields with defaults are optional).
+pub fn CheckRunCreatedCheckRunCheckSuite::CheckRunCreatedCheckRunCheckSuite(after? : String, app~ : App, before? : String, conclusion? : CheckRunCreatedCheckRunCheckSuiteConclusion, created_at~ : @typify_rt.DateTimeUtc, deployment? : CheckRunDeployment, head_branch? : String, head_sha~ : String, id~ : Int64, node_id? : String, pull_requests~ : Array[CheckRunPullRequest], status~ : CheckRunCreatedCheckRunCheckSuiteStatus, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> CheckRunCreatedCheckRunCheckSuite {
+  CheckRunCreatedCheckRunCheckSuite::{
+    after: after,
+    app: app,
+    before: before,
+    conclusion: conclusion,
+    created_at: created_at,
+    deployment: deployment,
+    head_branch: head_branch,
+    head_sha: head_sha,
+    id: id,
+    node_id: node_id,
+    pull_requests: pull_requests,
+    status: status,
+    updated_at: updated_at,
+    url: url,
+  }
+}
+
+///|
 let check_run_created_check_run_check_suite_fields : @typify_rt.Fields = @typify_rt.Fields::new(["after", "app", "before", "conclusion", "created_at", "deployment", "head_branch", "head_sha", "id", "node_id", "pull_requests", "status", "updated_at", "url"])
 
 ///|
@@ -26213,6 +29799,18 @@ pub(all) struct CheckRunCreatedCheckRunOutput {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunCreatedCheckRunOutput` (fields with defaults are optional).
+pub fn CheckRunCreatedCheckRunOutput::CheckRunCreatedCheckRunOutput(annotations_count~ : Int64, annotations_url~ : String, summary? : String, text? : String, title? : String) -> CheckRunCreatedCheckRunOutput {
+  CheckRunCreatedCheckRunOutput::{
+    annotations_count: annotations_count,
+    annotations_url: annotations_url,
+    summary: summary,
+    text: text,
+    title: title,
+  }
+}
+
+///|
 let check_run_created_check_run_output_fields : @typify_rt.Fields = @typify_rt.Fields::new(["annotations_count", "annotations_url", "summary", "text", "title"])
 
 ///|
@@ -26361,6 +29959,29 @@ pub(all) struct CheckRunCreatedCheckRun {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunCreatedCheckRun` (fields with defaults are optional).
+pub fn CheckRunCreatedCheckRun::CheckRunCreatedCheckRun(app~ : App, check_suite~ : CheckRunCreatedCheckRunCheckSuite, completed_at? : String, conclusion? : CheckRunCreatedCheckRunConclusion, details_url? : String, external_id~ : String, head_sha~ : String, html_url~ : String, id~ : Int64, name~ : String, node_id? : String, output~ : CheckRunCreatedCheckRunOutput, pull_requests~ : Array[CheckRunPullRequest], started_at~ : String, status~ : CheckRunCreatedCheckRunStatus, url~ : String) -> CheckRunCreatedCheckRun {
+  CheckRunCreatedCheckRun::{
+    app: app,
+    check_suite: check_suite,
+    completed_at: completed_at,
+    conclusion: conclusion,
+    details_url: details_url,
+    external_id: external_id,
+    head_sha: head_sha,
+    html_url: html_url,
+    id: id,
+    name: name,
+    node_id: node_id,
+    output: output,
+    pull_requests: pull_requests,
+    started_at: started_at,
+    status: status,
+    url: url,
+  }
+}
+
+///|
 let check_run_created_check_run_fields : @typify_rt.Fields = @typify_rt.Fields::new(["app", "check_suite", "completed_at", "conclusion", "details_url", "external_id", "head_sha", "html_url", "id", "name", "node_id", "output", "pull_requests", "started_at", "status", "url"])
 
 ///|
@@ -26461,6 +30082,14 @@ pub(all) struct CheckRunCreatedRequestedAction {
   /// The integrator reference of the action requested by the user.
   identifier : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CheckRunCreatedRequestedAction` (fields with defaults are optional).
+pub fn CheckRunCreatedRequestedAction::CheckRunCreatedRequestedAction(identifier? : String) -> CheckRunCreatedRequestedAction {
+  CheckRunCreatedRequestedAction::{
+    identifier: identifier,
+  }
+}
 
 ///|
 let check_run_created_requested_action_fields : @typify_rt.Fields = @typify_rt.Fields::new(["identifier"])
@@ -26743,6 +30372,27 @@ pub(all) struct CheckRunRequestedActionCheckRunCheckSuite {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunRequestedActionCheckRunCheckSuite` (fields with defaults are optional).
+pub fn CheckRunRequestedActionCheckRunCheckSuite::CheckRunRequestedActionCheckRunCheckSuite(after? : String, app~ : App, before? : String, conclusion? : CheckRunRequestedActionCheckRunCheckSuiteConclusion, created_at~ : @typify_rt.DateTimeUtc, deployment? : CheckRunDeployment, head_branch? : String, head_sha~ : String, id~ : Int64, node_id? : String, pull_requests~ : Array[CheckRunPullRequest], status~ : CheckRunRequestedActionCheckRunCheckSuiteStatus, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> CheckRunRequestedActionCheckRunCheckSuite {
+  CheckRunRequestedActionCheckRunCheckSuite::{
+    after: after,
+    app: app,
+    before: before,
+    conclusion: conclusion,
+    created_at: created_at,
+    deployment: deployment,
+    head_branch: head_branch,
+    head_sha: head_sha,
+    id: id,
+    node_id: node_id,
+    pull_requests: pull_requests,
+    status: status,
+    updated_at: updated_at,
+    url: url,
+  }
+}
+
+///|
 let check_run_requested_action_check_run_check_suite_fields : @typify_rt.Fields = @typify_rt.Fields::new(["after", "app", "before", "conclusion", "created_at", "deployment", "head_branch", "head_sha", "id", "node_id", "pull_requests", "status", "updated_at", "url"])
 
 ///|
@@ -26941,6 +30591,18 @@ pub(all) struct CheckRunRequestedActionCheckRunOutput {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunRequestedActionCheckRunOutput` (fields with defaults are optional).
+pub fn CheckRunRequestedActionCheckRunOutput::CheckRunRequestedActionCheckRunOutput(annotations_count~ : Int64, annotations_url~ : String, summary? : String, text? : String, title? : String) -> CheckRunRequestedActionCheckRunOutput {
+  CheckRunRequestedActionCheckRunOutput::{
+    annotations_count: annotations_count,
+    annotations_url: annotations_url,
+    summary: summary,
+    text: text,
+    title: title,
+  }
+}
+
+///|
 let check_run_requested_action_check_run_output_fields : @typify_rt.Fields = @typify_rt.Fields::new(["annotations_count", "annotations_url", "summary", "text", "title"])
 
 ///|
@@ -27089,6 +30751,29 @@ pub(all) struct CheckRunRequestedActionCheckRun {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunRequestedActionCheckRun` (fields with defaults are optional).
+pub fn CheckRunRequestedActionCheckRun::CheckRunRequestedActionCheckRun(app~ : App, check_suite~ : CheckRunRequestedActionCheckRunCheckSuite, completed_at? : String, conclusion? : CheckRunRequestedActionCheckRunConclusion, details_url? : String, external_id~ : String, head_sha~ : String, html_url~ : String, id~ : Int64, name~ : String, node_id? : String, output~ : CheckRunRequestedActionCheckRunOutput, pull_requests~ : Array[CheckRunPullRequest], started_at~ : String, status~ : CheckRunRequestedActionCheckRunStatus, url~ : String) -> CheckRunRequestedActionCheckRun {
+  CheckRunRequestedActionCheckRun::{
+    app: app,
+    check_suite: check_suite,
+    completed_at: completed_at,
+    conclusion: conclusion,
+    details_url: details_url,
+    external_id: external_id,
+    head_sha: head_sha,
+    html_url: html_url,
+    id: id,
+    name: name,
+    node_id: node_id,
+    output: output,
+    pull_requests: pull_requests,
+    started_at: started_at,
+    status: status,
+    url: url,
+  }
+}
+
+///|
 let check_run_requested_action_check_run_fields : @typify_rt.Fields = @typify_rt.Fields::new(["app", "check_suite", "completed_at", "conclusion", "details_url", "external_id", "head_sha", "html_url", "id", "name", "node_id", "output", "pull_requests", "started_at", "status", "url"])
 
 ///|
@@ -27189,6 +30874,14 @@ pub(all) struct CheckRunRequestedActionRequestedAction {
   /// The integrator reference of the action requested by the user.
   identifier : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CheckRunRequestedActionRequestedAction` (fields with defaults are optional).
+pub fn CheckRunRequestedActionRequestedAction::CheckRunRequestedActionRequestedAction(identifier? : String) -> CheckRunRequestedActionRequestedAction {
+  CheckRunRequestedActionRequestedAction::{
+    identifier: identifier,
+  }
+}
 
 ///|
 let check_run_requested_action_requested_action_fields : @typify_rt.Fields = @typify_rt.Fields::new(["identifier"])
@@ -27459,6 +31152,27 @@ pub(all) struct CheckRunRerequestedCheckRunCheckSuite {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunRerequestedCheckRunCheckSuite` (fields with defaults are optional).
+pub fn CheckRunRerequestedCheckRunCheckSuite::CheckRunRerequestedCheckRunCheckSuite(after? : String, app~ : App, before? : String, conclusion~ : CheckRunRerequestedCheckRunCheckSuiteConclusion, created_at~ : @typify_rt.DateTimeUtc, deployment? : CheckRunDeployment, head_branch? : String, head_sha~ : String, id~ : Int64, node_id? : String, pull_requests~ : Array[CheckRunPullRequest], status~ : CheckRunRerequestedCheckRunCheckSuiteStatus, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> CheckRunRerequestedCheckRunCheckSuite {
+  CheckRunRerequestedCheckRunCheckSuite::{
+    after: after,
+    app: app,
+    before: before,
+    conclusion: conclusion,
+    created_at: created_at,
+    deployment: deployment,
+    head_branch: head_branch,
+    head_sha: head_sha,
+    id: id,
+    node_id: node_id,
+    pull_requests: pull_requests,
+    status: status,
+    updated_at: updated_at,
+    url: url,
+  }
+}
+
+///|
 let check_run_rerequested_check_run_check_suite_fields : @typify_rt.Fields = @typify_rt.Fields::new(["after", "app", "before", "conclusion", "created_at", "deployment", "head_branch", "head_sha", "id", "node_id", "pull_requests", "status", "updated_at", "url"])
 
 ///|
@@ -27657,6 +31371,18 @@ pub(all) struct CheckRunRerequestedCheckRunOutput {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunRerequestedCheckRunOutput` (fields with defaults are optional).
+pub fn CheckRunRerequestedCheckRunOutput::CheckRunRerequestedCheckRunOutput(annotations_count~ : Int64, annotations_url~ : String, summary? : String, text? : String, title? : String) -> CheckRunRerequestedCheckRunOutput {
+  CheckRunRerequestedCheckRunOutput::{
+    annotations_count: annotations_count,
+    annotations_url: annotations_url,
+    summary: summary,
+    text: text,
+    title: title,
+  }
+}
+
+///|
 let check_run_rerequested_check_run_output_fields : @typify_rt.Fields = @typify_rt.Fields::new(["annotations_count", "annotations_url", "summary", "text", "title"])
 
 ///|
@@ -27793,6 +31519,29 @@ pub(all) struct CheckRunRerequestedCheckRun {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckRunRerequestedCheckRun` (fields with defaults are optional).
+pub fn CheckRunRerequestedCheckRun::CheckRunRerequestedCheckRun(app~ : App, check_suite~ : CheckRunRerequestedCheckRunCheckSuite, completed_at~ : String, conclusion? : CheckRunRerequestedCheckRunConclusion, details_url? : String, external_id~ : String, head_sha~ : String, html_url~ : String, id~ : Int64, name~ : String, node_id? : String, output~ : CheckRunRerequestedCheckRunOutput, pull_requests~ : Array[CheckRunPullRequest], started_at~ : String, status~ : CheckRunRerequestedCheckRunStatus, url~ : String) -> CheckRunRerequestedCheckRun {
+  CheckRunRerequestedCheckRun::{
+    app: app,
+    check_suite: check_suite,
+    completed_at: completed_at,
+    conclusion: conclusion,
+    details_url: details_url,
+    external_id: external_id,
+    head_sha: head_sha,
+    html_url: html_url,
+    id: id,
+    name: name,
+    node_id: node_id,
+    output: output,
+    pull_requests: pull_requests,
+    started_at: started_at,
+    status: status,
+    url: url,
+  }
+}
+
+///|
 let check_run_rerequested_check_run_fields : @typify_rt.Fields = @typify_rt.Fields::new(["app", "check_suite", "completed_at", "conclusion", "details_url", "external_id", "head_sha", "html_url", "id", "name", "node_id", "output", "pull_requests", "started_at", "status", "url"])
 
 ///|
@@ -27893,6 +31642,14 @@ pub(all) struct CheckRunRerequestedRequestedAction {
   /// The integrator reference of the action requested by the user.
   identifier : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CheckRunRerequestedRequestedAction` (fields with defaults are optional).
+pub fn CheckRunRerequestedRequestedAction::CheckRunRerequestedRequestedAction(identifier? : String) -> CheckRunRerequestedRequestedAction {
+  CheckRunRerequestedRequestedAction::{
+    identifier: identifier,
+  }
+}
 
 ///|
 let check_run_rerequested_requested_action_fields : @typify_rt.Fields = @typify_rt.Fields::new(["identifier"])
@@ -28184,6 +31941,29 @@ pub(all) struct CheckSuiteCompletedCheckSuite {
   /// URL that points to the check suite API resource.
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CheckSuiteCompletedCheckSuite` (fields with defaults are optional).
+pub fn CheckSuiteCompletedCheckSuite::CheckSuiteCompletedCheckSuite(after~ : String, app~ : App, before? : String, check_runs_url~ : String, conclusion? : CheckSuiteCompletedCheckSuiteConclusion, created_at~ : @typify_rt.DateTimeUtc, head_branch? : String, head_commit~ : CommitSimple, head_sha~ : String, id~ : Int64, latest_check_runs_count~ : Int64, node_id~ : String, pull_requests~ : Array[CheckRunPullRequest], status? : CheckSuiteCompletedCheckSuiteStatus, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> CheckSuiteCompletedCheckSuite {
+  CheckSuiteCompletedCheckSuite::{
+    after: after,
+    app: app,
+    before: before,
+    check_runs_url: check_runs_url,
+    conclusion: conclusion,
+    created_at: created_at,
+    head_branch: head_branch,
+    head_commit: head_commit,
+    head_sha: head_sha,
+    id: id,
+    latest_check_runs_count: latest_check_runs_count,
+    node_id: node_id,
+    pull_requests: pull_requests,
+    status: status,
+    updated_at: updated_at,
+    url: url,
+  }
+}
 
 ///|
 let check_suite_completed_check_suite_fields : @typify_rt.Fields = @typify_rt.Fields::new(["after", "app", "before", "check_runs_url", "conclusion", "created_at", "head_branch", "head_commit", "head_sha", "id", "latest_check_runs_count", "node_id", "pull_requests", "status", "updated_at", "url"])
@@ -28535,6 +32315,29 @@ pub(all) struct CheckSuiteRequestedCheckSuite {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckSuiteRequestedCheckSuite` (fields with defaults are optional).
+pub fn CheckSuiteRequestedCheckSuite::CheckSuiteRequestedCheckSuite(after~ : String, app~ : App, before? : String, check_runs_url~ : String, conclusion? : CheckSuiteRequestedCheckSuiteConclusion, created_at~ : @typify_rt.DateTimeUtc, head_branch? : String, head_commit~ : CommitSimple, head_sha~ : String, id~ : Int64, latest_check_runs_count~ : Int64, node_id~ : String, pull_requests~ : Array[CheckRunPullRequest], status? : CheckSuiteRequestedCheckSuiteStatus, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> CheckSuiteRequestedCheckSuite {
+  CheckSuiteRequestedCheckSuite::{
+    after: after,
+    app: app,
+    before: before,
+    check_runs_url: check_runs_url,
+    conclusion: conclusion,
+    created_at: created_at,
+    head_branch: head_branch,
+    head_commit: head_commit,
+    head_sha: head_sha,
+    id: id,
+    latest_check_runs_count: latest_check_runs_count,
+    node_id: node_id,
+    pull_requests: pull_requests,
+    status: status,
+    updated_at: updated_at,
+    url: url,
+  }
+}
+
+///|
 let check_suite_requested_check_suite_fields : @typify_rt.Fields = @typify_rt.Fields::new(["after", "app", "before", "check_runs_url", "conclusion", "created_at", "head_branch", "head_commit", "head_sha", "id", "latest_check_runs_count", "node_id", "pull_requests", "status", "updated_at", "url"])
 
 ///|
@@ -28884,6 +32687,29 @@ pub(all) struct CheckSuiteRerequestedCheckSuite {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CheckSuiteRerequestedCheckSuite` (fields with defaults are optional).
+pub fn CheckSuiteRerequestedCheckSuite::CheckSuiteRerequestedCheckSuite(after~ : String, app~ : App, before? : String, check_runs_url~ : String, conclusion? : CheckSuiteRerequestedCheckSuiteConclusion, created_at~ : @typify_rt.DateTimeUtc, head_branch? : String, head_commit~ : CommitSimple, head_sha~ : String, id~ : Int64, latest_check_runs_count~ : Int64, node_id~ : String, pull_requests~ : Array[CheckRunPullRequest], status? : CheckSuiteRerequestedCheckSuiteStatus, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> CheckSuiteRerequestedCheckSuite {
+  CheckSuiteRerequestedCheckSuite::{
+    after: after,
+    app: app,
+    before: before,
+    check_runs_url: check_runs_url,
+    conclusion: conclusion,
+    created_at: created_at,
+    head_branch: head_branch,
+    head_commit: head_commit,
+    head_sha: head_sha,
+    id: id,
+    latest_check_runs_count: latest_check_runs_count,
+    node_id: node_id,
+    pull_requests: pull_requests,
+    status: status,
+    updated_at: updated_at,
+    url: url,
+  }
+}
+
+///|
 let check_suite_rerequested_check_suite_fields : @typify_rt.Fields = @typify_rt.Fields::new(["after", "app", "before", "check_runs_url", "conclusion", "created_at", "head_branch", "head_commit", "head_sha", "id", "latest_check_runs_count", "node_id", "pull_requests", "status", "updated_at", "url"])
 
 ///|
@@ -29193,6 +33019,16 @@ pub(all) struct CodeScanningAlertAppearedInBranchAlertRule {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertAppearedInBranchAlertRule` (fields with defaults are optional).
+pub fn CodeScanningAlertAppearedInBranchAlertRule::CodeScanningAlertAppearedInBranchAlertRule(description~ : String, id~ : String, severity? : CodeScanningAlertAppearedInBranchAlertRuleSeverity) -> CodeScanningAlertAppearedInBranchAlertRule {
+  CodeScanningAlertAppearedInBranchAlertRule::{
+    description: description,
+    id: id,
+    severity: severity,
+  }
+}
+
+///|
 let code_scanning_alert_appeared_in_branch_alert_rule_fields : @typify_rt.Fields = @typify_rt.Fields::new(["description", "id", "severity"])
 
 ///|
@@ -29312,6 +33148,15 @@ pub(all) struct CodeScanningAlertAppearedInBranchAlertTool {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertAppearedInBranchAlertTool` (fields with defaults are optional).
+pub fn CodeScanningAlertAppearedInBranchAlertTool::CodeScanningAlertAppearedInBranchAlertTool(name~ : String, version? : String) -> CodeScanningAlertAppearedInBranchAlertTool {
+  CodeScanningAlertAppearedInBranchAlertTool::{
+    name: name,
+    version: version,
+  }
+}
+
+///|
 let code_scanning_alert_appeared_in_branch_alert_tool_fields : @typify_rt.Fields = @typify_rt.Fields::new(["name", "version"])
 
 ///|
@@ -29368,6 +33213,25 @@ pub(all) struct CodeScanningAlertAppearedInBranchAlert {
   tool : CodeScanningAlertAppearedInBranchAlertTool
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertAppearedInBranchAlert` (fields with defaults are optional).
+pub fn CodeScanningAlertAppearedInBranchAlert::CodeScanningAlertAppearedInBranchAlert(created_at~ : @typify_rt.DateTimeUtc, dismissed_at? : @typify_rt.DateTimeUtc, dismissed_by? : User, dismissed_reason? : CodeScanningAlertAppearedInBranchAlertDismissedReason, html_url~ : String, instances~ : Array[AlertInstance], most_recent_instance? : AlertInstance, number~ : Int64, rule~ : CodeScanningAlertAppearedInBranchAlertRule, state~ : CodeScanningAlertAppearedInBranchAlertState, tool~ : CodeScanningAlertAppearedInBranchAlertTool, url~ : String) -> CodeScanningAlertAppearedInBranchAlert {
+  CodeScanningAlertAppearedInBranchAlert::{
+    created_at: created_at,
+    dismissed_at: dismissed_at,
+    dismissed_by: dismissed_by,
+    dismissed_reason: dismissed_reason,
+    html_url: html_url,
+    instances: instances,
+    most_recent_instance: most_recent_instance,
+    number: number,
+    rule: rule,
+    state: state,
+    tool: tool,
+    url: url,
+  }
+}
 
 ///|
 let code_scanning_alert_appeared_in_branch_alert_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "dismissed_at", "dismissed_by", "dismissed_reason", "html_url", "instances", "most_recent_instance", "number", "rule", "state", "tool", "url"])
@@ -29587,6 +33451,18 @@ pub(all) struct CodeScanningAlertClosedByUserAlertInstancesItemLocation {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertClosedByUserAlertInstancesItemLocation` (fields with defaults are optional).
+pub fn CodeScanningAlertClosedByUserAlertInstancesItemLocation::CodeScanningAlertClosedByUserAlertInstancesItemLocation(end_column? : Int64, end_line? : Int64, path? : String, start_column? : Int64, start_line? : Int64) -> CodeScanningAlertClosedByUserAlertInstancesItemLocation {
+  CodeScanningAlertClosedByUserAlertInstancesItemLocation::{
+    end_column: end_column,
+    end_line: end_line,
+    path: path,
+    start_column: start_column,
+    start_line: start_line,
+  }
+}
+
+///|
 let code_scanning_alert_closed_by_user_alert_instances_item_location_fields : @typify_rt.Fields = @typify_rt.Fields::new(["end_column", "end_line", "path", "start_column", "start_line"])
 
 ///|
@@ -29648,6 +33524,14 @@ pub impl ToJson for CodeScanningAlertClosedByUserAlertInstancesItemLocation with
 pub(all) struct CodeScanningAlertClosedByUserAlertInstancesItemMessage {
   text : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertClosedByUserAlertInstancesItemMessage` (fields with defaults are optional).
+pub fn CodeScanningAlertClosedByUserAlertInstancesItemMessage::CodeScanningAlertClosedByUserAlertInstancesItemMessage(text? : String) -> CodeScanningAlertClosedByUserAlertInstancesItemMessage {
+  CodeScanningAlertClosedByUserAlertInstancesItemMessage::{
+    text: text,
+  }
+}
 
 ///|
 let code_scanning_alert_closed_by_user_alert_instances_item_message_fields : @typify_rt.Fields = @typify_rt.Fields::new(["text"])
@@ -29756,6 +33640,21 @@ pub(all) struct CodeScanningAlertClosedByUserAlertInstancesItem {
   ref_ : String
   state : CodeScanningAlertClosedByUserAlertInstancesItemState
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertClosedByUserAlertInstancesItem` (fields with defaults are optional).
+pub fn CodeScanningAlertClosedByUserAlertInstancesItem::CodeScanningAlertClosedByUserAlertInstancesItem(analysis_key~ : String, classifications? : Array[String] = [], commit_sha? : String, environment~ : String, location? : CodeScanningAlertClosedByUserAlertInstancesItemLocation, message? : CodeScanningAlertClosedByUserAlertInstancesItemMessage, ref_~ : String, state~ : CodeScanningAlertClosedByUserAlertInstancesItemState) -> CodeScanningAlertClosedByUserAlertInstancesItem {
+  CodeScanningAlertClosedByUserAlertInstancesItem::{
+    analysis_key: analysis_key,
+    classifications: classifications,
+    commit_sha: commit_sha,
+    environment: environment,
+    location: location,
+    message: message,
+    ref_: ref_,
+    state: state,
+  }
+}
 
 ///|
 let code_scanning_alert_closed_by_user_alert_instances_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["analysis_key", "classifications", "commit_sha", "environment", "location", "message", "ref", "state"])
@@ -29917,6 +33816,20 @@ pub(all) struct CodeScanningAlertClosedByUserAlertRule {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertClosedByUserAlertRule` (fields with defaults are optional).
+pub fn CodeScanningAlertClosedByUserAlertRule::CodeScanningAlertClosedByUserAlertRule(description~ : String, full_description? : String, help? : Unit = (), id~ : String, name? : String, severity? : CodeScanningAlertClosedByUserAlertRuleSeverity, tags? : Unit = ()) -> CodeScanningAlertClosedByUserAlertRule {
+  CodeScanningAlertClosedByUserAlertRule::{
+    description: description,
+    full_description: full_description,
+    help: help,
+    id: id,
+    name: name,
+    severity: severity,
+    tags: tags,
+  }
+}
+
+///|
 let code_scanning_alert_closed_by_user_alert_rule_fields : @typify_rt.Fields = @typify_rt.Fields::new(["description", "full_description", "help", "id", "name", "severity", "tags"])
 
 ///|
@@ -30045,6 +33958,16 @@ pub(all) struct CodeScanningAlertClosedByUserAlertTool {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertClosedByUserAlertTool` (fields with defaults are optional).
+pub fn CodeScanningAlertClosedByUserAlertTool::CodeScanningAlertClosedByUserAlertTool(guid? : String, name~ : String, version? : String) -> CodeScanningAlertClosedByUserAlertTool {
+  CodeScanningAlertClosedByUserAlertTool::{
+    guid: guid,
+    name: name,
+    version: version,
+  }
+}
+
+///|
 let code_scanning_alert_closed_by_user_alert_tool_fields : @typify_rt.Fields = @typify_rt.Fields::new(["guid", "name", "version"])
 
 ///|
@@ -30107,6 +34030,25 @@ pub(all) struct CodeScanningAlertClosedByUserAlert {
   tool : CodeScanningAlertClosedByUserAlertTool
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertClosedByUserAlert` (fields with defaults are optional).
+pub fn CodeScanningAlertClosedByUserAlert::CodeScanningAlertClosedByUserAlert(created_at~ : @typify_rt.DateTimeUtc, dismissed_at~ : @typify_rt.DateTimeUtc, dismissed_by~ : User, dismissed_reason? : CodeScanningAlertClosedByUserAlertDismissedReason, html_url~ : String, instances~ : Array[CodeScanningAlertClosedByUserAlertInstancesItem], most_recent_instance? : AlertInstance, number~ : Int64, rule~ : CodeScanningAlertClosedByUserAlertRule, state~ : CodeScanningAlertClosedByUserAlertState, tool~ : CodeScanningAlertClosedByUserAlertTool, url~ : String) -> CodeScanningAlertClosedByUserAlert {
+  CodeScanningAlertClosedByUserAlert::{
+    created_at: created_at,
+    dismissed_at: dismissed_at,
+    dismissed_by: dismissed_by,
+    dismissed_reason: dismissed_reason,
+    html_url: html_url,
+    instances: instances,
+    most_recent_instance: most_recent_instance,
+    number: number,
+    rule: rule,
+    state: state,
+    tool: tool,
+    url: url,
+  }
+}
 
 ///|
 let code_scanning_alert_closed_by_user_alert_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "dismissed_at", "dismissed_by", "dismissed_reason", "html_url", "instances", "most_recent_instance", "number", "rule", "state", "tool", "url"])
@@ -30255,6 +34197,18 @@ pub(all) struct CodeScanningAlertCreatedAlertInstancesItemLocation {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertCreatedAlertInstancesItemLocation` (fields with defaults are optional).
+pub fn CodeScanningAlertCreatedAlertInstancesItemLocation::CodeScanningAlertCreatedAlertInstancesItemLocation(end_column? : Int64, end_line? : Int64, path? : String, start_column? : Int64, start_line? : Int64) -> CodeScanningAlertCreatedAlertInstancesItemLocation {
+  CodeScanningAlertCreatedAlertInstancesItemLocation::{
+    end_column: end_column,
+    end_line: end_line,
+    path: path,
+    start_column: start_column,
+    start_line: start_line,
+  }
+}
+
+///|
 let code_scanning_alert_created_alert_instances_item_location_fields : @typify_rt.Fields = @typify_rt.Fields::new(["end_column", "end_line", "path", "start_column", "start_line"])
 
 ///|
@@ -30316,6 +34270,14 @@ pub impl ToJson for CodeScanningAlertCreatedAlertInstancesItemLocation with fn t
 pub(all) struct CodeScanningAlertCreatedAlertInstancesItemMessage {
   text : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertCreatedAlertInstancesItemMessage` (fields with defaults are optional).
+pub fn CodeScanningAlertCreatedAlertInstancesItemMessage::CodeScanningAlertCreatedAlertInstancesItemMessage(text? : String) -> CodeScanningAlertCreatedAlertInstancesItemMessage {
+  CodeScanningAlertCreatedAlertInstancesItemMessage::{
+    text: text,
+  }
+}
 
 ///|
 let code_scanning_alert_created_alert_instances_item_message_fields : @typify_rt.Fields = @typify_rt.Fields::new(["text"])
@@ -30430,6 +34392,21 @@ pub(all) struct CodeScanningAlertCreatedAlertInstancesItem {
   ref_ : String
   state : CodeScanningAlertCreatedAlertInstancesItemState
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertCreatedAlertInstancesItem` (fields with defaults are optional).
+pub fn CodeScanningAlertCreatedAlertInstancesItem::CodeScanningAlertCreatedAlertInstancesItem(analysis_key~ : String, classifications? : Array[String] = [], commit_sha? : String, environment~ : String, location? : CodeScanningAlertCreatedAlertInstancesItemLocation, message? : CodeScanningAlertCreatedAlertInstancesItemMessage, ref_~ : String, state~ : CodeScanningAlertCreatedAlertInstancesItemState) -> CodeScanningAlertCreatedAlertInstancesItem {
+  CodeScanningAlertCreatedAlertInstancesItem::{
+    analysis_key: analysis_key,
+    classifications: classifications,
+    commit_sha: commit_sha,
+    environment: environment,
+    location: location,
+    message: message,
+    ref_: ref_,
+    state: state,
+  }
+}
 
 ///|
 let code_scanning_alert_created_alert_instances_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["analysis_key", "classifications", "commit_sha", "environment", "location", "message", "ref", "state"])
@@ -30591,6 +34568,20 @@ pub(all) struct CodeScanningAlertCreatedAlertRule {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertCreatedAlertRule` (fields with defaults are optional).
+pub fn CodeScanningAlertCreatedAlertRule::CodeScanningAlertCreatedAlertRule(description~ : String, full_description? : String, help? : Unit = (), id~ : String, name? : String, severity? : CodeScanningAlertCreatedAlertRuleSeverity, tags? : Unit = ()) -> CodeScanningAlertCreatedAlertRule {
+  CodeScanningAlertCreatedAlertRule::{
+    description: description,
+    full_description: full_description,
+    help: help,
+    id: id,
+    name: name,
+    severity: severity,
+    tags: tags,
+  }
+}
+
+///|
 let code_scanning_alert_created_alert_rule_fields : @typify_rt.Fields = @typify_rt.Fields::new(["description", "full_description", "help", "id", "name", "severity", "tags"])
 
 ///|
@@ -30725,6 +34716,16 @@ pub(all) struct CodeScanningAlertCreatedAlertTool {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertCreatedAlertTool` (fields with defaults are optional).
+pub fn CodeScanningAlertCreatedAlertTool::CodeScanningAlertCreatedAlertTool(guid? : String, name~ : String, version? : String) -> CodeScanningAlertCreatedAlertTool {
+  CodeScanningAlertCreatedAlertTool::{
+    guid: guid,
+    name: name,
+    version: version,
+  }
+}
+
+///|
 let code_scanning_alert_created_alert_tool_fields : @typify_rt.Fields = @typify_rt.Fields::new(["guid", "name", "version"])
 
 ///|
@@ -30787,6 +34788,25 @@ pub(all) struct CodeScanningAlertCreatedAlert {
   tool : CodeScanningAlertCreatedAlertTool
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertCreatedAlert` (fields with defaults are optional).
+pub fn CodeScanningAlertCreatedAlert::CodeScanningAlertCreatedAlert(created_at~ : @typify_rt.DateTimeUtc, dismissed_at~ : Unit, dismissed_by~ : Unit, dismissed_reason~ : Unit, html_url~ : String, instances~ : Array[CodeScanningAlertCreatedAlertInstancesItem], most_recent_instance? : AlertInstance, number~ : Int64, rule~ : CodeScanningAlertCreatedAlertRule, state~ : CodeScanningAlertCreatedAlertState, tool~ : CodeScanningAlertCreatedAlertTool, url~ : String) -> CodeScanningAlertCreatedAlert {
+  CodeScanningAlertCreatedAlert::{
+    created_at: created_at,
+    dismissed_at: dismissed_at,
+    dismissed_by: dismissed_by,
+    dismissed_reason: dismissed_reason,
+    html_url: html_url,
+    instances: instances,
+    most_recent_instance: most_recent_instance,
+    number: number,
+    rule: rule,
+    state: state,
+    tool: tool,
+    url: url,
+  }
+}
 
 ///|
 let code_scanning_alert_created_alert_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "dismissed_at", "dismissed_by", "dismissed_reason", "html_url", "instances", "most_recent_instance", "number", "rule", "state", "tool", "url"])
@@ -31006,6 +35026,18 @@ pub(all) struct CodeScanningAlertFixedAlertInstancesItemLocation {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertFixedAlertInstancesItemLocation` (fields with defaults are optional).
+pub fn CodeScanningAlertFixedAlertInstancesItemLocation::CodeScanningAlertFixedAlertInstancesItemLocation(end_column? : Int64, end_line? : Int64, path? : String, start_column? : Int64, start_line? : Int64) -> CodeScanningAlertFixedAlertInstancesItemLocation {
+  CodeScanningAlertFixedAlertInstancesItemLocation::{
+    end_column: end_column,
+    end_line: end_line,
+    path: path,
+    start_column: start_column,
+    start_line: start_line,
+  }
+}
+
+///|
 let code_scanning_alert_fixed_alert_instances_item_location_fields : @typify_rt.Fields = @typify_rt.Fields::new(["end_column", "end_line", "path", "start_column", "start_line"])
 
 ///|
@@ -31067,6 +35099,14 @@ pub impl ToJson for CodeScanningAlertFixedAlertInstancesItemLocation with fn to_
 pub(all) struct CodeScanningAlertFixedAlertInstancesItemMessage {
   text : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertFixedAlertInstancesItemMessage` (fields with defaults are optional).
+pub fn CodeScanningAlertFixedAlertInstancesItemMessage::CodeScanningAlertFixedAlertInstancesItemMessage(text? : String) -> CodeScanningAlertFixedAlertInstancesItemMessage {
+  CodeScanningAlertFixedAlertInstancesItemMessage::{
+    text: text,
+  }
+}
 
 ///|
 let code_scanning_alert_fixed_alert_instances_item_message_fields : @typify_rt.Fields = @typify_rt.Fields::new(["text"])
@@ -31175,6 +35215,21 @@ pub(all) struct CodeScanningAlertFixedAlertInstancesItem {
   ref_ : String
   state : CodeScanningAlertFixedAlertInstancesItemState
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertFixedAlertInstancesItem` (fields with defaults are optional).
+pub fn CodeScanningAlertFixedAlertInstancesItem::CodeScanningAlertFixedAlertInstancesItem(analysis_key~ : String, classifications? : Array[String] = [], commit_sha? : String, environment~ : String, location? : CodeScanningAlertFixedAlertInstancesItemLocation, message? : CodeScanningAlertFixedAlertInstancesItemMessage, ref_~ : String, state~ : CodeScanningAlertFixedAlertInstancesItemState) -> CodeScanningAlertFixedAlertInstancesItem {
+  CodeScanningAlertFixedAlertInstancesItem::{
+    analysis_key: analysis_key,
+    classifications: classifications,
+    commit_sha: commit_sha,
+    environment: environment,
+    location: location,
+    message: message,
+    ref_: ref_,
+    state: state,
+  }
+}
 
 ///|
 let code_scanning_alert_fixed_alert_instances_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["analysis_key", "classifications", "commit_sha", "environment", "location", "message", "ref", "state"])
@@ -31336,6 +35391,20 @@ pub(all) struct CodeScanningAlertFixedAlertRule {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertFixedAlertRule` (fields with defaults are optional).
+pub fn CodeScanningAlertFixedAlertRule::CodeScanningAlertFixedAlertRule(description~ : String, full_description? : String, help? : Unit = (), id~ : String, name? : String, severity? : CodeScanningAlertFixedAlertRuleSeverity, tags? : Unit = ()) -> CodeScanningAlertFixedAlertRule {
+  CodeScanningAlertFixedAlertRule::{
+    description: description,
+    full_description: full_description,
+    help: help,
+    id: id,
+    name: name,
+    severity: severity,
+    tags: tags,
+  }
+}
+
+///|
 let code_scanning_alert_fixed_alert_rule_fields : @typify_rt.Fields = @typify_rt.Fields::new(["description", "full_description", "help", "id", "name", "severity", "tags"])
 
 ///|
@@ -31464,6 +35533,16 @@ pub(all) struct CodeScanningAlertFixedAlertTool {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertFixedAlertTool` (fields with defaults are optional).
+pub fn CodeScanningAlertFixedAlertTool::CodeScanningAlertFixedAlertTool(guid? : String, name~ : String, version? : String) -> CodeScanningAlertFixedAlertTool {
+  CodeScanningAlertFixedAlertTool::{
+    guid: guid,
+    name: name,
+    version: version,
+  }
+}
+
+///|
 let code_scanning_alert_fixed_alert_tool_fields : @typify_rt.Fields = @typify_rt.Fields::new(["guid", "name", "version"])
 
 ///|
@@ -31527,6 +35606,26 @@ pub(all) struct CodeScanningAlertFixedAlert {
   tool : CodeScanningAlertFixedAlertTool
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertFixedAlert` (fields with defaults are optional).
+pub fn CodeScanningAlertFixedAlert::CodeScanningAlertFixedAlert(created_at~ : @typify_rt.DateTimeUtc, dismissed_at? : @typify_rt.DateTimeUtc, dismissed_by? : User, dismissed_reason? : CodeScanningAlertFixedAlertDismissedReason, html_url~ : String, instances~ : Array[CodeScanningAlertFixedAlertInstancesItem], instances_url? : String, most_recent_instance? : AlertInstance, number~ : Int64, rule~ : CodeScanningAlertFixedAlertRule, state~ : CodeScanningAlertFixedAlertState, tool~ : CodeScanningAlertFixedAlertTool, url~ : String) -> CodeScanningAlertFixedAlert {
+  CodeScanningAlertFixedAlert::{
+    created_at: created_at,
+    dismissed_at: dismissed_at,
+    dismissed_by: dismissed_by,
+    dismissed_reason: dismissed_reason,
+    html_url: html_url,
+    instances: instances,
+    instances_url: instances_url,
+    most_recent_instance: most_recent_instance,
+    number: number,
+    rule: rule,
+    state: state,
+    tool: tool,
+    url: url,
+  }
+}
 
 ///|
 let code_scanning_alert_fixed_alert_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "dismissed_at", "dismissed_by", "dismissed_reason", "html_url", "instances", "instances_url", "most_recent_instance", "number", "rule", "state", "tool", "url"])
@@ -31681,6 +35780,18 @@ pub(all) struct CodeScanningAlertReopenedAlertInstancesItemLocation {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertReopenedAlertInstancesItemLocation` (fields with defaults are optional).
+pub fn CodeScanningAlertReopenedAlertInstancesItemLocation::CodeScanningAlertReopenedAlertInstancesItemLocation(end_column? : Int64, end_line? : Int64, path? : String, start_column? : Int64, start_line? : Int64) -> CodeScanningAlertReopenedAlertInstancesItemLocation {
+  CodeScanningAlertReopenedAlertInstancesItemLocation::{
+    end_column: end_column,
+    end_line: end_line,
+    path: path,
+    start_column: start_column,
+    start_line: start_line,
+  }
+}
+
+///|
 let code_scanning_alert_reopened_alert_instances_item_location_fields : @typify_rt.Fields = @typify_rt.Fields::new(["end_column", "end_line", "path", "start_column", "start_line"])
 
 ///|
@@ -31742,6 +35853,14 @@ pub impl ToJson for CodeScanningAlertReopenedAlertInstancesItemLocation with fn 
 pub(all) struct CodeScanningAlertReopenedAlertInstancesItemMessage {
   text : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertReopenedAlertInstancesItemMessage` (fields with defaults are optional).
+pub fn CodeScanningAlertReopenedAlertInstancesItemMessage::CodeScanningAlertReopenedAlertInstancesItemMessage(text? : String) -> CodeScanningAlertReopenedAlertInstancesItemMessage {
+  CodeScanningAlertReopenedAlertInstancesItemMessage::{
+    text: text,
+  }
+}
 
 ///|
 let code_scanning_alert_reopened_alert_instances_item_message_fields : @typify_rt.Fields = @typify_rt.Fields::new(["text"])
@@ -31850,6 +35969,21 @@ pub(all) struct CodeScanningAlertReopenedAlertInstancesItem {
   ref_ : String
   state : CodeScanningAlertReopenedAlertInstancesItemState
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertReopenedAlertInstancesItem` (fields with defaults are optional).
+pub fn CodeScanningAlertReopenedAlertInstancesItem::CodeScanningAlertReopenedAlertInstancesItem(analysis_key~ : String, classifications? : Array[String] = [], commit_sha? : String, environment~ : String, location? : CodeScanningAlertReopenedAlertInstancesItemLocation, message? : CodeScanningAlertReopenedAlertInstancesItemMessage, ref_~ : String, state~ : CodeScanningAlertReopenedAlertInstancesItemState) -> CodeScanningAlertReopenedAlertInstancesItem {
+  CodeScanningAlertReopenedAlertInstancesItem::{
+    analysis_key: analysis_key,
+    classifications: classifications,
+    commit_sha: commit_sha,
+    environment: environment,
+    location: location,
+    message: message,
+    ref_: ref_,
+    state: state,
+  }
+}
 
 ///|
 let code_scanning_alert_reopened_alert_instances_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["analysis_key", "classifications", "commit_sha", "environment", "location", "message", "ref", "state"])
@@ -32011,6 +36145,20 @@ pub(all) struct CodeScanningAlertReopenedAlertRule {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertReopenedAlertRule` (fields with defaults are optional).
+pub fn CodeScanningAlertReopenedAlertRule::CodeScanningAlertReopenedAlertRule(description~ : String, full_description? : String, help? : Unit = (), id~ : String, name? : String, severity? : CodeScanningAlertReopenedAlertRuleSeverity, tags? : Unit = ()) -> CodeScanningAlertReopenedAlertRule {
+  CodeScanningAlertReopenedAlertRule::{
+    description: description,
+    full_description: full_description,
+    help: help,
+    id: id,
+    name: name,
+    severity: severity,
+    tags: tags,
+  }
+}
+
+///|
 let code_scanning_alert_reopened_alert_rule_fields : @typify_rt.Fields = @typify_rt.Fields::new(["description", "full_description", "help", "id", "name", "severity", "tags"])
 
 ///|
@@ -32151,6 +36299,16 @@ pub(all) struct CodeScanningAlertReopenedAlertTool {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertReopenedAlertTool` (fields with defaults are optional).
+pub fn CodeScanningAlertReopenedAlertTool::CodeScanningAlertReopenedAlertTool(guid? : String, name~ : String, version? : String) -> CodeScanningAlertReopenedAlertTool {
+  CodeScanningAlertReopenedAlertTool::{
+    guid: guid,
+    name: name,
+    version: version,
+  }
+}
+
+///|
 let code_scanning_alert_reopened_alert_tool_fields : @typify_rt.Fields = @typify_rt.Fields::new(["guid", "name", "version"])
 
 ///|
@@ -32213,6 +36371,25 @@ pub(all) struct CodeScanningAlertReopenedAlert {
   tool : CodeScanningAlertReopenedAlertTool
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertReopenedAlert` (fields with defaults are optional).
+pub fn CodeScanningAlertReopenedAlert::CodeScanningAlertReopenedAlert(created_at~ : @typify_rt.DateTimeUtc, dismissed_at~ : Unit, dismissed_by~ : Unit, dismissed_reason~ : Unit, html_url~ : String, instances~ : Array[CodeScanningAlertReopenedAlertInstancesItem], most_recent_instance? : AlertInstance, number~ : Int64, rule~ : CodeScanningAlertReopenedAlertRule, state~ : CodeScanningAlertReopenedAlertState, tool~ : CodeScanningAlertReopenedAlertTool, url~ : String) -> CodeScanningAlertReopenedAlert {
+  CodeScanningAlertReopenedAlert::{
+    created_at: created_at,
+    dismissed_at: dismissed_at,
+    dismissed_by: dismissed_by,
+    dismissed_reason: dismissed_reason,
+    html_url: html_url,
+    instances: instances,
+    most_recent_instance: most_recent_instance,
+    number: number,
+    rule: rule,
+    state: state,
+    tool: tool,
+    url: url,
+  }
+}
 
 ///|
 let code_scanning_alert_reopened_alert_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "dismissed_at", "dismissed_by", "dismissed_reason", "html_url", "instances", "most_recent_instance", "number", "rule", "state", "tool", "url"])
@@ -32361,6 +36538,18 @@ pub(all) struct CodeScanningAlertReopenedByUserAlertInstancesItemLocation {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertReopenedByUserAlertInstancesItemLocation` (fields with defaults are optional).
+pub fn CodeScanningAlertReopenedByUserAlertInstancesItemLocation::CodeScanningAlertReopenedByUserAlertInstancesItemLocation(end_column? : Int64, end_line? : Int64, path? : String, start_column? : Int64, start_line? : Int64) -> CodeScanningAlertReopenedByUserAlertInstancesItemLocation {
+  CodeScanningAlertReopenedByUserAlertInstancesItemLocation::{
+    end_column: end_column,
+    end_line: end_line,
+    path: path,
+    start_column: start_column,
+    start_line: start_line,
+  }
+}
+
+///|
 let code_scanning_alert_reopened_by_user_alert_instances_item_location_fields : @typify_rt.Fields = @typify_rt.Fields::new(["end_column", "end_line", "path", "start_column", "start_line"])
 
 ///|
@@ -32422,6 +36611,14 @@ pub impl ToJson for CodeScanningAlertReopenedByUserAlertInstancesItemLocation wi
 pub(all) struct CodeScanningAlertReopenedByUserAlertInstancesItemMessage {
   text : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertReopenedByUserAlertInstancesItemMessage` (fields with defaults are optional).
+pub fn CodeScanningAlertReopenedByUserAlertInstancesItemMessage::CodeScanningAlertReopenedByUserAlertInstancesItemMessage(text? : String) -> CodeScanningAlertReopenedByUserAlertInstancesItemMessage {
+  CodeScanningAlertReopenedByUserAlertInstancesItemMessage::{
+    text: text,
+  }
+}
 
 ///|
 let code_scanning_alert_reopened_by_user_alert_instances_item_message_fields : @typify_rt.Fields = @typify_rt.Fields::new(["text"])
@@ -32530,6 +36727,21 @@ pub(all) struct CodeScanningAlertReopenedByUserAlertInstancesItem {
   ref_ : String
   state : CodeScanningAlertReopenedByUserAlertInstancesItemState
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertReopenedByUserAlertInstancesItem` (fields with defaults are optional).
+pub fn CodeScanningAlertReopenedByUserAlertInstancesItem::CodeScanningAlertReopenedByUserAlertInstancesItem(analysis_key~ : String, classifications? : Array[String] = [], commit_sha? : String, environment~ : String, location? : CodeScanningAlertReopenedByUserAlertInstancesItemLocation, message? : CodeScanningAlertReopenedByUserAlertInstancesItemMessage, ref_~ : String, state~ : CodeScanningAlertReopenedByUserAlertInstancesItemState) -> CodeScanningAlertReopenedByUserAlertInstancesItem {
+  CodeScanningAlertReopenedByUserAlertInstancesItem::{
+    analysis_key: analysis_key,
+    classifications: classifications,
+    commit_sha: commit_sha,
+    environment: environment,
+    location: location,
+    message: message,
+    ref_: ref_,
+    state: state,
+  }
+}
 
 ///|
 let code_scanning_alert_reopened_by_user_alert_instances_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["analysis_key", "classifications", "commit_sha", "environment", "location", "message", "ref", "state"])
@@ -32687,6 +36899,16 @@ pub(all) struct CodeScanningAlertReopenedByUserAlertRule {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertReopenedByUserAlertRule` (fields with defaults are optional).
+pub fn CodeScanningAlertReopenedByUserAlertRule::CodeScanningAlertReopenedByUserAlertRule(description~ : String, id~ : String, severity? : CodeScanningAlertReopenedByUserAlertRuleSeverity) -> CodeScanningAlertReopenedByUserAlertRule {
+  CodeScanningAlertReopenedByUserAlertRule::{
+    description: description,
+    id: id,
+    severity: severity,
+  }
+}
+
+///|
 let code_scanning_alert_reopened_by_user_alert_rule_fields : @typify_rt.Fields = @typify_rt.Fields::new(["description", "id", "severity"])
 
 ///|
@@ -32794,6 +37016,15 @@ pub(all) struct CodeScanningAlertReopenedByUserAlertTool {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CodeScanningAlertReopenedByUserAlertTool` (fields with defaults are optional).
+pub fn CodeScanningAlertReopenedByUserAlertTool::CodeScanningAlertReopenedByUserAlertTool(name~ : String, version? : String) -> CodeScanningAlertReopenedByUserAlertTool {
+  CodeScanningAlertReopenedByUserAlertTool::{
+    name: name,
+    version: version,
+  }
+}
+
+///|
 let code_scanning_alert_reopened_by_user_alert_tool_fields : @typify_rt.Fields = @typify_rt.Fields::new(["name", "version"])
 
 ///|
@@ -32850,6 +37081,25 @@ pub(all) struct CodeScanningAlertReopenedByUserAlert {
   tool : CodeScanningAlertReopenedByUserAlertTool
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `CodeScanningAlertReopenedByUserAlert` (fields with defaults are optional).
+pub fn CodeScanningAlertReopenedByUserAlert::CodeScanningAlertReopenedByUserAlert(created_at~ : @typify_rt.DateTimeUtc, dismissed_at~ : Unit, dismissed_by~ : Unit, dismissed_reason~ : Unit, html_url~ : String, instances~ : Array[CodeScanningAlertReopenedByUserAlertInstancesItem], most_recent_instance? : AlertInstance, number~ : Int64, rule~ : CodeScanningAlertReopenedByUserAlertRule, state~ : CodeScanningAlertReopenedByUserAlertState, tool~ : CodeScanningAlertReopenedByUserAlertTool, url~ : String) -> CodeScanningAlertReopenedByUserAlert {
+  CodeScanningAlertReopenedByUserAlert::{
+    created_at: created_at,
+    dismissed_at: dismissed_at,
+    dismissed_by: dismissed_by,
+    dismissed_reason: dismissed_reason,
+    html_url: html_url,
+    instances: instances,
+    most_recent_instance: most_recent_instance,
+    number: number,
+    rule: rule,
+    state: state,
+    tool: tool,
+    url: url,
+  }
+}
 
 ///|
 let code_scanning_alert_reopened_by_user_alert_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "dismissed_at", "dismissed_by", "dismissed_reason", "html_url", "instances", "most_recent_instance", "number", "rule", "state", "tool", "url"])
@@ -33013,6 +37263,26 @@ pub(all) struct CommitCommentCreatedComment {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `CommitCommentCreatedComment` (fields with defaults are optional).
+pub fn CommitCommentCreatedComment::CommitCommentCreatedComment(author_association~ : AuthorAssociation, body~ : String, commit_id~ : String, created_at~ : String, html_url~ : String, id~ : Int64, line? : Int64, node_id~ : String, path? : String, position? : Int64, updated_at~ : String, url~ : String, user~ : User) -> CommitCommentCreatedComment {
+  CommitCommentCreatedComment::{
+    author_association: author_association,
+    body: body,
+    commit_id: commit_id,
+    created_at: created_at,
+    html_url: html_url,
+    id: id,
+    line: line,
+    node_id: node_id,
+    path: path,
+    position: position,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
+
+///|
 let commit_comment_created_comment_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author_association", "body", "commit_id", "created_at", "html_url", "id", "line", "node_id", "path", "position", "updated_at", "url", "user"])
 
 ///|
@@ -33157,6 +37427,16 @@ pub(all) struct ContentReferenceCreatedContentReference {
   node_id : String
   reference : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ContentReferenceCreatedContentReference` (fields with defaults are optional).
+pub fn ContentReferenceCreatedContentReference::ContentReferenceCreatedContentReference(id~ : Int64, node_id~ : String, reference~ : String) -> ContentReferenceCreatedContentReference {
+  ContentReferenceCreatedContentReference::{
+    id: id,
+    node_id: node_id,
+    reference: reference,
+  }
+}
 
 ///|
 let content_reference_created_content_reference_fields : @typify_rt.Fields = @typify_rt.Fields::new(["id", "node_id", "reference"])
@@ -33399,6 +37679,20 @@ pub(all) struct DeployKeyCreatedKey {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DeployKeyCreatedKey` (fields with defaults are optional).
+pub fn DeployKeyCreatedKey::DeployKeyCreatedKey(created_at~ : String, id~ : Int64, key~ : String, read_only~ : Bool, title~ : String, url~ : String, verified~ : Bool) -> DeployKeyCreatedKey {
+  DeployKeyCreatedKey::{
+    created_at: created_at,
+    id: id,
+    key: key,
+    read_only: read_only,
+    title: title,
+    url: url,
+    verified: verified,
+  }
+}
+
+///|
 let deploy_key_created_key_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "id", "key", "read_only", "title", "url", "verified"])
 
 ///|
@@ -33525,6 +37819,20 @@ pub(all) struct DeployKeyDeletedKey {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DeployKeyDeletedKey` (fields with defaults are optional).
+pub fn DeployKeyDeletedKey::DeployKeyDeletedKey(created_at~ : String, id~ : Int64, key~ : String, read_only~ : Bool, title~ : String, url~ : String, verified~ : Bool) -> DeployKeyDeletedKey {
+  DeployKeyDeletedKey::{
+    created_at: created_at,
+    id: id,
+    key: key,
+    read_only: read_only,
+    title: title,
+    url: url,
+    verified: verified,
+  }
+}
+
+///|
 let deploy_key_deleted_key_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "id", "key", "read_only", "title", "url", "verified"])
 
 ///|
@@ -33644,6 +37952,12 @@ pub(all) struct DeploymentCreatedDeploymentPayload {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DeploymentCreatedDeploymentPayload` (fields with defaults are optional).
+pub fn DeploymentCreatedDeploymentPayload::DeploymentCreatedDeploymentPayload() -> DeploymentCreatedDeploymentPayload {
+  DeploymentCreatedDeploymentPayload::{}
+}
+
+///|
 let deployment_created_deployment_payload_fields : @typify_rt.Fields = @typify_rt.Fields::new([])
 
 ///|
@@ -33691,6 +38005,29 @@ pub(all) struct DeploymentCreatedDeployment {
   updated_at : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DeploymentCreatedDeployment` (fields with defaults are optional).
+pub fn DeploymentCreatedDeployment::DeploymentCreatedDeployment(created_at~ : String, creator~ : User, description~ : Unit, environment~ : String, id~ : Int64, node_id~ : String, original_environment~ : String, payload~ : DeploymentCreatedDeploymentPayload, performed_via_github_app? : App, ref_~ : String, repository_url~ : String, sha~ : String, statuses_url~ : String, task~ : String, updated_at~ : String, url~ : String) -> DeploymentCreatedDeployment {
+  DeploymentCreatedDeployment::{
+    created_at: created_at,
+    creator: creator,
+    description: description,
+    environment: environment,
+    id: id,
+    node_id: node_id,
+    original_environment: original_environment,
+    payload: payload,
+    performed_via_github_app: performed_via_github_app,
+    ref_: ref_,
+    repository_url: repository_url,
+    sha: sha,
+    statuses_url: statuses_url,
+    task: task,
+    updated_at: updated_at,
+    url: url,
+  }
+}
 
 ///|
 let deployment_created_deployment_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "creator", "description", "environment", "id", "node_id", "original_environment", "payload", "performed_via_github_app", "ref", "repository_url", "sha", "statuses_url", "task", "updated_at", "url"])
@@ -33850,6 +38187,12 @@ pub(all) struct DeploymentStatusCreatedDeploymentPayload {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DeploymentStatusCreatedDeploymentPayload` (fields with defaults are optional).
+pub fn DeploymentStatusCreatedDeploymentPayload::DeploymentStatusCreatedDeploymentPayload() -> DeploymentStatusCreatedDeploymentPayload {
+  DeploymentStatusCreatedDeploymentPayload::{}
+}
+
+///|
 let deployment_status_created_deployment_payload_fields : @typify_rt.Fields = @typify_rt.Fields::new([])
 
 ///|
@@ -33897,6 +38240,29 @@ pub(all) struct DeploymentStatusCreatedDeployment {
   updated_at : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DeploymentStatusCreatedDeployment` (fields with defaults are optional).
+pub fn DeploymentStatusCreatedDeployment::DeploymentStatusCreatedDeployment(created_at~ : String, creator~ : User, description~ : Unit, environment~ : String, id~ : Int64, node_id~ : String, original_environment~ : String, payload~ : DeploymentStatusCreatedDeploymentPayload, performed_via_github_app? : App, ref_~ : String, repository_url~ : String, sha~ : String, statuses_url~ : String, task~ : String, updated_at~ : String, url~ : String) -> DeploymentStatusCreatedDeployment {
+  DeploymentStatusCreatedDeployment::{
+    created_at: created_at,
+    creator: creator,
+    description: description,
+    environment: environment,
+    id: id,
+    node_id: node_id,
+    original_environment: original_environment,
+    payload: payload,
+    performed_via_github_app: performed_via_github_app,
+    ref_: ref_,
+    repository_url: repository_url,
+    sha: sha,
+    statuses_url: statuses_url,
+    task: task,
+    updated_at: updated_at,
+    url: url,
+  }
+}
 
 ///|
 let deployment_status_created_deployment_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "creator", "description", "environment", "id", "node_id", "original_environment", "payload", "performed_via_github_app", "ref", "repository_url", "sha", "statuses_url", "task", "updated_at", "url"])
@@ -34011,6 +38377,26 @@ pub(all) struct DeploymentStatusCreatedDeploymentStatus {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DeploymentStatusCreatedDeploymentStatus` (fields with defaults are optional).
+pub fn DeploymentStatusCreatedDeploymentStatus::DeploymentStatusCreatedDeploymentStatus(created_at~ : String, creator~ : User, deployment_url~ : String, description~ : String, environment~ : String, id~ : Int64, node_id~ : String, performed_via_github_app? : App, repository_url~ : String, state~ : String, target_url~ : String, updated_at~ : String, url~ : String) -> DeploymentStatusCreatedDeploymentStatus {
+  DeploymentStatusCreatedDeploymentStatus::{
+    created_at: created_at,
+    creator: creator,
+    deployment_url: deployment_url,
+    description: description,
+    environment: environment,
+    id: id,
+    node_id: node_id,
+    performed_via_github_app: performed_via_github_app,
+    repository_url: repository_url,
+    state: state,
+    target_url: target_url,
+    updated_at: updated_at,
+    url: url,
+  }
+}
+
+///|
 let deployment_status_created_deployment_status_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "creator", "deployment_url", "description", "environment", "id", "node_id", "performed_via_github_app", "repository_url", "state", "target_url", "updated_at", "url"])
 
 ///|
@@ -34104,6 +38490,22 @@ pub(all) struct DiscussionCategory {
   slug : String
   updated_at : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionCategory` (fields with defaults are optional).
+pub fn DiscussionCategory::DiscussionCategory(created_at~ : @typify_rt.DateTimeUtc, description~ : String, emoji~ : String, id~ : Int64, is_answerable~ : Bool, name~ : String, repository_id~ : Int64, slug~ : String, updated_at~ : String) -> DiscussionCategory {
+  DiscussionCategory::{
+    created_at: created_at,
+    description: description,
+    emoji: emoji,
+    id: id,
+    is_answerable: is_answerable,
+    name: name,
+    repository_id: repository_id,
+    slug: slug,
+    updated_at: updated_at,
+  }
+}
 
 ///|
 let discussion_category_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "description", "emoji", "id", "is_answerable", "name", "repository_id", "slug", "updated_at"])
@@ -34316,6 +38718,25 @@ pub(all) struct DiscussionAnsweredAnswer {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionAnsweredAnswer` (fields with defaults are optional).
+pub fn DiscussionAnsweredAnswer::DiscussionAnsweredAnswer(author_association~ : AuthorAssociation, body~ : String, child_comment_count~ : Int64, created_at~ : @typify_rt.DateTimeUtc, discussion_id~ : Int64, html_url~ : String, id~ : Int64, node_id~ : String, parent_id~ : Unit, repository_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, user~ : User) -> DiscussionAnsweredAnswer {
+  DiscussionAnsweredAnswer::{
+    author_association: author_association,
+    body: body,
+    child_comment_count: child_comment_count,
+    created_at: created_at,
+    discussion_id: discussion_id,
+    html_url: html_url,
+    id: id,
+    node_id: node_id,
+    parent_id: parent_id,
+    repository_url: repository_url,
+    updated_at: updated_at,
+    user: user,
+  }
+}
+
+///|
 let discussion_answered_answer_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author_association", "body", "child_comment_count", "created_at", "discussion_id", "html_url", "id", "node_id", "parent_id", "repository_url", "updated_at", "user"])
 
 ///|
@@ -34487,6 +38908,33 @@ pub(all) struct DiscussionAnsweredDiscussionAnswerChosenBy {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionAnsweredDiscussionAnswerChosenBy` (fields with defaults are optional).
+pub fn DiscussionAnsweredDiscussionAnswerChosenBy::DiscussionAnsweredDiscussionAnswerChosenBy(avatar_url~ : String, email? : String, events_url~ : String, followers_url~ : String, following_url~ : String, gists_url~ : String, gravatar_id~ : String, html_url~ : String, id~ : Int64, login~ : String, name? : String, node_id~ : String, organizations_url~ : String, received_events_url~ : String, repos_url~ : String, site_admin~ : Bool, starred_url~ : String, subscriptions_url~ : String, type_~ : DiscussionAnsweredDiscussionAnswerChosenByType, url~ : String) -> DiscussionAnsweredDiscussionAnswerChosenBy {
+  DiscussionAnsweredDiscussionAnswerChosenBy::{
+    avatar_url: avatar_url,
+    email: email,
+    events_url: events_url,
+    followers_url: followers_url,
+    following_url: following_url,
+    gists_url: gists_url,
+    gravatar_id: gravatar_id,
+    html_url: html_url,
+    id: id,
+    login: login,
+    name: name,
+    node_id: node_id,
+    organizations_url: organizations_url,
+    received_events_url: received_events_url,
+    repos_url: repos_url,
+    site_admin: site_admin,
+    starred_url: starred_url,
+    subscriptions_url: subscriptions_url,
+    type_: type_,
+    url: url,
+  }
+}
+
+///|
 let discussion_answered_discussion_answer_chosen_by_fields : @typify_rt.Fields = @typify_rt.Fields::new(["avatar_url", "email", "events_url", "followers_url", "following_url", "gists_url", "gravatar_id", "html_url", "id", "login", "name", "node_id", "organizations_url", "received_events_url", "repos_url", "site_admin", "starred_url", "subscriptions_url", "type", "url"])
 
 ///|
@@ -34610,6 +39058,22 @@ pub(all) struct DiscussionAnsweredDiscussionCategory {
   slug : String
   updated_at : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionAnsweredDiscussionCategory` (fields with defaults are optional).
+pub fn DiscussionAnsweredDiscussionCategory::DiscussionAnsweredDiscussionCategory(created_at~ : @typify_rt.DateTimeUtc, description~ : String, emoji~ : String, id~ : Int64, is_answerable~ : Bool, name~ : String, repository_id~ : Int64, slug~ : String, updated_at~ : String) -> DiscussionAnsweredDiscussionCategory {
+  DiscussionAnsweredDiscussionCategory::{
+    created_at: created_at,
+    description: description,
+    emoji: emoji,
+    id: id,
+    is_answerable: is_answerable,
+    name: name,
+    repository_id: repository_id,
+    slug: slug,
+    updated_at: updated_at,
+  }
+}
 
 ///|
 let discussion_answered_discussion_category_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "description", "emoji", "id", "is_answerable", "name", "repository_id", "slug", "updated_at"])
@@ -34768,6 +39232,32 @@ pub(all) struct DiscussionAnsweredDiscussion {
   updated_at : @typify_rt.DateTimeUtc
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionAnsweredDiscussion` (fields with defaults are optional).
+pub fn DiscussionAnsweredDiscussion::DiscussionAnsweredDiscussion(active_lock_reason? : String, answer_chosen_at~ : @typify_rt.DateTimeUtc, answer_chosen_by~ : DiscussionAnsweredDiscussionAnswerChosenBy, answer_html_url~ : String, author_association~ : AuthorAssociation, body~ : String, category~ : DiscussionAnsweredDiscussionCategory, comments~ : Int64, created_at~ : @typify_rt.DateTimeUtc, html_url~ : String, id~ : Int64, locked~ : Bool, node_id~ : String, number~ : Int64, repository_url~ : String, state~ : DiscussionAnsweredDiscussionState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, user~ : User) -> DiscussionAnsweredDiscussion {
+  DiscussionAnsweredDiscussion::{
+    active_lock_reason: active_lock_reason,
+    answer_chosen_at: answer_chosen_at,
+    answer_chosen_by: answer_chosen_by,
+    answer_html_url: answer_html_url,
+    author_association: author_association,
+    body: body,
+    category: category,
+    comments: comments,
+    created_at: created_at,
+    html_url: html_url,
+    id: id,
+    locked: locked,
+    node_id: node_id,
+    number: number,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    user: user,
+  }
+}
 
 ///|
 let discussion_answered_discussion_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "answer_chosen_at", "answer_chosen_by", "answer_html_url", "author_association", "body", "category", "comments", "created_at", "html_url", "id", "locked", "node_id", "number", "repository_url", "state", "title", "updated_at", "user"])
@@ -34946,6 +39436,22 @@ pub(all) struct DiscussionCategoryChangedChangesCategoryFrom {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionCategoryChangedChangesCategoryFrom` (fields with defaults are optional).
+pub fn DiscussionCategoryChangedChangesCategoryFrom::DiscussionCategoryChangedChangesCategoryFrom(created_at~ : @typify_rt.DateTimeUtc, description~ : String, emoji~ : String, id~ : Int64, is_answerable~ : Bool, name~ : String, repository_id~ : Int64, slug~ : String, updated_at~ : String) -> DiscussionCategoryChangedChangesCategoryFrom {
+  DiscussionCategoryChangedChangesCategoryFrom::{
+    created_at: created_at,
+    description: description,
+    emoji: emoji,
+    id: id,
+    is_answerable: is_answerable,
+    name: name,
+    repository_id: repository_id,
+    slug: slug,
+    updated_at: updated_at,
+  }
+}
+
+///|
 let discussion_category_changed_changes_category_from_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "description", "emoji", "id", "is_answerable", "name", "repository_id", "slug", "updated_at"])
 
 ///|
@@ -35015,6 +39521,14 @@ pub(all) struct DiscussionCategoryChangedChangesCategory {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionCategoryChangedChangesCategory` (fields with defaults are optional).
+pub fn DiscussionCategoryChangedChangesCategory::DiscussionCategoryChangedChangesCategory(from~ : DiscussionCategoryChangedChangesCategoryFrom) -> DiscussionCategoryChangedChangesCategory {
+  DiscussionCategoryChangedChangesCategory::{
+    from: from,
+  }
+}
+
+///|
 let discussion_category_changed_changes_category_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -35050,6 +39564,14 @@ pub impl ToJson for DiscussionCategoryChangedChangesCategory with fn to_json(sel
 pub(all) struct DiscussionCategoryChangedChanges {
   category : DiscussionCategoryChangedChangesCategory
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionCategoryChangedChanges` (fields with defaults are optional).
+pub fn DiscussionCategoryChangedChanges::DiscussionCategoryChangedChanges(category~ : DiscussionCategoryChangedChangesCategory) -> DiscussionCategoryChangedChanges {
+  DiscussionCategoryChangedChanges::{
+    category: category,
+  }
+}
 
 ///|
 let discussion_category_changed_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["category"])
@@ -35154,6 +39676,22 @@ pub(all) struct DiscussionCreatedDiscussionCategory {
   slug : String
   updated_at : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionCreatedDiscussionCategory` (fields with defaults are optional).
+pub fn DiscussionCreatedDiscussionCategory::DiscussionCreatedDiscussionCategory(created_at~ : @typify_rt.DateTimeUtc, description~ : String, emoji~ : String, id~ : Int64, is_answerable~ : Bool, name~ : String, repository_id~ : Int64, slug~ : String, updated_at~ : String) -> DiscussionCreatedDiscussionCategory {
+  DiscussionCreatedDiscussionCategory::{
+    created_at: created_at,
+    description: description,
+    emoji: emoji,
+    id: id,
+    is_answerable: is_answerable,
+    name: name,
+    repository_id: repository_id,
+    slug: slug,
+    updated_at: updated_at,
+  }
+}
 
 ///|
 let discussion_created_discussion_category_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "description", "emoji", "id", "is_answerable", "name", "repository_id", "slug", "updated_at"])
@@ -35306,6 +39844,32 @@ pub(all) struct DiscussionCreatedDiscussion {
   updated_at : @typify_rt.DateTimeUtc
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionCreatedDiscussion` (fields with defaults are optional).
+pub fn DiscussionCreatedDiscussion::DiscussionCreatedDiscussion(active_lock_reason? : String, answer_chosen_at~ : Unit, answer_chosen_by~ : Unit, answer_html_url~ : Unit, author_association~ : AuthorAssociation, body~ : String, category~ : DiscussionCreatedDiscussionCategory, comments~ : Int64, created_at~ : @typify_rt.DateTimeUtc, html_url~ : String, id~ : Int64, locked~ : Bool, node_id~ : String, number~ : Int64, repository_url~ : String, state~ : DiscussionCreatedDiscussionState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, user~ : User) -> DiscussionCreatedDiscussion {
+  DiscussionCreatedDiscussion::{
+    active_lock_reason: active_lock_reason,
+    answer_chosen_at: answer_chosen_at,
+    answer_chosen_by: answer_chosen_by,
+    answer_html_url: answer_html_url,
+    author_association: author_association,
+    body: body,
+    category: category,
+    comments: comments,
+    created_at: created_at,
+    html_url: html_url,
+    id: id,
+    locked: locked,
+    node_id: node_id,
+    number: number,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    user: user,
+  }
+}
 
 ///|
 let discussion_created_discussion_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "answer_chosen_at", "answer_chosen_by", "answer_html_url", "author_association", "body", "category", "comments", "created_at", "html_url", "id", "locked", "node_id", "number", "repository_url", "state", "title", "updated_at", "user"])
@@ -35535,6 +40099,14 @@ pub(all) struct DiscussionEditedChangesBody {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionEditedChangesBody` (fields with defaults are optional).
+pub fn DiscussionEditedChangesBody::DiscussionEditedChangesBody(from~ : String) -> DiscussionEditedChangesBody {
+  DiscussionEditedChangesBody::{
+    from: from,
+  }
+}
+
+///|
 let discussion_edited_changes_body_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -35570,6 +40142,14 @@ pub impl ToJson for DiscussionEditedChangesBody with fn to_json(self) {
 pub(all) struct DiscussionEditedChangesTitle {
   from : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionEditedChangesTitle` (fields with defaults are optional).
+pub fn DiscussionEditedChangesTitle::DiscussionEditedChangesTitle(from~ : String) -> DiscussionEditedChangesTitle {
+  DiscussionEditedChangesTitle::{
+    from: from,
+  }
+}
 
 ///|
 let discussion_edited_changes_title_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
@@ -35608,6 +40188,15 @@ pub(all) struct DiscussionEditedChanges {
   body : DiscussionEditedChangesBody?
   title : DiscussionEditedChangesTitle?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionEditedChanges` (fields with defaults are optional).
+pub fn DiscussionEditedChanges::DiscussionEditedChanges(body? : DiscussionEditedChangesBody, title? : DiscussionEditedChangesTitle) -> DiscussionEditedChanges {
+  DiscussionEditedChanges::{
+    body: body,
+    title: title,
+  }
+}
 
 ///|
 let discussion_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["body", "title"])
@@ -35781,6 +40370,22 @@ pub(all) struct DiscussionLockedDiscussionCategory {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionLockedDiscussionCategory` (fields with defaults are optional).
+pub fn DiscussionLockedDiscussionCategory::DiscussionLockedDiscussionCategory(created_at~ : @typify_rt.DateTimeUtc, description~ : String, emoji~ : String, id~ : Int64, is_answerable~ : Bool, name~ : String, repository_id~ : Int64, slug~ : String, updated_at~ : String) -> DiscussionLockedDiscussionCategory {
+  DiscussionLockedDiscussionCategory::{
+    created_at: created_at,
+    description: description,
+    emoji: emoji,
+    id: id,
+    is_answerable: is_answerable,
+    name: name,
+    repository_id: repository_id,
+    slug: slug,
+    updated_at: updated_at,
+  }
+}
+
+///|
 let discussion_locked_discussion_category_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "description", "emoji", "id", "is_answerable", "name", "repository_id", "slug", "updated_at"])
 
 ///|
@@ -35925,6 +40530,32 @@ pub(all) struct DiscussionLockedDiscussion {
   updated_at : @typify_rt.DateTimeUtc
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionLockedDiscussion` (fields with defaults are optional).
+pub fn DiscussionLockedDiscussion::DiscussionLockedDiscussion(active_lock_reason? : String, answer_chosen_at? : String, answer_chosen_by? : User, answer_html_url? : String, author_association~ : AuthorAssociation, body~ : String, category~ : DiscussionLockedDiscussionCategory, comments~ : Int64, created_at~ : @typify_rt.DateTimeUtc, html_url~ : String, id~ : Int64, locked~ : Bool, node_id~ : String, number~ : Int64, repository_url~ : String, state~ : DiscussionLockedDiscussionState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, user~ : User) -> DiscussionLockedDiscussion {
+  DiscussionLockedDiscussion::{
+    active_lock_reason: active_lock_reason,
+    answer_chosen_at: answer_chosen_at,
+    answer_chosen_by: answer_chosen_by,
+    answer_html_url: answer_html_url,
+    author_association: author_association,
+    body: body,
+    category: category,
+    comments: comments,
+    created_at: created_at,
+    html_url: html_url,
+    id: id,
+    locked: locked,
+    node_id: node_id,
+    number: number,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    user: user,
+  }
+}
 
 ///|
 let discussion_locked_discussion_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "answer_chosen_at", "answer_chosen_by", "answer_html_url", "author_association", "body", "category", "comments", "created_at", "html_url", "id", "locked", "node_id", "number", "repository_url", "state", "title", "updated_at", "user"])
@@ -36155,6 +40786,15 @@ pub(all) struct DiscussionTransferredChanges {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionTransferredChanges` (fields with defaults are optional).
+pub fn DiscussionTransferredChanges::DiscussionTransferredChanges(new_discussion~ : Discussion, new_repository~ : Repository) -> DiscussionTransferredChanges {
+  DiscussionTransferredChanges::{
+    new_discussion: new_discussion,
+    new_repository: new_repository,
+  }
+}
+
+///|
 let discussion_transferred_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["new_discussion", "new_repository"])
 
 ///|
@@ -36261,6 +40901,22 @@ pub(all) struct DiscussionUnansweredDiscussionCategory {
   slug : String
   updated_at : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionUnansweredDiscussionCategory` (fields with defaults are optional).
+pub fn DiscussionUnansweredDiscussionCategory::DiscussionUnansweredDiscussionCategory(created_at~ : @typify_rt.DateTimeUtc, description~ : String, emoji~ : String, id~ : Int64, is_answerable~ : Bool, name~ : String, repository_id~ : Int64, slug~ : String, updated_at~ : String) -> DiscussionUnansweredDiscussionCategory {
+  DiscussionUnansweredDiscussionCategory::{
+    created_at: created_at,
+    description: description,
+    emoji: emoji,
+    id: id,
+    is_answerable: is_answerable,
+    name: name,
+    repository_id: repository_id,
+    slug: slug,
+    updated_at: updated_at,
+  }
+}
 
 ///|
 let discussion_unanswered_discussion_category_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "description", "emoji", "id", "is_answerable", "name", "repository_id", "slug", "updated_at"])
@@ -36421,6 +41077,32 @@ pub(all) struct DiscussionUnansweredDiscussion {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionUnansweredDiscussion` (fields with defaults are optional).
+pub fn DiscussionUnansweredDiscussion::DiscussionUnansweredDiscussion(active_lock_reason? : String, answer_chosen_at~ : Unit, answer_chosen_by~ : Unit, answer_html_url~ : Unit, author_association~ : AuthorAssociation, body~ : String, category~ : DiscussionUnansweredDiscussionCategory, comments~ : Int64, created_at~ : @typify_rt.DateTimeUtc, html_url~ : String, id~ : Int64, locked~ : Bool, node_id~ : String, number~ : Int64, repository_url~ : String, state~ : DiscussionUnansweredDiscussionState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, user~ : User) -> DiscussionUnansweredDiscussion {
+  DiscussionUnansweredDiscussion::{
+    active_lock_reason: active_lock_reason,
+    answer_chosen_at: answer_chosen_at,
+    answer_chosen_by: answer_chosen_by,
+    answer_html_url: answer_html_url,
+    author_association: author_association,
+    body: body,
+    category: category,
+    comments: comments,
+    created_at: created_at,
+    html_url: html_url,
+    id: id,
+    locked: locked,
+    node_id: node_id,
+    number: number,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    user: user,
+  }
+}
+
+///|
 let discussion_unanswered_discussion_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "answer_chosen_at", "answer_chosen_by", "answer_html_url", "author_association", "body", "category", "comments", "created_at", "html_url", "id", "locked", "node_id", "number", "repository_url", "state", "title", "updated_at", "user"])
 
 ///|
@@ -36539,6 +41221,25 @@ pub(all) struct DiscussionUnansweredOldAnswer {
   updated_at : @typify_rt.DateTimeUtc
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionUnansweredOldAnswer` (fields with defaults are optional).
+pub fn DiscussionUnansweredOldAnswer::DiscussionUnansweredOldAnswer(author_association~ : AuthorAssociation, body~ : String, child_comment_count~ : Int64, created_at~ : @typify_rt.DateTimeUtc, discussion_id~ : Int64, html_url~ : String, id~ : Int64, node_id~ : String, parent_id~ : Unit, repository_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, user~ : User) -> DiscussionUnansweredOldAnswer {
+  DiscussionUnansweredOldAnswer::{
+    author_association: author_association,
+    body: body,
+    child_comment_count: child_comment_count,
+    created_at: created_at,
+    discussion_id: discussion_id,
+    html_url: html_url,
+    id: id,
+    node_id: node_id,
+    parent_id: parent_id,
+    repository_url: repository_url,
+    updated_at: updated_at,
+    user: user,
+  }
+}
 
 ///|
 let discussion_unanswered_old_answer_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author_association", "body", "child_comment_count", "created_at", "discussion_id", "html_url", "id", "node_id", "parent_id", "repository_url", "updated_at", "user"])
@@ -36748,6 +41449,22 @@ pub(all) struct DiscussionUnlockedDiscussionCategory {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionUnlockedDiscussionCategory` (fields with defaults are optional).
+pub fn DiscussionUnlockedDiscussionCategory::DiscussionUnlockedDiscussionCategory(created_at~ : @typify_rt.DateTimeUtc, description~ : String, emoji~ : String, id~ : Int64, is_answerable~ : Bool, name~ : String, repository_id~ : Int64, slug~ : String, updated_at~ : String) -> DiscussionUnlockedDiscussionCategory {
+  DiscussionUnlockedDiscussionCategory::{
+    created_at: created_at,
+    description: description,
+    emoji: emoji,
+    id: id,
+    is_answerable: is_answerable,
+    name: name,
+    repository_id: repository_id,
+    slug: slug,
+    updated_at: updated_at,
+  }
+}
+
+///|
 let discussion_unlocked_discussion_category_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "description", "emoji", "id", "is_answerable", "name", "repository_id", "slug", "updated_at"])
 
 ///|
@@ -36892,6 +41609,32 @@ pub(all) struct DiscussionUnlockedDiscussion {
   updated_at : @typify_rt.DateTimeUtc
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionUnlockedDiscussion` (fields with defaults are optional).
+pub fn DiscussionUnlockedDiscussion::DiscussionUnlockedDiscussion(active_lock_reason? : String, answer_chosen_at? : String, answer_chosen_by? : User, answer_html_url? : String, author_association~ : AuthorAssociation, body~ : String, category~ : DiscussionUnlockedDiscussionCategory, comments~ : Int64, created_at~ : @typify_rt.DateTimeUtc, html_url~ : String, id~ : Int64, locked~ : Bool, node_id~ : String, number~ : Int64, repository_url~ : String, state~ : DiscussionUnlockedDiscussionState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, user~ : User) -> DiscussionUnlockedDiscussion {
+  DiscussionUnlockedDiscussion::{
+    active_lock_reason: active_lock_reason,
+    answer_chosen_at: answer_chosen_at,
+    answer_chosen_by: answer_chosen_by,
+    answer_html_url: answer_html_url,
+    author_association: author_association,
+    body: body,
+    category: category,
+    comments: comments,
+    created_at: created_at,
+    html_url: html_url,
+    id: id,
+    locked: locked,
+    node_id: node_id,
+    number: number,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    user: user,
+  }
+}
 
 ///|
 let discussion_unlocked_discussion_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "answer_chosen_at", "answer_chosen_by", "answer_html_url", "author_association", "body", "category", "comments", "created_at", "html_url", "id", "locked", "node_id", "number", "repository_url", "state", "title", "updated_at", "user"])
@@ -37132,6 +41875,25 @@ pub(all) struct DiscussionCommentCreatedComment {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionCommentCreatedComment` (fields with defaults are optional).
+pub fn DiscussionCommentCreatedComment::DiscussionCommentCreatedComment(author_association~ : AuthorAssociation, body~ : String, child_comment_count~ : Int64, created_at~ : String, discussion_id~ : Int64, html_url~ : String, id~ : Int64, node_id~ : String, parent_id? : Int64, repository_url~ : String, updated_at~ : String, user~ : User) -> DiscussionCommentCreatedComment {
+  DiscussionCommentCreatedComment::{
+    author_association: author_association,
+    body: body,
+    child_comment_count: child_comment_count,
+    created_at: created_at,
+    discussion_id: discussion_id,
+    html_url: html_url,
+    id: id,
+    node_id: node_id,
+    parent_id: parent_id,
+    repository_url: repository_url,
+    updated_at: updated_at,
+    user: user,
+  }
+}
+
+///|
 let discussion_comment_created_comment_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author_association", "body", "child_comment_count", "created_at", "discussion_id", "html_url", "id", "node_id", "parent_id", "repository_url", "updated_at", "user"])
 
 ///|
@@ -37283,6 +42045,25 @@ pub(all) struct DiscussionCommentDeletedComment {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionCommentDeletedComment` (fields with defaults are optional).
+pub fn DiscussionCommentDeletedComment::DiscussionCommentDeletedComment(author_association~ : AuthorAssociation, body~ : String, child_comment_count~ : Int64, created_at~ : String, discussion_id~ : Int64, html_url~ : String, id~ : Int64, node_id~ : String, parent_id? : Int64, repository_url~ : String, updated_at~ : String, user~ : User) -> DiscussionCommentDeletedComment {
+  DiscussionCommentDeletedComment::{
+    author_association: author_association,
+    body: body,
+    child_comment_count: child_comment_count,
+    created_at: created_at,
+    discussion_id: discussion_id,
+    html_url: html_url,
+    id: id,
+    node_id: node_id,
+    parent_id: parent_id,
+    repository_url: repository_url,
+    updated_at: updated_at,
+    user: user,
+  }
+}
+
+///|
 let discussion_comment_deleted_comment_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author_association", "body", "child_comment_count", "created_at", "discussion_id", "html_url", "id", "node_id", "parent_id", "repository_url", "updated_at", "user"])
 
 ///|
@@ -37423,6 +42204,14 @@ pub(all) struct DiscussionCommentEditedChangesBody {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `DiscussionCommentEditedChangesBody` (fields with defaults are optional).
+pub fn DiscussionCommentEditedChangesBody::DiscussionCommentEditedChangesBody(from~ : String) -> DiscussionCommentEditedChangesBody {
+  DiscussionCommentEditedChangesBody::{
+    from: from,
+  }
+}
+
+///|
 let discussion_comment_edited_changes_body_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -37458,6 +42247,14 @@ pub impl ToJson for DiscussionCommentEditedChangesBody with fn to_json(self) {
 pub(all) struct DiscussionCommentEditedChanges {
   body : DiscussionCommentEditedChangesBody
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionCommentEditedChanges` (fields with defaults are optional).
+pub fn DiscussionCommentEditedChanges::DiscussionCommentEditedChanges(body~ : DiscussionCommentEditedChangesBody) -> DiscussionCommentEditedChanges {
+  DiscussionCommentEditedChanges::{
+    body: body,
+  }
+}
 
 ///|
 let discussion_comment_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["body"])
@@ -37506,6 +42303,25 @@ pub(all) struct DiscussionCommentEditedComment {
   updated_at : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `DiscussionCommentEditedComment` (fields with defaults are optional).
+pub fn DiscussionCommentEditedComment::DiscussionCommentEditedComment(author_association~ : AuthorAssociation, body~ : String, child_comment_count~ : Int64, created_at~ : String, discussion_id~ : Int64, html_url~ : String, id~ : Int64, node_id~ : String, parent_id? : Int64, repository_url~ : String, updated_at~ : String, user~ : User) -> DiscussionCommentEditedComment {
+  DiscussionCommentEditedComment::{
+    author_association: author_association,
+    body: body,
+    child_comment_count: child_comment_count,
+    created_at: created_at,
+    discussion_id: discussion_id,
+    html_url: html_url,
+    id: id,
+    node_id: node_id,
+    parent_id: parent_id,
+    repository_url: repository_url,
+    updated_at: updated_at,
+    user: user,
+  }
+}
 
 ///|
 let discussion_comment_edited_comment_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author_association", "body", "child_comment_count", "created_at", "discussion_id", "html_url", "id", "node_id", "parent_id", "repository_url", "updated_at", "user"])
@@ -37638,6 +42454,18 @@ pub(all) struct ForkEventForkeePermissions {
   push : Bool
   triage : Bool?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ForkEventForkeePermissions` (fields with defaults are optional).
+pub fn ForkEventForkeePermissions::ForkEventForkeePermissions(admin~ : Bool, maintain? : Bool, pull~ : Bool, push~ : Bool, triage? : Bool) -> ForkEventForkeePermissions {
+  ForkEventForkeePermissions::{
+    admin: admin,
+    maintain: maintain,
+    pull: pull,
+    push: push,
+    triage: triage,
+  }
+}
 
 ///|
 let fork_event_forkee_permissions_fields : @typify_rt.Fields = @typify_rt.Fields::new(["admin", "maintain", "pull", "push", "triage"])
@@ -37853,9 +42681,6 @@ pub(all) struct ForkEventForkee {
 } derive(Debug, Eq)
 
 ///|
-let fork_event_forkee_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
-
-///|
 fn default_fork_event_forkee_allow_merge_commit() -> Bool raise @typify_rt.DeError {
   @typify_rt.default_value("true", @typify_rt.de_bool)
 }
@@ -37869,6 +42694,109 @@ fn default_fork_event_forkee_allow_rebase_merge() -> Bool raise @typify_rt.DeErr
 fn default_fork_event_forkee_allow_squash_merge() -> Bool raise @typify_rt.DeError {
   @typify_rt.default_value("true", @typify_rt.de_bool)
 }
+
+///|
+/// Construct a `ForkEventForkee` (fields with defaults are optional).
+pub fn ForkEventForkee::ForkEventForkee(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool, allow_rebase_merge? : Bool, allow_squash_merge? : Bool, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : ForkEventForkeeCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : ForkEventForkeePermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : ForkEventForkeePushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> ForkEventForkee {
+  ForkEventForkee::{
+    allow_auto_merge: allow_auto_merge,
+    allow_forking: allow_forking,
+    allow_merge_commit: match allow_merge_commit {
+      Some(v) => v
+      None => default_fork_event_forkee_allow_merge_commit() catch { e => abort("invalid default for ForkEventForkee.allow_merge_commit: \{e}") }
+    },
+    allow_rebase_merge: match allow_rebase_merge {
+      Some(v) => v
+      None => default_fork_event_forkee_allow_rebase_merge() catch { e => abort("invalid default for ForkEventForkee.allow_rebase_merge: \{e}") }
+    },
+    allow_squash_merge: match allow_squash_merge {
+      Some(v) => v
+      None => default_fork_event_forkee_allow_squash_merge() catch { e => abort("invalid default for ForkEventForkee.allow_squash_merge: \{e}") }
+    },
+    archive_url: archive_url,
+    archived: archived,
+    assignees_url: assignees_url,
+    blobs_url: blobs_url,
+    branches_url: branches_url,
+    clone_url: clone_url,
+    collaborators_url: collaborators_url,
+    comments_url: comments_url,
+    commits_url: commits_url,
+    compare_url: compare_url,
+    contents_url: contents_url,
+    contributors_url: contributors_url,
+    created_at: created_at,
+    default_branch: default_branch,
+    delete_branch_on_merge: delete_branch_on_merge,
+    deployments_url: deployments_url,
+    description: description,
+    disabled: disabled,
+    downloads_url: downloads_url,
+    events_url: events_url,
+    fork: fork,
+    forks: forks,
+    forks_count: forks_count,
+    forks_url: forks_url,
+    full_name: full_name,
+    git_commits_url: git_commits_url,
+    git_refs_url: git_refs_url,
+    git_tags_url: git_tags_url,
+    git_url: git_url,
+    has_downloads: has_downloads,
+    has_issues: has_issues,
+    has_pages: has_pages,
+    has_projects: has_projects,
+    has_wiki: has_wiki,
+    homepage: homepage,
+    hooks_url: hooks_url,
+    html_url: html_url,
+    id: id,
+    issue_comment_url: issue_comment_url,
+    issue_events_url: issue_events_url,
+    issues_url: issues_url,
+    keys_url: keys_url,
+    labels_url: labels_url,
+    language: language,
+    languages_url: languages_url,
+    license: license,
+    master_branch: master_branch,
+    merges_url: merges_url,
+    milestones_url: milestones_url,
+    mirror_url: mirror_url,
+    name: name,
+    node_id: node_id,
+    notifications_url: notifications_url,
+    open_issues: open_issues,
+    open_issues_count: open_issues_count,
+    organization: organization,
+    owner: owner,
+    permissions: permissions,
+    private: private,
+    public: public,
+    pulls_url: pulls_url,
+    pushed_at: pushed_at,
+    releases_url: releases_url,
+    size: size,
+    ssh_url: ssh_url,
+    stargazers: stargazers,
+    stargazers_count: stargazers_count,
+    stargazers_url: stargazers_url,
+    statuses_url: statuses_url,
+    subscribers_url: subscribers_url,
+    subscription_url: subscription_url,
+    svn_url: svn_url,
+    tags_url: tags_url,
+    teams_url: teams_url,
+    trees_url: trees_url,
+    updated_at: updated_at,
+    url: url,
+    watchers: watchers,
+    watchers_count: watchers_count,
+  }
+}
+
+///|
+let fork_event_forkee_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
 
 ///|
 pub impl @typify_rt.Serde for ForkEventForkee with fn deserialize(d) {
@@ -38383,6 +43311,19 @@ pub(all) struct GollumEventPagesItem {
   /// The current page title.
   title : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `GollumEventPagesItem` (fields with defaults are optional).
+pub fn GollumEventPagesItem::GollumEventPagesItem(action~ : GollumEventPagesItemAction, html_url~ : String, page_name~ : String, sha~ : String, summary~ : Unit, title~ : String) -> GollumEventPagesItem {
+  GollumEventPagesItem::{
+    action: action,
+    html_url: html_url,
+    page_name: page_name,
+    sha: sha,
+    summary: summary,
+    title: title,
+  }
+}
 
 ///|
 let gollum_event_pages_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "html_url", "page_name", "sha", "summary", "title"])
@@ -41121,6 +46062,48 @@ pub(all) struct InstallationPermissions {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationPermissions` (fields with defaults are optional).
+pub fn InstallationPermissions::InstallationPermissions(actions? : InstallationPermissionsActions, administration? : InstallationPermissionsAdministration, checks? : InstallationPermissionsChecks, content_references? : InstallationPermissionsContentReferences, contents? : InstallationPermissionsContents, deployments? : InstallationPermissionsDeployments, discussions? : InstallationPermissionsDiscussions, emails? : InstallationPermissionsEmails, environments? : InstallationPermissionsEnvironments, issues? : InstallationPermissionsIssues, members? : InstallationPermissionsMembers, metadata? : InstallationPermissionsMetadata, organization_administration? : InstallationPermissionsOrganizationAdministration, organization_events? : InstallationPermissionsOrganizationEvents, organization_hooks? : InstallationPermissionsOrganizationHooks, organization_packages? : InstallationPermissionsOrganizationPackages, organization_plan? : InstallationPermissionsOrganizationPlan, organization_projects? : InstallationPermissionsOrganizationProjects, organization_secrets? : InstallationPermissionsOrganizationSecrets, organization_self_hosted_runners? : InstallationPermissionsOrganizationSelfHostedRunners, organization_user_blocking? : InstallationPermissionsOrganizationUserBlocking, packages? : InstallationPermissionsPackages, pages? : InstallationPermissionsPages, pull_requests? : InstallationPermissionsPullRequests, repository_hooks? : InstallationPermissionsRepositoryHooks, repository_projects? : InstallationPermissionsRepositoryProjects, secret_scanning_alerts? : InstallationPermissionsSecretScanningAlerts, secrets? : InstallationPermissionsSecrets, security_events? : InstallationPermissionsSecurityEvents, security_scanning_alert? : InstallationPermissionsSecurityScanningAlert, single_file? : InstallationPermissionsSingleFile, statuses? : InstallationPermissionsStatuses, team_discussions? : InstallationPermissionsTeamDiscussions, vulnerability_alerts? : InstallationPermissionsVulnerabilityAlerts, workflows? : InstallationPermissionsWorkflows) -> InstallationPermissions {
+  InstallationPermissions::{
+    actions: actions,
+    administration: administration,
+    checks: checks,
+    content_references: content_references,
+    contents: contents,
+    deployments: deployments,
+    discussions: discussions,
+    emails: emails,
+    environments: environments,
+    issues: issues,
+    members: members,
+    metadata: metadata,
+    organization_administration: organization_administration,
+    organization_events: organization_events,
+    organization_hooks: organization_hooks,
+    organization_packages: organization_packages,
+    organization_plan: organization_plan,
+    organization_projects: organization_projects,
+    organization_secrets: organization_secrets,
+    organization_self_hosted_runners: organization_self_hosted_runners,
+    organization_user_blocking: organization_user_blocking,
+    packages: packages,
+    pages: pages,
+    pull_requests: pull_requests,
+    repository_hooks: repository_hooks,
+    repository_projects: repository_projects,
+    secret_scanning_alerts: secret_scanning_alerts,
+    secrets: secrets,
+    security_events: security_events,
+    security_scanning_alert: security_scanning_alert,
+    single_file: single_file,
+    statuses: statuses,
+    team_discussions: team_discussions,
+    vulnerability_alerts: vulnerability_alerts,
+    workflows: workflows,
+  }
+}
+
+///|
 let installation_permissions_fields : @typify_rt.Fields = @typify_rt.Fields::new(["actions", "administration", "checks", "content_references", "contents", "deployments", "discussions", "emails", "environments", "issues", "members", "metadata", "organization_administration", "organization_events", "organization_hooks", "organization_packages", "organization_plan", "organization_projects", "organization_secrets", "organization_self_hosted_runners", "organization_user_blocking", "packages", "pages", "pull_requests", "repository_hooks", "repository_projects", "secret_scanning_alerts", "secrets", "security_events", "security_scanning_alert", "single_file", "statuses", "team_discussions", "vulnerability_alerts", "workflows"])
 
 ///|
@@ -41607,6 +46590,18 @@ pub(all) struct InstallationCreatedRepositoriesItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationCreatedRepositoriesItem` (fields with defaults are optional).
+pub fn InstallationCreatedRepositoriesItem::InstallationCreatedRepositoriesItem(full_name~ : String, id~ : Int64, name~ : String, node_id~ : String, private~ : Bool) -> InstallationCreatedRepositoriesItem {
+  InstallationCreatedRepositoriesItem::{
+    full_name: full_name,
+    id: id,
+    name: name,
+    node_id: node_id,
+    private: private,
+  }
+}
+
+///|
 let installation_created_repositories_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["full_name", "id", "name", "node_id", "private"])
 
 ///|
@@ -41726,6 +46721,18 @@ pub(all) struct InstallationDeletedRepositoriesItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationDeletedRepositoriesItem` (fields with defaults are optional).
+pub fn InstallationDeletedRepositoriesItem::InstallationDeletedRepositoriesItem(full_name~ : String, id~ : Int64, name~ : String, node_id~ : String, private~ : Bool) -> InstallationDeletedRepositoriesItem {
+  InstallationDeletedRepositoriesItem::{
+    full_name: full_name,
+    id: id,
+    name: name,
+    node_id: node_id,
+    private: private,
+  }
+}
+
+///|
 let installation_deleted_repositories_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["full_name", "id", "name", "node_id", "private"])
 
 ///|
@@ -41843,6 +46850,18 @@ pub(all) struct InstallationNewPermissionsAcceptedRepositoriesItem {
   /// Whether the repository is private or public.
   private : Bool
 } derive(Debug, Eq)
+
+///|
+/// Construct a `InstallationNewPermissionsAcceptedRepositoriesItem` (fields with defaults are optional).
+pub fn InstallationNewPermissionsAcceptedRepositoriesItem::InstallationNewPermissionsAcceptedRepositoriesItem(full_name~ : String, id~ : Int64, name~ : String, node_id~ : String, private~ : Bool) -> InstallationNewPermissionsAcceptedRepositoriesItem {
+  InstallationNewPermissionsAcceptedRepositoriesItem::{
+    full_name: full_name,
+    id: id,
+    name: name,
+    node_id: node_id,
+    private: private,
+  }
+}
 
 ///|
 let installation_new_permissions_accepted_repositories_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["full_name", "id", "name", "node_id", "private"])
@@ -44636,6 +49655,48 @@ pub(all) struct InstallationSuspendInstallationPermissions {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationSuspendInstallationPermissions` (fields with defaults are optional).
+pub fn InstallationSuspendInstallationPermissions::InstallationSuspendInstallationPermissions(actions? : InstallationSuspendInstallationPermissionsActions, administration? : InstallationSuspendInstallationPermissionsAdministration, checks? : InstallationSuspendInstallationPermissionsChecks, content_references? : InstallationSuspendInstallationPermissionsContentReferences, contents? : InstallationSuspendInstallationPermissionsContents, deployments? : InstallationSuspendInstallationPermissionsDeployments, discussions? : InstallationSuspendInstallationPermissionsDiscussions, emails? : InstallationSuspendInstallationPermissionsEmails, environments? : InstallationSuspendInstallationPermissionsEnvironments, issues? : InstallationSuspendInstallationPermissionsIssues, members? : InstallationSuspendInstallationPermissionsMembers, metadata? : InstallationSuspendInstallationPermissionsMetadata, organization_administration? : InstallationSuspendInstallationPermissionsOrganizationAdministration, organization_events? : InstallationSuspendInstallationPermissionsOrganizationEvents, organization_hooks? : InstallationSuspendInstallationPermissionsOrganizationHooks, organization_packages? : InstallationSuspendInstallationPermissionsOrganizationPackages, organization_plan? : InstallationSuspendInstallationPermissionsOrganizationPlan, organization_projects? : InstallationSuspendInstallationPermissionsOrganizationProjects, organization_secrets? : InstallationSuspendInstallationPermissionsOrganizationSecrets, organization_self_hosted_runners? : InstallationSuspendInstallationPermissionsOrganizationSelfHostedRunners, organization_user_blocking? : InstallationSuspendInstallationPermissionsOrganizationUserBlocking, packages? : InstallationSuspendInstallationPermissionsPackages, pages? : InstallationSuspendInstallationPermissionsPages, pull_requests? : InstallationSuspendInstallationPermissionsPullRequests, repository_hooks? : InstallationSuspendInstallationPermissionsRepositoryHooks, repository_projects? : InstallationSuspendInstallationPermissionsRepositoryProjects, secret_scanning_alerts? : InstallationSuspendInstallationPermissionsSecretScanningAlerts, secrets? : InstallationSuspendInstallationPermissionsSecrets, security_events? : InstallationSuspendInstallationPermissionsSecurityEvents, security_scanning_alert? : InstallationSuspendInstallationPermissionsSecurityScanningAlert, single_file? : InstallationSuspendInstallationPermissionsSingleFile, statuses? : InstallationSuspendInstallationPermissionsStatuses, team_discussions? : InstallationSuspendInstallationPermissionsTeamDiscussions, vulnerability_alerts? : InstallationSuspendInstallationPermissionsVulnerabilityAlerts, workflows? : InstallationSuspendInstallationPermissionsWorkflows) -> InstallationSuspendInstallationPermissions {
+  InstallationSuspendInstallationPermissions::{
+    actions: actions,
+    administration: administration,
+    checks: checks,
+    content_references: content_references,
+    contents: contents,
+    deployments: deployments,
+    discussions: discussions,
+    emails: emails,
+    environments: environments,
+    issues: issues,
+    members: members,
+    metadata: metadata,
+    organization_administration: organization_administration,
+    organization_events: organization_events,
+    organization_hooks: organization_hooks,
+    organization_packages: organization_packages,
+    organization_plan: organization_plan,
+    organization_projects: organization_projects,
+    organization_secrets: organization_secrets,
+    organization_self_hosted_runners: organization_self_hosted_runners,
+    organization_user_blocking: organization_user_blocking,
+    packages: packages,
+    pages: pages,
+    pull_requests: pull_requests,
+    repository_hooks: repository_hooks,
+    repository_projects: repository_projects,
+    secret_scanning_alerts: secret_scanning_alerts,
+    secrets: secrets,
+    security_events: security_events,
+    security_scanning_alert: security_scanning_alert,
+    single_file: single_file,
+    statuses: statuses,
+    team_discussions: team_discussions,
+    vulnerability_alerts: vulnerability_alerts,
+    workflows: workflows,
+  }
+}
+
+///|
 let installation_suspend_installation_permissions_fields : @typify_rt.Fields = @typify_rt.Fields::new(["actions", "administration", "checks", "content_references", "contents", "deployments", "discussions", "emails", "environments", "issues", "members", "metadata", "organization_administration", "organization_events", "organization_hooks", "organization_packages", "organization_plan", "organization_projects", "organization_secrets", "organization_self_hosted_runners", "organization_user_blocking", "packages", "pages", "pull_requests", "repository_hooks", "repository_projects", "secret_scanning_alerts", "secrets", "security_events", "security_scanning_alert", "single_file", "statuses", "team_discussions", "vulnerability_alerts", "workflows"])
 
 ///|
@@ -45034,6 +50095,33 @@ pub(all) struct InstallationSuspendInstallationSuspendedBy {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationSuspendInstallationSuspendedBy` (fields with defaults are optional).
+pub fn InstallationSuspendInstallationSuspendedBy::InstallationSuspendInstallationSuspendedBy(avatar_url~ : String, email? : String, events_url~ : String, followers_url~ : String, following_url~ : String, gists_url~ : String, gravatar_id~ : String, html_url~ : String, id~ : Int64, login~ : String, name? : String, node_id~ : String, organizations_url~ : String, received_events_url~ : String, repos_url~ : String, site_admin~ : Bool, starred_url~ : String, subscriptions_url~ : String, type_~ : InstallationSuspendInstallationSuspendedByType, url~ : String) -> InstallationSuspendInstallationSuspendedBy {
+  InstallationSuspendInstallationSuspendedBy::{
+    avatar_url: avatar_url,
+    email: email,
+    events_url: events_url,
+    followers_url: followers_url,
+    following_url: following_url,
+    gists_url: gists_url,
+    gravatar_id: gravatar_id,
+    html_url: html_url,
+    id: id,
+    login: login,
+    name: name,
+    node_id: node_id,
+    organizations_url: organizations_url,
+    received_events_url: received_events_url,
+    repos_url: repos_url,
+    site_admin: site_admin,
+    starred_url: starred_url,
+    subscriptions_url: subscriptions_url,
+    type_: type_,
+    url: url,
+  }
+}
+
+///|
 let installation_suspend_installation_suspended_by_fields : @typify_rt.Fields = @typify_rt.Fields::new(["avatar_url", "email", "events_url", "followers_url", "following_url", "gists_url", "gravatar_id", "html_url", "id", "login", "name", "node_id", "organizations_url", "received_events_url", "repos_url", "site_admin", "starred_url", "subscriptions_url", "type", "url"])
 
 ///|
@@ -45284,6 +50372,32 @@ pub(all) struct InstallationSuspendInstallation {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationSuspendInstallation` (fields with defaults are optional).
+pub fn InstallationSuspendInstallation::InstallationSuspendInstallation(access_tokens_url~ : String, account~ : User, app_id~ : Int64, app_slug? : String, created_at~ : InstallationSuspendInstallationCreatedAt, events~ : Array[InstallationSuspendInstallationEventsItem], has_multiple_single_files? : Bool, html_url~ : String, id~ : Int64, permissions~ : InstallationSuspendInstallationPermissions, repositories_url~ : String, repository_selection~ : InstallationSuspendInstallationRepositorySelection, single_file_name? : String, single_file_paths? : Array[String] = [], suspended_at~ : @typify_rt.DateTimeUtc, suspended_by~ : InstallationSuspendInstallationSuspendedBy, target_id~ : Int64, target_type~ : InstallationSuspendInstallationTargetType, updated_at~ : InstallationSuspendInstallationUpdatedAt) -> InstallationSuspendInstallation {
+  InstallationSuspendInstallation::{
+    access_tokens_url: access_tokens_url,
+    account: account,
+    app_id: app_id,
+    app_slug: app_slug,
+    created_at: created_at,
+    events: events,
+    has_multiple_single_files: has_multiple_single_files,
+    html_url: html_url,
+    id: id,
+    permissions: permissions,
+    repositories_url: repositories_url,
+    repository_selection: repository_selection,
+    single_file_name: single_file_name,
+    single_file_paths: single_file_paths,
+    suspended_at: suspended_at,
+    suspended_by: suspended_by,
+    target_id: target_id,
+    target_type: target_type,
+    updated_at: updated_at,
+  }
+}
+
+///|
 let installation_suspend_installation_fields : @typify_rt.Fields = @typify_rt.Fields::new(["access_tokens_url", "account", "app_id", "app_slug", "created_at", "events", "has_multiple_single_files", "html_url", "id", "permissions", "repositories_url", "repository_selection", "single_file_name", "single_file_paths", "suspended_at", "suspended_by", "target_id", "target_type", "updated_at"])
 
 ///|
@@ -45404,6 +50518,18 @@ pub(all) struct InstallationSuspendRepositoriesItem {
   /// Whether the repository is private or public.
   private : Bool
 } derive(Debug, Eq)
+
+///|
+/// Construct a `InstallationSuspendRepositoriesItem` (fields with defaults are optional).
+pub fn InstallationSuspendRepositoriesItem::InstallationSuspendRepositoriesItem(full_name~ : String, id~ : Int64, name~ : String, node_id~ : String, private~ : Bool) -> InstallationSuspendRepositoriesItem {
+  InstallationSuspendRepositoriesItem::{
+    full_name: full_name,
+    id: id,
+    name: name,
+    node_id: node_id,
+    private: private,
+  }
+}
 
 ///|
 let installation_suspend_repositories_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["full_name", "id", "name", "node_id", "private"])
@@ -48197,6 +53323,48 @@ pub(all) struct InstallationUnsuspendInstallationPermissions {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationUnsuspendInstallationPermissions` (fields with defaults are optional).
+pub fn InstallationUnsuspendInstallationPermissions::InstallationUnsuspendInstallationPermissions(actions? : InstallationUnsuspendInstallationPermissionsActions, administration? : InstallationUnsuspendInstallationPermissionsAdministration, checks? : InstallationUnsuspendInstallationPermissionsChecks, content_references? : InstallationUnsuspendInstallationPermissionsContentReferences, contents? : InstallationUnsuspendInstallationPermissionsContents, deployments? : InstallationUnsuspendInstallationPermissionsDeployments, discussions? : InstallationUnsuspendInstallationPermissionsDiscussions, emails? : InstallationUnsuspendInstallationPermissionsEmails, environments? : InstallationUnsuspendInstallationPermissionsEnvironments, issues? : InstallationUnsuspendInstallationPermissionsIssues, members? : InstallationUnsuspendInstallationPermissionsMembers, metadata? : InstallationUnsuspendInstallationPermissionsMetadata, organization_administration? : InstallationUnsuspendInstallationPermissionsOrganizationAdministration, organization_events? : InstallationUnsuspendInstallationPermissionsOrganizationEvents, organization_hooks? : InstallationUnsuspendInstallationPermissionsOrganizationHooks, organization_packages? : InstallationUnsuspendInstallationPermissionsOrganizationPackages, organization_plan? : InstallationUnsuspendInstallationPermissionsOrganizationPlan, organization_projects? : InstallationUnsuspendInstallationPermissionsOrganizationProjects, organization_secrets? : InstallationUnsuspendInstallationPermissionsOrganizationSecrets, organization_self_hosted_runners? : InstallationUnsuspendInstallationPermissionsOrganizationSelfHostedRunners, organization_user_blocking? : InstallationUnsuspendInstallationPermissionsOrganizationUserBlocking, packages? : InstallationUnsuspendInstallationPermissionsPackages, pages? : InstallationUnsuspendInstallationPermissionsPages, pull_requests? : InstallationUnsuspendInstallationPermissionsPullRequests, repository_hooks? : InstallationUnsuspendInstallationPermissionsRepositoryHooks, repository_projects? : InstallationUnsuspendInstallationPermissionsRepositoryProjects, secret_scanning_alerts? : InstallationUnsuspendInstallationPermissionsSecretScanningAlerts, secrets? : InstallationUnsuspendInstallationPermissionsSecrets, security_events? : InstallationUnsuspendInstallationPermissionsSecurityEvents, security_scanning_alert? : InstallationUnsuspendInstallationPermissionsSecurityScanningAlert, single_file? : InstallationUnsuspendInstallationPermissionsSingleFile, statuses? : InstallationUnsuspendInstallationPermissionsStatuses, team_discussions? : InstallationUnsuspendInstallationPermissionsTeamDiscussions, vulnerability_alerts? : InstallationUnsuspendInstallationPermissionsVulnerabilityAlerts, workflows? : InstallationUnsuspendInstallationPermissionsWorkflows) -> InstallationUnsuspendInstallationPermissions {
+  InstallationUnsuspendInstallationPermissions::{
+    actions: actions,
+    administration: administration,
+    checks: checks,
+    content_references: content_references,
+    contents: contents,
+    deployments: deployments,
+    discussions: discussions,
+    emails: emails,
+    environments: environments,
+    issues: issues,
+    members: members,
+    metadata: metadata,
+    organization_administration: organization_administration,
+    organization_events: organization_events,
+    organization_hooks: organization_hooks,
+    organization_packages: organization_packages,
+    organization_plan: organization_plan,
+    organization_projects: organization_projects,
+    organization_secrets: organization_secrets,
+    organization_self_hosted_runners: organization_self_hosted_runners,
+    organization_user_blocking: organization_user_blocking,
+    packages: packages,
+    pages: pages,
+    pull_requests: pull_requests,
+    repository_hooks: repository_hooks,
+    repository_projects: repository_projects,
+    secret_scanning_alerts: secret_scanning_alerts,
+    secrets: secrets,
+    security_events: security_events,
+    security_scanning_alert: security_scanning_alert,
+    single_file: single_file,
+    statuses: statuses,
+    team_discussions: team_discussions,
+    vulnerability_alerts: vulnerability_alerts,
+    workflows: workflows,
+  }
+}
+
+///|
 let installation_unsuspend_installation_permissions_fields : @typify_rt.Fields = @typify_rt.Fields::new(["actions", "administration", "checks", "content_references", "contents", "deployments", "discussions", "emails", "environments", "issues", "members", "metadata", "organization_administration", "organization_events", "organization_hooks", "organization_packages", "organization_plan", "organization_projects", "organization_secrets", "organization_self_hosted_runners", "organization_user_blocking", "packages", "pages", "pull_requests", "repository_hooks", "repository_projects", "secret_scanning_alerts", "secrets", "security_events", "security_scanning_alert", "single_file", "statuses", "team_discussions", "vulnerability_alerts", "workflows"])
 
 ///|
@@ -48638,6 +53806,32 @@ pub(all) struct InstallationUnsuspendInstallation {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationUnsuspendInstallation` (fields with defaults are optional).
+pub fn InstallationUnsuspendInstallation::InstallationUnsuspendInstallation(access_tokens_url~ : String, account~ : User, app_id~ : Int64, app_slug? : String, created_at~ : InstallationUnsuspendInstallationCreatedAt, events~ : Array[InstallationUnsuspendInstallationEventsItem], has_multiple_single_files? : Bool, html_url~ : String, id~ : Int64, permissions~ : InstallationUnsuspendInstallationPermissions, repositories_url~ : String, repository_selection~ : InstallationUnsuspendInstallationRepositorySelection, single_file_name? : String, single_file_paths? : Array[String] = [], suspended_at~ : Unit, suspended_by~ : Unit, target_id~ : Int64, target_type~ : InstallationUnsuspendInstallationTargetType, updated_at~ : InstallationUnsuspendInstallationUpdatedAt) -> InstallationUnsuspendInstallation {
+  InstallationUnsuspendInstallation::{
+    access_tokens_url: access_tokens_url,
+    account: account,
+    app_id: app_id,
+    app_slug: app_slug,
+    created_at: created_at,
+    events: events,
+    has_multiple_single_files: has_multiple_single_files,
+    html_url: html_url,
+    id: id,
+    permissions: permissions,
+    repositories_url: repositories_url,
+    repository_selection: repository_selection,
+    single_file_name: single_file_name,
+    single_file_paths: single_file_paths,
+    suspended_at: suspended_at,
+    suspended_by: suspended_by,
+    target_id: target_id,
+    target_type: target_type,
+    updated_at: updated_at,
+  }
+}
+
+///|
 let installation_unsuspend_installation_fields : @typify_rt.Fields = @typify_rt.Fields::new(["access_tokens_url", "account", "app_id", "app_slug", "created_at", "events", "has_multiple_single_files", "html_url", "id", "permissions", "repositories_url", "repository_selection", "single_file_name", "single_file_paths", "suspended_at", "suspended_by", "target_id", "target_type", "updated_at"])
 
 ///|
@@ -48760,6 +53954,18 @@ pub(all) struct InstallationUnsuspendRepositoriesItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationUnsuspendRepositoriesItem` (fields with defaults are optional).
+pub fn InstallationUnsuspendRepositoriesItem::InstallationUnsuspendRepositoriesItem(full_name~ : String, id~ : Int64, name~ : String, node_id~ : String, private~ : Bool) -> InstallationUnsuspendRepositoriesItem {
+  InstallationUnsuspendRepositoriesItem::{
+    full_name: full_name,
+    id: id,
+    name: name,
+    node_id: node_id,
+    private: private,
+  }
+}
+
+///|
 let installation_unsuspend_repositories_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["full_name", "id", "name", "node_id", "private"])
 
 ///|
@@ -48879,6 +54085,18 @@ pub(all) struct InstallationRepositoriesAddedRepositoriesAddedItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationRepositoriesAddedRepositoriesAddedItem` (fields with defaults are optional).
+pub fn InstallationRepositoriesAddedRepositoriesAddedItem::InstallationRepositoriesAddedRepositoriesAddedItem(full_name~ : String, id~ : Int64, name~ : String, node_id~ : String, private~ : Bool) -> InstallationRepositoriesAddedRepositoriesAddedItem {
+  InstallationRepositoriesAddedRepositoriesAddedItem::{
+    full_name: full_name,
+    id: id,
+    name: name,
+    node_id: node_id,
+    private: private,
+  }
+}
+
+///|
 let installation_repositories_added_repositories_added_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["full_name", "id", "name", "node_id", "private"])
 
 ///|
@@ -48937,6 +54155,18 @@ pub(all) struct InstallationRepositoriesAddedRepositoriesRemovedItem {
   /// Whether the repository is private or public.
   private : Bool?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `InstallationRepositoriesAddedRepositoriesRemovedItem` (fields with defaults are optional).
+pub fn InstallationRepositoriesAddedRepositoriesRemovedItem::InstallationRepositoriesAddedRepositoriesRemovedItem(full_name? : String, id? : Int64, name? : String, node_id? : String, private? : Bool) -> InstallationRepositoriesAddedRepositoriesRemovedItem {
+  InstallationRepositoriesAddedRepositoriesRemovedItem::{
+    full_name: full_name,
+    id: id,
+    name: name,
+    node_id: node_id,
+    private: private,
+  }
+}
 
 ///|
 let installation_repositories_added_repositories_removed_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["full_name", "id", "name", "node_id", "private"])
@@ -49133,6 +54363,18 @@ pub(all) struct InstallationRepositoriesRemovedRepositoriesAddedItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `InstallationRepositoriesRemovedRepositoriesAddedItem` (fields with defaults are optional).
+pub fn InstallationRepositoriesRemovedRepositoriesAddedItem::InstallationRepositoriesRemovedRepositoriesAddedItem(full_name~ : String, id~ : Int64, name~ : String, node_id~ : String, private~ : Bool) -> InstallationRepositoriesRemovedRepositoriesAddedItem {
+  InstallationRepositoriesRemovedRepositoriesAddedItem::{
+    full_name: full_name,
+    id: id,
+    name: name,
+    node_id: node_id,
+    private: private,
+  }
+}
+
+///|
 let installation_repositories_removed_repositories_added_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["full_name", "id", "name", "node_id", "private"])
 
 ///|
@@ -49191,6 +54433,18 @@ pub(all) struct InstallationRepositoriesRemovedRepositoriesRemovedItem {
   /// Whether the repository is private or public.
   private : Bool
 } derive(Debug, Eq)
+
+///|
+/// Construct a `InstallationRepositoriesRemovedRepositoriesRemovedItem` (fields with defaults are optional).
+pub fn InstallationRepositoriesRemovedRepositoriesRemovedItem::InstallationRepositoriesRemovedRepositoriesRemovedItem(full_name~ : String, id~ : Int64, name~ : String, node_id~ : String, private~ : Bool) -> InstallationRepositoriesRemovedRepositoriesRemovedItem {
+  InstallationRepositoriesRemovedRepositoriesRemovedItem::{
+    full_name: full_name,
+    id: id,
+    name: name,
+    node_id: node_id,
+    private: private,
+  }
+}
 
 ///|
 let installation_repositories_removed_repositories_removed_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["full_name", "id", "name", "node_id", "private"])
@@ -49389,6 +54643,17 @@ pub(all) struct IssuePullRequest {
   patch_url : String?
   url : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuePullRequest` (fields with defaults are optional).
+pub fn IssuePullRequest::IssuePullRequest(diff_url? : String, html_url? : String, patch_url? : String, url? : String) -> IssuePullRequest {
+  IssuePullRequest::{
+    diff_url: diff_url,
+    html_url: html_url,
+    patch_url: patch_url,
+    url: url,
+  }
+}
 
 ///|
 let issue_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["diff_url", "html_url", "patch_url", "url"])
@@ -49739,6 +55004,33 @@ pub(all) struct IssueCommentCreatedIssueAssignee {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssueCommentCreatedIssueAssignee` (fields with defaults are optional).
+pub fn IssueCommentCreatedIssueAssignee::IssueCommentCreatedIssueAssignee(avatar_url~ : String, email? : String, events_url~ : String, followers_url~ : String, following_url~ : String, gists_url~ : String, gravatar_id~ : String, html_url~ : String, id~ : Int64, login~ : String, name? : String, node_id~ : String, organizations_url~ : String, received_events_url~ : String, repos_url~ : String, site_admin~ : Bool, starred_url~ : String, subscriptions_url~ : String, type_~ : IssueCommentCreatedIssueAssigneeType, url~ : String) -> IssueCommentCreatedIssueAssignee {
+  IssueCommentCreatedIssueAssignee::{
+    avatar_url: avatar_url,
+    email: email,
+    events_url: events_url,
+    followers_url: followers_url,
+    following_url: following_url,
+    gists_url: gists_url,
+    gravatar_id: gravatar_id,
+    html_url: html_url,
+    id: id,
+    login: login,
+    name: name,
+    node_id: node_id,
+    organizations_url: organizations_url,
+    received_events_url: received_events_url,
+    repos_url: repos_url,
+    site_admin: site_admin,
+    starred_url: starred_url,
+    subscriptions_url: subscriptions_url,
+    type_: type_,
+    url: url,
+  }
+}
+
+///|
 let issue_comment_created_issue_assignee_fields : @typify_rt.Fields = @typify_rt.Fields::new(["avatar_url", "email", "events_url", "followers_url", "following_url", "gists_url", "gravatar_id", "html_url", "id", "login", "name", "node_id", "organizations_url", "received_events_url", "repos_url", "site_admin", "starred_url", "subscriptions_url", "type", "url"])
 
 ///|
@@ -49857,6 +55149,17 @@ pub(all) struct IssueCommentCreatedIssuePullRequest {
   patch_url : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssueCommentCreatedIssuePullRequest` (fields with defaults are optional).
+pub fn IssueCommentCreatedIssuePullRequest::IssueCommentCreatedIssuePullRequest(diff_url~ : String, html_url~ : String, patch_url~ : String, url~ : String) -> IssueCommentCreatedIssuePullRequest {
+  IssueCommentCreatedIssuePullRequest::{
+    diff_url: diff_url,
+    html_url: html_url,
+    patch_url: patch_url,
+    url: url,
+  }
+}
 
 ///|
 let issue_comment_created_issue_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["diff_url", "html_url", "patch_url", "url"])
@@ -49999,6 +55302,39 @@ pub(all) struct IssueCommentCreatedIssue {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssueCommentCreatedIssue` (fields with defaults are optional).
+pub fn IssueCommentCreatedIssue::IssueCommentCreatedIssue(active_lock_reason? : IssueCommentCreatedIssueActiveLockReason, assignee? : IssueCommentCreatedIssueAssignee, assignees~ : Array[User], author_association~ : AuthorAssociation, body? : String, closed_at? : @typify_rt.DateTimeUtc, comments~ : Int64, comments_url~ : String, created_at~ : @typify_rt.DateTimeUtc, events_url~ : String, html_url~ : String, id~ : Int64, labels~ : Array[Label], labels_url~ : String, locked~ : Bool, milestone? : Milestone, node_id~ : String, number~ : Int64, performed_via_github_app? : App, pull_request? : IssueCommentCreatedIssuePullRequest, repository_url~ : String, state~ : IssueCommentCreatedIssueState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> IssueCommentCreatedIssue {
+  IssueCommentCreatedIssue::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    body: body,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    created_at: created_at,
+    events_url: events_url,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    labels_url: labels_url,
+    locked: locked,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    performed_via_github_app: performed_via_github_app,
+    pull_request: pull_request,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let issue_comment_created_issue_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "body", "closed_at", "comments", "comments_url", "created_at", "events_url", "html_url", "id", "labels", "labels_url", "locked", "milestone", "node_id", "number", "performed_via_github_app", "pull_request", "repository_url", "state", "title", "updated_at", "url", "user"])
@@ -50368,6 +55704,33 @@ pub(all) struct IssueCommentDeletedIssueAssignee {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssueCommentDeletedIssueAssignee` (fields with defaults are optional).
+pub fn IssueCommentDeletedIssueAssignee::IssueCommentDeletedIssueAssignee(avatar_url~ : String, email? : String, events_url~ : String, followers_url~ : String, following_url~ : String, gists_url~ : String, gravatar_id~ : String, html_url~ : String, id~ : Int64, login~ : String, name? : String, node_id~ : String, organizations_url~ : String, received_events_url~ : String, repos_url~ : String, site_admin~ : Bool, starred_url~ : String, subscriptions_url~ : String, type_~ : IssueCommentDeletedIssueAssigneeType, url~ : String) -> IssueCommentDeletedIssueAssignee {
+  IssueCommentDeletedIssueAssignee::{
+    avatar_url: avatar_url,
+    email: email,
+    events_url: events_url,
+    followers_url: followers_url,
+    following_url: following_url,
+    gists_url: gists_url,
+    gravatar_id: gravatar_id,
+    html_url: html_url,
+    id: id,
+    login: login,
+    name: name,
+    node_id: node_id,
+    organizations_url: organizations_url,
+    received_events_url: received_events_url,
+    repos_url: repos_url,
+    site_admin: site_admin,
+    starred_url: starred_url,
+    subscriptions_url: subscriptions_url,
+    type_: type_,
+    url: url,
+  }
+}
+
+///|
 let issue_comment_deleted_issue_assignee_fields : @typify_rt.Fields = @typify_rt.Fields::new(["avatar_url", "email", "events_url", "followers_url", "following_url", "gists_url", "gravatar_id", "html_url", "id", "login", "name", "node_id", "organizations_url", "received_events_url", "repos_url", "site_admin", "starred_url", "subscriptions_url", "type", "url"])
 
 ///|
@@ -50486,6 +55849,17 @@ pub(all) struct IssueCommentDeletedIssuePullRequest {
   patch_url : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssueCommentDeletedIssuePullRequest` (fields with defaults are optional).
+pub fn IssueCommentDeletedIssuePullRequest::IssueCommentDeletedIssuePullRequest(diff_url~ : String, html_url~ : String, patch_url~ : String, url~ : String) -> IssueCommentDeletedIssuePullRequest {
+  IssueCommentDeletedIssuePullRequest::{
+    diff_url: diff_url,
+    html_url: html_url,
+    patch_url: patch_url,
+    url: url,
+  }
+}
 
 ///|
 let issue_comment_deleted_issue_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["diff_url", "html_url", "patch_url", "url"])
@@ -50628,6 +56002,39 @@ pub(all) struct IssueCommentDeletedIssue {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssueCommentDeletedIssue` (fields with defaults are optional).
+pub fn IssueCommentDeletedIssue::IssueCommentDeletedIssue(active_lock_reason? : IssueCommentDeletedIssueActiveLockReason, assignee? : IssueCommentDeletedIssueAssignee, assignees~ : Array[User], author_association~ : AuthorAssociation, body? : String, closed_at? : @typify_rt.DateTimeUtc, comments~ : Int64, comments_url~ : String, created_at~ : @typify_rt.DateTimeUtc, events_url~ : String, html_url~ : String, id~ : Int64, labels~ : Array[Label], labels_url~ : String, locked~ : Bool, milestone? : Milestone, node_id~ : String, number~ : Int64, performed_via_github_app? : App, pull_request? : IssueCommentDeletedIssuePullRequest, repository_url~ : String, state~ : IssueCommentDeletedIssueState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> IssueCommentDeletedIssue {
+  IssueCommentDeletedIssue::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    body: body,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    created_at: created_at,
+    events_url: events_url,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    labels_url: labels_url,
+    locked: locked,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    performed_via_github_app: performed_via_github_app,
+    pull_request: pull_request,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let issue_comment_deleted_issue_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "body", "closed_at", "comments", "comments_url", "created_at", "events_url", "html_url", "id", "labels", "labels_url", "locked", "milestone", "node_id", "number", "performed_via_github_app", "pull_request", "repository_url", "state", "title", "updated_at", "url", "user"])
@@ -50831,6 +56238,14 @@ pub(all) struct IssueCommentEditedChangesBody {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssueCommentEditedChangesBody` (fields with defaults are optional).
+pub fn IssueCommentEditedChangesBody::IssueCommentEditedChangesBody(from~ : String) -> IssueCommentEditedChangesBody {
+  IssueCommentEditedChangesBody::{
+    from: from,
+  }
+}
+
+///|
 let issue_comment_edited_changes_body_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -50866,6 +56281,14 @@ pub impl ToJson for IssueCommentEditedChangesBody with fn to_json(self) {
 pub(all) struct IssueCommentEditedChanges {
   body : IssueCommentEditedChangesBody?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssueCommentEditedChanges` (fields with defaults are optional).
+pub fn IssueCommentEditedChanges::IssueCommentEditedChanges(body? : IssueCommentEditedChangesBody) -> IssueCommentEditedChanges {
+  IssueCommentEditedChanges::{
+    body: body,
+  }
+}
 
 ///|
 let issue_comment_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["body"])
@@ -51074,6 +56497,33 @@ pub(all) struct IssueCommentEditedIssueAssignee {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssueCommentEditedIssueAssignee` (fields with defaults are optional).
+pub fn IssueCommentEditedIssueAssignee::IssueCommentEditedIssueAssignee(avatar_url~ : String, email? : String, events_url~ : String, followers_url~ : String, following_url~ : String, gists_url~ : String, gravatar_id~ : String, html_url~ : String, id~ : Int64, login~ : String, name? : String, node_id~ : String, organizations_url~ : String, received_events_url~ : String, repos_url~ : String, site_admin~ : Bool, starred_url~ : String, subscriptions_url~ : String, type_~ : IssueCommentEditedIssueAssigneeType, url~ : String) -> IssueCommentEditedIssueAssignee {
+  IssueCommentEditedIssueAssignee::{
+    avatar_url: avatar_url,
+    email: email,
+    events_url: events_url,
+    followers_url: followers_url,
+    following_url: following_url,
+    gists_url: gists_url,
+    gravatar_id: gravatar_id,
+    html_url: html_url,
+    id: id,
+    login: login,
+    name: name,
+    node_id: node_id,
+    organizations_url: organizations_url,
+    received_events_url: received_events_url,
+    repos_url: repos_url,
+    site_admin: site_admin,
+    starred_url: starred_url,
+    subscriptions_url: subscriptions_url,
+    type_: type_,
+    url: url,
+  }
+}
+
+///|
 let issue_comment_edited_issue_assignee_fields : @typify_rt.Fields = @typify_rt.Fields::new(["avatar_url", "email", "events_url", "followers_url", "following_url", "gists_url", "gravatar_id", "html_url", "id", "login", "name", "node_id", "organizations_url", "received_events_url", "repos_url", "site_admin", "starred_url", "subscriptions_url", "type", "url"])
 
 ///|
@@ -51192,6 +56642,17 @@ pub(all) struct IssueCommentEditedIssuePullRequest {
   patch_url : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssueCommentEditedIssuePullRequest` (fields with defaults are optional).
+pub fn IssueCommentEditedIssuePullRequest::IssueCommentEditedIssuePullRequest(diff_url~ : String, html_url~ : String, patch_url~ : String, url~ : String) -> IssueCommentEditedIssuePullRequest {
+  IssueCommentEditedIssuePullRequest::{
+    diff_url: diff_url,
+    html_url: html_url,
+    patch_url: patch_url,
+    url: url,
+  }
+}
 
 ///|
 let issue_comment_edited_issue_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["diff_url", "html_url", "patch_url", "url"])
@@ -51334,6 +56795,39 @@ pub(all) struct IssueCommentEditedIssue {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssueCommentEditedIssue` (fields with defaults are optional).
+pub fn IssueCommentEditedIssue::IssueCommentEditedIssue(active_lock_reason? : IssueCommentEditedIssueActiveLockReason, assignee? : IssueCommentEditedIssueAssignee, assignees~ : Array[User], author_association~ : AuthorAssociation, body? : String, closed_at? : @typify_rt.DateTimeUtc, comments~ : Int64, comments_url~ : String, created_at~ : @typify_rt.DateTimeUtc, events_url~ : String, html_url~ : String, id~ : Int64, labels~ : Array[Label], labels_url~ : String, locked~ : Bool, milestone? : Milestone, node_id~ : String, number~ : Int64, performed_via_github_app? : App, pull_request? : IssueCommentEditedIssuePullRequest, repository_url~ : String, state~ : IssueCommentEditedIssueState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> IssueCommentEditedIssue {
+  IssueCommentEditedIssue::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    body: body,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    created_at: created_at,
+    events_url: events_url,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    labels_url: labels_url,
+    locked: locked,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    performed_via_github_app: performed_via_github_app,
+    pull_request: pull_request,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let issue_comment_edited_issue_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "body", "closed_at", "comments", "comments_url", "created_at", "events_url", "html_url", "id", "labels", "labels_url", "locked", "milestone", "node_id", "number", "performed_via_github_app", "pull_request", "repository_url", "state", "title", "updated_at", "url", "user"])
@@ -51675,6 +57169,17 @@ pub(all) struct IssuesClosedIssuePullRequest {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesClosedIssuePullRequest` (fields with defaults are optional).
+pub fn IssuesClosedIssuePullRequest::IssuesClosedIssuePullRequest(diff_url? : String, html_url? : String, patch_url? : String, url? : String) -> IssuesClosedIssuePullRequest {
+  IssuesClosedIssuePullRequest::{
+    diff_url: diff_url,
+    html_url: html_url,
+    patch_url: patch_url,
+    url: url,
+  }
+}
+
+///|
 let issues_closed_issue_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["diff_url", "html_url", "patch_url", "url"])
 
 ///|
@@ -51817,6 +57322,39 @@ pub(all) struct IssuesClosedIssue {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesClosedIssue` (fields with defaults are optional).
+pub fn IssuesClosedIssue::IssuesClosedIssue(active_lock_reason? : IssuesClosedIssueActiveLockReason, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, body? : String, closed_at~ : @typify_rt.DateTimeUtc, comments~ : Int64, comments_url~ : String, created_at~ : @typify_rt.DateTimeUtc, events_url~ : String, html_url~ : String, id~ : Int64, labels? : Array[Label] = [], labels_url~ : String, locked? : Bool, milestone? : Milestone, node_id~ : String, number~ : Int64, performed_via_github_app? : App, pull_request? : IssuesClosedIssuePullRequest, repository_url~ : String, state~ : IssuesClosedIssueState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> IssuesClosedIssue {
+  IssuesClosedIssue::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    body: body,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    created_at: created_at,
+    events_url: events_url,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    labels_url: labels_url,
+    locked: locked,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    performed_via_github_app: performed_via_github_app,
+    pull_request: pull_request,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let issues_closed_issue_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "body", "closed_at", "comments", "comments_url", "created_at", "events_url", "html_url", "id", "labels", "labels_url", "locked", "milestone", "node_id", "number", "performed_via_github_app", "pull_request", "repository_url", "state", "title", "updated_at", "url", "user"])
@@ -52164,6 +57702,17 @@ pub(all) struct IssuesDemilestonedIssuePullRequest {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesDemilestonedIssuePullRequest` (fields with defaults are optional).
+pub fn IssuesDemilestonedIssuePullRequest::IssuesDemilestonedIssuePullRequest(diff_url? : String, html_url? : String, patch_url? : String, url? : String) -> IssuesDemilestonedIssuePullRequest {
+  IssuesDemilestonedIssuePullRequest::{
+    diff_url: diff_url,
+    html_url: html_url,
+    patch_url: patch_url,
+    url: url,
+  }
+}
+
+///|
 let issues_demilestoned_issue_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["diff_url", "html_url", "patch_url", "url"])
 
 ///|
@@ -52313,6 +57862,39 @@ pub(all) struct IssuesDemilestonedIssue {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesDemilestonedIssue` (fields with defaults are optional).
+pub fn IssuesDemilestonedIssue::IssuesDemilestonedIssue(active_lock_reason? : IssuesDemilestonedIssueActiveLockReason, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, body? : String, closed_at? : @typify_rt.DateTimeUtc, comments~ : Int64, comments_url~ : String, created_at~ : @typify_rt.DateTimeUtc, events_url~ : String, html_url~ : String, id~ : Int64, labels? : Array[Label] = [], labels_url~ : String, locked? : Bool, milestone~ : Unit, node_id~ : String, number~ : Int64, performed_via_github_app? : App, pull_request? : IssuesDemilestonedIssuePullRequest, repository_url~ : String, state? : IssuesDemilestonedIssueState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> IssuesDemilestonedIssue {
+  IssuesDemilestonedIssue::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    body: body,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    created_at: created_at,
+    events_url: events_url,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    labels_url: labels_url,
+    locked: locked,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    performed_via_github_app: performed_via_github_app,
+    pull_request: pull_request,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let issues_demilestoned_issue_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "body", "closed_at", "comments", "comments_url", "created_at", "events_url", "html_url", "id", "labels", "labels_url", "locked", "milestone", "node_id", "number", "performed_via_github_app", "pull_request", "repository_url", "state", "title", "updated_at", "url", "user"])
@@ -52524,6 +58106,14 @@ pub(all) struct IssuesEditedChangesBody {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesEditedChangesBody` (fields with defaults are optional).
+pub fn IssuesEditedChangesBody::IssuesEditedChangesBody(from~ : String) -> IssuesEditedChangesBody {
+  IssuesEditedChangesBody::{
+    from: from,
+  }
+}
+
+///|
 let issues_edited_changes_body_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -52562,6 +58152,14 @@ pub(all) struct IssuesEditedChangesTitle {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesEditedChangesTitle` (fields with defaults are optional).
+pub fn IssuesEditedChangesTitle::IssuesEditedChangesTitle(from~ : String) -> IssuesEditedChangesTitle {
+  IssuesEditedChangesTitle::{
+    from: from,
+  }
+}
+
+///|
 let issues_edited_changes_title_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -52598,6 +58196,15 @@ pub(all) struct IssuesEditedChanges {
   body : IssuesEditedChangesBody?
   title : IssuesEditedChangesTitle?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesEditedChanges` (fields with defaults are optional).
+pub fn IssuesEditedChanges::IssuesEditedChanges(body? : IssuesEditedChangesBody, title? : IssuesEditedChangesTitle) -> IssuesEditedChanges {
+  IssuesEditedChanges::{
+    body: body,
+    title: title,
+  }
+}
 
 ///|
 let issues_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["body", "title"])
@@ -52843,6 +58450,17 @@ pub(all) struct IssuesLockedIssuePullRequest {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesLockedIssuePullRequest` (fields with defaults are optional).
+pub fn IssuesLockedIssuePullRequest::IssuesLockedIssuePullRequest(diff_url? : String, html_url? : String, patch_url? : String, url? : String) -> IssuesLockedIssuePullRequest {
+  IssuesLockedIssuePullRequest::{
+    diff_url: diff_url,
+    html_url: html_url,
+    patch_url: patch_url,
+    url: url,
+  }
+}
+
+///|
 let issues_locked_issue_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["diff_url", "html_url", "patch_url", "url"])
 
 ///|
@@ -52992,6 +58610,39 @@ pub(all) struct IssuesLockedIssue {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesLockedIssue` (fields with defaults are optional).
+pub fn IssuesLockedIssue::IssuesLockedIssue(active_lock_reason? : IssuesLockedIssueActiveLockReason, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, body? : String, closed_at? : @typify_rt.DateTimeUtc, comments~ : Int64, comments_url~ : String, created_at~ : @typify_rt.DateTimeUtc, events_url~ : String, html_url~ : String, id~ : Int64, labels? : Array[Label] = [], labels_url~ : String, locked~ : Bool, milestone? : Milestone, node_id~ : String, number~ : Int64, performed_via_github_app? : App, pull_request? : IssuesLockedIssuePullRequest, repository_url~ : String, state? : IssuesLockedIssueState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> IssuesLockedIssue {
+  IssuesLockedIssue::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    body: body,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    created_at: created_at,
+    events_url: events_url,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    labels_url: labels_url,
+    locked: locked,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    performed_via_github_app: performed_via_github_app,
+    pull_request: pull_request,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let issues_locked_issue_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "body", "closed_at", "comments", "comments_url", "created_at", "events_url", "html_url", "id", "labels", "labels_url", "locked", "milestone", "node_id", "number", "performed_via_github_app", "pull_request", "repository_url", "state", "title", "updated_at", "url", "user"])
@@ -53357,6 +59008,29 @@ pub(all) struct IssuesMilestonedIssueMilestone {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesMilestonedIssueMilestone` (fields with defaults are optional).
+pub fn IssuesMilestonedIssueMilestone::IssuesMilestonedIssueMilestone(closed_at? : @typify_rt.DateTimeUtc, closed_issues~ : Int64, created_at~ : @typify_rt.DateTimeUtc, creator~ : User, description? : String, due_on? : @typify_rt.DateTimeUtc, html_url~ : String, id~ : Int64, labels_url~ : String, node_id~ : String, number~ : Int64, open_issues~ : Int64, state~ : IssuesMilestonedIssueMilestoneState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> IssuesMilestonedIssueMilestone {
+  IssuesMilestonedIssueMilestone::{
+    closed_at: closed_at,
+    closed_issues: closed_issues,
+    created_at: created_at,
+    creator: creator,
+    description: description,
+    due_on: due_on,
+    html_url: html_url,
+    id: id,
+    labels_url: labels_url,
+    node_id: node_id,
+    number: number,
+    open_issues: open_issues,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+  }
+}
+
+///|
 let issues_milestoned_issue_milestone_fields : @typify_rt.Fields = @typify_rt.Fields::new(["closed_at", "closed_issues", "created_at", "creator", "description", "due_on", "html_url", "id", "labels_url", "node_id", "number", "open_issues", "state", "title", "updated_at", "url"])
 
 ///|
@@ -53455,6 +59129,17 @@ pub(all) struct IssuesMilestonedIssuePullRequest {
   patch_url : String?
   url : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesMilestonedIssuePullRequest` (fields with defaults are optional).
+pub fn IssuesMilestonedIssuePullRequest::IssuesMilestonedIssuePullRequest(diff_url? : String, html_url? : String, patch_url? : String, url? : String) -> IssuesMilestonedIssuePullRequest {
+  IssuesMilestonedIssuePullRequest::{
+    diff_url: diff_url,
+    html_url: html_url,
+    patch_url: patch_url,
+    url: url,
+  }
+}
 
 ///|
 let issues_milestoned_issue_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["diff_url", "html_url", "patch_url", "url"])
@@ -53606,6 +59291,39 @@ pub(all) struct IssuesMilestonedIssue {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesMilestonedIssue` (fields with defaults are optional).
+pub fn IssuesMilestonedIssue::IssuesMilestonedIssue(active_lock_reason? : IssuesMilestonedIssueActiveLockReason, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, body? : String, closed_at? : @typify_rt.DateTimeUtc, comments~ : Int64, comments_url~ : String, created_at~ : @typify_rt.DateTimeUtc, events_url~ : String, html_url~ : String, id~ : Int64, labels? : Array[Label] = [], labels_url~ : String, locked? : Bool, milestone~ : IssuesMilestonedIssueMilestone, node_id~ : String, number~ : Int64, performed_via_github_app? : App, pull_request? : IssuesMilestonedIssuePullRequest, repository_url~ : String, state? : IssuesMilestonedIssueState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> IssuesMilestonedIssue {
+  IssuesMilestonedIssue::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    body: body,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    created_at: created_at,
+    events_url: events_url,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    labels_url: labels_url,
+    locked: locked,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    performed_via_github_app: performed_via_github_app,
+    pull_request: pull_request,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let issues_milestoned_issue_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "body", "closed_at", "comments", "comments_url", "created_at", "events_url", "html_url", "id", "labels", "labels_url", "locked", "milestone", "node_id", "number", "performed_via_github_app", "pull_request", "repository_url", "state", "title", "updated_at", "url", "user"])
@@ -53817,6 +59535,15 @@ pub(all) struct IssuesOpenedChanges {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesOpenedChanges` (fields with defaults are optional).
+pub fn IssuesOpenedChanges::IssuesOpenedChanges(old_issue~ : Issue, old_repository~ : Repository) -> IssuesOpenedChanges {
+  IssuesOpenedChanges::{
+    old_issue: old_issue,
+    old_repository: old_repository,
+  }
+}
+
+///|
 let issues_opened_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["old_issue", "old_repository"])
 
 ///|
@@ -53936,6 +59663,17 @@ pub(all) struct IssuesOpenedIssuePullRequest {
   patch_url : String?
   url : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesOpenedIssuePullRequest` (fields with defaults are optional).
+pub fn IssuesOpenedIssuePullRequest::IssuesOpenedIssuePullRequest(diff_url? : String, html_url? : String, patch_url? : String, url? : String) -> IssuesOpenedIssuePullRequest {
+  IssuesOpenedIssuePullRequest::{
+    diff_url: diff_url,
+    html_url: html_url,
+    patch_url: patch_url,
+    url: url,
+  }
+}
 
 ///|
 let issues_opened_issue_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["diff_url", "html_url", "patch_url", "url"])
@@ -54080,6 +59818,39 @@ pub(all) struct IssuesOpenedIssue {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesOpenedIssue` (fields with defaults are optional).
+pub fn IssuesOpenedIssue::IssuesOpenedIssue(active_lock_reason? : IssuesOpenedIssueActiveLockReason, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, body? : String, closed_at~ : Unit, comments~ : Int64, comments_url~ : String, created_at~ : @typify_rt.DateTimeUtc, events_url~ : String, html_url~ : String, id~ : Int64, labels? : Array[Label] = [], labels_url~ : String, locked? : Bool, milestone? : Milestone, node_id~ : String, number~ : Int64, performed_via_github_app? : App, pull_request? : IssuesOpenedIssuePullRequest, repository_url~ : String, state~ : IssuesOpenedIssueState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> IssuesOpenedIssue {
+  IssuesOpenedIssue::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    body: body,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    created_at: created_at,
+    events_url: events_url,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    labels_url: labels_url,
+    locked: locked,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    performed_via_github_app: performed_via_github_app,
+    pull_request: pull_request,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let issues_opened_issue_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "body", "closed_at", "comments", "comments_url", "created_at", "events_url", "html_url", "id", "labels", "labels_url", "locked", "milestone", "node_id", "number", "performed_via_github_app", "pull_request", "repository_url", "state", "title", "updated_at", "url", "user"])
@@ -54427,6 +60198,17 @@ pub(all) struct IssuesReopenedIssuePullRequest {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesReopenedIssuePullRequest` (fields with defaults are optional).
+pub fn IssuesReopenedIssuePullRequest::IssuesReopenedIssuePullRequest(diff_url? : String, html_url? : String, patch_url? : String, url? : String) -> IssuesReopenedIssuePullRequest {
+  IssuesReopenedIssuePullRequest::{
+    diff_url: diff_url,
+    html_url: html_url,
+    patch_url: patch_url,
+    url: url,
+  }
+}
+
+///|
 let issues_reopened_issue_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["diff_url", "html_url", "patch_url", "url"])
 
 ///|
@@ -54569,6 +60351,39 @@ pub(all) struct IssuesReopenedIssue {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesReopenedIssue` (fields with defaults are optional).
+pub fn IssuesReopenedIssue::IssuesReopenedIssue(active_lock_reason? : IssuesReopenedIssueActiveLockReason, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, body? : String, closed_at? : @typify_rt.DateTimeUtc, comments~ : Int64, comments_url~ : String, created_at~ : @typify_rt.DateTimeUtc, events_url~ : String, html_url~ : String, id~ : Int64, labels? : Array[Label] = [], labels_url~ : String, locked? : Bool, milestone? : Milestone, node_id~ : String, number~ : Int64, performed_via_github_app? : App, pull_request? : IssuesReopenedIssuePullRequest, repository_url~ : String, state~ : IssuesReopenedIssueState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> IssuesReopenedIssue {
+  IssuesReopenedIssue::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    body: body,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    created_at: created_at,
+    events_url: events_url,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    labels_url: labels_url,
+    locked: locked,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    performed_via_github_app: performed_via_github_app,
+    pull_request: pull_request,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let issues_reopened_issue_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "body", "closed_at", "comments", "comments_url", "created_at", "events_url", "html_url", "id", "labels", "labels_url", "locked", "milestone", "node_id", "number", "performed_via_github_app", "pull_request", "repository_url", "state", "title", "updated_at", "url", "user"])
@@ -54776,6 +60591,15 @@ pub(all) struct IssuesTransferredChanges {
   new_issue : Issue
   new_repository : Repository
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesTransferredChanges` (fields with defaults are optional).
+pub fn IssuesTransferredChanges::IssuesTransferredChanges(new_issue~ : Issue, new_repository~ : Repository) -> IssuesTransferredChanges {
+  IssuesTransferredChanges::{
+    new_issue: new_issue,
+    new_repository: new_repository,
+  }
+}
 
 ///|
 let issues_transferred_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["new_issue", "new_repository"])
@@ -55044,6 +60868,17 @@ pub(all) struct IssuesUnlockedIssuePullRequest {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `IssuesUnlockedIssuePullRequest` (fields with defaults are optional).
+pub fn IssuesUnlockedIssuePullRequest::IssuesUnlockedIssuePullRequest(diff_url? : String, html_url? : String, patch_url? : String, url? : String) -> IssuesUnlockedIssuePullRequest {
+  IssuesUnlockedIssuePullRequest::{
+    diff_url: diff_url,
+    html_url: html_url,
+    patch_url: patch_url,
+    url: url,
+  }
+}
+
+///|
 let issues_unlocked_issue_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["diff_url", "html_url", "patch_url", "url"])
 
 ///|
@@ -55193,6 +61028,39 @@ pub(all) struct IssuesUnlockedIssue {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `IssuesUnlockedIssue` (fields with defaults are optional).
+pub fn IssuesUnlockedIssue::IssuesUnlockedIssue(active_lock_reason~ : IssuesUnlockedIssueActiveLockReason, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, body? : String, closed_at? : @typify_rt.DateTimeUtc, comments~ : Int64, comments_url~ : String, created_at~ : @typify_rt.DateTimeUtc, events_url~ : String, html_url~ : String, id~ : Int64, labels? : Array[Label] = [], labels_url~ : String, locked~ : Bool, milestone? : Milestone, node_id~ : String, number~ : Int64, performed_via_github_app? : App, pull_request? : IssuesUnlockedIssuePullRequest, repository_url~ : String, state? : IssuesUnlockedIssueState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> IssuesUnlockedIssue {
+  IssuesUnlockedIssue::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    body: body,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    created_at: created_at,
+    events_url: events_url,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    labels_url: labels_url,
+    locked: locked,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    performed_via_github_app: performed_via_github_app,
+    pull_request: pull_request,
+    repository_url: repository_url,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let issues_unlocked_issue_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "body", "closed_at", "comments", "comments_url", "created_at", "events_url", "html_url", "id", "labels", "labels_url", "locked", "milestone", "node_id", "number", "performed_via_github_app", "pull_request", "repository_url", "state", "title", "updated_at", "url", "user"])
@@ -55579,6 +61447,14 @@ pub(all) struct LabelEditedChangesColor {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `LabelEditedChangesColor` (fields with defaults are optional).
+pub fn LabelEditedChangesColor::LabelEditedChangesColor(from~ : String) -> LabelEditedChangesColor {
+  LabelEditedChangesColor::{
+    from: from,
+  }
+}
+
+///|
 let label_edited_changes_color_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -55615,6 +61491,14 @@ pub(all) struct LabelEditedChangesDescription {
   /// The previous version of the description if the action was `edited`.
   from : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `LabelEditedChangesDescription` (fields with defaults are optional).
+pub fn LabelEditedChangesDescription::LabelEditedChangesDescription(from~ : String) -> LabelEditedChangesDescription {
+  LabelEditedChangesDescription::{
+    from: from,
+  }
+}
 
 ///|
 let label_edited_changes_description_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
@@ -55655,6 +61539,14 @@ pub(all) struct LabelEditedChangesName {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `LabelEditedChangesName` (fields with defaults are optional).
+pub fn LabelEditedChangesName::LabelEditedChangesName(from~ : String) -> LabelEditedChangesName {
+  LabelEditedChangesName::{
+    from: from,
+  }
+}
+
+///|
 let label_edited_changes_name_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -55692,6 +61584,16 @@ pub(all) struct LabelEditedChanges {
   description : LabelEditedChangesDescription?
   name : LabelEditedChangesName?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `LabelEditedChanges` (fields with defaults are optional).
+pub fn LabelEditedChanges::LabelEditedChanges(color? : LabelEditedChangesColor, description? : LabelEditedChangesDescription, name? : LabelEditedChangesName) -> LabelEditedChanges {
+  LabelEditedChanges::{
+    color: color,
+    description: description,
+    name: name,
+  }
+}
 
 ///|
 let label_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["color", "description", "name"])
@@ -55747,6 +61649,18 @@ pub(all) struct MarketplacePurchaseAccount {
   organization_billing_email : String
   type_ : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchaseAccount` (fields with defaults are optional).
+pub fn MarketplacePurchaseAccount::MarketplacePurchaseAccount(id~ : Int64, login~ : String, node_id~ : String, organization_billing_email~ : String, type_~ : String) -> MarketplacePurchaseAccount {
+  MarketplacePurchaseAccount::{
+    id: id,
+    login: login,
+    node_id: node_id,
+    organization_billing_email: organization_billing_email,
+    type_: type_,
+  }
+}
 
 ///|
 let marketplace_purchase_account_fields : @typify_rt.Fields = @typify_rt.Fields::new(["id", "login", "node_id", "organization_billing_email", "type"])
@@ -55808,6 +61722,22 @@ pub(all) struct MarketplacePurchasePlan {
   unit_name : String?
   yearly_price_in_cents : Int64
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchasePlan` (fields with defaults are optional).
+pub fn MarketplacePurchasePlan::MarketplacePurchasePlan(bullets~ : Array[String], description~ : String, has_free_trial~ : Bool, id~ : Int64, monthly_price_in_cents~ : Int64, name~ : String, price_model~ : String, unit_name? : String, yearly_price_in_cents~ : Int64) -> MarketplacePurchasePlan {
+  MarketplacePurchasePlan::{
+    bullets: bullets,
+    description: description,
+    has_free_trial: has_free_trial,
+    id: id,
+    monthly_price_in_cents: monthly_price_in_cents,
+    name: name,
+    price_model: price_model,
+    unit_name: unit_name,
+    yearly_price_in_cents: yearly_price_in_cents,
+  }
+}
 
 ///|
 let marketplace_purchase_plan_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bullets", "description", "has_free_trial", "id", "monthly_price_in_cents", "name", "price_model", "unit_name", "yearly_price_in_cents"])
@@ -55942,6 +61872,18 @@ pub(all) struct MarketplacePurchaseCancelledMarketplacePurchaseAccount {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MarketplacePurchaseCancelledMarketplacePurchaseAccount` (fields with defaults are optional).
+pub fn MarketplacePurchaseCancelledMarketplacePurchaseAccount::MarketplacePurchaseCancelledMarketplacePurchaseAccount(id~ : Int64, login~ : String, node_id~ : String, organization_billing_email~ : String, type_~ : String) -> MarketplacePurchaseCancelledMarketplacePurchaseAccount {
+  MarketplacePurchaseCancelledMarketplacePurchaseAccount::{
+    id: id,
+    login: login,
+    node_id: node_id,
+    organization_billing_email: organization_billing_email,
+    type_: type_,
+  }
+}
+
+///|
 let marketplace_purchase_cancelled_marketplace_purchase_account_fields : @typify_rt.Fields = @typify_rt.Fields::new(["id", "login", "node_id", "organization_billing_email", "type"])
 
 ///|
@@ -56001,6 +61943,22 @@ pub(all) struct MarketplacePurchaseCancelledMarketplacePurchasePlan {
   unit_name : String?
   yearly_price_in_cents : Int64
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchaseCancelledMarketplacePurchasePlan` (fields with defaults are optional).
+pub fn MarketplacePurchaseCancelledMarketplacePurchasePlan::MarketplacePurchaseCancelledMarketplacePurchasePlan(bullets~ : Array[String], description~ : String, has_free_trial~ : Bool, id~ : Int64, monthly_price_in_cents~ : Int64, name~ : String, price_model~ : String, unit_name? : String, yearly_price_in_cents~ : Int64) -> MarketplacePurchaseCancelledMarketplacePurchasePlan {
+  MarketplacePurchaseCancelledMarketplacePurchasePlan::{
+    bullets: bullets,
+    description: description,
+    has_free_trial: has_free_trial,
+    id: id,
+    monthly_price_in_cents: monthly_price_in_cents,
+    name: name,
+    price_model: price_model,
+    unit_name: unit_name,
+    yearly_price_in_cents: yearly_price_in_cents,
+  }
+}
 
 ///|
 let marketplace_purchase_cancelled_marketplace_purchase_plan_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bullets", "description", "has_free_trial", "id", "monthly_price_in_cents", "name", "price_model", "unit_name", "yearly_price_in_cents"])
@@ -56076,6 +62034,20 @@ pub(all) struct MarketplacePurchaseCancelledMarketplacePurchase {
   plan : MarketplacePurchaseCancelledMarketplacePurchasePlan
   unit_count : Int64
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchaseCancelledMarketplacePurchase` (fields with defaults are optional).
+pub fn MarketplacePurchaseCancelledMarketplacePurchase::MarketplacePurchaseCancelledMarketplacePurchase(account~ : MarketplacePurchaseCancelledMarketplacePurchaseAccount, billing_cycle~ : String, free_trial_ends_on~ : Unit, next_billing_date~ : String, on_free_trial~ : Bool, plan~ : MarketplacePurchaseCancelledMarketplacePurchasePlan, unit_count~ : Int64) -> MarketplacePurchaseCancelledMarketplacePurchase {
+  MarketplacePurchaseCancelledMarketplacePurchase::{
+    account: account,
+    billing_cycle: billing_cycle,
+    free_trial_ends_on: free_trial_ends_on,
+    next_billing_date: next_billing_date,
+    on_free_trial: on_free_trial,
+    plan: plan,
+    unit_count: unit_count,
+  }
+}
 
 ///|
 let marketplace_purchase_cancelled_marketplace_purchase_fields : @typify_rt.Fields = @typify_rt.Fields::new(["account", "billing_cycle", "free_trial_ends_on", "next_billing_date", "on_free_trial", "plan", "unit_count"])
@@ -56154,6 +62126,31 @@ pub(all) struct MarketplacePurchaseCancelledSender {
   type_ : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchaseCancelledSender` (fields with defaults are optional).
+pub fn MarketplacePurchaseCancelledSender::MarketplacePurchaseCancelledSender(avatar_url~ : String, email~ : String, events_url~ : String, followers_url~ : String, following_url~ : String, gists_url~ : String, gravatar_id~ : String, html_url~ : String, id~ : Int64, login~ : String, organizations_url~ : String, received_events_url~ : String, repos_url~ : String, site_admin~ : Bool, starred_url~ : String, subscriptions_url~ : String, type_~ : String, url~ : String) -> MarketplacePurchaseCancelledSender {
+  MarketplacePurchaseCancelledSender::{
+    avatar_url: avatar_url,
+    email: email,
+    events_url: events_url,
+    followers_url: followers_url,
+    following_url: following_url,
+    gists_url: gists_url,
+    gravatar_id: gravatar_id,
+    html_url: html_url,
+    id: id,
+    login: login,
+    organizations_url: organizations_url,
+    received_events_url: received_events_url,
+    repos_url: repos_url,
+    site_admin: site_admin,
+    starred_url: starred_url,
+    subscriptions_url: subscriptions_url,
+    type_: type_,
+    url: url,
+  }
+}
 
 ///|
 let marketplace_purchase_cancelled_sender_fields : @typify_rt.Fields = @typify_rt.Fields::new(["avatar_url", "email", "events_url", "followers_url", "following_url", "gists_url", "gravatar_id", "html_url", "id", "login", "organizations_url", "received_events_url", "repos_url", "site_admin", "starred_url", "subscriptions_url", "type", "url"])
@@ -56324,6 +62321,18 @@ pub(all) struct MarketplacePurchaseChangedMarketplacePurchaseAccount {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MarketplacePurchaseChangedMarketplacePurchaseAccount` (fields with defaults are optional).
+pub fn MarketplacePurchaseChangedMarketplacePurchaseAccount::MarketplacePurchaseChangedMarketplacePurchaseAccount(id~ : Int64, login~ : String, node_id~ : String, organization_billing_email~ : String, type_~ : String) -> MarketplacePurchaseChangedMarketplacePurchaseAccount {
+  MarketplacePurchaseChangedMarketplacePurchaseAccount::{
+    id: id,
+    login: login,
+    node_id: node_id,
+    organization_billing_email: organization_billing_email,
+    type_: type_,
+  }
+}
+
+///|
 let marketplace_purchase_changed_marketplace_purchase_account_fields : @typify_rt.Fields = @typify_rt.Fields::new(["id", "login", "node_id", "organization_billing_email", "type"])
 
 ///|
@@ -56383,6 +62392,22 @@ pub(all) struct MarketplacePurchaseChangedMarketplacePurchasePlan {
   unit_name : String?
   yearly_price_in_cents : Int64
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchaseChangedMarketplacePurchasePlan` (fields with defaults are optional).
+pub fn MarketplacePurchaseChangedMarketplacePurchasePlan::MarketplacePurchaseChangedMarketplacePurchasePlan(bullets~ : Array[String], description~ : String, has_free_trial~ : Bool, id~ : Int64, monthly_price_in_cents~ : Int64, name~ : String, price_model~ : String, unit_name? : String, yearly_price_in_cents~ : Int64) -> MarketplacePurchaseChangedMarketplacePurchasePlan {
+  MarketplacePurchaseChangedMarketplacePurchasePlan::{
+    bullets: bullets,
+    description: description,
+    has_free_trial: has_free_trial,
+    id: id,
+    monthly_price_in_cents: monthly_price_in_cents,
+    name: name,
+    price_model: price_model,
+    unit_name: unit_name,
+    yearly_price_in_cents: yearly_price_in_cents,
+  }
+}
 
 ///|
 let marketplace_purchase_changed_marketplace_purchase_plan_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bullets", "description", "has_free_trial", "id", "monthly_price_in_cents", "name", "price_model", "unit_name", "yearly_price_in_cents"])
@@ -56458,6 +62483,20 @@ pub(all) struct MarketplacePurchaseChangedMarketplacePurchase {
   plan : MarketplacePurchaseChangedMarketplacePurchasePlan
   unit_count : Int64
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchaseChangedMarketplacePurchase` (fields with defaults are optional).
+pub fn MarketplacePurchaseChangedMarketplacePurchase::MarketplacePurchaseChangedMarketplacePurchase(account~ : MarketplacePurchaseChangedMarketplacePurchaseAccount, billing_cycle~ : String, free_trial_ends_on~ : Unit, next_billing_date~ : String, on_free_trial~ : Bool, plan~ : MarketplacePurchaseChangedMarketplacePurchasePlan, unit_count~ : Int64) -> MarketplacePurchaseChangedMarketplacePurchase {
+  MarketplacePurchaseChangedMarketplacePurchase::{
+    account: account,
+    billing_cycle: billing_cycle,
+    free_trial_ends_on: free_trial_ends_on,
+    next_billing_date: next_billing_date,
+    on_free_trial: on_free_trial,
+    plan: plan,
+    unit_count: unit_count,
+  }
+}
 
 ///|
 let marketplace_purchase_changed_marketplace_purchase_fields : @typify_rt.Fields = @typify_rt.Fields::new(["account", "billing_cycle", "free_trial_ends_on", "next_billing_date", "on_free_trial", "plan", "unit_count"])
@@ -56536,6 +62575,31 @@ pub(all) struct MarketplacePurchaseChangedSender {
   type_ : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchaseChangedSender` (fields with defaults are optional).
+pub fn MarketplacePurchaseChangedSender::MarketplacePurchaseChangedSender(avatar_url~ : String, email~ : String, events_url~ : String, followers_url~ : String, following_url~ : String, gists_url~ : String, gravatar_id~ : String, html_url~ : String, id~ : Int64, login~ : String, organizations_url~ : String, received_events_url~ : String, repos_url~ : String, site_admin~ : Bool, starred_url~ : String, subscriptions_url~ : String, type_~ : String, url~ : String) -> MarketplacePurchaseChangedSender {
+  MarketplacePurchaseChangedSender::{
+    avatar_url: avatar_url,
+    email: email,
+    events_url: events_url,
+    followers_url: followers_url,
+    following_url: following_url,
+    gists_url: gists_url,
+    gravatar_id: gravatar_id,
+    html_url: html_url,
+    id: id,
+    login: login,
+    organizations_url: organizations_url,
+    received_events_url: received_events_url,
+    repos_url: repos_url,
+    site_admin: site_admin,
+    starred_url: starred_url,
+    subscriptions_url: subscriptions_url,
+    type_: type_,
+    url: url,
+  }
+}
 
 ///|
 let marketplace_purchase_changed_sender_fields : @typify_rt.Fields = @typify_rt.Fields::new(["avatar_url", "email", "events_url", "followers_url", "following_url", "gists_url", "gravatar_id", "html_url", "id", "login", "organizations_url", "received_events_url", "repos_url", "site_admin", "starred_url", "subscriptions_url", "type", "url"])
@@ -56706,6 +62770,18 @@ pub(all) struct MarketplacePurchasePendingChangeMarketplacePurchaseAccount {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MarketplacePurchasePendingChangeMarketplacePurchaseAccount` (fields with defaults are optional).
+pub fn MarketplacePurchasePendingChangeMarketplacePurchaseAccount::MarketplacePurchasePendingChangeMarketplacePurchaseAccount(id~ : Int64, login~ : String, node_id~ : String, organization_billing_email~ : String, type_~ : String) -> MarketplacePurchasePendingChangeMarketplacePurchaseAccount {
+  MarketplacePurchasePendingChangeMarketplacePurchaseAccount::{
+    id: id,
+    login: login,
+    node_id: node_id,
+    organization_billing_email: organization_billing_email,
+    type_: type_,
+  }
+}
+
+///|
 let marketplace_purchase_pending_change_marketplace_purchase_account_fields : @typify_rt.Fields = @typify_rt.Fields::new(["id", "login", "node_id", "organization_billing_email", "type"])
 
 ///|
@@ -56765,6 +62841,22 @@ pub(all) struct MarketplacePurchasePendingChangeMarketplacePurchasePlan {
   unit_name : String?
   yearly_price_in_cents : Int64
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchasePendingChangeMarketplacePurchasePlan` (fields with defaults are optional).
+pub fn MarketplacePurchasePendingChangeMarketplacePurchasePlan::MarketplacePurchasePendingChangeMarketplacePurchasePlan(bullets~ : Array[String], description~ : String, has_free_trial~ : Bool, id~ : Int64, monthly_price_in_cents~ : Int64, name~ : String, price_model~ : String, unit_name? : String, yearly_price_in_cents~ : Int64) -> MarketplacePurchasePendingChangeMarketplacePurchasePlan {
+  MarketplacePurchasePendingChangeMarketplacePurchasePlan::{
+    bullets: bullets,
+    description: description,
+    has_free_trial: has_free_trial,
+    id: id,
+    monthly_price_in_cents: monthly_price_in_cents,
+    name: name,
+    price_model: price_model,
+    unit_name: unit_name,
+    yearly_price_in_cents: yearly_price_in_cents,
+  }
+}
 
 ///|
 let marketplace_purchase_pending_change_marketplace_purchase_plan_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bullets", "description", "has_free_trial", "id", "monthly_price_in_cents", "name", "price_model", "unit_name", "yearly_price_in_cents"])
@@ -56840,6 +62932,20 @@ pub(all) struct MarketplacePurchasePendingChangeMarketplacePurchase {
   plan : MarketplacePurchasePendingChangeMarketplacePurchasePlan
   unit_count : Int64
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchasePendingChangeMarketplacePurchase` (fields with defaults are optional).
+pub fn MarketplacePurchasePendingChangeMarketplacePurchase::MarketplacePurchasePendingChangeMarketplacePurchase(account~ : MarketplacePurchasePendingChangeMarketplacePurchaseAccount, billing_cycle~ : String, free_trial_ends_on~ : Unit, next_billing_date~ : String, on_free_trial~ : Bool, plan~ : MarketplacePurchasePendingChangeMarketplacePurchasePlan, unit_count~ : Int64) -> MarketplacePurchasePendingChangeMarketplacePurchase {
+  MarketplacePurchasePendingChangeMarketplacePurchase::{
+    account: account,
+    billing_cycle: billing_cycle,
+    free_trial_ends_on: free_trial_ends_on,
+    next_billing_date: next_billing_date,
+    on_free_trial: on_free_trial,
+    plan: plan,
+    unit_count: unit_count,
+  }
+}
 
 ///|
 let marketplace_purchase_pending_change_marketplace_purchase_fields : @typify_rt.Fields = @typify_rt.Fields::new(["account", "billing_cycle", "free_trial_ends_on", "next_billing_date", "on_free_trial", "plan", "unit_count"])
@@ -56918,6 +63024,31 @@ pub(all) struct MarketplacePurchasePendingChangeSender {
   type_ : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchasePendingChangeSender` (fields with defaults are optional).
+pub fn MarketplacePurchasePendingChangeSender::MarketplacePurchasePendingChangeSender(avatar_url~ : String, email~ : String, events_url~ : String, followers_url~ : String, following_url~ : String, gists_url~ : String, gravatar_id~ : String, html_url~ : String, id~ : Int64, login~ : String, organizations_url~ : String, received_events_url~ : String, repos_url~ : String, site_admin~ : Bool, starred_url~ : String, subscriptions_url~ : String, type_~ : String, url~ : String) -> MarketplacePurchasePendingChangeSender {
+  MarketplacePurchasePendingChangeSender::{
+    avatar_url: avatar_url,
+    email: email,
+    events_url: events_url,
+    followers_url: followers_url,
+    following_url: following_url,
+    gists_url: gists_url,
+    gravatar_id: gravatar_id,
+    html_url: html_url,
+    id: id,
+    login: login,
+    organizations_url: organizations_url,
+    received_events_url: received_events_url,
+    repos_url: repos_url,
+    site_admin: site_admin,
+    starred_url: starred_url,
+    subscriptions_url: subscriptions_url,
+    type_: type_,
+    url: url,
+  }
+}
 
 ///|
 let marketplace_purchase_pending_change_sender_fields : @typify_rt.Fields = @typify_rt.Fields::new(["avatar_url", "email", "events_url", "followers_url", "following_url", "gists_url", "gravatar_id", "html_url", "id", "login", "organizations_url", "received_events_url", "repos_url", "site_admin", "starred_url", "subscriptions_url", "type", "url"])
@@ -57088,6 +63219,18 @@ pub(all) struct MarketplacePurchasePendingChangeCancelledMarketplacePurchaseAcco
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MarketplacePurchasePendingChangeCancelledMarketplacePurchaseAccount` (fields with defaults are optional).
+pub fn MarketplacePurchasePendingChangeCancelledMarketplacePurchaseAccount::MarketplacePurchasePendingChangeCancelledMarketplacePurchaseAccount(id~ : Int64, login~ : String, node_id~ : String, organization_billing_email~ : String, type_~ : String) -> MarketplacePurchasePendingChangeCancelledMarketplacePurchaseAccount {
+  MarketplacePurchasePendingChangeCancelledMarketplacePurchaseAccount::{
+    id: id,
+    login: login,
+    node_id: node_id,
+    organization_billing_email: organization_billing_email,
+    type_: type_,
+  }
+}
+
+///|
 let marketplace_purchase_pending_change_cancelled_marketplace_purchase_account_fields : @typify_rt.Fields = @typify_rt.Fields::new(["id", "login", "node_id", "organization_billing_email", "type"])
 
 ///|
@@ -57147,6 +63290,22 @@ pub(all) struct MarketplacePurchasePendingChangeCancelledMarketplacePurchasePlan
   unit_name : String?
   yearly_price_in_cents : Int64
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchasePendingChangeCancelledMarketplacePurchasePlan` (fields with defaults are optional).
+pub fn MarketplacePurchasePendingChangeCancelledMarketplacePurchasePlan::MarketplacePurchasePendingChangeCancelledMarketplacePurchasePlan(bullets~ : Array[String], description~ : String, has_free_trial~ : Bool, id~ : Int64, monthly_price_in_cents~ : Int64, name~ : String, price_model~ : String, unit_name? : String, yearly_price_in_cents~ : Int64) -> MarketplacePurchasePendingChangeCancelledMarketplacePurchasePlan {
+  MarketplacePurchasePendingChangeCancelledMarketplacePurchasePlan::{
+    bullets: bullets,
+    description: description,
+    has_free_trial: has_free_trial,
+    id: id,
+    monthly_price_in_cents: monthly_price_in_cents,
+    name: name,
+    price_model: price_model,
+    unit_name: unit_name,
+    yearly_price_in_cents: yearly_price_in_cents,
+  }
+}
 
 ///|
 let marketplace_purchase_pending_change_cancelled_marketplace_purchase_plan_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bullets", "description", "has_free_trial", "id", "monthly_price_in_cents", "name", "price_model", "unit_name", "yearly_price_in_cents"])
@@ -57222,6 +63381,20 @@ pub(all) struct MarketplacePurchasePendingChangeCancelledMarketplacePurchase {
   plan : MarketplacePurchasePendingChangeCancelledMarketplacePurchasePlan
   unit_count : Int64
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchasePendingChangeCancelledMarketplacePurchase` (fields with defaults are optional).
+pub fn MarketplacePurchasePendingChangeCancelledMarketplacePurchase::MarketplacePurchasePendingChangeCancelledMarketplacePurchase(account~ : MarketplacePurchasePendingChangeCancelledMarketplacePurchaseAccount, billing_cycle~ : String, free_trial_ends_on~ : Unit, next_billing_date~ : String, on_free_trial~ : Bool, plan~ : MarketplacePurchasePendingChangeCancelledMarketplacePurchasePlan, unit_count~ : Int64) -> MarketplacePurchasePendingChangeCancelledMarketplacePurchase {
+  MarketplacePurchasePendingChangeCancelledMarketplacePurchase::{
+    account: account,
+    billing_cycle: billing_cycle,
+    free_trial_ends_on: free_trial_ends_on,
+    next_billing_date: next_billing_date,
+    on_free_trial: on_free_trial,
+    plan: plan,
+    unit_count: unit_count,
+  }
+}
 
 ///|
 let marketplace_purchase_pending_change_cancelled_marketplace_purchase_fields : @typify_rt.Fields = @typify_rt.Fields::new(["account", "billing_cycle", "free_trial_ends_on", "next_billing_date", "on_free_trial", "plan", "unit_count"])
@@ -57300,6 +63473,31 @@ pub(all) struct MarketplacePurchasePendingChangeCancelledSender {
   type_ : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchasePendingChangeCancelledSender` (fields with defaults are optional).
+pub fn MarketplacePurchasePendingChangeCancelledSender::MarketplacePurchasePendingChangeCancelledSender(avatar_url~ : String, email~ : String, events_url~ : String, followers_url~ : String, following_url~ : String, gists_url~ : String, gravatar_id~ : String, html_url~ : String, id~ : Int64, login~ : String, organizations_url~ : String, received_events_url~ : String, repos_url~ : String, site_admin~ : Bool, starred_url~ : String, subscriptions_url~ : String, type_~ : String, url~ : String) -> MarketplacePurchasePendingChangeCancelledSender {
+  MarketplacePurchasePendingChangeCancelledSender::{
+    avatar_url: avatar_url,
+    email: email,
+    events_url: events_url,
+    followers_url: followers_url,
+    following_url: following_url,
+    gists_url: gists_url,
+    gravatar_id: gravatar_id,
+    html_url: html_url,
+    id: id,
+    login: login,
+    organizations_url: organizations_url,
+    received_events_url: received_events_url,
+    repos_url: repos_url,
+    site_admin: site_admin,
+    starred_url: starred_url,
+    subscriptions_url: subscriptions_url,
+    type_: type_,
+    url: url,
+  }
+}
 
 ///|
 let marketplace_purchase_pending_change_cancelled_sender_fields : @typify_rt.Fields = @typify_rt.Fields::new(["avatar_url", "email", "events_url", "followers_url", "following_url", "gists_url", "gravatar_id", "html_url", "id", "login", "organizations_url", "received_events_url", "repos_url", "site_admin", "starred_url", "subscriptions_url", "type", "url"])
@@ -57470,6 +63668,18 @@ pub(all) struct MarketplacePurchasePurchasedMarketplacePurchaseAccount {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MarketplacePurchasePurchasedMarketplacePurchaseAccount` (fields with defaults are optional).
+pub fn MarketplacePurchasePurchasedMarketplacePurchaseAccount::MarketplacePurchasePurchasedMarketplacePurchaseAccount(id~ : Int64, login~ : String, node_id~ : String, organization_billing_email~ : String, type_~ : String) -> MarketplacePurchasePurchasedMarketplacePurchaseAccount {
+  MarketplacePurchasePurchasedMarketplacePurchaseAccount::{
+    id: id,
+    login: login,
+    node_id: node_id,
+    organization_billing_email: organization_billing_email,
+    type_: type_,
+  }
+}
+
+///|
 let marketplace_purchase_purchased_marketplace_purchase_account_fields : @typify_rt.Fields = @typify_rt.Fields::new(["id", "login", "node_id", "organization_billing_email", "type"])
 
 ///|
@@ -57529,6 +63739,22 @@ pub(all) struct MarketplacePurchasePurchasedMarketplacePurchasePlan {
   unit_name : String?
   yearly_price_in_cents : Int64
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchasePurchasedMarketplacePurchasePlan` (fields with defaults are optional).
+pub fn MarketplacePurchasePurchasedMarketplacePurchasePlan::MarketplacePurchasePurchasedMarketplacePurchasePlan(bullets~ : Array[String], description~ : String, has_free_trial~ : Bool, id~ : Int64, monthly_price_in_cents~ : Int64, name~ : String, price_model~ : String, unit_name? : String, yearly_price_in_cents~ : Int64) -> MarketplacePurchasePurchasedMarketplacePurchasePlan {
+  MarketplacePurchasePurchasedMarketplacePurchasePlan::{
+    bullets: bullets,
+    description: description,
+    has_free_trial: has_free_trial,
+    id: id,
+    monthly_price_in_cents: monthly_price_in_cents,
+    name: name,
+    price_model: price_model,
+    unit_name: unit_name,
+    yearly_price_in_cents: yearly_price_in_cents,
+  }
+}
 
 ///|
 let marketplace_purchase_purchased_marketplace_purchase_plan_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bullets", "description", "has_free_trial", "id", "monthly_price_in_cents", "name", "price_model", "unit_name", "yearly_price_in_cents"])
@@ -57604,6 +63830,20 @@ pub(all) struct MarketplacePurchasePurchasedMarketplacePurchase {
   plan : MarketplacePurchasePurchasedMarketplacePurchasePlan
   unit_count : Int64
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchasePurchasedMarketplacePurchase` (fields with defaults are optional).
+pub fn MarketplacePurchasePurchasedMarketplacePurchase::MarketplacePurchasePurchasedMarketplacePurchase(account~ : MarketplacePurchasePurchasedMarketplacePurchaseAccount, billing_cycle~ : String, free_trial_ends_on~ : Unit, next_billing_date~ : String, on_free_trial~ : Bool, plan~ : MarketplacePurchasePurchasedMarketplacePurchasePlan, unit_count~ : Int64) -> MarketplacePurchasePurchasedMarketplacePurchase {
+  MarketplacePurchasePurchasedMarketplacePurchase::{
+    account: account,
+    billing_cycle: billing_cycle,
+    free_trial_ends_on: free_trial_ends_on,
+    next_billing_date: next_billing_date,
+    on_free_trial: on_free_trial,
+    plan: plan,
+    unit_count: unit_count,
+  }
+}
 
 ///|
 let marketplace_purchase_purchased_marketplace_purchase_fields : @typify_rt.Fields = @typify_rt.Fields::new(["account", "billing_cycle", "free_trial_ends_on", "next_billing_date", "on_free_trial", "plan", "unit_count"])
@@ -57682,6 +63922,31 @@ pub(all) struct MarketplacePurchasePurchasedSender {
   type_ : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MarketplacePurchasePurchasedSender` (fields with defaults are optional).
+pub fn MarketplacePurchasePurchasedSender::MarketplacePurchasePurchasedSender(avatar_url~ : String, email~ : String, events_url~ : String, followers_url~ : String, following_url~ : String, gists_url~ : String, gravatar_id~ : String, html_url~ : String, id~ : Int64, login~ : String, organizations_url~ : String, received_events_url~ : String, repos_url~ : String, site_admin~ : Bool, starred_url~ : String, subscriptions_url~ : String, type_~ : String, url~ : String) -> MarketplacePurchasePurchasedSender {
+  MarketplacePurchasePurchasedSender::{
+    avatar_url: avatar_url,
+    email: email,
+    events_url: events_url,
+    followers_url: followers_url,
+    following_url: following_url,
+    gists_url: gists_url,
+    gravatar_id: gravatar_id,
+    html_url: html_url,
+    id: id,
+    login: login,
+    organizations_url: organizations_url,
+    received_events_url: received_events_url,
+    repos_url: repos_url,
+    site_admin: site_admin,
+    starred_url: starred_url,
+    subscriptions_url: subscriptions_url,
+    type_: type_,
+    url: url,
+  }
+}
 
 ///|
 let marketplace_purchase_purchased_sender_fields : @typify_rt.Fields = @typify_rt.Fields::new(["avatar_url", "email", "events_url", "followers_url", "following_url", "gists_url", "gravatar_id", "html_url", "id", "login", "organizations_url", "received_events_url", "repos_url", "site_admin", "starred_url", "subscriptions_url", "type", "url"])
@@ -57913,6 +64178,14 @@ pub(all) struct MemberAddedChangesPermission {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MemberAddedChangesPermission` (fields with defaults are optional).
+pub fn MemberAddedChangesPermission::MemberAddedChangesPermission(to~ : MemberAddedChangesPermissionTo) -> MemberAddedChangesPermission {
+  MemberAddedChangesPermission::{
+    to: to,
+  }
+}
+
+///|
 let member_added_changes_permission_fields : @typify_rt.Fields = @typify_rt.Fields::new(["to"])
 
 ///|
@@ -57948,6 +64221,14 @@ pub impl ToJson for MemberAddedChangesPermission with fn to_json(self) {
 pub(all) struct MemberAddedChanges {
   permission : MemberAddedChangesPermission?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MemberAddedChanges` (fields with defaults are optional).
+pub fn MemberAddedChanges::MemberAddedChanges(permission? : MemberAddedChangesPermission) -> MemberAddedChanges {
+  MemberAddedChanges::{
+    permission: permission,
+  }
+}
 
 ///|
 let member_added_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["permission"])
@@ -58049,6 +64330,14 @@ pub(all) struct MemberEditedChangesOldPermission {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MemberEditedChangesOldPermission` (fields with defaults are optional).
+pub fn MemberEditedChangesOldPermission::MemberEditedChangesOldPermission(from~ : String) -> MemberEditedChangesOldPermission {
+  MemberEditedChangesOldPermission::{
+    from: from,
+  }
+}
+
+///|
 let member_edited_changes_old_permission_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -58084,6 +64373,14 @@ pub impl ToJson for MemberEditedChangesOldPermission with fn to_json(self) {
 pub(all) struct MemberEditedChanges {
   old_permission : MemberEditedChangesOldPermission
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MemberEditedChanges` (fields with defaults are optional).
+pub fn MemberEditedChanges::MemberEditedChanges(old_permission~ : MemberEditedChangesOldPermission) -> MemberEditedChanges {
+  MemberEditedChanges::{
+    old_permission: old_permission,
+  }
+}
 
 ///|
 let member_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["old_permission"])
@@ -58622,6 +64919,16 @@ pub(all) struct MetaDeletedHookConfig {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MetaDeletedHookConfig` (fields with defaults are optional).
+pub fn MetaDeletedHookConfig::MetaDeletedHookConfig(content_type~ : MetaDeletedHookConfigContentType, insecure_ssl~ : String, url~ : String) -> MetaDeletedHookConfig {
+  MetaDeletedHookConfig::{
+    content_type: content_type,
+    insecure_ssl: insecure_ssl,
+    url: url,
+  }
+}
+
+///|
 let meta_deleted_hook_config_fields : @typify_rt.Fields = @typify_rt.Fields::new(["content_type", "insecure_ssl", "url"])
 
 ///|
@@ -58672,6 +64979,21 @@ pub(all) struct MetaDeletedHook {
   type_ : String
   updated_at : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MetaDeletedHook` (fields with defaults are optional).
+pub fn MetaDeletedHook::MetaDeletedHook(active~ : Bool, config~ : MetaDeletedHookConfig, created_at~ : String, events~ : WebhookEvents, id~ : Int64, name~ : String, type_~ : String, updated_at~ : String) -> MetaDeletedHook {
+  MetaDeletedHook::{
+    active: active,
+    config: config,
+    created_at: created_at,
+    events: events,
+    id: id,
+    name: name,
+    type_: type_,
+    updated_at: updated_at,
+  }
+}
 
 ///|
 let meta_deleted_hook_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active", "config", "created_at", "events", "id", "name", "type", "updated_at"])
@@ -58939,6 +65261,29 @@ pub(all) struct MilestoneClosedMilestone {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MilestoneClosedMilestone` (fields with defaults are optional).
+pub fn MilestoneClosedMilestone::MilestoneClosedMilestone(closed_at~ : @typify_rt.DateTimeUtc, closed_issues~ : Int64, created_at~ : @typify_rt.DateTimeUtc, creator~ : User, description? : String, due_on? : @typify_rt.DateTimeUtc, html_url~ : String, id~ : Int64, labels_url~ : String, node_id~ : String, number~ : Int64, open_issues~ : Int64, state~ : MilestoneClosedMilestoneState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> MilestoneClosedMilestone {
+  MilestoneClosedMilestone::{
+    closed_at: closed_at,
+    closed_issues: closed_issues,
+    created_at: created_at,
+    creator: creator,
+    description: description,
+    due_on: due_on,
+    html_url: html_url,
+    id: id,
+    labels_url: labels_url,
+    node_id: node_id,
+    number: number,
+    open_issues: open_issues,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+  }
+}
+
+///|
 let milestone_closed_milestone_fields : @typify_rt.Fields = @typify_rt.Fields::new(["closed_at", "closed_issues", "created_at", "creator", "description", "due_on", "html_url", "id", "labels_url", "node_id", "number", "open_issues", "state", "title", "updated_at", "url"])
 
 ///|
@@ -59171,6 +65516,29 @@ pub(all) struct MilestoneCreatedMilestone {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MilestoneCreatedMilestone` (fields with defaults are optional).
+pub fn MilestoneCreatedMilestone::MilestoneCreatedMilestone(closed_at~ : Unit, closed_issues~ : Int64, created_at~ : @typify_rt.DateTimeUtc, creator~ : User, description? : String, due_on? : @typify_rt.DateTimeUtc, html_url~ : String, id~ : Int64, labels_url~ : String, node_id~ : String, number~ : Int64, open_issues~ : Int64, state~ : MilestoneCreatedMilestoneState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> MilestoneCreatedMilestone {
+  MilestoneCreatedMilestone::{
+    closed_at: closed_at,
+    closed_issues: closed_issues,
+    created_at: created_at,
+    creator: creator,
+    description: description,
+    due_on: due_on,
+    html_url: html_url,
+    id: id,
+    labels_url: labels_url,
+    node_id: node_id,
+    number: number,
+    open_issues: open_issues,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+  }
+}
+
+///|
 let milestone_created_milestone_fields : @typify_rt.Fields = @typify_rt.Fields::new(["closed_at", "closed_issues", "created_at", "creator", "description", "due_on", "html_url", "id", "labels_url", "node_id", "number", "open_issues", "state", "title", "updated_at", "url"])
 
 ///|
@@ -59387,6 +65755,14 @@ pub(all) struct MilestoneEditedChangesDescription {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MilestoneEditedChangesDescription` (fields with defaults are optional).
+pub fn MilestoneEditedChangesDescription::MilestoneEditedChangesDescription(from~ : String) -> MilestoneEditedChangesDescription {
+  MilestoneEditedChangesDescription::{
+    from: from,
+  }
+}
+
+///|
 let milestone_edited_changes_description_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -59423,6 +65799,14 @@ pub(all) struct MilestoneEditedChangesDueOn {
   /// The previous version of the due date if the action was `edited`.
   from : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MilestoneEditedChangesDueOn` (fields with defaults are optional).
+pub fn MilestoneEditedChangesDueOn::MilestoneEditedChangesDueOn(from~ : String) -> MilestoneEditedChangesDueOn {
+  MilestoneEditedChangesDueOn::{
+    from: from,
+  }
+}
 
 ///|
 let milestone_edited_changes_due_on_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
@@ -59463,6 +65847,14 @@ pub(all) struct MilestoneEditedChangesTitle {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MilestoneEditedChangesTitle` (fields with defaults are optional).
+pub fn MilestoneEditedChangesTitle::MilestoneEditedChangesTitle(from~ : String) -> MilestoneEditedChangesTitle {
+  MilestoneEditedChangesTitle::{
+    from: from,
+  }
+}
+
+///|
 let milestone_edited_changes_title_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -59500,6 +65892,16 @@ pub(all) struct MilestoneEditedChanges {
   due_on : MilestoneEditedChangesDueOn?
   title : MilestoneEditedChangesTitle?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MilestoneEditedChanges` (fields with defaults are optional).
+pub fn MilestoneEditedChanges::MilestoneEditedChanges(description? : MilestoneEditedChangesDescription, due_on? : MilestoneEditedChangesDueOn, title? : MilestoneEditedChangesTitle) -> MilestoneEditedChanges {
+  MilestoneEditedChanges::{
+    description: description,
+    due_on: due_on,
+    title: title,
+  }
+}
 
 ///|
 let milestone_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["description", "due_on", "title"])
@@ -59686,6 +66088,29 @@ pub(all) struct MilestoneOpenedMilestone {
   updated_at : @typify_rt.DateTimeUtc
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `MilestoneOpenedMilestone` (fields with defaults are optional).
+pub fn MilestoneOpenedMilestone::MilestoneOpenedMilestone(closed_at~ : Unit, closed_issues~ : Int64, created_at~ : @typify_rt.DateTimeUtc, creator~ : User, description? : String, due_on? : @typify_rt.DateTimeUtc, html_url~ : String, id~ : Int64, labels_url~ : String, node_id~ : String, number~ : Int64, open_issues~ : Int64, state~ : MilestoneOpenedMilestoneState, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> MilestoneOpenedMilestone {
+  MilestoneOpenedMilestone::{
+    closed_at: closed_at,
+    closed_issues: closed_issues,
+    created_at: created_at,
+    creator: creator,
+    description: description,
+    due_on: due_on,
+    html_url: html_url,
+    id: id,
+    labels_url: labels_url,
+    node_id: node_id,
+    number: number,
+    open_issues: open_issues,
+    state: state,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+  }
+}
 
 ///|
 let milestone_opened_milestone_fields : @typify_rt.Fields = @typify_rt.Fields::new(["closed_at", "closed_issues", "created_at", "creator", "description", "due_on", "html_url", "id", "labels_url", "node_id", "number", "open_issues", "state", "title", "updated_at", "url"])
@@ -60090,6 +66515,24 @@ pub(all) struct OrganizationMemberInvitedInvitation {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `OrganizationMemberInvitedInvitation` (fields with defaults are optional).
+pub fn OrganizationMemberInvitedInvitation::OrganizationMemberInvitedInvitation(created_at~ : @typify_rt.DateTimeUtc, email? : String, failed_at? : @typify_rt.DateTimeUtc, failed_reason? : String, id~ : Double, invitation_teams_url~ : String, inviter~ : User, login~ : String, node_id~ : String, role~ : String, team_count~ : Double) -> OrganizationMemberInvitedInvitation {
+  OrganizationMemberInvitedInvitation::{
+    created_at: created_at,
+    email: email,
+    failed_at: failed_at,
+    failed_reason: failed_reason,
+    id: id,
+    invitation_teams_url: invitation_teams_url,
+    inviter: inviter,
+    login: login,
+    node_id: node_id,
+    role: role,
+    team_count: team_count,
+  }
+}
+
+///|
 let organization_member_invited_invitation_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "email", "failed_at", "failed_reason", "id", "invitation_teams_url", "inviter", "login", "node_id", "role", "team_count"])
 
 ///|
@@ -60354,6 +66797,24 @@ pub(all) struct PackagePublishedPackagePackageVersionPackageFilesItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PackagePublishedPackagePackageVersionPackageFilesItem` (fields with defaults are optional).
+pub fn PackagePublishedPackagePackageVersionPackageFilesItem::PackagePublishedPackagePackageVersionPackageFilesItem(content_type~ : String, created_at~ : String, download_url~ : String, id~ : Int64, md5~ : String, name~ : String, sha1~ : String, sha256~ : String, size~ : Int64, state~ : String, updated_at~ : String) -> PackagePublishedPackagePackageVersionPackageFilesItem {
+  PackagePublishedPackagePackageVersionPackageFilesItem::{
+    content_type: content_type,
+    created_at: created_at,
+    download_url: download_url,
+    id: id,
+    md5: md5,
+    name: name,
+    sha1: sha1,
+    sha256: sha256,
+    size: size,
+    state: state,
+    updated_at: updated_at,
+  }
+}
+
+///|
 let package_published_package_package_version_package_files_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["content_type", "created_at", "download_url", "id", "md5", "name", "sha1", "sha256", "size", "state", "updated_at"])
 
 ///|
@@ -60439,6 +66900,24 @@ pub(all) struct PackagePublishedPackagePackageVersionRelease {
   target_commitish : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PackagePublishedPackagePackageVersionRelease` (fields with defaults are optional).
+pub fn PackagePublishedPackagePackageVersionRelease::PackagePublishedPackagePackageVersionRelease(author~ : User, created_at~ : String, draft~ : Bool, html_url~ : String, id~ : Int64, name~ : String, prerelease~ : Bool, published_at~ : String, tag_name~ : String, target_commitish~ : String, url~ : String) -> PackagePublishedPackagePackageVersionRelease {
+  PackagePublishedPackagePackageVersionRelease::{
+    author: author,
+    created_at: created_at,
+    draft: draft,
+    html_url: html_url,
+    id: id,
+    name: name,
+    prerelease: prerelease,
+    published_at: published_at,
+    tag_name: tag_name,
+    target_commitish: target_commitish,
+    url: url,
+  }
+}
 
 ///|
 let package_published_package_package_version_release_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author", "created_at", "draft", "html_url", "id", "name", "prerelease", "published_at", "tag_name", "target_commitish", "url"])
@@ -60538,6 +67017,36 @@ pub(all) struct PackagePublishedPackagePackageVersion {
   updated_at : String
   version : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PackagePublishedPackagePackageVersion` (fields with defaults are optional).
+pub fn PackagePublishedPackagePackageVersion::PackagePublishedPackagePackageVersion(author~ : User, body~ : String, body_html~ : String, created_at~ : String, description~ : String, docker_metadata~ : Array[Json], draft~ : Bool, html_url~ : String, id~ : Int64, installation_command~ : String, manifest~ : String, metadata~ : Array[Json], name~ : String, package_files~ : Array[PackagePublishedPackagePackageVersionPackageFilesItem], prerelease~ : Bool, release~ : PackagePublishedPackagePackageVersionRelease, source_url~ : String, summary~ : String, tag_name~ : String, target_commitish~ : String, target_oid~ : String, updated_at~ : String, version~ : String) -> PackagePublishedPackagePackageVersion {
+  PackagePublishedPackagePackageVersion::{
+    author: author,
+    body: body,
+    body_html: body_html,
+    created_at: created_at,
+    description: description,
+    docker_metadata: docker_metadata,
+    draft: draft,
+    html_url: html_url,
+    id: id,
+    installation_command: installation_command,
+    manifest: manifest,
+    metadata: metadata,
+    name: name,
+    package_files: package_files,
+    prerelease: prerelease,
+    release: release,
+    source_url: source_url,
+    summary: summary,
+    tag_name: tag_name,
+    target_commitish: target_commitish,
+    target_oid: target_oid,
+    updated_at: updated_at,
+    version: version,
+  }
+}
 
 ///|
 let package_published_package_package_version_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author", "body", "body_html", "created_at", "description", "docker_metadata", "draft", "html_url", "id", "installation_command", "manifest", "metadata", "name", "package_files", "prerelease", "release", "source_url", "summary", "tag_name", "target_commitish", "target_oid", "updated_at", "version"])
@@ -60669,6 +67178,18 @@ pub(all) struct PackagePublishedPackageRegistry {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PackagePublishedPackageRegistry` (fields with defaults are optional).
+pub fn PackagePublishedPackageRegistry::PackagePublishedPackageRegistry(about_url~ : String, name~ : String, type_~ : String, url~ : String, vendor~ : String) -> PackagePublishedPackageRegistry {
+  PackagePublishedPackageRegistry::{
+    about_url: about_url,
+    name: name,
+    type_: type_,
+    url: url,
+    vendor: vendor,
+  }
+}
+
+///|
 let package_published_package_registry_fields : @typify_rt.Fields = @typify_rt.Fields::new(["about_url", "name", "type", "url", "vendor"])
 
 ///|
@@ -60731,6 +67252,25 @@ pub(all) struct PackagePublishedPackage {
   registry : PackagePublishedPackageRegistry
   updated_at : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PackagePublishedPackage` (fields with defaults are optional).
+pub fn PackagePublishedPackage::PackagePublishedPackage(created_at~ : String, description? : String, ecosystem~ : String, html_url~ : String, id~ : Int64, name~ : String, namespace_~ : String, owner~ : User, package_type~ : String, package_version~ : PackagePublishedPackagePackageVersion, registry~ : PackagePublishedPackageRegistry, updated_at~ : String) -> PackagePublishedPackage {
+  PackagePublishedPackage::{
+    created_at: created_at,
+    description: description,
+    ecosystem: ecosystem,
+    html_url: html_url,
+    id: id,
+    name: name,
+    namespace_: namespace_,
+    owner: owner,
+    package_type: package_type,
+    package_version: package_version,
+    registry: registry,
+    updated_at: updated_at,
+  }
+}
 
 ///|
 let package_published_package_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "description", "ecosystem", "html_url", "id", "name", "namespace", "owner", "package_type", "package_version", "registry", "updated_at"])
@@ -60883,6 +67423,24 @@ pub(all) struct PackageUpdatedPackagePackageVersionPackageFilesItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PackageUpdatedPackagePackageVersionPackageFilesItem` (fields with defaults are optional).
+pub fn PackageUpdatedPackagePackageVersionPackageFilesItem::PackageUpdatedPackagePackageVersionPackageFilesItem(content_type~ : String, created_at~ : String, download_url~ : String, id~ : Int64, md5~ : String, name~ : String, sha1~ : String, sha256~ : String, size~ : Int64, state~ : String, updated_at~ : String) -> PackageUpdatedPackagePackageVersionPackageFilesItem {
+  PackageUpdatedPackagePackageVersionPackageFilesItem::{
+    content_type: content_type,
+    created_at: created_at,
+    download_url: download_url,
+    id: id,
+    md5: md5,
+    name: name,
+    sha1: sha1,
+    sha256: sha256,
+    size: size,
+    state: state,
+    updated_at: updated_at,
+  }
+}
+
+///|
 let package_updated_package_package_version_package_files_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["content_type", "created_at", "download_url", "id", "md5", "name", "sha1", "sha256", "size", "state", "updated_at"])
 
 ///|
@@ -60968,6 +67526,24 @@ pub(all) struct PackageUpdatedPackagePackageVersionRelease {
   target_commitish : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PackageUpdatedPackagePackageVersionRelease` (fields with defaults are optional).
+pub fn PackageUpdatedPackagePackageVersionRelease::PackageUpdatedPackagePackageVersionRelease(author~ : User, created_at~ : String, draft~ : Bool, html_url~ : String, id~ : Int64, name~ : String, prerelease~ : Bool, published_at~ : String, tag_name~ : String, target_commitish~ : String, url~ : String) -> PackageUpdatedPackagePackageVersionRelease {
+  PackageUpdatedPackagePackageVersionRelease::{
+    author: author,
+    created_at: created_at,
+    draft: draft,
+    html_url: html_url,
+    id: id,
+    name: name,
+    prerelease: prerelease,
+    published_at: published_at,
+    tag_name: tag_name,
+    target_commitish: target_commitish,
+    url: url,
+  }
+}
 
 ///|
 let package_updated_package_package_version_release_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author", "created_at", "draft", "html_url", "id", "name", "prerelease", "published_at", "tag_name", "target_commitish", "url"])
@@ -61067,6 +67643,36 @@ pub(all) struct PackageUpdatedPackagePackageVersion {
   updated_at : String
   version : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PackageUpdatedPackagePackageVersion` (fields with defaults are optional).
+pub fn PackageUpdatedPackagePackageVersion::PackageUpdatedPackagePackageVersion(author~ : User, body~ : String, body_html~ : String, created_at~ : String, description~ : String, docker_metadata~ : Array[Json], draft~ : Bool, html_url~ : String, id~ : Int64, installation_command~ : String, manifest~ : String, metadata~ : Array[Json], name~ : String, package_files~ : Array[PackageUpdatedPackagePackageVersionPackageFilesItem], prerelease~ : Bool, release~ : PackageUpdatedPackagePackageVersionRelease, source_url~ : String, summary~ : String, tag_name~ : String, target_commitish~ : String, target_oid~ : String, updated_at~ : String, version~ : String) -> PackageUpdatedPackagePackageVersion {
+  PackageUpdatedPackagePackageVersion::{
+    author: author,
+    body: body,
+    body_html: body_html,
+    created_at: created_at,
+    description: description,
+    docker_metadata: docker_metadata,
+    draft: draft,
+    html_url: html_url,
+    id: id,
+    installation_command: installation_command,
+    manifest: manifest,
+    metadata: metadata,
+    name: name,
+    package_files: package_files,
+    prerelease: prerelease,
+    release: release,
+    source_url: source_url,
+    summary: summary,
+    tag_name: tag_name,
+    target_commitish: target_commitish,
+    target_oid: target_oid,
+    updated_at: updated_at,
+    version: version,
+  }
+}
 
 ///|
 let package_updated_package_package_version_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author", "body", "body_html", "created_at", "description", "docker_metadata", "draft", "html_url", "id", "installation_command", "manifest", "metadata", "name", "package_files", "prerelease", "release", "source_url", "summary", "tag_name", "target_commitish", "target_oid", "updated_at", "version"])
@@ -61198,6 +67804,18 @@ pub(all) struct PackageUpdatedPackageRegistry {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PackageUpdatedPackageRegistry` (fields with defaults are optional).
+pub fn PackageUpdatedPackageRegistry::PackageUpdatedPackageRegistry(about_url~ : String, name~ : String, type_~ : String, url~ : String, vendor~ : String) -> PackageUpdatedPackageRegistry {
+  PackageUpdatedPackageRegistry::{
+    about_url: about_url,
+    name: name,
+    type_: type_,
+    url: url,
+    vendor: vendor,
+  }
+}
+
+///|
 let package_updated_package_registry_fields : @typify_rt.Fields = @typify_rt.Fields::new(["about_url", "name", "type", "url", "vendor"])
 
 ///|
@@ -61260,6 +67878,25 @@ pub(all) struct PackageUpdatedPackage {
   registry : PackageUpdatedPackageRegistry
   updated_at : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PackageUpdatedPackage` (fields with defaults are optional).
+pub fn PackageUpdatedPackage::PackageUpdatedPackage(created_at~ : String, description? : String, ecosystem~ : String, html_url~ : String, id~ : Int64, name~ : String, namespace_~ : String, owner~ : User, package_type~ : String, package_version~ : PackageUpdatedPackagePackageVersion, registry~ : PackageUpdatedPackageRegistry, updated_at~ : String) -> PackageUpdatedPackage {
+  PackageUpdatedPackage::{
+    created_at: created_at,
+    description: description,
+    ecosystem: ecosystem,
+    html_url: html_url,
+    id: id,
+    name: name,
+    namespace_: namespace_,
+    owner: owner,
+    package_type: package_type,
+    package_version: package_version,
+    registry: registry,
+    updated_at: updated_at,
+  }
+}
 
 ///|
 let package_updated_package_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "description", "ecosystem", "html_url", "id", "name", "namespace", "owner", "package_type", "package_version", "registry", "updated_at"])
@@ -61343,6 +67980,14 @@ pub(all) struct PageBuildEventBuildError {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PageBuildEventBuildError` (fields with defaults are optional).
+pub fn PageBuildEventBuildError::PageBuildEventBuildError(message? : String) -> PageBuildEventBuildError {
+  PageBuildEventBuildError::{
+    message: message,
+  }
+}
+
+///|
 let page_build_event_build_error_fields : @typify_rt.Fields = @typify_rt.Fields::new(["message"])
 
 ///|
@@ -61385,6 +68030,21 @@ pub(all) struct PageBuildEventBuild {
   updated_at : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PageBuildEventBuild` (fields with defaults are optional).
+pub fn PageBuildEventBuild::PageBuildEventBuild(commit~ : String, created_at~ : String, duration~ : Int64, error~ : PageBuildEventBuildError, pusher~ : User, status~ : String, updated_at~ : String, url~ : String) -> PageBuildEventBuild {
+  PageBuildEventBuild::{
+    commit: commit,
+    created_at: created_at,
+    duration: duration,
+    error: error,
+    pusher: pusher,
+    status: status,
+    updated_at: updated_at,
+    url: url,
+  }
+}
 
 ///|
 let page_build_event_build_fields : @typify_rt.Fields = @typify_rt.Fields::new(["commit", "created_at", "duration", "error", "pusher", "status", "updated_at", "url"])
@@ -61520,6 +68180,17 @@ pub(all) struct PingEventHookConfig {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PingEventHookConfig` (fields with defaults are optional).
+pub fn PingEventHookConfig::PingEventHookConfig(content_type~ : PingEventHookConfigContentType, insecure_ssl~ : String, secret? : String, url~ : String) -> PingEventHookConfig {
+  PingEventHookConfig::{
+    content_type: content_type,
+    insecure_ssl: insecure_ssl,
+    secret: secret,
+    url: url,
+  }
+}
+
+///|
 let ping_event_hook_config_fields : @typify_rt.Fields = @typify_rt.Fields::new(["content_type", "insecure_ssl", "secret", "url"])
 
 ///|
@@ -61571,6 +68242,16 @@ pub(all) struct PingEventHookLastResponse {
   message : Unit
   status : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PingEventHookLastResponse` (fields with defaults are optional).
+pub fn PingEventHookLastResponse::PingEventHookLastResponse(code~ : Unit, message~ : Unit, status~ : String) -> PingEventHookLastResponse {
+  PingEventHookLastResponse::{
+    code: code,
+    message: message,
+    status: status,
+  }
+}
 
 ///|
 let ping_event_hook_last_response_fields : @typify_rt.Fields = @typify_rt.Fields::new(["code", "message", "status"])
@@ -61629,6 +68310,26 @@ pub(all) struct PingEventHook {
   updated_at : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PingEventHook` (fields with defaults are optional).
+pub fn PingEventHook::PingEventHook(active~ : Bool, app_id? : Int64, config~ : PingEventHookConfig, created_at~ : String, events~ : WebhookEvents, id~ : Int64, last_response? : PingEventHookLastResponse, name~ : String, ping_url~ : String, test_url? : String, type_~ : String, updated_at~ : String, url~ : String) -> PingEventHook {
+  PingEventHook::{
+    active: active,
+    app_id: app_id,
+    config: config,
+    created_at: created_at,
+    events: events,
+    id: id,
+    last_response: last_response,
+    name: name,
+    ping_url: ping_url,
+    test_url: test_url,
+    type_: type_,
+    updated_at: updated_at,
+    url: url,
+  }
+}
 
 ///|
 let ping_event_hook_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active", "app_id", "config", "created_at", "events", "id", "last_response", "name", "ping_url", "test_url", "type", "updated_at", "url"])
@@ -62024,6 +68725,14 @@ pub(all) struct ProjectEditedChangesBody {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ProjectEditedChangesBody` (fields with defaults are optional).
+pub fn ProjectEditedChangesBody::ProjectEditedChangesBody(from~ : String) -> ProjectEditedChangesBody {
+  ProjectEditedChangesBody::{
+    from: from,
+  }
+}
+
+///|
 let project_edited_changes_body_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -62062,6 +68771,14 @@ pub(all) struct ProjectEditedChangesName {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ProjectEditedChangesName` (fields with defaults are optional).
+pub fn ProjectEditedChangesName::ProjectEditedChangesName(from~ : String) -> ProjectEditedChangesName {
+  ProjectEditedChangesName::{
+    from: from,
+  }
+}
+
+///|
 let project_edited_changes_name_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -62098,6 +68815,15 @@ pub(all) struct ProjectEditedChanges {
   body : ProjectEditedChangesBody?
   name : ProjectEditedChangesName?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectEditedChanges` (fields with defaults are optional).
+pub fn ProjectEditedChanges::ProjectEditedChanges(body? : ProjectEditedChangesBody, name? : ProjectEditedChangesName) -> ProjectEditedChanges {
+  ProjectEditedChanges::{
+    body: body,
+    name: name,
+  }
+}
 
 ///|
 let project_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["body", "name"])
@@ -62263,6 +68989,14 @@ pub(all) struct ProjectCardConvertedChangesNote {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ProjectCardConvertedChangesNote` (fields with defaults are optional).
+pub fn ProjectCardConvertedChangesNote::ProjectCardConvertedChangesNote(from~ : String) -> ProjectCardConvertedChangesNote {
+  ProjectCardConvertedChangesNote::{
+    from: from,
+  }
+}
+
+///|
 let project_card_converted_changes_note_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -62298,6 +69032,14 @@ pub impl ToJson for ProjectCardConvertedChangesNote with fn to_json(self) {
 pub(all) struct ProjectCardConvertedChanges {
   note : ProjectCardConvertedChangesNote
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectCardConvertedChanges` (fields with defaults are optional).
+pub fn ProjectCardConvertedChanges::ProjectCardConvertedChanges(note~ : ProjectCardConvertedChangesNote) -> ProjectCardConvertedChanges {
+  ProjectCardConvertedChanges::{
+    note: note,
+  }
+}
 
 ///|
 let project_card_converted_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["note"])
@@ -62514,6 +69256,14 @@ pub(all) struct ProjectCardEditedChangesNote {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ProjectCardEditedChangesNote` (fields with defaults are optional).
+pub fn ProjectCardEditedChangesNote::ProjectCardEditedChangesNote(from~ : String) -> ProjectCardEditedChangesNote {
+  ProjectCardEditedChangesNote::{
+    from: from,
+  }
+}
+
+///|
 let project_card_edited_changes_note_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -62549,6 +69299,14 @@ pub impl ToJson for ProjectCardEditedChangesNote with fn to_json(self) {
 pub(all) struct ProjectCardEditedChanges {
   note : ProjectCardEditedChangesNote
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectCardEditedChanges` (fields with defaults are optional).
+pub fn ProjectCardEditedChanges::ProjectCardEditedChanges(note~ : ProjectCardEditedChangesNote) -> ProjectCardEditedChanges {
+  ProjectCardEditedChanges::{
+    note: note,
+  }
+}
 
 ///|
 let project_card_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["note"])
@@ -62647,6 +69405,14 @@ pub(all) struct ProjectCardMovedChangesColumnId {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ProjectCardMovedChangesColumnId` (fields with defaults are optional).
+pub fn ProjectCardMovedChangesColumnId::ProjectCardMovedChangesColumnId(from~ : Int64) -> ProjectCardMovedChangesColumnId {
+  ProjectCardMovedChangesColumnId::{
+    from: from,
+  }
+}
+
+///|
 let project_card_moved_changes_column_id_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -62682,6 +69448,14 @@ pub impl ToJson for ProjectCardMovedChangesColumnId with fn to_json(self) {
 pub(all) struct ProjectCardMovedChanges {
   column_id : ProjectCardMovedChangesColumnId
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectCardMovedChanges` (fields with defaults are optional).
+pub fn ProjectCardMovedChanges::ProjectCardMovedChanges(column_id~ : ProjectCardMovedChangesColumnId) -> ProjectCardMovedChanges {
+  ProjectCardMovedChanges::{
+    column_id: column_id,
+  }
+}
 
 ///|
 let project_card_moved_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["column_id"])
@@ -62733,6 +69507,26 @@ pub(all) struct ProjectCardMovedProjectCard {
   updated_at : @typify_rt.DateTimeUtc
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectCardMovedProjectCard` (fields with defaults are optional).
+pub fn ProjectCardMovedProjectCard::ProjectCardMovedProjectCard(after_id~ : Unit, archived~ : Bool, column_id~ : Int64, column_url~ : String, content_url? : String, created_at~ : @typify_rt.DateTimeUtc, creator~ : User, id~ : Int64, node_id~ : String, note? : String, project_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String) -> ProjectCardMovedProjectCard {
+  ProjectCardMovedProjectCard::{
+    after_id: after_id,
+    archived: archived,
+    column_id: column_id,
+    column_url: column_url,
+    content_url: content_url,
+    created_at: created_at,
+    creator: creator,
+    id: id,
+    node_id: node_id,
+    note: note,
+    project_url: project_url,
+    updated_at: updated_at,
+    url: url,
+  }
+}
 
 ///|
 let project_card_moved_project_card_fields : @typify_rt.Fields = @typify_rt.Fields::new(["after_id", "archived", "column_id", "column_url", "content_url", "created_at", "creator", "id", "node_id", "note", "project_url", "updated_at", "url"])
@@ -62999,6 +69793,14 @@ pub(all) struct ProjectColumnEditedChangesName {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ProjectColumnEditedChangesName` (fields with defaults are optional).
+pub fn ProjectColumnEditedChangesName::ProjectColumnEditedChangesName(from~ : String) -> ProjectColumnEditedChangesName {
+  ProjectColumnEditedChangesName::{
+    from: from,
+  }
+}
+
+///|
 let project_column_edited_changes_name_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -63034,6 +69836,14 @@ pub impl ToJson for ProjectColumnEditedChangesName with fn to_json(self) {
 pub(all) struct ProjectColumnEditedChanges {
   name : ProjectColumnEditedChangesName?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ProjectColumnEditedChanges` (fields with defaults are optional).
+pub fn ProjectColumnEditedChanges::ProjectColumnEditedChanges(name? : ProjectColumnEditedChangesName) -> ProjectColumnEditedChanges {
+  ProjectColumnEditedChanges::{
+    name: name,
+  }
+}
 
 ///|
 let project_column_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["name"])
@@ -63183,6 +69993,18 @@ pub(all) struct PublicEventRepositoryPermissions {
   push : Bool
   triage : Bool?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PublicEventRepositoryPermissions` (fields with defaults are optional).
+pub fn PublicEventRepositoryPermissions::PublicEventRepositoryPermissions(admin~ : Bool, maintain? : Bool, pull~ : Bool, push~ : Bool, triage? : Bool) -> PublicEventRepositoryPermissions {
+  PublicEventRepositoryPermissions::{
+    admin: admin,
+    maintain: maintain,
+    pull: pull,
+    push: push,
+    triage: triage,
+  }
+}
 
 ///|
 let public_event_repository_permissions_fields : @typify_rt.Fields = @typify_rt.Fields::new(["admin", "maintain", "pull", "push", "triage"])
@@ -63397,9 +70219,6 @@ pub(all) struct PublicEventRepository {
 } derive(Debug, Eq)
 
 ///|
-let public_event_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
-
-///|
 fn default_public_event_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
   @typify_rt.default_value("true", @typify_rt.de_bool)
 }
@@ -63413,6 +70232,109 @@ fn default_public_event_repository_allow_rebase_merge() -> Bool raise @typify_rt
 fn default_public_event_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
   @typify_rt.default_value("true", @typify_rt.de_bool)
 }
+
+///|
+/// Construct a `PublicEventRepository` (fields with defaults are optional).
+pub fn PublicEventRepository::PublicEventRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool, allow_rebase_merge? : Bool, allow_squash_merge? : Bool, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : PublicEventRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : PublicEventRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : PublicEventRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> PublicEventRepository {
+  PublicEventRepository::{
+    allow_auto_merge: allow_auto_merge,
+    allow_forking: allow_forking,
+    allow_merge_commit: match allow_merge_commit {
+      Some(v) => v
+      None => default_public_event_repository_allow_merge_commit() catch { e => abort("invalid default for PublicEventRepository.allow_merge_commit: \{e}") }
+    },
+    allow_rebase_merge: match allow_rebase_merge {
+      Some(v) => v
+      None => default_public_event_repository_allow_rebase_merge() catch { e => abort("invalid default for PublicEventRepository.allow_rebase_merge: \{e}") }
+    },
+    allow_squash_merge: match allow_squash_merge {
+      Some(v) => v
+      None => default_public_event_repository_allow_squash_merge() catch { e => abort("invalid default for PublicEventRepository.allow_squash_merge: \{e}") }
+    },
+    archive_url: archive_url,
+    archived: archived,
+    assignees_url: assignees_url,
+    blobs_url: blobs_url,
+    branches_url: branches_url,
+    clone_url: clone_url,
+    collaborators_url: collaborators_url,
+    comments_url: comments_url,
+    commits_url: commits_url,
+    compare_url: compare_url,
+    contents_url: contents_url,
+    contributors_url: contributors_url,
+    created_at: created_at,
+    default_branch: default_branch,
+    delete_branch_on_merge: delete_branch_on_merge,
+    deployments_url: deployments_url,
+    description: description,
+    disabled: disabled,
+    downloads_url: downloads_url,
+    events_url: events_url,
+    fork: fork,
+    forks: forks,
+    forks_count: forks_count,
+    forks_url: forks_url,
+    full_name: full_name,
+    git_commits_url: git_commits_url,
+    git_refs_url: git_refs_url,
+    git_tags_url: git_tags_url,
+    git_url: git_url,
+    has_downloads: has_downloads,
+    has_issues: has_issues,
+    has_pages: has_pages,
+    has_projects: has_projects,
+    has_wiki: has_wiki,
+    homepage: homepage,
+    hooks_url: hooks_url,
+    html_url: html_url,
+    id: id,
+    issue_comment_url: issue_comment_url,
+    issue_events_url: issue_events_url,
+    issues_url: issues_url,
+    keys_url: keys_url,
+    labels_url: labels_url,
+    language: language,
+    languages_url: languages_url,
+    license: license,
+    master_branch: master_branch,
+    merges_url: merges_url,
+    milestones_url: milestones_url,
+    mirror_url: mirror_url,
+    name: name,
+    node_id: node_id,
+    notifications_url: notifications_url,
+    open_issues: open_issues,
+    open_issues_count: open_issues_count,
+    organization: organization,
+    owner: owner,
+    permissions: permissions,
+    private: private,
+    public: public,
+    pulls_url: pulls_url,
+    pushed_at: pushed_at,
+    releases_url: releases_url,
+    size: size,
+    ssh_url: ssh_url,
+    stargazers: stargazers,
+    stargazers_count: stargazers_count,
+    stargazers_url: stargazers_url,
+    statuses_url: statuses_url,
+    subscribers_url: subscribers_url,
+    subscription_url: subscription_url,
+    svn_url: svn_url,
+    tags_url: tags_url,
+    teams_url: teams_url,
+    trees_url: trees_url,
+    updated_at: updated_at,
+    url: url,
+    watchers: watchers,
+    watchers_count: watchers_count,
+  }
+}
+
+///|
+let public_event_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
 
 ///|
 pub impl @typify_rt.Serde for PublicEventRepository with fn deserialize(d) {
@@ -63802,6 +70724,21 @@ pub(all) struct PullRequestLinks {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestLinks` (fields with defaults are optional).
+pub fn PullRequestLinks::PullRequestLinks(comments~ : Link, commits~ : Link, html~ : Link, issue~ : Link, review_comment~ : Link, review_comments~ : Link, self_~ : Link, statuses~ : Link) -> PullRequestLinks {
+  PullRequestLinks::{
+    comments: comments,
+    commits: commits,
+    html: html,
+    issue: issue,
+    review_comment: review_comment,
+    review_comments: review_comments,
+    self_: self_,
+    statuses: statuses,
+  }
+}
+
+///|
 let pull_request_links_fields : @typify_rt.Fields = @typify_rt.Fields::new(["comments", "commits", "html", "issue", "review_comment", "review_comments", "self", "statuses"])
 
 ///|
@@ -63948,6 +70885,18 @@ pub(all) struct PullRequestBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestBase` (fields with defaults are optional).
+pub fn PullRequestBase::PullRequestBase(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestBase {
+  PullRequestBase::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
+
+///|
 let pull_request_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
 
 ///|
@@ -64003,6 +70952,18 @@ pub(all) struct PullRequestHead {
   sha : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestHead` (fields with defaults are optional).
+pub fn PullRequestHead::PullRequestHead(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestHead {
+  PullRequestHead::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_head_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
@@ -64170,6 +71131,16 @@ pub(all) struct PullRequestReviewCommentLinks {
   pull_request : Link
   self_ : Link
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewCommentLinks` (fields with defaults are optional).
+pub fn PullRequestReviewCommentLinks::PullRequestReviewCommentLinks(html~ : Link, pull_request~ : Link, self_~ : Link) -> PullRequestReviewCommentLinks {
+  PullRequestReviewCommentLinks::{
+    html: html,
+    pull_request: pull_request,
+    self_: self_,
+  }
+}
 
 ///|
 let pull_request_review_comment_links_fields : @typify_rt.Fields = @typify_rt.Fields::new(["html", "pull_request", "self"])
@@ -64590,6 +71561,21 @@ pub(all) struct PullRequestClosedPullRequestLinks {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestClosedPullRequestLinks` (fields with defaults are optional).
+pub fn PullRequestClosedPullRequestLinks::PullRequestClosedPullRequestLinks(comments~ : Link, commits~ : Link, html~ : Link, issue~ : Link, review_comment~ : Link, review_comments~ : Link, self_~ : Link, statuses~ : Link) -> PullRequestClosedPullRequestLinks {
+  PullRequestClosedPullRequestLinks::{
+    comments: comments,
+    commits: commits,
+    html: html,
+    issue: issue,
+    review_comment: review_comment,
+    review_comments: review_comments,
+    self_: self_,
+    statuses: statuses,
+  }
+}
+
+///|
 let pull_request_closed_pull_request_links_fields : @typify_rt.Fields = @typify_rt.Fields::new(["comments", "commits", "html", "issue", "review_comment", "review_comments", "self", "statuses"])
 
 ///|
@@ -64736,6 +71722,18 @@ pub(all) struct PullRequestClosedPullRequestBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestClosedPullRequestBase` (fields with defaults are optional).
+pub fn PullRequestClosedPullRequestBase::PullRequestClosedPullRequestBase(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestClosedPullRequestBase {
+  PullRequestClosedPullRequestBase::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
+
+///|
 let pull_request_closed_pull_request_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
 
 ///|
@@ -64791,6 +71789,18 @@ pub(all) struct PullRequestClosedPullRequestHead {
   sha : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestClosedPullRequestHead` (fields with defaults are optional).
+pub fn PullRequestClosedPullRequestHead::PullRequestClosedPullRequestHead(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestClosedPullRequestHead {
+  PullRequestClosedPullRequestHead::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_closed_pull_request_head_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
@@ -65001,6 +72011,61 @@ pub(all) struct PullRequestClosedPullRequest {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestClosedPullRequest` (fields with defaults are optional).
+pub fn PullRequestClosedPullRequest::PullRequestClosedPullRequest(active_lock_reason? : PullRequestClosedPullRequestActiveLockReason, additions~ : Int64, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, auto_merge~ : Unit, base~ : PullRequestClosedPullRequestBase, body? : String, changed_files~ : Int64, closed_at~ : @typify_rt.DateTimeUtc, comments~ : Int64, comments_url~ : String, commits~ : Int64, commits_url~ : String, created_at~ : @typify_rt.DateTimeUtc, deletions~ : Int64, diff_url~ : String, draft~ : Bool, head~ : PullRequestClosedPullRequestHead, html_url~ : String, id~ : Int64, issue_url~ : String, labels~ : Array[Label], links~ : PullRequestClosedPullRequestLinks, locked~ : Bool, maintainer_can_modify~ : Bool, merge_commit_sha? : String, mergeable? : Bool, mergeable_state~ : String, merged~ : Bool, merged_at? : @typify_rt.DateTimeUtc, merged_by? : User, milestone? : Milestone, node_id~ : String, number~ : Int64, patch_url~ : String, rebaseable? : Bool, requested_reviewers~ : Array[PullRequestClosedPullRequestRequestedReviewersItem], requested_teams~ : Array[Team], review_comment_url~ : String, review_comments~ : Int64, review_comments_url~ : String, state~ : PullRequestClosedPullRequestState, statuses_url~ : String, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> PullRequestClosedPullRequest {
+  PullRequestClosedPullRequest::{
+    active_lock_reason: active_lock_reason,
+    additions: additions,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    auto_merge: auto_merge,
+    base: base,
+    body: body,
+    changed_files: changed_files,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    commits: commits,
+    commits_url: commits_url,
+    created_at: created_at,
+    deletions: deletions,
+    diff_url: diff_url,
+    draft: draft,
+    head: head,
+    html_url: html_url,
+    id: id,
+    issue_url: issue_url,
+    labels: labels,
+    links: links,
+    locked: locked,
+    maintainer_can_modify: maintainer_can_modify,
+    merge_commit_sha: merge_commit_sha,
+    mergeable: mergeable,
+    mergeable_state: mergeable_state,
+    merged: merged,
+    merged_at: merged_at,
+    merged_by: merged_by,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    patch_url: patch_url,
+    rebaseable: rebaseable,
+    requested_reviewers: requested_reviewers,
+    requested_teams: requested_teams,
+    review_comment_url: review_comment_url,
+    review_comments: review_comments,
+    review_comments_url: review_comments_url,
+    state: state,
+    statuses_url: statuses_url,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_closed_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "additions", "assignee", "assignees", "author_association", "auto_merge", "base", "body", "changed_files", "closed_at", "comments", "comments_url", "commits", "commits_url", "created_at", "deletions", "diff_url", "draft", "head", "html_url", "id", "issue_url", "labels", "_links", "locked", "maintainer_can_modify", "merge_commit_sha", "mergeable", "mergeable_state", "merged", "merged_at", "merged_by", "milestone", "node_id", "number", "patch_url", "rebaseable", "requested_reviewers", "requested_teams", "review_comment_url", "review_comments", "review_comments_url", "state", "statuses_url", "title", "updated_at", "url", "user"])
@@ -65294,6 +72359,21 @@ pub(all) struct PullRequestConvertedToDraftPullRequestLinks {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestConvertedToDraftPullRequestLinks` (fields with defaults are optional).
+pub fn PullRequestConvertedToDraftPullRequestLinks::PullRequestConvertedToDraftPullRequestLinks(comments~ : Link, commits~ : Link, html~ : Link, issue~ : Link, review_comment~ : Link, review_comments~ : Link, self_~ : Link, statuses~ : Link) -> PullRequestConvertedToDraftPullRequestLinks {
+  PullRequestConvertedToDraftPullRequestLinks::{
+    comments: comments,
+    commits: commits,
+    html: html,
+    issue: issue,
+    review_comment: review_comment,
+    review_comments: review_comments,
+    self_: self_,
+    statuses: statuses,
+  }
+}
+
+///|
 let pull_request_converted_to_draft_pull_request_links_fields : @typify_rt.Fields = @typify_rt.Fields::new(["comments", "commits", "html", "issue", "review_comment", "review_comments", "self", "statuses"])
 
 ///|
@@ -65440,6 +72520,18 @@ pub(all) struct PullRequestConvertedToDraftPullRequestBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestConvertedToDraftPullRequestBase` (fields with defaults are optional).
+pub fn PullRequestConvertedToDraftPullRequestBase::PullRequestConvertedToDraftPullRequestBase(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestConvertedToDraftPullRequestBase {
+  PullRequestConvertedToDraftPullRequestBase::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
+
+///|
 let pull_request_converted_to_draft_pull_request_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
 
 ///|
@@ -65495,6 +72587,18 @@ pub(all) struct PullRequestConvertedToDraftPullRequestHead {
   sha : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestConvertedToDraftPullRequestHead` (fields with defaults are optional).
+pub fn PullRequestConvertedToDraftPullRequestHead::PullRequestConvertedToDraftPullRequestHead(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestConvertedToDraftPullRequestHead {
+  PullRequestConvertedToDraftPullRequestHead::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_converted_to_draft_pull_request_head_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
@@ -65711,6 +72815,61 @@ pub(all) struct PullRequestConvertedToDraftPullRequest {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestConvertedToDraftPullRequest` (fields with defaults are optional).
+pub fn PullRequestConvertedToDraftPullRequest::PullRequestConvertedToDraftPullRequest(active_lock_reason? : PullRequestConvertedToDraftPullRequestActiveLockReason, additions~ : Int64, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, auto_merge~ : Unit, base~ : PullRequestConvertedToDraftPullRequestBase, body? : String, changed_files~ : Int64, closed_at~ : Unit, comments~ : Int64, comments_url~ : String, commits~ : Int64, commits_url~ : String, created_at~ : @typify_rt.DateTimeUtc, deletions~ : Int64, diff_url~ : String, draft~ : Bool, head~ : PullRequestConvertedToDraftPullRequestHead, html_url~ : String, id~ : Int64, issue_url~ : String, labels~ : Array[Label], links~ : PullRequestConvertedToDraftPullRequestLinks, locked~ : Bool, maintainer_can_modify~ : Bool, merge_commit_sha? : String, mergeable? : Bool, mergeable_state~ : String, merged~ : Bool, merged_at~ : Unit, merged_by~ : Unit, milestone? : Milestone, node_id~ : String, number~ : Int64, patch_url~ : String, rebaseable? : Bool, requested_reviewers~ : Array[PullRequestConvertedToDraftPullRequestRequestedReviewersItem], requested_teams~ : Array[Team], review_comment_url~ : String, review_comments~ : Int64, review_comments_url~ : String, state~ : PullRequestConvertedToDraftPullRequestState, statuses_url~ : String, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> PullRequestConvertedToDraftPullRequest {
+  PullRequestConvertedToDraftPullRequest::{
+    active_lock_reason: active_lock_reason,
+    additions: additions,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    auto_merge: auto_merge,
+    base: base,
+    body: body,
+    changed_files: changed_files,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    commits: commits,
+    commits_url: commits_url,
+    created_at: created_at,
+    deletions: deletions,
+    diff_url: diff_url,
+    draft: draft,
+    head: head,
+    html_url: html_url,
+    id: id,
+    issue_url: issue_url,
+    labels: labels,
+    links: links,
+    locked: locked,
+    maintainer_can_modify: maintainer_can_modify,
+    merge_commit_sha: merge_commit_sha,
+    mergeable: mergeable,
+    mergeable_state: mergeable_state,
+    merged: merged,
+    merged_at: merged_at,
+    merged_by: merged_by,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    patch_url: patch_url,
+    rebaseable: rebaseable,
+    requested_reviewers: requested_reviewers,
+    requested_teams: requested_teams,
+    review_comment_url: review_comment_url,
+    review_comments: review_comments,
+    review_comments_url: review_comments_url,
+    state: state,
+    statuses_url: statuses_url,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_converted_to_draft_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "additions", "assignee", "assignees", "author_association", "auto_merge", "base", "body", "changed_files", "closed_at", "comments", "comments_url", "commits", "commits_url", "created_at", "deletions", "diff_url", "draft", "head", "html_url", "id", "issue_url", "labels", "_links", "locked", "maintainer_can_modify", "merge_commit_sha", "mergeable", "mergeable_state", "merged", "merged_at", "merged_by", "milestone", "node_id", "number", "patch_url", "rebaseable", "requested_reviewers", "requested_teams", "review_comment_url", "review_comments", "review_comments_url", "state", "statuses_url", "title", "updated_at", "url", "user"])
@@ -65998,6 +73157,14 @@ pub(all) struct PullRequestEditedChangesBody {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestEditedChangesBody` (fields with defaults are optional).
+pub fn PullRequestEditedChangesBody::PullRequestEditedChangesBody(from~ : String) -> PullRequestEditedChangesBody {
+  PullRequestEditedChangesBody::{
+    from: from,
+  }
+}
+
+///|
 let pull_request_edited_changes_body_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -66036,6 +73203,14 @@ pub(all) struct PullRequestEditedChangesTitle {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestEditedChangesTitle` (fields with defaults are optional).
+pub fn PullRequestEditedChangesTitle::PullRequestEditedChangesTitle(from~ : String) -> PullRequestEditedChangesTitle {
+  PullRequestEditedChangesTitle::{
+    from: from,
+  }
+}
+
+///|
 let pull_request_edited_changes_title_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -66072,6 +73247,15 @@ pub(all) struct PullRequestEditedChanges {
   body : PullRequestEditedChangesBody?
   title : PullRequestEditedChangesTitle?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestEditedChanges` (fields with defaults are optional).
+pub fn PullRequestEditedChanges::PullRequestEditedChanges(body? : PullRequestEditedChangesBody, title? : PullRequestEditedChangesTitle) -> PullRequestEditedChanges {
+  PullRequestEditedChanges::{
+    body: body,
+    title: title,
+  }
+}
 
 ///|
 let pull_request_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["body", "title"])
@@ -66303,6 +73487,21 @@ pub(all) struct PullRequestOpenedPullRequestLinks {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestOpenedPullRequestLinks` (fields with defaults are optional).
+pub fn PullRequestOpenedPullRequestLinks::PullRequestOpenedPullRequestLinks(comments~ : Link, commits~ : Link, html~ : Link, issue~ : Link, review_comment~ : Link, review_comments~ : Link, self_~ : Link, statuses~ : Link) -> PullRequestOpenedPullRequestLinks {
+  PullRequestOpenedPullRequestLinks::{
+    comments: comments,
+    commits: commits,
+    html: html,
+    issue: issue,
+    review_comment: review_comment,
+    review_comments: review_comments,
+    self_: self_,
+    statuses: statuses,
+  }
+}
+
+///|
 let pull_request_opened_pull_request_links_fields : @typify_rt.Fields = @typify_rt.Fields::new(["comments", "commits", "html", "issue", "review_comment", "review_comments", "self", "statuses"])
 
 ///|
@@ -66417,6 +73616,18 @@ pub(all) struct PullRequestOpenedPullRequestBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestOpenedPullRequestBase` (fields with defaults are optional).
+pub fn PullRequestOpenedPullRequestBase::PullRequestOpenedPullRequestBase(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestOpenedPullRequestBase {
+  PullRequestOpenedPullRequestBase::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
+
+///|
 let pull_request_opened_pull_request_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
 
 ///|
@@ -66472,6 +73683,18 @@ pub(all) struct PullRequestOpenedPullRequestHead {
   sha : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestOpenedPullRequestHead` (fields with defaults are optional).
+pub fn PullRequestOpenedPullRequestHead::PullRequestOpenedPullRequestHead(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestOpenedPullRequestHead {
+  PullRequestOpenedPullRequestHead::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_opened_pull_request_head_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
@@ -66682,6 +73905,61 @@ pub(all) struct PullRequestOpenedPullRequest {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestOpenedPullRequest` (fields with defaults are optional).
+pub fn PullRequestOpenedPullRequest::PullRequestOpenedPullRequest(active_lock_reason~ : PullRequestOpenedPullRequestActiveLockReason, additions~ : Int64, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, auto_merge~ : Unit, base~ : PullRequestOpenedPullRequestBase, body? : String, changed_files~ : Int64, closed_at~ : Unit, comments~ : Int64, comments_url~ : String, commits~ : Int64, commits_url~ : String, created_at~ : @typify_rt.DateTimeUtc, deletions~ : Int64, diff_url~ : String, draft~ : Bool, head~ : PullRequestOpenedPullRequestHead, html_url~ : String, id~ : Int64, issue_url~ : String, labels~ : Array[Label], links~ : PullRequestOpenedPullRequestLinks, locked~ : Bool, maintainer_can_modify~ : Bool, merge_commit_sha~ : Unit, mergeable? : Bool, mergeable_state~ : String, merged? : Bool, merged_at~ : Unit, merged_by~ : Unit, milestone? : Milestone, node_id~ : String, number~ : Int64, patch_url~ : String, rebaseable? : Bool, requested_reviewers~ : Array[PullRequestOpenedPullRequestRequestedReviewersItem], requested_teams~ : Array[Team], review_comment_url~ : String, review_comments~ : Int64, review_comments_url~ : String, state~ : PullRequestOpenedPullRequestState, statuses_url~ : String, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> PullRequestOpenedPullRequest {
+  PullRequestOpenedPullRequest::{
+    active_lock_reason: active_lock_reason,
+    additions: additions,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    auto_merge: auto_merge,
+    base: base,
+    body: body,
+    changed_files: changed_files,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    commits: commits,
+    commits_url: commits_url,
+    created_at: created_at,
+    deletions: deletions,
+    diff_url: diff_url,
+    draft: draft,
+    head: head,
+    html_url: html_url,
+    id: id,
+    issue_url: issue_url,
+    labels: labels,
+    links: links,
+    locked: locked,
+    maintainer_can_modify: maintainer_can_modify,
+    merge_commit_sha: merge_commit_sha,
+    mergeable: mergeable,
+    mergeable_state: mergeable_state,
+    merged: merged,
+    merged_at: merged_at,
+    merged_by: merged_by,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    patch_url: patch_url,
+    rebaseable: rebaseable,
+    requested_reviewers: requested_reviewers,
+    requested_teams: requested_teams,
+    review_comment_url: review_comment_url,
+    review_comments: review_comments,
+    review_comments_url: review_comments_url,
+    state: state,
+    statuses_url: statuses_url,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_opened_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "additions", "assignee", "assignees", "author_association", "auto_merge", "base", "body", "changed_files", "closed_at", "comments", "comments_url", "commits", "commits_url", "created_at", "deletions", "diff_url", "draft", "head", "html_url", "id", "issue_url", "labels", "_links", "locked", "maintainer_can_modify", "merge_commit_sha", "mergeable", "mergeable_state", "merged", "merged_at", "merged_by", "milestone", "node_id", "number", "patch_url", "rebaseable", "requested_reviewers", "requested_teams", "review_comment_url", "review_comments", "review_comments_url", "state", "statuses_url", "title", "updated_at", "url", "user"])
@@ -66975,6 +74253,21 @@ pub(all) struct PullRequestReadyForReviewPullRequestLinks {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReadyForReviewPullRequestLinks` (fields with defaults are optional).
+pub fn PullRequestReadyForReviewPullRequestLinks::PullRequestReadyForReviewPullRequestLinks(comments~ : Link, commits~ : Link, html~ : Link, issue~ : Link, review_comment~ : Link, review_comments~ : Link, self_~ : Link, statuses~ : Link) -> PullRequestReadyForReviewPullRequestLinks {
+  PullRequestReadyForReviewPullRequestLinks::{
+    comments: comments,
+    commits: commits,
+    html: html,
+    issue: issue,
+    review_comment: review_comment,
+    review_comments: review_comments,
+    self_: self_,
+    statuses: statuses,
+  }
+}
+
+///|
 let pull_request_ready_for_review_pull_request_links_fields : @typify_rt.Fields = @typify_rt.Fields::new(["comments", "commits", "html", "issue", "review_comment", "review_comments", "self", "statuses"])
 
 ///|
@@ -67121,6 +74414,18 @@ pub(all) struct PullRequestReadyForReviewPullRequestBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReadyForReviewPullRequestBase` (fields with defaults are optional).
+pub fn PullRequestReadyForReviewPullRequestBase::PullRequestReadyForReviewPullRequestBase(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestReadyForReviewPullRequestBase {
+  PullRequestReadyForReviewPullRequestBase::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
+
+///|
 let pull_request_ready_for_review_pull_request_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
 
 ///|
@@ -67176,6 +74481,18 @@ pub(all) struct PullRequestReadyForReviewPullRequestHead {
   sha : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReadyForReviewPullRequestHead` (fields with defaults are optional).
+pub fn PullRequestReadyForReviewPullRequestHead::PullRequestReadyForReviewPullRequestHead(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestReadyForReviewPullRequestHead {
+  PullRequestReadyForReviewPullRequestHead::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_ready_for_review_pull_request_head_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
@@ -67385,6 +74702,61 @@ pub(all) struct PullRequestReadyForReviewPullRequest {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReadyForReviewPullRequest` (fields with defaults are optional).
+pub fn PullRequestReadyForReviewPullRequest::PullRequestReadyForReviewPullRequest(active_lock_reason? : PullRequestReadyForReviewPullRequestActiveLockReason, additions~ : Int64, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, auto_merge~ : Unit, base~ : PullRequestReadyForReviewPullRequestBase, body? : String, changed_files~ : Int64, closed_at~ : Unit, comments~ : Int64, comments_url~ : String, commits~ : Int64, commits_url~ : String, created_at~ : @typify_rt.DateTimeUtc, deletions~ : Int64, diff_url~ : String, draft~ : Bool, head~ : PullRequestReadyForReviewPullRequestHead, html_url~ : String, id~ : Int64, issue_url~ : String, labels~ : Array[Label], links~ : PullRequestReadyForReviewPullRequestLinks, locked~ : Bool, maintainer_can_modify~ : Bool, merge_commit_sha? : String, mergeable? : Bool, mergeable_state~ : String, merged~ : Bool, merged_at~ : Unit, merged_by~ : Unit, milestone? : Milestone, node_id~ : String, number~ : Int64, patch_url~ : String, rebaseable? : Bool, requested_reviewers~ : Array[PullRequestReadyForReviewPullRequestRequestedReviewersItem], requested_teams~ : Array[Team], review_comment_url~ : String, review_comments~ : Int64, review_comments_url~ : String, state~ : PullRequestReadyForReviewPullRequestState, statuses_url~ : String, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> PullRequestReadyForReviewPullRequest {
+  PullRequestReadyForReviewPullRequest::{
+    active_lock_reason: active_lock_reason,
+    additions: additions,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    auto_merge: auto_merge,
+    base: base,
+    body: body,
+    changed_files: changed_files,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    commits: commits,
+    commits_url: commits_url,
+    created_at: created_at,
+    deletions: deletions,
+    diff_url: diff_url,
+    draft: draft,
+    head: head,
+    html_url: html_url,
+    id: id,
+    issue_url: issue_url,
+    labels: labels,
+    links: links,
+    locked: locked,
+    maintainer_can_modify: maintainer_can_modify,
+    merge_commit_sha: merge_commit_sha,
+    mergeable: mergeable,
+    mergeable_state: mergeable_state,
+    merged: merged,
+    merged_at: merged_at,
+    merged_by: merged_by,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    patch_url: patch_url,
+    rebaseable: rebaseable,
+    requested_reviewers: requested_reviewers,
+    requested_teams: requested_teams,
+    review_comment_url: review_comment_url,
+    review_comments: review_comments,
+    review_comments_url: review_comments_url,
+    state: state,
+    statuses_url: statuses_url,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_ready_for_review_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "additions", "assignee", "assignees", "author_association", "auto_merge", "base", "body", "changed_files", "closed_at", "comments", "comments_url", "commits", "commits_url", "created_at", "deletions", "diff_url", "draft", "head", "html_url", "id", "issue_url", "labels", "_links", "locked", "maintainer_can_modify", "merge_commit_sha", "mergeable", "mergeable_state", "merged", "merged_at", "merged_by", "milestone", "node_id", "number", "patch_url", "rebaseable", "requested_reviewers", "requested_teams", "review_comment_url", "review_comments", "review_comments_url", "state", "statuses_url", "title", "updated_at", "url", "user"])
@@ -67678,6 +75050,21 @@ pub(all) struct PullRequestReopenedPullRequestLinks {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReopenedPullRequestLinks` (fields with defaults are optional).
+pub fn PullRequestReopenedPullRequestLinks::PullRequestReopenedPullRequestLinks(comments~ : Link, commits~ : Link, html~ : Link, issue~ : Link, review_comment~ : Link, review_comments~ : Link, self_~ : Link, statuses~ : Link) -> PullRequestReopenedPullRequestLinks {
+  PullRequestReopenedPullRequestLinks::{
+    comments: comments,
+    commits: commits,
+    html: html,
+    issue: issue,
+    review_comment: review_comment,
+    review_comments: review_comments,
+    self_: self_,
+    statuses: statuses,
+  }
+}
+
+///|
 let pull_request_reopened_pull_request_links_fields : @typify_rt.Fields = @typify_rt.Fields::new(["comments", "commits", "html", "issue", "review_comment", "review_comments", "self", "statuses"])
 
 ///|
@@ -67824,6 +75211,18 @@ pub(all) struct PullRequestReopenedPullRequestBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReopenedPullRequestBase` (fields with defaults are optional).
+pub fn PullRequestReopenedPullRequestBase::PullRequestReopenedPullRequestBase(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestReopenedPullRequestBase {
+  PullRequestReopenedPullRequestBase::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
+
+///|
 let pull_request_reopened_pull_request_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
 
 ///|
@@ -67879,6 +75278,18 @@ pub(all) struct PullRequestReopenedPullRequestHead {
   sha : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReopenedPullRequestHead` (fields with defaults are optional).
+pub fn PullRequestReopenedPullRequestHead::PullRequestReopenedPullRequestHead(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestReopenedPullRequestHead {
+  PullRequestReopenedPullRequestHead::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_reopened_pull_request_head_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
@@ -68089,6 +75500,61 @@ pub(all) struct PullRequestReopenedPullRequest {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReopenedPullRequest` (fields with defaults are optional).
+pub fn PullRequestReopenedPullRequest::PullRequestReopenedPullRequest(active_lock_reason? : PullRequestReopenedPullRequestActiveLockReason, additions~ : Int64, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, auto_merge~ : Unit, base~ : PullRequestReopenedPullRequestBase, body? : String, changed_files~ : Int64, closed_at~ : Unit, comments~ : Int64, comments_url~ : String, commits~ : Int64, commits_url~ : String, created_at~ : @typify_rt.DateTimeUtc, deletions~ : Int64, diff_url~ : String, draft~ : Bool, head~ : PullRequestReopenedPullRequestHead, html_url~ : String, id~ : Int64, issue_url~ : String, labels~ : Array[Label], links~ : PullRequestReopenedPullRequestLinks, locked~ : Bool, maintainer_can_modify~ : Bool, merge_commit_sha~ : Unit, mergeable? : Bool, mergeable_state~ : String, merged~ : Bool, merged_at~ : Unit, merged_by~ : Unit, milestone? : Milestone, node_id~ : String, number~ : Int64, patch_url~ : String, rebaseable? : Bool, requested_reviewers~ : Array[PullRequestReopenedPullRequestRequestedReviewersItem], requested_teams~ : Array[Team], review_comment_url~ : String, review_comments~ : Int64, review_comments_url~ : String, state~ : PullRequestReopenedPullRequestState, statuses_url~ : String, title~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, user~ : User) -> PullRequestReopenedPullRequest {
+  PullRequestReopenedPullRequest::{
+    active_lock_reason: active_lock_reason,
+    additions: additions,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    auto_merge: auto_merge,
+    base: base,
+    body: body,
+    changed_files: changed_files,
+    closed_at: closed_at,
+    comments: comments,
+    comments_url: comments_url,
+    commits: commits,
+    commits_url: commits_url,
+    created_at: created_at,
+    deletions: deletions,
+    diff_url: diff_url,
+    draft: draft,
+    head: head,
+    html_url: html_url,
+    id: id,
+    issue_url: issue_url,
+    labels: labels,
+    links: links,
+    locked: locked,
+    maintainer_can_modify: maintainer_can_modify,
+    merge_commit_sha: merge_commit_sha,
+    mergeable: mergeable,
+    mergeable_state: mergeable_state,
+    merged: merged,
+    merged_at: merged_at,
+    merged_by: merged_by,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    patch_url: patch_url,
+    rebaseable: rebaseable,
+    requested_reviewers: requested_reviewers,
+    requested_teams: requested_teams,
+    review_comment_url: review_comment_url,
+    review_comments: review_comments,
+    review_comments_url: review_comments_url,
+    state: state,
+    statuses_url: statuses_url,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_reopened_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "additions", "assignee", "assignees", "author_association", "auto_merge", "base", "body", "changed_files", "closed_at", "comments", "comments_url", "commits", "commits_url", "created_at", "deletions", "diff_url", "draft", "head", "html_url", "id", "issue_url", "labels", "_links", "locked", "maintainer_can_modify", "merge_commit_sha", "mergeable", "mergeable_state", "merged", "merged_at", "merged_by", "milestone", "node_id", "number", "patch_url", "rebaseable", "requested_reviewers", "requested_teams", "review_comment_url", "review_comments", "review_comments_url", "state", "statuses_url", "title", "updated_at", "url", "user"])
@@ -68848,6 +76314,15 @@ pub(all) struct PullRequestReviewDismissedReviewLinks {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReviewDismissedReviewLinks` (fields with defaults are optional).
+pub fn PullRequestReviewDismissedReviewLinks::PullRequestReviewDismissedReviewLinks(html~ : Link, pull_request~ : Link) -> PullRequestReviewDismissedReviewLinks {
+  PullRequestReviewDismissedReviewLinks::{
+    html: html,
+    pull_request: pull_request,
+  }
+}
+
+///|
 let pull_request_review_dismissed_review_links_fields : @typify_rt.Fields = @typify_rt.Fields::new(["html", "pull_request"])
 
 ///|
@@ -68959,6 +76434,24 @@ pub(all) struct PullRequestReviewDismissedReview {
   submitted_at : @typify_rt.DateTimeUtc
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewDismissedReview` (fields with defaults are optional).
+pub fn PullRequestReviewDismissedReview::PullRequestReviewDismissedReview(author_association~ : AuthorAssociation, body? : String, commit_id~ : String, html_url~ : String, id~ : Int64, links~ : PullRequestReviewDismissedReviewLinks, node_id~ : String, pull_request_url~ : String, state~ : PullRequestReviewDismissedReviewState, submitted_at~ : @typify_rt.DateTimeUtc, user~ : User) -> PullRequestReviewDismissedReview {
+  PullRequestReviewDismissedReview::{
+    author_association: author_association,
+    body: body,
+    commit_id: commit_id,
+    html_url: html_url,
+    id: id,
+    links: links,
+    node_id: node_id,
+    pull_request_url: pull_request_url,
+    state: state,
+    submitted_at: submitted_at,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_review_dismissed_review_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author_association", "body", "commit_id", "html_url", "id", "_links", "node_id", "pull_request_url", "state", "submitted_at", "user"])
@@ -69098,6 +76591,14 @@ pub(all) struct PullRequestReviewEditedChangesBody {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReviewEditedChangesBody` (fields with defaults are optional).
+pub fn PullRequestReviewEditedChangesBody::PullRequestReviewEditedChangesBody(from~ : String) -> PullRequestReviewEditedChangesBody {
+  PullRequestReviewEditedChangesBody::{
+    from: from,
+  }
+}
+
+///|
 let pull_request_review_edited_changes_body_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -69133,6 +76634,14 @@ pub impl ToJson for PullRequestReviewEditedChangesBody with fn to_json(self) {
 pub(all) struct PullRequestReviewEditedChanges {
   body : PullRequestReviewEditedChangesBody?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewEditedChanges` (fields with defaults are optional).
+pub fn PullRequestReviewEditedChanges::PullRequestReviewEditedChanges(body? : PullRequestReviewEditedChangesBody) -> PullRequestReviewEditedChanges {
+  PullRequestReviewEditedChanges::{
+    body: body,
+  }
+}
 
 ///|
 let pull_request_review_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["body"])
@@ -69173,6 +76682,15 @@ pub(all) struct PullRequestReviewEditedReviewLinks {
   html : Link
   pull_request : Link
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewEditedReviewLinks` (fields with defaults are optional).
+pub fn PullRequestReviewEditedReviewLinks::PullRequestReviewEditedReviewLinks(html~ : Link, pull_request~ : Link) -> PullRequestReviewEditedReviewLinks {
+  PullRequestReviewEditedReviewLinks::{
+    html: html,
+    pull_request: pull_request,
+  }
+}
 
 ///|
 let pull_request_review_edited_review_links_fields : @typify_rt.Fields = @typify_rt.Fields::new(["html", "pull_request"])
@@ -69227,6 +76745,24 @@ pub(all) struct PullRequestReviewEditedReview {
   submitted_at : @typify_rt.DateTimeUtc
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewEditedReview` (fields with defaults are optional).
+pub fn PullRequestReviewEditedReview::PullRequestReviewEditedReview(author_association~ : AuthorAssociation, body? : String, commit_id~ : String, html_url~ : String, id~ : Int64, links~ : PullRequestReviewEditedReviewLinks, node_id~ : String, pull_request_url~ : String, state~ : String, submitted_at~ : @typify_rt.DateTimeUtc, user~ : User) -> PullRequestReviewEditedReview {
+  PullRequestReviewEditedReview::{
+    author_association: author_association,
+    body: body,
+    commit_id: commit_id,
+    html_url: html_url,
+    id: id,
+    links: links,
+    node_id: node_id,
+    pull_request_url: pull_request_url,
+    state: state,
+    submitted_at: submitted_at,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_review_edited_review_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author_association", "body", "commit_id", "html_url", "id", "_links", "node_id", "pull_request_url", "state", "submitted_at", "user"])
@@ -69366,6 +76902,15 @@ pub(all) struct PullRequestReviewSubmittedReviewLinks {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReviewSubmittedReviewLinks` (fields with defaults are optional).
+pub fn PullRequestReviewSubmittedReviewLinks::PullRequestReviewSubmittedReviewLinks(html~ : Link, pull_request~ : Link) -> PullRequestReviewSubmittedReviewLinks {
+  PullRequestReviewSubmittedReviewLinks::{
+    html: html,
+    pull_request: pull_request,
+  }
+}
+
+///|
 let pull_request_review_submitted_review_links_fields : @typify_rt.Fields = @typify_rt.Fields::new(["html", "pull_request"])
 
 ///|
@@ -69418,6 +76963,24 @@ pub(all) struct PullRequestReviewSubmittedReview {
   submitted_at : @typify_rt.DateTimeUtc
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewSubmittedReview` (fields with defaults are optional).
+pub fn PullRequestReviewSubmittedReview::PullRequestReviewSubmittedReview(author_association~ : AuthorAssociation, body? : String, commit_id~ : String, html_url~ : String, id~ : Int64, links~ : PullRequestReviewSubmittedReviewLinks, node_id~ : String, pull_request_url~ : String, state~ : String, submitted_at~ : @typify_rt.DateTimeUtc, user~ : User) -> PullRequestReviewSubmittedReview {
+  PullRequestReviewSubmittedReview::{
+    author_association: author_association,
+    body: body,
+    commit_id: commit_id,
+    html_url: html_url,
+    id: id,
+    links: links,
+    node_id: node_id,
+    pull_request_url: pull_request_url,
+    state: state,
+    submitted_at: submitted_at,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_review_submitted_review_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author_association", "body", "commit_id", "html_url", "id", "_links", "node_id", "pull_request_url", "state", "submitted_at", "user"])
@@ -69561,6 +77124,21 @@ pub(all) struct PullRequestReviewCommentCreatedPullRequestLinks {
   self_ : Link
   statuses : Link
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewCommentCreatedPullRequestLinks` (fields with defaults are optional).
+pub fn PullRequestReviewCommentCreatedPullRequestLinks::PullRequestReviewCommentCreatedPullRequestLinks(comments~ : Link, commits~ : Link, html~ : Link, issue~ : Link, review_comment~ : Link, review_comments~ : Link, self_~ : Link, statuses~ : Link) -> PullRequestReviewCommentCreatedPullRequestLinks {
+  PullRequestReviewCommentCreatedPullRequestLinks::{
+    comments: comments,
+    commits: commits,
+    html: html,
+    issue: issue,
+    review_comment: review_comment,
+    review_comments: review_comments,
+    self_: self_,
+    statuses: statuses,
+  }
+}
 
 ///|
 let pull_request_review_comment_created_pull_request_links_fields : @typify_rt.Fields = @typify_rt.Fields::new(["comments", "commits", "html", "issue", "review_comment", "review_comments", "self", "statuses"])
@@ -69709,6 +77287,18 @@ pub(all) struct PullRequestReviewCommentCreatedPullRequestBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReviewCommentCreatedPullRequestBase` (fields with defaults are optional).
+pub fn PullRequestReviewCommentCreatedPullRequestBase::PullRequestReviewCommentCreatedPullRequestBase(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestReviewCommentCreatedPullRequestBase {
+  PullRequestReviewCommentCreatedPullRequestBase::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
+
+///|
 let pull_request_review_comment_created_pull_request_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
 
 ///|
@@ -69764,6 +77354,18 @@ pub(all) struct PullRequestReviewCommentCreatedPullRequestHead {
   sha : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewCommentCreatedPullRequestHead` (fields with defaults are optional).
+pub fn PullRequestReviewCommentCreatedPullRequestHead::PullRequestReviewCommentCreatedPullRequestHead(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestReviewCommentCreatedPullRequestHead {
+  PullRequestReviewCommentCreatedPullRequestHead::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_review_comment_created_pull_request_head_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
@@ -69964,6 +77566,49 @@ pub(all) struct PullRequestReviewCommentCreatedPullRequest {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewCommentCreatedPullRequest` (fields with defaults are optional).
+pub fn PullRequestReviewCommentCreatedPullRequest::PullRequestReviewCommentCreatedPullRequest(active_lock_reason? : PullRequestReviewCommentCreatedPullRequestActiveLockReason, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, auto_merge? : Unit = (), base~ : PullRequestReviewCommentCreatedPullRequestBase, body~ : String, closed_at? : String, comments_url~ : String, commits_url~ : String, created_at~ : String, diff_url~ : String, draft? : Bool, head~ : PullRequestReviewCommentCreatedPullRequestHead, html_url~ : String, id~ : Int64, issue_url~ : String, labels~ : Array[Label], links~ : PullRequestReviewCommentCreatedPullRequestLinks, locked~ : Bool, merge_commit_sha? : String, merged_at? : String, milestone? : Milestone, node_id~ : String, number~ : Int64, patch_url~ : String, requested_reviewers~ : Array[PullRequestReviewCommentCreatedPullRequestRequestedReviewersItem], requested_teams~ : Array[Team], review_comment_url~ : String, review_comments_url~ : String, state~ : PullRequestReviewCommentCreatedPullRequestState, statuses_url~ : String, title~ : String, updated_at~ : String, url~ : String, user~ : User) -> PullRequestReviewCommentCreatedPullRequest {
+  PullRequestReviewCommentCreatedPullRequest::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    auto_merge: auto_merge,
+    base: base,
+    body: body,
+    closed_at: closed_at,
+    comments_url: comments_url,
+    commits_url: commits_url,
+    created_at: created_at,
+    diff_url: diff_url,
+    draft: draft,
+    head: head,
+    html_url: html_url,
+    id: id,
+    issue_url: issue_url,
+    labels: labels,
+    links: links,
+    locked: locked,
+    merge_commit_sha: merge_commit_sha,
+    merged_at: merged_at,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    patch_url: patch_url,
+    requested_reviewers: requested_reviewers,
+    requested_teams: requested_teams,
+    review_comment_url: review_comment_url,
+    review_comments_url: review_comments_url,
+    state: state,
+    statuses_url: statuses_url,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_review_comment_created_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "auto_merge", "base", "body", "closed_at", "comments_url", "commits_url", "created_at", "diff_url", "draft", "head", "html_url", "id", "issue_url", "labels", "_links", "locked", "merge_commit_sha", "merged_at", "milestone", "node_id", "number", "patch_url", "requested_reviewers", "requested_teams", "review_comment_url", "review_comments_url", "state", "statuses_url", "title", "updated_at", "url", "user"])
@@ -70211,6 +77856,21 @@ pub(all) struct PullRequestReviewCommentDeletedPullRequestLinks {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReviewCommentDeletedPullRequestLinks` (fields with defaults are optional).
+pub fn PullRequestReviewCommentDeletedPullRequestLinks::PullRequestReviewCommentDeletedPullRequestLinks(comments~ : Link, commits~ : Link, html~ : Link, issue~ : Link, review_comment~ : Link, review_comments~ : Link, self_~ : Link, statuses~ : Link) -> PullRequestReviewCommentDeletedPullRequestLinks {
+  PullRequestReviewCommentDeletedPullRequestLinks::{
+    comments: comments,
+    commits: commits,
+    html: html,
+    issue: issue,
+    review_comment: review_comment,
+    review_comments: review_comments,
+    self_: self_,
+    statuses: statuses,
+  }
+}
+
+///|
 let pull_request_review_comment_deleted_pull_request_links_fields : @typify_rt.Fields = @typify_rt.Fields::new(["comments", "commits", "html", "issue", "review_comment", "review_comments", "self", "statuses"])
 
 ///|
@@ -70357,6 +78017,18 @@ pub(all) struct PullRequestReviewCommentDeletedPullRequestBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReviewCommentDeletedPullRequestBase` (fields with defaults are optional).
+pub fn PullRequestReviewCommentDeletedPullRequestBase::PullRequestReviewCommentDeletedPullRequestBase(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestReviewCommentDeletedPullRequestBase {
+  PullRequestReviewCommentDeletedPullRequestBase::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
+
+///|
 let pull_request_review_comment_deleted_pull_request_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
 
 ///|
@@ -70412,6 +78084,18 @@ pub(all) struct PullRequestReviewCommentDeletedPullRequestHead {
   sha : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewCommentDeletedPullRequestHead` (fields with defaults are optional).
+pub fn PullRequestReviewCommentDeletedPullRequestHead::PullRequestReviewCommentDeletedPullRequestHead(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestReviewCommentDeletedPullRequestHead {
+  PullRequestReviewCommentDeletedPullRequestHead::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_review_comment_deleted_pull_request_head_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
@@ -70612,6 +78296,49 @@ pub(all) struct PullRequestReviewCommentDeletedPullRequest {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewCommentDeletedPullRequest` (fields with defaults are optional).
+pub fn PullRequestReviewCommentDeletedPullRequest::PullRequestReviewCommentDeletedPullRequest(active_lock_reason? : PullRequestReviewCommentDeletedPullRequestActiveLockReason, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, auto_merge? : Unit = (), base~ : PullRequestReviewCommentDeletedPullRequestBase, body~ : String, closed_at? : String, comments_url~ : String, commits_url~ : String, created_at~ : String, diff_url~ : String, draft? : Bool, head~ : PullRequestReviewCommentDeletedPullRequestHead, html_url~ : String, id~ : Int64, issue_url~ : String, labels~ : Array[Label], links~ : PullRequestReviewCommentDeletedPullRequestLinks, locked~ : Bool, merge_commit_sha? : String, merged_at? : String, milestone? : Milestone, node_id~ : String, number~ : Int64, patch_url~ : String, requested_reviewers~ : Array[PullRequestReviewCommentDeletedPullRequestRequestedReviewersItem], requested_teams~ : Array[Team], review_comment_url~ : String, review_comments_url~ : String, state~ : PullRequestReviewCommentDeletedPullRequestState, statuses_url~ : String, title~ : String, updated_at~ : String, url~ : String, user~ : User) -> PullRequestReviewCommentDeletedPullRequest {
+  PullRequestReviewCommentDeletedPullRequest::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    auto_merge: auto_merge,
+    base: base,
+    body: body,
+    closed_at: closed_at,
+    comments_url: comments_url,
+    commits_url: commits_url,
+    created_at: created_at,
+    diff_url: diff_url,
+    draft: draft,
+    head: head,
+    html_url: html_url,
+    id: id,
+    issue_url: issue_url,
+    labels: labels,
+    links: links,
+    locked: locked,
+    merge_commit_sha: merge_commit_sha,
+    merged_at: merged_at,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    patch_url: patch_url,
+    requested_reviewers: requested_reviewers,
+    requested_teams: requested_teams,
+    review_comment_url: review_comment_url,
+    review_comments_url: review_comments_url,
+    state: state,
+    statuses_url: statuses_url,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_review_comment_deleted_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "auto_merge", "base", "body", "closed_at", "comments_url", "commits_url", "created_at", "diff_url", "draft", "head", "html_url", "id", "issue_url", "labels", "_links", "locked", "merge_commit_sha", "merged_at", "milestone", "node_id", "number", "patch_url", "requested_reviewers", "requested_teams", "review_comment_url", "review_comments_url", "state", "statuses_url", "title", "updated_at", "url", "user"])
@@ -70853,6 +78580,14 @@ pub(all) struct PullRequestReviewCommentEditedChangesBody {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReviewCommentEditedChangesBody` (fields with defaults are optional).
+pub fn PullRequestReviewCommentEditedChangesBody::PullRequestReviewCommentEditedChangesBody(from~ : String) -> PullRequestReviewCommentEditedChangesBody {
+  PullRequestReviewCommentEditedChangesBody::{
+    from: from,
+  }
+}
+
+///|
 let pull_request_review_comment_edited_changes_body_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -70888,6 +78623,14 @@ pub impl ToJson for PullRequestReviewCommentEditedChangesBody with fn to_json(se
 pub(all) struct PullRequestReviewCommentEditedChanges {
   body : PullRequestReviewCommentEditedChangesBody?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewCommentEditedChanges` (fields with defaults are optional).
+pub fn PullRequestReviewCommentEditedChanges::PullRequestReviewCommentEditedChanges(body? : PullRequestReviewCommentEditedChangesBody) -> PullRequestReviewCommentEditedChanges {
+  PullRequestReviewCommentEditedChanges::{
+    body: body,
+  }
+}
 
 ///|
 let pull_request_review_comment_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["body"])
@@ -70934,6 +78677,21 @@ pub(all) struct PullRequestReviewCommentEditedPullRequestLinks {
   self_ : Link
   statuses : Link
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewCommentEditedPullRequestLinks` (fields with defaults are optional).
+pub fn PullRequestReviewCommentEditedPullRequestLinks::PullRequestReviewCommentEditedPullRequestLinks(comments~ : Link, commits~ : Link, html~ : Link, issue~ : Link, review_comment~ : Link, review_comments~ : Link, self_~ : Link, statuses~ : Link) -> PullRequestReviewCommentEditedPullRequestLinks {
+  PullRequestReviewCommentEditedPullRequestLinks::{
+    comments: comments,
+    commits: commits,
+    html: html,
+    issue: issue,
+    review_comment: review_comment,
+    review_comments: review_comments,
+    self_: self_,
+    statuses: statuses,
+  }
+}
 
 ///|
 let pull_request_review_comment_edited_pull_request_links_fields : @typify_rt.Fields = @typify_rt.Fields::new(["comments", "commits", "html", "issue", "review_comment", "review_comments", "self", "statuses"])
@@ -71082,6 +78840,18 @@ pub(all) struct PullRequestReviewCommentEditedPullRequestBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `PullRequestReviewCommentEditedPullRequestBase` (fields with defaults are optional).
+pub fn PullRequestReviewCommentEditedPullRequestBase::PullRequestReviewCommentEditedPullRequestBase(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestReviewCommentEditedPullRequestBase {
+  PullRequestReviewCommentEditedPullRequestBase::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
+
+///|
 let pull_request_review_comment_edited_pull_request_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
 
 ///|
@@ -71137,6 +78907,18 @@ pub(all) struct PullRequestReviewCommentEditedPullRequestHead {
   sha : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewCommentEditedPullRequestHead` (fields with defaults are optional).
+pub fn PullRequestReviewCommentEditedPullRequestHead::PullRequestReviewCommentEditedPullRequestHead(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> PullRequestReviewCommentEditedPullRequestHead {
+  PullRequestReviewCommentEditedPullRequestHead::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_review_comment_edited_pull_request_head_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
@@ -71337,6 +79119,49 @@ pub(all) struct PullRequestReviewCommentEditedPullRequest {
   url : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `PullRequestReviewCommentEditedPullRequest` (fields with defaults are optional).
+pub fn PullRequestReviewCommentEditedPullRequest::PullRequestReviewCommentEditedPullRequest(active_lock_reason? : PullRequestReviewCommentEditedPullRequestActiveLockReason, assignee? : User, assignees~ : Array[User], author_association~ : AuthorAssociation, auto_merge? : Unit = (), base~ : PullRequestReviewCommentEditedPullRequestBase, body~ : String, closed_at? : String, comments_url~ : String, commits_url~ : String, created_at~ : String, diff_url~ : String, draft? : Bool, head~ : PullRequestReviewCommentEditedPullRequestHead, html_url~ : String, id~ : Int64, issue_url~ : String, labels~ : Array[Label], links~ : PullRequestReviewCommentEditedPullRequestLinks, locked~ : Bool, merge_commit_sha? : String, merged_at? : String, milestone? : Milestone, node_id~ : String, number~ : Int64, patch_url~ : String, requested_reviewers~ : Array[PullRequestReviewCommentEditedPullRequestRequestedReviewersItem], requested_teams~ : Array[Team], review_comment_url~ : String, review_comments_url~ : String, state~ : PullRequestReviewCommentEditedPullRequestState, statuses_url~ : String, title~ : String, updated_at~ : String, url~ : String, user~ : User) -> PullRequestReviewCommentEditedPullRequest {
+  PullRequestReviewCommentEditedPullRequest::{
+    active_lock_reason: active_lock_reason,
+    assignee: assignee,
+    assignees: assignees,
+    author_association: author_association,
+    auto_merge: auto_merge,
+    base: base,
+    body: body,
+    closed_at: closed_at,
+    comments_url: comments_url,
+    commits_url: commits_url,
+    created_at: created_at,
+    diff_url: diff_url,
+    draft: draft,
+    head: head,
+    html_url: html_url,
+    id: id,
+    issue_url: issue_url,
+    labels: labels,
+    links: links,
+    locked: locked,
+    merge_commit_sha: merge_commit_sha,
+    merged_at: merged_at,
+    milestone: milestone,
+    node_id: node_id,
+    number: number,
+    patch_url: patch_url,
+    requested_reviewers: requested_reviewers,
+    requested_teams: requested_teams,
+    review_comment_url: review_comment_url,
+    review_comments_url: review_comments_url,
+    state: state,
+    statuses_url: statuses_url,
+    title: title,
+    updated_at: updated_at,
+    url: url,
+    user: user,
+  }
+}
 
 ///|
 let pull_request_review_comment_edited_pull_request_fields : @typify_rt.Fields = @typify_rt.Fields::new(["active_lock_reason", "assignee", "assignees", "author_association", "auto_merge", "base", "body", "closed_at", "comments_url", "commits_url", "created_at", "diff_url", "draft", "head", "html_url", "id", "issue_url", "labels", "_links", "locked", "merge_commit_sha", "merged_at", "milestone", "node_id", "number", "patch_url", "requested_reviewers", "requested_teams", "review_comment_url", "review_comments_url", "state", "statuses_url", "title", "updated_at", "url", "user"])
@@ -71696,6 +79521,14 @@ pub(all) struct ReleaseEditedChangesBody {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ReleaseEditedChangesBody` (fields with defaults are optional).
+pub fn ReleaseEditedChangesBody::ReleaseEditedChangesBody(from~ : String) -> ReleaseEditedChangesBody {
+  ReleaseEditedChangesBody::{
+    from: from,
+  }
+}
+
+///|
 let release_edited_changes_body_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -71734,6 +79567,14 @@ pub(all) struct ReleaseEditedChangesName {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ReleaseEditedChangesName` (fields with defaults are optional).
+pub fn ReleaseEditedChangesName::ReleaseEditedChangesName(from~ : String) -> ReleaseEditedChangesName {
+  ReleaseEditedChangesName::{
+    from: from,
+  }
+}
+
+///|
 let release_edited_changes_name_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -71770,6 +79611,15 @@ pub(all) struct ReleaseEditedChanges {
   body : ReleaseEditedChangesBody?
   name : ReleaseEditedChangesName?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ReleaseEditedChanges` (fields with defaults are optional).
+pub fn ReleaseEditedChanges::ReleaseEditedChanges(body? : ReleaseEditedChangesBody, name? : ReleaseEditedChangesName) -> ReleaseEditedChanges {
+  ReleaseEditedChanges::{
+    body: body,
+    name: name,
+  }
+}
 
 ///|
 let release_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["body", "name"])
@@ -71894,6 +79744,31 @@ pub(all) struct ReleasePrereleasedRelease {
   url : String
   zipball_url : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ReleasePrereleasedRelease` (fields with defaults are optional).
+pub fn ReleasePrereleasedRelease::ReleasePrereleasedRelease(assets~ : Array[ReleaseAsset], assets_url~ : String, author~ : User, body~ : String, created_at? : @typify_rt.DateTimeUtc, draft~ : Bool, html_url~ : String, id~ : Int64, name~ : String, node_id~ : String, prerelease~ : Bool, published_at? : @typify_rt.DateTimeUtc, tag_name~ : String, tarball_url? : String, target_commitish~ : String, upload_url~ : String, url~ : String, zipball_url? : String) -> ReleasePrereleasedRelease {
+  ReleasePrereleasedRelease::{
+    assets: assets,
+    assets_url: assets_url,
+    author: author,
+    body: body,
+    created_at: created_at,
+    draft: draft,
+    html_url: html_url,
+    id: id,
+    name: name,
+    node_id: node_id,
+    prerelease: prerelease,
+    published_at: published_at,
+    tag_name: tag_name,
+    tarball_url: tarball_url,
+    target_commitish: target_commitish,
+    upload_url: upload_url,
+    url: url,
+    zipball_url: zipball_url,
+  }
+}
 
 ///|
 let release_prereleased_release_fields : @typify_rt.Fields = @typify_rt.Fields::new(["assets", "assets_url", "author", "body", "created_at", "draft", "html_url", "id", "name", "node_id", "prerelease", "published_at", "tag_name", "tarball_url", "target_commitish", "upload_url", "url", "zipball_url"])
@@ -72079,6 +79954,31 @@ pub(all) struct ReleasePublishedRelease {
   url : String
   zipball_url : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `ReleasePublishedRelease` (fields with defaults are optional).
+pub fn ReleasePublishedRelease::ReleasePublishedRelease(assets~ : Array[ReleaseAsset], assets_url~ : String, author~ : User, body~ : String, created_at? : @typify_rt.DateTimeUtc, draft~ : Bool, html_url~ : String, id~ : Int64, name~ : String, node_id~ : String, prerelease~ : Bool, published_at~ : @typify_rt.DateTimeUtc, tag_name~ : String, tarball_url? : String, target_commitish~ : String, upload_url~ : String, url~ : String, zipball_url? : String) -> ReleasePublishedRelease {
+  ReleasePublishedRelease::{
+    assets: assets,
+    assets_url: assets_url,
+    author: author,
+    body: body,
+    created_at: created_at,
+    draft: draft,
+    html_url: html_url,
+    id: id,
+    name: name,
+    node_id: node_id,
+    prerelease: prerelease,
+    published_at: published_at,
+    tag_name: tag_name,
+    tarball_url: tarball_url,
+    target_commitish: target_commitish,
+    upload_url: upload_url,
+    url: url,
+    zipball_url: zipball_url,
+  }
+}
 
 ///|
 let release_published_release_fields : @typify_rt.Fields = @typify_rt.Fields::new(["assets", "assets_url", "author", "body", "created_at", "draft", "html_url", "id", "name", "node_id", "prerelease", "published_at", "tag_name", "tarball_url", "target_commitish", "upload_url", "url", "zipball_url"])
@@ -72325,6 +80225,31 @@ pub(all) struct ReleaseUnpublishedRelease {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `ReleaseUnpublishedRelease` (fields with defaults are optional).
+pub fn ReleaseUnpublishedRelease::ReleaseUnpublishedRelease(assets~ : Array[ReleaseAsset], assets_url~ : String, author~ : User, body~ : String, created_at? : @typify_rt.DateTimeUtc, draft~ : Bool, html_url~ : String, id~ : Int64, name~ : String, node_id~ : String, prerelease~ : Bool, published_at~ : Unit, tag_name~ : String, tarball_url? : String, target_commitish~ : String, upload_url~ : String, url~ : String, zipball_url? : String) -> ReleaseUnpublishedRelease {
+  ReleaseUnpublishedRelease::{
+    assets: assets,
+    assets_url: assets_url,
+    author: author,
+    body: body,
+    created_at: created_at,
+    draft: draft,
+    html_url: html_url,
+    id: id,
+    name: name,
+    node_id: node_id,
+    prerelease: prerelease,
+    published_at: published_at,
+    tag_name: tag_name,
+    tarball_url: tarball_url,
+    target_commitish: target_commitish,
+    upload_url: upload_url,
+    url: url,
+    zipball_url: zipball_url,
+  }
+}
+
+///|
 let release_unpublished_release_fields : @typify_rt.Fields = @typify_rt.Fields::new(["assets", "assets_url", "author", "body", "created_at", "draft", "html_url", "id", "name", "node_id", "prerelease", "published_at", "tag_name", "tarball_url", "target_commitish", "upload_url", "url", "zipball_url"])
 
 ///|
@@ -72538,6 +80463,18 @@ pub(all) struct RepositoryPermissions {
   push : Bool
   triage : Bool?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryPermissions` (fields with defaults are optional).
+pub fn RepositoryPermissions::RepositoryPermissions(admin~ : Bool, maintain? : Bool, pull~ : Bool, push~ : Bool, triage? : Bool) -> RepositoryPermissions {
+  RepositoryPermissions::{
+    admin: admin,
+    maintain: maintain,
+    pull: pull,
+    push: push,
+    triage: triage,
+  }
+}
 
 ///|
 let repository_permissions_fields : @typify_rt.Fields = @typify_rt.Fields::new(["admin", "maintain", "pull", "push", "triage"])
@@ -72764,6 +80701,18 @@ pub(all) struct RepositoryArchivedRepositoryPermissions {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryArchivedRepositoryPermissions` (fields with defaults are optional).
+pub fn RepositoryArchivedRepositoryPermissions::RepositoryArchivedRepositoryPermissions(admin~ : Bool, maintain? : Bool, pull~ : Bool, push~ : Bool, triage? : Bool) -> RepositoryArchivedRepositoryPermissions {
+  RepositoryArchivedRepositoryPermissions::{
+    admin: admin,
+    maintain: maintain,
+    pull: pull,
+    push: push,
+    triage: triage,
+  }
+}
+
+///|
 let repository_archived_repository_permissions_fields : @typify_rt.Fields = @typify_rt.Fields::new(["admin", "maintain", "pull", "push", "triage"])
 
 ///|
@@ -72976,9 +80925,6 @@ pub(all) struct RepositoryArchivedRepository {
 } derive(Debug, Eq)
 
 ///|
-let repository_archived_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
-
-///|
 fn default_repository_archived_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
   @typify_rt.default_value("true", @typify_rt.de_bool)
 }
@@ -72992,6 +80938,109 @@ fn default_repository_archived_repository_allow_rebase_merge() -> Bool raise @ty
 fn default_repository_archived_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
   @typify_rt.default_value("true", @typify_rt.de_bool)
 }
+
+///|
+/// Construct a `RepositoryArchivedRepository` (fields with defaults are optional).
+pub fn RepositoryArchivedRepository::RepositoryArchivedRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool, allow_rebase_merge? : Bool, allow_squash_merge? : Bool, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryArchivedRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryArchivedRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryArchivedRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> RepositoryArchivedRepository {
+  RepositoryArchivedRepository::{
+    allow_auto_merge: allow_auto_merge,
+    allow_forking: allow_forking,
+    allow_merge_commit: match allow_merge_commit {
+      Some(v) => v
+      None => default_repository_archived_repository_allow_merge_commit() catch { e => abort("invalid default for RepositoryArchivedRepository.allow_merge_commit: \{e}") }
+    },
+    allow_rebase_merge: match allow_rebase_merge {
+      Some(v) => v
+      None => default_repository_archived_repository_allow_rebase_merge() catch { e => abort("invalid default for RepositoryArchivedRepository.allow_rebase_merge: \{e}") }
+    },
+    allow_squash_merge: match allow_squash_merge {
+      Some(v) => v
+      None => default_repository_archived_repository_allow_squash_merge() catch { e => abort("invalid default for RepositoryArchivedRepository.allow_squash_merge: \{e}") }
+    },
+    archive_url: archive_url,
+    archived: archived,
+    assignees_url: assignees_url,
+    blobs_url: blobs_url,
+    branches_url: branches_url,
+    clone_url: clone_url,
+    collaborators_url: collaborators_url,
+    comments_url: comments_url,
+    commits_url: commits_url,
+    compare_url: compare_url,
+    contents_url: contents_url,
+    contributors_url: contributors_url,
+    created_at: created_at,
+    default_branch: default_branch,
+    delete_branch_on_merge: delete_branch_on_merge,
+    deployments_url: deployments_url,
+    description: description,
+    disabled: disabled,
+    downloads_url: downloads_url,
+    events_url: events_url,
+    fork: fork,
+    forks: forks,
+    forks_count: forks_count,
+    forks_url: forks_url,
+    full_name: full_name,
+    git_commits_url: git_commits_url,
+    git_refs_url: git_refs_url,
+    git_tags_url: git_tags_url,
+    git_url: git_url,
+    has_downloads: has_downloads,
+    has_issues: has_issues,
+    has_pages: has_pages,
+    has_projects: has_projects,
+    has_wiki: has_wiki,
+    homepage: homepage,
+    hooks_url: hooks_url,
+    html_url: html_url,
+    id: id,
+    issue_comment_url: issue_comment_url,
+    issue_events_url: issue_events_url,
+    issues_url: issues_url,
+    keys_url: keys_url,
+    labels_url: labels_url,
+    language: language,
+    languages_url: languages_url,
+    license: license,
+    master_branch: master_branch,
+    merges_url: merges_url,
+    milestones_url: milestones_url,
+    mirror_url: mirror_url,
+    name: name,
+    node_id: node_id,
+    notifications_url: notifications_url,
+    open_issues: open_issues,
+    open_issues_count: open_issues_count,
+    organization: organization,
+    owner: owner,
+    permissions: permissions,
+    private: private,
+    public: public,
+    pulls_url: pulls_url,
+    pushed_at: pushed_at,
+    releases_url: releases_url,
+    size: size,
+    ssh_url: ssh_url,
+    stargazers: stargazers,
+    stargazers_count: stargazers_count,
+    stargazers_url: stargazers_url,
+    statuses_url: statuses_url,
+    subscribers_url: subscribers_url,
+    subscription_url: subscription_url,
+    svn_url: svn_url,
+    tags_url: tags_url,
+    teams_url: teams_url,
+    trees_url: trees_url,
+    updated_at: updated_at,
+    url: url,
+    watchers: watchers,
+    watchers_count: watchers_count,
+  }
+}
+
+///|
+let repository_archived_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
 
 ///|
 pub impl @typify_rt.Serde for RepositoryArchivedRepository with fn deserialize(d) {
@@ -73551,6 +81600,14 @@ pub(all) struct RepositoryEditedChangesDefaultBranch {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryEditedChangesDefaultBranch` (fields with defaults are optional).
+pub fn RepositoryEditedChangesDefaultBranch::RepositoryEditedChangesDefaultBranch(from~ : String) -> RepositoryEditedChangesDefaultBranch {
+  RepositoryEditedChangesDefaultBranch::{
+    from: from,
+  }
+}
+
+///|
 let repository_edited_changes_default_branch_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -73586,6 +81643,14 @@ pub impl ToJson for RepositoryEditedChangesDefaultBranch with fn to_json(self) {
 pub(all) struct RepositoryEditedChangesDescription {
   from : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryEditedChangesDescription` (fields with defaults are optional).
+pub fn RepositoryEditedChangesDescription::RepositoryEditedChangesDescription(from? : String) -> RepositoryEditedChangesDescription {
+  RepositoryEditedChangesDescription::{
+    from: from,
+  }
+}
 
 ///|
 let repository_edited_changes_description_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
@@ -73625,6 +81690,14 @@ pub(all) struct RepositoryEditedChangesHomepage {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryEditedChangesHomepage` (fields with defaults are optional).
+pub fn RepositoryEditedChangesHomepage::RepositoryEditedChangesHomepage(from? : String) -> RepositoryEditedChangesHomepage {
+  RepositoryEditedChangesHomepage::{
+    from: from,
+  }
+}
+
+///|
 let repository_edited_changes_homepage_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -73662,6 +81735,16 @@ pub(all) struct RepositoryEditedChanges {
   description : RepositoryEditedChangesDescription?
   homepage : RepositoryEditedChangesHomepage?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryEditedChanges` (fields with defaults are optional).
+pub fn RepositoryEditedChanges::RepositoryEditedChanges(default_branch? : RepositoryEditedChangesDefaultBranch, description? : RepositoryEditedChangesDescription, homepage? : RepositoryEditedChangesHomepage) -> RepositoryEditedChanges {
+  RepositoryEditedChanges::{
+    default_branch: default_branch,
+    description: description,
+    homepage: homepage,
+  }
+}
 
 ///|
 let repository_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["default_branch", "description", "homepage"])
@@ -73823,6 +81906,18 @@ pub(all) struct RepositoryPrivatizedRepositoryPermissions {
   push : Bool
   triage : Bool?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryPrivatizedRepositoryPermissions` (fields with defaults are optional).
+pub fn RepositoryPrivatizedRepositoryPermissions::RepositoryPrivatizedRepositoryPermissions(admin~ : Bool, maintain? : Bool, pull~ : Bool, push~ : Bool, triage? : Bool) -> RepositoryPrivatizedRepositoryPermissions {
+  RepositoryPrivatizedRepositoryPermissions::{
+    admin: admin,
+    maintain: maintain,
+    pull: pull,
+    push: push,
+    triage: triage,
+  }
+}
 
 ///|
 let repository_privatized_repository_permissions_fields : @typify_rt.Fields = @typify_rt.Fields::new(["admin", "maintain", "pull", "push", "triage"])
@@ -74037,9 +82132,6 @@ pub(all) struct RepositoryPrivatizedRepository {
 } derive(Debug, Eq)
 
 ///|
-let repository_privatized_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
-
-///|
 fn default_repository_privatized_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
   @typify_rt.default_value("true", @typify_rt.de_bool)
 }
@@ -74053,6 +82145,109 @@ fn default_repository_privatized_repository_allow_rebase_merge() -> Bool raise @
 fn default_repository_privatized_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
   @typify_rt.default_value("true", @typify_rt.de_bool)
 }
+
+///|
+/// Construct a `RepositoryPrivatizedRepository` (fields with defaults are optional).
+pub fn RepositoryPrivatizedRepository::RepositoryPrivatizedRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool, allow_rebase_merge? : Bool, allow_squash_merge? : Bool, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryPrivatizedRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryPrivatizedRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryPrivatizedRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> RepositoryPrivatizedRepository {
+  RepositoryPrivatizedRepository::{
+    allow_auto_merge: allow_auto_merge,
+    allow_forking: allow_forking,
+    allow_merge_commit: match allow_merge_commit {
+      Some(v) => v
+      None => default_repository_privatized_repository_allow_merge_commit() catch { e => abort("invalid default for RepositoryPrivatizedRepository.allow_merge_commit: \{e}") }
+    },
+    allow_rebase_merge: match allow_rebase_merge {
+      Some(v) => v
+      None => default_repository_privatized_repository_allow_rebase_merge() catch { e => abort("invalid default for RepositoryPrivatizedRepository.allow_rebase_merge: \{e}") }
+    },
+    allow_squash_merge: match allow_squash_merge {
+      Some(v) => v
+      None => default_repository_privatized_repository_allow_squash_merge() catch { e => abort("invalid default for RepositoryPrivatizedRepository.allow_squash_merge: \{e}") }
+    },
+    archive_url: archive_url,
+    archived: archived,
+    assignees_url: assignees_url,
+    blobs_url: blobs_url,
+    branches_url: branches_url,
+    clone_url: clone_url,
+    collaborators_url: collaborators_url,
+    comments_url: comments_url,
+    commits_url: commits_url,
+    compare_url: compare_url,
+    contents_url: contents_url,
+    contributors_url: contributors_url,
+    created_at: created_at,
+    default_branch: default_branch,
+    delete_branch_on_merge: delete_branch_on_merge,
+    deployments_url: deployments_url,
+    description: description,
+    disabled: disabled,
+    downloads_url: downloads_url,
+    events_url: events_url,
+    fork: fork,
+    forks: forks,
+    forks_count: forks_count,
+    forks_url: forks_url,
+    full_name: full_name,
+    git_commits_url: git_commits_url,
+    git_refs_url: git_refs_url,
+    git_tags_url: git_tags_url,
+    git_url: git_url,
+    has_downloads: has_downloads,
+    has_issues: has_issues,
+    has_pages: has_pages,
+    has_projects: has_projects,
+    has_wiki: has_wiki,
+    homepage: homepage,
+    hooks_url: hooks_url,
+    html_url: html_url,
+    id: id,
+    issue_comment_url: issue_comment_url,
+    issue_events_url: issue_events_url,
+    issues_url: issues_url,
+    keys_url: keys_url,
+    labels_url: labels_url,
+    language: language,
+    languages_url: languages_url,
+    license: license,
+    master_branch: master_branch,
+    merges_url: merges_url,
+    milestones_url: milestones_url,
+    mirror_url: mirror_url,
+    name: name,
+    node_id: node_id,
+    notifications_url: notifications_url,
+    open_issues: open_issues,
+    open_issues_count: open_issues_count,
+    organization: organization,
+    owner: owner,
+    permissions: permissions,
+    private: private,
+    public: public,
+    pulls_url: pulls_url,
+    pushed_at: pushed_at,
+    releases_url: releases_url,
+    size: size,
+    ssh_url: ssh_url,
+    stargazers: stargazers,
+    stargazers_count: stargazers_count,
+    stargazers_url: stargazers_url,
+    statuses_url: statuses_url,
+    subscribers_url: subscribers_url,
+    subscription_url: subscription_url,
+    svn_url: svn_url,
+    tags_url: tags_url,
+    teams_url: teams_url,
+    trees_url: trees_url,
+    updated_at: updated_at,
+    url: url,
+    watchers: watchers,
+    watchers_count: watchers_count,
+  }
+}
+
+///|
+let repository_privatized_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
 
 ///|
 pub impl @typify_rt.Serde for RepositoryPrivatizedRepository with fn deserialize(d) {
@@ -74545,6 +82740,18 @@ pub(all) struct RepositoryPublicizedRepositoryPermissions {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryPublicizedRepositoryPermissions` (fields with defaults are optional).
+pub fn RepositoryPublicizedRepositoryPermissions::RepositoryPublicizedRepositoryPermissions(admin~ : Bool, maintain? : Bool, pull~ : Bool, push~ : Bool, triage? : Bool) -> RepositoryPublicizedRepositoryPermissions {
+  RepositoryPublicizedRepositoryPermissions::{
+    admin: admin,
+    maintain: maintain,
+    pull: pull,
+    push: push,
+    triage: triage,
+  }
+}
+
+///|
 let repository_publicized_repository_permissions_fields : @typify_rt.Fields = @typify_rt.Fields::new(["admin", "maintain", "pull", "push", "triage"])
 
 ///|
@@ -74757,9 +82964,6 @@ pub(all) struct RepositoryPublicizedRepository {
 } derive(Debug, Eq)
 
 ///|
-let repository_publicized_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
-
-///|
 fn default_repository_publicized_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
   @typify_rt.default_value("true", @typify_rt.de_bool)
 }
@@ -74773,6 +82977,109 @@ fn default_repository_publicized_repository_allow_rebase_merge() -> Bool raise @
 fn default_repository_publicized_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
   @typify_rt.default_value("true", @typify_rt.de_bool)
 }
+
+///|
+/// Construct a `RepositoryPublicizedRepository` (fields with defaults are optional).
+pub fn RepositoryPublicizedRepository::RepositoryPublicizedRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool, allow_rebase_merge? : Bool, allow_squash_merge? : Bool, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryPublicizedRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryPublicizedRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryPublicizedRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> RepositoryPublicizedRepository {
+  RepositoryPublicizedRepository::{
+    allow_auto_merge: allow_auto_merge,
+    allow_forking: allow_forking,
+    allow_merge_commit: match allow_merge_commit {
+      Some(v) => v
+      None => default_repository_publicized_repository_allow_merge_commit() catch { e => abort("invalid default for RepositoryPublicizedRepository.allow_merge_commit: \{e}") }
+    },
+    allow_rebase_merge: match allow_rebase_merge {
+      Some(v) => v
+      None => default_repository_publicized_repository_allow_rebase_merge() catch { e => abort("invalid default for RepositoryPublicizedRepository.allow_rebase_merge: \{e}") }
+    },
+    allow_squash_merge: match allow_squash_merge {
+      Some(v) => v
+      None => default_repository_publicized_repository_allow_squash_merge() catch { e => abort("invalid default for RepositoryPublicizedRepository.allow_squash_merge: \{e}") }
+    },
+    archive_url: archive_url,
+    archived: archived,
+    assignees_url: assignees_url,
+    blobs_url: blobs_url,
+    branches_url: branches_url,
+    clone_url: clone_url,
+    collaborators_url: collaborators_url,
+    comments_url: comments_url,
+    commits_url: commits_url,
+    compare_url: compare_url,
+    contents_url: contents_url,
+    contributors_url: contributors_url,
+    created_at: created_at,
+    default_branch: default_branch,
+    delete_branch_on_merge: delete_branch_on_merge,
+    deployments_url: deployments_url,
+    description: description,
+    disabled: disabled,
+    downloads_url: downloads_url,
+    events_url: events_url,
+    fork: fork,
+    forks: forks,
+    forks_count: forks_count,
+    forks_url: forks_url,
+    full_name: full_name,
+    git_commits_url: git_commits_url,
+    git_refs_url: git_refs_url,
+    git_tags_url: git_tags_url,
+    git_url: git_url,
+    has_downloads: has_downloads,
+    has_issues: has_issues,
+    has_pages: has_pages,
+    has_projects: has_projects,
+    has_wiki: has_wiki,
+    homepage: homepage,
+    hooks_url: hooks_url,
+    html_url: html_url,
+    id: id,
+    issue_comment_url: issue_comment_url,
+    issue_events_url: issue_events_url,
+    issues_url: issues_url,
+    keys_url: keys_url,
+    labels_url: labels_url,
+    language: language,
+    languages_url: languages_url,
+    license: license,
+    master_branch: master_branch,
+    merges_url: merges_url,
+    milestones_url: milestones_url,
+    mirror_url: mirror_url,
+    name: name,
+    node_id: node_id,
+    notifications_url: notifications_url,
+    open_issues: open_issues,
+    open_issues_count: open_issues_count,
+    organization: organization,
+    owner: owner,
+    permissions: permissions,
+    private: private,
+    public: public,
+    pulls_url: pulls_url,
+    pushed_at: pushed_at,
+    releases_url: releases_url,
+    size: size,
+    ssh_url: ssh_url,
+    stargazers: stargazers,
+    stargazers_count: stargazers_count,
+    stargazers_url: stargazers_url,
+    statuses_url: statuses_url,
+    subscribers_url: subscribers_url,
+    subscription_url: subscription_url,
+    svn_url: svn_url,
+    tags_url: tags_url,
+    teams_url: teams_url,
+    trees_url: trees_url,
+    updated_at: updated_at,
+    url: url,
+    watchers: watchers,
+    watchers_count: watchers_count,
+  }
+}
+
+///|
+let repository_publicized_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
 
 ///|
 pub impl @typify_rt.Serde for RepositoryPublicizedRepository with fn deserialize(d) {
@@ -75214,6 +83521,14 @@ pub(all) struct RepositoryRenamedChangesRepositoryName {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryRenamedChangesRepositoryName` (fields with defaults are optional).
+pub fn RepositoryRenamedChangesRepositoryName::RepositoryRenamedChangesRepositoryName(from~ : String) -> RepositoryRenamedChangesRepositoryName {
+  RepositoryRenamedChangesRepositoryName::{
+    from: from,
+  }
+}
+
+///|
 let repository_renamed_changes_repository_name_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -75251,6 +83566,14 @@ pub(all) struct RepositoryRenamedChangesRepository {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryRenamedChangesRepository` (fields with defaults are optional).
+pub fn RepositoryRenamedChangesRepository::RepositoryRenamedChangesRepository(name~ : RepositoryRenamedChangesRepositoryName) -> RepositoryRenamedChangesRepository {
+  RepositoryRenamedChangesRepository::{
+    name: name,
+  }
+}
+
+///|
 let repository_renamed_changes_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["name"])
 
 ///|
@@ -75286,6 +83609,14 @@ pub impl ToJson for RepositoryRenamedChangesRepository with fn to_json(self) {
 pub(all) struct RepositoryRenamedChanges {
   repository : RepositoryRenamedChangesRepository
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryRenamedChanges` (fields with defaults are optional).
+pub fn RepositoryRenamedChanges::RepositoryRenamedChanges(repository~ : RepositoryRenamedChangesRepository) -> RepositoryRenamedChanges {
+  RepositoryRenamedChanges::{
+    repository: repository,
+  }
+}
 
 ///|
 let repository_renamed_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["repository"])
@@ -75384,6 +83715,14 @@ pub(all) struct RepositoryTransferredChangesOwnerFrom {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryTransferredChangesOwnerFrom` (fields with defaults are optional).
+pub fn RepositoryTransferredChangesOwnerFrom::RepositoryTransferredChangesOwnerFrom(user? : User) -> RepositoryTransferredChangesOwnerFrom {
+  RepositoryTransferredChangesOwnerFrom::{
+    user: user,
+  }
+}
+
+///|
 let repository_transferred_changes_owner_from_fields : @typify_rt.Fields = @typify_rt.Fields::new(["user"])
 
 ///|
@@ -75423,6 +83762,14 @@ pub(all) struct RepositoryTransferredChangesOwner {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryTransferredChangesOwner` (fields with defaults are optional).
+pub fn RepositoryTransferredChangesOwner::RepositoryTransferredChangesOwner(from~ : RepositoryTransferredChangesOwnerFrom) -> RepositoryTransferredChangesOwner {
+  RepositoryTransferredChangesOwner::{
+    from: from,
+  }
+}
+
+///|
 let repository_transferred_changes_owner_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -75458,6 +83805,14 @@ pub impl ToJson for RepositoryTransferredChangesOwner with fn to_json(self) {
 pub(all) struct RepositoryTransferredChanges {
   owner : RepositoryTransferredChangesOwner
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryTransferredChanges` (fields with defaults are optional).
+pub fn RepositoryTransferredChanges::RepositoryTransferredChanges(owner~ : RepositoryTransferredChangesOwner) -> RepositoryTransferredChanges {
+  RepositoryTransferredChanges::{
+    owner: owner,
+  }
+}
 
 ///|
 let repository_transferred_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["owner"])
@@ -75605,6 +83960,18 @@ pub(all) struct RepositoryUnarchivedRepositoryPermissions {
   push : Bool
   triage : Bool?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryUnarchivedRepositoryPermissions` (fields with defaults are optional).
+pub fn RepositoryUnarchivedRepositoryPermissions::RepositoryUnarchivedRepositoryPermissions(admin~ : Bool, maintain? : Bool, pull~ : Bool, push~ : Bool, triage? : Bool) -> RepositoryUnarchivedRepositoryPermissions {
+  RepositoryUnarchivedRepositoryPermissions::{
+    admin: admin,
+    maintain: maintain,
+    pull: pull,
+    push: push,
+    triage: triage,
+  }
+}
 
 ///|
 let repository_unarchived_repository_permissions_fields : @typify_rt.Fields = @typify_rt.Fields::new(["admin", "maintain", "pull", "push", "triage"])
@@ -75819,9 +84186,6 @@ pub(all) struct RepositoryUnarchivedRepository {
 } derive(Debug, Eq)
 
 ///|
-let repository_unarchived_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
-
-///|
 fn default_repository_unarchived_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
   @typify_rt.default_value("true", @typify_rt.de_bool)
 }
@@ -75835,6 +84199,109 @@ fn default_repository_unarchived_repository_allow_rebase_merge() -> Bool raise @
 fn default_repository_unarchived_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
   @typify_rt.default_value("true", @typify_rt.de_bool)
 }
+
+///|
+/// Construct a `RepositoryUnarchivedRepository` (fields with defaults are optional).
+pub fn RepositoryUnarchivedRepository::RepositoryUnarchivedRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool, allow_rebase_merge? : Bool, allow_squash_merge? : Bool, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryUnarchivedRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryUnarchivedRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryUnarchivedRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> RepositoryUnarchivedRepository {
+  RepositoryUnarchivedRepository::{
+    allow_auto_merge: allow_auto_merge,
+    allow_forking: allow_forking,
+    allow_merge_commit: match allow_merge_commit {
+      Some(v) => v
+      None => default_repository_unarchived_repository_allow_merge_commit() catch { e => abort("invalid default for RepositoryUnarchivedRepository.allow_merge_commit: \{e}") }
+    },
+    allow_rebase_merge: match allow_rebase_merge {
+      Some(v) => v
+      None => default_repository_unarchived_repository_allow_rebase_merge() catch { e => abort("invalid default for RepositoryUnarchivedRepository.allow_rebase_merge: \{e}") }
+    },
+    allow_squash_merge: match allow_squash_merge {
+      Some(v) => v
+      None => default_repository_unarchived_repository_allow_squash_merge() catch { e => abort("invalid default for RepositoryUnarchivedRepository.allow_squash_merge: \{e}") }
+    },
+    archive_url: archive_url,
+    archived: archived,
+    assignees_url: assignees_url,
+    blobs_url: blobs_url,
+    branches_url: branches_url,
+    clone_url: clone_url,
+    collaborators_url: collaborators_url,
+    comments_url: comments_url,
+    commits_url: commits_url,
+    compare_url: compare_url,
+    contents_url: contents_url,
+    contributors_url: contributors_url,
+    created_at: created_at,
+    default_branch: default_branch,
+    delete_branch_on_merge: delete_branch_on_merge,
+    deployments_url: deployments_url,
+    description: description,
+    disabled: disabled,
+    downloads_url: downloads_url,
+    events_url: events_url,
+    fork: fork,
+    forks: forks,
+    forks_count: forks_count,
+    forks_url: forks_url,
+    full_name: full_name,
+    git_commits_url: git_commits_url,
+    git_refs_url: git_refs_url,
+    git_tags_url: git_tags_url,
+    git_url: git_url,
+    has_downloads: has_downloads,
+    has_issues: has_issues,
+    has_pages: has_pages,
+    has_projects: has_projects,
+    has_wiki: has_wiki,
+    homepage: homepage,
+    hooks_url: hooks_url,
+    html_url: html_url,
+    id: id,
+    issue_comment_url: issue_comment_url,
+    issue_events_url: issue_events_url,
+    issues_url: issues_url,
+    keys_url: keys_url,
+    labels_url: labels_url,
+    language: language,
+    languages_url: languages_url,
+    license: license,
+    master_branch: master_branch,
+    merges_url: merges_url,
+    milestones_url: milestones_url,
+    mirror_url: mirror_url,
+    name: name,
+    node_id: node_id,
+    notifications_url: notifications_url,
+    open_issues: open_issues,
+    open_issues_count: open_issues_count,
+    organization: organization,
+    owner: owner,
+    permissions: permissions,
+    private: private,
+    public: public,
+    pulls_url: pulls_url,
+    pushed_at: pushed_at,
+    releases_url: releases_url,
+    size: size,
+    ssh_url: ssh_url,
+    stargazers: stargazers,
+    stargazers_count: stargazers_count,
+    stargazers_url: stargazers_url,
+    statuses_url: statuses_url,
+    subscribers_url: subscribers_url,
+    subscription_url: subscription_url,
+    svn_url: svn_url,
+    tags_url: tags_url,
+    teams_url: teams_url,
+    trees_url: trees_url,
+    updated_at: updated_at,
+    url: url,
+    watchers: watchers,
+    watchers_count: watchers_count,
+  }
+}
+
+///|
+let repository_unarchived_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
 
 ///|
 pub impl @typify_rt.Serde for RepositoryUnarchivedRepository with fn deserialize(d) {
@@ -76417,6 +84884,25 @@ pub(all) struct RepositoryVulnerabilityAlertCreateAlert {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryVulnerabilityAlertCreateAlert` (fields with defaults are optional).
+pub fn RepositoryVulnerabilityAlertCreateAlert::RepositoryVulnerabilityAlertCreateAlert(affected_package_name~ : String, affected_range~ : String, created_at? : String, dismiss_reason? : String, dismissed_at? : String, dismisser? : User, external_identifier~ : String, external_reference~ : String, fixed_in~ : String, ghsa_id? : String, id~ : Int64, severity? : String) -> RepositoryVulnerabilityAlertCreateAlert {
+  RepositoryVulnerabilityAlertCreateAlert::{
+    affected_package_name: affected_package_name,
+    affected_range: affected_range,
+    created_at: created_at,
+    dismiss_reason: dismiss_reason,
+    dismissed_at: dismissed_at,
+    dismisser: dismisser,
+    external_identifier: external_identifier,
+    external_reference: external_reference,
+    fixed_in: fixed_in,
+    ghsa_id: ghsa_id,
+    id: id,
+    severity: severity,
+  }
+}
+
+///|
 let repository_vulnerability_alert_create_alert_fields : @typify_rt.Fields = @typify_rt.Fields::new(["affected_package_name", "affected_range", "created_at", "dismiss_reason", "dismissed_at", "dismisser", "external_identifier", "external_reference", "fixed_in", "ghsa_id", "id", "severity"])
 
 ///|
@@ -76580,6 +85066,25 @@ pub(all) struct RepositoryVulnerabilityAlertDismissAlert {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `RepositoryVulnerabilityAlertDismissAlert` (fields with defaults are optional).
+pub fn RepositoryVulnerabilityAlertDismissAlert::RepositoryVulnerabilityAlertDismissAlert(affected_package_name~ : String, affected_range~ : String, created_at? : String, dismiss_reason~ : String, dismissed_at~ : String, dismisser~ : User, external_identifier~ : String, external_reference~ : String, fixed_in~ : String, ghsa_id? : String, id~ : Int64, severity? : String) -> RepositoryVulnerabilityAlertDismissAlert {
+  RepositoryVulnerabilityAlertDismissAlert::{
+    affected_package_name: affected_package_name,
+    affected_range: affected_range,
+    created_at: created_at,
+    dismiss_reason: dismiss_reason,
+    dismissed_at: dismissed_at,
+    dismisser: dismisser,
+    external_identifier: external_identifier,
+    external_reference: external_reference,
+    fixed_in: fixed_in,
+    ghsa_id: ghsa_id,
+    id: id,
+    severity: severity,
+  }
+}
+
+///|
 let repository_vulnerability_alert_dismiss_alert_fields : @typify_rt.Fields = @typify_rt.Fields::new(["affected_package_name", "affected_range", "created_at", "dismiss_reason", "dismissed_at", "dismisser", "external_identifier", "external_reference", "fixed_in", "ghsa_id", "id", "severity"])
 
 ///|
@@ -76735,6 +85240,25 @@ pub(all) struct RepositoryVulnerabilityAlertResolveAlert {
   id : Int64
   severity : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `RepositoryVulnerabilityAlertResolveAlert` (fields with defaults are optional).
+pub fn RepositoryVulnerabilityAlertResolveAlert::RepositoryVulnerabilityAlertResolveAlert(affected_package_name~ : String, affected_range~ : String, created_at? : String, dismiss_reason? : String, dismissed_at? : String, dismisser? : User, external_identifier~ : String, external_reference~ : String, fixed_in~ : String, ghsa_id? : String, id~ : Int64, severity? : String) -> RepositoryVulnerabilityAlertResolveAlert {
+  RepositoryVulnerabilityAlertResolveAlert::{
+    affected_package_name: affected_package_name,
+    affected_range: affected_range,
+    created_at: created_at,
+    dismiss_reason: dismiss_reason,
+    dismissed_at: dismissed_at,
+    dismisser: dismisser,
+    external_identifier: external_identifier,
+    external_reference: external_reference,
+    fixed_in: fixed_in,
+    ghsa_id: ghsa_id,
+    id: id,
+    severity: severity,
+  }
+}
 
 ///|
 let repository_vulnerability_alert_resolve_alert_fields : @typify_rt.Fields = @typify_rt.Fields::new(["affected_package_name", "affected_range", "created_at", "dismiss_reason", "dismissed_at", "dismisser", "external_identifier", "external_reference", "fixed_in", "ghsa_id", "id", "severity"])
@@ -76893,6 +85417,18 @@ pub(all) struct SecretScanningAlertCreatedAlert {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecretScanningAlertCreatedAlert` (fields with defaults are optional).
+pub fn SecretScanningAlertCreatedAlert::SecretScanningAlertCreatedAlert(number~ : Int64, resolution~ : Unit, resolved_at~ : Unit, resolved_by~ : Unit, secret_type~ : String) -> SecretScanningAlertCreatedAlert {
+  SecretScanningAlertCreatedAlert::{
+    number: number,
+    resolution: resolution,
+    resolved_at: resolved_at,
+    resolved_by: resolved_by,
+    secret_type: secret_type,
+  }
+}
+
+///|
 let secret_scanning_alert_created_alert_fields : @typify_rt.Fields = @typify_rt.Fields::new(["number", "resolution", "resolved_at", "resolved_by", "secret_type"])
 
 ///|
@@ -77007,6 +85543,18 @@ pub(all) struct SecretScanningAlertReopenedAlert {
   resolved_by : Unit
   secret_type : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecretScanningAlertReopenedAlert` (fields with defaults are optional).
+pub fn SecretScanningAlertReopenedAlert::SecretScanningAlertReopenedAlert(number~ : Int64, resolution~ : Unit, resolved_at~ : Unit, resolved_by~ : Unit, secret_type~ : String) -> SecretScanningAlertReopenedAlert {
+  SecretScanningAlertReopenedAlert::{
+    number: number,
+    resolution: resolution,
+    resolved_at: resolved_at,
+    resolved_by: resolved_by,
+    secret_type: secret_type,
+  }
+}
 
 ///|
 let secret_scanning_alert_reopened_alert_fields : @typify_rt.Fields = @typify_rt.Fields::new(["number", "resolution", "resolved_at", "resolved_by", "secret_type"])
@@ -77202,6 +85750,18 @@ pub(all) struct SecretScanningAlertResolvedAlert {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecretScanningAlertResolvedAlert` (fields with defaults are optional).
+pub fn SecretScanningAlertResolvedAlert::SecretScanningAlertResolvedAlert(number~ : Int64, resolution~ : SecretScanningAlertResolvedAlertResolution, resolved_at~ : String, resolved_by~ : User, secret_type~ : String) -> SecretScanningAlertResolvedAlert {
+  SecretScanningAlertResolvedAlert::{
+    number: number,
+    resolution: resolution,
+    resolved_at: resolved_at,
+    resolved_by: resolved_by,
+    secret_type: secret_type,
+  }
+}
+
+///|
 let secret_scanning_alert_resolved_alert_fields : @typify_rt.Fields = @typify_rt.Fields::new(["number", "resolution", "resolved_at", "resolved_by", "secret_type"])
 
 ///|
@@ -77315,6 +85875,15 @@ pub(all) struct SecurityAdvisoryPerformedSecurityAdvisoryCvss {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecurityAdvisoryPerformedSecurityAdvisoryCvss` (fields with defaults are optional).
+pub fn SecurityAdvisoryPerformedSecurityAdvisoryCvss::SecurityAdvisoryPerformedSecurityAdvisoryCvss(score~ : Double, vector_string? : String) -> SecurityAdvisoryPerformedSecurityAdvisoryCvss {
+  SecurityAdvisoryPerformedSecurityAdvisoryCvss::{
+    score: score,
+    vector_string: vector_string,
+  }
+}
+
+///|
 let security_advisory_performed_security_advisory_cvss_fields : @typify_rt.Fields = @typify_rt.Fields::new(["score", "vector_string"])
 
 ///|
@@ -77355,6 +85924,15 @@ pub(all) struct SecurityAdvisoryPerformedSecurityAdvisoryCwesItem {
   cwe_id : String
   name : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryPerformedSecurityAdvisoryCwesItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryPerformedSecurityAdvisoryCwesItem::SecurityAdvisoryPerformedSecurityAdvisoryCwesItem(cwe_id~ : String, name~ : String) -> SecurityAdvisoryPerformedSecurityAdvisoryCwesItem {
+  SecurityAdvisoryPerformedSecurityAdvisoryCwesItem::{
+    cwe_id: cwe_id,
+    name: name,
+  }
+}
 
 ///|
 let security_advisory_performed_security_advisory_cwes_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["cwe_id", "name"])
@@ -77399,6 +85977,15 @@ pub(all) struct SecurityAdvisoryPerformedSecurityAdvisoryIdentifiersItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecurityAdvisoryPerformedSecurityAdvisoryIdentifiersItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryPerformedSecurityAdvisoryIdentifiersItem::SecurityAdvisoryPerformedSecurityAdvisoryIdentifiersItem(type_~ : String, value~ : String) -> SecurityAdvisoryPerformedSecurityAdvisoryIdentifiersItem {
+  SecurityAdvisoryPerformedSecurityAdvisoryIdentifiersItem::{
+    type_: type_,
+    value: value,
+  }
+}
+
+///|
 let security_advisory_performed_security_advisory_identifiers_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["type", "value"])
 
 ///|
@@ -77440,6 +86027,14 @@ pub(all) struct SecurityAdvisoryPerformedSecurityAdvisoryReferencesItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecurityAdvisoryPerformedSecurityAdvisoryReferencesItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryPerformedSecurityAdvisoryReferencesItem::SecurityAdvisoryPerformedSecurityAdvisoryReferencesItem(url~ : String) -> SecurityAdvisoryPerformedSecurityAdvisoryReferencesItem {
+  SecurityAdvisoryPerformedSecurityAdvisoryReferencesItem::{
+    url: url,
+  }
+}
+
+///|
 let security_advisory_performed_security_advisory_references_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["url"])
 
 ///|
@@ -77475,6 +86070,14 @@ pub impl ToJson for SecurityAdvisoryPerformedSecurityAdvisoryReferencesItem with
 pub(all) struct SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion {
   identifier : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion` (fields with defaults are optional).
+pub fn SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion::SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion(identifier~ : String) -> SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion {
+  SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion::{
+    identifier: identifier,
+  }
+}
 
 ///|
 let security_advisory_performed_security_advisory_vulnerabilities_item_first_patched_version_fields : @typify_rt.Fields = @typify_rt.Fields::new(["identifier"])
@@ -77513,6 +86116,15 @@ pub(all) struct SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemPack
   ecosystem : String
   name : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemPackage` (fields with defaults are optional).
+pub fn SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemPackage::SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemPackage(ecosystem~ : String, name~ : String) -> SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemPackage {
+  SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemPackage::{
+    ecosystem: ecosystem,
+    name: name,
+  }
+}
 
 ///|
 let security_advisory_performed_security_advisory_vulnerabilities_item_package_fields : @typify_rt.Fields = @typify_rt.Fields::new(["ecosystem", "name"])
@@ -77557,6 +86169,17 @@ pub(all) struct SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem {
   severity : String
   vulnerable_version_range : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem::SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem(first_patched_version? : SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion, package_~ : SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemPackage, severity~ : String, vulnerable_version_range~ : String) -> SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem {
+  SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem::{
+    first_patched_version: first_patched_version,
+    package_: package_,
+    severity: severity,
+    vulnerable_version_range: vulnerable_version_range,
+  }
+}
 
 ///|
 let security_advisory_performed_security_advisory_vulnerabilities_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["first_patched_version", "package", "severity", "vulnerable_version_range"])
@@ -77617,6 +86240,25 @@ pub(all) struct SecurityAdvisoryPerformedSecurityAdvisory {
   vulnerabilities : Array[SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem]
   withdrawn_at : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryPerformedSecurityAdvisory` (fields with defaults are optional).
+pub fn SecurityAdvisoryPerformedSecurityAdvisory::SecurityAdvisoryPerformedSecurityAdvisory(cvss~ : SecurityAdvisoryPerformedSecurityAdvisoryCvss, cwes~ : Array[SecurityAdvisoryPerformedSecurityAdvisoryCwesItem], description~ : String, ghsa_id~ : String, identifiers~ : Array[SecurityAdvisoryPerformedSecurityAdvisoryIdentifiersItem], published_at~ : String, references~ : Array[SecurityAdvisoryPerformedSecurityAdvisoryReferencesItem], severity~ : String, summary~ : String, updated_at~ : String, vulnerabilities~ : Array[SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem], withdrawn_at? : String) -> SecurityAdvisoryPerformedSecurityAdvisory {
+  SecurityAdvisoryPerformedSecurityAdvisory::{
+    cvss: cvss,
+    cwes: cwes,
+    description: description,
+    ghsa_id: ghsa_id,
+    identifiers: identifiers,
+    published_at: published_at,
+    references: references,
+    severity: severity,
+    summary: summary,
+    updated_at: updated_at,
+    vulnerabilities: vulnerabilities,
+    withdrawn_at: withdrawn_at,
+  }
+}
 
 ///|
 let security_advisory_performed_security_advisory_fields : @typify_rt.Fields = @typify_rt.Fields::new(["cvss", "cwes", "description", "ghsa_id", "identifiers", "published_at", "references", "severity", "summary", "updated_at", "vulnerabilities", "withdrawn_at"])
@@ -77760,6 +86402,15 @@ pub(all) struct SecurityAdvisoryPublishedSecurityAdvisoryCvss {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecurityAdvisoryPublishedSecurityAdvisoryCvss` (fields with defaults are optional).
+pub fn SecurityAdvisoryPublishedSecurityAdvisoryCvss::SecurityAdvisoryPublishedSecurityAdvisoryCvss(score~ : Double, vector_string? : String) -> SecurityAdvisoryPublishedSecurityAdvisoryCvss {
+  SecurityAdvisoryPublishedSecurityAdvisoryCvss::{
+    score: score,
+    vector_string: vector_string,
+  }
+}
+
+///|
 let security_advisory_published_security_advisory_cvss_fields : @typify_rt.Fields = @typify_rt.Fields::new(["score", "vector_string"])
 
 ///|
@@ -77800,6 +86451,15 @@ pub(all) struct SecurityAdvisoryPublishedSecurityAdvisoryCwesItem {
   cwe_id : String
   name : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryPublishedSecurityAdvisoryCwesItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryPublishedSecurityAdvisoryCwesItem::SecurityAdvisoryPublishedSecurityAdvisoryCwesItem(cwe_id~ : String, name~ : String) -> SecurityAdvisoryPublishedSecurityAdvisoryCwesItem {
+  SecurityAdvisoryPublishedSecurityAdvisoryCwesItem::{
+    cwe_id: cwe_id,
+    name: name,
+  }
+}
 
 ///|
 let security_advisory_published_security_advisory_cwes_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["cwe_id", "name"])
@@ -77844,6 +86504,15 @@ pub(all) struct SecurityAdvisoryPublishedSecurityAdvisoryIdentifiersItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecurityAdvisoryPublishedSecurityAdvisoryIdentifiersItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryPublishedSecurityAdvisoryIdentifiersItem::SecurityAdvisoryPublishedSecurityAdvisoryIdentifiersItem(type_~ : String, value~ : String) -> SecurityAdvisoryPublishedSecurityAdvisoryIdentifiersItem {
+  SecurityAdvisoryPublishedSecurityAdvisoryIdentifiersItem::{
+    type_: type_,
+    value: value,
+  }
+}
+
+///|
 let security_advisory_published_security_advisory_identifiers_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["type", "value"])
 
 ///|
@@ -77885,6 +86554,14 @@ pub(all) struct SecurityAdvisoryPublishedSecurityAdvisoryReferencesItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecurityAdvisoryPublishedSecurityAdvisoryReferencesItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryPublishedSecurityAdvisoryReferencesItem::SecurityAdvisoryPublishedSecurityAdvisoryReferencesItem(url~ : String) -> SecurityAdvisoryPublishedSecurityAdvisoryReferencesItem {
+  SecurityAdvisoryPublishedSecurityAdvisoryReferencesItem::{
+    url: url,
+  }
+}
+
+///|
 let security_advisory_published_security_advisory_references_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["url"])
 
 ///|
@@ -77920,6 +86597,14 @@ pub impl ToJson for SecurityAdvisoryPublishedSecurityAdvisoryReferencesItem with
 pub(all) struct SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion {
   identifier : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion` (fields with defaults are optional).
+pub fn SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion::SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion(identifier~ : String) -> SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion {
+  SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion::{
+    identifier: identifier,
+  }
+}
 
 ///|
 let security_advisory_published_security_advisory_vulnerabilities_item_first_patched_version_fields : @typify_rt.Fields = @typify_rt.Fields::new(["identifier"])
@@ -77958,6 +86643,15 @@ pub(all) struct SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemPack
   ecosystem : String
   name : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemPackage` (fields with defaults are optional).
+pub fn SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemPackage::SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemPackage(ecosystem~ : String, name~ : String) -> SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemPackage {
+  SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemPackage::{
+    ecosystem: ecosystem,
+    name: name,
+  }
+}
 
 ///|
 let security_advisory_published_security_advisory_vulnerabilities_item_package_fields : @typify_rt.Fields = @typify_rt.Fields::new(["ecosystem", "name"])
@@ -78002,6 +86696,17 @@ pub(all) struct SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem {
   severity : String
   vulnerable_version_range : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem::SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem(first_patched_version? : SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion, package_~ : SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemPackage, severity~ : String, vulnerable_version_range~ : String) -> SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem {
+  SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem::{
+    first_patched_version: first_patched_version,
+    package_: package_,
+    severity: severity,
+    vulnerable_version_range: vulnerable_version_range,
+  }
+}
 
 ///|
 let security_advisory_published_security_advisory_vulnerabilities_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["first_patched_version", "package", "severity", "vulnerable_version_range"])
@@ -78062,6 +86767,25 @@ pub(all) struct SecurityAdvisoryPublishedSecurityAdvisory {
   vulnerabilities : Array[SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem]
   withdrawn_at : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryPublishedSecurityAdvisory` (fields with defaults are optional).
+pub fn SecurityAdvisoryPublishedSecurityAdvisory::SecurityAdvisoryPublishedSecurityAdvisory(cvss~ : SecurityAdvisoryPublishedSecurityAdvisoryCvss, cwes~ : Array[SecurityAdvisoryPublishedSecurityAdvisoryCwesItem], description~ : String, ghsa_id~ : String, identifiers~ : Array[SecurityAdvisoryPublishedSecurityAdvisoryIdentifiersItem], published_at~ : String, references~ : Array[SecurityAdvisoryPublishedSecurityAdvisoryReferencesItem], severity~ : String, summary~ : String, updated_at~ : String, vulnerabilities~ : Array[SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem], withdrawn_at? : String) -> SecurityAdvisoryPublishedSecurityAdvisory {
+  SecurityAdvisoryPublishedSecurityAdvisory::{
+    cvss: cvss,
+    cwes: cwes,
+    description: description,
+    ghsa_id: ghsa_id,
+    identifiers: identifiers,
+    published_at: published_at,
+    references: references,
+    severity: severity,
+    summary: summary,
+    updated_at: updated_at,
+    vulnerabilities: vulnerabilities,
+    withdrawn_at: withdrawn_at,
+  }
+}
 
 ///|
 let security_advisory_published_security_advisory_fields : @typify_rt.Fields = @typify_rt.Fields::new(["cvss", "cwes", "description", "ghsa_id", "identifiers", "published_at", "references", "severity", "summary", "updated_at", "vulnerabilities", "withdrawn_at"])
@@ -78205,6 +86929,15 @@ pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisoryCvss {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecurityAdvisoryUpdatedSecurityAdvisoryCvss` (fields with defaults are optional).
+pub fn SecurityAdvisoryUpdatedSecurityAdvisoryCvss::SecurityAdvisoryUpdatedSecurityAdvisoryCvss(score~ : Double, vector_string? : String) -> SecurityAdvisoryUpdatedSecurityAdvisoryCvss {
+  SecurityAdvisoryUpdatedSecurityAdvisoryCvss::{
+    score: score,
+    vector_string: vector_string,
+  }
+}
+
+///|
 let security_advisory_updated_security_advisory_cvss_fields : @typify_rt.Fields = @typify_rt.Fields::new(["score", "vector_string"])
 
 ///|
@@ -78245,6 +86978,15 @@ pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisoryCwesItem {
   cwe_id : String
   name : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryUpdatedSecurityAdvisoryCwesItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryUpdatedSecurityAdvisoryCwesItem::SecurityAdvisoryUpdatedSecurityAdvisoryCwesItem(cwe_id~ : String, name~ : String) -> SecurityAdvisoryUpdatedSecurityAdvisoryCwesItem {
+  SecurityAdvisoryUpdatedSecurityAdvisoryCwesItem::{
+    cwe_id: cwe_id,
+    name: name,
+  }
+}
 
 ///|
 let security_advisory_updated_security_advisory_cwes_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["cwe_id", "name"])
@@ -78289,6 +87031,15 @@ pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersItem::SecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersItem(type_~ : String, value~ : String) -> SecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersItem {
+  SecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersItem::{
+    type_: type_,
+    value: value,
+  }
+}
+
+///|
 let security_advisory_updated_security_advisory_identifiers_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["type", "value"])
 
 ///|
@@ -78330,6 +87081,14 @@ pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisoryReferencesItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecurityAdvisoryUpdatedSecurityAdvisoryReferencesItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryUpdatedSecurityAdvisoryReferencesItem::SecurityAdvisoryUpdatedSecurityAdvisoryReferencesItem(url~ : String) -> SecurityAdvisoryUpdatedSecurityAdvisoryReferencesItem {
+  SecurityAdvisoryUpdatedSecurityAdvisoryReferencesItem::{
+    url: url,
+  }
+}
+
+///|
 let security_advisory_updated_security_advisory_references_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["url"])
 
 ///|
@@ -78365,6 +87124,14 @@ pub impl ToJson for SecurityAdvisoryUpdatedSecurityAdvisoryReferencesItem with f
 pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion {
   identifier : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion` (fields with defaults are optional).
+pub fn SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion::SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion(identifier~ : String) -> SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion {
+  SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion::{
+    identifier: identifier,
+  }
+}
 
 ///|
 let security_advisory_updated_security_advisory_vulnerabilities_item_first_patched_version_fields : @typify_rt.Fields = @typify_rt.Fields::new(["identifier"])
@@ -78403,6 +87170,15 @@ pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemPackag
   ecosystem : String
   name : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemPackage` (fields with defaults are optional).
+pub fn SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemPackage::SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemPackage(ecosystem~ : String, name~ : String) -> SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemPackage {
+  SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemPackage::{
+    ecosystem: ecosystem,
+    name: name,
+  }
+}
 
 ///|
 let security_advisory_updated_security_advisory_vulnerabilities_item_package_fields : @typify_rt.Fields = @typify_rt.Fields::new(["ecosystem", "name"])
@@ -78447,6 +87223,17 @@ pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItem {
   severity : String
   vulnerable_version_range : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItem::SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItem(first_patched_version? : SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion, package_~ : SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemPackage, severity~ : String, vulnerable_version_range~ : String) -> SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItem {
+  SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItem::{
+    first_patched_version: first_patched_version,
+    package_: package_,
+    severity: severity,
+    vulnerable_version_range: vulnerable_version_range,
+  }
+}
 
 ///|
 let security_advisory_updated_security_advisory_vulnerabilities_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["first_patched_version", "package", "severity", "vulnerable_version_range"])
@@ -78507,6 +87294,25 @@ pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisory {
   vulnerabilities : Array[SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItem]
   withdrawn_at : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryUpdatedSecurityAdvisory` (fields with defaults are optional).
+pub fn SecurityAdvisoryUpdatedSecurityAdvisory::SecurityAdvisoryUpdatedSecurityAdvisory(cvss~ : SecurityAdvisoryUpdatedSecurityAdvisoryCvss, cwes~ : Array[SecurityAdvisoryUpdatedSecurityAdvisoryCwesItem], description~ : String, ghsa_id~ : String, identifiers~ : Array[SecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersItem], published_at~ : String, references~ : Array[SecurityAdvisoryUpdatedSecurityAdvisoryReferencesItem], severity~ : String, summary~ : String, updated_at~ : String, vulnerabilities~ : Array[SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItem], withdrawn_at? : String) -> SecurityAdvisoryUpdatedSecurityAdvisory {
+  SecurityAdvisoryUpdatedSecurityAdvisory::{
+    cvss: cvss,
+    cwes: cwes,
+    description: description,
+    ghsa_id: ghsa_id,
+    identifiers: identifiers,
+    published_at: published_at,
+    references: references,
+    severity: severity,
+    summary: summary,
+    updated_at: updated_at,
+    vulnerabilities: vulnerabilities,
+    withdrawn_at: withdrawn_at,
+  }
+}
 
 ///|
 let security_advisory_updated_security_advisory_fields : @typify_rt.Fields = @typify_rt.Fields::new(["cvss", "cwes", "description", "ghsa_id", "identifiers", "published_at", "references", "severity", "summary", "updated_at", "vulnerabilities", "withdrawn_at"])
@@ -78650,6 +87456,15 @@ pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisoryCvss {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisoryCvss` (fields with defaults are optional).
+pub fn SecurityAdvisoryWithdrawnSecurityAdvisoryCvss::SecurityAdvisoryWithdrawnSecurityAdvisoryCvss(score~ : Double, vector_string? : String) -> SecurityAdvisoryWithdrawnSecurityAdvisoryCvss {
+  SecurityAdvisoryWithdrawnSecurityAdvisoryCvss::{
+    score: score,
+    vector_string: vector_string,
+  }
+}
+
+///|
 let security_advisory_withdrawn_security_advisory_cvss_fields : @typify_rt.Fields = @typify_rt.Fields::new(["score", "vector_string"])
 
 ///|
@@ -78690,6 +87505,15 @@ pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem {
   cwe_id : String
   name : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem::SecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem(cwe_id~ : String, name~ : String) -> SecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem {
+  SecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem::{
+    cwe_id: cwe_id,
+    name: name,
+  }
+}
 
 ///|
 let security_advisory_withdrawn_security_advisory_cwes_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["cwe_id", "name"])
@@ -78734,6 +87558,15 @@ pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem::SecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem(type_~ : String, value~ : String) -> SecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem {
+  SecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem::{
+    type_: type_,
+    value: value,
+  }
+}
+
+///|
 let security_advisory_withdrawn_security_advisory_identifiers_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["type", "value"])
 
 ///|
@@ -78775,6 +87608,14 @@ pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem::SecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem(url~ : String) -> SecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem {
+  SecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem::{
+    url: url,
+  }
+}
+
+///|
 let security_advisory_withdrawn_security_advisory_references_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["url"])
 
 ///|
@@ -78810,6 +87651,14 @@ pub impl ToJson for SecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem with
 pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion {
   identifier : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion` (fields with defaults are optional).
+pub fn SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion::SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion(identifier~ : String) -> SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion {
+  SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion::{
+    identifier: identifier,
+  }
+}
 
 ///|
 let security_advisory_withdrawn_security_advisory_vulnerabilities_item_first_patched_version_fields : @typify_rt.Fields = @typify_rt.Fields::new(["identifier"])
@@ -78848,6 +87697,15 @@ pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPack
   ecosystem : String
   name : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPackage` (fields with defaults are optional).
+pub fn SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPackage::SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPackage(ecosystem~ : String, name~ : String) -> SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPackage {
+  SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPackage::{
+    ecosystem: ecosystem,
+    name: name,
+  }
+}
 
 ///|
 let security_advisory_withdrawn_security_advisory_vulnerabilities_item_package_fields : @typify_rt.Fields = @typify_rt.Fields::new(["ecosystem", "name"])
@@ -78892,6 +87750,17 @@ pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem {
   severity : String
   vulnerable_version_range : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem` (fields with defaults are optional).
+pub fn SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem::SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem(first_patched_version? : SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion, package_~ : SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPackage, severity~ : String, vulnerable_version_range~ : String) -> SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem {
+  SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem::{
+    first_patched_version: first_patched_version,
+    package_: package_,
+    severity: severity,
+    vulnerable_version_range: vulnerable_version_range,
+  }
+}
 
 ///|
 let security_advisory_withdrawn_security_advisory_vulnerabilities_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["first_patched_version", "package", "severity", "vulnerable_version_range"])
@@ -78952,6 +87821,25 @@ pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisory {
   vulnerabilities : Array[SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem]
   withdrawn_at : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisory` (fields with defaults are optional).
+pub fn SecurityAdvisoryWithdrawnSecurityAdvisory::SecurityAdvisoryWithdrawnSecurityAdvisory(cvss~ : SecurityAdvisoryWithdrawnSecurityAdvisoryCvss, cwes~ : Array[SecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem], description~ : String, ghsa_id~ : String, identifiers~ : Array[SecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem], published_at~ : String, references~ : Array[SecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem], severity~ : String, summary~ : String, updated_at~ : String, vulnerabilities~ : Array[SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem], withdrawn_at~ : String) -> SecurityAdvisoryWithdrawnSecurityAdvisory {
+  SecurityAdvisoryWithdrawnSecurityAdvisory::{
+    cvss: cvss,
+    cwes: cwes,
+    description: description,
+    ghsa_id: ghsa_id,
+    identifiers: identifiers,
+    published_at: published_at,
+    references: references,
+    severity: severity,
+    summary: summary,
+    updated_at: updated_at,
+    vulnerabilities: vulnerabilities,
+    withdrawn_at: withdrawn_at,
+  }
+}
 
 ///|
 let security_advisory_withdrawn_security_advisory_fields : @typify_rt.Fields = @typify_rt.Fields::new(["cvss", "cwes", "description", "ghsa_id", "identifiers", "published_at", "references", "severity", "summary", "updated_at", "vulnerabilities", "withdrawn_at"])
@@ -79040,6 +87928,21 @@ pub(all) struct SimplePullRequestLinks {
   self_ : Link
   statuses : Link
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SimplePullRequestLinks` (fields with defaults are optional).
+pub fn SimplePullRequestLinks::SimplePullRequestLinks(comments~ : Link, commits~ : Link, html~ : Link, issue~ : Link, review_comment~ : Link, review_comments~ : Link, self_~ : Link, statuses~ : Link) -> SimplePullRequestLinks {
+  SimplePullRequestLinks::{
+    comments: comments,
+    commits: commits,
+    html: html,
+    issue: issue,
+    review_comment: review_comment,
+    review_comments: review_comments,
+    self_: self_,
+    statuses: statuses,
+  }
+}
 
 ///|
 let simple_pull_request_links_fields : @typify_rt.Fields = @typify_rt.Fields::new(["comments", "commits", "html", "issue", "review_comment", "review_comments", "self", "statuses"])
@@ -79188,6 +88091,18 @@ pub(all) struct SimplePullRequestBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SimplePullRequestBase` (fields with defaults are optional).
+pub fn SimplePullRequestBase::SimplePullRequestBase(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> SimplePullRequestBase {
+  SimplePullRequestBase::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
+
+///|
 let simple_pull_request_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
 
 ///|
@@ -79243,6 +88158,18 @@ pub(all) struct SimplePullRequestHead {
   sha : String
   user : User
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SimplePullRequestHead` (fields with defaults are optional).
+pub fn SimplePullRequestHead::SimplePullRequestHead(label~ : String, ref_~ : String, repo~ : Repository, sha~ : String, user~ : User) -> SimplePullRequestHead {
+  SimplePullRequestHead::{
+    label: label,
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+    user: user,
+  }
+}
 
 ///|
 let simple_pull_request_head_fields : @typify_rt.Fields = @typify_rt.Fields::new(["label", "ref", "repo", "sha", "user"])
@@ -79474,6 +88401,19 @@ pub(all) struct SponsorshipCancelledSponsorship {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SponsorshipCancelledSponsorship` (fields with defaults are optional).
+pub fn SponsorshipCancelledSponsorship::SponsorshipCancelledSponsorship(created_at~ : String, node_id~ : String, privacy_level~ : String, sponsor~ : User, sponsorable~ : User, tier~ : SponsorshipTier) -> SponsorshipCancelledSponsorship {
+  SponsorshipCancelledSponsorship::{
+    created_at: created_at,
+    node_id: node_id,
+    privacy_level: privacy_level,
+    sponsor: sponsor,
+    sponsorable: sponsorable,
+    tier: tier,
+  }
+}
+
+///|
 let sponsorship_cancelled_sponsorship_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "node_id", "privacy_level", "sponsor", "sponsorable", "tier"])
 
 ///|
@@ -79595,6 +88535,19 @@ pub(all) struct SponsorshipCreatedSponsorship {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SponsorshipCreatedSponsorship` (fields with defaults are optional).
+pub fn SponsorshipCreatedSponsorship::SponsorshipCreatedSponsorship(created_at~ : String, node_id~ : String, privacy_level~ : String, sponsor~ : User, sponsorable~ : User, tier~ : SponsorshipTier) -> SponsorshipCreatedSponsorship {
+  SponsorshipCreatedSponsorship::{
+    created_at: created_at,
+    node_id: node_id,
+    privacy_level: privacy_level,
+    sponsor: sponsor,
+    sponsorable: sponsorable,
+    tier: tier,
+  }
+}
+
+///|
 let sponsorship_created_sponsorship_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "node_id", "privacy_level", "sponsor", "sponsorable", "tier"])
 
 ///|
@@ -79712,6 +88665,14 @@ pub(all) struct SponsorshipEditedChangesPrivacyLevel {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SponsorshipEditedChangesPrivacyLevel` (fields with defaults are optional).
+pub fn SponsorshipEditedChangesPrivacyLevel::SponsorshipEditedChangesPrivacyLevel(from~ : String) -> SponsorshipEditedChangesPrivacyLevel {
+  SponsorshipEditedChangesPrivacyLevel::{
+    from: from,
+  }
+}
+
+///|
 let sponsorship_edited_changes_privacy_level_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -79747,6 +88708,14 @@ pub impl ToJson for SponsorshipEditedChangesPrivacyLevel with fn to_json(self) {
 pub(all) struct SponsorshipEditedChanges {
   privacy_level : SponsorshipEditedChangesPrivacyLevel?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SponsorshipEditedChanges` (fields with defaults are optional).
+pub fn SponsorshipEditedChanges::SponsorshipEditedChanges(privacy_level? : SponsorshipEditedChangesPrivacyLevel) -> SponsorshipEditedChanges {
+  SponsorshipEditedChanges::{
+    privacy_level: privacy_level,
+  }
+}
 
 ///|
 let sponsorship_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["privacy_level"])
@@ -79791,6 +88760,19 @@ pub(all) struct SponsorshipEditedSponsorship {
   sponsorable : User
   tier : SponsorshipTier
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SponsorshipEditedSponsorship` (fields with defaults are optional).
+pub fn SponsorshipEditedSponsorship::SponsorshipEditedSponsorship(created_at~ : String, node_id~ : String, privacy_level~ : String, sponsor~ : User, sponsorable~ : User, tier~ : SponsorshipTier) -> SponsorshipEditedSponsorship {
+  SponsorshipEditedSponsorship::{
+    created_at: created_at,
+    node_id: node_id,
+    privacy_level: privacy_level,
+    sponsor: sponsor,
+    sponsorable: sponsorable,
+    tier: tier,
+  }
+}
 
 ///|
 let sponsorship_edited_sponsorship_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "node_id", "privacy_level", "sponsor", "sponsorable", "tier"])
@@ -79914,6 +88896,19 @@ pub(all) struct SponsorshipPendingCancellationSponsorship {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SponsorshipPendingCancellationSponsorship` (fields with defaults are optional).
+pub fn SponsorshipPendingCancellationSponsorship::SponsorshipPendingCancellationSponsorship(created_at~ : String, node_id~ : String, privacy_level~ : String, sponsor~ : User, sponsorable~ : User, tier~ : SponsorshipTier) -> SponsorshipPendingCancellationSponsorship {
+  SponsorshipPendingCancellationSponsorship::{
+    created_at: created_at,
+    node_id: node_id,
+    privacy_level: privacy_level,
+    sponsor: sponsor,
+    sponsorable: sponsorable,
+    tier: tier,
+  }
+}
+
+///|
 let sponsorship_pending_cancellation_sponsorship_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "node_id", "privacy_level", "sponsor", "sponsorable", "tier"])
 
 ///|
@@ -80030,6 +89025,14 @@ pub(all) struct SponsorshipPendingTierChangeChangesTier {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SponsorshipPendingTierChangeChangesTier` (fields with defaults are optional).
+pub fn SponsorshipPendingTierChangeChangesTier::SponsorshipPendingTierChangeChangesTier(from~ : SponsorshipTier) -> SponsorshipPendingTierChangeChangesTier {
+  SponsorshipPendingTierChangeChangesTier::{
+    from: from,
+  }
+}
+
+///|
 let sponsorship_pending_tier_change_changes_tier_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -80065,6 +89068,14 @@ pub impl ToJson for SponsorshipPendingTierChangeChangesTier with fn to_json(self
 pub(all) struct SponsorshipPendingTierChangeChanges {
   tier : SponsorshipPendingTierChangeChangesTier
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SponsorshipPendingTierChangeChanges` (fields with defaults are optional).
+pub fn SponsorshipPendingTierChangeChanges::SponsorshipPendingTierChangeChanges(tier~ : SponsorshipPendingTierChangeChangesTier) -> SponsorshipPendingTierChangeChanges {
+  SponsorshipPendingTierChangeChanges::{
+    tier: tier,
+  }
+}
 
 ///|
 let sponsorship_pending_tier_change_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["tier"])
@@ -80107,6 +89118,19 @@ pub(all) struct SponsorshipPendingTierChangeSponsorship {
   sponsorable : User
   tier : SponsorshipTier
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SponsorshipPendingTierChangeSponsorship` (fields with defaults are optional).
+pub fn SponsorshipPendingTierChangeSponsorship::SponsorshipPendingTierChangeSponsorship(created_at~ : String, node_id~ : String, privacy_level~ : String, sponsor~ : User, sponsorable~ : User, tier~ : SponsorshipTier) -> SponsorshipPendingTierChangeSponsorship {
+  SponsorshipPendingTierChangeSponsorship::{
+    created_at: created_at,
+    node_id: node_id,
+    privacy_level: privacy_level,
+    sponsor: sponsor,
+    sponsorable: sponsorable,
+    tier: tier,
+  }
+}
 
 ///|
 let sponsorship_pending_tier_change_sponsorship_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "node_id", "privacy_level", "sponsor", "sponsorable", "tier"])
@@ -80225,6 +89249,14 @@ pub(all) struct SponsorshipTierChangedChangesTier {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `SponsorshipTierChangedChangesTier` (fields with defaults are optional).
+pub fn SponsorshipTierChangedChangesTier::SponsorshipTierChangedChangesTier(from~ : SponsorshipTier) -> SponsorshipTierChangedChangesTier {
+  SponsorshipTierChangedChangesTier::{
+    from: from,
+  }
+}
+
+///|
 let sponsorship_tier_changed_changes_tier_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -80260,6 +89292,14 @@ pub impl ToJson for SponsorshipTierChangedChangesTier with fn to_json(self) {
 pub(all) struct SponsorshipTierChangedChanges {
   tier : SponsorshipTierChangedChangesTier
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SponsorshipTierChangedChanges` (fields with defaults are optional).
+pub fn SponsorshipTierChangedChanges::SponsorshipTierChangedChanges(tier~ : SponsorshipTierChangedChangesTier) -> SponsorshipTierChangedChanges {
+  SponsorshipTierChangedChanges::{
+    tier: tier,
+  }
+}
 
 ///|
 let sponsorship_tier_changed_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["tier"])
@@ -80302,6 +89342,19 @@ pub(all) struct SponsorshipTierChangedSponsorship {
   sponsorable : User
   tier : SponsorshipTier
 } derive(Debug, Eq)
+
+///|
+/// Construct a `SponsorshipTierChangedSponsorship` (fields with defaults are optional).
+pub fn SponsorshipTierChangedSponsorship::SponsorshipTierChangedSponsorship(created_at~ : String, node_id~ : String, privacy_level~ : String, sponsor~ : User, sponsorable~ : User, tier~ : SponsorshipTier) -> SponsorshipTierChangedSponsorship {
+  SponsorshipTierChangedSponsorship::{
+    created_at: created_at,
+    node_id: node_id,
+    privacy_level: privacy_level,
+    sponsor: sponsor,
+    sponsorable: sponsorable,
+    tier: tier,
+  }
+}
 
 ///|
 let sponsorship_tier_changed_sponsorship_fields : @typify_rt.Fields = @typify_rt.Fields::new(["created_at", "node_id", "privacy_level", "sponsor", "sponsorable", "tier"])
@@ -80480,6 +89533,15 @@ pub(all) struct StatusEventBranchesItemCommit {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `StatusEventBranchesItemCommit` (fields with defaults are optional).
+pub fn StatusEventBranchesItemCommit::StatusEventBranchesItemCommit(sha~ : String, url~ : String) -> StatusEventBranchesItemCommit {
+  StatusEventBranchesItemCommit::{
+    sha: sha,
+    url: url,
+  }
+}
+
+///|
 let status_event_branches_item_commit_fields : @typify_rt.Fields = @typify_rt.Fields::new(["sha", "url"])
 
 ///|
@@ -80521,6 +89583,16 @@ pub(all) struct StatusEventBranchesItem {
   name : String
   protected_ : Bool
 } derive(Debug, Eq)
+
+///|
+/// Construct a `StatusEventBranchesItem` (fields with defaults are optional).
+pub fn StatusEventBranchesItem::StatusEventBranchesItem(commit~ : StatusEventBranchesItemCommit, name~ : String, protected_~ : Bool) -> StatusEventBranchesItem {
+  StatusEventBranchesItem::{
+    commit: commit,
+    name: name,
+    protected_: protected_,
+  }
+}
 
 ///|
 let status_event_branches_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["commit", "name", "protected"])
@@ -80571,6 +89643,17 @@ pub(all) struct StatusEventCommitCommitAuthor {
   name : String
   username : String?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `StatusEventCommitCommitAuthor` (fields with defaults are optional).
+pub fn StatusEventCommitCommitAuthor::StatusEventCommitCommitAuthor(date~ : @typify_rt.DateTimeUtc, email? : String, name~ : String, username? : String) -> StatusEventCommitCommitAuthor {
+  StatusEventCommitCommitAuthor::{
+    date: date,
+    email: email,
+    name: name,
+    username: username,
+  }
+}
 
 ///|
 let status_event_commit_commit_author_fields : @typify_rt.Fields = @typify_rt.Fields::new(["date", "email", "name", "username"])
@@ -80629,6 +89712,17 @@ pub(all) struct StatusEventCommitCommitCommitter {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `StatusEventCommitCommitCommitter` (fields with defaults are optional).
+pub fn StatusEventCommitCommitCommitter::StatusEventCommitCommitCommitter(date~ : @typify_rt.DateTimeUtc, email? : String, name~ : String, username? : String) -> StatusEventCommitCommitCommitter {
+  StatusEventCommitCommitCommitter::{
+    date: date,
+    email: email,
+    name: name,
+    username: username,
+  }
+}
+
+///|
 let status_event_commit_commit_committer_fields : @typify_rt.Fields = @typify_rt.Fields::new(["date", "email", "name", "username"])
 
 ///|
@@ -80679,6 +89773,15 @@ pub(all) struct StatusEventCommitCommitTree {
   sha : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `StatusEventCommitCommitTree` (fields with defaults are optional).
+pub fn StatusEventCommitCommitTree::StatusEventCommitCommitTree(sha~ : String, url~ : String) -> StatusEventCommitCommitTree {
+  StatusEventCommitCommitTree::{
+    sha: sha,
+    url: url,
+  }
+}
 
 ///|
 let status_event_commit_commit_tree_fields : @typify_rt.Fields = @typify_rt.Fields::new(["sha", "url"])
@@ -80856,6 +89959,17 @@ pub(all) struct StatusEventCommitCommitVerification {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `StatusEventCommitCommitVerification` (fields with defaults are optional).
+pub fn StatusEventCommitCommitVerification::StatusEventCommitCommitVerification(payload? : String, reason~ : StatusEventCommitCommitVerificationReason, signature? : String, verified~ : Bool) -> StatusEventCommitCommitVerification {
+  StatusEventCommitCommitVerification::{
+    payload: payload,
+    reason: reason,
+    signature: signature,
+    verified: verified,
+  }
+}
+
+///|
 let status_event_commit_commit_verification_fields : @typify_rt.Fields = @typify_rt.Fields::new(["payload", "reason", "signature", "verified"])
 
 ///|
@@ -80909,6 +90023,20 @@ pub(all) struct StatusEventCommitCommit {
   url : String
   verification : StatusEventCommitCommitVerification
 } derive(Debug, Eq)
+
+///|
+/// Construct a `StatusEventCommitCommit` (fields with defaults are optional).
+pub fn StatusEventCommitCommit::StatusEventCommitCommit(author~ : StatusEventCommitCommitAuthor, comment_count~ : Int64, committer~ : StatusEventCommitCommitCommitter, message~ : String, tree~ : StatusEventCommitCommitTree, url~ : String, verification~ : StatusEventCommitCommitVerification) -> StatusEventCommitCommit {
+  StatusEventCommitCommit::{
+    author: author,
+    comment_count: comment_count,
+    committer: committer,
+    message: message,
+    tree: tree,
+    url: url,
+    verification: verification,
+  }
+}
 
 ///|
 let status_event_commit_commit_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author", "comment_count", "committer", "message", "tree", "url", "verification"])
@@ -80974,6 +90102,16 @@ pub(all) struct StatusEventCommitParentsItem {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `StatusEventCommitParentsItem` (fields with defaults are optional).
+pub fn StatusEventCommitParentsItem::StatusEventCommitParentsItem(html_url~ : String, sha~ : String, url~ : String) -> StatusEventCommitParentsItem {
+  StatusEventCommitParentsItem::{
+    html_url: html_url,
+    sha: sha,
+    url: url,
+  }
+}
+
+///|
 let status_event_commit_parents_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["html_url", "sha", "url"])
 
 ///|
@@ -81025,6 +90163,22 @@ pub(all) struct StatusEventCommit {
   sha : String
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `StatusEventCommit` (fields with defaults are optional).
+pub fn StatusEventCommit::StatusEventCommit(author? : User, comments_url~ : String, commit~ : StatusEventCommitCommit, committer? : User, html_url~ : String, node_id~ : String, parents~ : Array[StatusEventCommitParentsItem], sha~ : String, url~ : String) -> StatusEventCommit {
+  StatusEventCommit::{
+    author: author,
+    comments_url: comments_url,
+    commit: commit,
+    committer: committer,
+    html_url: html_url,
+    node_id: node_id,
+    parents: parents,
+    sha: sha,
+    url: url,
+  }
+}
 
 ///|
 let status_event_commit_fields : @typify_rt.Fields = @typify_rt.Fields::new(["author", "comments_url", "commit", "committer", "html_url", "node_id", "parents", "sha", "url"])
@@ -81257,6 +90411,24 @@ pub(all) struct TeamParent {
   /// URL for the team
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `TeamParent` (fields with defaults are optional).
+pub fn TeamParent::TeamParent(description? : String, html_url~ : String, id~ : Int64, members_url~ : String, name~ : String, node_id~ : String, permission~ : String, privacy~ : TeamParentPrivacy, repositories_url~ : String, slug~ : String, url~ : String) -> TeamParent {
+  TeamParent::{
+    description: description,
+    html_url: html_url,
+    id: id,
+    members_url: members_url,
+    name: name,
+    node_id: node_id,
+    permission: permission,
+    privacy: privacy,
+    repositories_url: repositories_url,
+    slug: slug,
+    url: url,
+  }
+}
 
 ///|
 let team_parent_fields : @typify_rt.Fields = @typify_rt.Fields::new(["description", "html_url", "id", "members_url", "name", "node_id", "permission", "privacy", "repositories_url", "slug", "url"])
@@ -81644,6 +90816,14 @@ pub(all) struct TeamEditedChangesDescription {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `TeamEditedChangesDescription` (fields with defaults are optional).
+pub fn TeamEditedChangesDescription::TeamEditedChangesDescription(from~ : String) -> TeamEditedChangesDescription {
+  TeamEditedChangesDescription::{
+    from: from,
+  }
+}
+
+///|
 let team_edited_changes_description_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -81682,6 +90862,14 @@ pub(all) struct TeamEditedChangesName {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `TeamEditedChangesName` (fields with defaults are optional).
+pub fn TeamEditedChangesName::TeamEditedChangesName(from~ : String) -> TeamEditedChangesName {
+  TeamEditedChangesName::{
+    from: from,
+  }
+}
+
+///|
 let team_edited_changes_name_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -81718,6 +90906,14 @@ pub(all) struct TeamEditedChangesPrivacy {
   /// The previous version of the team's privacy if the action was `edited`.
   from : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `TeamEditedChangesPrivacy` (fields with defaults are optional).
+pub fn TeamEditedChangesPrivacy::TeamEditedChangesPrivacy(from~ : String) -> TeamEditedChangesPrivacy {
+  TeamEditedChangesPrivacy::{
+    from: from,
+  }
+}
 
 ///|
 let team_edited_changes_privacy_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
@@ -81760,6 +90956,16 @@ pub(all) struct TeamEditedChangesRepositoryPermissionsFrom {
   /// The previous version of the team member's `push` permission on a repository, if the action was `edited`.
   push : Bool?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `TeamEditedChangesRepositoryPermissionsFrom` (fields with defaults are optional).
+pub fn TeamEditedChangesRepositoryPermissionsFrom::TeamEditedChangesRepositoryPermissionsFrom(admin? : Bool, pull? : Bool, push? : Bool) -> TeamEditedChangesRepositoryPermissionsFrom {
+  TeamEditedChangesRepositoryPermissionsFrom::{
+    admin: admin,
+    pull: pull,
+    push: push,
+  }
+}
 
 ///|
 let team_edited_changes_repository_permissions_from_fields : @typify_rt.Fields = @typify_rt.Fields::new(["admin", "pull", "push"])
@@ -81813,6 +91019,14 @@ pub(all) struct TeamEditedChangesRepositoryPermissions {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `TeamEditedChangesRepositoryPermissions` (fields with defaults are optional).
+pub fn TeamEditedChangesRepositoryPermissions::TeamEditedChangesRepositoryPermissions(from~ : TeamEditedChangesRepositoryPermissionsFrom) -> TeamEditedChangesRepositoryPermissions {
+  TeamEditedChangesRepositoryPermissions::{
+    from: from,
+  }
+}
+
+///|
 let team_edited_changes_repository_permissions_fields : @typify_rt.Fields = @typify_rt.Fields::new(["from"])
 
 ///|
@@ -81848,6 +91062,14 @@ pub impl ToJson for TeamEditedChangesRepositoryPermissions with fn to_json(self)
 pub(all) struct TeamEditedChangesRepository {
   permissions : TeamEditedChangesRepositoryPermissions
 } derive(Debug, Eq)
+
+///|
+/// Construct a `TeamEditedChangesRepository` (fields with defaults are optional).
+pub fn TeamEditedChangesRepository::TeamEditedChangesRepository(permissions~ : TeamEditedChangesRepositoryPermissions) -> TeamEditedChangesRepository {
+  TeamEditedChangesRepository::{
+    permissions: permissions,
+  }
+}
 
 ///|
 let team_edited_changes_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["permissions"])
@@ -81888,6 +91110,17 @@ pub(all) struct TeamEditedChanges {
   privacy : TeamEditedChangesPrivacy?
   repository : TeamEditedChangesRepository?
 } derive(Debug, Eq)
+
+///|
+/// Construct a `TeamEditedChanges` (fields with defaults are optional).
+pub fn TeamEditedChanges::TeamEditedChanges(description? : TeamEditedChangesDescription, name? : TeamEditedChangesName, privacy? : TeamEditedChangesPrivacy, repository? : TeamEditedChangesRepository) -> TeamEditedChanges {
+  TeamEditedChanges::{
+    description: description,
+    name: name,
+    privacy: privacy,
+    repository: repository,
+  }
+}
 
 ///|
 let team_edited_changes_fields : @typify_rt.Fields = @typify_rt.Fields::new(["description", "name", "privacy", "repository"])
@@ -82704,6 +91937,16 @@ pub(all) struct WorkflowRunPullRequestsItemBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `WorkflowRunPullRequestsItemBase` (fields with defaults are optional).
+pub fn WorkflowRunPullRequestsItemBase::WorkflowRunPullRequestsItemBase(ref_~ : String, repo~ : RepoRef, sha~ : String) -> WorkflowRunPullRequestsItemBase {
+  WorkflowRunPullRequestsItemBase::{
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+  }
+}
+
+///|
 let workflow_run_pull_requests_item_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["ref", "repo", "sha"])
 
 ///|
@@ -82749,6 +91992,16 @@ pub(all) struct WorkflowRunPullRequestsItemHead {
   repo : RepoRef
   sha : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `WorkflowRunPullRequestsItemHead` (fields with defaults are optional).
+pub fn WorkflowRunPullRequestsItemHead::WorkflowRunPullRequestsItemHead(ref_~ : String, repo~ : RepoRef, sha~ : String) -> WorkflowRunPullRequestsItemHead {
+  WorkflowRunPullRequestsItemHead::{
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+  }
+}
 
 ///|
 let workflow_run_pull_requests_item_head_fields : @typify_rt.Fields = @typify_rt.Fields::new(["ref", "repo", "sha"])
@@ -82798,6 +92051,18 @@ pub(all) struct WorkflowRunPullRequestsItem {
   number : Double
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `WorkflowRunPullRequestsItem` (fields with defaults are optional).
+pub fn WorkflowRunPullRequestsItem::WorkflowRunPullRequestsItem(base~ : WorkflowRunPullRequestsItemBase, head~ : WorkflowRunPullRequestsItemHead, id~ : Double, number~ : Double, url~ : String) -> WorkflowRunPullRequestsItem {
+  WorkflowRunPullRequestsItem::{
+    base: base,
+    head: head,
+    id: id,
+    number: number,
+    url: url,
+  }
+}
 
 ///|
 let workflow_run_pull_requests_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["base", "head", "id", "number", "url"])
@@ -83328,6 +92593,28 @@ pub(all) struct WorkflowJobCompletedWorkflowJob {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `WorkflowJobCompletedWorkflowJob` (fields with defaults are optional).
+pub fn WorkflowJobCompletedWorkflowJob::WorkflowJobCompletedWorkflowJob(check_run_url~ : String, completed_at? : String, conclusion~ : WorkflowJobCompletedWorkflowJobConclusion, head_sha~ : String, html_url~ : String, id~ : Int64, labels~ : Array[String], name~ : String, node_id~ : String, run_id~ : Double, run_url~ : String, started_at~ : String, status~ : WorkflowJobCompletedWorkflowJobStatus, steps~ : Array[WorkflowStep], url~ : String) -> WorkflowJobCompletedWorkflowJob {
+  WorkflowJobCompletedWorkflowJob::{
+    check_run_url: check_run_url,
+    completed_at: completed_at,
+    conclusion: conclusion,
+    head_sha: head_sha,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    name: name,
+    node_id: node_id,
+    run_id: run_id,
+    run_url: run_url,
+    started_at: started_at,
+    status: status,
+    steps: steps,
+    url: url,
+  }
+}
+
+///|
 let workflow_job_completed_workflow_job_fields : @typify_rt.Fields = @typify_rt.Fields::new(["check_run_url", "completed_at", "conclusion", "head_sha", "html_url", "id", "labels", "name", "node_id", "run_id", "run_url", "started_at", "status", "steps", "url"])
 
 ///|
@@ -83551,6 +92838,28 @@ pub(all) struct WorkflowJobQueuedWorkflowJob {
   steps : Array[WorkflowStep]
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `WorkflowJobQueuedWorkflowJob` (fields with defaults are optional).
+pub fn WorkflowJobQueuedWorkflowJob::WorkflowJobQueuedWorkflowJob(check_run_url~ : String, completed_at~ : Unit, conclusion~ : Unit, head_sha~ : String, html_url~ : String, id~ : Int64, labels~ : Array[String], name~ : String, node_id~ : String, run_id~ : Double, run_url~ : String, started_at~ : @typify_rt.DateTimeUtc, status~ : WorkflowJobQueuedWorkflowJobStatus, steps~ : Array[WorkflowStep], url~ : String) -> WorkflowJobQueuedWorkflowJob {
+  WorkflowJobQueuedWorkflowJob::{
+    check_run_url: check_run_url,
+    completed_at: completed_at,
+    conclusion: conclusion,
+    head_sha: head_sha,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    name: name,
+    node_id: node_id,
+    run_id: run_id,
+    run_url: run_url,
+    started_at: started_at,
+    status: status,
+    steps: steps,
+    url: url,
+  }
+}
 
 ///|
 let workflow_job_queued_workflow_job_fields : @typify_rt.Fields = @typify_rt.Fields::new(["check_run_url", "completed_at", "conclusion", "head_sha", "html_url", "id", "labels", "name", "node_id", "run_id", "run_url", "started_at", "status", "steps", "url"])
@@ -83835,6 +93144,28 @@ pub(all) struct WorkflowJobStartedWorkflowJob {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `WorkflowJobStartedWorkflowJob` (fields with defaults are optional).
+pub fn WorkflowJobStartedWorkflowJob::WorkflowJobStartedWorkflowJob(check_run_url~ : String, completed_at~ : Unit, conclusion~ : WorkflowJobStartedWorkflowJobConclusion, head_sha~ : String, html_url~ : String, id~ : Int64, labels~ : Array[String], name~ : String, node_id~ : String, run_id~ : Double, run_url~ : String, started_at~ : String, status~ : WorkflowJobStartedWorkflowJobStatus, steps~ : FixedArray[WorkflowStepInProgress], url~ : String) -> WorkflowJobStartedWorkflowJob {
+  WorkflowJobStartedWorkflowJob::{
+    check_run_url: check_run_url,
+    completed_at: completed_at,
+    conclusion: conclusion,
+    head_sha: head_sha,
+    html_url: html_url,
+    id: id,
+    labels: labels,
+    name: name,
+    node_id: node_id,
+    run_id: run_id,
+    run_url: run_url,
+    started_at: started_at,
+    status: status,
+    steps: steps,
+    url: url,
+  }
+}
+
+///|
 let workflow_job_started_workflow_job_fields : @typify_rt.Fields = @typify_rt.Fields::new(["check_run_url", "completed_at", "conclusion", "head_sha", "html_url", "id", "labels", "name", "node_id", "run_id", "run_url", "started_at", "status", "steps", "url"])
 
 ///|
@@ -84084,6 +93415,16 @@ pub(all) struct WorkflowRunCompletedWorkflowRunPullRequestsItemBase {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `WorkflowRunCompletedWorkflowRunPullRequestsItemBase` (fields with defaults are optional).
+pub fn WorkflowRunCompletedWorkflowRunPullRequestsItemBase::WorkflowRunCompletedWorkflowRunPullRequestsItemBase(ref_~ : String, repo~ : RepoRef, sha~ : String) -> WorkflowRunCompletedWorkflowRunPullRequestsItemBase {
+  WorkflowRunCompletedWorkflowRunPullRequestsItemBase::{
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+  }
+}
+
+///|
 let workflow_run_completed_workflow_run_pull_requests_item_base_fields : @typify_rt.Fields = @typify_rt.Fields::new(["ref", "repo", "sha"])
 
 ///|
@@ -84129,6 +93470,16 @@ pub(all) struct WorkflowRunCompletedWorkflowRunPullRequestsItemHead {
   repo : RepoRef
   sha : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `WorkflowRunCompletedWorkflowRunPullRequestsItemHead` (fields with defaults are optional).
+pub fn WorkflowRunCompletedWorkflowRunPullRequestsItemHead::WorkflowRunCompletedWorkflowRunPullRequestsItemHead(ref_~ : String, repo~ : RepoRef, sha~ : String) -> WorkflowRunCompletedWorkflowRunPullRequestsItemHead {
+  WorkflowRunCompletedWorkflowRunPullRequestsItemHead::{
+    ref_: ref_,
+    repo: repo,
+    sha: sha,
+  }
+}
 
 ///|
 let workflow_run_completed_workflow_run_pull_requests_item_head_fields : @typify_rt.Fields = @typify_rt.Fields::new(["ref", "repo", "sha"])
@@ -84178,6 +93529,18 @@ pub(all) struct WorkflowRunCompletedWorkflowRunPullRequestsItem {
   number : Double
   url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `WorkflowRunCompletedWorkflowRunPullRequestsItem` (fields with defaults are optional).
+pub fn WorkflowRunCompletedWorkflowRunPullRequestsItem::WorkflowRunCompletedWorkflowRunPullRequestsItem(base~ : WorkflowRunCompletedWorkflowRunPullRequestsItemBase, head~ : WorkflowRunCompletedWorkflowRunPullRequestsItemHead, id~ : Double, number~ : Double, url~ : String) -> WorkflowRunCompletedWorkflowRunPullRequestsItem {
+  WorkflowRunCompletedWorkflowRunPullRequestsItem::{
+    base: base,
+    head: head,
+    id: id,
+    number: number,
+    url: url,
+  }
+}
 
 ///|
 let workflow_run_completed_workflow_run_pull_requests_item_fields : @typify_rt.Fields = @typify_rt.Fields::new(["base", "head", "id", "number", "url"])
@@ -84334,6 +93697,40 @@ pub(all) struct WorkflowRunCompletedWorkflowRun {
   workflow_id : Int64
   workflow_url : String
 } derive(Debug, Eq)
+
+///|
+/// Construct a `WorkflowRunCompletedWorkflowRun` (fields with defaults are optional).
+pub fn WorkflowRunCompletedWorkflowRun::WorkflowRunCompletedWorkflowRun(artifacts_url~ : String, cancel_url~ : String, check_suite_id~ : Int64, check_suite_node_id~ : String, check_suite_url~ : String, conclusion~ : WorkflowRunCompletedWorkflowRunConclusion, created_at~ : @typify_rt.DateTimeUtc, event~ : String, head_branch~ : String, head_commit~ : CommitSimple, head_repository~ : RepositoryLite, head_sha~ : String, html_url~ : String, id~ : Int64, jobs_url~ : String, logs_url~ : String, name~ : String, node_id~ : String, pull_requests~ : Array[WorkflowRunCompletedWorkflowRunPullRequestsItem], repository~ : RepositoryLite, rerun_url~ : String, run_number~ : Int64, status~ : WorkflowRunCompletedWorkflowRunStatus, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, workflow_id~ : Int64, workflow_url~ : String) -> WorkflowRunCompletedWorkflowRun {
+  WorkflowRunCompletedWorkflowRun::{
+    artifacts_url: artifacts_url,
+    cancel_url: cancel_url,
+    check_suite_id: check_suite_id,
+    check_suite_node_id: check_suite_node_id,
+    check_suite_url: check_suite_url,
+    conclusion: conclusion,
+    created_at: created_at,
+    event: event,
+    head_branch: head_branch,
+    head_commit: head_commit,
+    head_repository: head_repository,
+    head_sha: head_sha,
+    html_url: html_url,
+    id: id,
+    jobs_url: jobs_url,
+    logs_url: logs_url,
+    name: name,
+    node_id: node_id,
+    pull_requests: pull_requests,
+    repository: repository,
+    rerun_url: rerun_url,
+    run_number: run_number,
+    status: status,
+    updated_at: updated_at,
+    url: url,
+    workflow_id: workflow_id,
+    workflow_url: workflow_url,
+  }
+}
 
 ///|
 let workflow_run_completed_workflow_run_fields : @typify_rt.Fields = @typify_rt.Fields::new(["artifacts_url", "cancel_url", "check_suite_id", "check_suite_node_id", "check_suite_url", "conclusion", "created_at", "event", "head_branch", "head_commit", "head_repository", "head_sha", "html_url", "id", "jobs_url", "logs_url", "name", "node_id", "pull_requests", "repository", "rerun_url", "run_number", "status", "updated_at", "url", "workflow_id", "workflow_url"])

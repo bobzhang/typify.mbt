@@ -10,6 +10,14 @@ pub(all) struct TestGrammarForPatternProperties {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `TestGrammarForPatternProperties` (fields with defaults are optional).
+pub fn TestGrammarForPatternProperties::TestGrammarForPatternProperties(rules~ : Map[TestGrammarForPatternPropertiesRulesKey, String]) -> TestGrammarForPatternProperties {
+  TestGrammarForPatternProperties::{
+    rules: rules,
+  }
+}
+
+///|
 let test_grammar_for_pattern_properties_fields : @typify_rt.Fields = @typify_rt.Fields::new(["rules"])
 
 ///|

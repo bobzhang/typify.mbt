@@ -28,3 +28,23 @@ test "struct with keyword field and optional" {
   assert_true(code.contains("  type_ : String\n"))
   assert_true(code.contains("@typify_rt.Fields::new([\"member\", \"type\"])"))
 }
+
+///|
+test "struct constructor" {
+  let code = gen(
+    (
+      #|{"title": "Conf", "type": "object", "required": ["name", "maybe"],
+      #| "properties": {
+      #|   "name": {"type": "string"},
+      #|   "maybe": {"type": ["string", "null"]},
+      #|   "port": {"type": "integer", "format": "uint16", "default": 8080},
+      #|   "tags": {"type": "array", "items": {"type": "string"}},
+      #|   "note": {"type": "string"}}}
+    ),
+  )
+  assert_true(
+    code.contains(
+      "pub fn Conf::Conf(maybe? : String, name~ : String, note? : String, port? : UInt16, tags? : Array[String] = []) -> Conf {",
+    ),
+  )
+}

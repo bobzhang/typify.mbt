@@ -15,6 +15,7 @@ import {
 pub(all) struct BarProp {
   bar : Json?
 } derive(Eq, @debug.Debug)
+pub fn BarProp::BarProp(bar? : Json) -> Self
 pub fn BarProp::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn BarProp::from_json(Json) -> Self raise @runtime.DeError
 pub fn BarProp::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -26,6 +27,7 @@ pub impl ToJson for BarProp
 pub(all) struct ButNotThat {
   this : Json?
 } derive(Eq, @debug.Debug)
+pub fn ButNotThat::ButNotThat(this? : Json) -> Self
 pub fn ButNotThat::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn ButNotThat::from_json(Json) -> Self raise @runtime.DeError
 pub fn ButNotThat::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -38,6 +40,7 @@ pub(all) struct CommentedTypeMerged {
   x : Json?
   y : Json?
 } derive(Eq, @debug.Debug)
+pub fn CommentedTypeMerged::CommentedTypeMerged(x? : Json, y? : Json) -> Self
 pub fn CommentedTypeMerged::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn CommentedTypeMerged::from_json(Json) -> Self raise @runtime.DeError
 pub fn CommentedTypeMerged::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -61,6 +64,7 @@ pub impl ToJson for HereAndThere
 pub(all) struct JsonResponseBase {
   result : String?
 } derive(Eq, @debug.Debug)
+pub fn JsonResponseBase::JsonResponseBase(result? : String) -> Self
 pub fn JsonResponseBase::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn JsonResponseBase::from_json(Json) -> Self raise @runtime.DeError
 pub fn JsonResponseBase::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -73,6 +77,7 @@ pub(all) struct JsonSuccess {
   msg : String
   result : JsonSuccessResult
 } derive(Eq, @debug.Debug)
+pub fn JsonSuccess::JsonSuccess(msg~ : String, result~ : JsonSuccessResult) -> Self
 pub fn JsonSuccess::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn JsonSuccess::from_json(Json) -> Self raise @runtime.DeError
 pub fn JsonSuccess::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -85,6 +90,7 @@ pub(all) struct JsonSuccessBase {
   msg : String
   result : JsonSuccessBaseResult
 } derive(Eq, @debug.Debug)
+pub fn JsonSuccessBase::JsonSuccessBase(msg~ : String, result~ : JsonSuccessBaseResult) -> Self
 pub fn JsonSuccessBase::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn JsonSuccessBase::from_json(Json) -> Self raise @runtime.DeError
 pub fn JsonSuccessBase::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -123,6 +129,7 @@ pub impl ToJson for JsonSuccessResult
 
 pub(all) struct MergeEmpty {
 } derive(Eq, @debug.Debug)
+pub fn MergeEmpty::MergeEmpty() -> Self
 pub fn MergeEmpty::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn MergeEmpty::from_json(Json) -> Self raise @runtime.DeError
 pub fn MergeEmpty::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -163,6 +170,7 @@ pub(all) struct OrderDependentMerge {
   bar : Json?
   baz : Bool
 } derive(Eq, @debug.Debug)
+pub fn OrderDependentMerge::OrderDependentMerge(bar? : Json, baz~ : Bool) -> Self
 pub fn OrderDependentMerge::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn OrderDependentMerge::from_json(Json) -> Self raise @runtime.DeError
 pub fn OrderDependentMerge::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -174,6 +182,7 @@ pub impl ToJson for OrderDependentMerge
 pub(all) struct Pickingone {
   suspended_by : PickingoneSuspendedBy
 } derive(Eq, @debug.Debug)
+pub fn Pickingone::Pickingone(suspended_by~ : PickingoneSuspendedBy) -> Self
 pub fn Pickingone::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Pickingone::from_json(Json) -> Self raise @runtime.DeError
 pub fn Pickingone::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -185,6 +194,7 @@ pub impl ToJson for Pickingone
 pub(all) struct PickingoneInstallation {
   suspended_by : PickingoneUser?
 } derive(Eq, @debug.Debug)
+pub fn PickingoneInstallation::PickingoneInstallation(suspended_by? : PickingoneUser) -> Self
 pub fn PickingoneInstallation::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn PickingoneInstallation::from_json(Json) -> Self raise @runtime.DeError
 pub fn PickingoneInstallation::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -196,6 +206,7 @@ pub impl ToJson for PickingoneInstallation
 pub(all) struct PickingoneSuspendedBy {
   email : String?
 } derive(Eq, @debug.Debug)
+pub fn PickingoneSuspendedBy::PickingoneSuspendedBy(email? : String) -> Self
 pub fn PickingoneSuspendedBy::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn PickingoneSuspendedBy::from_json(Json) -> Self raise @runtime.DeError
 pub fn PickingoneSuspendedBy::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -207,6 +218,7 @@ pub impl ToJson for PickingoneSuspendedBy
 pub(all) struct PickingoneUser {
   email : String?
 } derive(Eq, @debug.Debug)
+pub fn PickingoneUser::PickingoneUser(email? : String) -> Self
 pub fn PickingoneUser::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn PickingoneUser::from_json(Json) -> Self raise @runtime.DeError
 pub fn PickingoneUser::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -218,6 +230,7 @@ pub impl ToJson for PickingoneUser
 pub(all) struct TrimFat {
   a : Json
 } derive(Eq, @debug.Debug)
+pub fn TrimFat::TrimFat(a~ : Json) -> Self
 pub fn TrimFat::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn TrimFat::from_json(Json) -> Self raise @runtime.DeError
 pub fn TrimFat::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -239,6 +252,7 @@ pub impl ToJson for TriplePattern
 pub(all) struct UnchangedByMerge {
   tag : UnchangedByMergeTag
 } derive(Eq, @debug.Debug)
+pub fn UnchangedByMerge::UnchangedByMerge(tag~ : UnchangedByMergeTag) -> Self
 pub fn UnchangedByMerge::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn UnchangedByMerge::from_json(Json) -> Self raise @runtime.DeError
 pub fn UnchangedByMerge::from_json_str(StringView) -> Self raise @runtime.DeError
@@ -304,6 +318,7 @@ pub impl ToJson for Unsatisfiable3
 pub(all) struct Unsatisfiable3A {
   action : Unsatisfiable3C?
 } derive(Eq, @debug.Debug)
+pub fn Unsatisfiable3A::Unsatisfiable3A(action? : Unsatisfiable3C) -> Self
 pub fn Unsatisfiable3A::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Unsatisfiable3A::from_json(Json) -> Self raise @runtime.DeError
 pub fn Unsatisfiable3A::from_json_str(StringView) -> Self raise @runtime.DeError

@@ -16,6 +16,7 @@ pub(all) struct Node {
   children : Array[Node]
   value : Int64?
 } derive(Eq, @debug.Debug)
+pub fn Node::Node(children? : Array[Self], value? : Int64) -> Self
 pub fn Node::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Node::from_json(Json) -> Self raise @runtime.DeError
 pub fn Node::from_json_str(StringView) -> Self raise @runtime.DeError
