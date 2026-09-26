@@ -31,7 +31,7 @@ pub fn AggregateTransform::AggregateTransform(as_? : AggregateTransformAs, cross
     as_: as_,
     cross: cross,
     drop: match drop {
-      Some(v) => v
+      Some(v) => (v)
       None => default_aggregate_transform_drop() catch { e => abort("invalid default for AggregateTransform.drop: \{e}") }
     },
     fields: fields,
@@ -1389,31 +1389,31 @@ pub fn BinTransform::BinTransform(anchor? : BinTransformAnchor, as_? : BinTransf
   BinTransform::{
     anchor: anchor,
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_bin_transform_as() catch { e => abort("invalid default for BinTransform.as_: \{e}") }
     },
     base: match base {
-      Some(v) => v
+      Some(v) => (v)
       None => default_bin_transform_base() catch { e => abort("invalid default for BinTransform.base: \{e}") }
     },
     divide: match divide {
-      Some(v) => v
+      Some(v) => (v)
       None => default_bin_transform_divide() catch { e => abort("invalid default for BinTransform.divide: \{e}") }
     },
     extent: extent,
     field: field,
     interval: match interval {
-      Some(v) => v
+      Some(v) => (v)
       None => default_bin_transform_interval() catch { e => abort("invalid default for BinTransform.interval: \{e}") }
     },
     maxbins: match maxbins {
-      Some(v) => v
+      Some(v) => (v)
       None => default_bin_transform_maxbins() catch { e => abort("invalid default for BinTransform.maxbins: \{e}") }
     },
     minstep: minstep,
     name: name,
     nice: match nice {
-      Some(v) => v
+      Some(v) => (v)
       None => default_bin_transform_nice() catch { e => abort("invalid default for BinTransform.nice: \{e}") }
     },
     signal: signal,
@@ -2350,7 +2350,7 @@ pub fn ContourTransform::ContourTransform(bandwidth? : ContourTransformBandwidth
     signal: signal,
     size: size,
     smooth: match smooth {
-      Some(v) => v
+      Some(v) => (v)
       None => default_contour_transform_smooth() catch { e => abort("invalid default for ContourTransform.smooth: \{e}") }
     },
     thresholds: thresholds,
@@ -2493,16 +2493,16 @@ fn default_countpattern_transform_pattern() -> CountpatternTransformPattern rais
 pub fn CountpatternTransform::CountpatternTransform(as_? : CountpatternTransformAs, case? : CountpatternTransformCase, field~ : CountpatternTransformField, pattern? : CountpatternTransformPattern, signal? : String, stopwords? : CountpatternTransformStopwords, type_~ : CountpatternTransformType) -> CountpatternTransform {
   CountpatternTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_countpattern_transform_as() catch { e => abort("invalid default for CountpatternTransform.as_: \{e}") }
     },
     case: match case {
-      Some(v) => v
+      Some(v) => (v)
       None => default_countpattern_transform_case() catch { e => abort("invalid default for CountpatternTransform.case: \{e}") }
     },
     field: field,
     pattern: match pattern {
-      Some(v) => v
+      Some(v) => (v)
       None => default_countpattern_transform_pattern() catch { e => abort("invalid default for CountpatternTransform.pattern: \{e}") }
     },
     signal: signal,
@@ -2589,7 +2589,7 @@ fn default_cross_transform_as() -> CrossTransformAs raise @typify_rt.DeError {
 pub fn CrossTransform::CrossTransform(as_? : CrossTransformAs, filter? : ExprString, signal? : String, type_~ : CrossTransformType) -> CrossTransform {
   CrossTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_cross_transform_as() catch { e => abort("invalid default for CrossTransform.as_: \{e}") }
     },
     filter: filter,
@@ -2960,21 +2960,21 @@ fn default_density_transform_minsteps() -> DensityTransformMinsteps raise @typif
 pub fn DensityTransform::DensityTransform(as_? : DensityTransformAs, distribution? : DensityTransformDistribution, extent? : DensityTransformExtent, maxsteps? : DensityTransformMaxsteps, method_? : DensityTransformMethod, minsteps? : DensityTransformMinsteps, signal? : String, steps? : DensityTransformSteps, type_~ : DensityTransformType) -> DensityTransform {
   DensityTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_density_transform_as() catch { e => abort("invalid default for DensityTransform.as_: \{e}") }
     },
     distribution: distribution,
     extent: extent,
     maxsteps: match maxsteps {
-      Some(v) => v
+      Some(v) => (v)
       None => default_density_transform_maxsteps() catch { e => abort("invalid default for DensityTransform.maxsteps: \{e}") }
     },
     method_: match method_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_density_transform_method() catch { e => abort("invalid default for DensityTransform.method_: \{e}") }
     },
     minsteps: match minsteps {
-      Some(v) => v
+      Some(v) => (v)
       None => default_density_transform_minsteps() catch { e => abort("invalid default for DensityTransform.minsteps: \{e}") }
     },
     signal: signal,
@@ -3123,7 +3123,7 @@ fn default_dotbin_transform_as() -> DotbinTransformAs raise @typify_rt.DeError {
 pub fn DotbinTransform::DotbinTransform(as_? : DotbinTransformAs, field~ : DotbinTransformField, groupby? : DotbinTransformGroupby, signal? : String, smooth? : DotbinTransformSmooth, step? : DotbinTransformStep, type_~ : DotbinTransformType) -> DotbinTransform {
   DotbinTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_dotbin_transform_as() catch { e => abort("invalid default for DotbinTransform.as_: \{e}") }
     },
     field: field,
@@ -4313,7 +4313,7 @@ fn default_fold_transform_as() -> FoldTransformAs raise @typify_rt.DeError {
 pub fn FoldTransform::FoldTransform(as_? : FoldTransformAs, fields~ : FoldTransformFields, signal? : String, type_~ : FoldTransformType) -> FoldTransform {
   FoldTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_fold_transform_as() catch { e => abort("invalid default for FoldTransform.as_: \{e}") }
     },
     fields: fields,
@@ -4460,21 +4460,21 @@ fn default_force_transform_velocity_decay() -> ForceTransformVelocityDecay raise
 pub fn ForceTransform::ForceTransform(alpha? : ForceTransformAlpha, alpha_min? : ForceTransformAlphaMin, alpha_target? : ForceTransformAlphaTarget, as_? : ForceTransformAs, forces? : Array[ForceTransformForcesItem] = [], iterations? : ForceTransformIterations, restart? : ForceTransformRestart, signal? : String, static_? : ForceTransformStatic, type_~ : ForceTransformType, velocity_decay? : ForceTransformVelocityDecay) -> ForceTransform {
   ForceTransform::{
     alpha: match alpha {
-      Some(v) => v
+      Some(v) => (v)
       None => default_force_transform_alpha() catch { e => abort("invalid default for ForceTransform.alpha: \{e}") }
     },
     alpha_min: match alpha_min {
-      Some(v) => v
+      Some(v) => (v)
       None => default_force_transform_alpha_min() catch { e => abort("invalid default for ForceTransform.alpha_min: \{e}") }
     },
     alpha_target: alpha_target,
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_force_transform_as() catch { e => abort("invalid default for ForceTransform.as_: \{e}") }
     },
     forces: forces,
     iterations: match iterations {
-      Some(v) => v
+      Some(v) => (v)
       None => default_force_transform_iterations() catch { e => abort("invalid default for ForceTransform.iterations: \{e}") }
     },
     restart: restart,
@@ -4482,7 +4482,7 @@ pub fn ForceTransform::ForceTransform(alpha? : ForceTransformAlpha, alpha_min? :
     static_: static_,
     type_: type_,
     velocity_decay: match velocity_decay {
-      Some(v) => v
+      Some(v) => (v)
       None => default_force_transform_velocity_decay() catch { e => abort("invalid default for ForceTransform.velocity_decay: \{e}") }
     },
   }
@@ -4779,7 +4779,7 @@ fn default_geopath_transform_as() -> GeopathTransformAs raise @typify_rt.DeError
 pub fn GeopathTransform::GeopathTransform(as_? : GeopathTransformAs, field? : GeopathTransformField, point_radius? : GeopathTransformPointRadius, projection? : String, signal? : String, type_~ : GeopathTransformType) -> GeopathTransform {
   GeopathTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_geopath_transform_as() catch { e => abort("invalid default for GeopathTransform.as_: \{e}") }
     },
     field: field,
@@ -4869,7 +4869,7 @@ fn default_geopoint_transform_as() -> GeopointTransformAs raise @typify_rt.DeErr
 pub fn GeopointTransform::GeopointTransform(as_? : GeopointTransformAs, fields~ : GeopointTransformFields, projection~ : String, signal? : String, type_~ : GeopointTransformType) -> GeopointTransform {
   GeopointTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_geopoint_transform_as() catch { e => abort("invalid default for GeopointTransform.as_: \{e}") }
     },
     fields: fields,
@@ -4954,11 +4954,11 @@ fn default_geoshape_transform_field() -> GeoshapeTransformField raise @typify_rt
 pub fn GeoshapeTransform::GeoshapeTransform(as_? : GeoshapeTransformAs, field? : GeoshapeTransformField, point_radius? : GeoshapeTransformPointRadius, projection? : String, signal? : String, type_~ : GeoshapeTransformType) -> GeoshapeTransform {
   GeoshapeTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_geoshape_transform_as() catch { e => abort("invalid default for GeoshapeTransform.as_: \{e}") }
     },
     field: match field {
-      Some(v) => v
+      Some(v) => (v)
       None => default_geoshape_transform_field() catch { e => abort("invalid default for GeoshapeTransform.field: \{e}") }
     },
     point_radius: point_radius,
@@ -5086,17 +5086,17 @@ pub fn GraticuleTransform::GraticuleTransform(extent? : GraticuleTransformExtent
     extent_major: extent_major,
     extent_minor: extent_minor,
     precision: match precision {
-      Some(v) => v
+      Some(v) => (v)
       None => default_graticule_transform_precision() catch { e => abort("invalid default for GraticuleTransform.precision: \{e}") }
     },
     signal: signal,
     step: step,
     step_major: match step_major {
-      Some(v) => v
+      Some(v) => (v)
       None => default_graticule_transform_step_major() catch { e => abort("invalid default for GraticuleTransform.step_major: \{e}") }
     },
     step_minor: match step_minor {
-      Some(v) => v
+      Some(v) => (v)
       None => default_graticule_transform_step_minor() catch { e => abort("invalid default for GraticuleTransform.step_minor: \{e}") }
     },
     type_: type_,
@@ -5264,14 +5264,14 @@ fn default_heatmap_transform_resolve() -> HeatmapTransformResolve raise @typify_
 pub fn HeatmapTransform::HeatmapTransform(as_? : HeatmapTransformAs, color? : HeatmapTransformColor, field? : HeatmapTransformField, opacity? : HeatmapTransformOpacity, resolve? : HeatmapTransformResolve, signal? : String, type_~ : HeatmapTransformType) -> HeatmapTransform {
   HeatmapTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_heatmap_transform_as() catch { e => abort("invalid default for HeatmapTransform.as_: \{e}") }
     },
     color: color,
     field: field,
     opacity: opacity,
     resolve: match resolve {
-      Some(v) => v
+      Some(v) => (v)
       None => default_heatmap_transform_resolve() catch { e => abort("invalid default for HeatmapTransform.resolve: \{e}") }
     },
     signal: signal,
@@ -5428,7 +5428,7 @@ pub fn ImputeTransform::ImputeTransform(field~ : ImputeTransformField, groupby? 
     key: key,
     keyvals: keyvals,
     method_: match method_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_impute_transform_method() catch { e => abort("invalid default for ImputeTransform.method_: \{e}") }
     },
     signal: signal,
@@ -5546,27 +5546,27 @@ fn default_isocontour_transform_zero() -> IsocontourTransformZero raise @typify_
 pub fn IsocontourTransform::IsocontourTransform(as_? : IsocontourTransformAs, field? : IsocontourTransformField, levels? : IsocontourTransformLevels, nice? : IsocontourTransformNice, resolve? : IsocontourTransformResolve, scale? : IsocontourTransformScale, signal? : String, smooth? : IsocontourTransformSmooth, thresholds? : IsocontourTransformThresholds, translate? : IsocontourTransformTranslate, type_~ : IsocontourTransformType, zero? : IsocontourTransformZero) -> IsocontourTransform {
   IsocontourTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_isocontour_transform_as() catch { e => abort("invalid default for IsocontourTransform.as_: \{e}") }
     },
     field: field,
     levels: levels,
     nice: nice,
     resolve: match resolve {
-      Some(v) => v
+      Some(v) => (v)
       None => default_isocontour_transform_resolve() catch { e => abort("invalid default for IsocontourTransform.resolve: \{e}") }
     },
     scale: scale,
     signal: signal,
     smooth: match smooth {
-      Some(v) => v
+      Some(v) => (v)
       None => default_isocontour_transform_smooth() catch { e => abort("invalid default for IsocontourTransform.smooth: \{e}") }
     },
     thresholds: thresholds,
     translate: translate,
     type_: type_,
     zero: match zero {
-      Some(v) => v
+      Some(v) => (v)
       None => default_isocontour_transform_zero() catch { e => abort("invalid default for IsocontourTransform.zero: \{e}") }
     },
   }
@@ -5780,7 +5780,7 @@ fn default_kde2d_transform_as() -> Kde2dTransformAs raise @typify_rt.DeError {
 pub fn Kde2dTransform::Kde2dTransform(as_? : Kde2dTransformAs, bandwidth? : Kde2dTransformBandwidth, cell_size? : Kde2dTransformCellSize, counts? : Kde2dTransformCounts, groupby? : Kde2dTransformGroupby, signal? : String, size~ : Kde2dTransformSize, type_~ : Kde2dTransformType, weight? : Kde2dTransformWeight, x~ : Kde2dTransformX, y~ : Kde2dTransformY) -> Kde2dTransform {
   Kde2dTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_kde2d_transform_as() catch { e => abort("invalid default for Kde2dTransform.as_: \{e}") }
     },
     bandwidth: bandwidth,
@@ -5922,7 +5922,7 @@ fn default_kde_transform_resolve() -> KdeTransformResolve raise @typify_rt.DeErr
 pub fn KdeTransform::KdeTransform(as_? : KdeTransformAs, bandwidth? : KdeTransformBandwidth, counts? : KdeTransformCounts, cumulative? : KdeTransformCumulative, extent? : KdeTransformExtent, field~ : KdeTransformField, groupby? : KdeTransformGroupby, maxsteps? : KdeTransformMaxsteps, minsteps? : KdeTransformMinsteps, resolve? : KdeTransformResolve, signal? : String, steps? : KdeTransformSteps, type_~ : KdeTransformType) -> KdeTransform {
   KdeTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_kde_transform_as() catch { e => abort("invalid default for KdeTransform.as_: \{e}") }
     },
     bandwidth: bandwidth,
@@ -5932,15 +5932,15 @@ pub fn KdeTransform::KdeTransform(as_? : KdeTransformAs, bandwidth? : KdeTransfo
     field: field,
     groupby: groupby,
     maxsteps: match maxsteps {
-      Some(v) => v
+      Some(v) => (v)
       None => default_kde_transform_maxsteps() catch { e => abort("invalid default for KdeTransform.maxsteps: \{e}") }
     },
     minsteps: match minsteps {
-      Some(v) => v
+      Some(v) => (v)
       None => default_kde_transform_minsteps() catch { e => abort("invalid default for KdeTransform.minsteps: \{e}") }
     },
     resolve: match resolve {
-      Some(v) => v
+      Some(v) => (v)
       None => default_kde_transform_resolve() catch { e => abort("invalid default for KdeTransform.resolve: \{e}") }
     },
     signal: signal,
@@ -6152,29 +6152,29 @@ fn default_label_transform_offset() -> LabelTransformOffset raise @typify_rt.DeE
 pub fn LabelTransform::LabelTransform(anchor? : LabelTransformAnchor, as_? : LabelTransformAs, avoid_base_mark? : LabelTransformAvoidBaseMark, avoid_marks? : LabelTransformAvoidMarks, line_anchor? : LabelTransformLineAnchor, mark_index? : LabelTransformMarkIndex, method_? : LabelTransformMethod, offset? : LabelTransformOffset, padding? : LabelTransformPadding, signal? : String, size~ : LabelTransformSize, sort? : Compare_, type_~ : LabelTransformType) -> LabelTransform {
   LabelTransform::{
     anchor: match anchor {
-      Some(v) => v
+      Some(v) => (v)
       None => default_label_transform_anchor() catch { e => abort("invalid default for LabelTransform.anchor: \{e}") }
     },
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_label_transform_as() catch { e => abort("invalid default for LabelTransform.as_: \{e}") }
     },
     avoid_base_mark: match avoid_base_mark {
-      Some(v) => v
+      Some(v) => (v)
       None => default_label_transform_avoid_base_mark() catch { e => abort("invalid default for LabelTransform.avoid_base_mark: \{e}") }
     },
     avoid_marks: avoid_marks,
     line_anchor: match line_anchor {
-      Some(v) => v
+      Some(v) => (v)
       None => default_label_transform_line_anchor() catch { e => abort("invalid default for LabelTransform.line_anchor: \{e}") }
     },
     mark_index: mark_index,
     method_: match method_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_label_transform_method() catch { e => abort("invalid default for LabelTransform.method_: \{e}") }
     },
     offset: match offset {
-      Some(v) => v
+      Some(v) => (v)
       None => default_label_transform_offset() catch { e => abort("invalid default for LabelTransform.offset: \{e}") }
     },
     padding: padding,
@@ -9470,33 +9470,33 @@ fn default_linkpath_transform_target_y() -> LinkpathTransformTargetY raise @typi
 pub fn LinkpathTransform::LinkpathTransform(as_? : LinkpathTransformAs, orient? : LinkpathTransformOrient, require? : SignalRef, shape? : LinkpathTransformShape, signal? : String, source_x? : LinkpathTransformSourceX, source_y? : LinkpathTransformSourceY, target_x? : LinkpathTransformTargetX, target_y? : LinkpathTransformTargetY, type_~ : LinkpathTransformType) -> LinkpathTransform {
   LinkpathTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_linkpath_transform_as() catch { e => abort("invalid default for LinkpathTransform.as_: \{e}") }
     },
     orient: match orient {
-      Some(v) => v
+      Some(v) => (v)
       None => default_linkpath_transform_orient() catch { e => abort("invalid default for LinkpathTransform.orient: \{e}") }
     },
     require: require,
     shape: match shape {
-      Some(v) => v
+      Some(v) => (v)
       None => default_linkpath_transform_shape() catch { e => abort("invalid default for LinkpathTransform.shape: \{e}") }
     },
     signal: signal,
     source_x: match source_x {
-      Some(v) => v
+      Some(v) => (v)
       None => default_linkpath_transform_source_x() catch { e => abort("invalid default for LinkpathTransform.source_x: \{e}") }
     },
     source_y: match source_y {
-      Some(v) => v
+      Some(v) => (v)
       None => default_linkpath_transform_source_y() catch { e => abort("invalid default for LinkpathTransform.source_y: \{e}") }
     },
     target_x: match target_x {
-      Some(v) => v
+      Some(v) => (v)
       None => default_linkpath_transform_target_x() catch { e => abort("invalid default for LinkpathTransform.target_x: \{e}") }
     },
     target_y: match target_y {
-      Some(v) => v
+      Some(v) => (v)
       None => default_linkpath_transform_target_y() catch { e => abort("invalid default for LinkpathTransform.target_y: \{e}") }
     },
     type_: type_,
@@ -9669,7 +9669,7 @@ pub fn LoessTransform::LoessTransform(as_? : LoessTransformAs, bandwidth? : Loes
   LoessTransform::{
     as_: as_,
     bandwidth: match bandwidth {
-      Some(v) => v
+      Some(v) => (v)
       None => default_loess_transform_bandwidth() catch { e => abort("invalid default for LoessTransform.bandwidth: \{e}") }
     },
     groupby: groupby,
@@ -10864,7 +10864,7 @@ fn default_pack_transform_as() -> PackTransformAs raise @typify_rt.DeError {
 pub fn PackTransform::PackTransform(as_? : PackTransformAs, field? : PackTransformField, padding? : PackTransformPadding, radius? : PackTransformRadius, signal? : String, size? : PackTransformSize, sort? : Compare_, type_~ : PackTransformType) -> PackTransform {
   PackTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_pack_transform_as() catch { e => abort("invalid default for PackTransform.as_: \{e}") }
     },
     field: field,
@@ -11116,7 +11116,7 @@ fn default_partition_transform_as() -> PartitionTransformAs raise @typify_rt.DeE
 pub fn PartitionTransform::PartitionTransform(as_? : PartitionTransformAs, field? : PartitionTransformField, padding? : PartitionTransformPadding, round? : PartitionTransformRound, signal? : String, size? : PartitionTransformSize, sort? : Compare_, type_~ : PartitionTransformType) -> PartitionTransform {
   PartitionTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_partition_transform_as() catch { e => abort("invalid default for PartitionTransform.as_: \{e}") }
     },
     field: field,
@@ -11227,11 +11227,11 @@ fn default_pie_transform_end_angle() -> PieTransformEndAngle raise @typify_rt.De
 pub fn PieTransform::PieTransform(as_? : PieTransformAs, end_angle? : PieTransformEndAngle, field? : PieTransformField, signal? : String, sort? : PieTransformSort, start_angle? : PieTransformStartAngle, type_~ : PieTransformType) -> PieTransform {
   PieTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_pie_transform_as() catch { e => abort("invalid default for PieTransform.as_: \{e}") }
     },
     end_angle: match end_angle {
-      Some(v) => v
+      Some(v) => (v)
       None => default_pie_transform_end_angle() catch { e => abort("invalid default for PieTransform.end_angle: \{e}") }
     },
     field: field,
@@ -11332,7 +11332,7 @@ pub fn PivotTransform::PivotTransform(field~ : PivotTransformField, groupby? : P
     key: key,
     limit: limit,
     op: match op {
-      Some(v) => v
+      Some(v) => (v)
       None => default_pivot_transform_op() catch { e => abort("invalid default for PivotTransform.op: \{e}") }
     },
     signal: signal,
@@ -11653,7 +11653,7 @@ fn default_quantile_transform_step() -> QuantileTransformStep raise @typify_rt.D
 pub fn QuantileTransform::QuantileTransform(as_? : QuantileTransformAs, field~ : QuantileTransformField, groupby? : QuantileTransformGroupby, probs? : QuantileTransformProbs, signal? : String, step? : QuantileTransformStep, type_~ : QuantileTransformType) -> QuantileTransform {
   QuantileTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_quantile_transform_as() catch { e => abort("invalid default for QuantileTransform.as_: \{e}") }
     },
     field: field,
@@ -11661,7 +11661,7 @@ pub fn QuantileTransform::QuantileTransform(as_? : QuantileTransformAs, field~ :
     probs: probs,
     signal: signal,
     step: match step {
-      Some(v) => v
+      Some(v) => (v)
       None => default_quantile_transform_step() catch { e => abort("invalid default for QuantileTransform.step: \{e}") }
     },
     type_: type_,
@@ -11869,11 +11869,11 @@ pub fn RegressionTransform::RegressionTransform(as_? : RegressionTransformAs, ex
     extent: extent,
     groupby: groupby,
     method_: match method_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_regression_transform_method() catch { e => abort("invalid default for RegressionTransform.method_: \{e}") }
     },
     order: match order {
-      Some(v) => v
+      Some(v) => (v)
       None => default_regression_transform_order() catch { e => abort("invalid default for RegressionTransform.order: \{e}") }
     },
     params: params,
@@ -12092,7 +12092,7 @@ pub fn SampleTransform::SampleTransform(signal? : String, size? : SampleTransfor
   SampleTransform::{
     signal: signal,
     size: match size {
-      Some(v) => v
+      Some(v) => (v)
       None => default_sample_transform_size() catch { e => abort("invalid default for SampleTransform.size: \{e}") }
     },
     type_: type_,
@@ -13866,13 +13866,13 @@ fn default_sequence_transform_step() -> SequenceTransformStep raise @typify_rt.D
 pub fn SequenceTransform::SequenceTransform(as_? : SequenceTransformAs, signal? : String, start~ : SequenceTransformStart, step? : SequenceTransformStep, stop~ : SequenceTransformStop, type_~ : SequenceTransformType) -> SequenceTransform {
   SequenceTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_sequence_transform_as() catch { e => abort("invalid default for SequenceTransform.as_: \{e}") }
     },
     signal: signal,
     start: start,
     step: match step {
-      Some(v) => v
+      Some(v) => (v)
       None => default_sequence_transform_step() catch { e => abort("invalid default for SequenceTransform.step: \{e}") }
     },
     stop: stop,
@@ -14282,13 +14282,13 @@ fn default_stack_transform_offset() -> StackTransformOffset raise @typify_rt.DeE
 pub fn StackTransform::StackTransform(as_? : StackTransformAs, field? : StackTransformField, groupby? : StackTransformGroupby, offset? : StackTransformOffset, signal? : String, sort? : Compare_, type_~ : StackTransformType) -> StackTransform {
   StackTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_stack_transform_as() catch { e => abort("invalid default for StackTransform.as_: \{e}") }
     },
     field: field,
     groupby: groupby,
     offset: match offset {
-      Some(v) => v
+      Some(v) => (v)
       None => default_stack_transform_offset() catch { e => abort("invalid default for StackTransform.offset: \{e}") }
     },
     signal: signal,
@@ -15215,26 +15215,26 @@ fn default_timeunit_transform_timezone() -> TimeunitTransformTimezone raise @typ
 pub fn TimeunitTransform::TimeunitTransform(as_? : TimeunitTransformAs, extent? : TimeunitTransformExtent, field~ : TimeunitTransformField, interval? : TimeunitTransformInterval, maxbins? : TimeunitTransformMaxbins, signal? : String, step? : TimeunitTransformStep, timezone? : TimeunitTransformTimezone, type_~ : TimeunitTransformType, units? : TimeunitTransformUnits) -> TimeunitTransform {
   TimeunitTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_timeunit_transform_as() catch { e => abort("invalid default for TimeunitTransform.as_: \{e}") }
     },
     extent: extent,
     field: field,
     interval: match interval {
-      Some(v) => v
+      Some(v) => (v)
       None => default_timeunit_transform_interval() catch { e => abort("invalid default for TimeunitTransform.interval: \{e}") }
     },
     maxbins: match maxbins {
-      Some(v) => v
+      Some(v) => (v)
       None => default_timeunit_transform_maxbins() catch { e => abort("invalid default for TimeunitTransform.maxbins: \{e}") }
     },
     signal: signal,
     step: match step {
-      Some(v) => v
+      Some(v) => (v)
       None => default_timeunit_transform_step() catch { e => abort("invalid default for TimeunitTransform.step: \{e}") }
     },
     timezone: match timezone {
-      Some(v) => v
+      Some(v) => (v)
       None => default_timeunit_transform_timezone() catch { e => abort("invalid default for TimeunitTransform.timezone: \{e}") }
     },
     type_: type_,
@@ -16457,17 +16457,17 @@ fn default_tree_transform_separation() -> TreeTransformSeparation raise @typify_
 pub fn TreeTransform::TreeTransform(as_? : TreeTransformAs, field? : TreeTransformField, method_? : TreeTransformMethod, node_size? : TreeTransformNodeSize, separation? : TreeTransformSeparation, signal? : String, size? : TreeTransformSize, sort? : Compare_, type_~ : TreeTransformType) -> TreeTransform {
   TreeTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_tree_transform_as() catch { e => abort("invalid default for TreeTransform.as_: \{e}") }
     },
     field: field,
     method_: match method_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_tree_transform_method() catch { e => abort("invalid default for TreeTransform.method_: \{e}") }
     },
     node_size: node_size,
     separation: match separation {
-      Some(v) => v
+      Some(v) => (v)
       None => default_tree_transform_separation() catch { e => abort("invalid default for TreeTransform.separation: \{e}") }
     },
     signal: signal,
@@ -16644,12 +16644,12 @@ fn default_treemap_transform_ratio() -> TreemapTransformRatio raise @typify_rt.D
 pub fn TreemapTransform::TreemapTransform(as_? : TreemapTransformAs, field? : TreemapTransformField, method_? : TreemapTransformMethod, padding? : TreemapTransformPadding, padding_bottom? : TreemapTransformPaddingBottom, padding_inner? : TreemapTransformPaddingInner, padding_left? : TreemapTransformPaddingLeft, padding_outer? : TreemapTransformPaddingOuter, padding_right? : TreemapTransformPaddingRight, padding_top? : TreemapTransformPaddingTop, ratio? : TreemapTransformRatio, round? : TreemapTransformRound, signal? : String, size? : TreemapTransformSize, sort? : Compare_, type_~ : TreemapTransformType) -> TreemapTransform {
   TreemapTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_treemap_transform_as() catch { e => abort("invalid default for TreemapTransform.as_: \{e}") }
     },
     field: field,
     method_: match method_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_treemap_transform_method() catch { e => abort("invalid default for TreemapTransform.method_: \{e}") }
     },
     padding: padding,
@@ -16660,7 +16660,7 @@ pub fn TreemapTransform::TreemapTransform(as_? : TreemapTransformAs, field? : Tr
     padding_right: padding_right,
     padding_top: padding_top,
     ratio: match ratio {
-      Some(v) => v
+      Some(v) => (v)
       None => default_treemap_transform_ratio() catch { e => abort("invalid default for TreemapTransform.ratio: \{e}") }
     },
     round: round,
@@ -16813,11 +16813,11 @@ fn default_voronoi_transform_extent() -> VoronoiTransformExtent raise @typify_rt
 pub fn VoronoiTransform::VoronoiTransform(as_? : VoronoiTransformAs, extent? : VoronoiTransformExtent, signal? : String, size? : VoronoiTransformSize, type_~ : VoronoiTransformType, x~ : VoronoiTransformX, y~ : VoronoiTransformY) -> VoronoiTransform {
   VoronoiTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_voronoi_transform_as() catch { e => abort("invalid default for VoronoiTransform.as_: \{e}") }
     },
     extent: match extent {
-      Some(v) => v
+      Some(v) => (v)
       None => default_voronoi_transform_extent() catch { e => abort("invalid default for VoronoiTransform.extent: \{e}") }
     },
     signal: signal,
@@ -16914,7 +16914,7 @@ pub fn WindowTransform::WindowTransform(as_? : WindowTransformAs, fields? : Wind
     as_: as_,
     fields: fields,
     frame: match frame {
-      Some(v) => v
+      Some(v) => (v)
       None => default_window_transform_frame() catch { e => abort("invalid default for WindowTransform.frame: \{e}") }
     },
     groupby: groupby,
@@ -17063,27 +17063,27 @@ fn default_wordcloud_transform_font_weight() -> WordcloudTransformFontWeight rai
 pub fn WordcloudTransform::WordcloudTransform(as_? : WordcloudTransformAs, font? : WordcloudTransformFont, font_size? : WordcloudTransformFontSize, font_size_range? : WordcloudTransformFontSizeRange, font_style? : WordcloudTransformFontStyle, font_weight? : WordcloudTransformFontWeight, padding? : WordcloudTransformPadding, rotate? : WordcloudTransformRotate, signal? : String, size? : WordcloudTransformSize, spiral? : WordcloudTransformSpiral, text? : WordcloudTransformText, type_~ : WordcloudTransformType) -> WordcloudTransform {
   WordcloudTransform::{
     as_: match as_ {
-      Some(v) => v
+      Some(v) => (v)
       None => default_wordcloud_transform_as() catch { e => abort("invalid default for WordcloudTransform.as_: \{e}") }
     },
     font: match font {
-      Some(v) => v
+      Some(v) => (v)
       None => default_wordcloud_transform_font() catch { e => abort("invalid default for WordcloudTransform.font: \{e}") }
     },
     font_size: match font_size {
-      Some(v) => v
+      Some(v) => (v)
       None => default_wordcloud_transform_font_size() catch { e => abort("invalid default for WordcloudTransform.font_size: \{e}") }
     },
     font_size_range: match font_size_range {
-      Some(v) => v
+      Some(v) => (v)
       None => default_wordcloud_transform_font_size_range() catch { e => abort("invalid default for WordcloudTransform.font_size_range: \{e}") }
     },
     font_style: match font_style {
-      Some(v) => v
+      Some(v) => (v)
       None => default_wordcloud_transform_font_style() catch { e => abort("invalid default for WordcloudTransform.font_style: \{e}") }
     },
     font_weight: match font_weight {
-      Some(v) => v
+      Some(v) => (v)
       None => default_wordcloud_transform_font_weight() catch { e => abort("invalid default for WordcloudTransform.font_weight: \{e}") }
     },
     padding: padding,

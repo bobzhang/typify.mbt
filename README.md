@@ -58,9 +58,11 @@ import {
 Every generated type `T` has the following:
 
 - For structs, a constructor `T(...)`, the counterpart of the Rust builder:
-  - fields without a default are required labelled arguments;
-  - `Option` fields default to `None`;
-  - fields with a serde or schema default use that default.
+  - fields without a default are required labelled arguments (`name~ : String`);
+  - `Option` fields are optional arguments taking the inner value (`note? : String`,
+    `None` when omitted);
+  - fields with a serde or schema default are optional arguments with that default,
+    e.g. `port? : UInt16 = 8080` or `level? : Int64 = 3` for an `Option` field.
 
   For example, `Veggie(veggie_name="leek", veggie_like=true)` or `Veggies()`.
 - `T::from_json_str(text)`: decode JSON text, like `serde_json::from_str`.

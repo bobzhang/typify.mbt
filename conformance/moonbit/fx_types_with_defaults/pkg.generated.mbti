@@ -29,7 +29,7 @@ pub(all) struct MrDefaultNumbers {
   little_u16 : UInt16
   little_u8 : Byte
 } derive(Eq, @debug.Debug)
-pub fn MrDefaultNumbers::MrDefaultNumbers(big_nullable? : UInt64?, little_u16? : UInt16, little_u8? : Byte) -> Self
+pub fn MrDefaultNumbers::MrDefaultNumbers(big_nullable? : UInt64, little_u16? : UInt16, little_u8? : Byte) -> Self
 pub fn MrDefaultNumbers::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn MrDefaultNumbers::from_json(Json) -> Self raise @runtime.DeError
 pub fn MrDefaultNumbers::from_json_str(StringView) -> Self raise @runtime.DeError

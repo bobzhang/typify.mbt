@@ -17898,38 +17898,14 @@ pub(all) struct Repository {
 } derive(Debug, Eq)
 
 ///|
-fn default_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
-fn default_repository_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
-fn default_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
 /// Construct a `Repository` (fields with defaults are optional).
-pub fn Repository::Repository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool, allow_rebase_merge? : Bool, allow_squash_merge? : Bool, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> Repository {
+pub fn Repository::Repository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool = true, allow_rebase_merge? : Bool = true, allow_squash_merge? : Bool = true, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> Repository {
   Repository::{
     allow_auto_merge: allow_auto_merge,
     allow_forking: allow_forking,
-    allow_merge_commit: match allow_merge_commit {
-      Some(v) => v
-      None => default_repository_allow_merge_commit() catch { e => abort("invalid default for Repository.allow_merge_commit: \{e}") }
-    },
-    allow_rebase_merge: match allow_rebase_merge {
-      Some(v) => v
-      None => default_repository_allow_rebase_merge() catch { e => abort("invalid default for Repository.allow_rebase_merge: \{e}") }
-    },
-    allow_squash_merge: match allow_squash_merge {
-      Some(v) => v
-      None => default_repository_allow_squash_merge() catch { e => abort("invalid default for Repository.allow_squash_merge: \{e}") }
-    },
+    allow_merge_commit: allow_merge_commit,
+    allow_rebase_merge: allow_rebase_merge,
+    allow_squash_merge: allow_squash_merge,
     archive_url: archive_url,
     archived: archived,
     assignees_url: assignees_url,
@@ -18014,6 +17990,21 @@ pub fn Repository::Repository(allow_auto_merge? : Bool = false, allow_forking? :
 
 ///|
 let repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
+
+///|
+fn default_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
+
+///|
+fn default_repository_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
+
+///|
+fn default_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
 
 ///|
 pub impl @typify_rt.Serde for Repository with fn deserialize(d) {
@@ -42681,38 +42672,14 @@ pub(all) struct ForkEventForkee {
 } derive(Debug, Eq)
 
 ///|
-fn default_fork_event_forkee_allow_merge_commit() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
-fn default_fork_event_forkee_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
-fn default_fork_event_forkee_allow_squash_merge() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
 /// Construct a `ForkEventForkee` (fields with defaults are optional).
-pub fn ForkEventForkee::ForkEventForkee(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool, allow_rebase_merge? : Bool, allow_squash_merge? : Bool, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : ForkEventForkeeCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : ForkEventForkeePermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : ForkEventForkeePushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> ForkEventForkee {
+pub fn ForkEventForkee::ForkEventForkee(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool = true, allow_rebase_merge? : Bool = true, allow_squash_merge? : Bool = true, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : ForkEventForkeeCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : ForkEventForkeePermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : ForkEventForkeePushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> ForkEventForkee {
   ForkEventForkee::{
     allow_auto_merge: allow_auto_merge,
     allow_forking: allow_forking,
-    allow_merge_commit: match allow_merge_commit {
-      Some(v) => v
-      None => default_fork_event_forkee_allow_merge_commit() catch { e => abort("invalid default for ForkEventForkee.allow_merge_commit: \{e}") }
-    },
-    allow_rebase_merge: match allow_rebase_merge {
-      Some(v) => v
-      None => default_fork_event_forkee_allow_rebase_merge() catch { e => abort("invalid default for ForkEventForkee.allow_rebase_merge: \{e}") }
-    },
-    allow_squash_merge: match allow_squash_merge {
-      Some(v) => v
-      None => default_fork_event_forkee_allow_squash_merge() catch { e => abort("invalid default for ForkEventForkee.allow_squash_merge: \{e}") }
-    },
+    allow_merge_commit: allow_merge_commit,
+    allow_rebase_merge: allow_rebase_merge,
+    allow_squash_merge: allow_squash_merge,
     archive_url: archive_url,
     archived: archived,
     assignees_url: assignees_url,
@@ -42797,6 +42764,21 @@ pub fn ForkEventForkee::ForkEventForkee(allow_auto_merge? : Bool = false, allow_
 
 ///|
 let fork_event_forkee_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
+
+///|
+fn default_fork_event_forkee_allow_merge_commit() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
+
+///|
+fn default_fork_event_forkee_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
+
+///|
+fn default_fork_event_forkee_allow_squash_merge() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForkEventForkee with fn deserialize(d) {
@@ -70219,38 +70201,14 @@ pub(all) struct PublicEventRepository {
 } derive(Debug, Eq)
 
 ///|
-fn default_public_event_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
-fn default_public_event_repository_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
-fn default_public_event_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
 /// Construct a `PublicEventRepository` (fields with defaults are optional).
-pub fn PublicEventRepository::PublicEventRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool, allow_rebase_merge? : Bool, allow_squash_merge? : Bool, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : PublicEventRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : PublicEventRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : PublicEventRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> PublicEventRepository {
+pub fn PublicEventRepository::PublicEventRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool = true, allow_rebase_merge? : Bool = true, allow_squash_merge? : Bool = true, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : PublicEventRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : PublicEventRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : PublicEventRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> PublicEventRepository {
   PublicEventRepository::{
     allow_auto_merge: allow_auto_merge,
     allow_forking: allow_forking,
-    allow_merge_commit: match allow_merge_commit {
-      Some(v) => v
-      None => default_public_event_repository_allow_merge_commit() catch { e => abort("invalid default for PublicEventRepository.allow_merge_commit: \{e}") }
-    },
-    allow_rebase_merge: match allow_rebase_merge {
-      Some(v) => v
-      None => default_public_event_repository_allow_rebase_merge() catch { e => abort("invalid default for PublicEventRepository.allow_rebase_merge: \{e}") }
-    },
-    allow_squash_merge: match allow_squash_merge {
-      Some(v) => v
-      None => default_public_event_repository_allow_squash_merge() catch { e => abort("invalid default for PublicEventRepository.allow_squash_merge: \{e}") }
-    },
+    allow_merge_commit: allow_merge_commit,
+    allow_rebase_merge: allow_rebase_merge,
+    allow_squash_merge: allow_squash_merge,
     archive_url: archive_url,
     archived: archived,
     assignees_url: assignees_url,
@@ -70335,6 +70293,21 @@ pub fn PublicEventRepository::PublicEventRepository(allow_auto_merge? : Bool = f
 
 ///|
 let public_event_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
+
+///|
+fn default_public_event_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
+
+///|
+fn default_public_event_repository_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
+
+///|
+fn default_public_event_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
 
 ///|
 pub impl @typify_rt.Serde for PublicEventRepository with fn deserialize(d) {
@@ -80925,38 +80898,14 @@ pub(all) struct RepositoryArchivedRepository {
 } derive(Debug, Eq)
 
 ///|
-fn default_repository_archived_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
-fn default_repository_archived_repository_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
-fn default_repository_archived_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
 /// Construct a `RepositoryArchivedRepository` (fields with defaults are optional).
-pub fn RepositoryArchivedRepository::RepositoryArchivedRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool, allow_rebase_merge? : Bool, allow_squash_merge? : Bool, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryArchivedRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryArchivedRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryArchivedRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> RepositoryArchivedRepository {
+pub fn RepositoryArchivedRepository::RepositoryArchivedRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool = true, allow_rebase_merge? : Bool = true, allow_squash_merge? : Bool = true, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryArchivedRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryArchivedRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryArchivedRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> RepositoryArchivedRepository {
   RepositoryArchivedRepository::{
     allow_auto_merge: allow_auto_merge,
     allow_forking: allow_forking,
-    allow_merge_commit: match allow_merge_commit {
-      Some(v) => v
-      None => default_repository_archived_repository_allow_merge_commit() catch { e => abort("invalid default for RepositoryArchivedRepository.allow_merge_commit: \{e}") }
-    },
-    allow_rebase_merge: match allow_rebase_merge {
-      Some(v) => v
-      None => default_repository_archived_repository_allow_rebase_merge() catch { e => abort("invalid default for RepositoryArchivedRepository.allow_rebase_merge: \{e}") }
-    },
-    allow_squash_merge: match allow_squash_merge {
-      Some(v) => v
-      None => default_repository_archived_repository_allow_squash_merge() catch { e => abort("invalid default for RepositoryArchivedRepository.allow_squash_merge: \{e}") }
-    },
+    allow_merge_commit: allow_merge_commit,
+    allow_rebase_merge: allow_rebase_merge,
+    allow_squash_merge: allow_squash_merge,
     archive_url: archive_url,
     archived: archived,
     assignees_url: assignees_url,
@@ -81041,6 +80990,21 @@ pub fn RepositoryArchivedRepository::RepositoryArchivedRepository(allow_auto_mer
 
 ///|
 let repository_archived_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
+
+///|
+fn default_repository_archived_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
+
+///|
+fn default_repository_archived_repository_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
+
+///|
+fn default_repository_archived_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryArchivedRepository with fn deserialize(d) {
@@ -82132,38 +82096,14 @@ pub(all) struct RepositoryPrivatizedRepository {
 } derive(Debug, Eq)
 
 ///|
-fn default_repository_privatized_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
-fn default_repository_privatized_repository_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
-fn default_repository_privatized_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
 /// Construct a `RepositoryPrivatizedRepository` (fields with defaults are optional).
-pub fn RepositoryPrivatizedRepository::RepositoryPrivatizedRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool, allow_rebase_merge? : Bool, allow_squash_merge? : Bool, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryPrivatizedRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryPrivatizedRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryPrivatizedRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> RepositoryPrivatizedRepository {
+pub fn RepositoryPrivatizedRepository::RepositoryPrivatizedRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool = true, allow_rebase_merge? : Bool = true, allow_squash_merge? : Bool = true, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryPrivatizedRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryPrivatizedRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryPrivatizedRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> RepositoryPrivatizedRepository {
   RepositoryPrivatizedRepository::{
     allow_auto_merge: allow_auto_merge,
     allow_forking: allow_forking,
-    allow_merge_commit: match allow_merge_commit {
-      Some(v) => v
-      None => default_repository_privatized_repository_allow_merge_commit() catch { e => abort("invalid default for RepositoryPrivatizedRepository.allow_merge_commit: \{e}") }
-    },
-    allow_rebase_merge: match allow_rebase_merge {
-      Some(v) => v
-      None => default_repository_privatized_repository_allow_rebase_merge() catch { e => abort("invalid default for RepositoryPrivatizedRepository.allow_rebase_merge: \{e}") }
-    },
-    allow_squash_merge: match allow_squash_merge {
-      Some(v) => v
-      None => default_repository_privatized_repository_allow_squash_merge() catch { e => abort("invalid default for RepositoryPrivatizedRepository.allow_squash_merge: \{e}") }
-    },
+    allow_merge_commit: allow_merge_commit,
+    allow_rebase_merge: allow_rebase_merge,
+    allow_squash_merge: allow_squash_merge,
     archive_url: archive_url,
     archived: archived,
     assignees_url: assignees_url,
@@ -82248,6 +82188,21 @@ pub fn RepositoryPrivatizedRepository::RepositoryPrivatizedRepository(allow_auto
 
 ///|
 let repository_privatized_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
+
+///|
+fn default_repository_privatized_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
+
+///|
+fn default_repository_privatized_repository_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
+
+///|
+fn default_repository_privatized_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryPrivatizedRepository with fn deserialize(d) {
@@ -82964,38 +82919,14 @@ pub(all) struct RepositoryPublicizedRepository {
 } derive(Debug, Eq)
 
 ///|
-fn default_repository_publicized_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
-fn default_repository_publicized_repository_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
-fn default_repository_publicized_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
 /// Construct a `RepositoryPublicizedRepository` (fields with defaults are optional).
-pub fn RepositoryPublicizedRepository::RepositoryPublicizedRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool, allow_rebase_merge? : Bool, allow_squash_merge? : Bool, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryPublicizedRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryPublicizedRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryPublicizedRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> RepositoryPublicizedRepository {
+pub fn RepositoryPublicizedRepository::RepositoryPublicizedRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool = true, allow_rebase_merge? : Bool = true, allow_squash_merge? : Bool = true, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryPublicizedRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryPublicizedRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryPublicizedRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> RepositoryPublicizedRepository {
   RepositoryPublicizedRepository::{
     allow_auto_merge: allow_auto_merge,
     allow_forking: allow_forking,
-    allow_merge_commit: match allow_merge_commit {
-      Some(v) => v
-      None => default_repository_publicized_repository_allow_merge_commit() catch { e => abort("invalid default for RepositoryPublicizedRepository.allow_merge_commit: \{e}") }
-    },
-    allow_rebase_merge: match allow_rebase_merge {
-      Some(v) => v
-      None => default_repository_publicized_repository_allow_rebase_merge() catch { e => abort("invalid default for RepositoryPublicizedRepository.allow_rebase_merge: \{e}") }
-    },
-    allow_squash_merge: match allow_squash_merge {
-      Some(v) => v
-      None => default_repository_publicized_repository_allow_squash_merge() catch { e => abort("invalid default for RepositoryPublicizedRepository.allow_squash_merge: \{e}") }
-    },
+    allow_merge_commit: allow_merge_commit,
+    allow_rebase_merge: allow_rebase_merge,
+    allow_squash_merge: allow_squash_merge,
     archive_url: archive_url,
     archived: archived,
     assignees_url: assignees_url,
@@ -83080,6 +83011,21 @@ pub fn RepositoryPublicizedRepository::RepositoryPublicizedRepository(allow_auto
 
 ///|
 let repository_publicized_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
+
+///|
+fn default_repository_publicized_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
+
+///|
+fn default_repository_publicized_repository_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
+
+///|
+fn default_repository_publicized_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryPublicizedRepository with fn deserialize(d) {
@@ -84186,38 +84132,14 @@ pub(all) struct RepositoryUnarchivedRepository {
 } derive(Debug, Eq)
 
 ///|
-fn default_repository_unarchived_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
-fn default_repository_unarchived_repository_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
-fn default_repository_unarchived_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
-  @typify_rt.default_value("true", @typify_rt.de_bool)
-}
-
-///|
 /// Construct a `RepositoryUnarchivedRepository` (fields with defaults are optional).
-pub fn RepositoryUnarchivedRepository::RepositoryUnarchivedRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool, allow_rebase_merge? : Bool, allow_squash_merge? : Bool, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryUnarchivedRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryUnarchivedRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryUnarchivedRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> RepositoryUnarchivedRepository {
+pub fn RepositoryUnarchivedRepository::RepositoryUnarchivedRepository(allow_auto_merge? : Bool = false, allow_forking? : Bool, allow_merge_commit? : Bool = true, allow_rebase_merge? : Bool = true, allow_squash_merge? : Bool = true, archive_url~ : String, archived~ : Bool, assignees_url~ : String, blobs_url~ : String, branches_url~ : String, clone_url~ : String, collaborators_url~ : String, comments_url~ : String, commits_url~ : String, compare_url~ : String, contents_url~ : String, contributors_url~ : String, created_at~ : RepositoryUnarchivedRepositoryCreatedAt, default_branch~ : String, delete_branch_on_merge? : Bool = false, deployments_url~ : String, description? : String, disabled? : Bool, downloads_url~ : String, events_url~ : String, fork~ : Bool, forks~ : Int64, forks_count~ : Int64, forks_url~ : String, full_name~ : String, git_commits_url~ : String, git_refs_url~ : String, git_tags_url~ : String, git_url~ : String, has_downloads~ : Bool, has_issues~ : Bool, has_pages~ : Bool, has_projects~ : Bool, has_wiki~ : Bool, homepage? : String, hooks_url~ : String, html_url~ : String, id~ : Int64, issue_comment_url~ : String, issue_events_url~ : String, issues_url~ : String, keys_url~ : String, labels_url~ : String, language? : String, languages_url~ : String, license? : License, master_branch? : String, merges_url~ : String, milestones_url~ : String, mirror_url? : String, name~ : String, node_id~ : String, notifications_url~ : String, open_issues~ : Int64, open_issues_count~ : Int64, organization? : String, owner~ : User, permissions? : RepositoryUnarchivedRepositoryPermissions, private~ : Bool, public? : Bool, pulls_url~ : String, pushed_at~ : RepositoryUnarchivedRepositoryPushedAt, releases_url~ : String, size~ : Int64, ssh_url~ : String, stargazers? : Int64, stargazers_count~ : Int64, stargazers_url~ : String, statuses_url~ : String, subscribers_url~ : String, subscription_url~ : String, svn_url~ : String, tags_url~ : String, teams_url~ : String, trees_url~ : String, updated_at~ : @typify_rt.DateTimeUtc, url~ : String, watchers~ : Int64, watchers_count~ : Int64) -> RepositoryUnarchivedRepository {
   RepositoryUnarchivedRepository::{
     allow_auto_merge: allow_auto_merge,
     allow_forking: allow_forking,
-    allow_merge_commit: match allow_merge_commit {
-      Some(v) => v
-      None => default_repository_unarchived_repository_allow_merge_commit() catch { e => abort("invalid default for RepositoryUnarchivedRepository.allow_merge_commit: \{e}") }
-    },
-    allow_rebase_merge: match allow_rebase_merge {
-      Some(v) => v
-      None => default_repository_unarchived_repository_allow_rebase_merge() catch { e => abort("invalid default for RepositoryUnarchivedRepository.allow_rebase_merge: \{e}") }
-    },
-    allow_squash_merge: match allow_squash_merge {
-      Some(v) => v
-      None => default_repository_unarchived_repository_allow_squash_merge() catch { e => abort("invalid default for RepositoryUnarchivedRepository.allow_squash_merge: \{e}") }
-    },
+    allow_merge_commit: allow_merge_commit,
+    allow_rebase_merge: allow_rebase_merge,
+    allow_squash_merge: allow_squash_merge,
     archive_url: archive_url,
     archived: archived,
     assignees_url: assignees_url,
@@ -84302,6 +84224,21 @@ pub fn RepositoryUnarchivedRepository::RepositoryUnarchivedRepository(allow_auto
 
 ///|
 let repository_unarchived_repository_fields : @typify_rt.Fields = @typify_rt.Fields::new(["allow_auto_merge", "allow_forking", "allow_merge_commit", "allow_rebase_merge", "allow_squash_merge", "archive_url", "archived", "assignees_url", "blobs_url", "branches_url", "clone_url", "collaborators_url", "comments_url", "commits_url", "compare_url", "contents_url", "contributors_url", "created_at", "default_branch", "delete_branch_on_merge", "deployments_url", "description", "disabled", "downloads_url", "events_url", "fork", "forks", "forks_count", "forks_url", "full_name", "git_commits_url", "git_refs_url", "git_tags_url", "git_url", "has_downloads", "has_issues", "has_pages", "has_projects", "has_wiki", "homepage", "hooks_url", "html_url", "id", "issue_comment_url", "issue_events_url", "issues_url", "keys_url", "labels_url", "language", "languages_url", "license", "master_branch", "merges_url", "milestones_url", "mirror_url", "name", "node_id", "notifications_url", "open_issues", "open_issues_count", "organization", "owner", "permissions", "private", "public", "pulls_url", "pushed_at", "releases_url", "size", "ssh_url", "stargazers", "stargazers_count", "stargazers_url", "statuses_url", "subscribers_url", "subscription_url", "svn_url", "tags_url", "teams_url", "trees_url", "updated_at", "url", "watchers", "watchers_count"])
+
+///|
+fn default_repository_unarchived_repository_allow_merge_commit() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
+
+///|
+fn default_repository_unarchived_repository_allow_rebase_merge() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
+
+///|
+fn default_repository_unarchived_repository_allow_squash_merge() -> Bool raise @typify_rt.DeError {
+  @typify_rt.default_value("true", @typify_rt.de_bool)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryUnarchivedRepository with fn deserialize(d) {

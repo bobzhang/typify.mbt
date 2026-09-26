@@ -19,7 +19,7 @@ fn default_doodad_when() -> @typify_rt.DateTimeUtc raise @typify_rt.DeError {
 pub fn Doodad::Doodad(when? : @typify_rt.DateTimeUtc) -> Doodad {
   Doodad::{
     when: match when {
-      Some(v) => v
+      Some(v) => (v)
       None => default_doodad_when() catch { e => abort("invalid default for Doodad.when: \{e}") }
     },
   }
@@ -65,6 +65,19 @@ pub(all) struct MrDefaultNumbers {
 } derive(Debug, Eq)
 
 ///|
+/// Construct a `MrDefaultNumbers` (fields with defaults are optional).
+pub fn MrDefaultNumbers::MrDefaultNumbers(big_nullable? : UInt64 = 1, little_u16? : UInt16 = 3, little_u8? : Byte = 2) -> MrDefaultNumbers {
+  MrDefaultNumbers::{
+    big_nullable: Some(big_nullable),
+    little_u16: little_u16,
+    little_u8: little_u8,
+  }
+}
+
+///|
+let mr_default_numbers_fields : @typify_rt.Fields = @typify_rt.Fields::new(["big_nullable", "little_u16", "little_u8"])
+
+///|
 fn default_mr_default_numbers_big_nullable() -> UInt64? raise @typify_rt.DeError {
   @typify_rt.default_value("1", (d : @typify_rt.De) => @typify_rt.de_option(d, @typify_rt.de_nonzero_u64))
 }
@@ -78,28 +91,6 @@ fn default_mr_default_numbers_little_u16() -> UInt16 raise @typify_rt.DeError {
 fn default_mr_default_numbers_little_u8() -> Byte raise @typify_rt.DeError {
   @typify_rt.default_value("2", @typify_rt.de_nonzero_u8)
 }
-
-///|
-/// Construct a `MrDefaultNumbers` (fields with defaults are optional).
-pub fn MrDefaultNumbers::MrDefaultNumbers(big_nullable? : UInt64?, little_u16? : UInt16, little_u8? : Byte) -> MrDefaultNumbers {
-  MrDefaultNumbers::{
-    big_nullable: match big_nullable {
-      Some(v) => v
-      None => default_mr_default_numbers_big_nullable() catch { e => abort("invalid default for MrDefaultNumbers.big_nullable: \{e}") }
-    },
-    little_u16: match little_u16 {
-      Some(v) => v
-      None => default_mr_default_numbers_little_u16() catch { e => abort("invalid default for MrDefaultNumbers.little_u16: \{e}") }
-    },
-    little_u8: match little_u8 {
-      Some(v) => v
-      None => default_mr_default_numbers_little_u8() catch { e => abort("invalid default for MrDefaultNumbers.little_u8: \{e}") }
-    },
-  }
-}
-
-///|
-let mr_default_numbers_fields : @typify_rt.Fields = @typify_rt.Fields::new(["big_nullable", "little_u16", "little_u8"])
 
 ///|
 pub impl @typify_rt.Serde for MrDefaultNumbers with fn deserialize(d) {
@@ -206,11 +197,11 @@ fn default_test_bed_id() -> @typify_rt.Uuid raise @typify_rt.DeError {
 pub fn TestBed::TestBed(any? : Array[Json], id? : @typify_rt.Uuid) -> TestBed {
   TestBed::{
     any: match any {
-      Some(v) => v
+      Some(v) => (v)
       None => default_test_bed_any() catch { e => abort("invalid default for TestBed.any: \{e}") }
     },
     id: match id {
-      Some(v) => v
+      Some(v) => (v)
       None => default_test_bed_id() catch { e => abort("invalid default for TestBed.id: \{e}") }
     },
   }
@@ -291,7 +282,7 @@ fn default_u_int_container_max_path() -> UInt_ raise @typify_rt.DeError {
 pub fn UIntContainer::UIntContainer(max_path? : UInt_) -> UIntContainer {
   UIntContainer::{
     max_path: match max_path {
-      Some(v) => v
+      Some(v) => (v)
       None => default_u_int_container_max_path() catch { e => abort("invalid default for UIntContainer.max_path: \{e}") }
     },
   }

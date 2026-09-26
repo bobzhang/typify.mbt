@@ -33,18 +33,21 @@ test "struct with keyword field and optional" {
 test "struct constructor" {
   let code = gen(
     (
-      #|{"title": "Conf", "type": "object", "required": ["name", "maybe"],
+      #|{"title": "Conf", "type": "object", "required": ["name"],
       #| "properties": {
       #|   "name": {"type": "string"},
-      #|   "maybe": {"type": ["string", "null"]},
+      #|   "level": {"type": ["integer", "null"], "default": 3},
       #|   "port": {"type": "integer", "format": "uint16", "default": 8080},
+      #|   "mode": {"type": "string", "enum": ["fast", "slow"], "default": "slow"},
       #|   "tags": {"type": "array", "items": {"type": "string"}},
       #|   "note": {"type": "string"}}}
     ),
   )
-  assert_true(
-    code.contains(
-      "pub fn Conf::Conf(maybe? : String, name~ : String, note? : String, port? : UInt16, tags? : Array[String] = []) -> Conf {",
-    ),
+  let start = code.find("pub fn Conf::Conf(").unwrap()
+  let end = start + code[start:].find("{").unwrap()
+  inspect(
+    code[start:end],
+    content="pub fn Conf::Conf(level? : Int64 = 3, mode? : ConfMode = ConfMode::Slow, name~ : String, note? : String, port? : UInt16 = 8080, tags? : Array[String] = []) -> Conf ",
   )
+  assert_true(code.contains("    level: Some(level),\n"))
 }

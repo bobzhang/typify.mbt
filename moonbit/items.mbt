@@ -283,12 +283,24 @@ fn Gen::struct_constructor(
   for i, p in d.properties {
     let f = fields[i]
     let ty = self.mbt_type(p.type_id)
+    let fallback = (v : @serde_json.Value, wrap : String) => {
+      // A default without a literal form is decoded from its JSON, once.
+      let default_fn = self.default_fn(out, d.name, p.name, p.type_id, v)
+      "\{f}: match \{f} {\n    Some(v) => \{wrap}(v)\n    None => \{default_fn}() catch { e => abort(\"invalid default for \{name}.\{f}: \\{e}\") }\n  }"
+    }
     match (p.state, entry(self.space, p.type_id).details) {
-      (Default(v), _) => {
-        let default_fn = self.default_fn(out, d.name, p.name, p.type_id, v)
-        params.push("\{f}? : \{ty}")
+      // An `Option` with a default: the argument is the inner value.
+      (Default(v), Option(inner)) if !(v is Null) => {
+        params.push(
+          "\{f}? : \{option_inner(ty)}" +
+          self.default_literal(inner, v).map(l => " = " + l).unwrap_or(""),
+        )
         inits.push(
-          "\{f}: match \{f} {\n    Some(v) => v\n    None => \{default_fn}() catch { e => abort(\"invalid default for \{name}.\{f}: \\{e}\") }\n  }",
+          if self.default_literal(inner, v) is Some(_) {
+            "\{f}: Some(\{f})"
+          } else {
+            fallback(v, "Some")
+          },
         )
       }
       (_, Option(inner)) => {
@@ -297,6 +309,17 @@ fn Gen::struct_constructor(
         params.push("\{f}? : \{option_inner(ty)}")
         inits.push("\{f}: \{f}")
       }
+      (Default(v), _) =>
+        match self.default_literal(p.type_id, v) {
+          Some(l) => {
+            params.push("\{f}? : \{ty} = \{l}")
+            inits.push("\{f}: \{f}")
+          }
+          None => {
+            params.push("\{f}? : \{ty}")
+            inits.push(fallback(v, ""))
+          }
+        }
       (Optional, _) => {
         params.push("\{f}? : \{ty} = \{self.zero_value(p.type_id)}")
         inits.push("\{f}: \{f}")
@@ -315,6 +338,71 @@ fn Gen::struct_constructor(
   out.write_string(
     "///|\n/// Construct a `\{name}` (fields with defaults are optional).\npub fn \{name}::\{name}(\{params.join(", ")}) -> \{name} {\n\{body}\n}\n\n",
   )
+}
+
+///|
+/// A MoonBit literal for a schema default of type `id`, when it has a
+/// simple one (scalars, strings, simple enum variants, arrays and options of
+/// those).
+fn Gen::default_literal(
+  self : Gen,
+  id : @typify.TypeId,
+  v : @serde_json.Value,
+) -> String? {
+  match (entry(self.space, id).details, v) {
+    (Boolean, Bool(b)) => Some(b.to_string())
+    (String, String(s)) => Some(str_lit(s))
+    (Native(n), String(s)) if native_kind(n) is (NString | NPath) =>
+      Some(str_lit(s))
+    (Integer(name), Number(n)) => {
+      let (lo, hi) : (Int64, UInt64) = match int_kind(name) {
+        I8 => (-128L, 127UL)
+        U8 => (0L, 255UL)
+        I16 => (-32768L, 32767UL)
+        U16 => (0L, 65535UL)
+        I32 => (-2147483648L, 2147483647UL)
+        U32 => (0L, 4294967295UL)
+        I64 => (-9223372036854775808L, 9223372036854775807UL)
+        U64 => (0L, 18446744073709551615UL)
+        NonZero(_) => (1L, 18446744073709551615UL)
+      }
+      match (n.as_u64(), n.as_i64()) {
+        (Some(u), _) if u <= hi && (lo <= 0L || u >= lo.reinterpret_as_uint64()) =>
+          Some(u.to_string())
+        (None, Some(i)) if i >= lo => Some(i.to_string())
+        _ => None
+      }
+    }
+    (Float(_), Number(n)) => {
+      let text = n.as_f64().to_string()
+      if text.contains("e") || text.contains("inf") || text.contains("nan") {
+        None
+      } else if text.contains(".") {
+        Some(text)
+      } else {
+        Some(text + ".0")
+      }
+    }
+    (Box(inner), _) => self.default_literal(inner, v)
+    (Option(_), Null) => Some("None")
+    (Option(inner), _) => self.default_literal(inner, v).map(l => "Some(\{l})")
+    (Vec(inner), Array(xs)) => {
+      let items = []
+      for x in xs {
+        guard self.default_literal(inner, x) is Some(l) else { return None }
+        items.push(l)
+      }
+      Some("[\{items.join(", ")}]")
+    }
+    (Enum(e), String(s)) if e.tag_type is External &&
+      e.variants.iter().all(v => v.details is Simple) =>
+      match e.variants.search_by(v => v.raw_name == s) {
+        Some(i) =>
+          Some("\{self.type_name(id)}::\{self.ctors.get(id.0).unwrap()[i]}")
+        None => None
+      }
+    _ => None
+  }
 }
 
 ///|
