@@ -1092,8 +1092,8 @@ fn Gen::visibility(self : Gen, id : @typify.TypeId) -> Visibility {
 ///|
 fn Gen::constructor_enabled(self : Gen, id : @typify.TypeId) -> Bool {
   match self.type_options.get(id.0) {
-    Some({ constructor: Some(c), .. }) => c
-    _ => self.options.constructor
+    Some({ generate_constructor: Some(c), .. }) => c
+    _ => self.options.generate_constructor
   }
 }
 

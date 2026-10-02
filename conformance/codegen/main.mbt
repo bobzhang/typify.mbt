@@ -12,7 +12,7 @@ fn read(path : String) -> String {
 fn schemas_settings(
   settings : @typify.TypeSpaceSettings,
 ) -> @typify.TypeSpaceSettings {
-  guard (try? @serde_json.parse("{\"enum\": [1, \"one\"]}")) is Ok(Object(o)) else {
+  guard (try! @serde_json.parse("{\"enum\": [1, \"one\"]}")) is Object(o) else {
     abort("bad schema")
   }
   let conv = try! @schema.decode_schema_object(o)
@@ -101,8 +101,10 @@ fn write(path : String, text : String) -> Unit {
 
 ///|
 /// Generate one MoonBit package per schema under `base` (import path
-/// `bobzhang/typify/<base>/<pkg>`), plus `base/dispatch.mbt` and
-/// `base/moon.pkg`. `compile_only` schemas get no dispatch entries.
+/// `bobzhang/typify/<base>/<pkg>`), plus `base/dispatch_wbtest.mbt` and
+/// `base/moon.pkg`. The harness in `base` is test-only, so its imports are
+/// `wbtest` imports. `compile_only` schemas get no dispatch entries and are
+/// not imported (`moon check` still compiles them).
 fn generate_suite(
   base : String,
   suite : Array[(String, @schema.RootSchema, @typify.TypeSpaceSettings, Bool)],
@@ -138,7 +140,9 @@ fn generate_suite(
       "\{dir}/moon.pkg",
       "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/core/json\",\n}\n\nwarnings = \"-unused_value-unused_package\"\n\n// Generated code is compared with the generator's output as is.\nformatter = { \"ignore\": [ \"types.mbt\" ] }\n",
     )
-    imports.push("  \"bobzhang/typify/\{base}/\{pkg}\",")
+    if !compile_only {
+      imports.push("  \"bobzhang/typify/\{base}/\{pkg}\",")
+    }
     for pair in space.entries() {
       let rust_name = match pair.1.details {
         Struct(d) => Some(d.name)
@@ -154,10 +158,10 @@ fn generate_suite(
     }
   }
   dispatch.write_string("    _ => \"NOTYPE\"\n  }\n}\n")
-  write("\{base}/dispatch.mbt", dispatch.to_string())
+  write("\{base}/dispatch_wbtest.mbt", dispatch.to_string())
   write(
     "\{base}/moon.pkg",
-    "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/x/fs\",\n\{imports.join("\n")}\n}\n",
+    "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/x/fs\",\n\{imports.join("\n")}\n} for \"wbtest\"\n",
   )
 }
 
@@ -198,7 +202,7 @@ fn random_suite(
 ) -> Array[(String, @schema.RootSchema, @typify.TypeSpaceSettings, Bool)] {
   let out = []
   // Optionally restrict to the schemas whose upstream Rust compiles.
-  let keep = try? read_keep("conformance/random/keep.txt")
+  let keep = Some(read_keep("conformance/random/keep.txt")) catch { _ => None }
   for
     dir in [
       "conformance/random", "conformance/random/schemas", "conformance/random/tokens",
@@ -211,22 +215,26 @@ fn random_suite(
     if out.length() >= limit {
       break
     }
-    guard (try? @serde_json.parse(line)) is Ok(Object(case)) else { continue }
+    guard (@serde_json.parse(line) catch { _ => continue }) is Object(case) else {
+      continue
+    }
     guard case.get("tokens") is Some(String(tokens)) &&
       case.get("types") is Some(String(types)) &&
       case.get("schema") is Some(schema) else {
       continue
     }
     let name = "r\{i}"
-    if keep is Ok(names) && !names.contains(name) {
+    if keep is Some(names) && !names.contains(name) {
       continue
     }
     let root = @schema.RootSchema::from_json_str(schema.to_string()) catch {
       e => abort("\{name}: \{e}")
     }
     let space = @typify.TypeSpace::new(@typify.TypeSpaceSettings::default())
-    let converted = try? space.add_root_schema(root)
-    if converted is Err(_) || recursive_flatten(space) {
+    ignore(space.add_root_schema(root)) catch {
+      _ => continue
+    }
+    if recursive_flatten(space) {
       continue
     }
     write("conformance/random/schemas/\{name}.json", schema.to_string())
@@ -275,7 +283,7 @@ fn recursive_flatten(space : @typify.TypeSpace) -> Bool {
       _ => ()
     }
   }
-  let edges : Map[@typify.TypeId, Array[@typify.TypeId]] = {}
+  let edges : Map[@typify.TypeId, Array[@typify.TypeId]] = Map([])
   for pair in space.entries() {
     if pair.1.details is Struct(d) {
       let out = []
@@ -288,7 +296,7 @@ fn recursive_flatten(space : @typify.TypeSpace) -> Bool {
     }
   }
   // Cycle detection (0 = unvisited, 1 = on the stack, 2 = done).
-  let state : Map[@typify.TypeId, Int] = {}
+  let state : Map[@typify.TypeId, Int] = Map([])
   fn visit(id : @typify.TypeId) -> Bool {
     match state.get(id) {
       Some(1) => return true
@@ -336,17 +344,17 @@ fn main {
     generate_suite("conformance/random", suite)
     // The harness: shared with conformance/moonbit, reading cases from
     // conformance/random/cases.
-    let harness = read("conformance/moonbit/harness.mbt").replace_all(
+    let harness = read("conformance/moonbit/harness_wbtest.mbt").replace_all(
       old="conformance/cases/",
       new="conformance/random/cases/",
     )
     let start = harness.find("///|\nlet fixture_names").unwrap()
     write(
-      "conformance/random/harness.mbt",
+      "conformance/random/harness_wbtest.mbt",
       harness.unsafe_substring(start=0, end=start),
     )
     write(
-      "conformance/random/names.mbt",
+      "conformance/random/names_wbtest.mbt",
       "///|\nlet fixture_names : Array[String] = [\n\{suite.map(s => "  \"\{s.0}\",").join("\n")}\n]\n",
     )
     write(

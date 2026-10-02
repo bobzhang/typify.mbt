@@ -37,7 +37,7 @@ pub(all) struct TypeOptions {
   mut name : String?
   mut visibility : Visibility?
   /// Whether to generate the constructor `T(...)`.
-  mut constructor : Bool?
+  mut generate_constructor : Bool?
   /// Constructor names for variants, by their JSON name (tag value).
   variants : Map[String, String]
   /// Use an existing MoonBit type (e.g. `@protocol.Content`) instead of
@@ -50,7 +50,7 @@ pub fn TypeOptions::new() -> TypeOptions {
   {
     name: None,
     visibility: None,
-    constructor: None,
+    generate_constructor: None,
     variants: Map([]),
     replace: None,
   }
@@ -63,7 +63,7 @@ pub(all) struct Options {
   types : Map[String, TypeOptions]
   /// Defaults for types without their own setting.
   mut visibility : Visibility
-  mut constructor : Bool
+  mut generate_constructor : Bool
   /// Emit only these types and what they reference (all types when empty).
   roots : Array[String]
   /// Also implement core `@json.FromJson` (needs `moonbitlang/core/json`).
@@ -85,7 +85,7 @@ pub fn Options::default() -> Options {
   {
     types: Map([]),
     visibility: Public,
-    constructor: true,
+    generate_constructor: true,
     roots: [],
     from_json: false,
     package_codecs: false,
@@ -231,7 +231,7 @@ pub fn Options::from_json_str(text : String) -> Options raise OptionsError {
             "visibility" =>
               options.visibility = visibility_of(x, "defaults.visibility")
             "constructor" =>
-              options.constructor = bool_of(x, "defaults.constructor")
+              options.generate_constructor = bool_of(x, "defaults.constructor")
             _ => raise OptionsError("defaults: unknown key `\{k}`")
           }
         }
@@ -254,7 +254,9 @@ pub fn Options::from_json_str(text : String) -> Options raise OptionsError {
               "visibility" =>
                 opts.visibility = Some(visibility_of(x, path + ".visibility"))
               "constructor" =>
-                opts.constructor = Some(bool_of(x, path + ".constructor"))
+                opts.generate_constructor = Some(
+                  bool_of(x, path + ".constructor"),
+                )
               "variants" => {
                 guard x is Object(vs) else {
                   raise OptionsError("\{path}.variants: expected an object")
