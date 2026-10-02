@@ -8,5 +8,6 @@ import {
 import {
   "bobzhang/typify/schema",
   "moonbitlang/x/fs",
+  "moonbitlang/core/debug",
   "bobzhang/typify/internal/semver",
 } for "test"
