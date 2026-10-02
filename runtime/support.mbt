@@ -299,8 +299,8 @@ pub fn[T : @json.FromJson] de_from_json(d : De) -> T raise DeError {
   let json = de_json_ordered(d)
   @json.from_json(json) catch {
     @json.JsonDecodeError((path, message)) => {
-      let at = path.to_string().trim().to_string()
-      let message = message.trim().to_string()
+      let at = path.to_string().trim().to_owned()
+      let message = message.trim().to_owned()
       raise DeError(
         if at == "" || at == "$" {
           message

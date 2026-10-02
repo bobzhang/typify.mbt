@@ -99,10 +99,20 @@ test "StrMap::new_ordered keeps insertion order" {
   m.set("a", 2)
   m.set("c", 3)
   m.set("b", 4) // replacing keeps the position
-  inspect(m.keys(), content="[b, a, c]")
-  inspect(m.get("b"), content="Some(4)")
+  debug_inspect(
+    m.keys(),
+    content=(
+      #|["b", "a", "c"]
+    ),
+  )
+  debug_inspect(m.get("b"), content="Some(4)")
   ignore(m.remove("a"))
-  inspect(m.keys(), content="[b, c]")
+  debug_inspect(
+    m.keys(),
+    content=(
+      #|["b", "c"]
+    ),
+  )
   // Equality ignores order, as for IndexMap and BTreeMap.
   let sorted = @collections.StrMap::from_array([("c", 3), ("b", 4)])
   assert_true(m == sorted)
