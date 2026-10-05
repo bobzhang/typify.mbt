@@ -139,7 +139,11 @@ fn generate_suite(
       "\{dir}/moon.pkg",
       "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/core/json\",\n}\n\nwarnings = \"-unused_value-unused_package\"\n\n// Generated code is compared with the generator's output as is.\nformatter = { \"ignore\": [ \"types.mbt\" ] }\n",
     )
-    imports.push("  \"bobzhang/typify/\{base}/\{pkg}\",")
+    // A compile-only fixture gets no dispatch entries, so nothing in the
+    // suite package references it; importing it only warns as unused.
+    if !compile_only {
+      imports.push("  \"bobzhang/typify/\{base}/\{pkg}\",")
+    }
     for pair in space.entries() {
       let rust_name = match pair.1.details {
         Struct(d) => Some(d.name)
