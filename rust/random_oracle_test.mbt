@@ -57,7 +57,7 @@ test "random schemas agree with upstream typify" {
       (_, _, _, got) => {
         let want = case.get("panic").map(p => "panic: \{p}").unwrap_or(line)
         failures.push(
-          "case \{i}: want \{want}\n  got \{got.map(p => p.0)}\n  schema: \{schema_text}",
+          "case \{i}: want \{want}\n  got \{Repr(got.map(p => p.0))}\n  schema: \{schema_text}",
         )
       }
     }
