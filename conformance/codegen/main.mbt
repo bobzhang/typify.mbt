@@ -277,7 +277,7 @@ fn recursive_flatten(space : @typify.TypeSpace) -> Bool {
       _ => ()
     }
   }
-  let edges : Map[@typify.TypeId, Array[@typify.TypeId]] = {}
+  let edges : Map[@typify.TypeId, Array[@typify.TypeId]] = Map([])
   for pair in space.entries() {
     if pair.1.details is Struct(d) {
       let out = []
@@ -290,7 +290,7 @@ fn recursive_flatten(space : @typify.TypeSpace) -> Bool {
     }
   }
   // Cycle detection (0 = unvisited, 1 = on the stack, 2 = done).
-  let state : Map[@typify.TypeId, Int] = {}
+  let state : Map[@typify.TypeId, Int] = Map([])
   fn visit(id : @typify.TypeId) -> Bool {
     match state.get(id) {
       Some(1) => return true
