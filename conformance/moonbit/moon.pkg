@@ -23,6 +23,5 @@ import {
   "bobzhang/typify/conformance/moonbit/fx_various_enums",
   "bobzhang/typify/conformance/moonbit/fx_x_rust_type",
   "bobzhang/typify/conformance/moonbit/fx_maps_custom",
-  "bobzhang/typify/conformance/moonbit/fx_vega",
   "bobzhang/typify/conformance/moonbit/fx_github",
 }
