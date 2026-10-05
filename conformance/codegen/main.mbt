@@ -12,9 +12,10 @@ fn read(path : String) -> String {
 fn schemas_settings(
   settings : @typify.TypeSpaceSettings,
 ) -> @typify.TypeSpaceSettings {
-  guard (try? @serde_json.parse("{\"enum\": [1, \"one\"]}")) is Ok(Object(o)) else {
-    abort("bad schema")
+  let parsed = @serde_json.parse("{\"enum\": [1, \"one\"]}") catch {
+    _ => abort("bad schema")
   }
+  guard parsed is Object(o) else { abort("bad schema") }
   let conv = try! @schema.decode_schema_object(o)
   settings
   .with_replacement("HandGeneratedType", "String", [Display])
@@ -198,7 +199,7 @@ fn random_suite(
 ) -> Array[(String, @schema.RootSchema, @typify.TypeSpaceSettings, Bool)] {
   let out = []
   // Optionally restrict to the schemas whose upstream Rust compiles.
-  let keep = try? read_keep("conformance/random/keep.txt")
+  let keep = Some(read_keep("conformance/random/keep.txt")) catch { _ => None }
   for
     dir in [
       "conformance/random", "conformance/random/schemas", "conformance/random/tokens",
@@ -211,22 +212,23 @@ fn random_suite(
     if out.length() >= limit {
       break
     }
-    guard (try? @serde_json.parse(line)) is Ok(Object(case)) else { continue }
+    let parsed = @serde_json.parse(line) catch { _ => continue }
+    guard parsed is Object(case) else { continue }
     guard case.get("tokens") is Some(String(tokens)) &&
       case.get("types") is Some(String(types)) &&
       case.get("schema") is Some(schema) else {
       continue
     }
     let name = "r\{i}"
-    if keep is Ok(names) && !names.contains(name) {
+    if keep is Some(names) && !names.contains(name) {
       continue
     }
     let root = @schema.RootSchema::from_json_str(schema.to_string()) catch {
       e => abort("\{name}: \{e}")
     }
     let space = @typify.TypeSpace::new(@typify.TypeSpaceSettings::default())
-    let converted = try? space.add_root_schema(root)
-    if converted is Err(_) || recursive_flatten(space) {
+    ignore(space.add_root_schema(root) catch { _ => continue })
+    if recursive_flatten(space) {
       continue
     }
     write("conformance/random/schemas/\{name}.json", schema.to_string())
