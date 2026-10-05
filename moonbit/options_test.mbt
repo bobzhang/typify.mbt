@@ -98,4 +98,27 @@ test "config errors name the problem" {
     err("{ \"defaults\": { \"visibility\": \"public\" } }"),
     content="defaults.visibility: expected \"pub(all)\", \"pub\", \"abstract\" or \"priv\"",
   )
+  inspect(
+    err("{ \"types\": { \"Note\": { \"constructor\": \"yes\" } } }"),
+    content="types.Note.constructor: expected true or false",
+  )
+  inspect(
+    err("{ \"defaults\": { \"constructor\": \"yes\" } }"),
+    content="defaults.constructor: expected true or false",
+  )
+}
+
+///|
+test "per-type constructor switch" {
+  // `defaults.constructor` is covered above; this pins the per-type key,
+  // the path the `constructor_` rename touched.
+  let code = gen_with(
+    (
+      #|{ "roots": ["Event"],
+      #|  "types": { "Note": { "constructor": false } } }
+    ),
+  )
+  assert_false(code.contains("pub fn Note::Note("))
+  // Types without their own setting keep the default (constructors on).
+  assert_true(code.contains("pub fn Event::Event("))
 }
