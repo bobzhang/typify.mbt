@@ -2,7 +2,7 @@
 /// A JSON syntax or range error, mirroring serde_json's error codes and
 /// positions (1-based line, column in UTF-8 bytes).
 pub(all) suberror ParseError {
-  ParseError(message~ : String, line~ : Int, column~ : Int)
+  ParseError(message~ : String, line~ : Int32, column~ : Int32)
 } derive(Debug, Eq)
 
 ///|
@@ -13,15 +13,15 @@ pub impl Show for ParseError with fn output(self, logger) {
 
 ///|
 /// serde_json's default recursion limit.
-let recursion_limit : Int = 128
+let recursion_limit : Int32 = 128
 
 ///|
 /// A byte-level port of serde_json's `Deserializer<SliceRead>` restricted to
 /// what `from_str::<Value>` exercises.
 priv struct Parser {
   src : Bytes
-  mut index : Int
-  mut remaining_depth : Int
+  mut index : Int32
+  mut remaining_depth : Int32
   /// Whether the last string parsed contained an escape sequence.
   mut last_escaped : Bool
   /// Lenient mode defers errors that serde_json only reports when a value is
@@ -30,7 +30,7 @@ priv struct Parser {
   /// The first deferred error within the value being parsed.
   mut pending : ParseError?
   /// Nesting levels past the recursion limit being parsed leniently.
-  mut unlimited : Int
+  mut unlimited : Int32
 }
 
 ///|
@@ -91,7 +91,7 @@ let pow10 : ReadOnlyArray[Double] = [
 
 ///|
 /// `SliceRead::position_of_index`.
-fn Parser::error_at(self : Parser, i : Int, message : String) -> ParseError {
+fn Parser::error_at(self : Parser, i : Int32, message : String) -> ParseError {
   let mut line = 1
   let mut start_of_line = 0
   for j in 0..<i {
@@ -116,7 +116,7 @@ fn Parser::peek_error(self : Parser, message : String) -> ParseError {
 }
 
 ///|
-fn Parser::peek(self : Parser) -> Int {
+fn Parser::peek(self : Parser) -> Int32 {
   if self.index < self.src.length() {
     self.src[self.index].to_int()
   } else {
@@ -125,7 +125,7 @@ fn Parser::peek(self : Parser) -> Int {
 }
 
 ///|
-fn Parser::next_char(self : Parser) -> Int {
+fn Parser::next_char(self : Parser) -> Int32 {
   let c = self.peek()
   if c >= 0 {
     self.index += 1
@@ -135,7 +135,7 @@ fn Parser::next_char(self : Parser) -> Int {
 
 ///|
 /// `parse_whitespace`: skip whitespace and peek.
-fn Parser::parse_whitespace(self : Parser) -> Int {
+fn Parser::parse_whitespace(self : Parser) -> Int32 {
   while self.peek() is (0x20 | 0x0A | 0x0D | 0x09) {
     self.index += 1
   }
@@ -179,7 +179,7 @@ fn Parser::parse_value(self : Parser) -> Content raise ParseError {
       self.index += 1
       self.number_or_deferred(false)
     }
-    '0'..='9' => self.number_or_deferred(true)
+    '0'..<='9' => self.number_or_deferred(true)
     '"' => {
       self.index += 1
       let s = self.parse_str()
@@ -321,7 +321,7 @@ fn Parser::parse_map(self : Parser) -> Array[Entry] raise ParseError {
 }
 
 ///|
-fn push_utf8(buf : Buffer, cp : Int) -> Unit {
+fn push_utf8(buf : Buffer, cp : Int32) -> Unit {
   if cp < 0x80 {
     buf.write_byte(cp.to_byte())
   } else if cp < 0x800 {
@@ -341,7 +341,7 @@ fn push_utf8(buf : Buffer, cp : Int) -> Unit {
 
 ///|
 /// `SliceRead::decode_hex_escape`.
-fn Parser::decode_hex_escape(self : Parser) -> Int raise ParseError {
+fn Parser::decode_hex_escape(self : Parser) -> Int32 raise ParseError {
   if self.index + 4 > self.src.length() {
     self.index = self.src.length()
     raise self.error("EOF while parsing a string")
@@ -351,9 +351,9 @@ fn Parser::decode_hex_escape(self : Parser) -> Int raise ParseError {
   for k in 0..<4 {
     let c = self.src[self.index + k].to_int()
     let d = match c {
-      '0'..='9' => c - '0'
-      'a'..='f' => c - 'a' + 10
-      'A'..='F' => c - 'A' + 10
+      '0'..<='9' => c - '0'
+      'a'..<='f' => c - 'a' + 10
+      'A'..<='F' => c - 'A' + 10
       _ => {
         ok = false
         0
@@ -509,11 +509,11 @@ fn Parser::number_or_deferred(
 fn Parser::ignore_number(self : Parser) -> Unit raise ParseError {
   match self.next_char() {
     '0' =>
-      if self.peek() is ('0'..='9') {
+      if self.peek() is ('0'..<='9') {
         raise self.peek_error("invalid number")
       }
-    '1'..='9' =>
-      while self.peek() is ('0'..='9') {
+    '1'..<='9' =>
+      while self.peek() is ('0'..<='9') {
         self.index += 1
       }
     -1 => raise self.error("EOF while parsing a value")
@@ -522,7 +522,7 @@ fn Parser::ignore_number(self : Parser) -> Unit raise ParseError {
   if self.peek() == '.' {
     self.index += 1
     let mut digits = 0
-    while self.peek() is ('0'..='9') {
+    while self.peek() is ('0'..<='9') {
       self.index += 1
       digits += 1
     }
@@ -539,11 +539,11 @@ fn Parser::ignore_number(self : Parser) -> Unit raise ParseError {
       self.index += 1
     }
     match self.next_char() {
-      '0'..='9' => ()
+      '0'..<='9' => ()
       -1 => raise self.error("EOF while parsing a value")
       _ => raise self.error("invalid number")
     }
-    while self.peek() is ('0'..='9') {
+    while self.peek() is ('0'..<='9') {
       self.index += 1
     }
   }
@@ -565,16 +565,16 @@ fn Parser::parse_integer(
     -1 => raise self.error("EOF while parsing a value")
     '0' => {
       // There can be only one leading '0'.
-      if self.peek() is ('0'..='9') {
+      if self.peek() is ('0'..<='9') {
         raise self.peek_error("invalid number")
       }
       self.parse_number(positive, 0)
     }
-    '1'..='9' => {
+    '1'..<='9' => {
       let mut significand = (next - '0').to_uint64()
       for ;; {
         let c = self.peek()
-        if !(c is ('0'..='9')) {
+        if !(c is ('0'..<='9')) {
           break self.parse_number(positive, significand)
         }
         let digit = (c - '0').to_uint64()
@@ -618,18 +618,18 @@ fn Parser::parse_decimal(
   self : Parser,
   positive : Bool,
   significand : UInt64,
-  exponent_before_decimal_point : Int,
+  exponent_before_decimal_point : Int32,
 ) -> Double raise ParseError {
   self.index += 1 // '.'
   let mut significand = significand
   let mut exponent_after_decimal_point = 0
-  while self.peek() is ('0'..='9') {
+  while self.peek() is ('0'..<='9') {
     let digit = (self.peek() - '0').to_uint64()
     if overflows_u64(significand, digit) {
       let exponent = exponent_before_decimal_point +
         exponent_after_decimal_point
       // parse_decimal_overflow: ignore all further digits.
-      while self.peek() is ('0'..='9') {
+      while self.peek() is ('0'..<='9') {
         self.index += 1
       }
       return match self.peek() {
@@ -660,7 +660,7 @@ fn Parser::parse_exponent(
   self : Parser,
   positive : Bool,
   significand : UInt64,
-  starting_exp : Int,
+  starting_exp : Int32,
 ) -> Double raise ParseError {
   self.index += 1 // 'e' | 'E'
   let positive_exp = match self.peek() {
@@ -679,12 +679,12 @@ fn Parser::parse_exponent(
     raise self.error("EOF while parsing a value")
   }
   // Make sure a digit follows the exponent place.
-  if !(next is ('0'..='9')) {
+  if !(next is ('0'..<='9')) {
     raise self.error("invalid number")
   }
   let mut exp = next - '0'
   let int_max = 2147483647
-  while self.peek() is ('0'..='9') {
+  while self.peek() is ('0'..<='9') {
     let digit = self.peek() - '0'
     self.index += 1
     if exp >= int_max / 10 && (exp > int_max / 10 || digit > int_max % 10) {
@@ -692,7 +692,7 @@ fn Parser::parse_exponent(
       if significand != 0UL && positive_exp {
         raise self.error("number out of range")
       }
-      while self.peek() is ('0'..='9') {
+      while self.peek() is ('0'..<='9') {
         self.index += 1
       }
       return if positive { 0.0 } else { -0.0 }
@@ -708,7 +708,7 @@ fn Parser::parse_exponent(
 }
 
 ///|
-fn saturating_add(a : Int, b : Int) -> Int {
+fn saturating_add(a : Int32, b : Int32) -> Int32 {
   let r = a.to_int64() + b.to_int64()
   if r > 2147483647L {
     2147483647
@@ -726,7 +726,7 @@ fn Parser::f64_from_parts(
   self : Parser,
   positive : Bool,
   significand : UInt64,
-  exponent : Int,
+  exponent : Int32,
 ) -> Double raise ParseError {
   let mut f = significand.to_double()
   let mut exponent = exponent
@@ -769,7 +769,7 @@ fn Parser::parse_long_integer(
   let mut exponent = 0
   for ;; {
     match self.peek() {
-      '0'..='9' => {
+      '0'..<='9' => {
         self.index += 1
         exponent += 1
       }
@@ -786,7 +786,7 @@ fn Parser::parse_long_integer(
 /// document order (serde_json's `preserve_order` feature).
 pub fn parse(
   text : StringView,
-  preserve_order? : Bool = false,
+  preserve_order~ : Bool = false,
 ) -> Value raise ParseError {
   parse_content(text).to_value(preserve_order~)
 }
@@ -797,7 +797,7 @@ pub fn parse(
 /// input).
 pub fn parse_content(
   text : StringView,
-  lenient? : Bool = false,
+  lenient~ : Bool = false,
 ) -> Content raise ParseError {
   let p = Parser::{
     src: @utf8.encode(text),

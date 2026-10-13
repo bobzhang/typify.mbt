@@ -195,7 +195,7 @@ fn[T : Hash + Eq] unique(items : Array[T]) -> Bool {
 
 ///|
 /// UTF-8 byte length (Rust `str::len`).
-fn utf8_len(s : String) -> Int {
+fn utf8_len(s : String) -> Int32 {
   let mut n = 0
   for c in s {
     let cp = c.to_int()
@@ -214,7 +214,7 @@ fn utf8_len(s : String) -> Int {
 
 ///|
 /// Rust `&s[byte_offset..]`; aborts (like Rust panics) on a non-boundary.
-fn slice_from_byte(s : String, byte_offset : Int) -> String raise TypifyError {
+fn slice_from_byte(s : String, byte_offset : Int32) -> String raise TypifyError {
   let mut n = 0
   let mut i = 0
   for c in s {

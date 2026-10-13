@@ -38,11 +38,11 @@ fn is_ident_continue(c : Char) -> Bool {
 ///|
 priv struct TplLexer {
   chars : Array[Char]
-  mut pos : Int
+  mut pos : Int32
 }
 
 ///|
-fn TplLexer::peek(self : TplLexer, k : Int) -> Char? {
+fn TplLexer::peek(self : TplLexer, k : Int32) -> Char? {
   self.chars.get(self.pos + k)
 }
 
@@ -220,7 +220,7 @@ fn instantiate(
 /// Build tokens from a template with `#name` holes.
 pub fn quote(
   template : String,
-  args? : Map[String, Tokens] = Map([]),
+  args~ : Map[String, Tokens] = Map([]),
 ) -> Tokens {
   let out = Tokens::new()
   instantiate(lex_template(template), args, out)
@@ -255,11 +255,11 @@ pub fn path_tokens(path : String) -> Tokens {
 /// followed by another punctuation character.
 pub fn parse_tokens(src : String) -> Tokens {
   let chars = src.to_array()
-  let pos : Ref[Int] = { val: 0, }
+  let pos : Ref[Int32] = { val: 0, }
   fn punct_char(c : Char) -> Bool {
     "~!@#$%^&*-=+|;:,<.>/?'".contains_char(c)
   }
-  fn go(chars : Array[Char], pos : Ref[Int], close : Char?) -> Tokens {
+  fn go(chars : Array[Char], pos : Ref[Int32], close : Char?) -> Tokens {
     let out = Tokens::new()
     for ;; {
       guard chars.get(pos.val) is Some(c) else { break }

@@ -30,16 +30,16 @@ fn ChronoErr::message(self : ChronoErr) -> String {
 
 ///|
 /// The smallest and largest years of `NaiveDate` (`MIN_YEAR`, `MAX_YEAR`).
-const MIN_YEAR : Int = -262143
+const MIN_YEAR : Int32 = -262143
 
 ///|
-const MAX_YEAR : Int = 262142
+const MAX_YEAR : Int32 = 262142
 
 ///|
 /// A byte cursor over UTF-8 input, mirroring chrono's `&str` slicing.
 priv struct Scan {
   b : Bytes
-  mut pos : Int
+  mut pos : Int32
 }
 
 ///|
@@ -48,19 +48,19 @@ fn Scan::new(s : String) -> Scan {
 }
 
 ///|
-fn Scan::len(self : Scan) -> Int {
+fn Scan::len(self : Scan) -> Int32 {
   self.b.length() - self.pos
 }
 
 ///|
-fn Scan::at(self : Scan, i : Int) -> Int {
+fn Scan::at(self : Scan, i : Int32) -> Int32 {
   self.b[self.pos + i].to_int()
 }
 
 ///|
 /// Byte length of the Unicode `White_Space` character at `pos`, or 0
 /// (Rust's `char::is_whitespace`).
-fn Scan::space_len(self : Scan) -> Int {
+fn Scan::space_len(self : Scan) -> Int32 {
   let n = self.len()
   if n == 0 {
     return 0
@@ -76,7 +76,7 @@ fn Scan::space_len(self : Scan) -> Int {
     let (c1, c2) = (self.at(1), self.at(2))
     match (c0, c1, c2) {
       (0xE1, 0x9A, 0x80) => return 3 // U+1680
-      (0xE2, 0x80, 0x80..=0x8A) => return 3 // U+2000..U+200A
+      (0xE2, 0x80, 0x80..<=0x8A) => return 3 // U+2000..U+200A
       (0xE2, 0x80, 0xA8 | 0xA9 | 0xAF) => return 3 // U+2028, U+2029, U+202F
       (0xE2, 0x81, 0x9F) => return 3 // U+205F
       (0xE3, 0x80, 0x80) => return 3 // U+3000
@@ -96,7 +96,11 @@ fn Scan::trim_start(self : Scan) -> Unit {
 
 ///|
 /// `scan::number`: `min..=max` ASCII digits as an `i64`.
-fn Scan::number(self : Scan, min : Int, max : Int) -> Int64 raise ChronoError {
+fn Scan::number(
+  self : Scan,
+  min : Int32,
+  max : Int32,
+) -> Int64 raise ChronoError {
   if self.len() < min {
     raise ChronoError(TooShort)
   }
@@ -126,7 +130,7 @@ fn Scan::number(self : Scan, min : Int, max : Int) -> Int64 raise ChronoError {
 /// explicit sign followed by any number of digits.
 fn Scan::numeric(
   self : Scan,
-  width : Int,
+  width : Int32,
   signed : Bool,
 ) -> Int64 raise ChronoError {
   self.trim_start()
@@ -144,7 +148,7 @@ fn Scan::numeric(
 
 ///|
 /// `Item::Literal` of one ASCII byte.
-fn Scan::literal(self : Scan, c : Int) -> Unit raise ChronoError {
+fn Scan::literal(self : Scan, c : Int32) -> Unit raise ChronoError {
   if self.len() < 1 {
     raise ChronoError(TooShort)
   }
@@ -155,7 +159,7 @@ fn Scan::literal(self : Scan, c : Int) -> Unit raise ChronoError {
 }
 
 ///|
-fn in_range(v : Int64, lo : Int, hi : Int) -> Int raise ChronoError {
+fn in_range(v : Int64, lo : Int32, hi : Int32) -> Int32 raise ChronoError {
   if v < lo.to_int64() || v > hi.to_int64() {
     raise ChronoError(OutOfRange)
   }
@@ -165,7 +169,7 @@ fn in_range(v : Int64, lo : Int, hi : Int) -> Int raise ChronoError {
 ///|
 /// `Year - Month - Day` with optional whitespace around the dashes
 /// (`Parsed::set_year`, `set_month`, `set_day` range checks).
-fn Scan::date_items(self : Scan) -> (Int, Int, Int) raise ChronoError {
+fn Scan::date_items(self : Scan) -> (Int32, Int32, Int32) raise ChronoError {
   let year = in_range(self.numeric(4, true), -0x80000000, 0x7FFFFFFF)
   self.trim_start()
   self.literal(0x2D)
@@ -177,12 +181,12 @@ fn Scan::date_items(self : Scan) -> (Int, Int, Int) raise ChronoError {
 }
 
 ///|
-fn is_leap_year(y : Int) -> Bool {
+fn is_leap_year(y : Int32) -> Bool {
   y % 4 == 0 && (y % 100 != 0 || y % 400 == 0)
 }
 
 ///|
-fn month_days(y : Int, m : Int) -> Int {
+fn month_days(y : Int32, m : Int32) -> Int32 {
   match m {
     2 => if is_leap_year(y) { 29 } else { 28 }
     4 | 6 | 9 | 11 => 30
@@ -194,14 +198,18 @@ fn month_days(y : Int, m : Int) -> Int {
 /// A calendar date (`chrono::NaiveDate`), serialized as `%Y-%m-%d` (years
 /// outside 0..=9999 carry an explicit sign).
 pub struct NaiveDate {
-  year : Int
-  month : Int
-  day : Int
+  year : Int32
+  month : Int32
+  day : Int32
 } derive(Eq, Compare, Hash, Debug)
 
 ///|
 /// `NaiveDate::from_ymd_opt`.
-pub fn NaiveDate::from_ymd(year : Int, month : Int, day : Int) -> NaiveDate? {
+pub fn NaiveDate::from_ymd(
+  year : Int32,
+  month : Int32,
+  day : Int32,
+) -> NaiveDate? {
   if year < MIN_YEAR ||
     year > MAX_YEAR ||
     month < 1 ||
@@ -215,17 +223,17 @@ pub fn NaiveDate::from_ymd(year : Int, month : Int, day : Int) -> NaiveDate? {
 }
 
 ///|
-pub fn NaiveDate::year(self : NaiveDate) -> Int {
+pub fn NaiveDate::year(self : NaiveDate) -> Int32 {
   self.year
 }
 
 ///|
-pub fn NaiveDate::month(self : NaiveDate) -> Int {
+pub fn NaiveDate::month(self : NaiveDate) -> Int32 {
   self.month
 }
 
 ///|
-pub fn NaiveDate::day(self : NaiveDate) -> Int {
+pub fn NaiveDate::day(self : NaiveDate) -> Int32 {
   self.day
 }
 
@@ -258,9 +266,9 @@ fn NaiveDate::pred(self : NaiveDate) -> NaiveDate? {
 }
 
 ///|
-fn write2(buf : StringBuilder, n : Int) -> Unit {
-  buf.write_char(Int::unsafe_to_char(0x30 + n / 10))
-  buf.write_char(Int::unsafe_to_char(0x30 + n % 10))
+fn write2(buf : StringBuilder, n : Int32) -> Unit {
+  buf.write_char(Int32::unsafe_to_char(0x30 + n / 10))
+  buf.write_char(Int32::unsafe_to_char(0x30 + n % 10))
 }
 
 ///|
@@ -336,9 +344,9 @@ pub fn NaiveDate::serialize(self : NaiveDate) -> Content raise SerError {
 pub struct DateTimeUtc {
   date : NaiveDate
   /// Seconds since midnight (0..86400).
-  secs : Int
+  secs : Int32
   /// Nanoseconds; 10^9 and above denote a leap second.
-  frac : Int
+  frac : Int32
 } derive(Eq, Compare, Hash, Debug)
 
 ///|
@@ -362,7 +370,7 @@ pub fn DateTimeUtc::timestamp(self : DateTimeUtc) -> Int64 {
 
 ///|
 /// The nanosecond part (at least 10^9 during a leap second).
-pub fn DateTimeUtc::nanosecond(self : DateTimeUtc) -> Int {
+pub fn DateTimeUtc::nanosecond(self : DateTimeUtc) -> Int32 {
   self.frac
 }
 
@@ -447,7 +455,7 @@ fn parse_datetime(s : String) -> DateTimeUtc raise ChronoError {
 ///|
 /// `scan::timezone_offset(s, colon_or_space, allow_zulu=true,
 /// allow_missing_minutes=false, allow_tz_minus_sign=true)`, in seconds.
-fn Scan::timezone_offset(self : Scan) -> Int raise ChronoError {
+fn Scan::timezone_offset(self : Scan) -> Int32 raise ChronoError {
   if self.len() > 0 && self.at(0) is (0x5A | 0x7A) {
     self.pos += 1
     return 0
@@ -537,7 +545,7 @@ pub fn DateTimeUtc::to_string(self : DateTimeUtc) -> String {
   write2(buf, self.secs / 60 % 60)
   buf.write_char(':')
   write2(buf, sec)
-  let pad = (n : Int, width : Int) => {
+  let pad = (n : Int32, width : Int32) => {
     let digits = n.to_string()
     for _ in digits.length()..<width {
       buf.write_char('0')

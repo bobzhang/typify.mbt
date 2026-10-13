@@ -33,7 +33,7 @@ fn f64_value(d : Double) -> @serde_json.Value {
 }
 
 ///|
-fn u32_value(n : UInt) -> @serde_json.Value {
+fn u32_value(n : UInt32) -> @serde_json.Value {
   @serde_json.Value::from_u64(n.to_uint64())
 }
 

@@ -45,7 +45,10 @@ pub fn[V] StrMap::from_array(pairs : ArrayView[(String, V)]) -> StrMap[V] {
 
 ///|
 /// Binary search: `Ok(index)` if found, `Err(insertion_point)` otherwise.
-fn[V] StrMap::search(self : StrMap[V], key : StringView) -> Result[Int, Int] {
+fn[V] StrMap::search(
+  self : StrMap[V],
+  key : StringView,
+) -> Result[Int32, Int32] {
   if self.ordered {
     // Insertion order: a linear scan, new keys go last.
     for i, e in self.entries {
@@ -71,7 +74,7 @@ fn[V] StrMap::search(self : StrMap[V], key : StringView) -> Result[Int, Int] {
 }
 
 ///|
-pub fn[V] StrMap::length(self : StrMap[V]) -> Int {
+pub fn[V] StrMap::length(self : StrMap[V]) -> Int32 {
   self.entries.length()
 }
 

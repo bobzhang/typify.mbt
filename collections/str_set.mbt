@@ -41,7 +41,7 @@ pub fn StrSet::contains(self : StrSet, item : StringView) -> Bool {
 }
 
 ///|
-pub fn StrSet::length(self : StrSet) -> Int {
+pub fn StrSet::length(self : StrSet) -> Int32 {
   self.map.length()
 }
 

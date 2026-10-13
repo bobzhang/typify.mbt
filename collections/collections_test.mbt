@@ -1,6 +1,6 @@
 ///|
 /// Reference implementation: lexicographic comparison of code point arrays.
-fn ref_compare(a : String, b : String) -> Int {
+fn ref_compare(a : String, b : String) -> Int32 {
   let xa = a.to_array()
   let xb = b.to_array()
   for i = 0; i < xa.length() && i < xb.length(); i = i + 1 {
@@ -14,7 +14,7 @@ fn ref_compare(a : String, b : String) -> Int {
 }
 
 ///|
-fn sign(x : Int) -> Int {
+fn sign(x : Int32) -> Int32 {
   if x < 0 {
     -1
   } else if x > 0 {
@@ -52,7 +52,7 @@ test "compare_str is antisymmetric" {
 
 ///|
 test "StrMap basic operations" {
-  let m : @collections.StrMap[Int] = @collections.StrMap::new()
+  let m : @collections.StrMap[Int32] = @collections.StrMap::new()
   m.set("b", 2)
   m.set("aa", 1)
   m.set("c", 3)
@@ -71,9 +71,9 @@ test "StrMap basic operations" {
 
 ///|
 test "StrMap behaves like a model map with sorted keys" {
-  @quickcheck.check((ops : Array[(String, Int)]) => {
+  @quickcheck.check((ops : Array[(String, Int32)]) => {
     let m = @collections.StrMap::new()
-    let model : Map[String, Int] = Map([])
+    let model : Map[String, Int32] = Map([])
     for op in ops {
       m.set(op.0, op.1)
       model[op.0] = op.1
@@ -94,7 +94,7 @@ test "StrMap behaves like a model map with sorted keys" {
 
 ///|
 test "StrMap::new_ordered keeps insertion order" {
-  let m : @collections.StrMap[Int] = @collections.StrMap::new_ordered()
+  let m : @collections.StrMap[Int32] = @collections.StrMap::new_ordered()
   m.set("b", 1)
   m.set("a", 2)
   m.set("c", 3)

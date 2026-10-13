@@ -63,8 +63,8 @@ pub(all) struct NumberValidation {
 
 ///|
 pub(all) struct StringValidation {
-  max_length : UInt?
-  min_length : UInt?
+  max_length : UInt32?
+  min_length : UInt32?
   pattern : String?
 } derive(Eq, Debug)
 
@@ -72,16 +72,16 @@ pub(all) struct StringValidation {
 pub(all) struct ArrayValidation {
   items : SingleOrVec[Schema]?
   additional_items : Schema?
-  max_items : UInt?
-  min_items : UInt?
+  max_items : UInt32?
+  min_items : UInt32?
   unique_items : Bool?
   contains : Schema?
 } derive(Eq, Debug)
 
 ///|
 pub(all) struct ObjectValidation {
-  max_properties : UInt?
-  min_properties : UInt?
+  max_properties : UInt32?
+  min_properties : UInt32?
   required : @collections.StrSet
   properties : @collections.StrMap[Schema]
   pattern_properties : @collections.StrMap[Schema]

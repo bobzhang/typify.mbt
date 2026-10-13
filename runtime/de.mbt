@@ -196,7 +196,7 @@ fn key_number(
     raise DeError("invalid type: string \"\{k}\", expected \{expected}")
   }
   let first = k.get_char(0)
-  if !(first is Some('-' | '0'..='9')) {
+  if !(first is Some('-' | '0'..<='9')) {
     raise DeError("invalid type: string \"\{k}\", expected \{expected}")
   }
   try @serde_json.parse(k) catch {
@@ -254,7 +254,7 @@ fn de_int_in(
 }
 
 ///|
-pub fn de_i8(d : De) -> Int raise DeError {
+pub fn de_i8(d : De) -> Int32 raise DeError {
   de_int_in(d, "i8", -128L, 127UL).to_int()
 }
 
@@ -286,18 +286,18 @@ pub fn de_u16_expecting(d : De, expecting : String) -> UInt16 raise DeError {
 }
 
 ///|
-pub fn de_i32(d : De) -> Int raise DeError {
+pub fn de_i32(d : De) -> Int32 raise DeError {
   de_int_in(d, "i32", -2147483648L, 2147483647UL).to_int()
 }
 
 ///|
-pub fn de_u32(d : De) -> UInt raise DeError {
+pub fn de_u32(d : De) -> UInt32 raise DeError {
   de_u32_expecting(d, "u32")
 }
 
 ///|
 /// `de_u32` with the visitor description `expecting` (e.g. `NonZero`).
-pub fn de_u32_expecting(d : De, expecting : String) -> UInt raise DeError {
+pub fn de_u32_expecting(d : De, expecting : String) -> UInt32 raise DeError {
   de_int_in(d, expecting, 0L, 4294967295UL).reinterpret_as_uint64().to_uint()
 }
 
@@ -396,7 +396,7 @@ fn seq_elements(
 pub fn[T] de_vec(
   d : De,
   f : (De) -> T raise DeError,
-  paths? : Bool = false,
+  paths~ : Bool = false,
 ) -> Array[T] raise DeError {
   let (xs, mode) = seq_elements(d, "a sequence")
   let out = []
@@ -446,13 +446,13 @@ pub fn error_at(error : DeError, segment : String) -> DeError {
 pub struct SeqReader {
   priv items : Array[@serde_json.Content]
   priv mode : Mode
-  priv mut pos : Int
+  priv mut pos : Int32
   priv expected : String
 }
 
 ///|
 /// serde_derive's sequence visitor description: `<expecting> with N elements`.
-fn with_elements(expecting : String, n : Int) -> String {
+fn with_elements(expecting : String, n : Int32) -> String {
   if n == 1 {
     "\{expecting} with 1 element"
   } else {
@@ -467,7 +467,7 @@ fn with_elements(expecting : String, n : Int) -> String {
 pub fn de_tuple_variant(
   d : De,
   expecting : String,
-  n : Int,
+  n : Int32,
   external : Bool,
 ) -> SeqReader raise DeError {
   match d {
@@ -491,14 +491,14 @@ pub fn de_tuple_variant(
 }
 
 ///|
-pub fn de_tuple(d : De, n : Int) -> SeqReader raise DeError {
+pub fn de_tuple(d : De, n : Int32) -> SeqReader raise DeError {
   let expected = "a tuple of size \{n}"
   let (xs, mode) = seq_elements(d, expected)
   { items: xs, mode, pos: 0, expected, }
 }
 
 ///|
-pub fn de_fixed(d : De, n : Int) -> SeqReader raise DeError {
+pub fn de_fixed(d : De, n : Int32) -> SeqReader raise DeError {
   let expected = "an array of length \{n}"
   let (xs, mode) = seq_elements(d, expected)
   { items: xs, mode, pos: 0, expected, }
@@ -656,7 +656,7 @@ pub fn de_struct(
   expecting : String,
   fields : Array[String],
   has_flatten : Bool,
-  external_variant? : Bool = false,
+  external_variant~ : Bool = false,
 ) -> StructInput raise DeError {
   match d {
     Value(Object(entries), mode) => {
@@ -795,7 +795,10 @@ pub(all) enum VariantInput {
 }
 
 ///|
-fn variant_index(name : String, variants : Array[String]) -> Int raise DeError {
+fn variant_index(
+  name : String,
+  variants : Array[String],
+) -> Int32 raise DeError {
   match variants.search(name) {
     Some(i) => i
     None =>
@@ -820,7 +823,7 @@ pub fn de_enum(
   d : De,
   name : String,
   variants : Array[String],
-) -> (Int, VariantInput) raise DeError {
+) -> (Int32, VariantInput) raise DeError {
   match d {
     Value(String(s), _) => (variant_index(s, variants), UnitOnly)
     Value(Object(entries), Direct) => {
@@ -946,7 +949,7 @@ fn tag_identifier(
   c : @serde_json.Content,
   variants : Array[String],
   buffered : Bool,
-) -> Int raise DeError {
+) -> Int32 raise DeError {
   match c {
     String(s) => variant_index(s, variants)
     Number(PosInt(i)) if buffered =>
@@ -972,7 +975,7 @@ pub fn de_internal(
   name : String,
   tag : String,
   variants : Array[String],
-) -> (Int, De) raise DeError {
+) -> (Int32, De) raise DeError {
   let (c, mode) = match d {
     Value(c, mode) => (c, mode)
     Flat(_) => {
@@ -986,7 +989,7 @@ pub fn de_internal(
   let buffered = mode != Direct
   match c {
     Object(entries) => {
-      let mut found : Int? = None
+      let mut found : Int32? = None
       let rest = []
       for e in entries {
         if e.key_error is Some(err) {

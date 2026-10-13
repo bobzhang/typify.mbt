@@ -5,7 +5,7 @@
 /// typify relies on through `BTreeMap<String, _>` iteration. MoonBit's own
 /// `String::compare` orders by length first, so it must not be used where
 /// iteration order is observable.
-pub fn compare_str(a : StringView, b : StringView) -> Int {
+pub fn compare_str(a : StringView, b : StringView) -> Int32 {
   let la = a.length()
   let lb = b.length()
   for i = 0, j = 0; i < la && j < lb; {

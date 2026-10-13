@@ -2,7 +2,7 @@
 /// A set of code points as sorted, disjoint, non-adjacent inclusive
 /// intervals (regress `CodePointSet`).
 priv struct CharSet {
-  mut ranges : Array[(Int, Int)]
+  mut ranges : Array[(Int32, Int32)]
 }
 
 ///|
@@ -11,7 +11,7 @@ fn CharSet::new() -> CharSet {
 }
 
 ///|
-fn CharSet::from_ranges(ranges : Array[(Int, Int)]) -> CharSet {
+fn CharSet::from_ranges(ranges : Array[(Int32, Int32)]) -> CharSet {
   let s = CharSet::new()
   for r in ranges {
     s.add(r.0, r.1)
@@ -22,7 +22,7 @@ fn CharSet::from_ranges(ranges : Array[(Int, Int)]) -> CharSet {
 ///|
 /// Add the inclusive interval `[lo, hi]`, keeping the representation
 /// normalised.
-fn CharSet::add(self : CharSet, lo : Int, hi : Int) -> Unit {
+fn CharSet::add(self : CharSet, lo : Int32, hi : Int32) -> Unit {
   let out = []
   let mut lo = lo
   let mut hi = hi
@@ -49,7 +49,7 @@ fn CharSet::add(self : CharSet, lo : Int, hi : Int) -> Unit {
 }
 
 ///|
-fn CharSet::add_one(self : CharSet, c : Int) -> Unit {
+fn CharSet::add_one(self : CharSet, c : Int32) -> Unit {
   self.add(c, c)
 }
 
@@ -77,7 +77,7 @@ fn CharSet::inverted(self : CharSet) -> CharSet {
 }
 
 ///|
-fn CharSet::contains(self : CharSet, c : Int) -> Bool {
+fn CharSet::contains(self : CharSet, c : Int32) -> Bool {
   for lo = 0, hi = self.ranges.length(); lo < hi; {
     let mid = lo + (hi - lo) / 2
     let r = self.ranges[mid]
@@ -128,12 +128,12 @@ fn spaces() -> CharSet {
 }
 
 ///|
-fn is_line_terminator(c : Int) -> Bool {
+fn is_line_terminator(c : Int32) -> Bool {
   c == 0x0A || c == 0x0D || c == 0x2028 || c == 0x2029
 }
 
 ///|
-fn is_word_char(c : Int) -> Bool {
+fn is_word_char(c : Int32) -> Bool {
   (c >= '0'.to_int() && c <= '9'.to_int()) ||
   (c >= 'A'.to_int() && c <= 'Z'.to_int()) ||
   c == '_'.to_int() ||

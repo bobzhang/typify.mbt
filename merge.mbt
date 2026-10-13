@@ -586,7 +586,7 @@ fn merge_so_string(
 }
 
 ///|
-fn umin(x : UInt, y : UInt) -> UInt {
+fn umin(x : UInt32, y : UInt32) -> UInt32 {
   if x <= y {
     x
   } else {
@@ -595,7 +595,7 @@ fn umin(x : UInt, y : UInt) -> UInt {
 }
 
 ///|
-fn umax(x : UInt, y : UInt) -> UInt {
+fn umax(x : UInt32, y : UInt32) -> UInt32 {
   if x >= y {
     x
   } else {
@@ -630,7 +630,7 @@ fn merge_so_array(
   let (items, additional_items, max_items) : (
     @schema.SingleOrVec[@schema.Schema]?,
     @schema.Schema?,
-    UInt?,
+    UInt32?,
   ) = match ((aa.items, aa.additional_items), (bb.items, bb.additional_items)) {
     ((None, _), (None, _)) => (None, None, max_items)
     ((None, _), (Some(Single(item)), _))
@@ -723,8 +723,8 @@ fn merge_so_array(
 /// item. Returns the items and whether additional items remain possible.
 fn merge_items_array(
   pairs : Array[(@schema.Schema, @schema.Schema)],
-  min_items : UInt?,
-  max_items : UInt?,
+  min_items : UInt32?,
+  max_items : UInt32?,
   defs : Defs,
 ) -> (Array[@schema.Schema], Bool)? raise TypifyError {
   let items = []
