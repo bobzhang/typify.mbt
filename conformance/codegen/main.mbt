@@ -12,9 +12,10 @@ fn read(path : String) -> String {
 fn schemas_settings(
   settings : @typify.TypeSpaceSettings,
 ) -> @typify.TypeSpaceSettings {
-  guard (try! @serde_json.parse("{\"enum\": [1, \"one\"]}")) is Object(o) else {
-    abort("bad schema")
+  let parsed = @serde_json.parse("{\"enum\": [1, \"one\"]}") catch {
+    _ => abort("bad schema")
   }
+  guard parsed is Object(o) else { abort("bad schema") }
   let conv = try! @schema.decode_schema_object(o)
   settings
   .with_replacement("HandGeneratedType", "String", [Display])
@@ -101,10 +102,8 @@ fn write(path : String, text : String) -> Unit {
 
 ///|
 /// Generate one MoonBit package per schema under `base` (import path
-/// `bobzhang/typify/<base>/<pkg>`), plus `base/dispatch_wbtest.mbt` and
-/// `base/moon.pkg`. The harness in `base` is test-only, so its imports are
-/// `wbtest` imports. `compile_only` schemas get no dispatch entries and are
-/// not imported (`moon check` still compiles them).
+/// `bobzhang/typify/<base>/<pkg>`), plus `base/dispatch.mbt` and
+/// `base/moon.pkg`. `compile_only` schemas get no dispatch entries.
 fn generate_suite(
   base : String,
   suite : Array[(String, @schema.RootSchema, @typify.TypeSpaceSettings, Bool)],
@@ -140,6 +139,8 @@ fn generate_suite(
       "\{dir}/moon.pkg",
       "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/core/json\",\n}\n\nwarnings = \"-unused_value-unused_package\"\n\n// Generated code is compared with the generator's output as is.\nformatter = { \"ignore\": [ \"types.mbt\" ] }\n",
     )
+    // A compile-only fixture gets no dispatch entries, so nothing in the
+    // suite package references it; importing it only warns as unused.
     if !compile_only {
       imports.push("  \"bobzhang/typify/\{base}/\{pkg}\",")
     }
@@ -158,10 +159,10 @@ fn generate_suite(
     }
   }
   dispatch.write_string("    _ => \"NOTYPE\"\n  }\n}\n")
-  write("\{base}/dispatch_wbtest.mbt", dispatch.to_string())
+  write("\{base}/dispatch.mbt", dispatch.to_string())
   write(
     "\{base}/moon.pkg",
-    "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/x/fs\",\n\{imports.join("\n")}\n} for \"wbtest\"\n",
+    "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/x/fs\",\n\{imports.join("\n")}\n}\n",
   )
 }
 
@@ -215,9 +216,8 @@ fn random_suite(
     if out.length() >= limit {
       break
     }
-    guard (@serde_json.parse(line) catch { _ => continue }) is Object(case) else {
-      continue
-    }
+    let parsed = @serde_json.parse(line) catch { _ => continue }
+    guard parsed is Object(case) else { continue }
     guard case.get("tokens") is Some(String(tokens)) &&
       case.get("types") is Some(String(types)) &&
       case.get("schema") is Some(schema) else {
@@ -231,9 +231,7 @@ fn random_suite(
       e => abort("\{name}: \{e}")
     }
     let space = @typify.TypeSpace::new(@typify.TypeSpaceSettings::default())
-    ignore(space.add_root_schema(root)) catch {
-      _ => continue
-    }
+    ignore(space.add_root_schema(root) catch { _ => continue })
     if recursive_flatten(space) {
       continue
     }
@@ -344,17 +342,17 @@ fn main {
     generate_suite("conformance/random", suite)
     // The harness: shared with conformance/moonbit, reading cases from
     // conformance/random/cases.
-    let harness = read("conformance/moonbit/harness_wbtest.mbt").replace_all(
+    let harness = read("conformance/moonbit/harness.mbt").replace_all(
       old="conformance/cases/",
       new="conformance/random/cases/",
     )
     let start = harness.find("///|\nlet fixture_names").unwrap()
     write(
-      "conformance/random/harness_wbtest.mbt",
+      "conformance/random/harness.mbt",
       harness.unsafe_substring(start=0, end=start),
     )
     write(
-      "conformance/random/names_wbtest.mbt",
+      "conformance/random/names.mbt",
       "///|\nlet fixture_names : Array[String] = [\n\{suite.map(s => "  \"\{s.0}\",").join("\n")}\n]\n",
     )
     write(

@@ -10,6 +10,10 @@ typify schema.json --lang moonbit --moonbit-config schema.moonbit.json -o types.
 The config file is MoonBit-specific, so it lives next to the schema instead of inside
 it. The schema stays language-neutral and can generate Rust too. The same options are
 available from the library as `@moonbit.Options` and `@moonbit.generate_with`.
+The library fields mirror the JSON keys, with one exception: the constructor
+switch is `Options.constructor_` / `TypeOptions.constructor_` in MoonBit, since
+`constructor` is a reserved word (reserved words take a trailing `_`). The JSON
+key is still `"constructor"`.
 
 Types are named by their typify type names (the names the Rust output uses). Unknown
 keys, type names and variant names are errors.
