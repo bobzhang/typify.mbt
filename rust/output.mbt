@@ -9,7 +9,7 @@ pub(all) enum OutputSpaceMod {
 } derive(Eq, Debug)
 
 ///|
-fn OutputSpaceMod::index(self : OutputSpaceMod) -> Int {
+fn OutputSpaceMod::index(self : OutputSpaceMod) -> Int32 {
   match self {
     Crate => 0
     Builder => 1

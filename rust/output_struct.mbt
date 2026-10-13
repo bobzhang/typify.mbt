@@ -164,7 +164,7 @@ fn output_struct(
     }
   })
   let n = prop_name.length()
-  let each = (f : (Int) -> Tokens) => concat(Array::makei(n, f))
+  let each = (f : (Int32) -> Tokens) => concat(Array::makei(n, f))
   let fields = each(i => {
     quote("#n: ::std::result::Result<#t, ::std::string::String>,", args={
       "n": prop_name[i],

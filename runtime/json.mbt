@@ -94,7 +94,7 @@ pub fn classify_number(d : Double, repr : String?) -> @serde_json.Number {
 /// `preserve_order` feature) instead of sorting them.
 pub fn json_to_value(
   j : Json,
-  preserve_order? : Bool = false,
+  preserve_order~ : Bool = false,
 ) -> @serde_json.Value {
   match j {
     Null => Null

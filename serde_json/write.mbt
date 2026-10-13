@@ -75,14 +75,14 @@ fn write_compact(buf : StringBuilder, v : Value) -> Unit {
 }
 
 ///|
-fn write_indent(buf : StringBuilder, level : Int) -> Unit {
+fn write_indent(buf : StringBuilder, level : Int32) -> Unit {
   for _ in 0..<level {
     buf.write_string("  ")
   }
 }
 
 ///|
-fn write_pretty(buf : StringBuilder, v : Value, level : Int) -> Unit {
+fn write_pretty(buf : StringBuilder, v : Value, level : Int32) -> Unit {
   match v {
     Array(xs) => {
       if xs.is_empty() {

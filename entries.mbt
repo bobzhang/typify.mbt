@@ -37,7 +37,7 @@ fn TypeEntryEnum::from_metadata(
     })
   }
   if !variants_unique(variants) {
-    let counts : Map[String, Int] = Map([])
+    let counts : Map[String, Int32] = Map([])
     for v in variants {
       let n = v.ident_name.unwrap()
       counts[n] = match counts.get(n) {

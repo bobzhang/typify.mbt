@@ -107,7 +107,7 @@ test "conversion to and from builtin Json" {
 
 ///|
 /// A generator of JSON values with bounded depth.
-fn gen_value(depth : Int) -> @quickcheck.Generator[@serde_json.Value] {
+fn gen_value(depth : Int32) -> @quickcheck.Generator[@serde_json.Value] {
   let leaves : Array[@quickcheck.Generator[@serde_json.Value]] = [
     @quickcheck.pure(@serde_json.Value::Null),
     @quickcheck.spawn().map((b : Bool) => @serde_json.Value::Bool(b)),

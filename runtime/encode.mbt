@@ -53,12 +53,12 @@ pub fn encode_u64(n : UInt64) -> Json {
 }
 
 ///|
-pub fn encode_int(n : Int) -> Json {
+pub fn encode_int(n : Int32) -> Json {
   Json::number(n.to_double())
 }
 
 ///|
-pub fn encode_uint(n : UInt) -> Json {
+pub fn encode_uint(n : UInt32) -> Json {
   Json::number(n.to_double())
 }
 

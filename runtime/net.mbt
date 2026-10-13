@@ -8,7 +8,7 @@ fn is_hex(c : Char) -> Bool {
 }
 
 ///|
-fn hex_val(c : Char) -> Int {
+fn hex_val(c : Char) -> Int32 {
   if c.is_ascii_digit() {
     c.to_int() - '0'.to_int()
   } else if c >= 'a' && c <= 'f' {
@@ -24,11 +24,11 @@ fn hex_val(c : Char) -> Int {
 ///|
 /// An IPv4 address (`std::net::Ipv4Addr`).
 pub struct Ipv4Addr {
-  octets : FixedArray[Int]
+  octets : FixedArray[Int32]
 } derive(Eq, Hash, Debug)
 
 ///|
-fn parse_ipv4_chars(chars : ArrayView[Char]) -> FixedArray[Int]? {
+fn parse_ipv4_chars(chars : ArrayView[Char]) -> FixedArray[Int32]? {
   let octets = FixedArray::make(4, 0)
   let mut i = 0
   for k in 0..<4 {
@@ -87,11 +87,11 @@ pub fn Ipv4Addr::serialize(self : Ipv4Addr) -> Content raise SerError {
 ///|
 /// An IPv6 address (`std::net::Ipv6Addr`).
 pub struct Ipv6Addr {
-  segments : FixedArray[Int]
+  segments : FixedArray[Int32]
 } derive(Eq, Hash, Debug)
 
 ///|
-fn parse_ipv6_chars(chars : Array[Char]) -> FixedArray[Int]? {
+fn parse_ipv6_chars(chars : Array[Char]) -> FixedArray[Int32]? {
   // Split around "::".
   let n = chars.length()
   let mut dbl = -1
@@ -103,7 +103,7 @@ fn parse_ipv6_chars(chars : Array[Char]) -> FixedArray[Int]? {
       dbl = i
     }
   }
-  fn groups(part : ArrayView[Char]) -> Array[Int]? {
+  fn groups(part : ArrayView[Char]) -> Array[Int32]? {
     let out = []
     if part.length() == 0 {
       return Some(out)
@@ -203,7 +203,7 @@ pub fn Ipv6Addr::to_string(self : Ipv6Addr) -> String {
       i += 1
     }
   }
-  let hex = (v : Int) => v.to_string(radix=16)
+  let hex = (v : Int32) => v.to_string(radix=16)
   if best_len < 2 {
     return s.iter().map(hex).collect().join(":")
   }

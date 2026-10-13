@@ -9,7 +9,7 @@
 /// per struct, once.
 pub struct Fields {
   priv names : Array[String]
-  priv index : Map[String, Int]
+  priv index : Map[String, Int32]
 }
 
 ///|
@@ -57,16 +57,16 @@ pub fn de_fields(
   d : De,
   expecting : String,
   fields : Fields,
-  on_field : (Int, De) -> Unit raise DeError,
-  flatten? : Bool = false,
-  deny? : Bool = false,
-  positional? : Bool = true,
-  external_variant? : Bool = false,
-  paths? : Bool = false,
+  on_field : (Int32, De) -> Unit raise DeError,
+  flatten~ : Bool = false,
+  deny~ : Bool = false,
+  positional~ : Bool = true,
+  external_variant~ : Bool = false,
+  paths~ : Bool = false,
 ) -> FieldsInput raise DeError {
   // With `paths`, a failing field's error says where (`error_at`).
   let on_field = if paths {
-    (i : Int, v : De) => {
+    (i : Int32, v : De) => {
       on_field(i, v) catch {
         e => raise error_at(e, fields.names[i])
       }
@@ -136,7 +136,7 @@ pub fn de_fields(
 /// The deserializer for absent field `i` (`Missing` for named input, which
 /// lets `Option` fields become `None`); positional input reports an invalid
 /// length.
-pub fn FieldsInput::absent(self : FieldsInput, i : Int) -> De raise DeError {
+pub fn FieldsInput::absent(self : FieldsInput, i : Int32) -> De raise DeError {
   match self.form {
     Named(_) => Missing(self.fields.names[i])
     Positional(expected) =>
@@ -147,7 +147,7 @@ pub fn FieldsInput::absent(self : FieldsInput, i : Int) -> De raise DeError {
 ///|
 /// The error for a required field `i` that reports its own absence
 /// (`deserialize_with`).
-pub fn FieldsInput::absent_error(self : FieldsInput, i : Int) -> DeError {
+pub fn FieldsInput::absent_error(self : FieldsInput, i : Int32) -> DeError {
   match self.form {
     Named(_) => missing_error(self.fields.names[i])
     Positional(expected) => DeError("invalid length \{i}, expected \{expected}")

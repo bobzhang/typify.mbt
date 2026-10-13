@@ -2,7 +2,7 @@
 
 ///|
 /// A stable sort (Rust `sort_by` is stable; ties keep their order).
-fn[T] stable_sort_by(xs : Array[T], cmp : (T, T) -> Int) -> Array[T] {
+fn[T] stable_sort_by(xs : Array[T], cmp : (T, T) -> Int32) -> Array[T] {
   if xs.length() <= 1 {
     return xs.copy()
   }

@@ -1,6 +1,6 @@
 ///|
 /// `10^n` as a `BigInt` (`n >= 0`).
-fn big_pow10(n : Int) -> @bigint.BigInt {
+fn big_pow10(n : Int32) -> @bigint.BigInt {
   let mut r = @bigint.BigInt::from_int(1)
   let ten = @bigint.BigInt::from_int(10)
   for _ in 0..<n {
@@ -24,7 +24,11 @@ fn big_divmod(a : @bigint.BigInt, b : @bigint.BigInt) -> (@bigint.BigInt, Bool) 
 ///
 /// Computed exactly with big integers: f32 has few enough bits that this is
 /// cheap, and it is only used for serialization of `f32` fields.
-fn shortest_f32_digits(m : Int, e : Int, lower_closer : Bool) -> (String, Int) {
+fn shortest_f32_digits(
+  m : Int32,
+  e : Int32,
+  lower_closer : Bool,
+) -> (String, Int32) {
   // Scale the value and its interval bounds by 4 so that they are integers
   // times 2^(e-2).
   let v = m * 4
@@ -34,7 +38,7 @@ fn shortest_f32_digits(m : Int, e : Int, lower_closer : Bool) -> (String, Int) {
   let be = e - 2
   // value(x) = x * 2^be = num(x) / den
   let den = if be < 0 { @bigint.BigInt::from_int(1) << -be } else { 1N }
-  let num = (x : Int) => {
+  let num = (x : Int32) => {
     if be < 0 {
       @bigint.BigInt::from_int(x)
     } else {
@@ -47,7 +51,7 @@ fn shortest_f32_digits(m : Int, e : Int, lower_closer : Bool) -> (String, Int) {
       @math.log10(m.to_double() * @math.pow(2.0, e.to_double())),
     ).to_int() +
     1
-  let scaled = (k : Int) => {
+  let scaled = (k : Int32) => {
     if k >= 0 {
       (nv, den * big_pow10(k))
     } else {
