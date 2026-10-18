@@ -389,11 +389,11 @@ fn main {
   let seed = name
     .iter()
     .fold(init=0x9E3779B97F4A7C15UL, (h, c) => h * 31UL + c.to_int().to_uint64())
-  let gen : Gen = { rng: @splitmix.new(seed~), defs: root.definitions, }
+  let gen : Gen = { rng: @splitmix.RandomState::RandomState(seed~), defs: root.definitions, }
   // Text-level variants use their own stream so that the plain instances
   // stay stable.
   let wild : Gen = {
-    rng: @splitmix.new(seed=seed ^ 0x5DEECE66DUL),
+    rng: @splitmix.RandomState::RandomState(seed=seed ^ 0x5DEECE66DUL),
     defs: root.definitions,
   }
   let lines = []

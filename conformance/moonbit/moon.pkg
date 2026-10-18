@@ -25,3 +25,5 @@ import {
   "bobzhang/typify/conformance/moonbit/fx_maps_custom",
   "bobzhang/typify/conformance/moonbit/fx_github",
 }
+
+warnings = "-unused_value-unused_field"

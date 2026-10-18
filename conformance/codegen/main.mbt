@@ -162,7 +162,7 @@ fn generate_suite(
   write("\{base}/dispatch.mbt", dispatch.to_string())
   write(
     "\{base}/moon.pkg",
-    "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/x/fs\",\n\{imports.join("\n")}\n}\n",
+    "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/x/fs\",\n\{imports.join("\n")}\n}\n\nwarnings = \"-unused_value-unused_field\"\n",
   )
 }
 
