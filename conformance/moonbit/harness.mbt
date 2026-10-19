@@ -31,10 +31,10 @@ fn canonical(s : String) -> String {
 
 ///|
 priv struct Outcome {
-  total : Int
-  agree_exact : Int
-  agree_canonical : Int
-  same_acceptance : Int
+  total : Int32
+  agree_exact : Int32
+  agree_canonical : Int32
+  same_acceptance : Int32
   failures : Array[String]
 }
 

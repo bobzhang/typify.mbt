@@ -3,23 +3,23 @@
 
 ///|
 priv struct Matcher {
-  input : Array[Int]
+  input : Array[Int32]
   /// Capture start/end per 0-based group; -1 when unset.
-  caps : Array[Int]
+  caps : Array[Int32]
 }
 
 ///|
-fn Matcher::new(input : Array[Int], group_count : Int) -> Matcher {
+fn Matcher::new(input : Array[Int32], group_count : Int32) -> Matcher {
   { input, caps: Array::make(group_count * 2, -1), }
 }
 
 ///|
-fn Matcher::snapshot(self : Matcher, from : Int, to : Int) -> Array[Int] {
+fn Matcher::snapshot(self : Matcher, from : Int32, to : Int32) -> Array[Int32] {
   self.caps[from * 2:to * 2].to_owned()
 }
 
 ///|
-fn Matcher::restore(self : Matcher, from : Int, saved : Array[Int]) -> Unit {
+fn Matcher::restore(self : Matcher, from : Int32, saved : Array[Int32]) -> Unit {
   for i, v in saved {
     self.caps[from * 2 + i] = v
   }
@@ -27,7 +27,7 @@ fn Matcher::restore(self : Matcher, from : Int, saved : Array[Int]) -> Unit {
 
 ///|
 /// Run a full match of `node` starting at `start`; returns the end position.
-fn Matcher::run(self : Matcher, node : Node, start : Int) -> Int? {
+fn Matcher::run(self : Matcher, node : Node, start : Int32) -> Int32? {
   for i in 0..<self.caps.length() {
     self.caps[i] = -1
   }
@@ -44,7 +44,7 @@ fn Matcher::run(self : Matcher, node : Node, start : Int) -> Int? {
 }
 
 ///|
-fn single_matches(node : Node, c : Int) -> Bool {
+fn single_matches(node : Node, c : Int32) -> Bool {
   match node {
     Char(x, icase~) => chars_equal(c, x, icase)
     Bracket(set, invert~, icase~) => {
@@ -65,9 +65,9 @@ fn single_matches(node : Node, c : Int) -> Bool {
 fn Matcher::m(
   self : Matcher,
   node : Node,
-  pos : Int,
+  pos : Int32,
   fwd : Bool,
-  k : (Int) -> Bool,
+  k : (Int32) -> Bool,
 ) -> Bool {
   let n = self.input.length()
   match node {
@@ -176,10 +176,10 @@ fn Matcher::m(
 fn Matcher::cat(
   self : Matcher,
   nodes : Array[Node],
-  i : Int,
-  pos : Int,
+  i : Int32,
+  pos : Int32,
   fwd : Bool,
-  k : (Int) -> Bool,
+  k : (Int32) -> Bool,
 ) -> Bool {
   if i < 0 || i >= nodes.length() {
     return k(pos)
@@ -194,14 +194,14 @@ fn Matcher::cat(
 fn Matcher::repeat(
   self : Matcher,
   body : Node,
-  min : Int,
-  max : Int?,
+  min : Int32,
+  max : Int32?,
   greedy : Bool,
-  first_group : Int,
-  end_group : Int,
-  pos : Int,
+  first_group : Int32,
+  end_group : Int32,
+  pos : Int32,
   fwd : Bool,
-  k : (Int) -> Bool,
+  k : (Int32) -> Bool,
 ) -> Bool {
   if max is Some(0) {
     return k(pos)
@@ -253,12 +253,12 @@ fn Matcher::repeat(
 fn Matcher::loop_single(
   self : Matcher,
   body : Node,
-  min : Int,
-  max : Int?,
+  min : Int32,
+  max : Int32?,
   greedy : Bool,
-  pos : Int,
+  pos : Int32,
   fwd : Bool,
-  k : (Int) -> Bool,
+  k : (Int32) -> Bool,
 ) -> Bool {
   let n = self.input.length()
   let limit = match max {
@@ -277,7 +277,7 @@ fn Matcher::loop_single(
   if count < min {
     return false
   }
-  let at = (i : Int) => if fwd { pos + i } else { pos - i }
+  let at = (i : Int32) => if fwd { pos + i } else { pos - i }
   if greedy {
     for i = count; i >= min; i = i - 1 {
       if k(at(i)) {

@@ -45,11 +45,11 @@ pub struct VersionReq {
 /// Cursor over the ASCII-oriented input.
 priv struct Input {
   s : String
-  mut pos : Int
+  mut pos : Int32
 }
 
 ///|
-fn Input::peek(self : Input) -> Int {
+fn Input::peek(self : Input) -> Int32 {
   if self.pos < self.s.length() {
     self.s[self.pos].to_int()
   } else {
@@ -180,7 +180,7 @@ pub fn Version::parse(text : String) -> Version raise SemverError {
 }
 
 ///|
-fn is_wildcard(c : Int) -> Bool {
+fn is_wildcard(c : Int32) -> Bool {
   c == '*'.to_int() || c == 'x'.to_int() || c == 'X'.to_int()
 }
 
@@ -291,7 +291,7 @@ pub fn VersionReq::parse(text : String) -> VersionReq raise SemverError {
 ///|
 /// semver's ordering of pre-release strings ("" is a release, which sorts
 /// after any pre-release).
-fn compare_pre(a : String, b : String) -> Int {
+fn compare_pre(a : String, b : String) -> Int32 {
   if a == b {
     return 0
   }
@@ -332,7 +332,7 @@ fn compare_pre(a : String, b : String) -> Int {
 }
 
 ///|
-fn ascii_compare(x : String, y : String) -> Int {
+fn ascii_compare(x : String, y : String) -> Int32 {
   for i in 0..<x.length().min(y.length()) {
     let c = x[i].to_int().compare(y[i].to_int())
     if c != 0 {

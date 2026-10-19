@@ -4,9 +4,9 @@
 priv struct Gen {
   space : @typify.TypeSpace
   /// Generated type names by type id.
-  names : Map[Int, String]
+  names : Map[Int32, String]
   /// Constructor names by (enum type id, variant index).
-  ctors : Map[Int, Array[String]]
+  ctors : Map[Int32, Array[String]]
   /// Field/label names by (type id, variant index or -1), property index.
   fields : Map[String, Array[String]]
   /// Global value names (defaults, patterns, allowed values).
@@ -20,11 +20,11 @@ priv struct Gen {
   /// Backend options (visibility, replacements, ...).
   options : Options
   /// Existing MoonBit types used instead of generated ones, by type id.
-  replaced : Map[Int, (String, Codec)]
+  replaced : Map[Int32, (String, Codec)]
   /// Options per generated type id.
-  type_options : Map[Int, TypeOptions]
+  type_options : Map[Int32, TypeOptions]
   /// The types to emit.
-  emitted : Map[Int, Bool]
+  emitted : Map[Int32, Bool]
 }
 
 ///|
@@ -33,7 +33,7 @@ fn Gen::new(
   options : Options,
 ) -> Gen raise OptionsError {
   // Named types by their typify names, to resolve the options.
-  let by_name : Map[String, Int] = Map([])
+  let by_name : Map[String, Int32] = Map([])
   for pair in space.entries() {
     match pair.1.details {
       Enum({ name, .. }) | Struct({ name, .. }) | Newtype({ name, .. }) =>
@@ -41,8 +41,8 @@ fn Gen::new(
       _ => ()
     }
   }
-  let type_options : Map[Int, TypeOptions] = Map([])
-  let replaced : Map[Int, (String, Codec)] = Map([])
+  let type_options : Map[Int32, TypeOptions] = Map([])
+  let replaced : Map[Int32, (String, Codec)] = Map([])
   for name, opts in options.types {
     guard by_name.get(name) is Some(id) else {
       raise OptionsError(
@@ -55,10 +55,10 @@ fn Gen::new(
     }
   }
   let type_scope = Scope::new()
-  let names : Map[Int, String] = Map([])
-  let ctors : Map[Int, Array[String]] = Map([])
+  let names : Map[Int32, String] = Map([])
+  let ctors : Map[Int32, Array[String]] = Map([])
   let fields : Map[String, Array[String]] = Map([])
-  let type_name_for = (id : Int, name : String) => {
+  let type_name_for = (id : Int32, name : String) => {
     match type_options.get(id).map(o => o.name) {
       Some(Some(custom)) => type_scope.alloc(custom)
       _ => type_scope.alloc(upper_ident(name, reserved_type_names))
@@ -107,7 +107,7 @@ fn Gen::new(
       _ => ()
     }
   }
-  let roots : Array[Int] = []
+  let roots : Array[Int32] = []
   for root in options.roots {
     guard by_name.get(root) is Some(id) else {
       raise OptionsError("roots: no type `\{root}` in the schema")
@@ -134,9 +134,9 @@ fn Gen::new(
 ///|
 /// The named types (structs, enums, newtypes) an entry refers to, directly or
 /// through containers.
-fn named_refs(space : @typify.TypeSpace, id : @typify.TypeId) -> Array[Int] {
+fn named_refs(space : @typify.TypeSpace, id : @typify.TypeId) -> Array[Int32] {
   let out = []
-  let seen : Map[Int, Bool] = Map([])
+  let seen : Map[Int32, Bool] = Map([])
   fn walk(t : @typify.TypeId, top : Bool) -> Unit {
     if seen.contains(t.0) {
       return
@@ -191,20 +191,20 @@ fn named_refs(space : @typify.TypeSpace, id : @typify.TypeId) -> Array[Int] {
 /// never emitted, nor entered.
 fn emitted_types(
   space : @typify.TypeSpace,
-  roots : Array[Int],
-  replaced : Map[Int, (String, Codec)],
-) -> Map[Int, Bool] {
+  roots : Array[Int32],
+  replaced : Map[Int32, (String, Codec)],
+) -> Map[Int32, Bool] {
   let named = []
   for pair in space.entries() {
     if pair.1.details is (Struct(_) | Enum(_) | Newtype(_)) {
       named.push(pair.0)
     }
   }
-  let refs : Map[Int, Array[Int]] = Map([])
+  let refs : Map[Int32, Array[Int32]] = Map([])
   for id in named {
     refs[id.0] = named_refs(space, id)
   }
-  let emitted : Map[Int, Bool] = Map([])
+  let emitted : Map[Int32, Bool] = Map([])
   if !roots.is_empty() {
     let stack = roots.copy()
     while stack.pop() is Some(id) {
@@ -220,11 +220,11 @@ fn emitted_types(
   }
   // Exclude replaced types and, transitively, types referenced only by
   // excluded ones.
-  let excluded : Map[Int, Bool] = Map([])
+  let excluded : Map[Int32, Bool] = Map([])
   for id, _ in replaced {
     excluded[id] = true
   }
-  let incoming : Map[Int, Array[Int]] = Map([])
+  let incoming : Map[Int32, Array[Int32]] = Map([])
   for id, rs in refs {
     for r in rs {
       if r != id {

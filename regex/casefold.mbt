@@ -7,7 +7,7 @@
 // ASCII in non-Unicode mode.
 
 ///|
-fn single_upper(c : Int) -> Int {
+fn single_upper(c : Int32) -> Int32 {
   if c < 0 || c > 0x10FFFF || (c >= 0xD800 && c <= 0xDFFF) {
     return c
   }
@@ -20,7 +20,7 @@ fn single_upper(c : Int) -> Int {
 }
 
 ///|
-fn single_lower(c : Int) -> Int {
+fn single_lower(c : Int32) -> Int32 {
   if c < 0 || c > 0x10FFFF || (c >= 0xD800 && c <= 0xDFFF) {
     return c
   }
@@ -34,7 +34,7 @@ fn single_lower(c : Int) -> Int {
 
 ///|
 /// ES2015 21.2.2.8.2 Canonicalize (non-Unicode mode).
-fn canonicalize(c : Int) -> Int {
+fn canonicalize(c : Int32) -> Int32 {
   let u = single_upper(c)
   if c >= 128 && u < 128 {
     c
@@ -45,14 +45,14 @@ fn canonicalize(c : Int) -> Int {
 
 ///|
 /// Approximation of Unicode simple case folding.
-fn simple_fold(c : Int) -> Int {
+fn simple_fold(c : Int32) -> Int32 {
   single_lower(single_upper(c))
 }
 
 ///|
 /// For each case-fold class with more than one member: fold target -> members.
-let fold_classes : Map[Int, Array[Int]] = {
-  let classes : Map[Int, Array[Int]] = Map([])
+let fold_classes : Map[Int32, Array[Int32]] = {
+  let classes : Map[Int32, Array[Int32]] = Map([])
   for c in @unicode.case_mapped_code_points() {
     for x in [c, single_upper(c), single_lower(c)] {
       let f = simple_fold(x)
@@ -67,7 +67,7 @@ let fold_classes : Map[Int, Array[Int]] = {
 
 ///|
 /// Whether `c` matches a bracket set under case-insensitive matching.
-fn bracket_contains_icase(set : CharSet, c : Int) -> Bool {
+fn bracket_contains_icase(set : CharSet, c : Int32) -> Bool {
   if set.contains(c) {
     return true
   }
@@ -78,6 +78,6 @@ fn bracket_contains_icase(set : CharSet, c : Int) -> Bool {
 }
 
 ///|
-fn chars_equal(a : Int, b : Int, icase : Bool) -> Bool {
+fn chars_equal(a : Int32, b : Int32, icase : Bool) -> Bool {
   a == b || (icase && canonicalize(a) == canonicalize(b))
 }

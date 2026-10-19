@@ -387,8 +387,8 @@ fn singleton_subschema(s : @schema.SubschemaValidation) -> @schema.Schema? {
 ///|
 /// Validates strings against `maxLength`, `minLength` and `pattern`.
 priv struct StringValidator {
-  max_length : UInt?
-  min_length : UInt?
+  max_length : UInt32?
+  min_length : UInt32?
   pattern : @regex.Regex?
 }
 
@@ -429,7 +429,7 @@ fn StringValidator::is_valid(self : StringValidator, s : String) -> Bool {
 
 ///|
 /// Instance types reordered so integers come before numbers.
-fn reordered_rank(t : @schema.InstanceType) -> Int {
+fn reordered_rank(t : @schema.InstanceType) -> Int32 {
   match t {
     Null => 0
     Boolean => 1

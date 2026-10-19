@@ -199,7 +199,7 @@ fn fixture_suite() -> Array[
 /// upstream's tokens in `tokens/<name>.tokens` for the Rust harness.
 fn random_suite(
   path : String,
-  limit : Int,
+  limit : Int32,
 ) -> Array[(String, @schema.RootSchema, @typify.TypeSpaceSettings, Bool)] {
   let out = []
   // Optionally restrict to the schemas whose upstream Rust compiles.
@@ -294,7 +294,7 @@ fn recursive_flatten(space : @typify.TypeSpace) -> Bool {
     }
   }
   // Cycle detection (0 = unvisited, 1 = on the stack, 2 = done).
-  let state : Map[@typify.TypeId, Int] = Map([])
+  let state : Map[@typify.TypeId, Int32] = Map([])
   fn visit(id : @typify.TypeId) -> Bool {
     match state.get(id) {
       Some(1) => return true

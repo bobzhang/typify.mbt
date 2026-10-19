@@ -26,7 +26,7 @@ fn Gen::render_str(
   self : Gen,
   buf : StringBuilder,
   s : String,
-  escape_pct : Int,
+  escape_pct : Int32,
 ) -> Unit {
   if !self.chance(escape_pct) || s.is_empty() {
     @serde_json.write_escaped_str(buf, s)
@@ -59,7 +59,7 @@ fn Gen::render_str(
 
 ///|
 /// Deeply nested arrays (past serde_json's recursion limit of 128).
-fn deep_value(depth : Int) -> String {
+fn deep_value(depth : Int32) -> String {
   let buf = StringBuilder()
   for _ in 0..<depth {
     buf.write_char('[')

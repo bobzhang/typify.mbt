@@ -27,7 +27,7 @@ pub fn de_nonzero_u16(d : De) -> UInt16 raise DeError {
 }
 
 ///|
-pub fn de_nonzero_u32(d : De) -> UInt raise DeError {
+pub fn de_nonzero_u32(d : De) -> UInt32 raise DeError {
   let v = de_u32_expecting(d, "a nonzero u32")
   nonzero(v == 0, "a nonzero u32")
   v
@@ -53,7 +53,7 @@ pub fn De::from_json(json : Json) -> De {
 /// `preserve_order`), as `--preserve-order` output expects.
 pub fn content_to_json(
   c : Content,
-  preserve_order? : Bool = false,
+  preserve_order~ : Bool = false,
 ) -> Json raise SerError {
   let v = c.to_value(preserve_order~) catch {
     @serde_json.ParseError(message~, ..) => raise SerError(message)
@@ -104,7 +104,7 @@ pub fn contains_value(allowed : Array[Content], c : Content) -> Bool {
 
 ///|
 /// Number of Unicode scalar values (`str::chars().count()`).
-pub fn char_count(s : String) -> Int {
+pub fn char_count(s : String) -> Int32 {
   s.char_length()
 }
 
@@ -121,7 +121,7 @@ pub fn regex(pattern : String) -> Regex {
 
 ///|
 /// Rust `String` ordering (code points).
-pub fn compare_keys(a : String, b : String) -> Int {
+pub fn compare_keys(a : String, b : String) -> Int32 {
   @collections.compare_str(a, b)
 }
 
@@ -177,12 +177,12 @@ pub fn[T] de_adjacent(
   content : String,
   variants : Array[String],
   deny : Bool,
-  decode : (Int, VariantInput) -> T raise DeError,
-  paths? : Bool = false,
+  decode : (Int32, VariantInput) -> T raise DeError,
+  paths~ : Bool = false,
 ) -> T raise DeError {
   // With `paths`, errors in the content say so (`error_at`).
   let decode = if paths {
-    (i : Int, v : VariantInput) => {
+    (i : Int32, v : VariantInput) => {
       decode(i, v) catch {
         e => raise if v is Payload(_) { error_at(e, content) } else { e }
       }
@@ -216,7 +216,7 @@ pub fn[T] de_adjacent(
       return r
     }
   }
-  let mut idx : Int? = None
+  let mut idx : Int32? = None
   let mut buffered : De? = None
   let mut result : T? = None
   let mut seen_content = false

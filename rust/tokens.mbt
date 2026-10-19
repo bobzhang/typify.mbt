@@ -182,13 +182,13 @@ pub fn lit_str(s : String) -> Tokens {
 
 ///|
 /// An unsuffixed integer literal (e.g. `syn::Index`).
-pub fn lit_int(n : Int) -> Tokens {
+pub fn lit_int(n : Int32) -> Tokens {
   { toks: [Literal(n.to_string())], }
 }
 
 ///|
 /// A `usize`-suffixed integer literal (`quote! { #n }` for `usize`).
-pub fn lit_usize(n : Int) -> Tokens {
+pub fn lit_usize(n : Int32) -> Tokens {
   { toks: [Literal("\{n}usize")], }
 }
 

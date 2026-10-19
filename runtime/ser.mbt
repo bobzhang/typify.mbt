@@ -32,12 +32,12 @@ pub fn ser_string(s : String) -> Content {
 }
 
 ///|
-pub fn ser_int(n : Int) -> Content {
+pub fn ser_int(n : Int32) -> Content {
   Number(@serde_json.Number::from_i64(n.to_int64()))
 }
 
 ///|
-pub fn ser_uint(n : UInt) -> Content {
+pub fn ser_uint(n : UInt32) -> Content {
   Number(@serde_json.Number::PosInt(n.to_uint64()))
 }
 
@@ -136,7 +136,7 @@ pub fn[K, V] ser_map(
 /// A map serialized in key order (`BTreeMap`): `cmp` is the key type's `Ord`.
 pub fn[K, V] ser_sorted_map(
   m : Map[K, V],
-  cmp : (K, K) -> Int,
+  cmp : (K, K) -> Int32,
   key : (K) -> String raise SerError,
   value : (V) -> Content raise SerError,
 ) -> Content raise SerError {
