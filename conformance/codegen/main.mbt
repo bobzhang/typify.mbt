@@ -102,8 +102,10 @@ fn write(path : String, text : String) -> Unit {
 
 ///|
 /// Generate one MoonBit package per schema under `base` (import path
-/// `bobzhang/typify/<base>/<pkg>`), plus `base/dispatch.mbt` and
-/// `base/moon.pkg`. `compile_only` schemas get no dispatch entries.
+/// `bobzhang/typify/<base>/<pkg>`), plus `base/dispatch_wbtest.mbt` and
+/// `base/moon.pkg`. The harness in `base` is test-only, so its imports are
+/// `wbtest` imports. `compile_only` schemas get no dispatch entries and are
+/// not imported (`moon check` still compiles them).
 fn generate_suite(
   base : String,
   suite : Array[(String, @schema.RootSchema, @typify.TypeSpaceSettings, Bool)],
@@ -159,10 +161,10 @@ fn generate_suite(
     }
   }
   dispatch.write_string("    _ => \"NOTYPE\"\n  }\n}\n")
-  write("\{base}/dispatch.mbt", dispatch.to_string())
+  write("\{base}/dispatch_wbtest.mbt", dispatch.to_string())
   write(
     "\{base}/moon.pkg",
-    "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/x/fs\",\n\{imports.join("\n")}\n}\n",
+    "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/x/fs\",\n\{imports.join("\n")}\n} for \"wbtest\"\n",
   )
 }
 
@@ -199,7 +201,7 @@ fn fixture_suite() -> Array[
 /// upstream's tokens in `tokens/<name>.tokens` for the Rust harness.
 fn random_suite(
   path : String,
-  limit : Int,
+  limit : Int32,
 ) -> Array[(String, @schema.RootSchema, @typify.TypeSpaceSettings, Bool)] {
   let out = []
   // Optionally restrict to the schemas whose upstream Rust compiles.
@@ -294,7 +296,7 @@ fn recursive_flatten(space : @typify.TypeSpace) -> Bool {
     }
   }
   // Cycle detection (0 = unvisited, 1 = on the stack, 2 = done).
-  let state : Map[@typify.TypeId, Int] = Map([])
+  let state : Map[@typify.TypeId, Int32] = Map([])
   fn visit(id : @typify.TypeId) -> Bool {
     match state.get(id) {
       Some(1) => return true
@@ -342,17 +344,17 @@ fn main {
     generate_suite("conformance/random", suite)
     // The harness: shared with conformance/moonbit, reading cases from
     // conformance/random/cases.
-    let harness = read("conformance/moonbit/harness.mbt").replace_all(
+    let harness = read("conformance/moonbit/harness_wbtest.mbt").replace_all(
       old="conformance/cases/",
       new="conformance/random/cases/",
     )
     let start = harness.find("///|\nlet fixture_names").unwrap()
     write(
-      "conformance/random/harness.mbt",
+      "conformance/random/harness_wbtest.mbt",
       harness.unsafe_substring(start=0, end=start),
     )
     write(
-      "conformance/random/names.mbt",
+      "conformance/random/names_wbtest.mbt",
       "///|\nlet fixture_names : Array[String] = [\n\{suite.map(s => "  \"\{s.0}\",").join("\n")}\n]\n",
     )
     write(

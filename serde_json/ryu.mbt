@@ -4,7 +4,7 @@
 ///
 /// MoonBit's `Double::to_string` already produces the shortest round-trip
 /// digits (as ryu does); only the layout differs, so we re-parse it.
-fn shortest_digits(abs : Double) -> (String, Int) {
+fn shortest_digits(abs : Double) -> (String, Int32) {
   let chars = abs.to_string().to_array()
   // Split off an optional exponent: "1.5e+300" / "1e-7".
   let mut exp = 0
@@ -55,7 +55,7 @@ fn shortest_digits(abs : Double) -> (String, Int) {
 
 ///|
 /// serde_json writes an explicit `+` on positive exponents (`1e+16`).
-fn write_exponent(buf : StringBuilder, e : Int) -> Unit {
+fn write_exponent(buf : StringBuilder, e : Int32) -> Unit {
   buf.write_char('e')
   if e >= 0 {
     buf.write_char('+')
@@ -89,9 +89,9 @@ pub fn format_f64(d : Double) -> String {
 fn write_layout(
   buf : StringBuilder,
   digits : String,
-  k : Int,
-  min_kk~ : Int,
-  max_kk~ : Int,
+  k : Int32,
+  min_kk~ : Int32,
+  max_kk~ : Int32,
 ) -> Unit {
   let length = digits.length()
   let kk = length + k // 10^(kk-1) <= abs < 10^kk

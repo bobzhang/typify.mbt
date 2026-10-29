@@ -35,7 +35,7 @@ pub(all) struct Entry {
 /// feature of that name).
 pub fn Content::to_value(
   self : Content,
-  preserve_order? : Bool = false,
+  preserve_order~ : Bool = false,
 ) -> Value raise ParseError {
   match self {
     Invalid(e) => raise e

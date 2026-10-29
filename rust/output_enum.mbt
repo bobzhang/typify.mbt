@@ -309,7 +309,7 @@ fn unique_payload_variants(
       _ => None
     }
   }
-  let counts : Map[String, Int] = Map([])
+  let counts : Map[String, Int32] = Map([])
   let key_string = (ids : Array[@typify.TypeId]) => {
     ids.map(i => i.0.to_string()).join(",")
   }

@@ -1,6 +1,6 @@
 ///|
 /// Identifier of a type within a `TypeSpace`.
-pub(all) struct TypeId(Int) derive(Eq, Compare, Hash, Debug)
+pub(all) struct TypeId(Int32) derive(Eq, Compare, Hash, Debug)
 
 ///|
 pub impl Show for TypeId with fn output(self, logger) {

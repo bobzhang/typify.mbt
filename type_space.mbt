@@ -1,7 +1,7 @@
 ///|
 /// A collection of types generated from JSON Schema (upstream `TypeSpace`).
 pub struct TypeSpace {
-  priv mut next_id : Int
+  priv mut next_id : Int32
   priv definitions : Map[RefKey, @schema.Schema]
   /// All types by id, in id order.
   id_to_entry : @sorted_map.SortedMap[TypeId, TypeEntry]
@@ -64,7 +64,7 @@ fn TypeSpace::cache_lookup(
 
 ///|
 /// The number of types in the space.
-pub fn TypeSpace::type_count(self : TypeSpace) -> Int {
+pub fn TypeSpace::type_count(self : TypeSpace) -> Int32 {
   self.id_to_entry.length()
 }
 
@@ -154,7 +154,7 @@ fn TypeSpace::add_ref_types_impl(
 /// Finalize all entries with ids in `[base_id, next_id)`.
 fn TypeSpace::finalize_range(
   self : TypeSpace,
-  base_id : Int,
+  base_id : Int32,
 ) -> Unit raise TypifyError {
   let end = self.next_id
   for index in base_id..<end {
