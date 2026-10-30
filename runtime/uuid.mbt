@@ -34,7 +34,7 @@ pub fn Uuid::to_bytes(self : Uuid) -> FixedArray[Byte] {
 
 ///|
 /// The value of an ASCII hex digit byte, or -1.
-fn hex_digit(b : Int) -> Int {
+fn hex_digit(b : Int32) -> Int32 {
   if b >= 0x30 && b <= 0x39 {
     b - 0x30
   } else if b >= 0x61 && b <= 0x66 {
@@ -48,9 +48,9 @@ fn hex_digit(b : Int) -> Int {
 
 ///|
 /// `parse_simple` / `parse_hyphenated` on `input[start:end]`.
-fn uuid_digits(input : Bytes, start : Int, end : Int) -> FixedArray[Byte]? {
+fn uuid_digits(input : Bytes, start : Int32, end : Int32) -> FixedArray[Byte]? {
   let n = end - start
-  let digit = (i : Int) => hex_digit(input[start + i].to_int())
+  let digit = (i : Int32) => hex_digit(input[start + i].to_int())
   let buf = FixedArray::make(16, b'\x00')
   if n == 32 {
     for i in 0..<16 {

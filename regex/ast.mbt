@@ -25,7 +25,7 @@ fn ClassType::codepoints(self : ClassType, positive : Bool) -> CharSet {
 priv enum Node {
   Empty
   /// A literal code point; `icase` compares case-insensitively.
-  Char(Int, icase~ : Bool)
+  Char(Int32, icase~ : Bool)
   /// A bracket expression or class escape.
   Bracket(CharSet, invert~ : Bool, icase~ : Bool)
   /// `.`; `dot_all` also matches line terminators.
@@ -37,17 +37,17 @@ priv enum Node {
   /// Ordered alternation.
   Alt(Array[Node])
   /// Capture group with 0-based index.
-  Group(Int, Node)
+  Group(Int32, Node)
   /// Backreference to a 1-based group number.
-  BackRef(Int, icase~ : Bool)
+  BackRef(Int32, icase~ : Bool)
   Look(Node, negate~ : Bool, backwards~ : Bool)
   Loop(
     Node,
-    min~ : Int,
-    max~ : Int?,
+    min~ : Int32,
+    max~ : Int32?,
     greedy~ : Bool,
-    first_group~ : Int,
-    end_group~ : Int
+    first_group~ : Int32,
+    end_group~ : Int32
   )
 }
 

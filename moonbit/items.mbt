@@ -1,7 +1,7 @@
 // Generated items: type declarations, codecs and helpers.
 
 ///|
-fn indent(code : String, n : Int) -> String {
+fn indent(code : String, n : Int32) -> String {
   let pad = " ".repeat(n)
   code
   .split("\n")
@@ -99,11 +99,11 @@ fn Gen::struct_decode(
   allow_seq : Bool,
   d : String,
   build : String,
-  external_variant? : Bool = false,
+  external_variant~ : Bool = false,
 ) -> String {
   let has_flatten = props.iter().any(p => p.rename is Flatten)
   // Named fields: (property index, JSON name).
-  let named : Array[(Int, String)] = []
+  let named : Array[(Int32, String)] = []
   for i, p in props {
     if json_name(p) is Some(n) {
       named.push((i, n))
@@ -202,7 +202,7 @@ fn Gen::struct_decode(
 fn Gen::struct_encode(
   self : Gen,
   props : Array[@typify.StructProperty],
-  access : (Int) -> String,
+  access : (Int32) -> String,
 ) -> String {
   let buf = StringBuilder()
   for i, p in props {
@@ -628,7 +628,7 @@ fn Gen::output_newtype(
 fn Gen::variant_decl(
   self : Gen,
   id : @typify.TypeId,
-  i : Int,
+  i : Int32,
   v : @typify.Variant,
 ) -> String {
   let ctor = self.ctors.get(id.0).unwrap()[i]
@@ -653,7 +653,7 @@ fn Gen::variant_payload_decode(
   out : StringBuilder,
   id : @typify.TypeId,
   enum_name : String,
-  i : Int,
+  i : Int32,
   v : @typify.Variant,
   d : String,
   allow_seq : Bool,
@@ -719,7 +719,7 @@ fn Gen::variant_payload_encode(self : Gen, v : @typify.Variant) -> String? {
 fn Gen::variant_pattern(
   self : Gen,
   id : @typify.TypeId,
-  i : Int,
+  i : Int32,
   v : @typify.Variant,
 ) -> String {
   let ctor = self.ctors.get(id.0).unwrap()[i]

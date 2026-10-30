@@ -36,7 +36,7 @@ pub fn TestTypeValue::parse(StringView) -> Self raise @runtime.ConversionError
 pub fn TestTypeValue::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TestTypeValue::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TestTypeValue::to_string(Self) -> String
-pub fn TestTypeValue::variant_index(Self) -> Int
+pub fn TestTypeValue::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TestTypeValue
 pub impl ToJson for TestTypeValue
 

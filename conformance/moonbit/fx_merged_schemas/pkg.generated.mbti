@@ -109,7 +109,7 @@ pub fn JsonSuccessBaseResult::parse(StringView) -> Self raise @runtime.Conversio
 pub fn JsonSuccessBaseResult::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn JsonSuccessBaseResult::to_json_string(Self) -> String raise @runtime.SerError
 pub fn JsonSuccessBaseResult::to_string(Self) -> String
-pub fn JsonSuccessBaseResult::variant_index(Self) -> Int
+pub fn JsonSuccessBaseResult::variant_index(Self) -> Int32
 pub impl @runtime.Serde for JsonSuccessBaseResult
 pub impl ToJson for JsonSuccessBaseResult
 
@@ -123,7 +123,7 @@ pub fn JsonSuccessResult::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn JsonSuccessResult::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn JsonSuccessResult::to_json_string(Self) -> String raise @runtime.SerError
 pub fn JsonSuccessResult::to_string(Self) -> String
-pub fn JsonSuccessResult::variant_index(Self) -> Int
+pub fn JsonSuccessResult::variant_index(Self) -> Int32
 pub impl @runtime.Serde for JsonSuccessResult
 pub impl ToJson for JsonSuccessResult
 
@@ -271,7 +271,7 @@ pub fn UnchangedByMergeTag::parse(StringView) -> Self raise @runtime.ConversionE
 pub fn UnchangedByMergeTag::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn UnchangedByMergeTag::to_json_string(Self) -> String raise @runtime.SerError
 pub fn UnchangedByMergeTag::to_string(Self) -> String
-pub fn UnchangedByMergeTag::variant_index(Self) -> Int
+pub fn UnchangedByMergeTag::variant_index(Self) -> Int32
 pub impl @runtime.Serde for UnchangedByMergeTag
 pub impl ToJson for UnchangedByMergeTag
 
@@ -337,7 +337,7 @@ pub fn Unsatisfiable3B::parse(StringView) -> Self raise @runtime.ConversionError
 pub fn Unsatisfiable3B::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn Unsatisfiable3B::to_json_string(Self) -> String raise @runtime.SerError
 pub fn Unsatisfiable3B::to_string(Self) -> String
-pub fn Unsatisfiable3B::variant_index(Self) -> Int
+pub fn Unsatisfiable3B::variant_index(Self) -> Int32
 pub impl @runtime.Serde for Unsatisfiable3B
 pub impl ToJson for Unsatisfiable3B
 
@@ -351,7 +351,7 @@ pub fn Unsatisfiable3C::parse(StringView) -> Self raise @runtime.ConversionError
 pub fn Unsatisfiable3C::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn Unsatisfiable3C::to_json_string(Self) -> String raise @runtime.SerError
 pub fn Unsatisfiable3C::to_string(Self) -> String
-pub fn Unsatisfiable3C::variant_index(Self) -> Int
+pub fn Unsatisfiable3C::variant_index(Self) -> Int32
 pub impl @runtime.Serde for Unsatisfiable3C
 pub impl ToJson for Unsatisfiable3C
 

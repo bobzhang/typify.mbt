@@ -4,41 +4,41 @@
 // `extensions` is always ignored, as in every upstream pattern.
 
 ///|
-const F_META : Int = 1
+const F_META : Int32 = 1
 
 ///|
-const F_TYPE : Int = 2
+const F_TYPE : Int32 = 2
 
 ///|
-const F_FORMAT : Int = 4
+const F_FORMAT : Int32 = 4
 
 ///|
-const F_ENUM : Int = 8
+const F_ENUM : Int32 = 8
 
 ///|
-const F_CONST : Int = 16
+const F_CONST : Int32 = 16
 
 ///|
-const F_SUB : Int = 32
+const F_SUB : Int32 = 32
 
 ///|
-const F_NUM : Int = 64
+const F_NUM : Int32 = 64
 
 ///|
-const F_STR : Int = 128
+const F_STR : Int32 = 128
 
 ///|
-const F_ARR : Int = 256
+const F_ARR : Int32 = 256
 
 ///|
-const F_OBJ : Int = 512
+const F_OBJ : Int32 = 512
 
 ///|
-const F_REF : Int = 1024
+const F_REF : Int32 = 1024
 
 ///|
 /// Which fields of the schema object are `Some`.
-fn present(o : @schema.SchemaObject) -> Int {
+fn present(o : @schema.SchemaObject) -> Int32 {
   let mut m = 0
   if o.metadata is Some(_) {
     m = m | F_META
@@ -79,7 +79,7 @@ fn present(o : @schema.SchemaObject) -> Int {
 ///|
 /// Fields in `some` are `Some`, fields in `any` are unconstrained, all other
 /// fields are `None`.
-fn shape(o : @schema.SchemaObject, some? : Int = 0, any? : Int = 0) -> Bool {
+fn shape(o : @schema.SchemaObject, some~ : Int32 = 0, any~ : Int32 = 0) -> Bool {
   let m = present(o)
   (m & some) == some && (m & (some | any).lnot()) == 0
 }
@@ -94,29 +94,29 @@ fn single_type(o : @schema.SchemaObject) -> @schema.InstanceType? {
 }
 
 ///|
-const S_ALL : Int = 1
+const S_ALL : Int32 = 1
 
 ///|
-const S_ANY : Int = 2
+const S_ANY : Int32 = 2
 
 ///|
-const S_ONE : Int = 4
+const S_ONE : Int32 = 4
 
 ///|
-const S_NOT : Int = 8
+const S_NOT : Int32 = 8
 
 ///|
-const S_IF : Int = 16
+const S_IF : Int32 = 16
 
 ///|
-const S_THEN : Int = 32
+const S_THEN : Int32 = 32
 
 ///|
-const S_ELSE : Int = 64
+const S_ELSE : Int32 = 64
 
 ///|
 /// Which subschema fields are `Some`.
-fn sub_present(s : @schema.SubschemaValidation) -> Int {
+fn sub_present(s : @schema.SubschemaValidation) -> Int32 {
   let mut m = 0
   if s.all_of is Some(_) {
     m = m | S_ALL

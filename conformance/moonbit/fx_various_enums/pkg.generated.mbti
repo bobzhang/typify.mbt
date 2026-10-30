@@ -25,7 +25,7 @@ pub fn AlternativeEnum::parse(StringView) -> Self raise @runtime.ConversionError
 pub fn AlternativeEnum::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AlternativeEnum::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AlternativeEnum::to_string(Self) -> String
-pub fn AlternativeEnum::variant_index(Self) -> Int
+pub fn AlternativeEnum::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AlternativeEnum
 pub impl ToJson for AlternativeEnum
 
@@ -71,7 +71,7 @@ pub fn CommentedVariants::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn CommentedVariants::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn CommentedVariants::to_json_string(Self) -> String raise @runtime.SerError
 pub fn CommentedVariants::to_string(Self) -> String
-pub fn CommentedVariants::variant_index(Self) -> Int
+pub fn CommentedVariants::variant_index(Self) -> Int32
 pub impl @runtime.Serde for CommentedVariants
 pub impl ToJson for CommentedVariants
 
@@ -101,7 +101,7 @@ pub fn DiskAttachmentState::parse(StringView) -> Self raise @runtime.ConversionE
 pub fn DiskAttachmentState::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DiskAttachmentState::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DiskAttachmentState::to_string(Self) -> String
-pub fn DiskAttachmentState::variant_index(Self) -> Int
+pub fn DiskAttachmentState::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DiskAttachmentState
 pub impl ToJson for DiskAttachmentState
 
@@ -247,7 +247,7 @@ pub fn NullStringEnumWithUnknownFormatInner::parse(StringView) -> Self raise @ru
 pub fn NullStringEnumWithUnknownFormatInner::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn NullStringEnumWithUnknownFormatInner::to_json_string(Self) -> String raise @runtime.SerError
 pub fn NullStringEnumWithUnknownFormatInner::to_string(Self) -> String
-pub fn NullStringEnumWithUnknownFormatInner::variant_index(Self) -> Int
+pub fn NullStringEnumWithUnknownFormatInner::variant_index(Self) -> Int32
 pub impl @runtime.Serde for NullStringEnumWithUnknownFormatInner
 pub impl ToJson for NullStringEnumWithUnknownFormatInner
 
@@ -408,7 +408,7 @@ pub fn VariantsDifferByPunct::parse(StringView) -> Self raise @runtime.Conversio
 pub fn VariantsDifferByPunct::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn VariantsDifferByPunct::to_json_string(Self) -> String raise @runtime.SerError
 pub fn VariantsDifferByPunct::to_string(Self) -> String
-pub fn VariantsDifferByPunct::variant_index(Self) -> Int
+pub fn VariantsDifferByPunct::variant_index(Self) -> Int32
 pub impl @runtime.Serde for VariantsDifferByPunct
 pub impl ToJson for VariantsDifferByPunct
 

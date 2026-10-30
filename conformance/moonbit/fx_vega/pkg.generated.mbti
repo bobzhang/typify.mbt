@@ -203,7 +203,7 @@ pub fn AggregateTransformOpsArrayItemVariant0::parse(StringView) -> Self raise @
 pub fn AggregateTransformOpsArrayItemVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AggregateTransformOpsArrayItemVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AggregateTransformOpsArrayItemVariant0::to_string(Self) -> String
-pub fn AggregateTransformOpsArrayItemVariant0::variant_index(Self) -> Int
+pub fn AggregateTransformOpsArrayItemVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AggregateTransformOpsArrayItemVariant0
 pub impl ToJson for AggregateTransformOpsArrayItemVariant0
 
@@ -217,7 +217,7 @@ pub fn AggregateTransformType::parse(StringView) -> Self raise @runtime.Conversi
 pub fn AggregateTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AggregateTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AggregateTransformType::to_string(Self) -> String
-pub fn AggregateTransformType::variant_index(Self) -> Int
+pub fn AggregateTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AggregateTransformType
 pub impl ToJson for AggregateTransformType
 
@@ -273,7 +273,7 @@ pub fn AlignValueVariant0ItemVariant0Variant1Value::parse(StringView) -> Self ra
 pub fn AlignValueVariant0ItemVariant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AlignValueVariant0ItemVariant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AlignValueVariant0ItemVariant0Variant1Value::to_string(Self) -> String
-pub fn AlignValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int
+pub fn AlignValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AlignValueVariant0ItemVariant0Variant1Value
 pub impl ToJson for AlignValueVariant0ItemVariant0Variant1Value
 
@@ -349,7 +349,7 @@ pub fn AlignValueVariant1Variant0Variant1Value::parse(StringView) -> Self raise 
 pub fn AlignValueVariant1Variant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AlignValueVariant1Variant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AlignValueVariant1Variant0Variant1Value::to_string(Self) -> String
-pub fn AlignValueVariant1Variant0Variant1Value::variant_index(Self) -> Int
+pub fn AlignValueVariant1Variant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AlignValueVariant1Variant0Variant1Value
 pub impl ToJson for AlignValueVariant1Variant0Variant1Value
 
@@ -437,7 +437,7 @@ pub fn AnchorValueVariant0ItemVariant0Variant1Value::parse(StringView) -> Self r
 pub fn AnchorValueVariant0ItemVariant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AnchorValueVariant0ItemVariant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AnchorValueVariant0ItemVariant0Variant1Value::to_string(Self) -> String
-pub fn AnchorValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int
+pub fn AnchorValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AnchorValueVariant0ItemVariant0Variant1Value
 pub impl ToJson for AnchorValueVariant0ItemVariant0Variant1Value
 
@@ -513,7 +513,7 @@ pub fn AnchorValueVariant1Variant0Variant1Value::parse(StringView) -> Self raise
 pub fn AnchorValueVariant1Variant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AnchorValueVariant1Variant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AnchorValueVariant1Variant0Variant1Value::to_string(Self) -> String
-pub fn AnchorValueVariant1Variant0Variant1Value::variant_index(Self) -> Int
+pub fn AnchorValueVariant1Variant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AnchorValueVariant1Variant0Variant1Value
 pub impl ToJson for AnchorValueVariant1Variant0Variant1Value
 
@@ -852,7 +852,7 @@ pub fn AutosizeVariant0::parse(StringView) -> Self raise @runtime.ConversionErro
 pub fn AutosizeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AutosizeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AutosizeVariant0::to_string(Self) -> String
-pub fn AutosizeVariant0::variant_index(Self) -> Int
+pub fn AutosizeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AutosizeVariant0
 pub impl ToJson for AutosizeVariant0
 
@@ -867,7 +867,7 @@ pub fn AutosizeVariant1Contains::parse(StringView) -> Self raise @runtime.Conver
 pub fn AutosizeVariant1Contains::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AutosizeVariant1Contains::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AutosizeVariant1Contains::to_string(Self) -> String
-pub fn AutosizeVariant1Contains::variant_index(Self) -> Int
+pub fn AutosizeVariant1Contains::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AutosizeVariant1Contains
 pub impl ToJson for AutosizeVariant1Contains
 
@@ -886,7 +886,7 @@ pub fn AutosizeVariant1Type::parse(StringView) -> Self raise @runtime.Conversion
 pub fn AutosizeVariant1Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AutosizeVariant1Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AutosizeVariant1Type::to_string(Self) -> String
-pub fn AutosizeVariant1Type::variant_index(Self) -> Int
+pub fn AutosizeVariant1Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AutosizeVariant1Type
 pub impl ToJson for AutosizeVariant1Type
 
@@ -1119,7 +1119,7 @@ pub fn AxisFormatTypeVariant0::parse(StringView) -> Self raise @runtime.Conversi
 pub fn AxisFormatTypeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AxisFormatTypeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AxisFormatTypeVariant0::to_string(Self) -> String
-pub fn AxisFormatTypeVariant0::variant_index(Self) -> Int
+pub fn AxisFormatTypeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AxisFormatTypeVariant0
 pub impl ToJson for AxisFormatTypeVariant0
 
@@ -1220,7 +1220,7 @@ pub fn AxisLabelAlignVariant0::parse(StringView) -> Self raise @runtime.Conversi
 pub fn AxisLabelAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AxisLabelAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AxisLabelAlignVariant0::to_string(Self) -> String
-pub fn AxisLabelAlignVariant0::variant_index(Self) -> Int
+pub fn AxisLabelAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AxisLabelAlignVariant0
 pub impl ToJson for AxisLabelAlignVariant0
 
@@ -1263,7 +1263,7 @@ pub fn AxisLabelBaselineVariant0::parse(StringView) -> Self raise @runtime.Conve
 pub fn AxisLabelBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AxisLabelBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AxisLabelBaselineVariant0::to_string(Self) -> String
-pub fn AxisLabelBaselineVariant0::variant_index(Self) -> Int
+pub fn AxisLabelBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AxisLabelBaselineVariant0
 pub impl ToJson for AxisLabelBaselineVariant0
 
@@ -1475,7 +1475,7 @@ pub fn AxisOrientVariant0::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn AxisOrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AxisOrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AxisOrientVariant0::to_string(Self) -> String
-pub fn AxisOrientVariant0::variant_index(Self) -> Int
+pub fn AxisOrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AxisOrientVariant0
 pub impl ToJson for AxisOrientVariant0
 
@@ -1624,7 +1624,7 @@ pub fn AxisTitleAlignVariant0::parse(StringView) -> Self raise @runtime.Conversi
 pub fn AxisTitleAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AxisTitleAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AxisTitleAlignVariant0::to_string(Self) -> String
-pub fn AxisTitleAlignVariant0::variant_index(Self) -> Int
+pub fn AxisTitleAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AxisTitleAlignVariant0
 pub impl ToJson for AxisTitleAlignVariant0
 
@@ -1652,7 +1652,7 @@ pub fn AxisTitleAnchorVariant0::parse(StringView) -> Self raise @runtime.Convers
 pub fn AxisTitleAnchorVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AxisTitleAnchorVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AxisTitleAnchorVariant0::to_string(Self) -> String
-pub fn AxisTitleAnchorVariant0::variant_index(Self) -> Int
+pub fn AxisTitleAnchorVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AxisTitleAnchorVariant0
 pub impl ToJson for AxisTitleAnchorVariant0
 
@@ -1695,7 +1695,7 @@ pub fn AxisTitleBaselineVariant0::parse(StringView) -> Self raise @runtime.Conve
 pub fn AxisTitleBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn AxisTitleBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn AxisTitleBaselineVariant0::to_string(Self) -> String
-pub fn AxisTitleBaselineVariant0::variant_index(Self) -> Int
+pub fn AxisTitleBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for AxisTitleBaselineVariant0
 pub impl ToJson for AxisTitleBaselineVariant0
 
@@ -1995,7 +1995,7 @@ pub fn BaselineValueVariant0ItemVariant0Variant1Value::parse(StringView) -> Self
 pub fn BaselineValueVariant0ItemVariant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn BaselineValueVariant0ItemVariant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn BaselineValueVariant0ItemVariant0Variant1Value::to_string(Self) -> String
-pub fn BaselineValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int
+pub fn BaselineValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for BaselineValueVariant0ItemVariant0Variant1Value
 pub impl ToJson for BaselineValueVariant0ItemVariant0Variant1Value
 
@@ -2072,7 +2072,7 @@ pub fn BaselineValueVariant1Variant0Variant1Value::parse(StringView) -> Self rai
 pub fn BaselineValueVariant1Variant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn BaselineValueVariant1Variant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn BaselineValueVariant1Variant0Variant1Value::to_string(Self) -> String
-pub fn BaselineValueVariant1Variant0Variant1Value::variant_index(Self) -> Int
+pub fn BaselineValueVariant1Variant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for BaselineValueVariant1Variant0Variant1Value
 pub impl ToJson for BaselineValueVariant1Variant0Variant1Value
 
@@ -2368,7 +2368,7 @@ pub fn BinTransformType::parse(StringView) -> Self raise @runtime.ConversionErro
 pub fn BinTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn BinTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn BinTransformType::to_string(Self) -> String
-pub fn BinTransformType::variant_index(Self) -> Int
+pub fn BinTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for BinTransformType
 pub impl ToJson for BinTransformType
 
@@ -2397,7 +2397,7 @@ pub fn BindVariant0Input::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn BindVariant0Input::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn BindVariant0Input::to_json_string(Self) -> String raise @runtime.SerError
 pub fn BindVariant0Input::to_string(Self) -> String
-pub fn BindVariant0Input::variant_index(Self) -> Int
+pub fn BindVariant0Input::variant_index(Self) -> Int32
 pub impl @runtime.Serde for BindVariant0Input
 pub impl ToJson for BindVariant0Input
 
@@ -2412,7 +2412,7 @@ pub fn BindVariant1Input::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn BindVariant1Input::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn BindVariant1Input::to_json_string(Self) -> String raise @runtime.SerError
 pub fn BindVariant1Input::to_string(Self) -> String
-pub fn BindVariant1Input::variant_index(Self) -> Int
+pub fn BindVariant1Input::variant_index(Self) -> Int32
 pub impl @runtime.Serde for BindVariant1Input
 pub impl ToJson for BindVariant1Input
 
@@ -2426,7 +2426,7 @@ pub fn BindVariant2Input::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn BindVariant2Input::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn BindVariant2Input::to_json_string(Self) -> String raise @runtime.SerError
 pub fn BindVariant2Input::to_string(Self) -> String
-pub fn BindVariant2Input::variant_index(Self) -> Int
+pub fn BindVariant2Input::variant_index(Self) -> Int32
 pub impl @runtime.Serde for BindVariant2Input
 pub impl ToJson for BindVariant2Input
 
@@ -2504,7 +2504,7 @@ pub fn BlendValueVariant0ItemVariant0Variant1Value::parse(StringView) -> Self ra
 pub fn BlendValueVariant0ItemVariant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn BlendValueVariant0ItemVariant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn BlendValueVariant0ItemVariant0Variant1Value::to_string(Self) -> String
-pub fn BlendValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int
+pub fn BlendValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for BlendValueVariant0ItemVariant0Variant1Value
 pub impl ToJson for BlendValueVariant0ItemVariant0Variant1Value
 
@@ -2592,7 +2592,7 @@ pub fn BlendValueVariant1Variant0Variant1Value::parse(StringView) -> Self raise 
 pub fn BlendValueVariant1Variant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn BlendValueVariant1Variant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn BlendValueVariant1Variant0Variant1Value::to_string(Self) -> String
-pub fn BlendValueVariant1Variant0Variant1Value::variant_index(Self) -> Int
+pub fn BlendValueVariant1Variant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for BlendValueVariant1Variant0Variant1Value
 pub impl ToJson for BlendValueVariant1Variant0Variant1Value
 
@@ -2796,7 +2796,7 @@ pub fn CollectTransformType::parse(StringView) -> Self raise @runtime.Conversion
 pub fn CollectTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn CollectTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn CollectTransformType::to_string(Self) -> String
-pub fn CollectTransformType::variant_index(Self) -> Int
+pub fn CollectTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for CollectTransformType
 pub impl ToJson for CollectTransformType
 
@@ -3035,7 +3035,7 @@ pub fn ContourTransformType::parse(StringView) -> Self raise @runtime.Conversion
 pub fn ContourTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ContourTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ContourTransformType::to_string(Self) -> String
-pub fn ContourTransformType::variant_index(Self) -> Int
+pub fn ContourTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ContourTransformType
 pub impl ToJson for ContourTransformType
 
@@ -3170,7 +3170,7 @@ pub fn CountpatternTransformCaseVariant0::parse(StringView) -> Self raise @runti
 pub fn CountpatternTransformCaseVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn CountpatternTransformCaseVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn CountpatternTransformCaseVariant0::to_string(Self) -> String
-pub fn CountpatternTransformCaseVariant0::variant_index(Self) -> Int
+pub fn CountpatternTransformCaseVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for CountpatternTransformCaseVariant0
 pub impl ToJson for CountpatternTransformCaseVariant0
 
@@ -3222,7 +3222,7 @@ pub fn CountpatternTransformType::parse(StringView) -> Self raise @runtime.Conve
 pub fn CountpatternTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn CountpatternTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn CountpatternTransformType::to_string(Self) -> String
-pub fn CountpatternTransformType::variant_index(Self) -> Int
+pub fn CountpatternTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for CountpatternTransformType
 pub impl ToJson for CountpatternTransformType
 
@@ -3276,7 +3276,7 @@ pub fn CrossTransformType::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn CrossTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn CrossTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn CrossTransformType::to_string(Self) -> String
-pub fn CrossTransformType::variant_index(Self) -> Int
+pub fn CrossTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for CrossTransformType
 pub impl ToJson for CrossTransformType
 
@@ -3342,7 +3342,7 @@ pub fn CrossfilterTransformType::parse(StringView) -> Self raise @runtime.Conver
 pub fn CrossfilterTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn CrossfilterTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn CrossfilterTransformType::to_string(Self) -> String
-pub fn CrossfilterTransformType::variant_index(Self) -> Int
+pub fn CrossfilterTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for CrossfilterTransformType
 pub impl ToJson for CrossfilterTransformType
 
@@ -3420,7 +3420,7 @@ pub fn DataVariant2FormatVariant0Subtype0ParseVariant0::parse(StringView) -> Sel
 pub fn DataVariant2FormatVariant0Subtype0ParseVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype0ParseVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype0ParseVariant0::to_string(Self) -> String
-pub fn DataVariant2FormatVariant0Subtype0ParseVariant0::variant_index(Self) -> Int
+pub fn DataVariant2FormatVariant0Subtype0ParseVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant2FormatVariant0Subtype0ParseVariant0
 pub impl ToJson for DataVariant2FormatVariant0Subtype0ParseVariant0
 
@@ -3449,7 +3449,7 @@ pub fn DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant0::parse(Strin
 pub fn DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant0::to_string(Self) -> String
-pub fn DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant0::variant_index(Self) -> Int
+pub fn DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant0
 pub impl ToJson for DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant0
 
@@ -3501,7 +3501,7 @@ pub fn DataVariant2FormatVariant0Subtype1ParseVariant0::parse(StringView) -> Sel
 pub fn DataVariant2FormatVariant0Subtype1ParseVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype1ParseVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype1ParseVariant0::to_string(Self) -> String
-pub fn DataVariant2FormatVariant0Subtype1ParseVariant0::variant_index(Self) -> Int
+pub fn DataVariant2FormatVariant0Subtype1ParseVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant2FormatVariant0Subtype1ParseVariant0
 pub impl ToJson for DataVariant2FormatVariant0Subtype1ParseVariant0
 
@@ -3530,7 +3530,7 @@ pub fn DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant0::parse(Strin
 pub fn DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant0::to_string(Self) -> String
-pub fn DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant0::variant_index(Self) -> Int
+pub fn DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant0
 pub impl ToJson for DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant0
 
@@ -3554,7 +3554,7 @@ pub fn DataVariant2FormatVariant0Subtype1Type::parse(StringView) -> Self raise @
 pub fn DataVariant2FormatVariant0Subtype1Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype1Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype1Type::to_string(Self) -> String
-pub fn DataVariant2FormatVariant0Subtype1Type::variant_index(Self) -> Int
+pub fn DataVariant2FormatVariant0Subtype1Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant2FormatVariant0Subtype1Type
 pub impl ToJson for DataVariant2FormatVariant0Subtype1Type
 
@@ -3595,7 +3595,7 @@ pub fn DataVariant2FormatVariant0Subtype2ParseVariant0::parse(StringView) -> Sel
 pub fn DataVariant2FormatVariant0Subtype2ParseVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype2ParseVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype2ParseVariant0::to_string(Self) -> String
-pub fn DataVariant2FormatVariant0Subtype2ParseVariant0::variant_index(Self) -> Int
+pub fn DataVariant2FormatVariant0Subtype2ParseVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant2FormatVariant0Subtype2ParseVariant0
 pub impl ToJson for DataVariant2FormatVariant0Subtype2ParseVariant0
 
@@ -3624,7 +3624,7 @@ pub fn DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant0::parse(Strin
 pub fn DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant0::to_string(Self) -> String
-pub fn DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant0::variant_index(Self) -> Int
+pub fn DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant0
 pub impl ToJson for DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant0
 
@@ -3649,7 +3649,7 @@ pub fn DataVariant2FormatVariant0Subtype2Type::parse(StringView) -> Self raise @
 pub fn DataVariant2FormatVariant0Subtype2Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype2Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype2Type::to_string(Self) -> String
-pub fn DataVariant2FormatVariant0Subtype2Type::variant_index(Self) -> Int
+pub fn DataVariant2FormatVariant0Subtype2Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant2FormatVariant0Subtype2Type
 pub impl ToJson for DataVariant2FormatVariant0Subtype2Type
 
@@ -3691,7 +3691,7 @@ pub fn DataVariant2FormatVariant0Subtype3ParseVariant0::parse(StringView) -> Sel
 pub fn DataVariant2FormatVariant0Subtype3ParseVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype3ParseVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype3ParseVariant0::to_string(Self) -> String
-pub fn DataVariant2FormatVariant0Subtype3ParseVariant0::variant_index(Self) -> Int
+pub fn DataVariant2FormatVariant0Subtype3ParseVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant2FormatVariant0Subtype3ParseVariant0
 pub impl ToJson for DataVariant2FormatVariant0Subtype3ParseVariant0
 
@@ -3720,7 +3720,7 @@ pub fn DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant0::parse(Strin
 pub fn DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant0::to_string(Self) -> String
-pub fn DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant0::variant_index(Self) -> Int
+pub fn DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant0
 pub impl ToJson for DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant0
 
@@ -3744,7 +3744,7 @@ pub fn DataVariant2FormatVariant0Subtype3Type::parse(StringView) -> Self raise @
 pub fn DataVariant2FormatVariant0Subtype3Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype3Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype3Type::to_string(Self) -> String
-pub fn DataVariant2FormatVariant0Subtype3Type::variant_index(Self) -> Int
+pub fn DataVariant2FormatVariant0Subtype3Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant2FormatVariant0Subtype3Type
 pub impl ToJson for DataVariant2FormatVariant0Subtype3Type
 
@@ -3770,7 +3770,7 @@ pub fn DataVariant2FormatVariant0Subtype4Variant0Type::parse(StringView) -> Self
 pub fn DataVariant2FormatVariant0Subtype4Variant0Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype4Variant0Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype4Variant0Type::to_string(Self) -> String
-pub fn DataVariant2FormatVariant0Subtype4Variant0Type::variant_index(Self) -> Int
+pub fn DataVariant2FormatVariant0Subtype4Variant0Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant2FormatVariant0Subtype4Variant0Type
 pub impl ToJson for DataVariant2FormatVariant0Subtype4Variant0Type
 
@@ -3785,7 +3785,7 @@ pub fn DataVariant2FormatVariant0Subtype4Variant1Filter::parse(StringView) -> Se
 pub fn DataVariant2FormatVariant0Subtype4Variant1Filter::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype4Variant1Filter::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype4Variant1Filter::to_string(Self) -> String
-pub fn DataVariant2FormatVariant0Subtype4Variant1Filter::variant_index(Self) -> Int
+pub fn DataVariant2FormatVariant0Subtype4Variant1Filter::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant2FormatVariant0Subtype4Variant1Filter
 pub impl ToJson for DataVariant2FormatVariant0Subtype4Variant1Filter
 
@@ -3799,7 +3799,7 @@ pub fn DataVariant2FormatVariant0Subtype4Variant1Type::parse(StringView) -> Self
 pub fn DataVariant2FormatVariant0Subtype4Variant1Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype4Variant1Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant2FormatVariant0Subtype4Variant1Type::to_string(Self) -> String
-pub fn DataVariant2FormatVariant0Subtype4Variant1Type::variant_index(Self) -> Int
+pub fn DataVariant2FormatVariant0Subtype4Variant1Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant2FormatVariant0Subtype4Variant1Type
 pub impl ToJson for DataVariant2FormatVariant0Subtype4Variant1Type
 
@@ -3851,7 +3851,7 @@ pub fn DataVariant3FormatVariant0Subtype0ParseVariant0::parse(StringView) -> Sel
 pub fn DataVariant3FormatVariant0Subtype0ParseVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype0ParseVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype0ParseVariant0::to_string(Self) -> String
-pub fn DataVariant3FormatVariant0Subtype0ParseVariant0::variant_index(Self) -> Int
+pub fn DataVariant3FormatVariant0Subtype0ParseVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant3FormatVariant0Subtype0ParseVariant0
 pub impl ToJson for DataVariant3FormatVariant0Subtype0ParseVariant0
 
@@ -3880,7 +3880,7 @@ pub fn DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant0::parse(Strin
 pub fn DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant0::to_string(Self) -> String
-pub fn DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant0::variant_index(Self) -> Int
+pub fn DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant0
 pub impl ToJson for DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant0
 
@@ -3932,7 +3932,7 @@ pub fn DataVariant3FormatVariant0Subtype1ParseVariant0::parse(StringView) -> Sel
 pub fn DataVariant3FormatVariant0Subtype1ParseVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype1ParseVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype1ParseVariant0::to_string(Self) -> String
-pub fn DataVariant3FormatVariant0Subtype1ParseVariant0::variant_index(Self) -> Int
+pub fn DataVariant3FormatVariant0Subtype1ParseVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant3FormatVariant0Subtype1ParseVariant0
 pub impl ToJson for DataVariant3FormatVariant0Subtype1ParseVariant0
 
@@ -3961,7 +3961,7 @@ pub fn DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant0::parse(Strin
 pub fn DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant0::to_string(Self) -> String
-pub fn DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant0::variant_index(Self) -> Int
+pub fn DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant0
 pub impl ToJson for DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant0
 
@@ -3985,7 +3985,7 @@ pub fn DataVariant3FormatVariant0Subtype1Type::parse(StringView) -> Self raise @
 pub fn DataVariant3FormatVariant0Subtype1Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype1Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype1Type::to_string(Self) -> String
-pub fn DataVariant3FormatVariant0Subtype1Type::variant_index(Self) -> Int
+pub fn DataVariant3FormatVariant0Subtype1Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant3FormatVariant0Subtype1Type
 pub impl ToJson for DataVariant3FormatVariant0Subtype1Type
 
@@ -4026,7 +4026,7 @@ pub fn DataVariant3FormatVariant0Subtype2ParseVariant0::parse(StringView) -> Sel
 pub fn DataVariant3FormatVariant0Subtype2ParseVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype2ParseVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype2ParseVariant0::to_string(Self) -> String
-pub fn DataVariant3FormatVariant0Subtype2ParseVariant0::variant_index(Self) -> Int
+pub fn DataVariant3FormatVariant0Subtype2ParseVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant3FormatVariant0Subtype2ParseVariant0
 pub impl ToJson for DataVariant3FormatVariant0Subtype2ParseVariant0
 
@@ -4055,7 +4055,7 @@ pub fn DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant0::parse(Strin
 pub fn DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant0::to_string(Self) -> String
-pub fn DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant0::variant_index(Self) -> Int
+pub fn DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant0
 pub impl ToJson for DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant0
 
@@ -4080,7 +4080,7 @@ pub fn DataVariant3FormatVariant0Subtype2Type::parse(StringView) -> Self raise @
 pub fn DataVariant3FormatVariant0Subtype2Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype2Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype2Type::to_string(Self) -> String
-pub fn DataVariant3FormatVariant0Subtype2Type::variant_index(Self) -> Int
+pub fn DataVariant3FormatVariant0Subtype2Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant3FormatVariant0Subtype2Type
 pub impl ToJson for DataVariant3FormatVariant0Subtype2Type
 
@@ -4122,7 +4122,7 @@ pub fn DataVariant3FormatVariant0Subtype3ParseVariant0::parse(StringView) -> Sel
 pub fn DataVariant3FormatVariant0Subtype3ParseVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype3ParseVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype3ParseVariant0::to_string(Self) -> String
-pub fn DataVariant3FormatVariant0Subtype3ParseVariant0::variant_index(Self) -> Int
+pub fn DataVariant3FormatVariant0Subtype3ParseVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant3FormatVariant0Subtype3ParseVariant0
 pub impl ToJson for DataVariant3FormatVariant0Subtype3ParseVariant0
 
@@ -4151,7 +4151,7 @@ pub fn DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant0::parse(Strin
 pub fn DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant0::to_string(Self) -> String
-pub fn DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant0::variant_index(Self) -> Int
+pub fn DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant0
 pub impl ToJson for DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant0
 
@@ -4175,7 +4175,7 @@ pub fn DataVariant3FormatVariant0Subtype3Type::parse(StringView) -> Self raise @
 pub fn DataVariant3FormatVariant0Subtype3Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype3Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype3Type::to_string(Self) -> String
-pub fn DataVariant3FormatVariant0Subtype3Type::variant_index(Self) -> Int
+pub fn DataVariant3FormatVariant0Subtype3Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant3FormatVariant0Subtype3Type
 pub impl ToJson for DataVariant3FormatVariant0Subtype3Type
 
@@ -4201,7 +4201,7 @@ pub fn DataVariant3FormatVariant0Subtype4Variant0Type::parse(StringView) -> Self
 pub fn DataVariant3FormatVariant0Subtype4Variant0Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype4Variant0Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype4Variant0Type::to_string(Self) -> String
-pub fn DataVariant3FormatVariant0Subtype4Variant0Type::variant_index(Self) -> Int
+pub fn DataVariant3FormatVariant0Subtype4Variant0Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant3FormatVariant0Subtype4Variant0Type
 pub impl ToJson for DataVariant3FormatVariant0Subtype4Variant0Type
 
@@ -4216,7 +4216,7 @@ pub fn DataVariant3FormatVariant0Subtype4Variant1Filter::parse(StringView) -> Se
 pub fn DataVariant3FormatVariant0Subtype4Variant1Filter::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype4Variant1Filter::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype4Variant1Filter::to_string(Self) -> String
-pub fn DataVariant3FormatVariant0Subtype4Variant1Filter::variant_index(Self) -> Int
+pub fn DataVariant3FormatVariant0Subtype4Variant1Filter::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant3FormatVariant0Subtype4Variant1Filter
 pub impl ToJson for DataVariant3FormatVariant0Subtype4Variant1Filter
 
@@ -4230,7 +4230,7 @@ pub fn DataVariant3FormatVariant0Subtype4Variant1Type::parse(StringView) -> Self
 pub fn DataVariant3FormatVariant0Subtype4Variant1Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype4Variant1Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DataVariant3FormatVariant0Subtype4Variant1Type::to_string(Self) -> String
-pub fn DataVariant3FormatVariant0Subtype4Variant1Type::variant_index(Self) -> Int
+pub fn DataVariant3FormatVariant0Subtype4Variant1Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DataVariant3FormatVariant0Subtype4Variant1Type
 pub impl ToJson for DataVariant3FormatVariant0Subtype4Variant1Type
 
@@ -4502,7 +4502,7 @@ pub fn DensityTransformType::parse(StringView) -> Self raise @runtime.Conversion
 pub fn DensityTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DensityTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DensityTransformType::to_string(Self) -> String
-pub fn DensityTransformType::variant_index(Self) -> Int
+pub fn DensityTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DensityTransformType
 pub impl ToJson for DensityTransformType
 
@@ -4557,7 +4557,7 @@ pub fn DirectionValueVariant0ItemVariant0Variant1Value::parse(StringView) -> Sel
 pub fn DirectionValueVariant0ItemVariant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DirectionValueVariant0ItemVariant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DirectionValueVariant0ItemVariant0Variant1Value::to_string(Self) -> String
-pub fn DirectionValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int
+pub fn DirectionValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DirectionValueVariant0ItemVariant0Variant1Value
 pub impl ToJson for DirectionValueVariant0ItemVariant0Variant1Value
 
@@ -4632,7 +4632,7 @@ pub fn DirectionValueVariant1Variant0Variant1Value::parse(StringView) -> Self ra
 pub fn DirectionValueVariant1Variant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DirectionValueVariant1Variant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DirectionValueVariant1Variant0Variant1Value::to_string(Self) -> String
-pub fn DirectionValueVariant1Variant0Variant1Value::variant_index(Self) -> Int
+pub fn DirectionValueVariant1Variant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DirectionValueVariant1Variant0Variant1Value
 pub impl ToJson for DirectionValueVariant1Variant0Variant1Value
 
@@ -4771,7 +4771,7 @@ pub fn DotbinTransformType::parse(StringView) -> Self raise @runtime.ConversionE
 pub fn DotbinTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn DotbinTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn DotbinTransformType::to_string(Self) -> String
-pub fn DotbinTransformType::variant_index(Self) -> Int
+pub fn DotbinTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for DotbinTransformType
 pub impl ToJson for DotbinTransformType
 
@@ -4985,7 +4985,7 @@ pub fn ExtentTransformType::parse(StringView) -> Self raise @runtime.ConversionE
 pub fn ExtentTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ExtentTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ExtentTransformType::to_string(Self) -> String
-pub fn ExtentTransformType::variant_index(Self) -> Int
+pub fn ExtentTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ExtentTransformType
 pub impl ToJson for ExtentTransformType
 
@@ -5080,7 +5080,7 @@ pub fn FilterTransformType::parse(StringView) -> Self raise @runtime.ConversionE
 pub fn FilterTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn FilterTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn FilterTransformType::to_string(Self) -> String
-pub fn FilterTransformType::variant_index(Self) -> Int
+pub fn FilterTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for FilterTransformType
 pub impl ToJson for FilterTransformType
 
@@ -5171,7 +5171,7 @@ pub fn FlattenTransformType::parse(StringView) -> Self raise @runtime.Conversion
 pub fn FlattenTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn FlattenTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn FlattenTransformType::to_string(Self) -> String
-pub fn FlattenTransformType::variant_index(Self) -> Int
+pub fn FlattenTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for FlattenTransformType
 pub impl ToJson for FlattenTransformType
 
@@ -5250,7 +5250,7 @@ pub fn FoldTransformType::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn FoldTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn FoldTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn FoldTransformType::to_string(Self) -> String
-pub fn FoldTransformType::variant_index(Self) -> Int
+pub fn FoldTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for FoldTransformType
 pub impl ToJson for FoldTransformType
 
@@ -5664,7 +5664,7 @@ pub fn ForceTransformType::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn ForceTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ForceTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ForceTransformType::to_string(Self) -> String
-pub fn ForceTransformType::variant_index(Self) -> Int
+pub fn ForceTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ForceTransformType
 pub impl ToJson for ForceTransformType
 
@@ -5731,7 +5731,7 @@ pub fn FormulaTransformType::parse(StringView) -> Self raise @runtime.Conversion
 pub fn FormulaTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn FormulaTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn FormulaTransformType::to_string(Self) -> String
-pub fn FormulaTransformType::variant_index(Self) -> Int
+pub fn FormulaTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for FormulaTransformType
 pub impl ToJson for FormulaTransformType
 
@@ -5810,7 +5810,7 @@ pub fn GeojsonTransformType::parse(StringView) -> Self raise @runtime.Conversion
 pub fn GeojsonTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn GeojsonTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn GeojsonTransformType::to_string(Self) -> String
-pub fn GeojsonTransformType::variant_index(Self) -> Int
+pub fn GeojsonTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for GeojsonTransformType
 pub impl ToJson for GeojsonTransformType
 
@@ -5881,7 +5881,7 @@ pub fn GeopathTransformType::parse(StringView) -> Self raise @runtime.Conversion
 pub fn GeopathTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn GeopathTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn GeopathTransformType::to_string(Self) -> String
-pub fn GeopathTransformType::variant_index(Self) -> Int
+pub fn GeopathTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for GeopathTransformType
 pub impl ToJson for GeopathTransformType
 
@@ -5961,7 +5961,7 @@ pub fn GeopointTransformType::parse(StringView) -> Self raise @runtime.Conversio
 pub fn GeopointTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn GeopointTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn GeopointTransformType::to_string(Self) -> String
-pub fn GeopointTransformType::variant_index(Self) -> Int
+pub fn GeopointTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for GeopointTransformType
 pub impl ToJson for GeopointTransformType
 
@@ -6033,7 +6033,7 @@ pub fn GeoshapeTransformType::parse(StringView) -> Self raise @runtime.Conversio
 pub fn GeoshapeTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn GeoshapeTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn GeoshapeTransformType::to_string(Self) -> String
-pub fn GeoshapeTransformType::variant_index(Self) -> Int
+pub fn GeoshapeTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for GeoshapeTransformType
 pub impl ToJson for GeoshapeTransformType
 
@@ -6212,7 +6212,7 @@ pub fn GraticuleTransformType::parse(StringView) -> Self raise @runtime.Conversi
 pub fn GraticuleTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn GraticuleTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn GraticuleTransformType::to_string(Self) -> String
-pub fn GraticuleTransformType::variant_index(Self) -> Int
+pub fn GraticuleTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for GraticuleTransformType
 pub impl ToJson for GraticuleTransformType
 
@@ -6326,7 +6326,7 @@ pub fn HeatmapTransformResolveVariant0::parse(StringView) -> Self raise @runtime
 pub fn HeatmapTransformResolveVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn HeatmapTransformResolveVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn HeatmapTransformResolveVariant0::to_string(Self) -> String
-pub fn HeatmapTransformResolveVariant0::variant_index(Self) -> Int
+pub fn HeatmapTransformResolveVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for HeatmapTransformResolveVariant0
 pub impl ToJson for HeatmapTransformResolveVariant0
 
@@ -6340,7 +6340,7 @@ pub fn HeatmapTransformType::parse(StringView) -> Self raise @runtime.Conversion
 pub fn HeatmapTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn HeatmapTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn HeatmapTransformType::to_string(Self) -> String
-pub fn HeatmapTransformType::variant_index(Self) -> Int
+pub fn HeatmapTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for HeatmapTransformType
 pub impl ToJson for HeatmapTransformType
 
@@ -6380,7 +6380,7 @@ pub fn IdentifierTransformType::parse(StringView) -> Self raise @runtime.Convers
 pub fn IdentifierTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn IdentifierTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn IdentifierTransformType::to_string(Self) -> String
-pub fn IdentifierTransformType::variant_index(Self) -> Int
+pub fn IdentifierTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for IdentifierTransformType
 pub impl ToJson for IdentifierTransformType
 
@@ -6493,7 +6493,7 @@ pub fn ImputeTransformMethodVariant0::parse(StringView) -> Self raise @runtime.C
 pub fn ImputeTransformMethodVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ImputeTransformMethodVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ImputeTransformMethodVariant0::to_string(Self) -> String
-pub fn ImputeTransformMethodVariant0::variant_index(Self) -> Int
+pub fn ImputeTransformMethodVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ImputeTransformMethodVariant0
 pub impl ToJson for ImputeTransformMethodVariant0
 
@@ -6507,7 +6507,7 @@ pub fn ImputeTransformType::parse(StringView) -> Self raise @runtime.ConversionE
 pub fn ImputeTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ImputeTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ImputeTransformType::to_string(Self) -> String
-pub fn ImputeTransformType::variant_index(Self) -> Int
+pub fn ImputeTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ImputeTransformType
 pub impl ToJson for ImputeTransformType
 
@@ -6609,7 +6609,7 @@ pub fn IsocontourTransformResolveVariant0::parse(StringView) -> Self raise @runt
 pub fn IsocontourTransformResolveVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn IsocontourTransformResolveVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn IsocontourTransformResolveVariant0::to_string(Self) -> String
-pub fn IsocontourTransformResolveVariant0::variant_index(Self) -> Int
+pub fn IsocontourTransformResolveVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for IsocontourTransformResolveVariant0
 pub impl ToJson for IsocontourTransformResolveVariant0
 
@@ -6700,7 +6700,7 @@ pub fn IsocontourTransformType::parse(StringView) -> Self raise @runtime.Convers
 pub fn IsocontourTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn IsocontourTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn IsocontourTransformType::to_string(Self) -> String
-pub fn IsocontourTransformType::variant_index(Self) -> Int
+pub fn IsocontourTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for IsocontourTransformType
 pub impl ToJson for IsocontourTransformType
 
@@ -6881,7 +6881,7 @@ pub fn JoinaggregateTransformOpsArrayItemVariant0::parse(StringView) -> Self rai
 pub fn JoinaggregateTransformOpsArrayItemVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn JoinaggregateTransformOpsArrayItemVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn JoinaggregateTransformOpsArrayItemVariant0::to_string(Self) -> String
-pub fn JoinaggregateTransformOpsArrayItemVariant0::variant_index(Self) -> Int
+pub fn JoinaggregateTransformOpsArrayItemVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for JoinaggregateTransformOpsArrayItemVariant0
 pub impl ToJson for JoinaggregateTransformOpsArrayItemVariant0
 
@@ -6895,7 +6895,7 @@ pub fn JoinaggregateTransformType::parse(StringView) -> Self raise @runtime.Conv
 pub fn JoinaggregateTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn JoinaggregateTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn JoinaggregateTransformType::to_string(Self) -> String
-pub fn JoinaggregateTransformType::variant_index(Self) -> Int
+pub fn JoinaggregateTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for JoinaggregateTransformType
 pub impl ToJson for JoinaggregateTransformType
 
@@ -7041,7 +7041,7 @@ pub fn Kde2dTransformType::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn Kde2dTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn Kde2dTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn Kde2dTransformType::to_string(Self) -> String
-pub fn Kde2dTransformType::variant_index(Self) -> Int
+pub fn Kde2dTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for Kde2dTransformType
 pub impl ToJson for Kde2dTransformType
 
@@ -7281,7 +7281,7 @@ pub fn KdeTransformResolveVariant0::parse(StringView) -> Self raise @runtime.Con
 pub fn KdeTransformResolveVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn KdeTransformResolveVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn KdeTransformResolveVariant0::to_string(Self) -> String
-pub fn KdeTransformResolveVariant0::variant_index(Self) -> Int
+pub fn KdeTransformResolveVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for KdeTransformResolveVariant0
 pub impl ToJson for KdeTransformResolveVariant0
 
@@ -7307,7 +7307,7 @@ pub fn KdeTransformType::parse(StringView) -> Self raise @runtime.ConversionErro
 pub fn KdeTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn KdeTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn KdeTransformType::to_string(Self) -> String
-pub fn KdeTransformType::variant_index(Self) -> Int
+pub fn KdeTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for KdeTransformType
 pub impl ToJson for KdeTransformType
 
@@ -7335,7 +7335,7 @@ pub fn LabelOverlapVariant1::parse(StringView) -> Self raise @runtime.Conversion
 pub fn LabelOverlapVariant1::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LabelOverlapVariant1::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LabelOverlapVariant1::to_string(Self) -> String
-pub fn LabelOverlapVariant1::variant_index(Self) -> Int
+pub fn LabelOverlapVariant1::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LabelOverlapVariant1
 pub impl ToJson for LabelOverlapVariant1
 
@@ -7548,7 +7548,7 @@ pub fn LabelTransformType::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn LabelTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LabelTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LabelTransformType::to_string(Self) -> String
-pub fn LabelTransformType::variant_index(Self) -> Int
+pub fn LabelTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LabelTransformType
 pub impl ToJson for LabelTransformType
 
@@ -7600,7 +7600,7 @@ pub fn LayoutObjectAlignVariant0Variant0::parse(StringView) -> Self raise @runti
 pub fn LayoutObjectAlignVariant0Variant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LayoutObjectAlignVariant0Variant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LayoutObjectAlignVariant0Variant0::to_string(Self) -> String
-pub fn LayoutObjectAlignVariant0Variant0::variant_index(Self) -> Int
+pub fn LayoutObjectAlignVariant0Variant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LayoutObjectAlignVariant0Variant0
 pub impl ToJson for LayoutObjectAlignVariant0Variant0
 
@@ -7628,7 +7628,7 @@ pub fn LayoutObjectAlignVariant1ColumnVariant0::parse(StringView) -> Self raise 
 pub fn LayoutObjectAlignVariant1ColumnVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LayoutObjectAlignVariant1ColumnVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LayoutObjectAlignVariant1ColumnVariant0::to_string(Self) -> String
-pub fn LayoutObjectAlignVariant1ColumnVariant0::variant_index(Self) -> Int
+pub fn LayoutObjectAlignVariant1ColumnVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LayoutObjectAlignVariant1ColumnVariant0
 pub impl ToJson for LayoutObjectAlignVariant1ColumnVariant0
 
@@ -7656,7 +7656,7 @@ pub fn LayoutObjectAlignVariant1RowVariant0::parse(StringView) -> Self raise @ru
 pub fn LayoutObjectAlignVariant1RowVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LayoutObjectAlignVariant1RowVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LayoutObjectAlignVariant1RowVariant0::to_string(Self) -> String
-pub fn LayoutObjectAlignVariant1RowVariant0::variant_index(Self) -> Int
+pub fn LayoutObjectAlignVariant1RowVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LayoutObjectAlignVariant1RowVariant0
 pub impl ToJson for LayoutObjectAlignVariant1RowVariant0
 
@@ -7683,7 +7683,7 @@ pub fn LayoutObjectBoundsVariant0::parse(StringView) -> Self raise @runtime.Conv
 pub fn LayoutObjectBoundsVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LayoutObjectBoundsVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LayoutObjectBoundsVariant0::to_string(Self) -> String
-pub fn LayoutObjectBoundsVariant0::variant_index(Self) -> Int
+pub fn LayoutObjectBoundsVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LayoutObjectBoundsVariant0
 pub impl ToJson for LayoutObjectBoundsVariant0
 
@@ -7787,7 +7787,7 @@ pub fn LayoutObjectTitleAnchorVariant0Variant0::parse(StringView) -> Self raise 
 pub fn LayoutObjectTitleAnchorVariant0Variant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LayoutObjectTitleAnchorVariant0Variant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LayoutObjectTitleAnchorVariant0Variant0::to_string(Self) -> String
-pub fn LayoutObjectTitleAnchorVariant0Variant0::variant_index(Self) -> Int
+pub fn LayoutObjectTitleAnchorVariant0Variant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LayoutObjectTitleAnchorVariant0Variant0
 pub impl ToJson for LayoutObjectTitleAnchorVariant0Variant0
 
@@ -7814,7 +7814,7 @@ pub fn LayoutObjectTitleAnchorVariant1ColumnVariant0::parse(StringView) -> Self 
 pub fn LayoutObjectTitleAnchorVariant1ColumnVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LayoutObjectTitleAnchorVariant1ColumnVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LayoutObjectTitleAnchorVariant1ColumnVariant0::to_string(Self) -> String
-pub fn LayoutObjectTitleAnchorVariant1ColumnVariant0::variant_index(Self) -> Int
+pub fn LayoutObjectTitleAnchorVariant1ColumnVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LayoutObjectTitleAnchorVariant1ColumnVariant0
 pub impl ToJson for LayoutObjectTitleAnchorVariant1ColumnVariant0
 
@@ -7841,7 +7841,7 @@ pub fn LayoutObjectTitleAnchorVariant1RowVariant0::parse(StringView) -> Self rai
 pub fn LayoutObjectTitleAnchorVariant1RowVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LayoutObjectTitleAnchorVariant1RowVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LayoutObjectTitleAnchorVariant1RowVariant0::to_string(Self) -> String
-pub fn LayoutObjectTitleAnchorVariant1RowVariant0::variant_index(Self) -> Int
+pub fn LayoutObjectTitleAnchorVariant1RowVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LayoutObjectTitleAnchorVariant1RowVariant0
 pub impl ToJson for LayoutObjectTitleAnchorVariant1RowVariant0
 
@@ -7898,7 +7898,7 @@ pub fn LegendVariant0Direction::parse(StringView) -> Self raise @runtime.Convers
 pub fn LegendVariant0Direction::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant0Direction::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant0Direction::to_string(Self) -> String
-pub fn LegendVariant0Direction::variant_index(Self) -> Int
+pub fn LegendVariant0Direction::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant0Direction
 pub impl ToJson for LegendVariant0Direction
 
@@ -7969,7 +7969,7 @@ pub fn LegendVariant0FormatTypeVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant0FormatTypeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant0FormatTypeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant0FormatTypeVariant0::to_string(Self) -> String
-pub fn LegendVariant0FormatTypeVariant0::variant_index(Self) -> Int
+pub fn LegendVariant0FormatTypeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant0FormatTypeVariant0
 pub impl ToJson for LegendVariant0FormatTypeVariant0
 
@@ -8034,7 +8034,7 @@ pub fn LegendVariant0GridAlignVariant0::parse(StringView) -> Self raise @runtime
 pub fn LegendVariant0GridAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant0GridAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant0GridAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant0GridAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant0GridAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant0GridAlignVariant0
 pub impl ToJson for LegendVariant0GridAlignVariant0
 
@@ -8062,7 +8062,7 @@ pub fn LegendVariant0LabelAlignVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant0LabelAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant0LabelAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant0LabelAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant0LabelAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant0LabelAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant0LabelAlignVariant0
 pub impl ToJson for LegendVariant0LabelAlignVariant0
 
@@ -8093,7 +8093,7 @@ pub fn LegendVariant0LabelBaselineVariant0::parse(StringView) -> Self raise @run
 pub fn LegendVariant0LabelBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant0LabelBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant0LabelBaselineVariant0::to_string(Self) -> String
-pub fn LegendVariant0LabelBaselineVariant0::variant_index(Self) -> Int
+pub fn LegendVariant0LabelBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant0LabelBaselineVariant0
 pub impl ToJson for LegendVariant0LabelBaselineVariant0
 
@@ -8260,7 +8260,7 @@ pub fn LegendVariant0OrientVariant0::parse(StringView) -> Self raise @runtime.Co
 pub fn LegendVariant0OrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant0OrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant0OrientVariant0::to_string(Self) -> String
-pub fn LegendVariant0OrientVariant0::variant_index(Self) -> Int
+pub fn LegendVariant0OrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant0OrientVariant0
 pub impl ToJson for LegendVariant0OrientVariant0
 
@@ -8423,7 +8423,7 @@ pub fn LegendVariant0TitleAlignVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant0TitleAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant0TitleAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant0TitleAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant0TitleAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant0TitleAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant0TitleAlignVariant0
 pub impl ToJson for LegendVariant0TitleAlignVariant0
 
@@ -8451,7 +8451,7 @@ pub fn LegendVariant0TitleAnchorVariant0::parse(StringView) -> Self raise @runti
 pub fn LegendVariant0TitleAnchorVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant0TitleAnchorVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant0TitleAnchorVariant0::to_string(Self) -> String
-pub fn LegendVariant0TitleAnchorVariant0::variant_index(Self) -> Int
+pub fn LegendVariant0TitleAnchorVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant0TitleAnchorVariant0
 pub impl ToJson for LegendVariant0TitleAnchorVariant0
 
@@ -8482,7 +8482,7 @@ pub fn LegendVariant0TitleBaselineVariant0::parse(StringView) -> Self raise @run
 pub fn LegendVariant0TitleBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant0TitleBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant0TitleBaselineVariant0::to_string(Self) -> String
-pub fn LegendVariant0TitleBaselineVariant0::variant_index(Self) -> Int
+pub fn LegendVariant0TitleBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant0TitleBaselineVariant0
 pub impl ToJson for LegendVariant0TitleBaselineVariant0
 
@@ -8608,7 +8608,7 @@ pub fn LegendVariant0TitleOrientVariant0::parse(StringView) -> Self raise @runti
 pub fn LegendVariant0TitleOrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant0TitleOrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant0TitleOrientVariant0::to_string(Self) -> String
-pub fn LegendVariant0TitleOrientVariant0::variant_index(Self) -> Int
+pub fn LegendVariant0TitleOrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant0TitleOrientVariant0
 pub impl ToJson for LegendVariant0TitleOrientVariant0
 
@@ -8635,7 +8635,7 @@ pub fn LegendVariant0Type::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn LegendVariant0Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant0Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant0Type::to_string(Self) -> String
-pub fn LegendVariant0Type::variant_index(Self) -> Int
+pub fn LegendVariant0Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant0Type
 pub impl ToJson for LegendVariant0Type
 
@@ -8662,7 +8662,7 @@ pub fn LegendVariant1Direction::parse(StringView) -> Self raise @runtime.Convers
 pub fn LegendVariant1Direction::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant1Direction::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant1Direction::to_string(Self) -> String
-pub fn LegendVariant1Direction::variant_index(Self) -> Int
+pub fn LegendVariant1Direction::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant1Direction
 pub impl ToJson for LegendVariant1Direction
 
@@ -8733,7 +8733,7 @@ pub fn LegendVariant1FormatTypeVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant1FormatTypeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant1FormatTypeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant1FormatTypeVariant0::to_string(Self) -> String
-pub fn LegendVariant1FormatTypeVariant0::variant_index(Self) -> Int
+pub fn LegendVariant1FormatTypeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant1FormatTypeVariant0
 pub impl ToJson for LegendVariant1FormatTypeVariant0
 
@@ -8798,7 +8798,7 @@ pub fn LegendVariant1GridAlignVariant0::parse(StringView) -> Self raise @runtime
 pub fn LegendVariant1GridAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant1GridAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant1GridAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant1GridAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant1GridAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant1GridAlignVariant0
 pub impl ToJson for LegendVariant1GridAlignVariant0
 
@@ -8826,7 +8826,7 @@ pub fn LegendVariant1LabelAlignVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant1LabelAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant1LabelAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant1LabelAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant1LabelAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant1LabelAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant1LabelAlignVariant0
 pub impl ToJson for LegendVariant1LabelAlignVariant0
 
@@ -8857,7 +8857,7 @@ pub fn LegendVariant1LabelBaselineVariant0::parse(StringView) -> Self raise @run
 pub fn LegendVariant1LabelBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant1LabelBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant1LabelBaselineVariant0::to_string(Self) -> String
-pub fn LegendVariant1LabelBaselineVariant0::variant_index(Self) -> Int
+pub fn LegendVariant1LabelBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant1LabelBaselineVariant0
 pub impl ToJson for LegendVariant1LabelBaselineVariant0
 
@@ -9024,7 +9024,7 @@ pub fn LegendVariant1OrientVariant0::parse(StringView) -> Self raise @runtime.Co
 pub fn LegendVariant1OrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant1OrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant1OrientVariant0::to_string(Self) -> String
-pub fn LegendVariant1OrientVariant0::variant_index(Self) -> Int
+pub fn LegendVariant1OrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant1OrientVariant0
 pub impl ToJson for LegendVariant1OrientVariant0
 
@@ -9187,7 +9187,7 @@ pub fn LegendVariant1TitleAlignVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant1TitleAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant1TitleAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant1TitleAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant1TitleAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant1TitleAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant1TitleAlignVariant0
 pub impl ToJson for LegendVariant1TitleAlignVariant0
 
@@ -9215,7 +9215,7 @@ pub fn LegendVariant1TitleAnchorVariant0::parse(StringView) -> Self raise @runti
 pub fn LegendVariant1TitleAnchorVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant1TitleAnchorVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant1TitleAnchorVariant0::to_string(Self) -> String
-pub fn LegendVariant1TitleAnchorVariant0::variant_index(Self) -> Int
+pub fn LegendVariant1TitleAnchorVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant1TitleAnchorVariant0
 pub impl ToJson for LegendVariant1TitleAnchorVariant0
 
@@ -9246,7 +9246,7 @@ pub fn LegendVariant1TitleBaselineVariant0::parse(StringView) -> Self raise @run
 pub fn LegendVariant1TitleBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant1TitleBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant1TitleBaselineVariant0::to_string(Self) -> String
-pub fn LegendVariant1TitleBaselineVariant0::variant_index(Self) -> Int
+pub fn LegendVariant1TitleBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant1TitleBaselineVariant0
 pub impl ToJson for LegendVariant1TitleBaselineVariant0
 
@@ -9372,7 +9372,7 @@ pub fn LegendVariant1TitleOrientVariant0::parse(StringView) -> Self raise @runti
 pub fn LegendVariant1TitleOrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant1TitleOrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant1TitleOrientVariant0::to_string(Self) -> String
-pub fn LegendVariant1TitleOrientVariant0::variant_index(Self) -> Int
+pub fn LegendVariant1TitleOrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant1TitleOrientVariant0
 pub impl ToJson for LegendVariant1TitleOrientVariant0
 
@@ -9399,7 +9399,7 @@ pub fn LegendVariant1Type::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn LegendVariant1Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant1Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant1Type::to_string(Self) -> String
-pub fn LegendVariant1Type::variant_index(Self) -> Int
+pub fn LegendVariant1Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant1Type
 pub impl ToJson for LegendVariant1Type
 
@@ -9426,7 +9426,7 @@ pub fn LegendVariant2Direction::parse(StringView) -> Self raise @runtime.Convers
 pub fn LegendVariant2Direction::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant2Direction::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant2Direction::to_string(Self) -> String
-pub fn LegendVariant2Direction::variant_index(Self) -> Int
+pub fn LegendVariant2Direction::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant2Direction
 pub impl ToJson for LegendVariant2Direction
 
@@ -9497,7 +9497,7 @@ pub fn LegendVariant2FormatTypeVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant2FormatTypeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant2FormatTypeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant2FormatTypeVariant0::to_string(Self) -> String
-pub fn LegendVariant2FormatTypeVariant0::variant_index(Self) -> Int
+pub fn LegendVariant2FormatTypeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant2FormatTypeVariant0
 pub impl ToJson for LegendVariant2FormatTypeVariant0
 
@@ -9562,7 +9562,7 @@ pub fn LegendVariant2GridAlignVariant0::parse(StringView) -> Self raise @runtime
 pub fn LegendVariant2GridAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant2GridAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant2GridAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant2GridAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant2GridAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant2GridAlignVariant0
 pub impl ToJson for LegendVariant2GridAlignVariant0
 
@@ -9590,7 +9590,7 @@ pub fn LegendVariant2LabelAlignVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant2LabelAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant2LabelAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant2LabelAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant2LabelAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant2LabelAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant2LabelAlignVariant0
 pub impl ToJson for LegendVariant2LabelAlignVariant0
 
@@ -9621,7 +9621,7 @@ pub fn LegendVariant2LabelBaselineVariant0::parse(StringView) -> Self raise @run
 pub fn LegendVariant2LabelBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant2LabelBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant2LabelBaselineVariant0::to_string(Self) -> String
-pub fn LegendVariant2LabelBaselineVariant0::variant_index(Self) -> Int
+pub fn LegendVariant2LabelBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant2LabelBaselineVariant0
 pub impl ToJson for LegendVariant2LabelBaselineVariant0
 
@@ -9788,7 +9788,7 @@ pub fn LegendVariant2OrientVariant0::parse(StringView) -> Self raise @runtime.Co
 pub fn LegendVariant2OrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant2OrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant2OrientVariant0::to_string(Self) -> String
-pub fn LegendVariant2OrientVariant0::variant_index(Self) -> Int
+pub fn LegendVariant2OrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant2OrientVariant0
 pub impl ToJson for LegendVariant2OrientVariant0
 
@@ -9951,7 +9951,7 @@ pub fn LegendVariant2TitleAlignVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant2TitleAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant2TitleAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant2TitleAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant2TitleAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant2TitleAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant2TitleAlignVariant0
 pub impl ToJson for LegendVariant2TitleAlignVariant0
 
@@ -9979,7 +9979,7 @@ pub fn LegendVariant2TitleAnchorVariant0::parse(StringView) -> Self raise @runti
 pub fn LegendVariant2TitleAnchorVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant2TitleAnchorVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant2TitleAnchorVariant0::to_string(Self) -> String
-pub fn LegendVariant2TitleAnchorVariant0::variant_index(Self) -> Int
+pub fn LegendVariant2TitleAnchorVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant2TitleAnchorVariant0
 pub impl ToJson for LegendVariant2TitleAnchorVariant0
 
@@ -10010,7 +10010,7 @@ pub fn LegendVariant2TitleBaselineVariant0::parse(StringView) -> Self raise @run
 pub fn LegendVariant2TitleBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant2TitleBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant2TitleBaselineVariant0::to_string(Self) -> String
-pub fn LegendVariant2TitleBaselineVariant0::variant_index(Self) -> Int
+pub fn LegendVariant2TitleBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant2TitleBaselineVariant0
 pub impl ToJson for LegendVariant2TitleBaselineVariant0
 
@@ -10136,7 +10136,7 @@ pub fn LegendVariant2TitleOrientVariant0::parse(StringView) -> Self raise @runti
 pub fn LegendVariant2TitleOrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant2TitleOrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant2TitleOrientVariant0::to_string(Self) -> String
-pub fn LegendVariant2TitleOrientVariant0::variant_index(Self) -> Int
+pub fn LegendVariant2TitleOrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant2TitleOrientVariant0
 pub impl ToJson for LegendVariant2TitleOrientVariant0
 
@@ -10163,7 +10163,7 @@ pub fn LegendVariant2Type::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn LegendVariant2Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant2Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant2Type::to_string(Self) -> String
-pub fn LegendVariant2Type::variant_index(Self) -> Int
+pub fn LegendVariant2Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant2Type
 pub impl ToJson for LegendVariant2Type
 
@@ -10190,7 +10190,7 @@ pub fn LegendVariant3Direction::parse(StringView) -> Self raise @runtime.Convers
 pub fn LegendVariant3Direction::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant3Direction::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant3Direction::to_string(Self) -> String
-pub fn LegendVariant3Direction::variant_index(Self) -> Int
+pub fn LegendVariant3Direction::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant3Direction
 pub impl ToJson for LegendVariant3Direction
 
@@ -10261,7 +10261,7 @@ pub fn LegendVariant3FormatTypeVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant3FormatTypeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant3FormatTypeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant3FormatTypeVariant0::to_string(Self) -> String
-pub fn LegendVariant3FormatTypeVariant0::variant_index(Self) -> Int
+pub fn LegendVariant3FormatTypeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant3FormatTypeVariant0
 pub impl ToJson for LegendVariant3FormatTypeVariant0
 
@@ -10326,7 +10326,7 @@ pub fn LegendVariant3GridAlignVariant0::parse(StringView) -> Self raise @runtime
 pub fn LegendVariant3GridAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant3GridAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant3GridAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant3GridAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant3GridAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant3GridAlignVariant0
 pub impl ToJson for LegendVariant3GridAlignVariant0
 
@@ -10354,7 +10354,7 @@ pub fn LegendVariant3LabelAlignVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant3LabelAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant3LabelAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant3LabelAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant3LabelAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant3LabelAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant3LabelAlignVariant0
 pub impl ToJson for LegendVariant3LabelAlignVariant0
 
@@ -10385,7 +10385,7 @@ pub fn LegendVariant3LabelBaselineVariant0::parse(StringView) -> Self raise @run
 pub fn LegendVariant3LabelBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant3LabelBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant3LabelBaselineVariant0::to_string(Self) -> String
-pub fn LegendVariant3LabelBaselineVariant0::variant_index(Self) -> Int
+pub fn LegendVariant3LabelBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant3LabelBaselineVariant0
 pub impl ToJson for LegendVariant3LabelBaselineVariant0
 
@@ -10552,7 +10552,7 @@ pub fn LegendVariant3OrientVariant0::parse(StringView) -> Self raise @runtime.Co
 pub fn LegendVariant3OrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant3OrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant3OrientVariant0::to_string(Self) -> String
-pub fn LegendVariant3OrientVariant0::variant_index(Self) -> Int
+pub fn LegendVariant3OrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant3OrientVariant0
 pub impl ToJson for LegendVariant3OrientVariant0
 
@@ -10715,7 +10715,7 @@ pub fn LegendVariant3TitleAlignVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant3TitleAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant3TitleAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant3TitleAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant3TitleAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant3TitleAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant3TitleAlignVariant0
 pub impl ToJson for LegendVariant3TitleAlignVariant0
 
@@ -10743,7 +10743,7 @@ pub fn LegendVariant3TitleAnchorVariant0::parse(StringView) -> Self raise @runti
 pub fn LegendVariant3TitleAnchorVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant3TitleAnchorVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant3TitleAnchorVariant0::to_string(Self) -> String
-pub fn LegendVariant3TitleAnchorVariant0::variant_index(Self) -> Int
+pub fn LegendVariant3TitleAnchorVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant3TitleAnchorVariant0
 pub impl ToJson for LegendVariant3TitleAnchorVariant0
 
@@ -10774,7 +10774,7 @@ pub fn LegendVariant3TitleBaselineVariant0::parse(StringView) -> Self raise @run
 pub fn LegendVariant3TitleBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant3TitleBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant3TitleBaselineVariant0::to_string(Self) -> String
-pub fn LegendVariant3TitleBaselineVariant0::variant_index(Self) -> Int
+pub fn LegendVariant3TitleBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant3TitleBaselineVariant0
 pub impl ToJson for LegendVariant3TitleBaselineVariant0
 
@@ -10900,7 +10900,7 @@ pub fn LegendVariant3TitleOrientVariant0::parse(StringView) -> Self raise @runti
 pub fn LegendVariant3TitleOrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant3TitleOrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant3TitleOrientVariant0::to_string(Self) -> String
-pub fn LegendVariant3TitleOrientVariant0::variant_index(Self) -> Int
+pub fn LegendVariant3TitleOrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant3TitleOrientVariant0
 pub impl ToJson for LegendVariant3TitleOrientVariant0
 
@@ -10927,7 +10927,7 @@ pub fn LegendVariant3Type::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn LegendVariant3Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant3Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant3Type::to_string(Self) -> String
-pub fn LegendVariant3Type::variant_index(Self) -> Int
+pub fn LegendVariant3Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant3Type
 pub impl ToJson for LegendVariant3Type
 
@@ -10954,7 +10954,7 @@ pub fn LegendVariant4Direction::parse(StringView) -> Self raise @runtime.Convers
 pub fn LegendVariant4Direction::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant4Direction::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant4Direction::to_string(Self) -> String
-pub fn LegendVariant4Direction::variant_index(Self) -> Int
+pub fn LegendVariant4Direction::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant4Direction
 pub impl ToJson for LegendVariant4Direction
 
@@ -11025,7 +11025,7 @@ pub fn LegendVariant4FormatTypeVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant4FormatTypeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant4FormatTypeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant4FormatTypeVariant0::to_string(Self) -> String
-pub fn LegendVariant4FormatTypeVariant0::variant_index(Self) -> Int
+pub fn LegendVariant4FormatTypeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant4FormatTypeVariant0
 pub impl ToJson for LegendVariant4FormatTypeVariant0
 
@@ -11090,7 +11090,7 @@ pub fn LegendVariant4GridAlignVariant0::parse(StringView) -> Self raise @runtime
 pub fn LegendVariant4GridAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant4GridAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant4GridAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant4GridAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant4GridAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant4GridAlignVariant0
 pub impl ToJson for LegendVariant4GridAlignVariant0
 
@@ -11118,7 +11118,7 @@ pub fn LegendVariant4LabelAlignVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant4LabelAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant4LabelAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant4LabelAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant4LabelAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant4LabelAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant4LabelAlignVariant0
 pub impl ToJson for LegendVariant4LabelAlignVariant0
 
@@ -11149,7 +11149,7 @@ pub fn LegendVariant4LabelBaselineVariant0::parse(StringView) -> Self raise @run
 pub fn LegendVariant4LabelBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant4LabelBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant4LabelBaselineVariant0::to_string(Self) -> String
-pub fn LegendVariant4LabelBaselineVariant0::variant_index(Self) -> Int
+pub fn LegendVariant4LabelBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant4LabelBaselineVariant0
 pub impl ToJson for LegendVariant4LabelBaselineVariant0
 
@@ -11316,7 +11316,7 @@ pub fn LegendVariant4OrientVariant0::parse(StringView) -> Self raise @runtime.Co
 pub fn LegendVariant4OrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant4OrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant4OrientVariant0::to_string(Self) -> String
-pub fn LegendVariant4OrientVariant0::variant_index(Self) -> Int
+pub fn LegendVariant4OrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant4OrientVariant0
 pub impl ToJson for LegendVariant4OrientVariant0
 
@@ -11479,7 +11479,7 @@ pub fn LegendVariant4TitleAlignVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant4TitleAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant4TitleAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant4TitleAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant4TitleAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant4TitleAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant4TitleAlignVariant0
 pub impl ToJson for LegendVariant4TitleAlignVariant0
 
@@ -11507,7 +11507,7 @@ pub fn LegendVariant4TitleAnchorVariant0::parse(StringView) -> Self raise @runti
 pub fn LegendVariant4TitleAnchorVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant4TitleAnchorVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant4TitleAnchorVariant0::to_string(Self) -> String
-pub fn LegendVariant4TitleAnchorVariant0::variant_index(Self) -> Int
+pub fn LegendVariant4TitleAnchorVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant4TitleAnchorVariant0
 pub impl ToJson for LegendVariant4TitleAnchorVariant0
 
@@ -11538,7 +11538,7 @@ pub fn LegendVariant4TitleBaselineVariant0::parse(StringView) -> Self raise @run
 pub fn LegendVariant4TitleBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant4TitleBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant4TitleBaselineVariant0::to_string(Self) -> String
-pub fn LegendVariant4TitleBaselineVariant0::variant_index(Self) -> Int
+pub fn LegendVariant4TitleBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant4TitleBaselineVariant0
 pub impl ToJson for LegendVariant4TitleBaselineVariant0
 
@@ -11664,7 +11664,7 @@ pub fn LegendVariant4TitleOrientVariant0::parse(StringView) -> Self raise @runti
 pub fn LegendVariant4TitleOrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant4TitleOrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant4TitleOrientVariant0::to_string(Self) -> String
-pub fn LegendVariant4TitleOrientVariant0::variant_index(Self) -> Int
+pub fn LegendVariant4TitleOrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant4TitleOrientVariant0
 pub impl ToJson for LegendVariant4TitleOrientVariant0
 
@@ -11691,7 +11691,7 @@ pub fn LegendVariant4Type::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn LegendVariant4Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant4Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant4Type::to_string(Self) -> String
-pub fn LegendVariant4Type::variant_index(Self) -> Int
+pub fn LegendVariant4Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant4Type
 pub impl ToJson for LegendVariant4Type
 
@@ -11718,7 +11718,7 @@ pub fn LegendVariant5Direction::parse(StringView) -> Self raise @runtime.Convers
 pub fn LegendVariant5Direction::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant5Direction::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant5Direction::to_string(Self) -> String
-pub fn LegendVariant5Direction::variant_index(Self) -> Int
+pub fn LegendVariant5Direction::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant5Direction
 pub impl ToJson for LegendVariant5Direction
 
@@ -11789,7 +11789,7 @@ pub fn LegendVariant5FormatTypeVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant5FormatTypeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant5FormatTypeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant5FormatTypeVariant0::to_string(Self) -> String
-pub fn LegendVariant5FormatTypeVariant0::variant_index(Self) -> Int
+pub fn LegendVariant5FormatTypeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant5FormatTypeVariant0
 pub impl ToJson for LegendVariant5FormatTypeVariant0
 
@@ -11854,7 +11854,7 @@ pub fn LegendVariant5GridAlignVariant0::parse(StringView) -> Self raise @runtime
 pub fn LegendVariant5GridAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant5GridAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant5GridAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant5GridAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant5GridAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant5GridAlignVariant0
 pub impl ToJson for LegendVariant5GridAlignVariant0
 
@@ -11882,7 +11882,7 @@ pub fn LegendVariant5LabelAlignVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant5LabelAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant5LabelAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant5LabelAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant5LabelAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant5LabelAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant5LabelAlignVariant0
 pub impl ToJson for LegendVariant5LabelAlignVariant0
 
@@ -11913,7 +11913,7 @@ pub fn LegendVariant5LabelBaselineVariant0::parse(StringView) -> Self raise @run
 pub fn LegendVariant5LabelBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant5LabelBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant5LabelBaselineVariant0::to_string(Self) -> String
-pub fn LegendVariant5LabelBaselineVariant0::variant_index(Self) -> Int
+pub fn LegendVariant5LabelBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant5LabelBaselineVariant0
 pub impl ToJson for LegendVariant5LabelBaselineVariant0
 
@@ -12080,7 +12080,7 @@ pub fn LegendVariant5OrientVariant0::parse(StringView) -> Self raise @runtime.Co
 pub fn LegendVariant5OrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant5OrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant5OrientVariant0::to_string(Self) -> String
-pub fn LegendVariant5OrientVariant0::variant_index(Self) -> Int
+pub fn LegendVariant5OrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant5OrientVariant0
 pub impl ToJson for LegendVariant5OrientVariant0
 
@@ -12243,7 +12243,7 @@ pub fn LegendVariant5TitleAlignVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant5TitleAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant5TitleAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant5TitleAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant5TitleAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant5TitleAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant5TitleAlignVariant0
 pub impl ToJson for LegendVariant5TitleAlignVariant0
 
@@ -12271,7 +12271,7 @@ pub fn LegendVariant5TitleAnchorVariant0::parse(StringView) -> Self raise @runti
 pub fn LegendVariant5TitleAnchorVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant5TitleAnchorVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant5TitleAnchorVariant0::to_string(Self) -> String
-pub fn LegendVariant5TitleAnchorVariant0::variant_index(Self) -> Int
+pub fn LegendVariant5TitleAnchorVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant5TitleAnchorVariant0
 pub impl ToJson for LegendVariant5TitleAnchorVariant0
 
@@ -12302,7 +12302,7 @@ pub fn LegendVariant5TitleBaselineVariant0::parse(StringView) -> Self raise @run
 pub fn LegendVariant5TitleBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant5TitleBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant5TitleBaselineVariant0::to_string(Self) -> String
-pub fn LegendVariant5TitleBaselineVariant0::variant_index(Self) -> Int
+pub fn LegendVariant5TitleBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant5TitleBaselineVariant0
 pub impl ToJson for LegendVariant5TitleBaselineVariant0
 
@@ -12428,7 +12428,7 @@ pub fn LegendVariant5TitleOrientVariant0::parse(StringView) -> Self raise @runti
 pub fn LegendVariant5TitleOrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant5TitleOrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant5TitleOrientVariant0::to_string(Self) -> String
-pub fn LegendVariant5TitleOrientVariant0::variant_index(Self) -> Int
+pub fn LegendVariant5TitleOrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant5TitleOrientVariant0
 pub impl ToJson for LegendVariant5TitleOrientVariant0
 
@@ -12455,7 +12455,7 @@ pub fn LegendVariant5Type::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn LegendVariant5Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant5Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant5Type::to_string(Self) -> String
-pub fn LegendVariant5Type::variant_index(Self) -> Int
+pub fn LegendVariant5Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant5Type
 pub impl ToJson for LegendVariant5Type
 
@@ -12482,7 +12482,7 @@ pub fn LegendVariant6Direction::parse(StringView) -> Self raise @runtime.Convers
 pub fn LegendVariant6Direction::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant6Direction::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant6Direction::to_string(Self) -> String
-pub fn LegendVariant6Direction::variant_index(Self) -> Int
+pub fn LegendVariant6Direction::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant6Direction
 pub impl ToJson for LegendVariant6Direction
 
@@ -12553,7 +12553,7 @@ pub fn LegendVariant6FormatTypeVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant6FormatTypeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant6FormatTypeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant6FormatTypeVariant0::to_string(Self) -> String
-pub fn LegendVariant6FormatTypeVariant0::variant_index(Self) -> Int
+pub fn LegendVariant6FormatTypeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant6FormatTypeVariant0
 pub impl ToJson for LegendVariant6FormatTypeVariant0
 
@@ -12618,7 +12618,7 @@ pub fn LegendVariant6GridAlignVariant0::parse(StringView) -> Self raise @runtime
 pub fn LegendVariant6GridAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant6GridAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant6GridAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant6GridAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant6GridAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant6GridAlignVariant0
 pub impl ToJson for LegendVariant6GridAlignVariant0
 
@@ -12646,7 +12646,7 @@ pub fn LegendVariant6LabelAlignVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant6LabelAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant6LabelAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant6LabelAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant6LabelAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant6LabelAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant6LabelAlignVariant0
 pub impl ToJson for LegendVariant6LabelAlignVariant0
 
@@ -12677,7 +12677,7 @@ pub fn LegendVariant6LabelBaselineVariant0::parse(StringView) -> Self raise @run
 pub fn LegendVariant6LabelBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant6LabelBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant6LabelBaselineVariant0::to_string(Self) -> String
-pub fn LegendVariant6LabelBaselineVariant0::variant_index(Self) -> Int
+pub fn LegendVariant6LabelBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant6LabelBaselineVariant0
 pub impl ToJson for LegendVariant6LabelBaselineVariant0
 
@@ -12844,7 +12844,7 @@ pub fn LegendVariant6OrientVariant0::parse(StringView) -> Self raise @runtime.Co
 pub fn LegendVariant6OrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant6OrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant6OrientVariant0::to_string(Self) -> String
-pub fn LegendVariant6OrientVariant0::variant_index(Self) -> Int
+pub fn LegendVariant6OrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant6OrientVariant0
 pub impl ToJson for LegendVariant6OrientVariant0
 
@@ -13007,7 +13007,7 @@ pub fn LegendVariant6TitleAlignVariant0::parse(StringView) -> Self raise @runtim
 pub fn LegendVariant6TitleAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant6TitleAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant6TitleAlignVariant0::to_string(Self) -> String
-pub fn LegendVariant6TitleAlignVariant0::variant_index(Self) -> Int
+pub fn LegendVariant6TitleAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant6TitleAlignVariant0
 pub impl ToJson for LegendVariant6TitleAlignVariant0
 
@@ -13035,7 +13035,7 @@ pub fn LegendVariant6TitleAnchorVariant0::parse(StringView) -> Self raise @runti
 pub fn LegendVariant6TitleAnchorVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant6TitleAnchorVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant6TitleAnchorVariant0::to_string(Self) -> String
-pub fn LegendVariant6TitleAnchorVariant0::variant_index(Self) -> Int
+pub fn LegendVariant6TitleAnchorVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant6TitleAnchorVariant0
 pub impl ToJson for LegendVariant6TitleAnchorVariant0
 
@@ -13066,7 +13066,7 @@ pub fn LegendVariant6TitleBaselineVariant0::parse(StringView) -> Self raise @run
 pub fn LegendVariant6TitleBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant6TitleBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant6TitleBaselineVariant0::to_string(Self) -> String
-pub fn LegendVariant6TitleBaselineVariant0::variant_index(Self) -> Int
+pub fn LegendVariant6TitleBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant6TitleBaselineVariant0
 pub impl ToJson for LegendVariant6TitleBaselineVariant0
 
@@ -13192,7 +13192,7 @@ pub fn LegendVariant6TitleOrientVariant0::parse(StringView) -> Self raise @runti
 pub fn LegendVariant6TitleOrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant6TitleOrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant6TitleOrientVariant0::to_string(Self) -> String
-pub fn LegendVariant6TitleOrientVariant0::variant_index(Self) -> Int
+pub fn LegendVariant6TitleOrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant6TitleOrientVariant0
 pub impl ToJson for LegendVariant6TitleOrientVariant0
 
@@ -13219,7 +13219,7 @@ pub fn LegendVariant6Type::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn LegendVariant6Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LegendVariant6Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LegendVariant6Type::to_string(Self) -> String
-pub fn LegendVariant6Type::variant_index(Self) -> Int
+pub fn LegendVariant6Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LegendVariant6Type
 pub impl ToJson for LegendVariant6Type
 
@@ -13251,7 +13251,7 @@ pub fn LinearGradientGradient::parse(StringView) -> Self raise @runtime.Conversi
 pub fn LinearGradientGradient::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LinearGradientGradient::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LinearGradientGradient::to_string(Self) -> String
-pub fn LinearGradientGradient::variant_index(Self) -> Int
+pub fn LinearGradientGradient::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LinearGradientGradient
 pub impl ToJson for LinearGradientGradient
 
@@ -13314,7 +13314,7 @@ pub fn LinkpathTransformOrientVariant0::parse(StringView) -> Self raise @runtime
 pub fn LinkpathTransformOrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LinkpathTransformOrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LinkpathTransformOrientVariant0::to_string(Self) -> String
-pub fn LinkpathTransformOrientVariant0::variant_index(Self) -> Int
+pub fn LinkpathTransformOrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LinkpathTransformOrientVariant0
 pub impl ToJson for LinkpathTransformOrientVariant0
 
@@ -13345,7 +13345,7 @@ pub fn LinkpathTransformShapeVariant0::parse(StringView) -> Self raise @runtime.
 pub fn LinkpathTransformShapeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LinkpathTransformShapeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LinkpathTransformShapeVariant0::to_string(Self) -> String
-pub fn LinkpathTransformShapeVariant0::variant_index(Self) -> Int
+pub fn LinkpathTransformShapeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LinkpathTransformShapeVariant0
 pub impl ToJson for LinkpathTransformShapeVariant0
 
@@ -13415,7 +13415,7 @@ pub fn LinkpathTransformType::parse(StringView) -> Self raise @runtime.Conversio
 pub fn LinkpathTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LinkpathTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LinkpathTransformType::to_string(Self) -> String
-pub fn LinkpathTransformType::variant_index(Self) -> Int
+pub fn LinkpathTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LinkpathTransformType
 pub impl ToJson for LinkpathTransformType
 
@@ -13522,7 +13522,7 @@ pub fn LoessTransformType::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn LoessTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LoessTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LoessTransformType::to_string(Self) -> String
-pub fn LoessTransformType::variant_index(Self) -> Int
+pub fn LoessTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LoessTransformType
 pub impl ToJson for LoessTransformType
 
@@ -13643,7 +13643,7 @@ pub fn LookupTransformType::parse(StringView) -> Self raise @runtime.ConversionE
 pub fn LookupTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LookupTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LookupTransformType::to_string(Self) -> String
-pub fn LookupTransformType::variant_index(Self) -> Int
+pub fn LookupTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LookupTransformType
 pub impl ToJson for LookupTransformType
 
@@ -13765,7 +13765,7 @@ pub fn MarkGroupType::parse(StringView) -> Self raise @runtime.ConversionError
 pub fn MarkGroupType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn MarkGroupType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn MarkGroupType::to_string(Self) -> String
-pub fn MarkGroupType::variant_index(Self) -> Int
+pub fn MarkGroupType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for MarkGroupType
 pub impl ToJson for MarkGroupType
 
@@ -13878,7 +13878,7 @@ pub fn NestTransformType::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn NestTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn NestTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn NestTransformType::to_string(Self) -> String
-pub fn NestTransformType::variant_index(Self) -> Int
+pub fn NestTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for NestTransformType
 pub impl ToJson for NestTransformType
 
@@ -14723,7 +14723,7 @@ pub fn OrientValueVariant0ItemVariant0Variant1Value::parse(StringView) -> Self r
 pub fn OrientValueVariant0ItemVariant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn OrientValueVariant0ItemVariant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn OrientValueVariant0ItemVariant0Variant1Value::to_string(Self) -> String
-pub fn OrientValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int
+pub fn OrientValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for OrientValueVariant0ItemVariant0Variant1Value
 pub impl ToJson for OrientValueVariant0ItemVariant0Variant1Value
 
@@ -14800,7 +14800,7 @@ pub fn OrientValueVariant1Variant0Variant1Value::parse(StringView) -> Self raise
 pub fn OrientValueVariant1Variant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn OrientValueVariant1Variant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn OrientValueVariant1Variant0Variant1Value::to_string(Self) -> String
-pub fn OrientValueVariant1Variant0Variant1Value::variant_index(Self) -> Int
+pub fn OrientValueVariant1Variant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for OrientValueVariant1Variant0Variant1Value
 pub impl ToJson for OrientValueVariant1Variant0Variant1Value
 
@@ -14952,7 +14952,7 @@ pub fn PackTransformType::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn PackTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn PackTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn PackTransformType::to_string(Self) -> String
-pub fn PackTransformType::variant_index(Self) -> Int
+pub fn PackTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for PackTransformType
 pub impl ToJson for PackTransformType
 
@@ -15097,7 +15097,7 @@ pub fn PartitionTransformType::parse(StringView) -> Self raise @runtime.Conversi
 pub fn PartitionTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn PartitionTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn PartitionTransformType::to_string(Self) -> String
-pub fn PartitionTransformType::variant_index(Self) -> Int
+pub fn PartitionTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for PartitionTransformType
 pub impl ToJson for PartitionTransformType
 
@@ -15204,7 +15204,7 @@ pub fn PieTransformType::parse(StringView) -> Self raise @runtime.ConversionErro
 pub fn PieTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn PieTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn PieTransformType::to_string(Self) -> String
-pub fn PieTransformType::variant_index(Self) -> Int
+pub fn PieTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for PieTransformType
 pub impl ToJson for PieTransformType
 
@@ -15336,7 +15336,7 @@ pub fn PivotTransformOpVariant0::parse(StringView) -> Self raise @runtime.Conver
 pub fn PivotTransformOpVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn PivotTransformOpVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn PivotTransformOpVariant0::to_string(Self) -> String
-pub fn PivotTransformOpVariant0::variant_index(Self) -> Int
+pub fn PivotTransformOpVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for PivotTransformOpVariant0
 pub impl ToJson for PivotTransformOpVariant0
 
@@ -15350,7 +15350,7 @@ pub fn PivotTransformType::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn PivotTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn PivotTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn PivotTransformType::to_string(Self) -> String
-pub fn PivotTransformType::variant_index(Self) -> Int
+pub fn PivotTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for PivotTransformType
 pub impl ToJson for PivotTransformType
 
@@ -15442,7 +15442,7 @@ pub fn ProjectTransformType::parse(StringView) -> Self raise @runtime.Conversion
 pub fn ProjectTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ProjectTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ProjectTransformType::to_string(Self) -> String
-pub fn ProjectTransformType::variant_index(Self) -> Int
+pub fn ProjectTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ProjectTransformType
 pub impl ToJson for ProjectTransformType
 
@@ -15719,7 +15719,7 @@ pub fn QuantileTransformType::parse(StringView) -> Self raise @runtime.Conversio
 pub fn QuantileTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn QuantileTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn QuantileTransformType::to_string(Self) -> String
-pub fn QuantileTransformType::variant_index(Self) -> Int
+pub fn QuantileTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for QuantileTransformType
 pub impl ToJson for QuantileTransformType
 
@@ -15753,7 +15753,7 @@ pub fn RadialGradientGradient::parse(StringView) -> Self raise @runtime.Conversi
 pub fn RadialGradientGradient::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn RadialGradientGradient::to_json_string(Self) -> String raise @runtime.SerError
 pub fn RadialGradientGradient::to_string(Self) -> String
-pub fn RadialGradientGradient::variant_index(Self) -> Int
+pub fn RadialGradientGradient::variant_index(Self) -> Int32
 pub impl @runtime.Serde for RadialGradientGradient
 pub impl ToJson for RadialGradientGradient
 
@@ -15899,7 +15899,7 @@ pub fn RegressionTransformType::parse(StringView) -> Self raise @runtime.Convers
 pub fn RegressionTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn RegressionTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn RegressionTransformType::to_string(Self) -> String
-pub fn RegressionTransformType::variant_index(Self) -> Int
+pub fn RegressionTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for RegressionTransformType
 pub impl ToJson for RegressionTransformType
 
@@ -15966,7 +15966,7 @@ pub fn ResolvefilterTransformType::parse(StringView) -> Self raise @runtime.Conv
 pub fn ResolvefilterTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ResolvefilterTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ResolvefilterTransformType::to_string(Self) -> String
-pub fn ResolvefilterTransformType::variant_index(Self) -> Int
+pub fn ResolvefilterTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ResolvefilterTransformType
 pub impl ToJson for ResolvefilterTransformType
 
@@ -16019,7 +16019,7 @@ pub fn SampleTransformType::parse(StringView) -> Self raise @runtime.ConversionE
 pub fn SampleTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn SampleTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn SampleTransformType::to_string(Self) -> String
-pub fn SampleTransformType::variant_index(Self) -> Int
+pub fn SampleTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for SampleTransformType
 pub impl ToJson for SampleTransformType
 
@@ -16106,7 +16106,7 @@ pub fn ScaleDataVariant1SortVariant1Op::parse(StringView) -> Self raise @runtime
 pub fn ScaleDataVariant1SortVariant1Op::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleDataVariant1SortVariant1Op::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleDataVariant1SortVariant1Op::to_string(Self) -> String
-pub fn ScaleDataVariant1SortVariant1Op::variant_index(Self) -> Int
+pub fn ScaleDataVariant1SortVariant1Op::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleDataVariant1SortVariant1Op
 pub impl ToJson for ScaleDataVariant1SortVariant1Op
 
@@ -16122,7 +16122,7 @@ pub fn ScaleDataVariant1SortVariant2Op::parse(StringView) -> Self raise @runtime
 pub fn ScaleDataVariant1SortVariant2Op::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleDataVariant1SortVariant2Op::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleDataVariant1SortVariant2Op::to_string(Self) -> String
-pub fn ScaleDataVariant1SortVariant2Op::variant_index(Self) -> Int
+pub fn ScaleDataVariant1SortVariant2Op::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleDataVariant1SortVariant2Op
 pub impl ToJson for ScaleDataVariant1SortVariant2Op
 
@@ -16175,7 +16175,7 @@ pub fn ScaleDataVariant2SortVariant1Op::parse(StringView) -> Self raise @runtime
 pub fn ScaleDataVariant2SortVariant1Op::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleDataVariant2SortVariant1Op::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleDataVariant2SortVariant1Op::to_string(Self) -> String
-pub fn ScaleDataVariant2SortVariant1Op::variant_index(Self) -> Int
+pub fn ScaleDataVariant2SortVariant1Op::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleDataVariant2SortVariant1Op
 pub impl ToJson for ScaleDataVariant2SortVariant1Op
 
@@ -16191,7 +16191,7 @@ pub fn ScaleDataVariant2SortVariant2Op::parse(StringView) -> Self raise @runtime
 pub fn ScaleDataVariant2SortVariant2Op::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleDataVariant2SortVariant2Op::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleDataVariant2SortVariant2Op::to_string(Self) -> String
-pub fn ScaleDataVariant2SortVariant2Op::variant_index(Self) -> Int
+pub fn ScaleDataVariant2SortVariant2Op::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleDataVariant2SortVariant2Op
 pub impl ToJson for ScaleDataVariant2SortVariant2Op
 
@@ -16269,7 +16269,7 @@ pub fn ScaleVariant0Type::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn ScaleVariant0Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant0Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant0Type::to_string(Self) -> String
-pub fn ScaleVariant0Type::variant_index(Self) -> Int
+pub fn ScaleVariant0Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant0Type
 pub impl ToJson for ScaleVariant0Type
 
@@ -16359,7 +16359,7 @@ pub fn ScaleVariant10RangeVariant0::parse(StringView) -> Self raise @runtime.Con
 pub fn ScaleVariant10RangeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant10RangeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant10RangeVariant0::to_string(Self) -> String
-pub fn ScaleVariant10RangeVariant0::variant_index(Self) -> Int
+pub fn ScaleVariant10RangeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant10RangeVariant0
 pub impl ToJson for ScaleVariant10RangeVariant0
 
@@ -16426,7 +16426,7 @@ pub fn ScaleVariant10Type::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn ScaleVariant10Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant10Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant10Type::to_string(Self) -> String
-pub fn ScaleVariant10Type::variant_index(Self) -> Int
+pub fn ScaleVariant10Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant10Type
 pub impl ToJson for ScaleVariant10Type
 
@@ -16516,7 +16516,7 @@ pub fn ScaleVariant11RangeVariant0::parse(StringView) -> Self raise @runtime.Con
 pub fn ScaleVariant11RangeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant11RangeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant11RangeVariant0::to_string(Self) -> String
-pub fn ScaleVariant11RangeVariant0::variant_index(Self) -> Int
+pub fn ScaleVariant11RangeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant11RangeVariant0
 pub impl ToJson for ScaleVariant11RangeVariant0
 
@@ -16583,7 +16583,7 @@ pub fn ScaleVariant11Type::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn ScaleVariant11Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant11Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant11Type::to_string(Self) -> String
-pub fn ScaleVariant11Type::variant_index(Self) -> Int
+pub fn ScaleVariant11Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant11Type
 pub impl ToJson for ScaleVariant11Type
 
@@ -16661,7 +16661,7 @@ pub fn ScaleVariant1RangeVariant0::parse(StringView) -> Self raise @runtime.Conv
 pub fn ScaleVariant1RangeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant1RangeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant1RangeVariant0::to_string(Self) -> String
-pub fn ScaleVariant1RangeVariant0::variant_index(Self) -> Int
+pub fn ScaleVariant1RangeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant1RangeVariant0
 pub impl ToJson for ScaleVariant1RangeVariant0
 
@@ -16766,7 +16766,7 @@ pub fn ScaleVariant1RangeVariant3Variant1SortVariant1Op::parse(StringView) -> Se
 pub fn ScaleVariant1RangeVariant3Variant1SortVariant1Op::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant1RangeVariant3Variant1SortVariant1Op::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant1RangeVariant3Variant1SortVariant1Op::to_string(Self) -> String
-pub fn ScaleVariant1RangeVariant3Variant1SortVariant1Op::variant_index(Self) -> Int
+pub fn ScaleVariant1RangeVariant3Variant1SortVariant1Op::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant1RangeVariant3Variant1SortVariant1Op
 pub impl ToJson for ScaleVariant1RangeVariant3Variant1SortVariant1Op
 
@@ -16782,7 +16782,7 @@ pub fn ScaleVariant1RangeVariant3Variant1SortVariant2Op::parse(StringView) -> Se
 pub fn ScaleVariant1RangeVariant3Variant1SortVariant2Op::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant1RangeVariant3Variant1SortVariant2Op::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant1RangeVariant3Variant1SortVariant2Op::to_string(Self) -> String
-pub fn ScaleVariant1RangeVariant3Variant1SortVariant2Op::variant_index(Self) -> Int
+pub fn ScaleVariant1RangeVariant3Variant1SortVariant2Op::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant1RangeVariant3Variant1SortVariant2Op
 pub impl ToJson for ScaleVariant1RangeVariant3Variant1SortVariant2Op
 
@@ -16835,7 +16835,7 @@ pub fn ScaleVariant1RangeVariant3Variant2SortVariant1Op::parse(StringView) -> Se
 pub fn ScaleVariant1RangeVariant3Variant2SortVariant1Op::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant1RangeVariant3Variant2SortVariant1Op::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant1RangeVariant3Variant2SortVariant1Op::to_string(Self) -> String
-pub fn ScaleVariant1RangeVariant3Variant2SortVariant1Op::variant_index(Self) -> Int
+pub fn ScaleVariant1RangeVariant3Variant2SortVariant1Op::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant1RangeVariant3Variant2SortVariant1Op
 pub impl ToJson for ScaleVariant1RangeVariant3Variant2SortVariant1Op
 
@@ -16851,7 +16851,7 @@ pub fn ScaleVariant1RangeVariant3Variant2SortVariant2Op::parse(StringView) -> Se
 pub fn ScaleVariant1RangeVariant3Variant2SortVariant2Op::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant1RangeVariant3Variant2SortVariant2Op::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant1RangeVariant3Variant2SortVariant2Op::to_string(Self) -> String
-pub fn ScaleVariant1RangeVariant3Variant2SortVariant2Op::variant_index(Self) -> Int
+pub fn ScaleVariant1RangeVariant3Variant2SortVariant2Op::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant1RangeVariant3Variant2SortVariant2Op
 pub impl ToJson for ScaleVariant1RangeVariant3Variant2SortVariant2Op
 
@@ -16865,7 +16865,7 @@ pub fn ScaleVariant1Type::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn ScaleVariant1Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant1Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant1Type::to_string(Self) -> String
-pub fn ScaleVariant1Type::variant_index(Self) -> Int
+pub fn ScaleVariant1Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant1Type
 pub impl ToJson for ScaleVariant1Type
 
@@ -16942,7 +16942,7 @@ pub fn ScaleVariant2RangeVariant0::parse(StringView) -> Self raise @runtime.Conv
 pub fn ScaleVariant2RangeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant2RangeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant2RangeVariant0::to_string(Self) -> String
-pub fn ScaleVariant2RangeVariant0::variant_index(Self) -> Int
+pub fn ScaleVariant2RangeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant2RangeVariant0
 pub impl ToJson for ScaleVariant2RangeVariant0
 
@@ -16972,7 +16972,7 @@ pub fn ScaleVariant2Type::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn ScaleVariant2Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant2Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant2Type::to_string(Self) -> String
-pub fn ScaleVariant2Type::variant_index(Self) -> Int
+pub fn ScaleVariant2Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant2Type
 pub impl ToJson for ScaleVariant2Type
 
@@ -17049,7 +17049,7 @@ pub fn ScaleVariant3RangeVariant0::parse(StringView) -> Self raise @runtime.Conv
 pub fn ScaleVariant3RangeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant3RangeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant3RangeVariant0::to_string(Self) -> String
-pub fn ScaleVariant3RangeVariant0::variant_index(Self) -> Int
+pub fn ScaleVariant3RangeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant3RangeVariant0
 pub impl ToJson for ScaleVariant3RangeVariant0
 
@@ -17079,7 +17079,7 @@ pub fn ScaleVariant3Type::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn ScaleVariant3Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant3Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant3Type::to_string(Self) -> String
-pub fn ScaleVariant3Type::variant_index(Self) -> Int
+pub fn ScaleVariant3Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant3Type
 pub impl ToJson for ScaleVariant3Type
 
@@ -17169,7 +17169,7 @@ pub fn ScaleVariant4RangeVariant0::parse(StringView) -> Self raise @runtime.Conv
 pub fn ScaleVariant4RangeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant4RangeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant4RangeVariant0::to_string(Self) -> String
-pub fn ScaleVariant4RangeVariant0::variant_index(Self) -> Int
+pub fn ScaleVariant4RangeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant4RangeVariant0
 pub impl ToJson for ScaleVariant4RangeVariant0
 
@@ -17237,7 +17237,7 @@ pub fn ScaleVariant4Type::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn ScaleVariant4Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant4Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant4Type::to_string(Self) -> String
-pub fn ScaleVariant4Type::variant_index(Self) -> Int
+pub fn ScaleVariant4Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant4Type
 pub impl ToJson for ScaleVariant4Type
 
@@ -17314,7 +17314,7 @@ pub fn ScaleVariant5RangeVariant0::parse(StringView) -> Self raise @runtime.Conv
 pub fn ScaleVariant5RangeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant5RangeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant5RangeVariant0::to_string(Self) -> String
-pub fn ScaleVariant5RangeVariant0::variant_index(Self) -> Int
+pub fn ScaleVariant5RangeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant5RangeVariant0
 pub impl ToJson for ScaleVariant5RangeVariant0
 
@@ -17381,7 +17381,7 @@ pub fn ScaleVariant5Type::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn ScaleVariant5Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant5Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant5Type::to_string(Self) -> String
-pub fn ScaleVariant5Type::variant_index(Self) -> Int
+pub fn ScaleVariant5Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant5Type
 pub impl ToJson for ScaleVariant5Type
 
@@ -17458,7 +17458,7 @@ pub fn ScaleVariant6RangeVariant0::parse(StringView) -> Self raise @runtime.Conv
 pub fn ScaleVariant6RangeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant6RangeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant6RangeVariant0::to_string(Self) -> String
-pub fn ScaleVariant6RangeVariant0::variant_index(Self) -> Int
+pub fn ScaleVariant6RangeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant6RangeVariant0
 pub impl ToJson for ScaleVariant6RangeVariant0
 
@@ -17525,7 +17525,7 @@ pub fn ScaleVariant6Type::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn ScaleVariant6Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant6Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant6Type::to_string(Self) -> String
-pub fn ScaleVariant6Type::variant_index(Self) -> Int
+pub fn ScaleVariant6Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant6Type
 pub impl ToJson for ScaleVariant6Type
 
@@ -17601,7 +17601,7 @@ pub fn ScaleVariant7NiceVariant1::parse(StringView) -> Self raise @runtime.Conve
 pub fn ScaleVariant7NiceVariant1::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant7NiceVariant1::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant7NiceVariant1::to_string(Self) -> String
-pub fn ScaleVariant7NiceVariant1::variant_index(Self) -> Int
+pub fn ScaleVariant7NiceVariant1::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant7NiceVariant1
 pub impl ToJson for ScaleVariant7NiceVariant1
 
@@ -17634,7 +17634,7 @@ pub fn ScaleVariant7NiceVariant2IntervalVariant0::parse(StringView) -> Self rais
 pub fn ScaleVariant7NiceVariant2IntervalVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant7NiceVariant2IntervalVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant7NiceVariant2IntervalVariant0::to_string(Self) -> String
-pub fn ScaleVariant7NiceVariant2IntervalVariant0::variant_index(Self) -> Int
+pub fn ScaleVariant7NiceVariant2IntervalVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant7NiceVariant2IntervalVariant0
 pub impl ToJson for ScaleVariant7NiceVariant2IntervalVariant0
 
@@ -17669,7 +17669,7 @@ pub fn ScaleVariant7RangeVariant0::parse(StringView) -> Self raise @runtime.Conv
 pub fn ScaleVariant7RangeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant7RangeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant7RangeVariant0::to_string(Self) -> String
-pub fn ScaleVariant7RangeVariant0::variant_index(Self) -> Int
+pub fn ScaleVariant7RangeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant7RangeVariant0
 pub impl ToJson for ScaleVariant7RangeVariant0
 
@@ -17737,7 +17737,7 @@ pub fn ScaleVariant7Type::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn ScaleVariant7Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant7Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant7Type::to_string(Self) -> String
-pub fn ScaleVariant7Type::variant_index(Self) -> Int
+pub fn ScaleVariant7Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant7Type
 pub impl ToJson for ScaleVariant7Type
 
@@ -17827,7 +17827,7 @@ pub fn ScaleVariant8RangeVariant0::parse(StringView) -> Self raise @runtime.Conv
 pub fn ScaleVariant8RangeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant8RangeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant8RangeVariant0::to_string(Self) -> String
-pub fn ScaleVariant8RangeVariant0::variant_index(Self) -> Int
+pub fn ScaleVariant8RangeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant8RangeVariant0
 pub impl ToJson for ScaleVariant8RangeVariant0
 
@@ -17896,7 +17896,7 @@ pub fn ScaleVariant8Type::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn ScaleVariant8Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant8Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant8Type::to_string(Self) -> String
-pub fn ScaleVariant8Type::variant_index(Self) -> Int
+pub fn ScaleVariant8Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant8Type
 pub impl ToJson for ScaleVariant8Type
 
@@ -17986,7 +17986,7 @@ pub fn ScaleVariant9RangeVariant0::parse(StringView) -> Self raise @runtime.Conv
 pub fn ScaleVariant9RangeVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant9RangeVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant9RangeVariant0::to_string(Self) -> String
-pub fn ScaleVariant9RangeVariant0::variant_index(Self) -> Int
+pub fn ScaleVariant9RangeVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant9RangeVariant0
 pub impl ToJson for ScaleVariant9RangeVariant0
 
@@ -18053,7 +18053,7 @@ pub fn ScaleVariant9Type::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn ScaleVariant9Type::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ScaleVariant9Type::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ScaleVariant9Type::to_string(Self) -> String
-pub fn ScaleVariant9Type::variant_index(Self) -> Int
+pub fn ScaleVariant9Type::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ScaleVariant9Type
 pub impl ToJson for ScaleVariant9Type
 
@@ -18177,7 +18177,7 @@ pub fn SequenceTransformType::parse(StringView) -> Self raise @runtime.Conversio
 pub fn SequenceTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn SequenceTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn SequenceTransformType::to_string(Self) -> String
-pub fn SequenceTransformType::variant_index(Self) -> Int
+pub fn SequenceTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for SequenceTransformType
 pub impl ToJson for SequenceTransformType
 
@@ -18226,7 +18226,7 @@ pub fn SignalVariant0Push::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn SignalVariant0Push::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn SignalVariant0Push::to_json_string(Self) -> String raise @runtime.SerError
 pub fn SignalVariant0Push::to_string(Self) -> String
-pub fn SignalVariant0Push::variant_index(Self) -> Int
+pub fn SignalVariant0Push::variant_index(Self) -> Int32
 pub impl @runtime.Serde for SignalVariant0Push
 pub impl ToJson for SignalVariant0Push
 
@@ -18253,7 +18253,7 @@ pub fn SortOrderVariant0::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn SortOrderVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn SortOrderVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn SortOrderVariant0::to_string(Self) -> String
-pub fn SortOrderVariant0::variant_index(Self) -> Int
+pub fn SortOrderVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for SortOrderVariant0
 pub impl ToJson for SortOrderVariant0
 
@@ -18363,7 +18363,7 @@ pub fn StackTransformOffsetVariant0::parse(StringView) -> Self raise @runtime.Co
 pub fn StackTransformOffsetVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn StackTransformOffsetVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn StackTransformOffsetVariant0::to_string(Self) -> String
-pub fn StackTransformOffsetVariant0::variant_index(Self) -> Int
+pub fn StackTransformOffsetVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for StackTransformOffsetVariant0
 pub impl ToJson for StackTransformOffsetVariant0
 
@@ -18377,7 +18377,7 @@ pub fn StackTransformType::parse(StringView) -> Self raise @runtime.ConversionEr
 pub fn StackTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn StackTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn StackTransformType::to_string(Self) -> String
-pub fn StackTransformType::variant_index(Self) -> Int
+pub fn StackTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for StackTransformType
 pub impl ToJson for StackTransformType
 
@@ -18432,7 +18432,7 @@ pub fn StratifyTransformType::parse(StringView) -> Self raise @runtime.Conversio
 pub fn StratifyTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn StratifyTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn StratifyTransformType::to_string(Self) -> String
-pub fn StratifyTransformType::variant_index(Self) -> Int
+pub fn StratifyTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for StratifyTransformType
 pub impl ToJson for StratifyTransformType
 
@@ -18693,7 +18693,7 @@ pub fn StrokeCapValueVariant0ItemVariant0Variant1Value::parse(StringView) -> Sel
 pub fn StrokeCapValueVariant0ItemVariant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn StrokeCapValueVariant0ItemVariant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn StrokeCapValueVariant0ItemVariant0Variant1Value::to_string(Self) -> String
-pub fn StrokeCapValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int
+pub fn StrokeCapValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for StrokeCapValueVariant0ItemVariant0Variant1Value
 pub impl ToJson for StrokeCapValueVariant0ItemVariant0Variant1Value
 
@@ -18769,7 +18769,7 @@ pub fn StrokeCapValueVariant1Variant0Variant1Value::parse(StringView) -> Self ra
 pub fn StrokeCapValueVariant1Variant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn StrokeCapValueVariant1Variant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn StrokeCapValueVariant1Variant0Variant1Value::to_string(Self) -> String
-pub fn StrokeCapValueVariant1Variant0Variant1Value::variant_index(Self) -> Int
+pub fn StrokeCapValueVariant1Variant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for StrokeCapValueVariant1Variant0Variant1Value
 pub impl ToJson for StrokeCapValueVariant1Variant0Variant1Value
 
@@ -18857,7 +18857,7 @@ pub fn StrokeJoinValueVariant0ItemVariant0Variant1Value::parse(StringView) -> Se
 pub fn StrokeJoinValueVariant0ItemVariant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn StrokeJoinValueVariant0ItemVariant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn StrokeJoinValueVariant0ItemVariant0Variant1Value::to_string(Self) -> String
-pub fn StrokeJoinValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int
+pub fn StrokeJoinValueVariant0ItemVariant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for StrokeJoinValueVariant0ItemVariant0Variant1Value
 pub impl ToJson for StrokeJoinValueVariant0ItemVariant0Variant1Value
 
@@ -18933,7 +18933,7 @@ pub fn StrokeJoinValueVariant1Variant0Variant1Value::parse(StringView) -> Self r
 pub fn StrokeJoinValueVariant1Variant0Variant1Value::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn StrokeJoinValueVariant1Variant0Variant1Value::to_json_string(Self) -> String raise @runtime.SerError
 pub fn StrokeJoinValueVariant1Variant0Variant1Value::to_string(Self) -> String
-pub fn StrokeJoinValueVariant1Variant0Variant1Value::variant_index(Self) -> Int
+pub fn StrokeJoinValueVariant1Variant0Variant1Value::variant_index(Self) -> Int32
 pub impl @runtime.Serde for StrokeJoinValueVariant1Variant0Variant1Value
 pub impl ToJson for StrokeJoinValueVariant1Variant0Variant1Value
 
@@ -19184,7 +19184,7 @@ pub fn TickBandVariant0::parse(StringView) -> Self raise @runtime.ConversionErro
 pub fn TickBandVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TickBandVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TickBandVariant0::to_string(Self) -> String
-pub fn TickBandVariant0::variant_index(Self) -> Int
+pub fn TickBandVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TickBandVariant0
 pub impl ToJson for TickBandVariant0
 
@@ -19219,7 +19219,7 @@ pub fn TickCountVariant1::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn TickCountVariant1::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TickCountVariant1::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TickCountVariant1::to_string(Self) -> String
-pub fn TickCountVariant1::variant_index(Self) -> Int
+pub fn TickCountVariant1::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TickCountVariant1
 pub impl ToJson for TickCountVariant1
 
@@ -19252,7 +19252,7 @@ pub fn TickCountVariant2IntervalVariant0::parse(StringView) -> Self raise @runti
 pub fn TickCountVariant2IntervalVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TickCountVariant2IntervalVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TickCountVariant2IntervalVariant0::to_string(Self) -> String
-pub fn TickCountVariant2IntervalVariant0::variant_index(Self) -> Int
+pub fn TickCountVariant2IntervalVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TickCountVariant2IntervalVariant0
 pub impl ToJson for TickCountVariant2IntervalVariant0
 
@@ -19402,7 +19402,7 @@ pub fn TimeunitTransformTimezoneVariant0::parse(StringView) -> Self raise @runti
 pub fn TimeunitTransformTimezoneVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TimeunitTransformTimezoneVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TimeunitTransformTimezoneVariant0::to_string(Self) -> String
-pub fn TimeunitTransformTimezoneVariant0::variant_index(Self) -> Int
+pub fn TimeunitTransformTimezoneVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TimeunitTransformTimezoneVariant0
 pub impl ToJson for TimeunitTransformTimezoneVariant0
 
@@ -19416,7 +19416,7 @@ pub fn TimeunitTransformType::parse(StringView) -> Self raise @runtime.Conversio
 pub fn TimeunitTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TimeunitTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TimeunitTransformType::to_string(Self) -> String
-pub fn TimeunitTransformType::variant_index(Self) -> Int
+pub fn TimeunitTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TimeunitTransformType
 pub impl ToJson for TimeunitTransformType
 
@@ -19464,7 +19464,7 @@ pub fn TimeunitTransformUnitsArrayItemVariant0::parse(StringView) -> Self raise 
 pub fn TimeunitTransformUnitsArrayItemVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TimeunitTransformUnitsArrayItemVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TimeunitTransformUnitsArrayItemVariant0::to_string(Self) -> String
-pub fn TimeunitTransformUnitsArrayItemVariant0::variant_index(Self) -> Int
+pub fn TimeunitTransformUnitsArrayItemVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TimeunitTransformUnitsArrayItemVariant0
 pub impl ToJson for TimeunitTransformUnitsArrayItemVariant0
 
@@ -19504,7 +19504,7 @@ pub fn TitleObjectAlignVariant0::parse(StringView) -> Self raise @runtime.Conver
 pub fn TitleObjectAlignVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TitleObjectAlignVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TitleObjectAlignVariant0::to_string(Self) -> String
-pub fn TitleObjectAlignVariant0::variant_index(Self) -> Int
+pub fn TitleObjectAlignVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TitleObjectAlignVariant0
 pub impl ToJson for TitleObjectAlignVariant0
 
@@ -19532,7 +19532,7 @@ pub fn TitleObjectAnchorVariant0::parse(StringView) -> Self raise @runtime.Conve
 pub fn TitleObjectAnchorVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TitleObjectAnchorVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TitleObjectAnchorVariant0::to_string(Self) -> String
-pub fn TitleObjectAnchorVariant0::variant_index(Self) -> Int
+pub fn TitleObjectAnchorVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TitleObjectAnchorVariant0
 pub impl ToJson for TitleObjectAnchorVariant0
 
@@ -19575,7 +19575,7 @@ pub fn TitleObjectBaselineVariant0::parse(StringView) -> Self raise @runtime.Con
 pub fn TitleObjectBaselineVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TitleObjectBaselineVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TitleObjectBaselineVariant0::to_string(Self) -> String
-pub fn TitleObjectBaselineVariant0::variant_index(Self) -> Int
+pub fn TitleObjectBaselineVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TitleObjectBaselineVariant0
 pub impl ToJson for TitleObjectBaselineVariant0
 
@@ -19724,7 +19724,7 @@ pub fn TitleObjectFrameVariant0::parse(StringView) -> Self raise @runtime.Conver
 pub fn TitleObjectFrameVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TitleObjectFrameVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TitleObjectFrameVariant0::to_string(Self) -> String
-pub fn TitleObjectFrameVariant0::variant_index(Self) -> Int
+pub fn TitleObjectFrameVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TitleObjectFrameVariant0
 pub impl ToJson for TitleObjectFrameVariant0
 
@@ -19790,7 +19790,7 @@ pub fn TitleObjectOrientVariant0::parse(StringView) -> Self raise @runtime.Conve
 pub fn TitleObjectOrientVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TitleObjectOrientVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TitleObjectOrientVariant0::to_string(Self) -> String
-pub fn TitleObjectOrientVariant0::variant_index(Self) -> Int
+pub fn TitleObjectOrientVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TitleObjectOrientVariant0
 pub impl ToJson for TitleObjectOrientVariant0
 
@@ -20050,7 +20050,7 @@ pub fn TreeTransformMethodVariant0::parse(StringView) -> Self raise @runtime.Con
 pub fn TreeTransformMethodVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TreeTransformMethodVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TreeTransformMethodVariant0::to_string(Self) -> String
-pub fn TreeTransformMethodVariant0::variant_index(Self) -> Int
+pub fn TreeTransformMethodVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TreeTransformMethodVariant0
 pub impl ToJson for TreeTransformMethodVariant0
 
@@ -20125,7 +20125,7 @@ pub fn TreeTransformType::parse(StringView) -> Self raise @runtime.ConversionErr
 pub fn TreeTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TreeTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TreeTransformType::to_string(Self) -> String
-pub fn TreeTransformType::variant_index(Self) -> Int
+pub fn TreeTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TreeTransformType
 pub impl ToJson for TreeTransformType
 
@@ -20152,7 +20152,7 @@ pub fn TreelinksTransformType::parse(StringView) -> Self raise @runtime.Conversi
 pub fn TreelinksTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TreelinksTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TreelinksTransformType::to_string(Self) -> String
-pub fn TreelinksTransformType::variant_index(Self) -> Int
+pub fn TreelinksTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TreelinksTransformType
 pub impl ToJson for TreelinksTransformType
 
@@ -20249,7 +20249,7 @@ pub fn TreemapTransformMethodVariant0::parse(StringView) -> Self raise @runtime.
 pub fn TreemapTransformMethodVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TreemapTransformMethodVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TreemapTransformMethodVariant0::to_string(Self) -> String
-pub fn TreemapTransformMethodVariant0::variant_index(Self) -> Int
+pub fn TreemapTransformMethodVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TreemapTransformMethodVariant0
 pub impl ToJson for TreemapTransformMethodVariant0
 
@@ -20396,7 +20396,7 @@ pub fn TreemapTransformType::parse(StringView) -> Self raise @runtime.Conversion
 pub fn TreemapTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TreemapTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TreemapTransformType::to_string(Self) -> String
-pub fn TreemapTransformType::variant_index(Self) -> Int
+pub fn TreemapTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TreemapTransformType
 pub impl ToJson for TreemapTransformType
 
@@ -20478,7 +20478,7 @@ pub fn VoronoiTransformType::parse(StringView) -> Self raise @runtime.Conversion
 pub fn VoronoiTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn VoronoiTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn VoronoiTransformType::to_string(Self) -> String
-pub fn VoronoiTransformType::variant_index(Self) -> Int
+pub fn VoronoiTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for VoronoiTransformType
 pub impl ToJson for VoronoiTransformType
 
@@ -20713,7 +20713,7 @@ pub fn WindowTransformOpsArrayItemVariant0::parse(StringView) -> Self raise @run
 pub fn WindowTransformOpsArrayItemVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn WindowTransformOpsArrayItemVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn WindowTransformOpsArrayItemVariant0::to_string(Self) -> String
-pub fn WindowTransformOpsArrayItemVariant0::variant_index(Self) -> Int
+pub fn WindowTransformOpsArrayItemVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for WindowTransformOpsArrayItemVariant0
 pub impl ToJson for WindowTransformOpsArrayItemVariant0
 
@@ -20752,7 +20752,7 @@ pub fn WindowTransformType::parse(StringView) -> Self raise @runtime.ConversionE
 pub fn WindowTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn WindowTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn WindowTransformType::to_string(Self) -> String
-pub fn WindowTransformType::variant_index(Self) -> Int
+pub fn WindowTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for WindowTransformType
 pub impl ToJson for WindowTransformType
 
@@ -20978,7 +20978,7 @@ pub fn WordcloudTransformType::parse(StringView) -> Self raise @runtime.Conversi
 pub fn WordcloudTransformType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn WordcloudTransformType::to_json_string(Self) -> String raise @runtime.SerError
 pub fn WordcloudTransformType::to_string(Self) -> String
-pub fn WordcloudTransformType::variant_index(Self) -> Int
+pub fn WordcloudTransformType::variant_index(Self) -> Int32
 pub impl @runtime.Serde for WordcloudTransformType
 pub impl ToJson for WordcloudTransformType
 

@@ -17,14 +17,14 @@ pub impl Show for RegexError with fn output(self, logger) {
 pub struct Regex {
   priv pattern : String
   priv node : Node
-  priv group_count : Int
+  priv group_count : Int32
 }
 
 ///|
 /// A match: `start` and `end` are UTF-16 offsets into the searched string.
 pub(all) struct Match {
-  start : Int
-  end : Int
+  start : Int32
+  end : Int32
 } derive(Debug, Eq)
 
 ///|

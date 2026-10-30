@@ -72,8 +72,8 @@ fn replace_child_ids(
 ///|
 fn TypeSpace::break_cycles(
   self : TypeSpace,
-  start : Int,
-  end : Int,
+  start : Int32,
+  end : Int32,
 ) -> Unit raise TypifyError {
   let visited : Map[TypeId, Unit] = Map([])
   for id in start..<end {

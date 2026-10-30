@@ -1,5 +1,6 @@
 // Runs conformance cases through the generated MoonBit types and compares
 // with serde's behaviour recorded by conformance/rust.
+// Reporting helpers belong to the whitebox conformance suite.
 
 ///|
 /// Decode then re-encode, formatted like the Rust harness.
@@ -27,10 +28,10 @@ fn canonical(s : String) -> String {
 
 ///|
 priv struct Outcome {
-  total : Int
-  agree_exact : Int
-  agree_canonical : Int
-  same_acceptance : Int
+  total : Int32
+  agree_exact : Int32
+  agree_canonical : Int32
+  same_acceptance : Int32
   failures : Array[String]
 }
 

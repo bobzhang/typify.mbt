@@ -1,6 +1,6 @@
 ///|
 /// Binary search in a flattened, sorted `[lo, hi]` range table.
-fn in_table(table : ReadOnlyArray[Int], c : Char) -> Bool {
+fn in_table(table : ReadOnlyArray[Int32], c : Char) -> Bool {
   let cp = c.to_int()
   let n = table.length() / 2
   for lo = 0, hi = n; lo < hi; {
@@ -19,7 +19,7 @@ fn in_table(table : ReadOnlyArray[Int], c : Char) -> Bool {
 
 ///|
 /// Binary search in a sorted key table; returns the index of `c` if present.
-fn find_key(keys : ReadOnlyArray[Int], c : Char) -> Int? {
+fn find_key(keys : ReadOnlyArray[Int32], c : Char) -> Int32? {
   let cp = c.to_int()
   for lo = 0, hi = keys.length(); lo < hi; {
     let mid = lo + (hi - lo) / 2
@@ -112,7 +112,7 @@ pub fn to_uppercase(c : Char) -> String {
 ///|
 /// All code points whose `to_lowercase` or `to_uppercase` differs from
 /// themselves (ASCII letters included), sorted and deduplicated.
-pub fn case_mapped_code_points() -> Array[Int] {
+pub fn case_mapped_code_points() -> Array[Int32] {
   let out = []
   for c in 'A'.to_int()..<='Z'.to_int() {
     out.push(c)

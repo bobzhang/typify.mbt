@@ -38,7 +38,7 @@ impl Serde with fn from_json(json) {
 pub fn[T : Serde] json_of(
   value : T,
   type_name : String,
-  preserve_order? : Bool = false,
+  preserve_order~ : Bool = false,
 ) -> Json {
   content_to_json(value.serialize(), preserve_order~) catch {
     e => abort("\{type_name}::to_json: \{e}")

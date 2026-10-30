@@ -3,13 +3,13 @@
 // Error texts match regress exactly.
 
 ///|
-let max_capture_groups : Int = 65535
+let max_capture_groups : Int32 = 65535
 
 ///|
-let max_loops : Int = 65535
+let max_loops : Int32 = 65535
 
 ///|
-let max_nesting_depth : Int = 256
+let max_nesting_depth : Int32 = 256
 
 ///|
 priv struct Flags {
@@ -20,15 +20,15 @@ priv struct Flags {
 
 ///|
 priv struct Parser {
-  input : Array[Int]
-  mut pos : Int
+  input : Array[Int32]
+  mut pos : Int32
   mut flags : Flags
-  mut loop_count : Int
-  mut group_count : Int
-  mut group_count_max : Int
+  mut loop_count : Int32
+  mut group_count : Int32
+  mut group_count_max : Int32
   /// Group name -> 0-based group indices, in order.
-  named_group_indices : Map[String, Array[Int]]
-  mut depth : Int
+  named_group_indices : Map[String, Array[Int32]]
+  mut depth : Int32
 }
 
 ///|
@@ -37,12 +37,12 @@ fn syntax_error(text : String) -> RegexError {
 }
 
 ///|
-fn Parser::peek(self : Parser) -> Int? {
+fn Parser::peek(self : Parser) -> Int32? {
   self.input.get(self.pos)
 }
 
 ///|
-fn Parser::next(self : Parser) -> Int? {
+fn Parser::next(self : Parser) -> Int32? {
   let c = self.input.get(self.pos)
   if c is Some(_) {
     self.pos += 1
@@ -73,23 +73,23 @@ fn Parser::try_consume_str(self : Parser, s : String) -> Bool {
 }
 
 ///|
-fn Parser::char_node(self : Parser, c : Int) -> Node {
+fn Parser::char_node(self : Parser, c : Int32) -> Node {
   Char(c, icase=self.flags.icase)
 }
 
 ///|
-fn is_ascii_digit(c : Int) -> Bool {
+fn is_ascii_digit(c : Int32) -> Bool {
   c >= '0'.to_int() && c <= '9'.to_int()
 }
 
 ///|
-fn is_ascii_alpha(c : Int) -> Bool {
+fn is_ascii_alpha(c : Int32) -> Bool {
   (c >= 'a'.to_int() && c <= 'z'.to_int()) ||
   (c >= 'A'.to_int() && c <= 'Z'.to_int())
 }
 
 ///|
-fn hex_value(c : Int) -> Int? {
+fn hex_value(c : Int32) -> Int32? {
   if c >= '0'.to_int() && c <= '9'.to_int() {
     Some(c - '0'.to_int())
   } else if c >= 'a'.to_int() && c <= 'f'.to_int() {
@@ -104,7 +104,7 @@ fn hex_value(c : Int) -> Int? {
 ///|
 /// Rust's `u32::from_str_radix(s, 16)`: an optional leading `+`, then at
 /// least one hex digit. Returns `None` on overflow of `limit`.
-fn parse_hex(digits : Array[Int], limit : Int64) -> Int64? {
+fn parse_hex(digits : Array[Int32], limit : Int64) -> Int64? {
   let mut i = 0
   if digits.length() > 0 && digits[0] == '+'.to_int() {
     i = 1
@@ -394,7 +394,7 @@ fn Parser::consume_disjunction_with(
 
 ///|
 priv enum ClassAtom {
-  CodePoint(Int)
+  CodePoint(Int32)
   Class(ClassType, positive~ : Bool)
 }
 
@@ -516,7 +516,7 @@ fn Parser::try_consume_bracket_class_atom(
 }
 
 ///|
-fn Parser::try_consume_quantifier(self : Parser) -> (Int, Int?, Bool)? {
+fn Parser::try_consume_quantifier(self : Parser) -> (Int32, Int32?, Bool)? {
   guard self.peek() is Some(c) else { return None }
   let quant = match c.unsafe_to_char() {
     '+' => {
@@ -540,7 +540,7 @@ fn Parser::try_consume_quantifier(self : Parser) -> (Int, Int?, Bool)? {
 }
 
 ///|
-fn Parser::try_consume_braced_quantifier(self : Parser) -> (Int, Int?)? {
+fn Parser::try_consume_braced_quantifier(self : Parser) -> (Int32, Int32?)? {
   let save = self.pos
   self.pos += 1 // '{'
   guard self.try_consume_decimal_integer_literal() is Some(min) else {
@@ -560,7 +560,7 @@ fn Parser::try_consume_braced_quantifier(self : Parser) -> (Int, Int?)? {
 
 ///|
 /// Saturating decimal literal (all digits are consumed).
-fn Parser::try_consume_decimal_integer_literal(self : Parser) -> Int? {
+fn Parser::try_consume_decimal_integer_literal(self : Parser) -> Int32? {
   let limit = 2147483647
   let mut result = 0
   let mut count = 0
@@ -578,7 +578,7 @@ fn Parser::try_consume_decimal_integer_literal(self : Parser) -> Int? {
 }
 
 ///|
-fn Parser::consume_character_escape(self : Parser) -> Int raise RegexError {
+fn Parser::consume_character_escape(self : Parser) -> Int32 raise RegexError {
   guard self.next() is Some(c) else { raise syntax_error("Incomplete escape") }
   match c.unsafe_to_char() {
     'f' => 0x0C
@@ -609,7 +609,7 @@ fn Parser::consume_character_escape(self : Parser) -> Int raise RegexError {
         Some(u) => u
         None => c
       }
-    '0'..='7' => {
+    '0'..<='7' => {
       let d = c - '0'.to_int()
       guard self.peek() is Some(c1) else { return d }
       let d1 = c1 - '0'.to_int()
@@ -664,7 +664,7 @@ fn Parser::consume_atom_escape(self : Parser) -> Node raise RegexError {
         icase=self.flags.icase,
       )
     }
-    '1'..='9' => {
+    '1'..<='9' => {
       // A backreference if the group exists, else a legacy octal or
       // identity escape.
       let save = self.pos
@@ -699,7 +699,7 @@ fn Parser::consume_atom_escape(self : Parser) -> Node raise RegexError {
 ///|
 /// `\u{X...}` or `\uXXXX` (with surrogate-pair joining). On failure the input
 /// is restored and `None` returned.
-fn Parser::try_escape_unicode_sequence(self : Parser) -> Int? {
+fn Parser::try_escape_unicode_sequence(self : Parser) -> Int32? {
   let orig = self.pos
   if self.try_consume('{') {
     let digits = []
@@ -771,14 +771,14 @@ fn Parser::try_escape_unicode_sequence(self : Parser) -> Int? {
 }
 
 ///|
-fn is_group_name_start(c : Int) -> Bool {
+fn is_group_name_start(c : Int32) -> Bool {
   c == '$'.to_int() ||
   c == '_'.to_int() ||
   (c >= 0 && c <= 0x10FFFF && @unicode.is_xid_start(c.unsafe_to_char()))
 }
 
 ///|
-fn is_group_name_continue(c : Int) -> Bool {
+fn is_group_name_continue(c : Int32) -> Bool {
   c == '$'.to_int() ||
   c == '_'.to_int() ||
   c == 0x200C ||
@@ -836,8 +836,8 @@ fn Parser::try_consume_named_capture_group_name(self : Parser) -> String? {
 fn Parser::parse_capture_groups(self : Parser) -> Unit raise RegexError {
   let orig = self.pos
   let mut paren_depth = 0
-  let alt_indices : Map[Int, Int] = { 0: 0 }
-  let locations : Map[String, Array[Array[(Int, Int)]]] = Map([])
+  let alt_indices : Map[Int32, Int32] = { 0: 0 }
+  let locations : Map[String, Array[Array[(Int32, Int32)]]] = Map([])
   for ;; {
     guard self.next() is Some(c) else { break }
     match c.unsafe_to_char() {

@@ -15,13 +15,13 @@ pub fn adjacent_content(VariantInput, String) -> De
 
 pub fn adjacent_unit(VariantInput, String) -> Unit raise DeError
 
-pub fn char_count(String) -> Int
+pub fn char_count(String) -> Int32
 
 pub fn claim_entry(FlatEntry) -> (String, De)
 
 pub fn classify_number(Double, String?) -> @serde_json.Number
 
-pub fn compare_keys(String, String) -> Int
+pub fn compare_keys(String, String) -> Int32
 
 pub fn contains_value(Array[@serde_json.Content], @serde_json.Content) -> Bool
 
@@ -29,31 +29,31 @@ pub fn content_or_null(() -> @serde_json.Content raise SerError) -> @serde_json.
 
 pub fn content_to_json(@serde_json.Content, preserve_order? : Bool) -> Json raise SerError
 
-pub fn[T] de_adjacent(De, String, String, String, Array[String], Bool, (Int, VariantInput) -> T raise DeError, paths? : Bool) -> T raise DeError
+pub fn[T] de_adjacent(De, String, String, String, Array[String], Bool, (Int32, VariantInput) -> T raise DeError, paths? : Bool) -> T raise DeError
 
 pub fn de_bool(De) -> Bool raise DeError
 
-pub fn de_enum(De, String, Array[String]) -> (Int, VariantInput) raise DeError
+pub fn de_enum(De, String, Array[String]) -> (Int32, VariantInput) raise DeError
 
 pub fn de_f32(De) -> Float raise DeError
 
 pub fn de_f64(De) -> Double raise DeError
 
-pub fn de_fields(De, String, Fields, (Int, De) -> Unit raise DeError, flatten? : Bool, deny? : Bool, positional? : Bool, external_variant? : Bool, paths? : Bool) -> FieldsInput raise DeError
+pub fn de_fields(De, String, Fields, (Int32, De) -> Unit raise DeError, flatten? : Bool, deny? : Bool, positional? : Bool, external_variant? : Bool, paths? : Bool) -> FieldsInput raise DeError
 
-pub fn de_fixed(De, Int) -> SeqReader raise DeError
+pub fn de_fixed(De, Int32) -> SeqReader raise DeError
 
 pub fn[T : @json.FromJson] de_from_json(De) -> T raise DeError
 
 pub fn de_i16(De) -> Int16 raise DeError
 
-pub fn de_i32(De) -> Int raise DeError
+pub fn de_i32(De) -> Int32 raise DeError
 
 pub fn de_i64(De) -> Int64 raise DeError
 
-pub fn de_i8(De) -> Int raise DeError
+pub fn de_i8(De) -> Int32 raise DeError
 
-pub fn de_internal(De, String, String, Array[String]) -> (Int, De) raise DeError
+pub fn de_internal(De, String, String, Array[String]) -> (Int32, De) raise DeError
 
 pub fn de_json(De) -> Json raise DeError
 
@@ -65,7 +65,7 @@ pub fn de_map_entries(De) -> Array[(De, De)] raise DeError
 
 pub fn de_nonzero_u16(De) -> UInt16 raise DeError
 
-pub fn de_nonzero_u32(De) -> UInt raise DeError
+pub fn de_nonzero_u32(De) -> UInt32 raise DeError
 
 pub fn de_nonzero_u64(De) -> UInt64 raise DeError
 
@@ -81,17 +81,17 @@ pub fn de_string_expecting(De, String) -> String raise DeError
 
 pub fn de_struct(De, String, Array[String], Bool, external_variant? : Bool) -> StructInput raise DeError
 
-pub fn de_tuple(De, Int) -> SeqReader raise DeError
+pub fn de_tuple(De, Int32) -> SeqReader raise DeError
 
-pub fn de_tuple_variant(De, String, Int, Bool) -> SeqReader raise DeError
+pub fn de_tuple_variant(De, String, Int32, Bool) -> SeqReader raise DeError
 
 pub fn de_u16(De) -> UInt16 raise DeError
 
 pub fn de_u16_expecting(De, String) -> UInt16 raise DeError
 
-pub fn de_u32(De) -> UInt raise DeError
+pub fn de_u32(De) -> UInt32 raise DeError
 
-pub fn de_u32_expecting(De, String) -> UInt raise DeError
+pub fn de_u32_expecting(De, String) -> UInt32 raise DeError
 
 pub fn de_u64(De) -> UInt64 raise DeError
 
@@ -119,13 +119,13 @@ pub fn encode_f64(Double) -> Json
 
 pub fn encode_i64(Int64) -> Json
 
-pub fn encode_int(Int) -> Json
+pub fn encode_int(Int32) -> Json
 
 pub fn[K, V] encode_map(Map[K, V], (K) -> String, (V) -> Json) -> Json
 
 pub fn encode_u64(UInt64) -> Json
 
-pub fn encode_uint(UInt) -> Json
+pub fn encode_uint(UInt32) -> Json
 
 pub fn end_enum_map(De) -> Unit raise DeError
 
@@ -163,7 +163,7 @@ pub fn ser_i16(Int16) -> @serde_json.Content
 
 pub fn ser_i64(Int64) -> @serde_json.Content
 
-pub fn ser_int(Int) -> @serde_json.Content
+pub fn ser_int(Int32) -> @serde_json.Content
 
 pub fn ser_json(Json) -> @serde_json.Content
 
@@ -175,7 +175,7 @@ pub fn ser_null() -> @serde_json.Content
 
 pub fn[T] ser_option(T?, (T) -> @serde_json.Content raise SerError) -> @serde_json.Content raise SerError
 
-pub fn[K, V] ser_sorted_map(Map[K, V], (K, K) -> Int, (K) -> String raise SerError, (V) -> @serde_json.Content raise SerError) -> @serde_json.Content raise SerError
+pub fn[K, V] ser_sorted_map(Map[K, V], (K, K) -> Int32, (K) -> String raise SerError, (V) -> @serde_json.Content raise SerError) -> @serde_json.Content raise SerError
 
 pub fn ser_string(String) -> @serde_json.Content
 
@@ -185,7 +185,7 @@ pub fn ser_u16(UInt16) -> @serde_json.Content
 
 pub fn ser_u64(UInt64) -> @serde_json.Content
 
-pub fn ser_uint(UInt) -> @serde_json.Content
+pub fn ser_uint(UInt32) -> @serde_json.Content
 
 pub fn ser_unit() -> @serde_json.Content
 
@@ -232,12 +232,12 @@ pub impl Show for SerError
 // Types and methods
 pub struct DateTimeUtc {
   date : NaiveDate
-  secs : Int
-  frac : Int
+  secs : Int32
+  frac : Int32
 } derive(Compare, Eq, Hash, @debug.Debug)
 pub fn DateTimeUtc::date(Self) -> NaiveDate
 pub fn DateTimeUtc::deserialize(De) -> Self raise DeError
-pub fn DateTimeUtc::nanosecond(Self) -> Int
+pub fn DateTimeUtc::nanosecond(Self) -> Int32
 pub fn DateTimeUtc::parse(String) -> Self raise ConversionError
 pub fn DateTimeUtc::serialize(Self) -> @serde_json.Content raise SerError
 pub fn DateTimeUtc::timestamp(Self) -> Int64
@@ -261,8 +261,8 @@ pub fn Fields::new(Array[String]) -> Self
 pub struct FieldsInput {
   // private fields
 }
-pub fn FieldsInput::absent(Self, Int) -> De raise DeError
-pub fn FieldsInput::absent_error(Self, Int) -> DeError
+pub fn FieldsInput::absent(Self, Int32) -> De raise DeError
+pub fn FieldsInput::absent_error(Self, Int32) -> DeError
 pub fn FieldsInput::deny_leftovers(Self) -> Unit raise DeError
 pub fn FieldsInput::flat(Self) -> De
 
@@ -287,7 +287,7 @@ pub fn IpAddr::serialize(Self) -> @serde_json.Content raise SerError
 pub fn IpAddr::to_string(Self) -> String
 
 pub struct Ipv4Addr {
-  octets : FixedArray[Int]
+  octets : FixedArray[Int32]
 } derive(Eq, Hash, @debug.Debug)
 pub fn Ipv4Addr::deserialize(De) -> Self raise DeError
 pub fn Ipv4Addr::parse(String) -> Self raise ConversionError
@@ -295,7 +295,7 @@ pub fn Ipv4Addr::serialize(Self) -> @serde_json.Content raise SerError
 pub fn Ipv4Addr::to_string(Self) -> String
 
 pub struct Ipv6Addr {
-  segments : FixedArray[Int]
+  segments : FixedArray[Int32]
 } derive(Eq, Hash, @debug.Debug)
 pub fn Ipv6Addr::deserialize(De) -> Self raise DeError
 pub fn Ipv6Addr::parse(String) -> Self raise ConversionError
@@ -309,18 +309,18 @@ pub(all) enum Mode {
 } derive(Eq, @debug.Debug)
 
 pub struct NaiveDate {
-  year : Int
-  month : Int
-  day : Int
+  year : Int32
+  month : Int32
+  day : Int32
 } derive(Compare, Eq, Hash, @debug.Debug)
-pub fn NaiveDate::day(Self) -> Int
+pub fn NaiveDate::day(Self) -> Int32
 pub fn NaiveDate::deserialize(De) -> Self raise DeError
-pub fn NaiveDate::from_ymd(Int, Int, Int) -> Self?
-pub fn NaiveDate::month(Self) -> Int
+pub fn NaiveDate::from_ymd(Int32, Int32, Int32) -> Self?
+pub fn NaiveDate::month(Self) -> Int32
 pub fn NaiveDate::parse(String) -> Self raise ConversionError
 pub fn NaiveDate::serialize(Self) -> @serde_json.Content raise SerError
 pub fn NaiveDate::to_string(Self) -> String
-pub fn NaiveDate::year(Self) -> Int
+pub fn NaiveDate::year(Self) -> Int32
 pub impl Show for NaiveDate
 
 pub struct ObjectBuilder {

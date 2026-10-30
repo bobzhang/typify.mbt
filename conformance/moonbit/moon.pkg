@@ -24,4 +24,4 @@ import {
   "bobzhang/typify/conformance/moonbit/fx_x_rust_type",
   "bobzhang/typify/conformance/moonbit/fx_maps_custom",
   "bobzhang/typify/conformance/moonbit/fx_github",
-}
+} for "wbtest"

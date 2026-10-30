@@ -2,7 +2,7 @@
 
 ///|
 /// (f32 bits, serde_json::to_string(&f32))
-let f32_cases : Array[(UInt, String)] = [
+let f32_cases : Array[(UInt32, String)] = [
   (0U, "0.0"),
   (2147483648U, "-0.0"),
   (1065353216U, "1.0"),

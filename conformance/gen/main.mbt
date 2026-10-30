@@ -10,7 +10,7 @@ priv struct Gen {
 }
 
 ///|
-fn Gen::below(self : Gen, n : Int) -> Int {
+fn Gen::below(self : Gen, n : Int32) -> Int32 {
   if n <= 1 {
     0
   } else {
@@ -19,7 +19,7 @@ fn Gen::below(self : Gen, n : Int) -> Int {
 }
 
 ///|
-fn Gen::chance(self : Gen, percent : Int) -> Bool {
+fn Gen::chance(self : Gen, percent : Int32) -> Bool {
   self.below(100) < percent
 }
 
@@ -62,7 +62,7 @@ fn parse(s : String) -> @serde_json.Value {
 }
 
 ///|
-fn Gen::any(self : Gen, depth : Int) -> @serde_json.Value {
+fn Gen::any(self : Gen, depth : Int32) -> @serde_json.Value {
   match self.below(if depth > 1 { 5 } else { 7 }) {
     0 => Null
     1 => Bool(self.chance(50))
@@ -160,7 +160,7 @@ fn Gen::of_type(
   self : Gen,
   t : @schema.InstanceType,
   o : @schema.SchemaObject,
-  depth : Int,
+  depth : Int32,
 ) -> @serde_json.Value {
   match t {
     Null => Null
@@ -177,7 +177,7 @@ fn Gen::of_type(
 fn Gen::array_for(
   self : Gen,
   o : @schema.SchemaObject,
-  depth : Int,
+  depth : Int32,
 ) -> @serde_json.Value {
   match o.array {
     Some({ items: Some(Vec(items)), additional_items, .. }) => {
@@ -213,7 +213,7 @@ fn Gen::array_for(
 fn Gen::object_for(
   self : Gen,
   o : @schema.SchemaObject,
-  depth : Int,
+  depth : Int32,
 ) -> @serde_json.Value {
   let out = @collections.StrMap::new()
   guard o.object is Some(v) else {
@@ -252,7 +252,7 @@ fn Gen::object_for(
 fn Gen::value(
   self : Gen,
   schema : @schema.Schema,
-  depth : Int,
+  depth : Int32,
 ) -> @serde_json.Value {
   guard schema is Object(o) else { return self.any(depth) }
   if depth > 6 {
@@ -389,11 +389,14 @@ fn main {
   let seed = name
     .iter()
     .fold(init=0x9E3779B97F4A7C15UL, (h, c) => h * 31UL + c.to_int().to_uint64())
-  let gen : Gen = { rng: @splitmix.new(seed~), defs: root.definitions, }
+  let gen : Gen = {
+    rng: @splitmix.RandomState::RandomState(seed~),
+    defs: root.definitions,
+  }
   // Text-level variants use their own stream so that the plain instances
   // stay stable.
   let wild : Gen = {
-    rng: @splitmix.new(seed=seed ^ 0x5DEECE66DUL),
+    rng: @splitmix.RandomState::RandomState(seed=seed ^ 0x5DEECE66DUL),
     defs: root.definitions,
   }
   let lines = []

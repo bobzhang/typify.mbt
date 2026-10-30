@@ -135,7 +135,7 @@ pub(all) enum TypeEntryNewtypeConstraints {
   NoConstraints
   EnumValue(Array[@serde_json.Value])
   DenyValue(Array[@serde_json.Value])
-  String(max_length~ : UInt?, min_length~ : UInt?, pattern~ : String?)
+  String(max_length~ : UInt32?, min_length~ : UInt32?, pattern~ : String?)
 } derive(Eq, Debug)
 
 ///|
@@ -180,7 +180,7 @@ pub(all) enum TypeEntryDetails {
   Vec(TypeId)
   Map(TypeId, TypeId)
   Set(TypeId)
-  Array(TypeId, Int)
+  Array(TypeId, Int32)
   Tuple(Array[TypeId])
   Unit
   Boolean

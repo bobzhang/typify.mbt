@@ -99,7 +99,7 @@ pub fn FormatCollision::parse(StringView) -> Self raise @runtime.ConversionError
 pub fn FormatCollision::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn FormatCollision::to_json_string(Self) -> String raise @runtime.SerError
 pub fn FormatCollision::to_string(Self) -> String
-pub fn FormatCollision::variant_index(Self) -> Int
+pub fn FormatCollision::variant_index(Self) -> Int32
 pub impl @runtime.Serde for FormatCollision
 pub impl ToJson for FormatCollision
 
@@ -150,7 +150,7 @@ pub fn MapOfKeywordsKeywordMapValue::parse(StringView) -> Self raise @runtime.Co
 pub fn MapOfKeywordsKeywordMapValue::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn MapOfKeywordsKeywordMapValue::to_json_string(Self) -> String raise @runtime.SerError
 pub fn MapOfKeywordsKeywordMapValue::to_string(Self) -> String
-pub fn MapOfKeywordsKeywordMapValue::variant_index(Self) -> Int
+pub fn MapOfKeywordsKeywordMapValue::variant_index(Self) -> Int32
 pub impl @runtime.Serde for MapOfKeywordsKeywordMapValue
 pub impl ToJson for MapOfKeywordsKeywordMapValue
 
@@ -392,7 +392,7 @@ pub fn StringEnum::parse(StringView) -> Self raise @runtime.ConversionError
 pub fn StringEnum::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn StringEnum::to_json_string(Self) -> String raise @runtime.SerError
 pub fn StringEnum::to_string(Self) -> String
-pub fn StringEnum::variant_index(Self) -> Int
+pub fn StringEnum::variant_index(Self) -> Int32
 pub impl @runtime.Serde for StringEnum
 pub impl ToJson for StringEnum
 
