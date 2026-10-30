@@ -20,13 +20,13 @@ pub fn join(Array[Tokens], Char) -> Tokens
 
 pub fn lit_bool(Bool) -> Tokens
 
-pub fn lit_int(Int) -> Tokens
+pub fn lit_int(Int32) -> Tokens
 
 pub fn lit_raw(String) -> Tokens
 
 pub fn lit_str(String) -> Tokens
 
-pub fn lit_usize(Int) -> Tokens
+pub fn lit_usize(Int32) -> Tokens
 
 pub fn output_value(@typify.TypeSpace, @typify.TypeEntry, @serde_json.Value, Tokens) -> Tokens? raise @typify.TypifyError
 

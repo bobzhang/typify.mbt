@@ -19,7 +19,7 @@ pub fn write_escaped_str(StringBuilder, StringView) -> Unit
 
 // Errors
 pub(all) suberror ParseError {
-  ParseError(message~ : String, line~ : Int, column~ : Int)
+  ParseError(message~ : String, line~ : Int32, column~ : Int32)
 } derive(Eq, @debug.Debug)
 pub impl Show for ParseError
 

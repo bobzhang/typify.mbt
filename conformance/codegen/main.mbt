@@ -102,7 +102,7 @@ fn write(path : String, text : String) -> Unit {
 
 ///|
 /// Generate one MoonBit package per schema under `base` (import path
-/// `bobzhang/typify/<base>/<pkg>`), plus `base/dispatch.mbt` and
+/// `bobzhang/typify/<base>/<pkg>`), plus `base/dispatch_wbtest.mbt` and
 /// `base/moon.pkg`. `compile_only` schemas get no dispatch entries.
 fn generate_suite(
   base : String,
@@ -137,7 +137,7 @@ fn generate_suite(
     write("\{dir}/types.mbt", code)
     write(
       "\{dir}/moon.pkg",
-      "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/core/json\",\n}\n\nwarnings = \"-unused_value-unused_package\"\n\n// Generated code is compared with the generator's output as is.\nformatter = { \"ignore\": [ \"types.mbt\" ] }\n",
+      "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/core/json\",\n}\n\nwarnings = \"-unused_value-unused_package\"\n\n// Generated code is compared with the generator's output as is.\nformatter(ignore: [ \"types.mbt\" ])\n",
     )
     // A compile-only fixture gets no dispatch entries, so nothing in the
     // suite package references it; importing it only warns as unused.
@@ -159,10 +159,10 @@ fn generate_suite(
     }
   }
   dispatch.write_string("    _ => \"NOTYPE\"\n  }\n}\n")
-  write("\{base}/dispatch.mbt", dispatch.to_string())
+  write("\{base}/dispatch_wbtest.mbt", dispatch.to_string())
   write(
     "\{base}/moon.pkg",
-    "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/x/fs\",\n\{imports.join("\n")}\n}\n\nwarnings = \"-unused_value-unused_field\"\n",
+    "import {\n  \"bobzhang/typify/runtime\" @typify_rt,\n  \"moonbitlang/x/fs\",\n\{imports.join("\n")}\n} for \"wbtest\"\n",
   )
 }
 
@@ -342,17 +342,17 @@ fn main {
     generate_suite("conformance/random", suite)
     // The harness: shared with conformance/moonbit, reading cases from
     // conformance/random/cases.
-    let harness = read("conformance/moonbit/harness.mbt").replace_all(
+    let harness = read("conformance/moonbit/harness_wbtest.mbt").replace_all(
       old="conformance/cases/",
       new="conformance/random/cases/",
     )
     let start = harness.find("///|\nlet fixture_names").unwrap()
     write(
-      "conformance/random/harness.mbt",
+      "conformance/random/harness_wbtest.mbt",
       harness.unsafe_substring(start=0, end=start),
     )
     write(
-      "conformance/random/names.mbt",
+      "conformance/random/names_wbtest.mbt",
       "///|\nlet fixture_names : Array[String] = [\n\{suite.map(s => "  \"\{s.0}\",").join("\n")}\n]\n",
     )
     write(

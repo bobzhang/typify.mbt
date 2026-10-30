@@ -15,8 +15,8 @@ pub impl Show for RegexError
 
 // Types and methods
 pub(all) struct Match {
-  start : Int
-  end : Int
+  start : Int32
+  end : Int32
 } derive(Eq, @debug.Debug)
 
 pub struct Regex {

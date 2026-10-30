@@ -35,7 +35,7 @@ pub fn LetterBoxLetter::parse(StringView) -> Self raise @runtime.ConversionError
 pub fn LetterBoxLetter::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn LetterBoxLetter::to_json_string(Self) -> String raise @runtime.SerError
 pub fn LetterBoxLetter::to_string(Self) -> String
-pub fn LetterBoxLetter::variant_index(Self) -> Int
+pub fn LetterBoxLetter::variant_index(Self) -> Int32
 pub impl @runtime.Serde for LetterBoxLetter
 pub impl ToJson for LetterBoxLetter
 

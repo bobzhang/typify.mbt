@@ -121,7 +121,7 @@ pub(all) enum TypeEntryDetails {
   Vec(TypeId)
   Map(TypeId, TypeId)
   Set(TypeId)
-  Array(TypeId, Int)
+  Array(TypeId, Int32)
   Tuple(Array[TypeId])
   Unit
   Boolean
@@ -172,7 +172,7 @@ pub(all) enum TypeEntryNewtypeConstraints {
   NoConstraints
   EnumValue(Array[@serde_json.Value])
   DenyValue(Array[@serde_json.Value])
-  String(max_length~ : UInt?, min_length~ : UInt?, pattern~ : String?)
+  String(max_length~ : UInt32?, min_length~ : UInt32?, pattern~ : String?)
 } derive(Eq, @debug.Debug)
 
 pub(all) struct TypeEntryStruct {
@@ -185,7 +185,7 @@ pub(all) struct TypeEntryStruct {
   schema : @schema.Schema
 } derive(Eq, @debug.Debug)
 
-pub(all) struct TypeId(Int) derive(Compare, Eq, Hash, @debug.Debug)
+pub(all) struct TypeId(Int32) derive(Compare, Eq, Hash, @debug.Debug)
 pub impl Show for TypeId
 
 pub struct TypeSpace {
@@ -205,7 +205,7 @@ pub fn TypeSpace::add_type_with_name(Self, @schema.Schema, String?) -> TypeId ra
 pub fn TypeSpace::entries(Self) -> Array[(TypeId, TypeEntry)]
 pub fn TypeSpace::entry(Self, TypeId) -> TypeEntry raise TypifyError
 pub fn TypeSpace::new(TypeSpaceSettings) -> Self
-pub fn TypeSpace::type_count(Self) -> Int
+pub fn TypeSpace::type_count(Self) -> Int32
 
 pub(all) enum TypeSpaceImpl {
   FromStr

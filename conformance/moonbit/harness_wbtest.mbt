@@ -1,9 +1,6 @@
 // Runs conformance cases through the generated MoonBit types and compares
 // with serde's behaviour recorded by conformance/rust.
-// The reporting helpers in this file and `fixture_names` are only called from
-// `conformance_wbtest.mbt`; the unused analysis runs on the non-test unit and
-// cannot see that use, so this package's `moon.pkg` disables the
-// unused_value/unused_field warnings.
+// Reporting helpers belong to the whitebox conformance suite.
 
 ///|
 /// Decode then re-encode, formatted like the Rust harness.

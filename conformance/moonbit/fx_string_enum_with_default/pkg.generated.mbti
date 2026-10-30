@@ -25,7 +25,7 @@ pub fn TestEnum::parse(StringView) -> Self raise @runtime.ConversionError
 pub fn TestEnum::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TestEnum::to_json_string(Self) -> String raise @runtime.SerError
 pub fn TestEnum::to_string(Self) -> String
-pub fn TestEnum::variant_index(Self) -> Int
+pub fn TestEnum::variant_index(Self) -> Int32
 pub impl @runtime.Serde for TestEnum
 pub impl ToJson for TestEnum
 

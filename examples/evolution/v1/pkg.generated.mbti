@@ -96,7 +96,7 @@ pub fn ClosedEnum::parse(StringView) -> Self raise @runtime.ConversionError
 pub fn ClosedEnum::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ClosedEnum::to_json_string(Self) -> String raise @runtime.SerError
 pub fn ClosedEnum::to_string(Self) -> String
-pub fn ClosedEnum::variant_index(Self) -> Int
+pub fn ClosedEnum::variant_index(Self) -> Int32
 pub impl @runtime.Serde for ClosedEnum
 pub impl ToJson for ClosedEnum
 
@@ -135,7 +135,7 @@ pub fn OpenEnumVariant0::parse(StringView) -> Self raise @runtime.ConversionErro
 pub fn OpenEnumVariant0::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn OpenEnumVariant0::to_json_string(Self) -> String raise @runtime.SerError
 pub fn OpenEnumVariant0::to_string(Self) -> String
-pub fn OpenEnumVariant0::variant_index(Self) -> Int
+pub fn OpenEnumVariant0::variant_index(Self) -> Int32
 pub impl @runtime.Serde for OpenEnumVariant0
 pub impl ToJson for OpenEnumVariant0
 
@@ -285,9 +285,9 @@ pub impl @runtime.Serde for Unused
 pub impl ToJson for Unused
 
 pub(all) struct Widen {
-  n : Int
+  n : Int32
 } derive(Eq, @debug.Debug)
-pub fn Widen::Widen(n~ : Int) -> Self
+pub fn Widen::Widen(n~ : Int32) -> Self
 pub fn Widen::deserialize(@runtime.De) -> Self raise @runtime.DeError
 pub fn Widen::from_json(Json) -> Self raise @runtime.DeError
 pub fn Widen::from_json_str(StringView) -> Self raise @runtime.DeError
