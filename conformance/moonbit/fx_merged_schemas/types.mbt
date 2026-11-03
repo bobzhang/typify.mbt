@@ -7,9 +7,10 @@
 
 ///|
 /// `BarProp`
+#derive(Debug, Eq)
 pub(all) struct BarProp {
   bar : Json?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `BarProp` (fields with defaults are optional).
@@ -54,10 +55,11 @@ pub impl ToJson for BarProp with fn to_json(self) {
 
 ///|
 /// if we don't see this, we dropped the metadata
+#derive(Debug, Eq)
 pub(all) struct CommentedTypeMerged {
   x : Json?
   y : Json?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CommentedTypeMerged` (fields with defaults are optional).
@@ -109,10 +111,11 @@ pub impl ToJson for CommentedTypeMerged with fn to_json(self) {
 
 ///|
 /// `HereAndThere`
+#derive(Debug, Eq)
 pub(all) enum HereAndThere {
   Variant0(bar~ : String?, foo~ : String?)
   Variant1(baz~ : String?, foo~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let here_and_there_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bar", "foo"])
@@ -202,9 +205,10 @@ pub impl ToJson for HereAndThere with fn to_json(self) {
 
 ///|
 /// `JsonResponseBase`
+#derive(Debug, Eq)
 pub(all) struct JsonResponseBase {
   result : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `JsonResponseBase` (fields with defaults are optional).
@@ -249,10 +253,11 @@ pub impl ToJson for JsonResponseBase with fn to_json(self) {
 
 ///|
 /// `JsonSuccess`
+#derive(Debug, Eq)
 pub(all) struct JsonSuccess {
   msg : String
   result : JsonSuccessResult
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `JsonSuccess` (fields with defaults are optional).
@@ -300,10 +305,11 @@ pub impl ToJson for JsonSuccess with fn to_json(self) {
 
 ///|
 /// x
+#derive(Debug, Eq)
 pub(all) struct JsonSuccessBase {
   msg : String
   result : JsonSuccessBaseResult
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `JsonSuccessBase` (fields with defaults are optional).
@@ -351,10 +357,11 @@ pub impl ToJson for JsonSuccessBase with fn to_json(self) {
 
 ///|
 /// `OrderDependentMerge`
+#derive(Debug, Eq)
 pub(all) struct OrderDependentMerge {
   bar : Json?
   baz : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `OrderDependentMerge` (fields with defaults are optional).
@@ -404,7 +411,8 @@ pub impl ToJson for OrderDependentMerge with fn to_json(self) {
 
 ///|
 /// `TriplePattern`
-pub(all) struct TriplePattern(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct TriplePattern(String)
 
 ///|
 let triple_pattern_pattern : @typify_rt.Regex = @typify_rt.regex("(?=^[a-z].+$)(?=^.{4,8}$)(?=.+[a-z]$)")
@@ -444,8 +452,9 @@ pub impl ToJson for TriplePattern with fn to_json(self) {
 
 ///|
 /// `Unresolvable`
+#derive(Debug, Eq, Hash)
 pub(all) enum Unresolvable {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for Unresolvable with fn deserialize(d) {
@@ -477,9 +486,10 @@ pub impl ToJson for Unresolvable with fn to_json(self) {
 
 ///|
 /// `ButNotThat`
+#derive(Debug, Eq)
 pub(all) struct ButNotThat {
   this : Json?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ButNotThat` (fields with defaults are optional).
@@ -524,8 +534,9 @@ pub impl ToJson for ButNotThat with fn to_json(self) {
 
 ///|
 /// `MergeEmpty`
+#derive(Debug, Eq)
 pub(all) struct MergeEmpty {
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MergeEmpty` (fields with defaults are optional).
@@ -561,7 +572,8 @@ pub impl ToJson for MergeEmpty with fn to_json(self) {
 
 ///|
 /// `MergeNumberBounds`
-pub(all) struct MergeNumberBounds(Double) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct MergeNumberBounds(Double)
 
 ///|
 pub impl @typify_rt.Serde for MergeNumberBounds with fn deserialize(d) {
@@ -585,7 +597,8 @@ pub impl ToJson for MergeNumberBounds with fn to_json(self) {
 
 ///|
 /// `MergeStringBounds`
-pub(all) struct MergeStringBounds(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct MergeStringBounds(String)
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
@@ -625,7 +638,8 @@ pub impl ToJson for MergeStringBounds with fn to_json(self) {
 
 ///|
 /// `NarrowNumber`
-pub(all) struct NarrowNumber(UInt64) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct NarrowNumber(UInt64)
 
 ///|
 pub impl @typify_rt.Serde for NarrowNumber with fn deserialize(d) {
@@ -649,9 +663,10 @@ pub impl ToJson for NarrowNumber with fn to_json(self) {
 
 ///|
 /// `Pickingone`
+#derive(Debug, Eq)
 pub(all) struct Pickingone {
   suspended_by : PickingoneSuspendedBy
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Pickingone` (fields with defaults are optional).
@@ -694,9 +709,10 @@ pub impl ToJson for Pickingone with fn to_json(self) {
 
 ///|
 /// `PickingoneInstallation`
+#derive(Debug, Eq)
 pub(all) struct PickingoneInstallation {
   suspended_by : PickingoneUser?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PickingoneInstallation` (fields with defaults are optional).
@@ -741,9 +757,10 @@ pub impl ToJson for PickingoneInstallation with fn to_json(self) {
 
 ///|
 /// `PickingoneUser`
+#derive(Debug, Eq)
 pub(all) struct PickingoneUser {
   email : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PickingoneUser` (fields with defaults are optional).
@@ -788,9 +805,10 @@ pub impl ToJson for PickingoneUser with fn to_json(self) {
 
 ///|
 /// `TrimFat`
+#derive(Debug, Eq)
 pub(all) struct TrimFat {
   a : Json
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TrimFat` (fields with defaults are optional).
@@ -833,9 +851,10 @@ pub impl ToJson for TrimFat with fn to_json(self) {
 
 ///|
 /// `UnchangedByMerge`
+#derive(Debug, Eq)
 pub(all) struct UnchangedByMerge {
   tag : UnchangedByMergeTag
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `UnchangedByMerge` (fields with defaults are optional).
@@ -878,8 +897,9 @@ pub impl ToJson for UnchangedByMerge with fn to_json(self) {
 
 ///|
 /// `Unsatisfiable1`
+#derive(Debug, Eq, Hash)
 pub(all) enum Unsatisfiable1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for Unsatisfiable1 with fn deserialize(d) {
@@ -911,8 +931,9 @@ pub impl ToJson for Unsatisfiable1 with fn to_json(self) {
 
 ///|
 /// `Unsatisfiable2`
+#derive(Debug, Eq, Hash)
 pub(all) enum Unsatisfiable2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for Unsatisfiable2 with fn deserialize(d) {
@@ -944,8 +965,9 @@ pub impl ToJson for Unsatisfiable2 with fn to_json(self) {
 
 ///|
 /// `Unsatisfiable3`
+#derive(Debug, Eq, Hash)
 pub(all) enum Unsatisfiable3 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for Unsatisfiable3 with fn deserialize(d) {
@@ -977,9 +999,10 @@ pub impl ToJson for Unsatisfiable3 with fn to_json(self) {
 
 ///|
 /// `Unsatisfiable3A`
+#derive(Debug, Eq)
 pub(all) struct Unsatisfiable3A {
   action : Unsatisfiable3C?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Unsatisfiable3A` (fields with defaults are optional).
@@ -1024,9 +1047,10 @@ pub impl ToJson for Unsatisfiable3A with fn to_json(self) {
 
 ///|
 /// `Unsatisfiable3B`
+#derive(Debug, Eq, Hash)
 pub(all) enum Unsatisfiable3B {
   Bar
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for Unsatisfiable3B with fn deserialize(d) {
@@ -1083,9 +1107,10 @@ pub impl ToJson for Unsatisfiable3B with fn to_json(self) {
 
 ///|
 /// `Unsatisfiable3C`
+#derive(Debug, Eq, Hash)
 pub(all) enum Unsatisfiable3C {
   Foo
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for Unsatisfiable3C with fn deserialize(d) {
@@ -1142,12 +1167,13 @@ pub impl ToJson for Unsatisfiable3C with fn to_json(self) {
 
 ///|
 /// `WeirdEnum`
+#derive(Debug, Eq)
 pub(all) enum WeirdEnum {
   Variant0(pattern~ : String)
   Variant1(patterns~ : String)
   Variant2(pattern_either~ : String)
   Variant3(pattern_regex~ : String)
-} derive(Debug, Eq)
+}
 
 ///|
 let weird_enum_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["pattern"])
@@ -1269,9 +1295,10 @@ pub impl ToJson for WeirdEnum with fn to_json(self) {
 
 ///|
 /// `JsonSuccessResult`
+#derive(Debug, Eq, Hash)
 pub(all) enum JsonSuccessResult {
   Success
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for JsonSuccessResult with fn deserialize(d) {
@@ -1328,9 +1355,10 @@ pub impl ToJson for JsonSuccessResult with fn to_json(self) {
 
 ///|
 /// `JsonSuccessBaseResult`
+#derive(Debug, Eq, Hash)
 pub(all) enum JsonSuccessBaseResult {
   Success
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for JsonSuccessBaseResult with fn deserialize(d) {
@@ -1387,9 +1415,10 @@ pub impl ToJson for JsonSuccessBaseResult with fn to_json(self) {
 
 ///|
 /// `PickingoneSuspendedBy`
+#derive(Debug, Eq)
 pub(all) struct PickingoneSuspendedBy {
   email : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PickingoneSuspendedBy` (fields with defaults are optional).
@@ -1434,9 +1463,10 @@ pub impl ToJson for PickingoneSuspendedBy with fn to_json(self) {
 
 ///|
 /// `UnchangedByMergeTag`
+#derive(Debug, Eq, Hash)
 pub(all) enum UnchangedByMergeTag {
   Something
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for UnchangedByMergeTag with fn deserialize(d) {

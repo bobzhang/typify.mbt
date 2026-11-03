@@ -7,10 +7,11 @@
 
 ///|
 /// `TestType`
+#derive(Debug, Eq)
 pub(all) struct TestType {
   where_not : TestTypeWhereNot
   why_not : TestTypeWhyNot
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TestType` (fields with defaults are optional).
@@ -58,7 +59,8 @@ pub impl ToJson for TestType with fn to_json(self) {
 
 ///|
 /// `TestTypeWhereNot`
-pub(all) struct TestTypeWhereNot(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct TestTypeWhereNot(String)
 
 ///|
 let test_type_where_not_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
@@ -103,7 +105,8 @@ pub impl ToJson for TestTypeWhereNot with fn to_json(self) {
 
 ///|
 /// `TestTypeWhyNot`
-pub(all) struct TestTypeWhyNot(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct TestTypeWhyNot(String)
 
 ///|
 let test_type_why_not_values : Array[@typify_rt.Content] = @typify_rt.enum_values(

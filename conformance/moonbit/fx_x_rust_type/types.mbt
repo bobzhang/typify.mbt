@@ -7,10 +7,11 @@
 
 ///|
 /// `AllTheThings`
+#derive(Debug, Eq)
 pub(all) struct AllTheThings {
   option_marker : Marker??
   path : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `AllTheThings` (fields with defaults are optional).
@@ -62,8 +63,9 @@ pub impl ToJson for AllTheThings with fn to_json(self) {
 
 ///|
 /// `Marker`
+#derive(Debug, Eq, Hash)
 pub(all) enum Marker {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for Marker with fn deserialize(d) {

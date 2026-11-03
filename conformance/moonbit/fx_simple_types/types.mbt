@@ -7,9 +7,10 @@
 
 ///|
 /// `AnythingWorks`
+#derive(Debug, Eq)
 pub(all) struct AnythingWorks {
   value : Json
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `AnythingWorks` (fields with defaults are optional).
@@ -52,9 +53,10 @@ pub impl ToJson for AnythingWorks with fn to_json(self) {
 
 ///|
 /// `FloatsArentTerribleImTold`
+#derive(Debug, Eq)
 pub(all) struct FloatsArentTerribleImTold {
   flush_timeout : Float?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `FloatsArentTerribleImTold` (fields with defaults are optional).
@@ -99,7 +101,8 @@ pub impl ToJson for FloatsArentTerribleImTold with fn to_json(self) {
 
 ///|
 /// `JustOne`
-pub(all) struct JustOne(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct JustOne(String)
 
 ///|
 pub impl @typify_rt.Serde for JustOne with fn deserialize(d) {
@@ -123,6 +126,7 @@ pub impl ToJson for JustOne with fn to_json(self) {
 
 ///|
 /// `UintMinimumAndMaximum`
+#derive(Debug, Eq)
 pub(all) struct UintMinimumAndMaximum {
   max : UInt64
   min : UInt64
@@ -130,7 +134,7 @@ pub(all) struct UintMinimumAndMaximum {
   min_non_zero : UInt64
   min_uint_non_zero : UInt64
   no_bounds : UInt64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `UintMinimumAndMaximum` (fields with defaults are optional).

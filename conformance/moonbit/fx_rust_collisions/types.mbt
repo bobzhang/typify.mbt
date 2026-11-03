@@ -7,9 +7,10 @@
 
 ///|
 /// `Box`
+#derive(Debug, Eq)
 pub(all) struct Box {
   data : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Box` (fields with defaults are optional).
@@ -52,9 +53,10 @@ pub impl ToJson for Box with fn to_json(self) {
 
 ///|
 /// `Copy`
+#derive(Debug, Eq)
 pub(all) struct Copy {
   value : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Copy` (fields with defaults are optional).
@@ -97,9 +99,10 @@ pub impl ToJson for Copy with fn to_json(self) {
 
 ///|
 /// `DoubleOptionCollision`
+#derive(Debug, Eq)
 pub(all) struct DoubleOptionCollision {
   option : DoubleOptionCollisionOption?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DoubleOptionCollision` (fields with defaults are optional).
@@ -144,9 +147,10 @@ pub impl ToJson for DoubleOptionCollision with fn to_json(self) {
 
 ///|
 /// `Drop`
+#derive(Debug, Eq)
 pub(all) struct Drop {
   cleanup : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Drop` (fields with defaults are optional).
@@ -189,10 +193,11 @@ pub impl ToJson for Drop with fn to_json(self) {
 
 ///|
 /// `FlattenedKeywords`
+#derive(Debug, Eq)
 pub(all) struct FlattenedKeywords {
   normal : String
   extra : Map[String, String]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `FlattenedKeywords` (fields with defaults are optional).
@@ -238,10 +243,11 @@ pub impl ToJson for FlattenedKeywords with fn to_json(self) {
 
 ///|
 /// `KeywordFieldsEnum`
+#derive(Debug, Eq)
 pub(all) enum KeywordFieldsEnum {
   Object(impl_~ : String, match_~ : Int64, ref_~ : Bool, type_~ : String)
   Array(FixedArray[String])
-} derive(Debug, Eq)
+}
 
 ///|
 let keyword_fields_enum_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["impl", "match", "ref", "type"])
@@ -312,9 +318,10 @@ pub impl ToJson for KeywordFieldsEnum with fn to_json(self) {
 
 ///|
 /// `MapOfKeywords`
+#derive(Debug, Eq)
 pub(all) struct MapOfKeywords {
   keyword_map : Map[String, MapOfKeywordsKeywordMapValue]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MapOfKeywords` (fields with defaults are optional).
@@ -357,11 +364,12 @@ pub impl ToJson for MapOfKeywords with fn to_json(self) {
 
 ///|
 /// `NestedTypeCollisions`
+#derive(Debug, Eq)
 pub(all) struct NestedTypeCollisions {
   option_type : NestedTypeCollisionsOptionType?
   type_ : TypeWithOptionField
   types : Array[TypeWithOptionField]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `NestedTypeCollisions` (fields with defaults are optional).
@@ -416,9 +424,10 @@ pub impl ToJson for NestedTypeCollisions with fn to_json(self) {
 
 ///|
 /// `Option`
+#derive(Debug, Eq)
 pub(all) struct Option_ {
   maybe : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Option_` (fields with defaults are optional).
@@ -461,9 +470,10 @@ pub impl ToJson for Option_ with fn to_json(self) {
 
 ///|
 /// `Pin`
+#derive(Debug, Eq)
 pub(all) struct Pin {
   pointer : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Pin` (fields with defaults are optional).
@@ -506,6 +516,7 @@ pub impl ToJson for Pin with fn to_json(self) {
 
 ///|
 /// `RustKeywordMonster`
+#derive(Debug, Eq)
 pub(all) struct RustKeywordMonster {
   abstract_ : String
   as_ : String
@@ -558,7 +569,7 @@ pub(all) struct RustKeywordMonster {
   where_ : String
   while_ : String
   yield_ : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RustKeywordMonster` (fields with defaults are optional).
@@ -851,9 +862,10 @@ pub impl ToJson for RustKeywordMonster with fn to_json(self) {
 
 ///|
 /// `Send`
+#derive(Debug, Eq)
 pub(all) struct Send {
   message : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Send` (fields with defaults are optional).
@@ -896,9 +908,10 @@ pub impl ToJson for Send with fn to_json(self) {
 
 ///|
 /// `String`
+#derive(Debug, Eq)
 pub(all) struct String_ {
   text : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `String_` (fields with defaults are optional).
@@ -941,11 +954,12 @@ pub impl ToJson for String_ with fn to_json(self) {
 
 ///|
 /// `StringEnum`
+#derive(Debug, Eq, Hash)
 pub(all) enum StringEnum {
   One
   Two
   Three
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StringEnum with fn deserialize(d) {
@@ -1012,7 +1026,8 @@ pub impl ToJson for StringEnum with fn to_json(self) {
 
 ///|
 /// `StringNewtype`
-pub(all) struct StringNewtype(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct StringNewtype(String)
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).
@@ -1052,9 +1067,10 @@ pub impl ToJson for StringNewtype with fn to_json(self) {
 
 ///|
 /// `Sync`
+#derive(Debug, Eq)
 pub(all) struct Sync {
   data : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Sync` (fields with defaults are optional).
@@ -1097,10 +1113,11 @@ pub impl ToJson for Sync with fn to_json(self) {
 
 ///|
 /// `TypeWithOptionField`
+#derive(Debug, Eq)
 pub(all) struct TypeWithOptionField {
   boxed_field : Box
   optional_field : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TypeWithOptionField` (fields with defaults are optional).
@@ -1150,9 +1167,10 @@ pub impl ToJson for TypeWithOptionField with fn to_json(self) {
 
 ///|
 /// `Vec`
+#derive(Debug, Eq)
 pub(all) struct Vec {
   items : Array[String]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Vec` (fields with defaults are optional).
@@ -1195,13 +1213,14 @@ pub impl ToJson for Vec with fn to_json(self) {
 
 ///|
 /// `FormatCollision`
+#derive(Debug, Eq, Hash)
 pub(all) enum FormatCollision {
   AbcDef
   HttpExampleComFooThing
   Self_
   QuoteUnquote
   Xyz
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for FormatCollision with fn deserialize(d) {
@@ -1278,6 +1297,7 @@ pub impl ToJson for FormatCollision with fn to_json(self) {
 
 ///|
 /// `Std`
+#derive(Debug, Eq)
 pub(all) struct Std {
   boxed : StdBoxed
   convert : StdConvert
@@ -1286,7 +1306,7 @@ pub(all) struct Std {
   result : StdResult
   str : StdStr
   string : StdString
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Std` (fields with defaults are optional).
@@ -1359,7 +1379,8 @@ pub impl ToJson for Std with fn to_json(self) {
 
 ///|
 /// `TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords`
-pub(all) struct TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords(Json) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords(Json)
 
 ///|
 pub impl @typify_rt.Serde for TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLikelyConflictWithBuiltInRustTypesAndKeywords with fn deserialize(d) {
@@ -1383,9 +1404,10 @@ pub impl ToJson for TestSchemaWithVariousDefinitionsTypeNamesAndPropertiesThatLi
 
 ///|
 /// `DoubleOptionCollisionOption`
+#derive(Debug, Eq)
 pub(all) struct DoubleOptionCollisionOption {
   option : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DoubleOptionCollisionOption` (fields with defaults are optional).
@@ -1430,6 +1452,7 @@ pub impl ToJson for DoubleOptionCollisionOption with fn to_json(self) {
 
 ///|
 /// `MapOfKeywordsKeywordMapValue`
+#derive(Debug, Eq, Hash)
 pub(all) enum MapOfKeywordsKeywordMapValue {
   Type
   Impl
@@ -1445,7 +1468,7 @@ pub(all) enum MapOfKeywordsKeywordMapValue {
   Trait
   Use
   Where
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MapOfKeywordsKeywordMapValue with fn deserialize(d) {
@@ -1567,9 +1590,10 @@ pub impl ToJson for MapOfKeywordsKeywordMapValue with fn to_json(self) {
 
 ///|
 /// `NestedTypeCollisionsOptionType`
+#derive(Debug, Eq)
 pub(all) struct NestedTypeCollisionsOptionType {
   type_ : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `NestedTypeCollisionsOptionType` (fields with defaults are optional).
@@ -1614,9 +1638,10 @@ pub impl ToJson for NestedTypeCollisionsOptionType with fn to_json(self) {
 
 ///|
 /// `StdBoxed`
+#derive(Debug, Eq)
 pub(all) struct StdBoxed {
   value : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StdBoxed` (fields with defaults are optional).
@@ -1659,9 +1684,10 @@ pub impl ToJson for StdBoxed with fn to_json(self) {
 
 ///|
 /// `StdConvert`
+#derive(Debug, Eq)
 pub(all) struct StdConvert {
   value : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StdConvert` (fields with defaults are optional).
@@ -1704,9 +1730,10 @@ pub impl ToJson for StdConvert with fn to_json(self) {
 
 ///|
 /// `StdFmt`
+#derive(Debug, Eq)
 pub(all) struct StdFmt {
   value : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StdFmt` (fields with defaults are optional).
@@ -1749,9 +1776,10 @@ pub impl ToJson for StdFmt with fn to_json(self) {
 
 ///|
 /// `StdOption`
+#derive(Debug, Eq)
 pub(all) struct StdOption {
   value : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StdOption` (fields with defaults are optional).
@@ -1794,9 +1822,10 @@ pub impl ToJson for StdOption with fn to_json(self) {
 
 ///|
 /// `StdResult`
+#derive(Debug, Eq)
 pub(all) struct StdResult {
   value : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StdResult` (fields with defaults are optional).
@@ -1839,9 +1868,10 @@ pub impl ToJson for StdResult with fn to_json(self) {
 
 ///|
 /// `StdStr`
+#derive(Debug, Eq)
 pub(all) struct StdStr {
   value : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StdStr` (fields with defaults are optional).
@@ -1884,9 +1914,10 @@ pub impl ToJson for StdStr with fn to_json(self) {
 
 ///|
 /// `StdString`
+#derive(Debug, Eq)
 pub(all) struct StdString {
   value : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StdString` (fields with defaults are optional).

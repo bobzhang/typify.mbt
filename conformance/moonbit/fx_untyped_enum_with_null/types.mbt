@@ -7,9 +7,10 @@
 
 ///|
 /// `TestType`
+#derive(Debug, Eq)
 pub(all) struct TestType {
   value : TestTypeValue?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TestType` (fields with defaults are optional).
@@ -52,11 +53,12 @@ pub impl ToJson for TestType with fn to_json(self) {
 
 ///|
 /// `TestTypeValue`
+#derive(Debug, Eq, Hash)
 pub(all) enum TestTypeValue {
   Start
   Middle
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TestTypeValue with fn deserialize(d) {

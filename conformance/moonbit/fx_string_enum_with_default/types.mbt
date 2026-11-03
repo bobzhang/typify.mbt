@@ -7,11 +7,12 @@
 
 ///|
 /// `TestEnum`
+#derive(Debug, Eq, Hash)
 pub(all) enum TestEnum {
   Failure
   Skipped
   Success
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TestEnum with fn deserialize(d) {

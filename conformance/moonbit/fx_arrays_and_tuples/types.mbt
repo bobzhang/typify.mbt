@@ -7,7 +7,8 @@
 
 ///|
 /// `ArraySansItems`
-pub(all) struct ArraySansItems(Array[Json]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct ArraySansItems(Array[Json])
 
 ///|
 pub impl @typify_rt.Serde for ArraySansItems with fn deserialize(d) {
@@ -31,7 +32,8 @@ pub impl ToJson for ArraySansItems with fn to_json(self) {
 
 ///|
 /// `LessSimpleTwoTuple`
-pub(all) struct LessSimpleTwoTuple((String, String)) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct LessSimpleTwoTuple((String, String))
 
 ///|
 pub impl @typify_rt.Serde for LessSimpleTwoTuple with fn deserialize(d) {
@@ -55,7 +57,8 @@ pub impl ToJson for LessSimpleTwoTuple with fn to_json(self) {
 
 ///|
 /// `SetAvecItem`
-pub(all) struct SetAvecItem(Array[String]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct SetAvecItem(Array[String])
 
 ///|
 pub impl @typify_rt.Serde for SetAvecItem with fn deserialize(d) {
@@ -79,7 +82,8 @@ pub impl ToJson for SetAvecItem with fn to_json(self) {
 
 ///|
 /// `SimpleTwoArray`
-pub(all) struct SimpleTwoArray(FixedArray[String]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct SimpleTwoArray(FixedArray[String])
 
 ///|
 pub impl @typify_rt.Serde for SimpleTwoArray with fn deserialize(d) {
@@ -103,7 +107,8 @@ pub impl ToJson for SimpleTwoArray with fn to_json(self) {
 
 ///|
 /// `SimpleTwoTuple`
-pub(all) struct SimpleTwoTuple((String, String)) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct SimpleTwoTuple((String, String))
 
 ///|
 pub impl @typify_rt.Serde for SimpleTwoTuple with fn deserialize(d) {
@@ -127,7 +132,8 @@ pub impl ToJson for SimpleTwoTuple with fn to_json(self) {
 
 ///|
 /// `UnsimpleTwoTuple`
-pub(all) struct UnsimpleTwoTuple((String, String)) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct UnsimpleTwoTuple((String, String))
 
 ///|
 pub impl @typify_rt.Serde for UnsimpleTwoTuple with fn deserialize(d) {
@@ -151,7 +157,8 @@ pub impl ToJson for UnsimpleTwoTuple with fn to_json(self) {
 
 ///|
 /// `YoloTwoArray`
-pub(all) struct YoloTwoArray(FixedArray[Json]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct YoloTwoArray(FixedArray[Json])
 
 ///|
 pub impl @typify_rt.Serde for YoloTwoArray with fn deserialize(d) {

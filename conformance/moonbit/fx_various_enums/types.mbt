@@ -7,11 +7,12 @@
 
 ///|
 /// `AlternativeEnum`
+#derive(Debug, Eq, Hash)
 pub(all) enum AlternativeEnum {
   Choice1
   Choice2
   Choice3
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AlternativeEnum with fn deserialize(d) {
@@ -86,8 +87,9 @@ pub impl ToJson for AlternativeEnum with fn to_json(self) {
 
 ///|
 /// `AnyOfNoStrings`
+#derive(Debug, Eq, Hash)
 pub(all) enum AnyOfNoStrings {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnyOfNoStrings with fn deserialize(d) {
@@ -119,8 +121,9 @@ pub impl ToJson for AnyOfNoStrings with fn to_json(self) {
 
 ///|
 /// `AnyOfNothing`
+#derive(Debug, Eq, Hash)
 pub(all) enum AnyOfNothing {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnyOfNothing with fn deserialize(d) {
@@ -152,7 +155,8 @@ pub impl ToJson for AnyOfNothing with fn to_json(self) {
 
 ///|
 /// `BlockSize`
-pub(all) struct BlockSize(Int64) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct BlockSize(Int64)
 
 ///|
 let block_size_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
@@ -197,10 +201,11 @@ pub impl ToJson for BlockSize with fn to_json(self) {
 
 ///|
 /// `DiskAttachment`
+#derive(Debug, Eq)
 pub(all) struct DiskAttachment {
   alternate : AlternativeEnum
   state : DiskAttachmentState
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiskAttachment` (fields with defaults are optional).
@@ -248,9 +253,10 @@ pub impl ToJson for DiskAttachment with fn to_json(self) {
 
 ///|
 /// `EmptyObject`
+#derive(Debug, Eq)
 pub(all) struct EmptyObject {
   prop : EmptyObjectProp?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `EmptyObject` (fields with defaults are optional).
@@ -295,10 +301,11 @@ pub impl ToJson for EmptyObject with fn to_json(self) {
 
 ///|
 /// `IpNet`
+#derive(Debug, Eq)
 pub(all) enum IpNet {
   V4(Ipv4Net)
   V6(Ipv6Net)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IpNet with fn deserialize(d) {
@@ -342,7 +349,8 @@ pub impl ToJson for IpNet with fn to_json(self) {
 
 ///|
 /// `Ipv4Net`
-pub(all) struct Ipv4Net(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct Ipv4Net(String)
 
 ///|
 let ipv4_net_pattern : @typify_rt.Regex = @typify_rt.regex(".*")
@@ -382,7 +390,8 @@ pub impl ToJson for Ipv4Net with fn to_json(self) {
 
 ///|
 /// `Ipv6Net`
-pub(all) struct Ipv6Net(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct Ipv6Net(String)
 
 ///|
 let ipv6_net_pattern : @typify_rt.Regex = @typify_rt.regex(".*")
@@ -422,11 +431,12 @@ pub impl ToJson for Ipv6Net with fn to_json(self) {
 
 ///|
 /// `JankNames`
+#derive(Debug, Eq)
 pub(all) enum JankNames {
   Variant0(String)
   Variant1(Map[String, String])
   Variant2(Map[String, Int64])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for JankNames with fn deserialize(d) {
@@ -479,8 +489,9 @@ pub impl ToJson for JankNames with fn to_json(self) {
 
 ///|
 /// `Never`
+#derive(Debug, Eq, Hash)
 pub(all) enum Never {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for Never with fn deserialize(d) {
@@ -512,8 +523,9 @@ pub impl ToJson for Never with fn to_json(self) {
 
 ///|
 /// `NeverEver`
+#derive(Debug, Eq, Hash)
 pub(all) enum NeverEver {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for NeverEver with fn deserialize(d) {
@@ -545,8 +557,9 @@ pub impl ToJson for NeverEver with fn to_json(self) {
 
 ///|
 /// `NeverEverForever`
+#derive(Debug, Eq, Hash)
 pub(all) enum NeverEverForever {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for NeverEverForever with fn deserialize(d) {
@@ -578,7 +591,8 @@ pub impl ToJson for NeverEverForever with fn to_json(self) {
 
 ///|
 /// `NotBlockSize`
-pub(all) struct NotBlockSize(Double) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct NotBlockSize(Double)
 
 ///|
 let not_block_size_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
@@ -623,7 +637,8 @@ pub impl ToJson for NotBlockSize with fn to_json(self) {
 
 ///|
 /// `NullStringEnumWithUnknownFormat`
-pub(all) struct NullStringEnumWithUnknownFormat(NullStringEnumWithUnknownFormatInner?) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct NullStringEnumWithUnknownFormat(NullStringEnumWithUnknownFormatInner?)
 
 ///|
 pub impl @typify_rt.Serde for NullStringEnumWithUnknownFormat with fn deserialize(d) {
@@ -647,7 +662,8 @@ pub impl ToJson for NullStringEnumWithUnknownFormat with fn to_json(self) {
 
 ///|
 /// `ReferenceDef`
-pub(all) struct ReferenceDef(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct ReferenceDef(String)
 
 ///|
 pub impl @typify_rt.Serde for ReferenceDef with fn deserialize(d) {
@@ -671,10 +687,11 @@ pub impl ToJson for ReferenceDef with fn to_json(self) {
 
 ///|
 /// issue 280
+#derive(Debug, Eq)
 pub(all) enum References {
   Array(Array[String])
   Object(Map[String, ReferencesObjectValue])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for References with fn deserialize(d) {
@@ -718,10 +735,11 @@ pub impl ToJson for References with fn to_json(self) {
 
 ///|
 /// `ShouldBeExclusive`
+#derive(Debug, Eq)
 pub(all) enum ShouldBeExclusive {
   Variant0(id~ : String)
   Variant1(reference~ : String)
-} derive(Debug, Eq)
+}
 
 ///|
 let should_be_exclusive_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["id"])
@@ -795,7 +813,8 @@ pub impl ToJson for ShouldBeExclusive with fn to_json(self) {
 
 ///|
 /// `StringVersion`
-pub(all) struct StringVersion(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct StringVersion(String)
 
 ///|
 pub impl @typify_rt.Serde for StringVersion with fn deserialize(d) {
@@ -819,6 +838,7 @@ pub impl ToJson for StringVersion with fn to_json(self) {
 
 ///|
 /// `CommentedVariants`
+#derive(Debug, Eq, Hash)
 pub(all) enum CommentedVariants {
   /// An A
   A
@@ -826,7 +846,7 @@ pub(all) enum CommentedVariants {
   B
   /// a pirate's favorite letter
   C
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CommentedVariants with fn deserialize(d) {
@@ -893,12 +913,13 @@ pub impl ToJson for CommentedVariants with fn to_json(self) {
 
 ///|
 /// `EnumAndConstant`
+#derive(Debug, Eq)
 pub(all) enum EnumAndConstant {
   Dog(bark~ : String)
   Cat(purr~ : String)
   Monkey(help~ : String)
   Fish(float~ : String)
-} derive(Debug, Eq)
+}
 
 ///|
 let enum_and_constant_dog_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bark"])
@@ -994,11 +1015,12 @@ pub impl ToJson for EnumAndConstant with fn to_json(self) {
 
 ///|
 /// `OneOfMissingTitle`
+#derive(Debug, Eq)
 pub(all) enum OneOfMissingTitle {
   Variant0(foo~ : String?)
   Variant1(bar~ : Int64?)
   Variant2(bar~ : Int64?, baz~ : Int64?)
-} derive(Debug, Eq)
+}
 
 ///|
 let one_of_missing_title_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["foo"])
@@ -1108,10 +1130,11 @@ pub impl ToJson for OneOfMissingTitle with fn to_json(self) {
 
 ///|
 /// `OneOfRawType`
+#derive(Debug, Eq)
 pub(all) enum OneOfRawType {
   String(String)
   Integer(Int64)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for OneOfRawType with fn deserialize(d) {
@@ -1155,10 +1178,11 @@ pub impl ToJson for OneOfRawType with fn to_json(self) {
 
 ///|
 /// `OneOfTypes`
+#derive(Debug, Eq)
 pub(all) enum OneOfTypes {
   Bar(Int64)
   Foo(String)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for OneOfTypes with fn deserialize(d) {
@@ -1192,7 +1216,8 @@ pub impl ToJson for OneOfTypes with fn to_json(self) {
 
 ///|
 /// `OptionAnyofConst`
-pub(all) struct OptionAnyofConst(String?) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct OptionAnyofConst(String?)
 
 ///|
 pub impl @typify_rt.Serde for OptionAnyofConst with fn deserialize(d) {
@@ -1216,7 +1241,8 @@ pub impl ToJson for OptionAnyofConst with fn to_json(self) {
 
 ///|
 /// `OptionAnyofEnum`
-pub(all) struct OptionAnyofEnum(String?) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct OptionAnyofEnum(String?)
 
 ///|
 pub impl @typify_rt.Serde for OptionAnyofEnum with fn deserialize(d) {
@@ -1240,7 +1266,8 @@ pub impl ToJson for OptionAnyofEnum with fn to_json(self) {
 
 ///|
 /// `OptionAnyofNull`
-pub(all) struct OptionAnyofNull(String?) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct OptionAnyofNull(String?)
 
 ///|
 pub impl @typify_rt.Serde for OptionAnyofNull with fn deserialize(d) {
@@ -1264,7 +1291,8 @@ pub impl ToJson for OptionAnyofNull with fn to_json(self) {
 
 ///|
 /// `OptionOneofConst`
-pub(all) struct OptionOneofConst(String?) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct OptionOneofConst(String?)
 
 ///|
 pub impl @typify_rt.Serde for OptionOneofConst with fn deserialize(d) {
@@ -1288,7 +1316,8 @@ pub impl ToJson for OptionOneofConst with fn to_json(self) {
 
 ///|
 /// `OptionOneofEnum`
-pub(all) struct OptionOneofEnum(String?) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct OptionOneofEnum(String?)
 
 ///|
 pub impl @typify_rt.Serde for OptionOneofEnum with fn deserialize(d) {
@@ -1312,7 +1341,8 @@ pub impl ToJson for OptionOneofEnum with fn to_json(self) {
 
 ///|
 /// `OptionOneofNull`
-pub(all) struct OptionOneofNull(String?) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct OptionOneofNull(String?)
 
 ///|
 pub impl @typify_rt.Serde for OptionOneofNull with fn deserialize(d) {
@@ -1336,11 +1366,12 @@ pub impl ToJson for OptionOneofNull with fn to_json(self) {
 
 ///|
 /// `VariantsDifferByPunct`
+#derive(Debug, Eq, Hash)
 pub(all) enum VariantsDifferByPunct {
   X2x5gbasext
   X25gbasext
   X2x5xgbasext
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for VariantsDifferByPunct with fn deserialize(d) {
@@ -1407,11 +1438,12 @@ pub impl ToJson for VariantsDifferByPunct with fn to_json(self) {
 
 ///|
 /// `DiskAttachmentState`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiskAttachmentState {
   Detached
   Destroyed
   Faulted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiskAttachmentState with fn deserialize(d) {
@@ -1486,7 +1518,8 @@ pub impl ToJson for DiskAttachmentState with fn to_json(self) {
 
 ///|
 /// `EmptyObjectProp`
-pub(all) struct EmptyObjectProp(Map[String, Json]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct EmptyObjectProp(Map[String, Json])
 
 ///|
 let empty_object_prop_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
@@ -1531,11 +1564,12 @@ pub impl ToJson for EmptyObjectProp with fn to_json(self) {
 
 ///|
 /// `NullStringEnumWithUnknownFormatInner`
+#derive(Debug, Eq, Hash)
 pub(all) enum NullStringEnumWithUnknownFormatInner {
   A
   B
   C
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for NullStringEnumWithUnknownFormatInner with fn deserialize(d) {
@@ -1602,10 +1636,11 @@ pub impl ToJson for NullStringEnumWithUnknownFormatInner with fn to_json(self) {
 
 ///|
 /// `ReferencesObjectValue`
+#derive(Debug, Eq)
 pub(all) enum ReferencesObjectValue {
   StringVersion(StringVersion)
   ReferenceDef(ReferenceDef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ReferencesObjectValue with fn deserialize(d) {

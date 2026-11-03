@@ -27,6 +27,14 @@ jobs:
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
       - run: moon version --all
       - run: moon update
+      - name: Verify generated conformance packages and examples
+        run: |
+          moon run conformance/codegen
+          moon run cmd/typify -- examples/veggies/veggies.json --lang moonbit -o examples/veggies/types.mbt
+          moon run cmd/typify -- examples/evolution/v1/schema.json --lang moonbit -o examples/evolution/v1/types.mbt
+          moon run cmd/typify -- examples/evolution/v2/schema.json --lang moonbit -o examples/evolution/v2/types.mbt
+          moon fmt conformance/moonbit/dispatch_wbtest.mbt
+          git diff --exit-code -- conformance/moonbit examples
       - run: moon check --target wasm --deny-warn
       - run: moon fmt --check
       - run: moon test

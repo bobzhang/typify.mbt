@@ -9,6 +9,7 @@
 
 ///|
 /// `AggregateTransform`
+#derive(Debug, Eq)
 pub(all) struct AggregateTransform {
   as_ : AggregateTransformAs?
   cross : AggregateTransformCross?
@@ -19,7 +20,7 @@ pub(all) struct AggregateTransform {
   ops : AggregateTransformOps?
   signal : String?
   type_ : AggregateTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_aggregate_transform_drop() -> AggregateTransformDrop raise @typify_rt.DeError {
@@ -124,10 +125,11 @@ pub impl ToJson for AggregateTransform with fn to_json(self) {
 
 ///|
 /// `AlignValue`
+#derive(Debug, Eq)
 pub(all) enum AlignValue {
   Variant0(Array[AlignValueVariant0Item])
   Variant1(AlignValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AlignValue with fn deserialize(d) {
@@ -171,10 +173,11 @@ pub impl ToJson for AlignValue with fn to_json(self) {
 
 ///|
 /// `AnchorValue`
+#derive(Debug, Eq)
 pub(all) enum AnchorValue {
   Variant0(Array[AnchorValueVariant0Item])
   Variant1(AnchorValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnchorValue with fn deserialize(d) {
@@ -218,10 +221,11 @@ pub impl ToJson for AnchorValue with fn to_json(self) {
 
 ///|
 /// `AnyValue`
+#derive(Debug, Eq)
 pub(all) enum AnyValue {
   Variant0(Array[AnyValueVariant0Item])
   Variant1(AnyValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnyValue with fn deserialize(d) {
@@ -265,10 +269,11 @@ pub impl ToJson for AnyValue with fn to_json(self) {
 
 ///|
 /// `ArrayOrSignal`
+#derive(Debug, Eq)
 pub(all) enum ArrayOrSignal {
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ArrayOrSignal with fn deserialize(d) {
@@ -312,10 +317,11 @@ pub impl ToJson for ArrayOrSignal with fn to_json(self) {
 
 ///|
 /// `ArrayValue`
+#derive(Debug, Eq)
 pub(all) enum ArrayValue {
   Variant0(Array[ArrayValueVariant0Item])
   Variant1(ArrayValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ArrayValue with fn deserialize(d) {
@@ -359,11 +365,12 @@ pub impl ToJson for ArrayValue with fn to_json(self) {
 
 ///|
 /// `Autosize`
+#derive(Debug, Eq)
 pub(all) enum Autosize {
   Variant0(AutosizeVariant0)
   Variant1(contains~ : AutosizeVariant1Contains?, resize~ : Bool?, type_~ : AutosizeVariant1Type)
   Variant2(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let autosize_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["contains", "resize", "type"])
@@ -443,6 +450,7 @@ pub impl ToJson for Autosize with fn to_json(self) {
 
 ///|
 /// `Axis`
+#derive(Debug, Eq)
 pub(all) struct Axis {
   aria : Bool?
   band_position : AxisBandPosition?
@@ -523,7 +531,7 @@ pub(all) struct Axis {
   translate : AxisTranslate?
   values : ArrayOrSignal?
   zindex : Double?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Axis` (fields with defaults are optional).
@@ -1110,7 +1118,8 @@ pub impl ToJson for Axis with fn to_json(self) {
 
 ///|
 /// `Background`
-pub(all) struct Background(StringOrSignal) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct Background(StringOrSignal)
 
 ///|
 pub impl @typify_rt.Serde for Background with fn deserialize(d) {
@@ -1134,13 +1143,14 @@ pub impl ToJson for Background with fn to_json(self) {
 
 ///|
 /// `BaseColorValue`
+#derive(Debug, Eq)
 pub(all) enum BaseColorValue {
   Variant0(BaseColorValueVariant0)
   Variant1(value~ : LinearGradient)
   Variant2(value~ : RadialGradient)
   Variant3(count~ : Double?, gradient~ : Field, start~ : FixedArray[Double]?, stop~ : FixedArray[Double]?)
   Variant4(color~ : BaseColorValueVariant4Color)
-} derive(Debug, Eq)
+}
 
 ///|
 let base_color_value_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
@@ -1289,10 +1299,11 @@ pub impl ToJson for BaseColorValue with fn to_json(self) {
 
 ///|
 /// `BaselineValue`
+#derive(Debug, Eq)
 pub(all) enum BaselineValue {
   Variant0(Array[BaselineValueVariant0Item])
   Variant1(BaselineValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BaselineValue with fn deserialize(d) {
@@ -1336,6 +1347,7 @@ pub impl ToJson for BaselineValue with fn to_json(self) {
 
 ///|
 /// `BinTransform`
+#derive(Debug, Eq)
 pub(all) struct BinTransform {
   anchor : BinTransformAnchor?
   as_ : BinTransformAs
@@ -1353,7 +1365,7 @@ pub(all) struct BinTransform {
   step : BinTransformStep?
   steps : BinTransformSteps?
   type_ : BinTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_bin_transform_as() -> BinTransformAs raise @typify_rt.DeError {
@@ -1533,13 +1545,14 @@ pub impl ToJson for BinTransform with fn to_json(self) {
 
 ///|
 /// `Bind`
+#derive(Debug, Eq)
 pub(all) enum Bind {
   Variant0(debounce~ : Double?, element~ : Element?, input~ : BindVariant0Input, name~ : String?)
   Variant1(debounce~ : Double?, element~ : Element?, input~ : BindVariant1Input, labels~ : Array[String], name~ : String?, options~ : Array[Json])
   Variant2(debounce~ : Double?, element~ : Element?, input~ : BindVariant2Input, max~ : Double?, min~ : Double?, name~ : String?, step~ : Double?)
   Variant3(debounce~ : Double?, element~ : Element?, input~ : BindVariant3Input, name~ : String?)
   Variant4(debounce~ : Double?, element~ : Element, event~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let bind_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["debounce", "element", "input", "name"])
@@ -1797,10 +1810,11 @@ pub impl ToJson for Bind with fn to_json(self) {
 
 ///|
 /// `BlendValue`
+#derive(Debug, Eq)
 pub(all) enum BlendValue {
   Variant0(Array[BlendValueVariant0Item])
   Variant1(BlendValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BlendValue with fn deserialize(d) {
@@ -1844,10 +1858,11 @@ pub impl ToJson for BlendValue with fn to_json(self) {
 
 ///|
 /// `BooleanOrSignal`
+#derive(Debug, Eq)
 pub(all) enum BooleanOrSignal {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BooleanOrSignal with fn deserialize(d) {
@@ -1891,10 +1906,11 @@ pub impl ToJson for BooleanOrSignal with fn to_json(self) {
 
 ///|
 /// `BooleanValue`
+#derive(Debug, Eq)
 pub(all) enum BooleanValue {
   Variant0(Array[BooleanValueVariant0Item])
   Variant1(BooleanValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BooleanValue with fn deserialize(d) {
@@ -1938,11 +1954,12 @@ pub impl ToJson for BooleanValue with fn to_json(self) {
 
 ///|
 /// `CollectTransform`
+#derive(Debug, Eq)
 pub(all) struct CollectTransform {
   signal : String?
   sort : Compare_?
   type_ : CollectTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CollectTransform` (fields with defaults are optional).
@@ -1999,11 +2016,12 @@ pub impl ToJson for CollectTransform with fn to_json(self) {
 
 ///|
 /// `ColorHcl`
+#derive(Debug, Eq)
 pub(all) struct ColorHcl {
   c : NumberValue
   h : NumberValue
   l : NumberValue
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ColorHcl` (fields with defaults are optional).
@@ -2056,11 +2074,12 @@ pub impl ToJson for ColorHcl with fn to_json(self) {
 
 ///|
 /// `ColorHsl`
+#derive(Debug, Eq)
 pub(all) struct ColorHsl {
   h : NumberValue
   l : NumberValue
   s : NumberValue
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ColorHsl` (fields with defaults are optional).
@@ -2113,11 +2132,12 @@ pub impl ToJson for ColorHsl with fn to_json(self) {
 
 ///|
 /// `ColorLab`
+#derive(Debug, Eq)
 pub(all) struct ColorLab {
   a : NumberValue
   b : NumberValue
   l : NumberValue
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ColorLab` (fields with defaults are optional).
@@ -2170,11 +2190,12 @@ pub impl ToJson for ColorLab with fn to_json(self) {
 
 ///|
 /// `ColorRgb`
+#derive(Debug, Eq)
 pub(all) struct ColorRgb {
   b : NumberValue
   g : NumberValue
   r : NumberValue
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ColorRgb` (fields with defaults are optional).
@@ -2227,10 +2248,11 @@ pub impl ToJson for ColorRgb with fn to_json(self) {
 
 ///|
 /// `Compare`
+#derive(Debug, Eq)
 pub(all) enum Compare_ {
   Variant0(field~ : CompareVariant0Field?, order~ : SortOrder?)
   Variant1(field~ : Array[CompareVariant1FieldItem], order~ : Array[SortOrder])
-} derive(Debug, Eq)
+}
 
 ///|
 let compare_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["field", "order"])
@@ -2320,6 +2342,7 @@ pub impl ToJson for Compare_ with fn to_json(self) {
 
 ///|
 /// `ContourTransform`
+#derive(Debug, Eq)
 pub(all) struct ContourTransform {
   bandwidth : ContourTransformBandwidth?
   cell_size : ContourTransformCellSize?
@@ -2334,7 +2357,7 @@ pub(all) struct ContourTransform {
   weight : ContourTransformWeight?
   x : ContourTransformX?
   y : ContourTransformY?
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_contour_transform_smooth() -> ContourTransformSmooth raise @typify_rt.DeError {
@@ -2465,6 +2488,7 @@ pub impl ToJson for ContourTransform with fn to_json(self) {
 
 ///|
 /// `CountpatternTransform`
+#derive(Debug, Eq)
 pub(all) struct CountpatternTransform {
   as_ : CountpatternTransformAs
   case : CountpatternTransformCase
@@ -2473,7 +2497,7 @@ pub(all) struct CountpatternTransform {
   signal : String?
   stopwords : CountpatternTransformStopwords?
   type_ : CountpatternTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_countpattern_transform_as() -> CountpatternTransformAs raise @typify_rt.DeError {
@@ -2574,12 +2598,13 @@ pub impl ToJson for CountpatternTransform with fn to_json(self) {
 
 ///|
 /// `CrossTransform`
+#derive(Debug, Eq)
 pub(all) struct CrossTransform {
   as_ : CrossTransformAs
   filter : ExprString?
   signal : String?
   type_ : CrossTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_cross_transform_as() -> CrossTransformAs raise @typify_rt.DeError {
@@ -2649,12 +2674,13 @@ pub impl ToJson for CrossTransform with fn to_json(self) {
 
 ///|
 /// `CrossfilterTransform`
+#derive(Debug, Eq)
 pub(all) struct CrossfilterTransform {
   fields : CrossfilterTransformFields
   query : CrossfilterTransformQuery
   signal : String?
   type_ : CrossfilterTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CrossfilterTransform` (fields with defaults are optional).
@@ -2714,12 +2740,13 @@ pub impl ToJson for CrossfilterTransform with fn to_json(self) {
 
 ///|
 /// `Data`
+#derive(Debug, Eq)
 pub(all) enum Data {
   Variant0(name~ : String, on~ : OnTrigger?, transform~ : Array[Transform])
   Variant1(name~ : String, on~ : OnTrigger?, source~ : DataVariant1Source, transform~ : Array[Transform])
   Variant2(async_~ : BooleanOrSignal?, format~ : DataVariant2Format?, name~ : String, on~ : OnTrigger?, transform~ : Array[Transform], url~ : StringOrSignal)
   Variant3(async_~ : BooleanOrSignal?, format~ : DataVariant3Format?, name~ : String, on~ : OnTrigger?, transform~ : Array[Transform], values~ : DataVariant3Values)
-} derive(Debug, Eq)
+}
 
 ///|
 let data_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["name", "on", "transform"])
@@ -2925,6 +2952,7 @@ pub impl ToJson for Data with fn to_json(self) {
 
 ///|
 /// `DensityTransform`
+#derive(Debug, Eq)
 pub(all) struct DensityTransform {
   as_ : DensityTransformAs
   distribution : DensityTransformDistribution?
@@ -2935,7 +2963,7 @@ pub(all) struct DensityTransform {
   signal : String?
   steps : DensityTransformSteps?
   type_ : DensityTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_density_transform_as() -> DensityTransformAs raise @typify_rt.DeError {
@@ -3058,10 +3086,11 @@ pub impl ToJson for DensityTransform with fn to_json(self) {
 
 ///|
 /// `DirectionValue`
+#derive(Debug, Eq)
 pub(all) enum DirectionValue {
   Variant0(Array[DirectionValueVariant0Item])
   Variant1(DirectionValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DirectionValue with fn deserialize(d) {
@@ -3105,6 +3134,7 @@ pub impl ToJson for DirectionValue with fn to_json(self) {
 
 ///|
 /// `DotbinTransform`
+#derive(Debug, Eq)
 pub(all) struct DotbinTransform {
   as_ : DotbinTransformAs
   field : DotbinTransformField
@@ -3113,7 +3143,7 @@ pub(all) struct DotbinTransform {
   smooth : DotbinTransformSmooth?
   step : DotbinTransformStep?
   type_ : DotbinTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_dotbin_transform_as() -> DotbinTransformAs raise @typify_rt.DeError {
@@ -3202,7 +3232,8 @@ pub impl ToJson for DotbinTransform with fn to_json(self) {
 
 ///|
 /// `Element`
-pub(all) struct Element(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct Element(String)
 
 ///|
 pub impl @typify_rt.Serde for Element with fn deserialize(d) {
@@ -3226,7 +3257,8 @@ pub impl ToJson for Element with fn to_json(self) {
 
 ///|
 /// `Encode`
-pub(all) struct Encode(Map[EncodeKey, EncodeEntry]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct Encode(Map[EncodeKey, EncodeEntry])
 
 ///|
 pub impl @typify_rt.Serde for Encode with fn deserialize(d) {
@@ -3250,6 +3282,7 @@ pub impl ToJson for Encode with fn to_json(self) {
 
 ///|
 /// `EncodeEntry`
+#derive(Debug, Eq)
 pub(all) struct EncodeEntry {
   align : AlignValue?
   angle : NumberValue?
@@ -3320,7 +3353,7 @@ pub(all) struct EncodeEntry {
   y2 : NumberValue?
   yc : NumberValue?
   zindex : NumberValue?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `EncodeEntry` (fields with defaults are optional).
@@ -3841,10 +3874,11 @@ pub impl ToJson for EncodeEntry with fn to_json(self) {
 
 ///|
 /// `Expr`
+#derive(Debug, Eq)
 pub(all) struct Expr {
   as_ : String?
   expr : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Expr` (fields with defaults are optional).
@@ -3894,7 +3928,8 @@ pub impl ToJson for Expr with fn to_json(self) {
 
 ///|
 /// `ExprString`
-pub(all) struct ExprString(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct ExprString(String)
 
 ///|
 pub impl @typify_rt.Serde for ExprString with fn deserialize(d) {
@@ -3918,11 +3953,12 @@ pub impl ToJson for ExprString with fn to_json(self) {
 
 ///|
 /// `ExtentTransform`
+#derive(Debug, Eq)
 pub(all) struct ExtentTransform {
   field : ExtentTransformField
   signal : String?
   type_ : ExtentTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ExtentTransform` (fields with defaults are optional).
@@ -3977,10 +4013,11 @@ pub impl ToJson for ExtentTransform with fn to_json(self) {
 
 ///|
 /// `Facet`
+#derive(Debug, Eq)
 pub(all) struct Facet {
   data : String?
   facet : FacetFacet
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Facet` (fields with defaults are optional).
@@ -4030,13 +4067,14 @@ pub impl ToJson for Facet with fn to_json(self) {
 
 ///|
 /// `Field`
+#derive(Debug, Eq)
 pub(all) enum Field {
   Variant0(String)
   Variant1(SignalRef)
   Variant2(datum~ : Field)
   Variant3(group~ : Field, level~ : Double?)
   Variant4(level~ : Double?, parent~ : Field)
-} derive(Debug, Eq)
+}
 
 ///|
 let field_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["datum"])
@@ -4164,11 +4202,12 @@ pub impl ToJson for Field with fn to_json(self) {
 
 ///|
 /// `FilterTransform`
+#derive(Debug, Eq)
 pub(all) struct FilterTransform {
   expr : ExprString
   signal : String?
   type_ : FilterTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `FilterTransform` (fields with defaults are optional).
@@ -4223,13 +4262,14 @@ pub impl ToJson for FilterTransform with fn to_json(self) {
 
 ///|
 /// `FlattenTransform`
+#derive(Debug, Eq)
 pub(all) struct FlattenTransform {
   as_ : FlattenTransformAs?
   fields : FlattenTransformFields
   index : FlattenTransformIndex?
   signal : String?
   type_ : FlattenTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `FlattenTransform` (fields with defaults are optional).
@@ -4298,12 +4338,13 @@ pub impl ToJson for FlattenTransform with fn to_json(self) {
 
 ///|
 /// `FoldTransform`
+#derive(Debug, Eq)
 pub(all) struct FoldTransform {
   as_ : FoldTransformAs
   fields : FoldTransformFields
   signal : String?
   type_ : FoldTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_fold_transform_as() -> FoldTransformAs raise @typify_rt.DeError {
@@ -4371,10 +4412,11 @@ pub impl ToJson for FoldTransform with fn to_json(self) {
 
 ///|
 /// `FontWeightValue`
+#derive(Debug, Eq)
 pub(all) enum FontWeightValue {
   Variant0(Array[FontWeightValueVariant0Item])
   Variant1(FontWeightValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FontWeightValue with fn deserialize(d) {
@@ -4418,6 +4460,7 @@ pub impl ToJson for FontWeightValue with fn to_json(self) {
 
 ///|
 /// `ForceTransform`
+#derive(Debug, Eq)
 pub(all) struct ForceTransform {
   alpha : ForceTransformAlpha
   alpha_min : ForceTransformAlphaMin
@@ -4430,7 +4473,7 @@ pub(all) struct ForceTransform {
   static_ : ForceTransformStatic?
   type_ : ForceTransformType
   velocity_decay : ForceTransformVelocityDecay
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_force_transform_alpha() -> ForceTransformAlpha raise @typify_rt.DeError {
@@ -4573,13 +4616,14 @@ pub impl ToJson for ForceTransform with fn to_json(self) {
 
 ///|
 /// `FormulaTransform`
+#derive(Debug, Eq)
 pub(all) struct FormulaTransform {
   as_ : FormulaTransformAs
   expr : ExprString
   initonly : FormulaTransformInitonly?
   signal : String?
   type_ : FormulaTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `FormulaTransform` (fields with defaults are optional).
@@ -4646,9 +4690,10 @@ pub impl ToJson for FormulaTransform with fn to_json(self) {
 
 ///|
 /// `From`
+#derive(Debug, Eq)
 pub(all) struct From {
   data : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `From` (fields with defaults are optional).
@@ -4693,12 +4738,13 @@ pub impl ToJson for From with fn to_json(self) {
 
 ///|
 /// `GeojsonTransform`
+#derive(Debug, Eq)
 pub(all) struct GeojsonTransform {
   fields : GeojsonTransformFields?
   geojson : GeojsonTransformGeojson?
   signal : String?
   type_ : GeojsonTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `GeojsonTransform` (fields with defaults are optional).
@@ -4762,6 +4808,7 @@ pub impl ToJson for GeojsonTransform with fn to_json(self) {
 
 ///|
 /// `GeopathTransform`
+#derive(Debug, Eq)
 pub(all) struct GeopathTransform {
   as_ : GeopathTransformAs
   field : GeopathTransformField?
@@ -4769,7 +4816,7 @@ pub(all) struct GeopathTransform {
   projection : String?
   signal : String?
   type_ : GeopathTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_geopath_transform_as() -> GeopathTransformAs raise @typify_rt.DeError {
@@ -4853,13 +4900,14 @@ pub impl ToJson for GeopathTransform with fn to_json(self) {
 
 ///|
 /// `GeopointTransform`
+#derive(Debug, Eq)
 pub(all) struct GeopointTransform {
   as_ : GeopointTransformAs
   fields : GeopointTransformFields
   projection : String
   signal : String?
   type_ : GeopointTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_geopoint_transform_as() -> GeopointTransformAs raise @typify_rt.DeError {
@@ -4932,6 +4980,7 @@ pub impl ToJson for GeopointTransform with fn to_json(self) {
 
 ///|
 /// `GeoshapeTransform`
+#derive(Debug, Eq)
 pub(all) struct GeoshapeTransform {
   as_ : GeoshapeTransformAs
   field : GeoshapeTransformField
@@ -4939,7 +4988,7 @@ pub(all) struct GeoshapeTransform {
   projection : String?
   signal : String?
   type_ : GeoshapeTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_geoshape_transform_as() -> GeoshapeTransformAs raise @typify_rt.DeError {
@@ -5029,7 +5078,8 @@ pub impl ToJson for GeoshapeTransform with fn to_json(self) {
 
 ///|
 /// `GradientStops`
-pub(all) struct GradientStops(Array[GradientStopsItem]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct GradientStops(Array[GradientStopsItem])
 
 ///|
 pub impl @typify_rt.Serde for GradientStops with fn deserialize(d) {
@@ -5053,6 +5103,7 @@ pub impl ToJson for GradientStops with fn to_json(self) {
 
 ///|
 /// `GraticuleTransform`
+#derive(Debug, Eq)
 pub(all) struct GraticuleTransform {
   extent : GraticuleTransformExtent?
   extent_major : GraticuleTransformExtentMajor?
@@ -5063,7 +5114,7 @@ pub(all) struct GraticuleTransform {
   step_major : GraticuleTransformStepMajor
   step_minor : GraticuleTransformStepMinor
   type_ : GraticuleTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_graticule_transform_precision() -> GraticuleTransformPrecision raise @typify_rt.DeError {
@@ -5180,11 +5231,12 @@ pub impl ToJson for GraticuleTransform with fn to_json(self) {
 
 ///|
 /// `GuideEncode`
+#derive(Debug, Eq)
 pub(all) struct GuideEncode {
   interactive : Bool
   name : String?
   style : Style?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `GuideEncode` (fields with defaults are optional).
@@ -5241,6 +5293,7 @@ pub impl ToJson for GuideEncode with fn to_json(self) {
 
 ///|
 /// `HeatmapTransform`
+#derive(Debug, Eq)
 pub(all) struct HeatmapTransform {
   as_ : HeatmapTransformAs
   color : HeatmapTransformColor?
@@ -5249,7 +5302,7 @@ pub(all) struct HeatmapTransform {
   resolve : HeatmapTransformResolve
   signal : String?
   type_ : HeatmapTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_heatmap_transform_as() -> HeatmapTransformAs raise @typify_rt.DeError {
@@ -5346,11 +5399,12 @@ pub impl ToJson for HeatmapTransform with fn to_json(self) {
 
 ///|
 /// `IdentifierTransform`
+#derive(Debug, Eq)
 pub(all) struct IdentifierTransform {
   as_ : IdentifierTransformAs
   signal : String?
   type_ : IdentifierTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IdentifierTransform` (fields with defaults are optional).
@@ -5405,6 +5459,7 @@ pub impl ToJson for IdentifierTransform with fn to_json(self) {
 
 ///|
 /// `ImputeTransform`
+#derive(Debug, Eq)
 pub(all) struct ImputeTransform {
   field : ImputeTransformField
   groupby : ImputeTransformGroupby?
@@ -5414,7 +5469,7 @@ pub(all) struct ImputeTransform {
   signal : String?
   type_ : ImputeTransformType
   value : Json?
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_impute_transform_method() -> ImputeTransformMethod raise @typify_rt.DeError {
@@ -5508,6 +5563,7 @@ pub impl ToJson for ImputeTransform with fn to_json(self) {
 
 ///|
 /// `IsocontourTransform`
+#derive(Debug, Eq)
 pub(all) struct IsocontourTransform {
   as_ : IsocontourTransformAs
   field : IsocontourTransformField?
@@ -5521,7 +5577,7 @@ pub(all) struct IsocontourTransform {
   translate : IsocontourTransformTranslate?
   type_ : IsocontourTransformType
   zero : IsocontourTransformZero
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_isocontour_transform_as() -> IsocontourTransformAs raise @typify_rt.DeError {
@@ -5665,6 +5721,7 @@ pub impl ToJson for IsocontourTransform with fn to_json(self) {
 
 ///|
 /// `JoinaggregateTransform`
+#derive(Debug, Eq)
 pub(all) struct JoinaggregateTransform {
   as_ : JoinaggregateTransformAs?
   fields : JoinaggregateTransformFields?
@@ -5673,7 +5730,7 @@ pub(all) struct JoinaggregateTransform {
   ops : JoinaggregateTransformOps?
   signal : String?
   type_ : JoinaggregateTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `JoinaggregateTransform` (fields with defaults are optional).
@@ -5758,6 +5815,7 @@ pub impl ToJson for JoinaggregateTransform with fn to_json(self) {
 
 ///|
 /// `Kde2dTransform`
+#derive(Debug, Eq)
 pub(all) struct Kde2dTransform {
   as_ : Kde2dTransformAs
   bandwidth : Kde2dTransformBandwidth?
@@ -5770,7 +5828,7 @@ pub(all) struct Kde2dTransform {
   weight : Kde2dTransformWeight?
   x : Kde2dTransformX
   y : Kde2dTransformY
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_kde2d_transform_as() -> Kde2dTransformAs raise @typify_rt.DeError {
@@ -5883,6 +5941,7 @@ pub impl ToJson for Kde2dTransform with fn to_json(self) {
 
 ///|
 /// `KdeTransform`
+#derive(Debug, Eq)
 pub(all) struct KdeTransform {
   as_ : KdeTransformAs
   bandwidth : KdeTransformBandwidth?
@@ -5897,7 +5956,7 @@ pub(all) struct KdeTransform {
   signal : String?
   steps : KdeTransformSteps?
   type_ : KdeTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_kde_transform_as() -> KdeTransformAs raise @typify_rt.DeError {
@@ -6046,11 +6105,12 @@ pub impl ToJson for KdeTransform with fn to_json(self) {
 
 ///|
 /// `LabelOverlap`
+#derive(Debug, Eq)
 pub(all) enum LabelOverlap {
   Variant0(Bool)
   Variant1(LabelOverlapVariant1)
   Variant2(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelOverlap with fn deserialize(d) {
@@ -6103,6 +6163,7 @@ pub impl ToJson for LabelOverlap with fn to_json(self) {
 
 ///|
 /// `LabelTransform`
+#derive(Debug, Eq)
 pub(all) struct LabelTransform {
   anchor : LabelTransformAnchor
   as_ : LabelTransformAs
@@ -6117,7 +6178,7 @@ pub(all) struct LabelTransform {
   size : LabelTransformSize
   sort : Compare_?
   type_ : LabelTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_label_transform_anchor() -> LabelTransformAnchor raise @typify_rt.DeError {
@@ -6278,10 +6339,11 @@ pub impl ToJson for LabelTransform with fn to_json(self) {
 
 ///|
 /// `Layout`
+#derive(Debug, Eq)
 pub(all) enum Layout {
   Object(align~ : LayoutObjectAlign?, bounds~ : LayoutObjectBounds?, center~ : LayoutObjectCenter?, columns~ : NumberOrSignal?, footer_band~ : LayoutObjectFooterBand?, header_band~ : LayoutObjectHeaderBand?, offset~ : LayoutObjectOffset?, padding~ : LayoutObjectPadding?, title_anchor~ : LayoutObjectTitleAnchor?, title_band~ : LayoutObjectTitleBand?)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let layout_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["align", "bounds", "center", "columns", "footerBand", "headerBand", "offset", "padding", "titleAnchor", "titleBand"])
@@ -6396,6 +6458,7 @@ pub impl ToJson for Layout with fn to_json(self) {
 
 ///|
 /// `Legend`
+#derive(Debug, Eq)
 pub(all) enum Legend {
   Variant0(aria~ : Bool?, clip_height~ : NumberOrSignal?, column_padding~ : NumberOrSignal?, columns~ : NumberOrSignal?, corner_radius~ : LegendVariant0CornerRadius?, description~ : String?, direction~ : LegendVariant0Direction?, encode~ : LegendVariant0Encode?, fill_color~ : LegendVariant0FillColor?, format~ : LegendVariant0Format?, format_type~ : LegendVariant0FormatType?, gradient_length~ : NumberOrSignal?, gradient_opacity~ : LegendVariant0GradientOpacity?, gradient_stroke_color~ : LegendVariant0GradientStrokeColor?, gradient_stroke_width~ : LegendVariant0GradientStrokeWidth?, gradient_thickness~ : NumberOrSignal?, grid_align~ : LegendVariant0GridAlign?, label_align~ : LegendVariant0LabelAlign?, label_baseline~ : LegendVariant0LabelBaseline?, label_color~ : LegendVariant0LabelColor?, label_font~ : LegendVariant0LabelFont?, label_font_size~ : LegendVariant0LabelFontSize?, label_font_style~ : LegendVariant0LabelFontStyle?, label_font_weight~ : LegendVariant0LabelFontWeight?, label_limit~ : LegendVariant0LabelLimit?, label_offset~ : LegendVariant0LabelOffset?, label_opacity~ : LegendVariant0LabelOpacity?, label_overlap~ : LabelOverlap?, label_separation~ : NumberOrSignal?, legend_x~ : LegendVariant0LegendX?, legend_y~ : LegendVariant0LegendY?, offset~ : LegendVariant0Offset?, orient~ : LegendVariant0Orient?, padding~ : LegendVariant0Padding?, row_padding~ : NumberOrSignal?, size~ : String, stroke_color~ : LegendVariant0StrokeColor?, symbol_dash~ : LegendVariant0SymbolDash?, symbol_dash_offset~ : LegendVariant0SymbolDashOffset?, symbol_fill_color~ : LegendVariant0SymbolFillColor?, symbol_limit~ : NumberOrSignal?, symbol_offset~ : LegendVariant0SymbolOffset?, symbol_opacity~ : LegendVariant0SymbolOpacity?, symbol_size~ : LegendVariant0SymbolSize?, symbol_stroke_color~ : LegendVariant0SymbolStrokeColor?, symbol_stroke_width~ : LegendVariant0SymbolStrokeWidth?, symbol_type~ : LegendVariant0SymbolType?, tick_count~ : TickCount?, tick_min_step~ : NumberOrSignal?, title~ : TextOrSignal?, title_align~ : LegendVariant0TitleAlign?, title_anchor~ : LegendVariant0TitleAnchor?, title_baseline~ : LegendVariant0TitleBaseline?, title_color~ : LegendVariant0TitleColor?, title_font~ : LegendVariant0TitleFont?, title_font_size~ : LegendVariant0TitleFontSize?, title_font_style~ : LegendVariant0TitleFontStyle?, title_font_weight~ : LegendVariant0TitleFontWeight?, title_limit~ : LegendVariant0TitleLimit?, title_line_height~ : LegendVariant0TitleLineHeight?, title_opacity~ : LegendVariant0TitleOpacity?, title_orient~ : LegendVariant0TitleOrient?, title_padding~ : LegendVariant0TitlePadding?, type_~ : LegendVariant0Type?, values~ : ArrayOrSignal?, zindex~ : Double?)
   Variant1(aria~ : Bool?, clip_height~ : NumberOrSignal?, column_padding~ : NumberOrSignal?, columns~ : NumberOrSignal?, corner_radius~ : LegendVariant1CornerRadius?, description~ : String?, direction~ : LegendVariant1Direction?, encode~ : LegendVariant1Encode?, fill_color~ : LegendVariant1FillColor?, format~ : LegendVariant1Format?, format_type~ : LegendVariant1FormatType?, gradient_length~ : NumberOrSignal?, gradient_opacity~ : LegendVariant1GradientOpacity?, gradient_stroke_color~ : LegendVariant1GradientStrokeColor?, gradient_stroke_width~ : LegendVariant1GradientStrokeWidth?, gradient_thickness~ : NumberOrSignal?, grid_align~ : LegendVariant1GridAlign?, label_align~ : LegendVariant1LabelAlign?, label_baseline~ : LegendVariant1LabelBaseline?, label_color~ : LegendVariant1LabelColor?, label_font~ : LegendVariant1LabelFont?, label_font_size~ : LegendVariant1LabelFontSize?, label_font_style~ : LegendVariant1LabelFontStyle?, label_font_weight~ : LegendVariant1LabelFontWeight?, label_limit~ : LegendVariant1LabelLimit?, label_offset~ : LegendVariant1LabelOffset?, label_opacity~ : LegendVariant1LabelOpacity?, label_overlap~ : LabelOverlap?, label_separation~ : NumberOrSignal?, legend_x~ : LegendVariant1LegendX?, legend_y~ : LegendVariant1LegendY?, offset~ : LegendVariant1Offset?, orient~ : LegendVariant1Orient?, padding~ : LegendVariant1Padding?, row_padding~ : NumberOrSignal?, shape~ : String, stroke_color~ : LegendVariant1StrokeColor?, symbol_dash~ : LegendVariant1SymbolDash?, symbol_dash_offset~ : LegendVariant1SymbolDashOffset?, symbol_fill_color~ : LegendVariant1SymbolFillColor?, symbol_limit~ : NumberOrSignal?, symbol_offset~ : LegendVariant1SymbolOffset?, symbol_opacity~ : LegendVariant1SymbolOpacity?, symbol_size~ : LegendVariant1SymbolSize?, symbol_stroke_color~ : LegendVariant1SymbolStrokeColor?, symbol_stroke_width~ : LegendVariant1SymbolStrokeWidth?, symbol_type~ : LegendVariant1SymbolType?, tick_count~ : TickCount?, tick_min_step~ : NumberOrSignal?, title~ : TextOrSignal?, title_align~ : LegendVariant1TitleAlign?, title_anchor~ : LegendVariant1TitleAnchor?, title_baseline~ : LegendVariant1TitleBaseline?, title_color~ : LegendVariant1TitleColor?, title_font~ : LegendVariant1TitleFont?, title_font_size~ : LegendVariant1TitleFontSize?, title_font_style~ : LegendVariant1TitleFontStyle?, title_font_weight~ : LegendVariant1TitleFontWeight?, title_limit~ : LegendVariant1TitleLimit?, title_line_height~ : LegendVariant1TitleLineHeight?, title_opacity~ : LegendVariant1TitleOpacity?, title_orient~ : LegendVariant1TitleOrient?, title_padding~ : LegendVariant1TitlePadding?, type_~ : LegendVariant1Type?, values~ : ArrayOrSignal?, zindex~ : Double?)
@@ -6404,7 +6467,7 @@ pub(all) enum Legend {
   Variant4(aria~ : Bool?, clip_height~ : NumberOrSignal?, column_padding~ : NumberOrSignal?, columns~ : NumberOrSignal?, corner_radius~ : LegendVariant4CornerRadius?, description~ : String?, direction~ : LegendVariant4Direction?, encode~ : LegendVariant4Encode?, fill_color~ : LegendVariant4FillColor?, format~ : LegendVariant4Format?, format_type~ : LegendVariant4FormatType?, gradient_length~ : NumberOrSignal?, gradient_opacity~ : LegendVariant4GradientOpacity?, gradient_stroke_color~ : LegendVariant4GradientStrokeColor?, gradient_stroke_width~ : LegendVariant4GradientStrokeWidth?, gradient_thickness~ : NumberOrSignal?, grid_align~ : LegendVariant4GridAlign?, label_align~ : LegendVariant4LabelAlign?, label_baseline~ : LegendVariant4LabelBaseline?, label_color~ : LegendVariant4LabelColor?, label_font~ : LegendVariant4LabelFont?, label_font_size~ : LegendVariant4LabelFontSize?, label_font_style~ : LegendVariant4LabelFontStyle?, label_font_weight~ : LegendVariant4LabelFontWeight?, label_limit~ : LegendVariant4LabelLimit?, label_offset~ : LegendVariant4LabelOffset?, label_opacity~ : LegendVariant4LabelOpacity?, label_overlap~ : LabelOverlap?, label_separation~ : NumberOrSignal?, legend_x~ : LegendVariant4LegendX?, legend_y~ : LegendVariant4LegendY?, offset~ : LegendVariant4Offset?, opacity~ : String, orient~ : LegendVariant4Orient?, padding~ : LegendVariant4Padding?, row_padding~ : NumberOrSignal?, stroke_color~ : LegendVariant4StrokeColor?, symbol_dash~ : LegendVariant4SymbolDash?, symbol_dash_offset~ : LegendVariant4SymbolDashOffset?, symbol_fill_color~ : LegendVariant4SymbolFillColor?, symbol_limit~ : NumberOrSignal?, symbol_offset~ : LegendVariant4SymbolOffset?, symbol_opacity~ : LegendVariant4SymbolOpacity?, symbol_size~ : LegendVariant4SymbolSize?, symbol_stroke_color~ : LegendVariant4SymbolStrokeColor?, symbol_stroke_width~ : LegendVariant4SymbolStrokeWidth?, symbol_type~ : LegendVariant4SymbolType?, tick_count~ : TickCount?, tick_min_step~ : NumberOrSignal?, title~ : TextOrSignal?, title_align~ : LegendVariant4TitleAlign?, title_anchor~ : LegendVariant4TitleAnchor?, title_baseline~ : LegendVariant4TitleBaseline?, title_color~ : LegendVariant4TitleColor?, title_font~ : LegendVariant4TitleFont?, title_font_size~ : LegendVariant4TitleFontSize?, title_font_style~ : LegendVariant4TitleFontStyle?, title_font_weight~ : LegendVariant4TitleFontWeight?, title_limit~ : LegendVariant4TitleLimit?, title_line_height~ : LegendVariant4TitleLineHeight?, title_opacity~ : LegendVariant4TitleOpacity?, title_orient~ : LegendVariant4TitleOrient?, title_padding~ : LegendVariant4TitlePadding?, type_~ : LegendVariant4Type?, values~ : ArrayOrSignal?, zindex~ : Double?)
   Variant5(aria~ : Bool?, clip_height~ : NumberOrSignal?, column_padding~ : NumberOrSignal?, columns~ : NumberOrSignal?, corner_radius~ : LegendVariant5CornerRadius?, description~ : String?, direction~ : LegendVariant5Direction?, encode~ : LegendVariant5Encode?, fill_color~ : LegendVariant5FillColor?, format~ : LegendVariant5Format?, format_type~ : LegendVariant5FormatType?, gradient_length~ : NumberOrSignal?, gradient_opacity~ : LegendVariant5GradientOpacity?, gradient_stroke_color~ : LegendVariant5GradientStrokeColor?, gradient_stroke_width~ : LegendVariant5GradientStrokeWidth?, gradient_thickness~ : NumberOrSignal?, grid_align~ : LegendVariant5GridAlign?, label_align~ : LegendVariant5LabelAlign?, label_baseline~ : LegendVariant5LabelBaseline?, label_color~ : LegendVariant5LabelColor?, label_font~ : LegendVariant5LabelFont?, label_font_size~ : LegendVariant5LabelFontSize?, label_font_style~ : LegendVariant5LabelFontStyle?, label_font_weight~ : LegendVariant5LabelFontWeight?, label_limit~ : LegendVariant5LabelLimit?, label_offset~ : LegendVariant5LabelOffset?, label_opacity~ : LegendVariant5LabelOpacity?, label_overlap~ : LabelOverlap?, label_separation~ : NumberOrSignal?, legend_x~ : LegendVariant5LegendX?, legend_y~ : LegendVariant5LegendY?, offset~ : LegendVariant5Offset?, orient~ : LegendVariant5Orient?, padding~ : LegendVariant5Padding?, row_padding~ : NumberOrSignal?, stroke_color~ : LegendVariant5StrokeColor?, stroke_dash~ : String, symbol_dash~ : LegendVariant5SymbolDash?, symbol_dash_offset~ : LegendVariant5SymbolDashOffset?, symbol_fill_color~ : LegendVariant5SymbolFillColor?, symbol_limit~ : NumberOrSignal?, symbol_offset~ : LegendVariant5SymbolOffset?, symbol_opacity~ : LegendVariant5SymbolOpacity?, symbol_size~ : LegendVariant5SymbolSize?, symbol_stroke_color~ : LegendVariant5SymbolStrokeColor?, symbol_stroke_width~ : LegendVariant5SymbolStrokeWidth?, symbol_type~ : LegendVariant5SymbolType?, tick_count~ : TickCount?, tick_min_step~ : NumberOrSignal?, title~ : TextOrSignal?, title_align~ : LegendVariant5TitleAlign?, title_anchor~ : LegendVariant5TitleAnchor?, title_baseline~ : LegendVariant5TitleBaseline?, title_color~ : LegendVariant5TitleColor?, title_font~ : LegendVariant5TitleFont?, title_font_size~ : LegendVariant5TitleFontSize?, title_font_style~ : LegendVariant5TitleFontStyle?, title_font_weight~ : LegendVariant5TitleFontWeight?, title_limit~ : LegendVariant5TitleLimit?, title_line_height~ : LegendVariant5TitleLineHeight?, title_opacity~ : LegendVariant5TitleOpacity?, title_orient~ : LegendVariant5TitleOrient?, title_padding~ : LegendVariant5TitlePadding?, type_~ : LegendVariant5Type?, values~ : ArrayOrSignal?, zindex~ : Double?)
   Variant6(aria~ : Bool?, clip_height~ : NumberOrSignal?, column_padding~ : NumberOrSignal?, columns~ : NumberOrSignal?, corner_radius~ : LegendVariant6CornerRadius?, description~ : String?, direction~ : LegendVariant6Direction?, encode~ : LegendVariant6Encode?, fill_color~ : LegendVariant6FillColor?, format~ : LegendVariant6Format?, format_type~ : LegendVariant6FormatType?, gradient_length~ : NumberOrSignal?, gradient_opacity~ : LegendVariant6GradientOpacity?, gradient_stroke_color~ : LegendVariant6GradientStrokeColor?, gradient_stroke_width~ : LegendVariant6GradientStrokeWidth?, gradient_thickness~ : NumberOrSignal?, grid_align~ : LegendVariant6GridAlign?, label_align~ : LegendVariant6LabelAlign?, label_baseline~ : LegendVariant6LabelBaseline?, label_color~ : LegendVariant6LabelColor?, label_font~ : LegendVariant6LabelFont?, label_font_size~ : LegendVariant6LabelFontSize?, label_font_style~ : LegendVariant6LabelFontStyle?, label_font_weight~ : LegendVariant6LabelFontWeight?, label_limit~ : LegendVariant6LabelLimit?, label_offset~ : LegendVariant6LabelOffset?, label_opacity~ : LegendVariant6LabelOpacity?, label_overlap~ : LabelOverlap?, label_separation~ : NumberOrSignal?, legend_x~ : LegendVariant6LegendX?, legend_y~ : LegendVariant6LegendY?, offset~ : LegendVariant6Offset?, orient~ : LegendVariant6Orient?, padding~ : LegendVariant6Padding?, row_padding~ : NumberOrSignal?, stroke_color~ : LegendVariant6StrokeColor?, stroke_width~ : String, symbol_dash~ : LegendVariant6SymbolDash?, symbol_dash_offset~ : LegendVariant6SymbolDashOffset?, symbol_fill_color~ : LegendVariant6SymbolFillColor?, symbol_limit~ : NumberOrSignal?, symbol_offset~ : LegendVariant6SymbolOffset?, symbol_opacity~ : LegendVariant6SymbolOpacity?, symbol_size~ : LegendVariant6SymbolSize?, symbol_stroke_color~ : LegendVariant6SymbolStrokeColor?, symbol_stroke_width~ : LegendVariant6SymbolStrokeWidth?, symbol_type~ : LegendVariant6SymbolType?, tick_count~ : TickCount?, tick_min_step~ : NumberOrSignal?, title~ : TextOrSignal?, title_align~ : LegendVariant6TitleAlign?, title_anchor~ : LegendVariant6TitleAnchor?, title_baseline~ : LegendVariant6TitleBaseline?, title_color~ : LegendVariant6TitleColor?, title_font~ : LegendVariant6TitleFont?, title_font_size~ : LegendVariant6TitleFontSize?, title_font_style~ : LegendVariant6TitleFontStyle?, title_font_weight~ : LegendVariant6TitleFontWeight?, title_limit~ : LegendVariant6TitleLimit?, title_line_height~ : LegendVariant6TitleLineHeight?, title_opacity~ : LegendVariant6TitleOpacity?, title_orient~ : LegendVariant6TitleOrient?, title_padding~ : LegendVariant6TitlePadding?, type_~ : LegendVariant6Type?, values~ : ArrayOrSignal?, zindex~ : Double?)
-} derive(Debug, Eq)
+}
 
 ///|
 let legend_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["aria", "clipHeight", "columnPadding", "columns", "cornerRadius", "description", "direction", "encode", "fillColor", "format", "formatType", "gradientLength", "gradientOpacity", "gradientStrokeColor", "gradientStrokeWidth", "gradientThickness", "gridAlign", "labelAlign", "labelBaseline", "labelColor", "labelFont", "labelFontSize", "labelFontStyle", "labelFontWeight", "labelLimit", "labelOffset", "labelOpacity", "labelOverlap", "labelSeparation", "legendX", "legendY", "offset", "orient", "padding", "rowPadding", "size", "strokeColor", "symbolDash", "symbolDashOffset", "symbolFillColor", "symbolLimit", "symbolOffset", "symbolOpacity", "symbolSize", "symbolStrokeColor", "symbolStrokeWidth", "symbolType", "tickCount", "tickMinStep", "title", "titleAlign", "titleAnchor", "titleBaseline", "titleColor", "titleFont", "titleFontSize", "titleFontStyle", "titleFontWeight", "titleLimit", "titleLineHeight", "titleOpacity", "titleOrient", "titlePadding", "type", "values", "zindex"])
@@ -9328,6 +9391,7 @@ pub impl ToJson for Legend with fn to_json(self) {
 
 ///|
 /// `LinearGradient`
+#derive(Debug, Eq)
 pub(all) struct LinearGradient {
   gradient : LinearGradientGradient
   id : String?
@@ -9336,7 +9400,7 @@ pub(all) struct LinearGradient {
   x2 : Double?
   y1 : Double?
   y2 : Double?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LinearGradient` (fields with defaults are optional).
@@ -9419,6 +9483,7 @@ pub impl ToJson for LinearGradient with fn to_json(self) {
 
 ///|
 /// `LinkpathTransform`
+#derive(Debug, Eq)
 pub(all) struct LinkpathTransform {
   as_ : LinkpathTransformAs
   orient : LinkpathTransformOrient
@@ -9430,7 +9495,7 @@ pub(all) struct LinkpathTransform {
   target_x : LinkpathTransformTargetX
   target_y : LinkpathTransformTargetY
   type_ : LinkpathTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_linkpath_transform_as() -> LinkpathTransformAs raise @typify_rt.DeError {
@@ -9578,11 +9643,12 @@ pub impl ToJson for LinkpathTransform with fn to_json(self) {
 
 ///|
 /// `Listener`
+#derive(Debug, Eq)
 pub(all) enum Listener {
   SignalRef(SignalRef)
   Object(scale~ : String)
   Stream(Stream)
-} derive(Debug, Eq)
+}
 
 ///|
 let listener_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale"])
@@ -9650,6 +9716,7 @@ pub impl ToJson for Listener with fn to_json(self) {
 
 ///|
 /// `LoessTransform`
+#derive(Debug, Eq)
 pub(all) struct LoessTransform {
   as_ : LoessTransformAs?
   bandwidth : LoessTransformBandwidth
@@ -9658,7 +9725,7 @@ pub(all) struct LoessTransform {
   type_ : LoessTransformType
   x : LoessTransformX
   y : LoessTransformY
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_loess_transform_bandwidth() -> LoessTransformBandwidth raise @typify_rt.DeError {
@@ -9745,6 +9812,7 @@ pub impl ToJson for LoessTransform with fn to_json(self) {
 
 ///|
 /// `LookupTransform`
+#derive(Debug, Eq)
 pub(all) struct LookupTransform {
   as_ : LookupTransformAs?
   default : Json?
@@ -9754,7 +9822,7 @@ pub(all) struct LookupTransform {
   signal : String?
   type_ : LookupTransformType
   values : LookupTransformValues?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LookupTransform` (fields with defaults are optional).
@@ -9840,6 +9908,7 @@ pub impl ToJson for LookupTransform with fn to_json(self) {
 
 ///|
 /// `Mark`
+#derive(Debug, Eq)
 pub(all) struct Mark {
   aria : Bool?
   clip : Markclip?
@@ -9854,7 +9923,7 @@ pub(all) struct Mark {
   style : Style?
   transform : Array[TransformMark]
   type_ : Marktype
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Mark` (fields with defaults are optional).
@@ -9981,6 +10050,7 @@ pub impl ToJson for Mark with fn to_json(self) {
 
 ///|
 /// `MarkGroup`
+#derive(Debug, Eq)
 pub(all) struct MarkGroup {
   aria : Bool?
   axes : Array[Axis]
@@ -10006,7 +10076,7 @@ pub(all) struct MarkGroup {
   transform : Array[TransformMark]
   type_ : MarkGroupType
   usermeta : Map[String, Json]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarkGroup` (fields with defaults are optional).
@@ -10210,6 +10280,7 @@ pub impl ToJson for MarkGroup with fn to_json(self) {
 
 ///|
 /// `MarkVisual`
+#derive(Debug, Eq)
 pub(all) struct MarkVisual {
   aria : Bool?
   clip : Markclip?
@@ -10225,7 +10296,7 @@ pub(all) struct MarkVisual {
   style : Style?
   transform : Array[TransformMark]
   type_ : Marktype
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarkVisual` (fields with defaults are optional).
@@ -10359,11 +10430,12 @@ pub impl ToJson for MarkVisual with fn to_json(self) {
 
 ///|
 /// `Markclip`
+#derive(Debug, Eq)
 pub(all) enum Markclip {
   Variant0(BooleanOrSignal)
   Variant1(path~ : StringOrSignal)
   Variant2(sphere~ : StringOrSignal)
-} derive(Debug, Eq)
+}
 
 ///|
 let markclip_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["path"])
@@ -10446,7 +10518,8 @@ pub impl ToJson for Markclip with fn to_json(self) {
 
 ///|
 /// `Marktype`
-pub(all) struct Marktype(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct Marktype(String)
 
 ///|
 pub impl @typify_rt.Serde for Marktype with fn deserialize(d) {
@@ -10470,12 +10543,13 @@ pub impl ToJson for Marktype with fn to_json(self) {
 
 ///|
 /// `NestTransform`
+#derive(Debug, Eq)
 pub(all) struct NestTransform {
   generate : NestTransformGenerate?
   keys : NestTransformKeys?
   signal : String?
   type_ : NestTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `NestTransform` (fields with defaults are optional).
@@ -10539,6 +10613,7 @@ pub impl ToJson for NestTransform with fn to_json(self) {
 
 ///|
 /// `NumberModifiers`
+#derive(Debug, Eq)
 pub(all) struct NumberModifiers {
   band : NumberModifiersBand?
   exponent : NumberModifiersExponent?
@@ -10547,7 +10622,7 @@ pub(all) struct NumberModifiers {
   offset : NumberModifiersOffset?
   round : Bool
   scale : Field?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `NumberModifiers` (fields with defaults are optional).
@@ -10632,10 +10707,11 @@ pub impl ToJson for NumberModifiers with fn to_json(self) {
 
 ///|
 /// `NumberOrSignal`
+#derive(Debug, Eq)
 pub(all) enum NumberOrSignal {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberOrSignal with fn deserialize(d) {
@@ -10679,10 +10755,11 @@ pub impl ToJson for NumberOrSignal with fn to_json(self) {
 
 ///|
 /// `NumberValue`
+#derive(Debug, Eq)
 pub(all) enum NumberValue {
   Variant0(Array[NumberValueVariant0Item])
   Variant1(NumberValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValue with fn deserialize(d) {
@@ -10726,7 +10803,8 @@ pub impl ToJson for NumberValue with fn to_json(self) {
 
 ///|
 /// `OnEvents`
-pub(all) struct OnEvents(Array[OnEventsItem]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct OnEvents(Array[OnEventsItem])
 
 ///|
 pub impl @typify_rt.Serde for OnEvents with fn deserialize(d) {
@@ -10750,7 +10828,8 @@ pub impl ToJson for OnEvents with fn to_json(self) {
 
 ///|
 /// `OnMarkTrigger`
-pub(all) struct OnMarkTrigger(Array[OnMarkTriggerItem]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct OnMarkTrigger(Array[OnMarkTriggerItem])
 
 ///|
 pub impl @typify_rt.Serde for OnMarkTrigger with fn deserialize(d) {
@@ -10774,7 +10853,8 @@ pub impl ToJson for OnMarkTrigger with fn to_json(self) {
 
 ///|
 /// `OnTrigger`
-pub(all) struct OnTrigger(Array[OnTriggerItem]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct OnTrigger(Array[OnTriggerItem])
 
 ///|
 pub impl @typify_rt.Serde for OnTrigger with fn deserialize(d) {
@@ -10798,10 +10878,11 @@ pub impl ToJson for OnTrigger with fn to_json(self) {
 
 ///|
 /// `OrientValue`
+#derive(Debug, Eq)
 pub(all) enum OrientValue {
   Variant0(Array[OrientValueVariant0Item])
   Variant1(OrientValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrientValue with fn deserialize(d) {
@@ -10845,6 +10926,7 @@ pub impl ToJson for OrientValue with fn to_json(self) {
 
 ///|
 /// `PackTransform`
+#derive(Debug, Eq)
 pub(all) struct PackTransform {
   as_ : PackTransformAs
   field : PackTransformField?
@@ -10854,7 +10936,7 @@ pub(all) struct PackTransform {
   size : PackTransformSize?
   sort : Compare_?
   type_ : PackTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_pack_transform_as() -> PackTransformAs raise @typify_rt.DeError {
@@ -10952,11 +11034,12 @@ pub impl ToJson for PackTransform with fn to_json(self) {
 
 ///|
 /// `Padding`
+#derive(Debug, Eq)
 pub(all) enum Padding {
   Number(Double)
   Object(bottom~ : Double?, left~ : Double?, right~ : Double?, top~ : Double?)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let padding_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["bottom", "left", "right", "top"])
@@ -11044,10 +11127,11 @@ pub impl ToJson for Padding with fn to_json(self) {
 
 ///|
 /// `ParamField`
+#derive(Debug, Eq)
 pub(all) struct ParamField {
   as_ : String?
   field : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ParamField` (fields with defaults are optional).
@@ -11097,6 +11181,7 @@ pub impl ToJson for ParamField with fn to_json(self) {
 
 ///|
 /// `PartitionTransform`
+#derive(Debug, Eq)
 pub(all) struct PartitionTransform {
   as_ : PartitionTransformAs
   field : PartitionTransformField?
@@ -11106,7 +11191,7 @@ pub(all) struct PartitionTransform {
   size : PartitionTransformSize?
   sort : Compare_?
   type_ : PartitionTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_partition_transform_as() -> PartitionTransformAs raise @typify_rt.DeError {
@@ -11204,6 +11289,7 @@ pub impl ToJson for PartitionTransform with fn to_json(self) {
 
 ///|
 /// `PieTransform`
+#derive(Debug, Eq)
 pub(all) struct PieTransform {
   as_ : PieTransformAs
   end_angle : PieTransformEndAngle
@@ -11212,7 +11298,7 @@ pub(all) struct PieTransform {
   sort : PieTransformSort?
   start_angle : PieTransformStartAngle?
   type_ : PieTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_pie_transform_as() -> PieTransformAs raise @typify_rt.DeError {
@@ -11309,6 +11395,7 @@ pub impl ToJson for PieTransform with fn to_json(self) {
 
 ///|
 /// `PivotTransform`
+#derive(Debug, Eq)
 pub(all) struct PivotTransform {
   field : PivotTransformField
   groupby : PivotTransformGroupby?
@@ -11318,7 +11405,7 @@ pub(all) struct PivotTransform {
   signal : String?
   type_ : PivotTransformType
   value : PivotTransformValue
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_pivot_transform_op() -> PivotTransformOp raise @typify_rt.DeError {
@@ -11412,12 +11499,13 @@ pub impl ToJson for PivotTransform with fn to_json(self) {
 
 ///|
 /// `ProjectTransform`
+#derive(Debug, Eq)
 pub(all) struct ProjectTransform {
   as_ : ProjectTransformAs?
   fields : ProjectTransformFields?
   signal : String?
   type_ : ProjectTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectTransform` (fields with defaults are optional).
@@ -11481,6 +11569,7 @@ pub impl ToJson for ProjectTransform with fn to_json(self) {
 
 ///|
 /// `Projection`
+#derive(Debug, Eq)
 pub(all) struct Projection {
   center : ProjectionCenter?
   clip_angle : NumberOrSignal?
@@ -11496,7 +11585,7 @@ pub(all) struct Projection {
   size : ProjectionSize?
   translate : ProjectionTranslate?
   type_ : StringOrSignal?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Projection` (fields with defaults are optional).
@@ -11630,6 +11719,7 @@ pub impl ToJson for Projection with fn to_json(self) {
 
 ///|
 /// `QuantileTransform`
+#derive(Debug, Eq)
 pub(all) struct QuantileTransform {
   as_ : QuantileTransformAs
   field : QuantileTransformField
@@ -11638,7 +11728,7 @@ pub(all) struct QuantileTransform {
   signal : String?
   step : QuantileTransformStep
   type_ : QuantileTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_quantile_transform_as() -> QuantileTransformAs raise @typify_rt.DeError {
@@ -11733,6 +11823,7 @@ pub impl ToJson for QuantileTransform with fn to_json(self) {
 
 ///|
 /// `RadialGradient`
+#derive(Debug, Eq)
 pub(all) struct RadialGradient {
   gradient : RadialGradientGradient
   id : String?
@@ -11743,7 +11834,7 @@ pub(all) struct RadialGradient {
   x2 : Double?
   y1 : Double?
   y2 : Double?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RadialGradient` (fields with defaults are optional).
@@ -11840,6 +11931,7 @@ pub impl ToJson for RadialGradient with fn to_json(self) {
 
 ///|
 /// `RegressionTransform`
+#derive(Debug, Eq)
 pub(all) struct RegressionTransform {
   as_ : RegressionTransformAs?
   extent : RegressionTransformExtent?
@@ -11851,7 +11943,7 @@ pub(all) struct RegressionTransform {
   type_ : RegressionTransformType
   x : RegressionTransformX
   y : RegressionTransformY
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_regression_transform_method() -> RegressionTransformMethod raise @typify_rt.DeError {
@@ -11965,12 +12057,13 @@ pub impl ToJson for RegressionTransform with fn to_json(self) {
 
 ///|
 /// `ResolvefilterTransform`
+#derive(Debug, Eq)
 pub(all) struct ResolvefilterTransform {
   filter : Json
   ignore : ResolvefilterTransformIgnore
   signal : String?
   type_ : ResolvefilterTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ResolvefilterTransform` (fields with defaults are optional).
@@ -12030,9 +12123,10 @@ pub impl ToJson for ResolvefilterTransform with fn to_json(self) {
 
 ///|
 /// `Rule`
+#derive(Debug, Eq)
 pub(all) struct Rule {
   test_ : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Rule` (fields with defaults are optional).
@@ -12077,11 +12171,12 @@ pub impl ToJson for Rule with fn to_json(self) {
 
 ///|
 /// `SampleTransform`
+#derive(Debug, Eq)
 pub(all) struct SampleTransform {
   signal : String?
   size : SampleTransformSize
   type_ : SampleTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_sample_transform_size() -> SampleTransformSize raise @typify_rt.DeError {
@@ -12144,6 +12239,7 @@ pub impl ToJson for SampleTransform with fn to_json(self) {
 
 ///|
 /// `Scale`
+#derive(Debug, Eq)
 pub(all) enum Scale {
   Variant0(domain~ : ScaleVariant0Domain?, domain_max~ : NumberOrSignal?, domain_mid~ : NumberOrSignal?, domain_min~ : NumberOrSignal?, domain_raw~ : ScaleVariant0DomainRaw?, name~ : String, nice~ : BooleanOrSignal?, reverse~ : BooleanOrSignal?, round~ : BooleanOrSignal?, type_~ : ScaleVariant0Type)
   Variant1(domain~ : ScaleVariant1Domain?, domain_implicit~ : BooleanOrSignal?, domain_max~ : NumberOrSignal?, domain_mid~ : NumberOrSignal?, domain_min~ : NumberOrSignal?, domain_raw~ : ScaleVariant1DomainRaw?, interpolate~ : ScaleInterpolate?, name~ : String, range~ : ScaleVariant1Range?, reverse~ : BooleanOrSignal?, round~ : BooleanOrSignal?, type_~ : ScaleVariant1Type)
@@ -12157,7 +12253,7 @@ pub(all) enum Scale {
   Variant9(base~ : NumberOrSignal?, bins~ : ScaleBins?, clamp~ : BooleanOrSignal?, domain~ : ScaleVariant9Domain?, domain_max~ : NumberOrSignal?, domain_mid~ : NumberOrSignal?, domain_min~ : NumberOrSignal?, domain_raw~ : ScaleVariant9DomainRaw?, interpolate~ : ScaleInterpolate?, name~ : String, nice~ : ScaleVariant9Nice?, padding~ : NumberOrSignal?, range~ : ScaleVariant9Range?, reverse~ : BooleanOrSignal?, round~ : BooleanOrSignal?, type_~ : ScaleVariant9Type, zero~ : BooleanOrSignal?)
   Variant10(bins~ : ScaleBins?, clamp~ : BooleanOrSignal?, domain~ : ScaleVariant10Domain?, domain_max~ : NumberOrSignal?, domain_mid~ : NumberOrSignal?, domain_min~ : NumberOrSignal?, domain_raw~ : ScaleVariant10DomainRaw?, exponent~ : NumberOrSignal?, interpolate~ : ScaleInterpolate?, name~ : String, nice~ : ScaleVariant10Nice?, padding~ : NumberOrSignal?, range~ : ScaleVariant10Range?, reverse~ : BooleanOrSignal?, round~ : BooleanOrSignal?, type_~ : ScaleVariant10Type, zero~ : BooleanOrSignal?)
   Variant11(bins~ : ScaleBins?, clamp~ : BooleanOrSignal?, constant~ : NumberOrSignal?, domain~ : ScaleVariant11Domain?, domain_max~ : NumberOrSignal?, domain_mid~ : NumberOrSignal?, domain_min~ : NumberOrSignal?, domain_raw~ : ScaleVariant11DomainRaw?, interpolate~ : ScaleInterpolate?, name~ : String, nice~ : ScaleVariant11Nice?, padding~ : NumberOrSignal?, range~ : ScaleVariant11Range?, reverse~ : BooleanOrSignal?, round~ : BooleanOrSignal?, type_~ : ScaleVariant11Type, zero~ : BooleanOrSignal?)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["domain", "domainMax", "domainMid", "domainMin", "domainRaw", "name", "nice", "reverse", "round", "type"])
@@ -13379,11 +13475,12 @@ pub impl ToJson for Scale with fn to_json(self) {
 
 ///|
 /// `ScaleBins`
+#derive(Debug, Eq)
 pub(all) enum ScaleBins {
   Array(Array[NumberOrSignal])
   Object(start~ : NumberOrSignal?, step~ : NumberOrSignal, stop~ : NumberOrSignal?)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_bins_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["start", "step", "stop"])
@@ -13463,11 +13560,12 @@ pub impl ToJson for ScaleBins with fn to_json(self) {
 
 ///|
 /// `ScaleData`
+#derive(Debug, Eq)
 pub(all) enum ScaleData {
   Variant0(data~ : String, field~ : StringOrSignal, sort~ : ScaleDataVariant0Sort?)
   Variant1(data~ : String, fields~ : Array[StringOrSignal], sort~ : ScaleDataVariant1Sort?)
   Variant2(fields~ : Array[ScaleDataVariant2FieldsItem], sort~ : ScaleDataVariant2Sort?)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_data_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["data", "field", "sort"])
@@ -13591,7 +13689,8 @@ pub impl ToJson for ScaleData with fn to_json(self) {
 
 ///|
 /// `ScaleField`
-pub(all) struct ScaleField(StringOrSignal) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct ScaleField(StringOrSignal)
 
 ///|
 pub impl @typify_rt.Serde for ScaleField with fn deserialize(d) {
@@ -13615,11 +13714,12 @@ pub impl ToJson for ScaleField with fn to_json(self) {
 
 ///|
 /// `ScaleInterpolate`
+#derive(Debug, Eq)
 pub(all) enum ScaleInterpolate {
   String(String)
   SignalRef(SignalRef)
   Object(gamma~ : NumberOrSignal?, type_~ : StringOrSignal)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_interpolate_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["gamma", "type"])
@@ -13693,6 +13793,7 @@ pub impl ToJson for ScaleInterpolate with fn to_json(self) {
 
 ///|
 /// `Scope`
+#derive(Debug, Eq)
 pub(all) struct Scope {
   axes : Array[Axis]
   data : Array[Data]
@@ -13705,7 +13806,7 @@ pub(all) struct Scope {
   signals : Array[Signal]
   title : Title?
   usermeta : Map[String, Json]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Scope` (fields with defaults are optional).
@@ -13820,7 +13921,8 @@ pub impl ToJson for Scope with fn to_json(self) {
 
 ///|
 /// `Selector`
-pub(all) struct Selector(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct Selector(String)
 
 ///|
 pub impl @typify_rt.Serde for Selector with fn deserialize(d) {
@@ -13844,6 +13946,7 @@ pub impl ToJson for Selector with fn to_json(self) {
 
 ///|
 /// `SequenceTransform`
+#derive(Debug, Eq)
 pub(all) struct SequenceTransform {
   as_ : SequenceTransformAs
   signal : String?
@@ -13851,7 +13954,7 @@ pub(all) struct SequenceTransform {
   step : SequenceTransformStep
   stop : SequenceTransformStop
   type_ : SequenceTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_sequence_transform_as() -> SequenceTransformAs raise @typify_rt.DeError {
@@ -13937,11 +14040,12 @@ pub impl ToJson for SequenceTransform with fn to_json(self) {
 
 ///|
 /// `Signal`
+#derive(Debug, Eq)
 pub(all) enum Signal {
   Variant0(description~ : String?, name~ : SignalName, on~ : OnEvents?, push~ : SignalVariant0Push)
   Variant1(bind~ : Bind?, description~ : String?, name~ : SignalName, on~ : OnEvents?, react~ : Bool, update~ : ExprString?, value~ : Json?)
   Variant2(bind~ : Bind?, description~ : String?, init~ : ExprString, name~ : SignalName, on~ : OnEvents?, value~ : Json?)
-} derive(Debug, Eq)
+}
 
 ///|
 let signal_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["description", "name", "on", "push"])
@@ -14122,7 +14226,8 @@ pub impl ToJson for Signal with fn to_json(self) {
 
 ///|
 /// `SignalName`
-pub(all) struct SignalName(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct SignalName(String)
 
 ///|
 let signal_name_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
@@ -14167,9 +14272,10 @@ pub impl ToJson for SignalName with fn to_json(self) {
 
 ///|
 /// `SignalRef`
+#derive(Debug, Eq)
 pub(all) struct SignalRef {
   signal : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SignalRef` (fields with defaults are optional).
@@ -14212,10 +14318,11 @@ pub impl ToJson for SignalRef with fn to_json(self) {
 
 ///|
 /// `SortOrder`
+#derive(Debug, Eq)
 pub(all) enum SortOrder {
   Variant0(SortOrderVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for SortOrder with fn deserialize(d) {
@@ -14259,6 +14366,7 @@ pub impl ToJson for SortOrder with fn to_json(self) {
 
 ///|
 /// `StackTransform`
+#derive(Debug, Eq)
 pub(all) struct StackTransform {
   as_ : StackTransformAs
   field : StackTransformField?
@@ -14267,7 +14375,7 @@ pub(all) struct StackTransform {
   signal : String?
   sort : Compare_?
   type_ : StackTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_stack_transform_as() -> StackTransformAs raise @typify_rt.DeError {
@@ -14364,12 +14472,13 @@ pub impl ToJson for StackTransform with fn to_json(self) {
 
 ///|
 /// `StratifyTransform`
+#derive(Debug, Eq)
 pub(all) struct StratifyTransform {
   key : StratifyTransformKey
   parent_key : StratifyTransformParentKey
   signal : String?
   type_ : StratifyTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StratifyTransform` (fields with defaults are optional).
@@ -14429,11 +14538,12 @@ pub impl ToJson for StratifyTransform with fn to_json(self) {
 
 ///|
 /// `Stream`
+#derive(Debug, Eq)
 pub(all) enum Stream {
   Variant0(between~ : FixedArray[Stream]?, consume~ : Bool?, debounce~ : Double?, filter~ : StreamVariant0Filter?, markname~ : String?, marktype~ : String?, source~ : String?, throttle~ : Double?, type_~ : String)
   Variant1(between~ : FixedArray[Stream]?, consume~ : Bool?, debounce~ : Double?, filter~ : StreamVariant1Filter?, markname~ : String?, marktype~ : String?, stream~ : Stream, throttle~ : Double?)
   Variant2(between~ : FixedArray[Stream]?, consume~ : Bool?, debounce~ : Double?, filter~ : StreamVariant2Filter?, markname~ : String?, marktype~ : String?, merge~ : Array[Stream], throttle~ : Double?)
-} derive(Debug, Eq)
+}
 
 ///|
 let stream_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["between", "consume", "debounce", "filter", "markname", "marktype", "source", "throttle", "type"])
@@ -14663,9 +14773,10 @@ pub impl ToJson for Stream with fn to_json(self) {
 
 ///|
 /// `StringModifiers`
+#derive(Debug, Eq)
 pub(all) struct StringModifiers {
   scale : Field?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StringModifiers` (fields with defaults are optional).
@@ -14710,10 +14821,11 @@ pub impl ToJson for StringModifiers with fn to_json(self) {
 
 ///|
 /// `StringOrSignal`
+#derive(Debug, Eq)
 pub(all) enum StringOrSignal {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StringOrSignal with fn deserialize(d) {
@@ -14757,10 +14869,11 @@ pub impl ToJson for StringOrSignal with fn to_json(self) {
 
 ///|
 /// `StringValue`
+#derive(Debug, Eq)
 pub(all) enum StringValue {
   Variant0(Array[StringValueVariant0Item])
   Variant1(StringValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StringValue with fn deserialize(d) {
@@ -14804,10 +14917,11 @@ pub impl ToJson for StringValue with fn to_json(self) {
 
 ///|
 /// `StrokeCapValue`
+#derive(Debug, Eq)
 pub(all) enum StrokeCapValue {
   Variant0(Array[StrokeCapValueVariant0Item])
   Variant1(StrokeCapValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeCapValue with fn deserialize(d) {
@@ -14851,10 +14965,11 @@ pub impl ToJson for StrokeCapValue with fn to_json(self) {
 
 ///|
 /// `StrokeJoinValue`
+#derive(Debug, Eq)
 pub(all) enum StrokeJoinValue {
   Variant0(Array[StrokeJoinValueVariant0Item])
   Variant1(StrokeJoinValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeJoinValue with fn deserialize(d) {
@@ -14898,10 +15013,11 @@ pub impl ToJson for StrokeJoinValue with fn to_json(self) {
 
 ///|
 /// `Style`
+#derive(Debug, Eq)
 pub(all) enum Style {
   String(String)
   Array(Array[String])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Style with fn deserialize(d) {
@@ -14945,10 +15061,11 @@ pub impl ToJson for Style with fn to_json(self) {
 
 ///|
 /// `TextOrSignal`
+#derive(Debug, Eq)
 pub(all) enum TextOrSignal {
   Variant0(TextOrSignalVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TextOrSignal with fn deserialize(d) {
@@ -14992,10 +15109,11 @@ pub impl ToJson for TextOrSignal with fn to_json(self) {
 
 ///|
 /// `TextValue`
+#derive(Debug, Eq)
 pub(all) enum TextValue {
   Variant0(Array[TextValueVariant0Item])
   Variant1(TextValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TextValue with fn deserialize(d) {
@@ -15039,10 +15157,11 @@ pub impl ToJson for TextValue with fn to_json(self) {
 
 ///|
 /// `TickBand`
+#derive(Debug, Eq)
 pub(all) enum TickBand {
   Variant0(TickBandVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TickBand with fn deserialize(d) {
@@ -15086,12 +15205,13 @@ pub impl ToJson for TickBand with fn to_json(self) {
 
 ///|
 /// `TickCount`
+#derive(Debug, Eq)
 pub(all) enum TickCount {
   Variant0(Double)
   Variant1(TickCountVariant1)
   Variant2(interval~ : TickCountVariant2Interval, step~ : NumberOrSignal?)
   Variant3(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let tick_count_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["interval", "step"])
@@ -15174,6 +15294,7 @@ pub impl ToJson for TickCount with fn to_json(self) {
 
 ///|
 /// `TimeunitTransform`
+#derive(Debug, Eq)
 pub(all) struct TimeunitTransform {
   as_ : TimeunitTransformAs
   extent : TimeunitTransformExtent?
@@ -15185,7 +15306,7 @@ pub(all) struct TimeunitTransform {
   timezone : TimeunitTransformTimezone
   type_ : TimeunitTransformType
   units : TimeunitTransformUnits?
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_timeunit_transform_as() -> TimeunitTransformAs raise @typify_rt.DeError {
@@ -15319,10 +15440,11 @@ pub impl ToJson for TimeunitTransform with fn to_json(self) {
 
 ///|
 /// `Title`
+#derive(Debug, Eq)
 pub(all) enum Title {
   String(String)
   Object(align~ : TitleObjectAlign?, anchor~ : TitleObjectAnchor?, angle~ : TitleObjectAngle?, aria~ : Bool?, baseline~ : TitleObjectBaseline?, color~ : TitleObjectColor?, dx~ : TitleObjectDx?, dy~ : TitleObjectDy?, encode~ : TitleObjectEncode?, font~ : TitleObjectFont?, font_size~ : TitleObjectFontSize?, font_style~ : TitleObjectFontStyle?, font_weight~ : TitleObjectFontWeight?, frame~ : TitleObjectFrame?, interactive~ : Bool?, limit~ : TitleObjectLimit?, line_height~ : TitleObjectLineHeight?, name~ : String?, offset~ : TitleObjectOffset?, orient~ : TitleObjectOrient?, style~ : Style?, subtitle~ : TextOrSignal?, subtitle_color~ : TitleObjectSubtitleColor?, subtitle_font~ : TitleObjectSubtitleFont?, subtitle_font_size~ : TitleObjectSubtitleFontSize?, subtitle_font_style~ : TitleObjectSubtitleFontStyle?, subtitle_font_weight~ : TitleObjectSubtitleFontWeight?, subtitle_line_height~ : TitleObjectSubtitleLineHeight?, subtitle_padding~ : NumberOrSignal?, text~ : TextOrSignal?, zindex~ : Double?)
-} derive(Debug, Eq)
+}
 
 ///|
 let title_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["align", "anchor", "angle", "aria", "baseline", "color", "dx", "dy", "encode", "font", "fontSize", "fontStyle", "fontWeight", "frame", "interactive", "limit", "lineHeight", "name", "offset", "orient", "style", "subtitle", "subtitleColor", "subtitleFont", "subtitleFontSize", "subtitleFontStyle", "subtitleFontWeight", "subtitleLineHeight", "subtitlePadding", "text", "zindex"])
@@ -15563,6 +15685,7 @@ pub impl ToJson for Title with fn to_json(self) {
 
 ///|
 /// `Transform`
+#derive(Debug, Eq)
 pub(all) enum Transform {
   CrossfilterTransform(CrossfilterTransform)
   ResolvefilterTransform(ResolvefilterTransform)
@@ -15615,7 +15738,7 @@ pub(all) enum Transform {
   IdentifierTransform(IdentifierTransform)
   VoronoiTransform(VoronoiTransform)
   WordcloudTransform(WordcloudTransform)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Transform with fn deserialize(d) {
@@ -16100,6 +16223,7 @@ pub impl ToJson for Transform with fn to_json(self) {
 
 ///|
 /// `TransformMark`
+#derive(Debug, Eq)
 pub(all) enum TransformMark {
   CrossfilterTransform(CrossfilterTransform)
   ResolvefilterTransform(ResolvefilterTransform)
@@ -16131,7 +16255,7 @@ pub(all) enum TransformMark {
   IdentifierTransform(IdentifierTransform)
   VoronoiTransform(VoronoiTransform)
   WordcloudTransform(WordcloudTransform)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TransformMark with fn deserialize(d) {
@@ -16427,6 +16551,7 @@ pub impl ToJson for TransformMark with fn to_json(self) {
 
 ///|
 /// `TreeTransform`
+#derive(Debug, Eq)
 pub(all) struct TreeTransform {
   as_ : TreeTransformAs
   field : TreeTransformField?
@@ -16437,7 +16562,7 @@ pub(all) struct TreeTransform {
   size : TreeTransformSize?
   sort : Compare_?
   type_ : TreeTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_tree_transform_as() -> TreeTransformAs raise @typify_rt.DeError {
@@ -16554,10 +16679,11 @@ pub impl ToJson for TreeTransform with fn to_json(self) {
 
 ///|
 /// `TreelinksTransform`
+#derive(Debug, Eq)
 pub(all) struct TreelinksTransform {
   signal : String?
   type_ : TreelinksTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TreelinksTransform` (fields with defaults are optional).
@@ -16607,6 +16733,7 @@ pub impl ToJson for TreelinksTransform with fn to_json(self) {
 
 ///|
 /// `TreemapTransform`
+#derive(Debug, Eq)
 pub(all) struct TreemapTransform {
   as_ : TreemapTransformAs
   field : TreemapTransformField?
@@ -16624,7 +16751,7 @@ pub(all) struct TreemapTransform {
   size : TreemapTransformSize?
   sort : Compare_?
   type_ : TreemapTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_treemap_transform_as() -> TreemapTransformAs raise @typify_rt.DeError {
@@ -16790,6 +16917,7 @@ pub impl ToJson for TreemapTransform with fn to_json(self) {
 
 ///|
 /// `VoronoiTransform`
+#derive(Debug, Eq)
 pub(all) struct VoronoiTransform {
   as_ : VoronoiTransformAs
   extent : VoronoiTransformExtent
@@ -16798,7 +16926,7 @@ pub(all) struct VoronoiTransform {
   type_ : VoronoiTransformType
   x : VoronoiTransformX
   y : VoronoiTransformY
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_voronoi_transform_as() -> VoronoiTransformAs raise @typify_rt.DeError {
@@ -16891,6 +17019,7 @@ pub impl ToJson for VoronoiTransform with fn to_json(self) {
 
 ///|
 /// `WindowTransform`
+#derive(Debug, Eq)
 pub(all) struct WindowTransform {
   as_ : WindowTransformAs?
   fields : WindowTransformFields?
@@ -16902,7 +17031,7 @@ pub(all) struct WindowTransform {
   signal : String?
   sort : Compare_?
   type_ : WindowTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_window_transform_frame() -> WindowTransformFrame raise @typify_rt.DeError {
@@ -17014,6 +17143,7 @@ pub impl ToJson for WindowTransform with fn to_json(self) {
 
 ///|
 /// `WordcloudTransform`
+#derive(Debug, Eq)
 pub(all) struct WordcloudTransform {
   as_ : WordcloudTransformAs
   font : WordcloudTransformFont
@@ -17028,7 +17158,7 @@ pub(all) struct WordcloudTransform {
   spiral : WordcloudTransformSpiral?
   text : WordcloudTransformText?
   type_ : WordcloudTransformType
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_wordcloud_transform_as() -> WordcloudTransformAs raise @typify_rt.DeError {
@@ -17191,6 +17321,7 @@ pub impl ToJson for WordcloudTransform with fn to_json(self) {
 
 ///|
 /// `Everything`
+#derive(Debug, Eq)
 pub(all) struct Everything {
   autosize : Autosize?
   axes : Array[Axis]
@@ -17212,7 +17343,7 @@ pub(all) struct Everything {
   title : Title?
   usermeta : Map[String, Json]
   width : NumberOrSignal?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Everything` (fields with defaults are optional).
@@ -17390,11 +17521,12 @@ pub impl ToJson for Everything with fn to_json(self) {
 
 ///|
 /// `AggregateTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum AggregateTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AggregateTransformAsArrayItem with fn deserialize(d) {
@@ -17447,10 +17579,11 @@ pub impl ToJson for AggregateTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `AggregateTransformAs`
+#derive(Debug, Eq)
 pub(all) enum AggregateTransformAs {
   Array(Array[AggregateTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AggregateTransformAs with fn deserialize(d) {
@@ -17494,10 +17627,11 @@ pub impl ToJson for AggregateTransformAs with fn to_json(self) {
 
 ///|
 /// `AggregateTransformCross`
+#derive(Debug, Eq)
 pub(all) enum AggregateTransformCross {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AggregateTransformCross with fn deserialize(d) {
@@ -17541,10 +17675,11 @@ pub impl ToJson for AggregateTransformCross with fn to_json(self) {
 
 ///|
 /// `AggregateTransformDrop`
+#derive(Debug, Eq)
 pub(all) enum AggregateTransformDrop {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AggregateTransformDrop with fn deserialize(d) {
@@ -17596,12 +17731,13 @@ pub impl ToJson for AggregateTransformDrop with fn to_json(self) {
 
 ///|
 /// `AggregateTransformFieldsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum AggregateTransformFieldsArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AggregateTransformFieldsArrayItem with fn deserialize(d) {
@@ -17663,10 +17799,11 @@ pub impl ToJson for AggregateTransformFieldsArrayItem with fn to_json(self) {
 
 ///|
 /// `AggregateTransformFields`
+#derive(Debug, Eq)
 pub(all) enum AggregateTransformFields {
   Array(Array[AggregateTransformFieldsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AggregateTransformFields with fn deserialize(d) {
@@ -17710,11 +17847,12 @@ pub impl ToJson for AggregateTransformFields with fn to_json(self) {
 
 ///|
 /// `AggregateTransformGroupbyArrayItem`
+#derive(Debug, Eq)
 pub(all) enum AggregateTransformGroupbyArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AggregateTransformGroupbyArrayItem with fn deserialize(d) {
@@ -17767,10 +17905,11 @@ pub impl ToJson for AggregateTransformGroupbyArrayItem with fn to_json(self) {
 
 ///|
 /// `AggregateTransformGroupby`
+#derive(Debug, Eq)
 pub(all) enum AggregateTransformGroupby {
   Array(Array[AggregateTransformGroupbyArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AggregateTransformGroupby with fn deserialize(d) {
@@ -17814,11 +17953,12 @@ pub impl ToJson for AggregateTransformGroupby with fn to_json(self) {
 
 ///|
 /// `AggregateTransformKey`
+#derive(Debug, Eq)
 pub(all) enum AggregateTransformKey {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AggregateTransformKey with fn deserialize(d) {
@@ -17871,6 +18011,7 @@ pub impl ToJson for AggregateTransformKey with fn to_json(self) {
 
 ///|
 /// `AggregateTransformOpsArrayItemVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum AggregateTransformOpsArrayItemVariant0 {
   Values
   Count
@@ -17896,7 +18037,7 @@ pub(all) enum AggregateTransformOpsArrayItemVariant0 {
   Max
   Argmin
   Argmax
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AggregateTransformOpsArrayItemVariant0 with fn deserialize(d) {
@@ -18068,10 +18209,11 @@ pub impl ToJson for AggregateTransformOpsArrayItemVariant0 with fn to_json(self)
 
 ///|
 /// `AggregateTransformOpsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum AggregateTransformOpsArrayItem {
   Variant0(AggregateTransformOpsArrayItemVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AggregateTransformOpsArrayItem with fn deserialize(d) {
@@ -18115,10 +18257,11 @@ pub impl ToJson for AggregateTransformOpsArrayItem with fn to_json(self) {
 
 ///|
 /// `AggregateTransformOps`
+#derive(Debug, Eq)
 pub(all) enum AggregateTransformOps {
   Array(Array[AggregateTransformOpsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AggregateTransformOps with fn deserialize(d) {
@@ -18162,9 +18305,10 @@ pub impl ToJson for AggregateTransformOps with fn to_json(self) {
 
 ///|
 /// `AggregateTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum AggregateTransformType {
   Aggregate
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AggregateTransformType with fn deserialize(d) {
@@ -18221,11 +18365,12 @@ pub impl ToJson for AggregateTransformType with fn to_json(self) {
 
 ///|
 /// `AlignValueVariant0ItemVariant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum AlignValueVariant0ItemVariant0Variant1Value {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AlignValueVariant0ItemVariant0Variant1Value with fn deserialize(d) {
@@ -18292,10 +18437,11 @@ pub impl ToJson for AlignValueVariant0ItemVariant0Variant1Value with fn to_json(
 
 ///|
 /// `AlignValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum AlignValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AlignValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -18339,12 +18485,13 @@ pub impl ToJson for AlignValueVariant0ItemVariant0Variant3Range with fn to_json(
 
 ///|
 /// `AlignValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum AlignValueVariant0ItemVariant0 {
   Variant0(scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(scale~ : Field?, test_~ : String?, value~ : AlignValueVariant0ItemVariant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?, test_~ : String?)
   Variant3(range~ : AlignValueVariant0ItemVariant0Variant3Range, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let align_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal", "test"])
@@ -18514,8 +18661,9 @@ pub impl ToJson for AlignValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `AlignValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum AlignValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AlignValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -18547,8 +18695,9 @@ pub impl ToJson for AlignValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `AlignValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum AlignValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AlignValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -18580,12 +18729,13 @@ pub impl ToJson for AlignValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `AlignValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum AlignValueVariant0Item {
   Variant0(AlignValueVariant0ItemVariant0)
   Variant1(AlignValueVariant0ItemVariant1)
   Variant2(AlignValueVariant0ItemVariant2)
   Variant3(offset~ : Json, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let align_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset", "test"])
@@ -18668,11 +18818,12 @@ pub impl ToJson for AlignValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `AlignValueVariant1Variant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum AlignValueVariant1Variant0Variant1Value {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AlignValueVariant1Variant0Variant1Value with fn deserialize(d) {
@@ -18739,10 +18890,11 @@ pub impl ToJson for AlignValueVariant1Variant0Variant1Value with fn to_json(self
 
 ///|
 /// `AlignValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum AlignValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AlignValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -18786,12 +18938,13 @@ pub impl ToJson for AlignValueVariant1Variant0Variant3Range with fn to_json(self
 
 ///|
 /// `AlignValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum AlignValueVariant1Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : AlignValueVariant1Variant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : AlignValueVariant1Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let align_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -18937,8 +19090,9 @@ pub impl ToJson for AlignValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `AlignValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum AlignValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AlignValueVariant1Variant1 with fn deserialize(d) {
@@ -18970,8 +19124,9 @@ pub impl ToJson for AlignValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `AlignValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum AlignValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AlignValueVariant1Variant2 with fn deserialize(d) {
@@ -19003,12 +19158,13 @@ pub impl ToJson for AlignValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `AlignValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum AlignValueVariant1 {
   Variant0(AlignValueVariant1Variant0)
   Variant1(AlignValueVariant1Variant1)
   Variant2(AlignValueVariant1Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let align_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -19085,11 +19241,12 @@ pub impl ToJson for AlignValueVariant1 with fn to_json(self) {
 
 ///|
 /// `AnchorValueVariant0ItemVariant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum AnchorValueVariant0ItemVariant0Variant1Value {
   Start
   Middle
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnchorValueVariant0ItemVariant0Variant1Value with fn deserialize(d) {
@@ -19156,10 +19313,11 @@ pub impl ToJson for AnchorValueVariant0ItemVariant0Variant1Value with fn to_json
 
 ///|
 /// `AnchorValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum AnchorValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnchorValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -19203,12 +19361,13 @@ pub impl ToJson for AnchorValueVariant0ItemVariant0Variant3Range with fn to_json
 
 ///|
 /// `AnchorValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum AnchorValueVariant0ItemVariant0 {
   Variant0(scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(scale~ : Field?, test_~ : String?, value~ : AnchorValueVariant0ItemVariant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?, test_~ : String?)
   Variant3(range~ : AnchorValueVariant0ItemVariant0Variant3Range, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let anchor_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal", "test"])
@@ -19378,8 +19537,9 @@ pub impl ToJson for AnchorValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `AnchorValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum AnchorValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnchorValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -19411,8 +19571,9 @@ pub impl ToJson for AnchorValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `AnchorValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum AnchorValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnchorValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -19444,12 +19605,13 @@ pub impl ToJson for AnchorValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `AnchorValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum AnchorValueVariant0Item {
   Variant0(AnchorValueVariant0ItemVariant0)
   Variant1(AnchorValueVariant0ItemVariant1)
   Variant2(AnchorValueVariant0ItemVariant2)
   Variant3(offset~ : Json, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let anchor_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset", "test"])
@@ -19532,11 +19694,12 @@ pub impl ToJson for AnchorValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `AnchorValueVariant1Variant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum AnchorValueVariant1Variant0Variant1Value {
   Start
   Middle
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnchorValueVariant1Variant0Variant1Value with fn deserialize(d) {
@@ -19603,10 +19766,11 @@ pub impl ToJson for AnchorValueVariant1Variant0Variant1Value with fn to_json(sel
 
 ///|
 /// `AnchorValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum AnchorValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnchorValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -19650,12 +19814,13 @@ pub impl ToJson for AnchorValueVariant1Variant0Variant3Range with fn to_json(sel
 
 ///|
 /// `AnchorValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum AnchorValueVariant1Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : AnchorValueVariant1Variant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : AnchorValueVariant1Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let anchor_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -19801,8 +19966,9 @@ pub impl ToJson for AnchorValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `AnchorValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum AnchorValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnchorValueVariant1Variant1 with fn deserialize(d) {
@@ -19834,8 +20000,9 @@ pub impl ToJson for AnchorValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `AnchorValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum AnchorValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnchorValueVariant1Variant2 with fn deserialize(d) {
@@ -19867,12 +20034,13 @@ pub impl ToJson for AnchorValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `AnchorValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum AnchorValueVariant1 {
   Variant0(AnchorValueVariant1Variant0)
   Variant1(AnchorValueVariant1Variant1)
   Variant2(AnchorValueVariant1Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let anchor_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -19949,10 +20117,11 @@ pub impl ToJson for AnchorValueVariant1 with fn to_json(self) {
 
 ///|
 /// `AnyValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum AnyValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnyValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -19996,12 +20165,13 @@ pub impl ToJson for AnyValueVariant0ItemVariant0Variant3Range with fn to_json(se
 
 ///|
 /// `AnyValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum AnyValueVariant0ItemVariant0 {
   Variant0(scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(scale~ : Field?, test_~ : String?, value~ : Json)
   Variant2(field~ : Field, scale~ : Field?, test_~ : String?)
   Variant3(range~ : AnyValueVariant0ItemVariant0Variant3Range, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let any_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal", "test"])
@@ -20171,8 +20341,9 @@ pub impl ToJson for AnyValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `AnyValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum AnyValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnyValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -20204,8 +20375,9 @@ pub impl ToJson for AnyValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `AnyValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum AnyValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnyValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -20237,12 +20409,13 @@ pub impl ToJson for AnyValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `AnyValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum AnyValueVariant0Item {
   Variant0(AnyValueVariant0ItemVariant0)
   Variant1(AnyValueVariant0ItemVariant1)
   Variant2(AnyValueVariant0ItemVariant2)
   Variant3(offset~ : Json, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let any_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset", "test"])
@@ -20325,10 +20498,11 @@ pub impl ToJson for AnyValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `AnyValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum AnyValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnyValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -20372,12 +20546,13 @@ pub impl ToJson for AnyValueVariant1Variant0Variant3Range with fn to_json(self) 
 
 ///|
 /// `AnyValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum AnyValueVariant1Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : Json)
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : AnyValueVariant1Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let any_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -20523,8 +20698,9 @@ pub impl ToJson for AnyValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `AnyValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum AnyValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnyValueVariant1Variant1 with fn deserialize(d) {
@@ -20556,8 +20732,9 @@ pub impl ToJson for AnyValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `AnyValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum AnyValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AnyValueVariant1Variant2 with fn deserialize(d) {
@@ -20589,12 +20766,13 @@ pub impl ToJson for AnyValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `AnyValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum AnyValueVariant1 {
   Variant0(AnyValueVariant1Variant0)
   Variant1(AnyValueVariant1Variant1)
   Variant2(AnyValueVariant1Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let any_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -20671,10 +20849,11 @@ pub impl ToJson for AnyValueVariant1 with fn to_json(self) {
 
 ///|
 /// `ArrayValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum ArrayValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ArrayValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -20718,12 +20897,13 @@ pub impl ToJson for ArrayValueVariant0ItemVariant0Variant3Range with fn to_json(
 
 ///|
 /// `ArrayValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum ArrayValueVariant0ItemVariant0 {
   Variant0(scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(scale~ : Field?, test_~ : String?, value~ : Array[Json])
   Variant2(field~ : Field, scale~ : Field?, test_~ : String?)
   Variant3(range~ : ArrayValueVariant0ItemVariant0Variant3Range, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let array_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal", "test"])
@@ -20893,8 +21073,9 @@ pub impl ToJson for ArrayValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `ArrayValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum ArrayValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ArrayValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -20926,8 +21107,9 @@ pub impl ToJson for ArrayValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `ArrayValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum ArrayValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ArrayValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -20959,12 +21141,13 @@ pub impl ToJson for ArrayValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `ArrayValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum ArrayValueVariant0Item {
   Variant0(ArrayValueVariant0ItemVariant0)
   Variant1(ArrayValueVariant0ItemVariant1)
   Variant2(ArrayValueVariant0ItemVariant2)
   Variant3(offset~ : Json, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let array_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset", "test"])
@@ -21047,10 +21230,11 @@ pub impl ToJson for ArrayValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `ArrayValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum ArrayValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ArrayValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -21094,12 +21278,13 @@ pub impl ToJson for ArrayValueVariant1Variant0Variant3Range with fn to_json(self
 
 ///|
 /// `ArrayValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum ArrayValueVariant1Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : Array[Json])
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : ArrayValueVariant1Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let array_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -21245,8 +21430,9 @@ pub impl ToJson for ArrayValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `ArrayValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum ArrayValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ArrayValueVariant1Variant1 with fn deserialize(d) {
@@ -21278,8 +21464,9 @@ pub impl ToJson for ArrayValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `ArrayValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum ArrayValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ArrayValueVariant1Variant2 with fn deserialize(d) {
@@ -21311,12 +21498,13 @@ pub impl ToJson for ArrayValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `ArrayValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum ArrayValueVariant1 {
   Variant0(ArrayValueVariant1Variant0)
   Variant1(ArrayValueVariant1Variant1)
   Variant2(ArrayValueVariant1Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let array_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -21393,13 +21581,14 @@ pub impl ToJson for ArrayValueVariant1 with fn to_json(self) {
 
 ///|
 /// `AutosizeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum AutosizeVariant0 {
   Pad
   Fit
   FitX
   FitY
   None_
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AutosizeVariant0 with fn deserialize(d) {
@@ -21476,10 +21665,11 @@ pub impl ToJson for AutosizeVariant0 with fn to_json(self) {
 
 ///|
 /// `AutosizeVariant1Contains`
+#derive(Debug, Eq, Hash)
 pub(all) enum AutosizeVariant1Contains {
   Content
   Padding
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AutosizeVariant1Contains with fn deserialize(d) {
@@ -21541,13 +21731,14 @@ pub impl ToJson for AutosizeVariant1Contains with fn to_json(self) {
 
 ///|
 /// `AutosizeVariant1Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum AutosizeVariant1Type {
   Pad
   Fit
   FitX
   FitY
   None_
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AutosizeVariant1Type with fn deserialize(d) {
@@ -21632,10 +21823,11 @@ pub impl ToJson for AutosizeVariant1Type with fn to_json(self) {
 
 ///|
 /// `AxisBandPosition`
+#derive(Debug, Eq)
 pub(all) enum AxisBandPosition {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisBandPosition with fn deserialize(d) {
@@ -21679,10 +21871,11 @@ pub impl ToJson for AxisBandPosition with fn to_json(self) {
 
 ///|
 /// `AxisDomainCap`
+#derive(Debug, Eq)
 pub(all) enum AxisDomainCap {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisDomainCap with fn deserialize(d) {
@@ -21726,11 +21919,12 @@ pub impl ToJson for AxisDomainCap with fn to_json(self) {
 
 ///|
 /// `AxisDomainColor`
+#derive(Debug, Eq)
 pub(all) enum AxisDomainColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisDomainColor with fn deserialize(d) {
@@ -21783,10 +21977,11 @@ pub impl ToJson for AxisDomainColor with fn to_json(self) {
 
 ///|
 /// `AxisDomainDash`
+#derive(Debug, Eq)
 pub(all) enum AxisDomainDash {
   Variant0(Array[Double])
   Variant1(ArrayValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisDomainDash with fn deserialize(d) {
@@ -21830,10 +22025,11 @@ pub impl ToJson for AxisDomainDash with fn to_json(self) {
 
 ///|
 /// `AxisDomainDashOffset`
+#derive(Debug, Eq)
 pub(all) enum AxisDomainDashOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisDomainDashOffset with fn deserialize(d) {
@@ -21877,10 +22073,11 @@ pub impl ToJson for AxisDomainDashOffset with fn to_json(self) {
 
 ///|
 /// `AxisDomainOpacity`
+#derive(Debug, Eq)
 pub(all) enum AxisDomainOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisDomainOpacity with fn deserialize(d) {
@@ -21924,10 +22121,11 @@ pub impl ToJson for AxisDomainOpacity with fn to_json(self) {
 
 ///|
 /// `AxisDomainWidth`
+#derive(Debug, Eq)
 pub(all) enum AxisDomainWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisDomainWidth with fn deserialize(d) {
@@ -21971,6 +22169,7 @@ pub impl ToJson for AxisDomainWidth with fn to_json(self) {
 
 ///|
 /// `AxisEncode`
+#derive(Debug, Eq)
 pub(all) struct AxisEncode {
   axis : GuideEncode?
   domain : GuideEncode?
@@ -21978,7 +22177,7 @@ pub(all) struct AxisEncode {
   labels : GuideEncode?
   ticks : GuideEncode?
   title : GuideEncode?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `AxisEncode` (fields with defaults are optional).
@@ -22058,11 +22257,12 @@ pub impl ToJson for AxisEncode with fn to_json(self) {
 
 ///|
 /// `AxisFormat`
+#derive(Debug, Eq)
 pub(all) enum AxisFormat {
   String(String)
   Object(date~ : String?, day~ : String?, hours~ : String?, milliseconds~ : String?, minutes~ : String?, month~ : String?, quarter~ : String?, seconds~ : String?, week~ : String?, year~ : String?)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let axis_format_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["date", "day", "hours", "milliseconds", "minutes", "month", "quarter", "seconds", "week", "year"])
@@ -22186,11 +22386,12 @@ pub impl ToJson for AxisFormat with fn to_json(self) {
 
 ///|
 /// `AxisFormatTypeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum AxisFormatTypeVariant0 {
   Number
   Time
   Utc
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisFormatTypeVariant0 with fn deserialize(d) {
@@ -22257,10 +22458,11 @@ pub impl ToJson for AxisFormatTypeVariant0 with fn to_json(self) {
 
 ///|
 /// `AxisFormatType`
+#derive(Debug, Eq)
 pub(all) enum AxisFormatType {
   Variant0(AxisFormatTypeVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisFormatType with fn deserialize(d) {
@@ -22304,10 +22506,11 @@ pub impl ToJson for AxisFormatType with fn to_json(self) {
 
 ///|
 /// `AxisGridCap`
+#derive(Debug, Eq)
 pub(all) enum AxisGridCap {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisGridCap with fn deserialize(d) {
@@ -22351,11 +22554,12 @@ pub impl ToJson for AxisGridCap with fn to_json(self) {
 
 ///|
 /// `AxisGridColor`
+#derive(Debug, Eq)
 pub(all) enum AxisGridColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisGridColor with fn deserialize(d) {
@@ -22408,10 +22612,11 @@ pub impl ToJson for AxisGridColor with fn to_json(self) {
 
 ///|
 /// `AxisGridDash`
+#derive(Debug, Eq)
 pub(all) enum AxisGridDash {
   Variant0(Array[Double])
   Variant1(ArrayValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisGridDash with fn deserialize(d) {
@@ -22455,10 +22660,11 @@ pub impl ToJson for AxisGridDash with fn to_json(self) {
 
 ///|
 /// `AxisGridDashOffset`
+#derive(Debug, Eq)
 pub(all) enum AxisGridDashOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisGridDashOffset with fn deserialize(d) {
@@ -22502,10 +22708,11 @@ pub impl ToJson for AxisGridDashOffset with fn to_json(self) {
 
 ///|
 /// `AxisGridOpacity`
+#derive(Debug, Eq)
 pub(all) enum AxisGridOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisGridOpacity with fn deserialize(d) {
@@ -22549,10 +22756,11 @@ pub impl ToJson for AxisGridOpacity with fn to_json(self) {
 
 ///|
 /// `AxisGridWidth`
+#derive(Debug, Eq)
 pub(all) enum AxisGridWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisGridWidth with fn deserialize(d) {
@@ -22596,11 +22804,12 @@ pub impl ToJson for AxisGridWidth with fn to_json(self) {
 
 ///|
 /// `AxisLabelAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum AxisLabelAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelAlignVariant0 with fn deserialize(d) {
@@ -22667,10 +22876,11 @@ pub impl ToJson for AxisLabelAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `AxisLabelAlign`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelAlign {
   Variant0(AxisLabelAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelAlign with fn deserialize(d) {
@@ -22714,10 +22924,11 @@ pub impl ToJson for AxisLabelAlign with fn to_json(self) {
 
 ///|
 /// `AxisLabelAngle`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelAngle {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelAngle with fn deserialize(d) {
@@ -22761,6 +22972,7 @@ pub impl ToJson for AxisLabelAngle with fn to_json(self) {
 
 ///|
 /// `AxisLabelBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum AxisLabelBaselineVariant0 {
   Top
   Middle
@@ -22768,7 +22980,7 @@ pub(all) enum AxisLabelBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelBaselineVariant0 with fn deserialize(d) {
@@ -22850,10 +23062,11 @@ pub impl ToJson for AxisLabelBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `AxisLabelBaseline`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelBaseline {
   Variant0(AxisLabelBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelBaseline with fn deserialize(d) {
@@ -22897,11 +23110,12 @@ pub impl ToJson for AxisLabelBaseline with fn to_json(self) {
 
 ///|
 /// `AxisLabelBound`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelBound {
   Boolean(Bool)
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelBound with fn deserialize(d) {
@@ -22954,11 +23168,12 @@ pub impl ToJson for AxisLabelBound with fn to_json(self) {
 
 ///|
 /// `AxisLabelColor`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelColor with fn deserialize(d) {
@@ -23011,11 +23226,12 @@ pub impl ToJson for AxisLabelColor with fn to_json(self) {
 
 ///|
 /// `AxisLabelFlush`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelFlush {
   Boolean(Bool)
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelFlush with fn deserialize(d) {
@@ -23068,10 +23284,11 @@ pub impl ToJson for AxisLabelFlush with fn to_json(self) {
 
 ///|
 /// `AxisLabelFont`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelFont with fn deserialize(d) {
@@ -23115,10 +23332,11 @@ pub impl ToJson for AxisLabelFont with fn to_json(self) {
 
 ///|
 /// `AxisLabelFontSize`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelFontSize with fn deserialize(d) {
@@ -23162,10 +23380,11 @@ pub impl ToJson for AxisLabelFontSize with fn to_json(self) {
 
 ///|
 /// `AxisLabelFontStyle`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelFontStyle with fn deserialize(d) {
@@ -23209,10 +23428,11 @@ pub impl ToJson for AxisLabelFontStyle with fn to_json(self) {
 
 ///|
 /// `AxisLabelFontWeight`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelFontWeight with fn deserialize(d) {
@@ -23256,10 +23476,11 @@ pub impl ToJson for AxisLabelFontWeight with fn to_json(self) {
 
 ///|
 /// `AxisLabelLimit`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelLimit with fn deserialize(d) {
@@ -23303,10 +23524,11 @@ pub impl ToJson for AxisLabelLimit with fn to_json(self) {
 
 ///|
 /// `AxisLabelLineHeight`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelLineHeight {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelLineHeight with fn deserialize(d) {
@@ -23350,10 +23572,11 @@ pub impl ToJson for AxisLabelLineHeight with fn to_json(self) {
 
 ///|
 /// `AxisLabelOffset`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelOffset with fn deserialize(d) {
@@ -23397,10 +23620,11 @@ pub impl ToJson for AxisLabelOffset with fn to_json(self) {
 
 ///|
 /// `AxisLabelOpacity`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelOpacity with fn deserialize(d) {
@@ -23444,10 +23668,11 @@ pub impl ToJson for AxisLabelOpacity with fn to_json(self) {
 
 ///|
 /// `AxisLabelPadding`
+#derive(Debug, Eq)
 pub(all) enum AxisLabelPadding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisLabelPadding with fn deserialize(d) {
@@ -23491,10 +23716,11 @@ pub impl ToJson for AxisLabelPadding with fn to_json(self) {
 
 ///|
 /// `AxisMaxExtent`
+#derive(Debug, Eq)
 pub(all) enum AxisMaxExtent {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisMaxExtent with fn deserialize(d) {
@@ -23538,10 +23764,11 @@ pub impl ToJson for AxisMaxExtent with fn to_json(self) {
 
 ///|
 /// `AxisMinExtent`
+#derive(Debug, Eq)
 pub(all) enum AxisMinExtent {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisMinExtent with fn deserialize(d) {
@@ -23585,10 +23812,11 @@ pub impl ToJson for AxisMinExtent with fn to_json(self) {
 
 ///|
 /// `AxisOffset`
+#derive(Debug, Eq)
 pub(all) enum AxisOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisOffset with fn deserialize(d) {
@@ -23632,12 +23860,13 @@ pub impl ToJson for AxisOffset with fn to_json(self) {
 
 ///|
 /// `AxisOrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum AxisOrientVariant0 {
   Top
   Bottom
   Left
   Right
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisOrientVariant0 with fn deserialize(d) {
@@ -23709,10 +23938,11 @@ pub impl ToJson for AxisOrientVariant0 with fn to_json(self) {
 
 ///|
 /// `AxisOrient`
+#derive(Debug, Eq)
 pub(all) enum AxisOrient {
   Variant0(AxisOrientVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisOrient with fn deserialize(d) {
@@ -23756,10 +23986,11 @@ pub impl ToJson for AxisOrient with fn to_json(self) {
 
 ///|
 /// `AxisPosition`
+#derive(Debug, Eq)
 pub(all) enum AxisPosition {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisPosition with fn deserialize(d) {
@@ -23803,10 +24034,11 @@ pub impl ToJson for AxisPosition with fn to_json(self) {
 
 ///|
 /// `AxisTickCap`
+#derive(Debug, Eq)
 pub(all) enum AxisTickCap {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTickCap with fn deserialize(d) {
@@ -23850,11 +24082,12 @@ pub impl ToJson for AxisTickCap with fn to_json(self) {
 
 ///|
 /// `AxisTickColor`
+#derive(Debug, Eq)
 pub(all) enum AxisTickColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTickColor with fn deserialize(d) {
@@ -23907,10 +24140,11 @@ pub impl ToJson for AxisTickColor with fn to_json(self) {
 
 ///|
 /// `AxisTickDash`
+#derive(Debug, Eq)
 pub(all) enum AxisTickDash {
   Variant0(Array[Double])
   Variant1(ArrayValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTickDash with fn deserialize(d) {
@@ -23954,10 +24188,11 @@ pub impl ToJson for AxisTickDash with fn to_json(self) {
 
 ///|
 /// `AxisTickDashOffset`
+#derive(Debug, Eq)
 pub(all) enum AxisTickDashOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTickDashOffset with fn deserialize(d) {
@@ -24001,10 +24236,11 @@ pub impl ToJson for AxisTickDashOffset with fn to_json(self) {
 
 ///|
 /// `AxisTickOffset`
+#derive(Debug, Eq)
 pub(all) enum AxisTickOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTickOffset with fn deserialize(d) {
@@ -24048,10 +24284,11 @@ pub impl ToJson for AxisTickOffset with fn to_json(self) {
 
 ///|
 /// `AxisTickOpacity`
+#derive(Debug, Eq)
 pub(all) enum AxisTickOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTickOpacity with fn deserialize(d) {
@@ -24095,10 +24332,11 @@ pub impl ToJson for AxisTickOpacity with fn to_json(self) {
 
 ///|
 /// `AxisTickRound`
+#derive(Debug, Eq)
 pub(all) enum AxisTickRound {
   Variant0(Bool)
   Variant1(BooleanValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTickRound with fn deserialize(d) {
@@ -24142,10 +24380,11 @@ pub impl ToJson for AxisTickRound with fn to_json(self) {
 
 ///|
 /// `AxisTickSize`
+#derive(Debug, Eq)
 pub(all) enum AxisTickSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTickSize with fn deserialize(d) {
@@ -24189,10 +24428,11 @@ pub impl ToJson for AxisTickSize with fn to_json(self) {
 
 ///|
 /// `AxisTickWidth`
+#derive(Debug, Eq)
 pub(all) enum AxisTickWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTickWidth with fn deserialize(d) {
@@ -24236,11 +24476,12 @@ pub impl ToJson for AxisTickWidth with fn to_json(self) {
 
 ///|
 /// `AxisTitleAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum AxisTitleAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleAlignVariant0 with fn deserialize(d) {
@@ -24307,10 +24548,11 @@ pub impl ToJson for AxisTitleAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `AxisTitleAlign`
+#derive(Debug, Eq)
 pub(all) enum AxisTitleAlign {
   Variant0(AxisTitleAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleAlign with fn deserialize(d) {
@@ -24354,11 +24596,12 @@ pub impl ToJson for AxisTitleAlign with fn to_json(self) {
 
 ///|
 /// `AxisTitleAnchorVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum AxisTitleAnchorVariant0 {
   Start
   Middle
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleAnchorVariant0 with fn deserialize(d) {
@@ -24425,10 +24668,11 @@ pub impl ToJson for AxisTitleAnchorVariant0 with fn to_json(self) {
 
 ///|
 /// `AxisTitleAnchor`
+#derive(Debug, Eq)
 pub(all) enum AxisTitleAnchor {
   Variant0(AxisTitleAnchorVariant0?)
   Variant1(AnchorValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleAnchor with fn deserialize(d) {
@@ -24472,10 +24716,11 @@ pub impl ToJson for AxisTitleAnchor with fn to_json(self) {
 
 ///|
 /// `AxisTitleAngle`
+#derive(Debug, Eq)
 pub(all) enum AxisTitleAngle {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleAngle with fn deserialize(d) {
@@ -24519,6 +24764,7 @@ pub impl ToJson for AxisTitleAngle with fn to_json(self) {
 
 ///|
 /// `AxisTitleBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum AxisTitleBaselineVariant0 {
   Top
   Middle
@@ -24526,7 +24772,7 @@ pub(all) enum AxisTitleBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleBaselineVariant0 with fn deserialize(d) {
@@ -24608,10 +24854,11 @@ pub impl ToJson for AxisTitleBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `AxisTitleBaseline`
+#derive(Debug, Eq)
 pub(all) enum AxisTitleBaseline {
   Variant0(AxisTitleBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleBaseline with fn deserialize(d) {
@@ -24655,11 +24902,12 @@ pub impl ToJson for AxisTitleBaseline with fn to_json(self) {
 
 ///|
 /// `AxisTitleColor`
+#derive(Debug, Eq)
 pub(all) enum AxisTitleColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleColor with fn deserialize(d) {
@@ -24712,10 +24960,11 @@ pub impl ToJson for AxisTitleColor with fn to_json(self) {
 
 ///|
 /// `AxisTitleFont`
+#derive(Debug, Eq)
 pub(all) enum AxisTitleFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleFont with fn deserialize(d) {
@@ -24759,10 +25008,11 @@ pub impl ToJson for AxisTitleFont with fn to_json(self) {
 
 ///|
 /// `AxisTitleFontSize`
+#derive(Debug, Eq)
 pub(all) enum AxisTitleFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleFontSize with fn deserialize(d) {
@@ -24806,10 +25056,11 @@ pub impl ToJson for AxisTitleFontSize with fn to_json(self) {
 
 ///|
 /// `AxisTitleFontStyle`
+#derive(Debug, Eq)
 pub(all) enum AxisTitleFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleFontStyle with fn deserialize(d) {
@@ -24853,10 +25104,11 @@ pub impl ToJson for AxisTitleFontStyle with fn to_json(self) {
 
 ///|
 /// `AxisTitleFontWeight`
+#derive(Debug, Eq)
 pub(all) enum AxisTitleFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleFontWeight with fn deserialize(d) {
@@ -24900,10 +25152,11 @@ pub impl ToJson for AxisTitleFontWeight with fn to_json(self) {
 
 ///|
 /// `AxisTitleLimit`
+#derive(Debug, Eq)
 pub(all) enum AxisTitleLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleLimit with fn deserialize(d) {
@@ -24947,10 +25200,11 @@ pub impl ToJson for AxisTitleLimit with fn to_json(self) {
 
 ///|
 /// `AxisTitleLineHeight`
+#derive(Debug, Eq)
 pub(all) enum AxisTitleLineHeight {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleLineHeight with fn deserialize(d) {
@@ -24994,10 +25248,11 @@ pub impl ToJson for AxisTitleLineHeight with fn to_json(self) {
 
 ///|
 /// `AxisTitleOpacity`
+#derive(Debug, Eq)
 pub(all) enum AxisTitleOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleOpacity with fn deserialize(d) {
@@ -25041,10 +25296,11 @@ pub impl ToJson for AxisTitleOpacity with fn to_json(self) {
 
 ///|
 /// `AxisTitlePadding`
+#derive(Debug, Eq)
 pub(all) enum AxisTitlePadding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitlePadding with fn deserialize(d) {
@@ -25088,10 +25344,11 @@ pub impl ToJson for AxisTitlePadding with fn to_json(self) {
 
 ///|
 /// `AxisTitleX`
+#derive(Debug, Eq)
 pub(all) enum AxisTitleX {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleX with fn deserialize(d) {
@@ -25135,10 +25392,11 @@ pub impl ToJson for AxisTitleX with fn to_json(self) {
 
 ///|
 /// `AxisTitleY`
+#derive(Debug, Eq)
 pub(all) enum AxisTitleY {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTitleY with fn deserialize(d) {
@@ -25182,10 +25440,11 @@ pub impl ToJson for AxisTitleY with fn to_json(self) {
 
 ///|
 /// `AxisTranslate`
+#derive(Debug, Eq)
 pub(all) enum AxisTranslate {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for AxisTranslate with fn deserialize(d) {
@@ -25229,10 +25488,11 @@ pub impl ToJson for AxisTranslate with fn to_json(self) {
 
 ///|
 /// `BaseColorValueVariant0Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum BaseColorValueVariant0Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BaseColorValueVariant0Variant0Variant3Range with fn deserialize(d) {
@@ -25276,12 +25536,13 @@ pub impl ToJson for BaseColorValueVariant0Variant0Variant3Range with fn to_json(
 
 ///|
 /// `BaseColorValueVariant0Variant0`
+#derive(Debug, Eq)
 pub(all) enum BaseColorValueVariant0Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : String?)
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : BaseColorValueVariant0Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let base_color_value_variant0_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -25427,8 +25688,9 @@ pub impl ToJson for BaseColorValueVariant0Variant0 with fn to_json(self) {
 
 ///|
 /// `BaseColorValueVariant0Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum BaseColorValueVariant0Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BaseColorValueVariant0Variant1 with fn deserialize(d) {
@@ -25460,8 +25722,9 @@ pub impl ToJson for BaseColorValueVariant0Variant1 with fn to_json(self) {
 
 ///|
 /// `BaseColorValueVariant0Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum BaseColorValueVariant0Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BaseColorValueVariant0Variant2 with fn deserialize(d) {
@@ -25493,12 +25756,13 @@ pub impl ToJson for BaseColorValueVariant0Variant2 with fn to_json(self) {
 
 ///|
 /// `BaseColorValueVariant0`
+#derive(Debug, Eq)
 pub(all) enum BaseColorValueVariant0 {
   Variant0(BaseColorValueVariant0Variant0)
   Variant1(BaseColorValueVariant0Variant1)
   Variant2(BaseColorValueVariant0Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let base_color_value_variant0_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -25575,12 +25839,13 @@ pub impl ToJson for BaseColorValueVariant0 with fn to_json(self) {
 
 ///|
 /// `BaseColorValueVariant4Color`
+#derive(Debug, Eq)
 pub(all) enum BaseColorValueVariant4Color {
   Rgb(ColorRgb)
   Hsl(ColorHsl)
   Lab(ColorLab)
   Hcl(ColorHcl)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BaseColorValueVariant4Color with fn deserialize(d) {
@@ -25642,12 +25907,13 @@ pub impl ToJson for BaseColorValueVariant4Color with fn to_json(self) {
 
 ///|
 /// `BaselineValueVariant0ItemVariant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum BaselineValueVariant0ItemVariant0Variant1Value {
   Top
   Middle
   Bottom
   Alphabetic
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BaselineValueVariant0ItemVariant0Variant1Value with fn deserialize(d) {
@@ -25719,10 +25985,11 @@ pub impl ToJson for BaselineValueVariant0ItemVariant0Variant1Value with fn to_js
 
 ///|
 /// `BaselineValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum BaselineValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BaselineValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -25766,12 +26033,13 @@ pub impl ToJson for BaselineValueVariant0ItemVariant0Variant3Range with fn to_js
 
 ///|
 /// `BaselineValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum BaselineValueVariant0ItemVariant0 {
   Variant0(scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(scale~ : Field?, test_~ : String?, value~ : BaselineValueVariant0ItemVariant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?, test_~ : String?)
   Variant3(range~ : BaselineValueVariant0ItemVariant0Variant3Range, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let baseline_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal", "test"])
@@ -25941,8 +26209,9 @@ pub impl ToJson for BaselineValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `BaselineValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum BaselineValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BaselineValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -25974,8 +26243,9 @@ pub impl ToJson for BaselineValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `BaselineValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum BaselineValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BaselineValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -26007,12 +26277,13 @@ pub impl ToJson for BaselineValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `BaselineValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum BaselineValueVariant0Item {
   Variant0(BaselineValueVariant0ItemVariant0)
   Variant1(BaselineValueVariant0ItemVariant1)
   Variant2(BaselineValueVariant0ItemVariant2)
   Variant3(offset~ : Json, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let baseline_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset", "test"])
@@ -26095,12 +26366,13 @@ pub impl ToJson for BaselineValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `BaselineValueVariant1Variant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum BaselineValueVariant1Variant0Variant1Value {
   Top
   Middle
   Bottom
   Alphabetic
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BaselineValueVariant1Variant0Variant1Value with fn deserialize(d) {
@@ -26172,10 +26444,11 @@ pub impl ToJson for BaselineValueVariant1Variant0Variant1Value with fn to_json(s
 
 ///|
 /// `BaselineValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum BaselineValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BaselineValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -26219,12 +26492,13 @@ pub impl ToJson for BaselineValueVariant1Variant0Variant3Range with fn to_json(s
 
 ///|
 /// `BaselineValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum BaselineValueVariant1Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : BaselineValueVariant1Variant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : BaselineValueVariant1Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let baseline_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -26370,8 +26644,9 @@ pub impl ToJson for BaselineValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `BaselineValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum BaselineValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BaselineValueVariant1Variant1 with fn deserialize(d) {
@@ -26403,8 +26678,9 @@ pub impl ToJson for BaselineValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `BaselineValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum BaselineValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BaselineValueVariant1Variant2 with fn deserialize(d) {
@@ -26436,12 +26712,13 @@ pub impl ToJson for BaselineValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `BaselineValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum BaselineValueVariant1 {
   Variant0(BaselineValueVariant1Variant0)
   Variant1(BaselineValueVariant1Variant1)
   Variant2(BaselineValueVariant1Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let baseline_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -26518,10 +26795,11 @@ pub impl ToJson for BaselineValueVariant1 with fn to_json(self) {
 
 ///|
 /// `BinTransformAnchor`
+#derive(Debug, Eq)
 pub(all) enum BinTransformAnchor {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformAnchor with fn deserialize(d) {
@@ -26565,10 +26843,11 @@ pub impl ToJson for BinTransformAnchor with fn to_json(self) {
 
 ///|
 /// `BinTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum BinTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformAsArrayItem with fn deserialize(d) {
@@ -26612,10 +26891,11 @@ pub impl ToJson for BinTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `BinTransformAs`
+#derive(Debug, Eq)
 pub(all) enum BinTransformAs {
   Array(FixedArray[BinTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformAs with fn deserialize(d) {
@@ -26667,10 +26947,11 @@ pub impl ToJson for BinTransformAs with fn to_json(self) {
 
 ///|
 /// `BinTransformBase`
+#derive(Debug, Eq)
 pub(all) enum BinTransformBase {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformBase with fn deserialize(d) {
@@ -26722,10 +27003,11 @@ pub impl ToJson for BinTransformBase with fn to_json(self) {
 
 ///|
 /// `BinTransformDivideArrayItem`
+#derive(Debug, Eq)
 pub(all) enum BinTransformDivideArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformDivideArrayItem with fn deserialize(d) {
@@ -26769,10 +27051,11 @@ pub impl ToJson for BinTransformDivideArrayItem with fn to_json(self) {
 
 ///|
 /// `BinTransformDivide`
+#derive(Debug, Eq)
 pub(all) enum BinTransformDivide {
   Array(Array[BinTransformDivideArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformDivide with fn deserialize(d) {
@@ -26824,10 +27107,11 @@ pub impl ToJson for BinTransformDivide with fn to_json(self) {
 
 ///|
 /// `BinTransformExtentArrayItem`
+#derive(Debug, Eq)
 pub(all) enum BinTransformExtentArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformExtentArrayItem with fn deserialize(d) {
@@ -26871,10 +27155,11 @@ pub impl ToJson for BinTransformExtentArrayItem with fn to_json(self) {
 
 ///|
 /// `BinTransformExtent`
+#derive(Debug, Eq)
 pub(all) enum BinTransformExtent {
   Array(FixedArray[BinTransformExtentArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformExtent with fn deserialize(d) {
@@ -26918,11 +27203,12 @@ pub impl ToJson for BinTransformExtent with fn to_json(self) {
 
 ///|
 /// `BinTransformField`
+#derive(Debug, Eq)
 pub(all) enum BinTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformField with fn deserialize(d) {
@@ -26975,10 +27261,11 @@ pub impl ToJson for BinTransformField with fn to_json(self) {
 
 ///|
 /// `BinTransformInterval`
+#derive(Debug, Eq)
 pub(all) enum BinTransformInterval {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformInterval with fn deserialize(d) {
@@ -27030,10 +27317,11 @@ pub impl ToJson for BinTransformInterval with fn to_json(self) {
 
 ///|
 /// `BinTransformMaxbins`
+#derive(Debug, Eq)
 pub(all) enum BinTransformMaxbins {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformMaxbins with fn deserialize(d) {
@@ -27085,10 +27373,11 @@ pub impl ToJson for BinTransformMaxbins with fn to_json(self) {
 
 ///|
 /// `BinTransformMinstep`
+#derive(Debug, Eq)
 pub(all) enum BinTransformMinstep {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformMinstep with fn deserialize(d) {
@@ -27132,10 +27421,11 @@ pub impl ToJson for BinTransformMinstep with fn to_json(self) {
 
 ///|
 /// `BinTransformName`
+#derive(Debug, Eq)
 pub(all) enum BinTransformName {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformName with fn deserialize(d) {
@@ -27179,10 +27469,11 @@ pub impl ToJson for BinTransformName with fn to_json(self) {
 
 ///|
 /// `BinTransformNice`
+#derive(Debug, Eq)
 pub(all) enum BinTransformNice {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformNice with fn deserialize(d) {
@@ -27234,10 +27525,11 @@ pub impl ToJson for BinTransformNice with fn to_json(self) {
 
 ///|
 /// `BinTransformSpan`
+#derive(Debug, Eq)
 pub(all) enum BinTransformSpan {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformSpan with fn deserialize(d) {
@@ -27281,10 +27573,11 @@ pub impl ToJson for BinTransformSpan with fn to_json(self) {
 
 ///|
 /// `BinTransformStep`
+#derive(Debug, Eq)
 pub(all) enum BinTransformStep {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformStep with fn deserialize(d) {
@@ -27328,10 +27621,11 @@ pub impl ToJson for BinTransformStep with fn to_json(self) {
 
 ///|
 /// `BinTransformStepsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum BinTransformStepsArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformStepsArrayItem with fn deserialize(d) {
@@ -27375,10 +27669,11 @@ pub impl ToJson for BinTransformStepsArrayItem with fn to_json(self) {
 
 ///|
 /// `BinTransformSteps`
+#derive(Debug, Eq)
 pub(all) enum BinTransformSteps {
   Array(Array[BinTransformStepsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformSteps with fn deserialize(d) {
@@ -27422,9 +27717,10 @@ pub impl ToJson for BinTransformSteps with fn to_json(self) {
 
 ///|
 /// `BinTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum BinTransformType {
   Bin
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BinTransformType with fn deserialize(d) {
@@ -27481,9 +27777,10 @@ pub impl ToJson for BinTransformType with fn to_json(self) {
 
 ///|
 /// `BindVariant0Input`
+#derive(Debug, Eq, Hash)
 pub(all) enum BindVariant0Input {
   Checkbox
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BindVariant0Input with fn deserialize(d) {
@@ -27540,10 +27837,11 @@ pub impl ToJson for BindVariant0Input with fn to_json(self) {
 
 ///|
 /// `BindVariant1Input`
+#derive(Debug, Eq, Hash)
 pub(all) enum BindVariant1Input {
   Radio
   Select
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BindVariant1Input with fn deserialize(d) {
@@ -27605,9 +27903,10 @@ pub impl ToJson for BindVariant1Input with fn to_json(self) {
 
 ///|
 /// `BindVariant2Input`
+#derive(Debug, Eq, Hash)
 pub(all) enum BindVariant2Input {
   Range
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BindVariant2Input with fn deserialize(d) {
@@ -27664,7 +27963,8 @@ pub impl ToJson for BindVariant2Input with fn to_json(self) {
 
 ///|
 /// `BindVariant3Input`
-pub(all) struct BindVariant3Input(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct BindVariant3Input(String)
 
 ///|
 let bind_variant3_input_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
@@ -27709,6 +28009,7 @@ pub impl ToJson for BindVariant3Input with fn to_json(self) {
 
 ///|
 /// `BlendValueVariant0ItemVariant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum BlendValueVariant0ItemVariant0Variant1Value {
   Multiply
   Screen
@@ -27725,7 +28026,7 @@ pub(all) enum BlendValueVariant0ItemVariant0Variant1Value {
   Saturation
   Color
   Luminosity
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BlendValueVariant0ItemVariant0Variant1Value with fn deserialize(d) {
@@ -27852,10 +28153,11 @@ pub impl ToJson for BlendValueVariant0ItemVariant0Variant1Value with fn to_json(
 
 ///|
 /// `BlendValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum BlendValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BlendValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -27899,12 +28201,13 @@ pub impl ToJson for BlendValueVariant0ItemVariant0Variant3Range with fn to_json(
 
 ///|
 /// `BlendValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum BlendValueVariant0ItemVariant0 {
   Variant0(scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(scale~ : Field?, test_~ : String?, value~ : BlendValueVariant0ItemVariant0Variant1Value?)
   Variant2(field~ : Field, scale~ : Field?, test_~ : String?)
   Variant3(range~ : BlendValueVariant0ItemVariant0Variant3Range, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let blend_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal", "test"])
@@ -28074,8 +28377,9 @@ pub impl ToJson for BlendValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `BlendValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum BlendValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BlendValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -28107,8 +28411,9 @@ pub impl ToJson for BlendValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `BlendValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum BlendValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BlendValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -28140,12 +28445,13 @@ pub impl ToJson for BlendValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `BlendValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum BlendValueVariant0Item {
   Variant0(BlendValueVariant0ItemVariant0)
   Variant1(BlendValueVariant0ItemVariant1)
   Variant2(BlendValueVariant0ItemVariant2)
   Variant3(offset~ : Json, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let blend_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset", "test"])
@@ -28228,6 +28534,7 @@ pub impl ToJson for BlendValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `BlendValueVariant1Variant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum BlendValueVariant1Variant0Variant1Value {
   Multiply
   Screen
@@ -28244,7 +28551,7 @@ pub(all) enum BlendValueVariant1Variant0Variant1Value {
   Saturation
   Color
   Luminosity
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BlendValueVariant1Variant0Variant1Value with fn deserialize(d) {
@@ -28371,10 +28678,11 @@ pub impl ToJson for BlendValueVariant1Variant0Variant1Value with fn to_json(self
 
 ///|
 /// `BlendValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum BlendValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BlendValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -28418,12 +28726,13 @@ pub impl ToJson for BlendValueVariant1Variant0Variant3Range with fn to_json(self
 
 ///|
 /// `BlendValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum BlendValueVariant1Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : BlendValueVariant1Variant0Variant1Value?)
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : BlendValueVariant1Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let blend_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -28569,8 +28878,9 @@ pub impl ToJson for BlendValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `BlendValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum BlendValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BlendValueVariant1Variant1 with fn deserialize(d) {
@@ -28602,8 +28912,9 @@ pub impl ToJson for BlendValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `BlendValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum BlendValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BlendValueVariant1Variant2 with fn deserialize(d) {
@@ -28635,12 +28946,13 @@ pub impl ToJson for BlendValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `BlendValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum BlendValueVariant1 {
   Variant0(BlendValueVariant1Variant0)
   Variant1(BlendValueVariant1Variant1)
   Variant2(BlendValueVariant1Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let blend_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -28717,10 +29029,11 @@ pub impl ToJson for BlendValueVariant1 with fn to_json(self) {
 
 ///|
 /// `BooleanValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum BooleanValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BooleanValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -28764,12 +29077,13 @@ pub impl ToJson for BooleanValueVariant0ItemVariant0Variant3Range with fn to_jso
 
 ///|
 /// `BooleanValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum BooleanValueVariant0ItemVariant0 {
   Variant0(scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(scale~ : Field?, test_~ : String?, value~ : Bool)
   Variant2(field~ : Field, scale~ : Field?, test_~ : String?)
   Variant3(range~ : BooleanValueVariant0ItemVariant0Variant3Range, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let boolean_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal", "test"])
@@ -28939,8 +29253,9 @@ pub impl ToJson for BooleanValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `BooleanValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum BooleanValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BooleanValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -28972,8 +29287,9 @@ pub impl ToJson for BooleanValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `BooleanValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum BooleanValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BooleanValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -29005,12 +29321,13 @@ pub impl ToJson for BooleanValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `BooleanValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum BooleanValueVariant0Item {
   Variant0(BooleanValueVariant0ItemVariant0)
   Variant1(BooleanValueVariant0ItemVariant1)
   Variant2(BooleanValueVariant0ItemVariant2)
   Variant3(offset~ : Json, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let boolean_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset", "test"])
@@ -29093,10 +29410,11 @@ pub impl ToJson for BooleanValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `BooleanValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum BooleanValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BooleanValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -29140,12 +29458,13 @@ pub impl ToJson for BooleanValueVariant1Variant0Variant3Range with fn to_json(se
 
 ///|
 /// `BooleanValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum BooleanValueVariant1Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : Bool)
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : BooleanValueVariant1Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let boolean_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -29291,8 +29610,9 @@ pub impl ToJson for BooleanValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `BooleanValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum BooleanValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BooleanValueVariant1Variant1 with fn deserialize(d) {
@@ -29324,8 +29644,9 @@ pub impl ToJson for BooleanValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `BooleanValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum BooleanValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BooleanValueVariant1Variant2 with fn deserialize(d) {
@@ -29357,12 +29678,13 @@ pub impl ToJson for BooleanValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `BooleanValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum BooleanValueVariant1 {
   Variant0(BooleanValueVariant1Variant0)
   Variant1(BooleanValueVariant1Variant1)
   Variant2(BooleanValueVariant1Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let boolean_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -29439,9 +29761,10 @@ pub impl ToJson for BooleanValueVariant1 with fn to_json(self) {
 
 ///|
 /// `CollectTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum CollectTransformType {
   Collect
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CollectTransformType with fn deserialize(d) {
@@ -29498,10 +29821,11 @@ pub impl ToJson for CollectTransformType with fn to_json(self) {
 
 ///|
 /// `CompareVariant0Field`
+#derive(Debug, Eq)
 pub(all) enum CompareVariant0Field {
   ScaleField(ScaleField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CompareVariant0Field with fn deserialize(d) {
@@ -29545,10 +29869,11 @@ pub impl ToJson for CompareVariant0Field with fn to_json(self) {
 
 ///|
 /// `CompareVariant1FieldItem`
+#derive(Debug, Eq)
 pub(all) enum CompareVariant1FieldItem {
   ScaleField(ScaleField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CompareVariant1FieldItem with fn deserialize(d) {
@@ -29592,10 +29917,11 @@ pub impl ToJson for CompareVariant1FieldItem with fn to_json(self) {
 
 ///|
 /// `ContourTransformBandwidth`
+#derive(Debug, Eq)
 pub(all) enum ContourTransformBandwidth {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformBandwidth with fn deserialize(d) {
@@ -29639,10 +29965,11 @@ pub impl ToJson for ContourTransformBandwidth with fn to_json(self) {
 
 ///|
 /// `ContourTransformCellSize`
+#derive(Debug, Eq)
 pub(all) enum ContourTransformCellSize {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformCellSize with fn deserialize(d) {
@@ -29686,10 +30013,11 @@ pub impl ToJson for ContourTransformCellSize with fn to_json(self) {
 
 ///|
 /// `ContourTransformCount`
+#derive(Debug, Eq)
 pub(all) enum ContourTransformCount {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformCount with fn deserialize(d) {
@@ -29733,10 +30061,11 @@ pub impl ToJson for ContourTransformCount with fn to_json(self) {
 
 ///|
 /// `ContourTransformNice`
+#derive(Debug, Eq)
 pub(all) enum ContourTransformNice {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformNice with fn deserialize(d) {
@@ -29780,10 +30109,11 @@ pub impl ToJson for ContourTransformNice with fn to_json(self) {
 
 ///|
 /// `ContourTransformSizeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ContourTransformSizeArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformSizeArrayItem with fn deserialize(d) {
@@ -29827,10 +30157,11 @@ pub impl ToJson for ContourTransformSizeArrayItem with fn to_json(self) {
 
 ///|
 /// `ContourTransformSize`
+#derive(Debug, Eq)
 pub(all) enum ContourTransformSize {
   Array(FixedArray[ContourTransformSizeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformSize with fn deserialize(d) {
@@ -29874,10 +30205,11 @@ pub impl ToJson for ContourTransformSize with fn to_json(self) {
 
 ///|
 /// `ContourTransformSmooth`
+#derive(Debug, Eq)
 pub(all) enum ContourTransformSmooth {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformSmooth with fn deserialize(d) {
@@ -29929,10 +30261,11 @@ pub impl ToJson for ContourTransformSmooth with fn to_json(self) {
 
 ///|
 /// `ContourTransformThresholdsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ContourTransformThresholdsArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformThresholdsArrayItem with fn deserialize(d) {
@@ -29976,10 +30309,11 @@ pub impl ToJson for ContourTransformThresholdsArrayItem with fn to_json(self) {
 
 ///|
 /// `ContourTransformThresholds`
+#derive(Debug, Eq)
 pub(all) enum ContourTransformThresholds {
   Array(Array[ContourTransformThresholdsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformThresholds with fn deserialize(d) {
@@ -30023,9 +30357,10 @@ pub impl ToJson for ContourTransformThresholds with fn to_json(self) {
 
 ///|
 /// `ContourTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum ContourTransformType {
   Contour
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformType with fn deserialize(d) {
@@ -30082,10 +30417,11 @@ pub impl ToJson for ContourTransformType with fn to_json(self) {
 
 ///|
 /// `ContourTransformValuesArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ContourTransformValuesArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformValuesArrayItem with fn deserialize(d) {
@@ -30129,10 +30465,11 @@ pub impl ToJson for ContourTransformValuesArrayItem with fn to_json(self) {
 
 ///|
 /// `ContourTransformValues`
+#derive(Debug, Eq)
 pub(all) enum ContourTransformValues {
   Array(Array[ContourTransformValuesArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformValues with fn deserialize(d) {
@@ -30176,11 +30513,12 @@ pub impl ToJson for ContourTransformValues with fn to_json(self) {
 
 ///|
 /// `ContourTransformWeight`
+#derive(Debug, Eq)
 pub(all) enum ContourTransformWeight {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformWeight with fn deserialize(d) {
@@ -30233,11 +30571,12 @@ pub impl ToJson for ContourTransformWeight with fn to_json(self) {
 
 ///|
 /// `ContourTransformX`
+#derive(Debug, Eq)
 pub(all) enum ContourTransformX {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformX with fn deserialize(d) {
@@ -30290,11 +30629,12 @@ pub impl ToJson for ContourTransformX with fn to_json(self) {
 
 ///|
 /// `ContourTransformY`
+#derive(Debug, Eq)
 pub(all) enum ContourTransformY {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContourTransformY with fn deserialize(d) {
@@ -30347,10 +30687,11 @@ pub impl ToJson for ContourTransformY with fn to_json(self) {
 
 ///|
 /// `CountpatternTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum CountpatternTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CountpatternTransformAsArrayItem with fn deserialize(d) {
@@ -30394,10 +30735,11 @@ pub impl ToJson for CountpatternTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `CountpatternTransformAs`
+#derive(Debug, Eq)
 pub(all) enum CountpatternTransformAs {
   Array(FixedArray[CountpatternTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CountpatternTransformAs with fn deserialize(d) {
@@ -30449,11 +30791,12 @@ pub impl ToJson for CountpatternTransformAs with fn to_json(self) {
 
 ///|
 /// `CountpatternTransformCaseVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum CountpatternTransformCaseVariant0 {
   Upper
   Lower
   Mixed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CountpatternTransformCaseVariant0 with fn deserialize(d) {
@@ -30520,10 +30863,11 @@ pub impl ToJson for CountpatternTransformCaseVariant0 with fn to_json(self) {
 
 ///|
 /// `CountpatternTransformCase`
+#derive(Debug, Eq)
 pub(all) enum CountpatternTransformCase {
   Variant0(CountpatternTransformCaseVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CountpatternTransformCase with fn deserialize(d) {
@@ -30575,11 +30919,12 @@ pub impl ToJson for CountpatternTransformCase with fn to_json(self) {
 
 ///|
 /// `CountpatternTransformField`
+#derive(Debug, Eq)
 pub(all) enum CountpatternTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CountpatternTransformField with fn deserialize(d) {
@@ -30632,10 +30977,11 @@ pub impl ToJson for CountpatternTransformField with fn to_json(self) {
 
 ///|
 /// `CountpatternTransformPattern`
+#derive(Debug, Eq)
 pub(all) enum CountpatternTransformPattern {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CountpatternTransformPattern with fn deserialize(d) {
@@ -30687,10 +31033,11 @@ pub impl ToJson for CountpatternTransformPattern with fn to_json(self) {
 
 ///|
 /// `CountpatternTransformStopwords`
+#derive(Debug, Eq)
 pub(all) enum CountpatternTransformStopwords {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CountpatternTransformStopwords with fn deserialize(d) {
@@ -30734,9 +31081,10 @@ pub impl ToJson for CountpatternTransformStopwords with fn to_json(self) {
 
 ///|
 /// `CountpatternTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum CountpatternTransformType {
   Countpattern
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CountpatternTransformType with fn deserialize(d) {
@@ -30793,10 +31141,11 @@ pub impl ToJson for CountpatternTransformType with fn to_json(self) {
 
 ///|
 /// `CrossTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum CrossTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CrossTransformAsArrayItem with fn deserialize(d) {
@@ -30840,10 +31189,11 @@ pub impl ToJson for CrossTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `CrossTransformAs`
+#derive(Debug, Eq)
 pub(all) enum CrossTransformAs {
   Array(FixedArray[CrossTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CrossTransformAs with fn deserialize(d) {
@@ -30895,9 +31245,10 @@ pub impl ToJson for CrossTransformAs with fn to_json(self) {
 
 ///|
 /// `CrossTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum CrossTransformType {
   Cross
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CrossTransformType with fn deserialize(d) {
@@ -30954,11 +31305,12 @@ pub impl ToJson for CrossTransformType with fn to_json(self) {
 
 ///|
 /// `CrossfilterTransformFieldsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum CrossfilterTransformFieldsArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CrossfilterTransformFieldsArrayItem with fn deserialize(d) {
@@ -31011,10 +31363,11 @@ pub impl ToJson for CrossfilterTransformFieldsArrayItem with fn to_json(self) {
 
 ///|
 /// `CrossfilterTransformFields`
+#derive(Debug, Eq)
 pub(all) enum CrossfilterTransformFields {
   Array(Array[CrossfilterTransformFieldsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CrossfilterTransformFields with fn deserialize(d) {
@@ -31058,10 +31411,11 @@ pub impl ToJson for CrossfilterTransformFields with fn to_json(self) {
 
 ///|
 /// `CrossfilterTransformQuery`
+#derive(Debug, Eq)
 pub(all) enum CrossfilterTransformQuery {
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CrossfilterTransformQuery with fn deserialize(d) {
@@ -31105,9 +31459,10 @@ pub impl ToJson for CrossfilterTransformQuery with fn to_json(self) {
 
 ///|
 /// `CrossfilterTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum CrossfilterTransformType {
   Crossfilter
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CrossfilterTransformType with fn deserialize(d) {
@@ -31164,10 +31519,11 @@ pub impl ToJson for CrossfilterTransformType with fn to_json(self) {
 
 ///|
 /// `DataVariant1Source`
+#derive(Debug, Eq)
 pub(all) enum DataVariant1Source {
   String(String)
   Array(Array[String])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant1Source with fn deserialize(d) {
@@ -31211,9 +31567,10 @@ pub impl ToJson for DataVariant1Source with fn to_json(self) {
 
 ///|
 /// `DataVariant2FormatVariant0Subtype0ParseVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant2FormatVariant0Subtype0ParseVariant0 {
   Auto
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype0ParseVariant0 with fn deserialize(d) {
@@ -31270,12 +31627,13 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype0ParseVariant0 with fn to_j
 
 ///|
 /// `DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant0 {
   Boolean
   Number
   Date
   String
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant0 with fn deserialize(d) {
@@ -31347,7 +31705,8 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant0
 
 ///|
 /// `DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant1`
-pub(all) struct DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant1(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant1(String)
 
 ///|
 let data_variant2_format_variant0_subtype0_parse_variant1_value_variant1_pattern : @typify_rt.Regex = @typify_rt.regex("^(date|utc):.*$")
@@ -31387,10 +31746,11 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant1
 
 ///|
 /// `DataVariant2FormatVariant0Subtype0ParseVariant1Value`
+#derive(Debug, Eq)
 pub(all) enum DataVariant2FormatVariant0Subtype0ParseVariant1Value {
   Variant0(DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant0)
   Variant1(DataVariant2FormatVariant0Subtype0ParseVariant1ValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype0ParseVariant1Value with fn deserialize(d) {
@@ -31434,11 +31794,12 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype0ParseVariant1Value with fn
 
 ///|
 /// `DataVariant2FormatVariant0Subtype0Parse`
+#derive(Debug, Eq)
 pub(all) enum DataVariant2FormatVariant0Subtype0Parse {
   Variant0(DataVariant2FormatVariant0Subtype0ParseVariant0)
   Variant1(Map[String, DataVariant2FormatVariant0Subtype0ParseVariant1Value])
   Variant2(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype0Parse with fn deserialize(d) {
@@ -31491,10 +31852,11 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype0Parse with fn to_json(self
 
 ///|
 /// `DataVariant2FormatVariant0Subtype0`
+#derive(Debug, Eq)
 pub(all) struct DataVariant2FormatVariant0Subtype0 {
   parse : DataVariant2FormatVariant0Subtype0Parse?
   type_ : StringOrSignal?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DataVariant2FormatVariant0Subtype0` (fields with defaults are optional).
@@ -31546,9 +31908,10 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype0 with fn to_json(self) {
 
 ///|
 /// `DataVariant2FormatVariant0Subtype1ParseVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant2FormatVariant0Subtype1ParseVariant0 {
   Auto
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype1ParseVariant0 with fn deserialize(d) {
@@ -31605,12 +31968,13 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype1ParseVariant0 with fn to_j
 
 ///|
 /// `DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant0 {
   Boolean
   Number
   Date
   String
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant0 with fn deserialize(d) {
@@ -31682,7 +32046,8 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant0
 
 ///|
 /// `DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant1`
-pub(all) struct DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant1(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant1(String)
 
 ///|
 let data_variant2_format_variant0_subtype1_parse_variant1_value_variant1_pattern : @typify_rt.Regex = @typify_rt.regex("^(date|utc):.*$")
@@ -31722,10 +32087,11 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant1
 
 ///|
 /// `DataVariant2FormatVariant0Subtype1ParseVariant1Value`
+#derive(Debug, Eq)
 pub(all) enum DataVariant2FormatVariant0Subtype1ParseVariant1Value {
   Variant0(DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant0)
   Variant1(DataVariant2FormatVariant0Subtype1ParseVariant1ValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype1ParseVariant1Value with fn deserialize(d) {
@@ -31769,11 +32135,12 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype1ParseVariant1Value with fn
 
 ///|
 /// `DataVariant2FormatVariant0Subtype1Parse`
+#derive(Debug, Eq)
 pub(all) enum DataVariant2FormatVariant0Subtype1Parse {
   Variant0(DataVariant2FormatVariant0Subtype1ParseVariant0)
   Variant1(Map[String, DataVariant2FormatVariant0Subtype1ParseVariant1Value])
   Variant2(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype1Parse with fn deserialize(d) {
@@ -31826,9 +32193,10 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype1Parse with fn to_json(self
 
 ///|
 /// `DataVariant2FormatVariant0Subtype1Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant2FormatVariant0Subtype1Type {
   Json
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype1Type with fn deserialize(d) {
@@ -31885,12 +32253,13 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype1Type with fn to_json(self)
 
 ///|
 /// `DataVariant2FormatVariant0Subtype1`
+#derive(Debug, Eq)
 pub(all) struct DataVariant2FormatVariant0Subtype1 {
   copy : BooleanOrSignal?
   parse : DataVariant2FormatVariant0Subtype1Parse?
   property : StringOrSignal?
   type_ : DataVariant2FormatVariant0Subtype1Type?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DataVariant2FormatVariant0Subtype1` (fields with defaults are optional).
@@ -31956,9 +32325,10 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype1 with fn to_json(self) {
 
 ///|
 /// `DataVariant2FormatVariant0Subtype2ParseVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant2FormatVariant0Subtype2ParseVariant0 {
   Auto
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype2ParseVariant0 with fn deserialize(d) {
@@ -32015,12 +32385,13 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype2ParseVariant0 with fn to_j
 
 ///|
 /// `DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant0 {
   Boolean
   Number
   Date
   String
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant0 with fn deserialize(d) {
@@ -32092,7 +32463,8 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant0
 
 ///|
 /// `DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant1`
-pub(all) struct DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant1(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant1(String)
 
 ///|
 let data_variant2_format_variant0_subtype2_parse_variant1_value_variant1_pattern : @typify_rt.Regex = @typify_rt.regex("^(date|utc):.*$")
@@ -32132,10 +32504,11 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant1
 
 ///|
 /// `DataVariant2FormatVariant0Subtype2ParseVariant1Value`
+#derive(Debug, Eq)
 pub(all) enum DataVariant2FormatVariant0Subtype2ParseVariant1Value {
   Variant0(DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant0)
   Variant1(DataVariant2FormatVariant0Subtype2ParseVariant1ValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype2ParseVariant1Value with fn deserialize(d) {
@@ -32179,11 +32552,12 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype2ParseVariant1Value with fn
 
 ///|
 /// `DataVariant2FormatVariant0Subtype2Parse`
+#derive(Debug, Eq)
 pub(all) enum DataVariant2FormatVariant0Subtype2Parse {
   Variant0(DataVariant2FormatVariant0Subtype2ParseVariant0)
   Variant1(Map[String, DataVariant2FormatVariant0Subtype2ParseVariant1Value])
   Variant2(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype2Parse with fn deserialize(d) {
@@ -32236,10 +32610,11 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype2Parse with fn to_json(self
 
 ///|
 /// `DataVariant2FormatVariant0Subtype2Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant2FormatVariant0Subtype2Type {
   Csv
   Tsv
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype2Type with fn deserialize(d) {
@@ -32301,11 +32676,12 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype2Type with fn to_json(self)
 
 ///|
 /// `DataVariant2FormatVariant0Subtype2`
+#derive(Debug, Eq)
 pub(all) struct DataVariant2FormatVariant0Subtype2 {
   header : Array[String]
   parse : DataVariant2FormatVariant0Subtype2Parse?
   type_ : DataVariant2FormatVariant0Subtype2Type
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DataVariant2FormatVariant0Subtype2` (fields with defaults are optional).
@@ -32362,9 +32738,10 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype2 with fn to_json(self) {
 
 ///|
 /// `DataVariant2FormatVariant0Subtype3ParseVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant2FormatVariant0Subtype3ParseVariant0 {
   Auto
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype3ParseVariant0 with fn deserialize(d) {
@@ -32421,12 +32798,13 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype3ParseVariant0 with fn to_j
 
 ///|
 /// `DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant0 {
   Boolean
   Number
   Date
   String
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant0 with fn deserialize(d) {
@@ -32498,7 +32876,8 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant0
 
 ///|
 /// `DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant1`
-pub(all) struct DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant1(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant1(String)
 
 ///|
 let data_variant2_format_variant0_subtype3_parse_variant1_value_variant1_pattern : @typify_rt.Regex = @typify_rt.regex("^(date|utc):.*$")
@@ -32538,10 +32917,11 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant1
 
 ///|
 /// `DataVariant2FormatVariant0Subtype3ParseVariant1Value`
+#derive(Debug, Eq)
 pub(all) enum DataVariant2FormatVariant0Subtype3ParseVariant1Value {
   Variant0(DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant0)
   Variant1(DataVariant2FormatVariant0Subtype3ParseVariant1ValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype3ParseVariant1Value with fn deserialize(d) {
@@ -32585,11 +32965,12 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype3ParseVariant1Value with fn
 
 ///|
 /// `DataVariant2FormatVariant0Subtype3Parse`
+#derive(Debug, Eq)
 pub(all) enum DataVariant2FormatVariant0Subtype3Parse {
   Variant0(DataVariant2FormatVariant0Subtype3ParseVariant0)
   Variant1(Map[String, DataVariant2FormatVariant0Subtype3ParseVariant1Value])
   Variant2(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype3Parse with fn deserialize(d) {
@@ -32642,9 +33023,10 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype3Parse with fn to_json(self
 
 ///|
 /// `DataVariant2FormatVariant0Subtype3Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant2FormatVariant0Subtype3Type {
   Dsv
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype3Type with fn deserialize(d) {
@@ -32701,12 +33083,13 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype3Type with fn to_json(self)
 
 ///|
 /// `DataVariant2FormatVariant0Subtype3`
+#derive(Debug, Eq)
 pub(all) struct DataVariant2FormatVariant0Subtype3 {
   delimiter : String
   header : Array[String]
   parse : DataVariant2FormatVariant0Subtype3Parse?
   type_ : DataVariant2FormatVariant0Subtype3Type
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DataVariant2FormatVariant0Subtype3` (fields with defaults are optional).
@@ -32768,9 +33151,10 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype3 with fn to_json(self) {
 
 ///|
 /// `DataVariant2FormatVariant0Subtype4Variant0Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant2FormatVariant0Subtype4Variant0Type {
   Topojson
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype4Variant0Type with fn deserialize(d) {
@@ -32827,10 +33211,11 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype4Variant0Type with fn to_js
 
 ///|
 /// `DataVariant2FormatVariant0Subtype4Variant1Filter`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant2FormatVariant0Subtype4Variant1Filter {
   Interior
   Exterior
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype4Variant1Filter with fn deserialize(d) {
@@ -32892,9 +33277,10 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype4Variant1Filter with fn to_
 
 ///|
 /// `DataVariant2FormatVariant0Subtype4Variant1Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant2FormatVariant0Subtype4Variant1Type {
   Topojson
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant2FormatVariant0Subtype4Variant1Type with fn deserialize(d) {
@@ -32951,10 +33337,11 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype4Variant1Type with fn to_js
 
 ///|
 /// `DataVariant2FormatVariant0Subtype4`
+#derive(Debug, Eq)
 pub(all) enum DataVariant2FormatVariant0Subtype4 {
   Variant0(feature~ : StringOrSignal, property~ : StringOrSignal?, type_~ : DataVariant2FormatVariant0Subtype4Variant0Type)
   Variant1(filter~ : DataVariant2FormatVariant0Subtype4Variant1Filter?, mesh~ : StringOrSignal, property~ : StringOrSignal?, type_~ : DataVariant2FormatVariant0Subtype4Variant1Type)
-} derive(Debug, Eq)
+}
 
 ///|
 let data_variant2_format_variant0_subtype4_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["feature", "property", "type"])
@@ -33054,10 +33441,11 @@ pub impl ToJson for DataVariant2FormatVariant0Subtype4 with fn to_json(self) {
 
 ///|
 /// `DataVariant2Format`
+#derive(Debug, Eq)
 pub(all) enum DataVariant2Format {
   Variant0(subtype_0~ : DataVariant2FormatVariant0Subtype0?, subtype_1~ : DataVariant2FormatVariant0Subtype1?, subtype_2~ : DataVariant2FormatVariant0Subtype2?, subtype_3~ : DataVariant2FormatVariant0Subtype3?, subtype_4~ : DataVariant2FormatVariant0Subtype4?)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let data_variant2_format_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new([])
@@ -33120,9 +33508,10 @@ pub impl ToJson for DataVariant2Format with fn to_json(self) {
 
 ///|
 /// `DataVariant3FormatVariant0Subtype0ParseVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant3FormatVariant0Subtype0ParseVariant0 {
   Auto
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype0ParseVariant0 with fn deserialize(d) {
@@ -33179,12 +33568,13 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype0ParseVariant0 with fn to_j
 
 ///|
 /// `DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant0 {
   Boolean
   Number
   Date
   String
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant0 with fn deserialize(d) {
@@ -33256,7 +33646,8 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant0
 
 ///|
 /// `DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant1`
-pub(all) struct DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant1(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant1(String)
 
 ///|
 let data_variant3_format_variant0_subtype0_parse_variant1_value_variant1_pattern : @typify_rt.Regex = @typify_rt.regex("^(date|utc):.*$")
@@ -33296,10 +33687,11 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant1
 
 ///|
 /// `DataVariant3FormatVariant0Subtype0ParseVariant1Value`
+#derive(Debug, Eq)
 pub(all) enum DataVariant3FormatVariant0Subtype0ParseVariant1Value {
   Variant0(DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant0)
   Variant1(DataVariant3FormatVariant0Subtype0ParseVariant1ValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype0ParseVariant1Value with fn deserialize(d) {
@@ -33343,11 +33735,12 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype0ParseVariant1Value with fn
 
 ///|
 /// `DataVariant3FormatVariant0Subtype0Parse`
+#derive(Debug, Eq)
 pub(all) enum DataVariant3FormatVariant0Subtype0Parse {
   Variant0(DataVariant3FormatVariant0Subtype0ParseVariant0)
   Variant1(Map[String, DataVariant3FormatVariant0Subtype0ParseVariant1Value])
   Variant2(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype0Parse with fn deserialize(d) {
@@ -33400,10 +33793,11 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype0Parse with fn to_json(self
 
 ///|
 /// `DataVariant3FormatVariant0Subtype0`
+#derive(Debug, Eq)
 pub(all) struct DataVariant3FormatVariant0Subtype0 {
   parse : DataVariant3FormatVariant0Subtype0Parse?
   type_ : StringOrSignal?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DataVariant3FormatVariant0Subtype0` (fields with defaults are optional).
@@ -33455,9 +33849,10 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype0 with fn to_json(self) {
 
 ///|
 /// `DataVariant3FormatVariant0Subtype1ParseVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant3FormatVariant0Subtype1ParseVariant0 {
   Auto
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype1ParseVariant0 with fn deserialize(d) {
@@ -33514,12 +33909,13 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype1ParseVariant0 with fn to_j
 
 ///|
 /// `DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant0 {
   Boolean
   Number
   Date
   String
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant0 with fn deserialize(d) {
@@ -33591,7 +33987,8 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant0
 
 ///|
 /// `DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant1`
-pub(all) struct DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant1(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant1(String)
 
 ///|
 let data_variant3_format_variant0_subtype1_parse_variant1_value_variant1_pattern : @typify_rt.Regex = @typify_rt.regex("^(date|utc):.*$")
@@ -33631,10 +34028,11 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant1
 
 ///|
 /// `DataVariant3FormatVariant0Subtype1ParseVariant1Value`
+#derive(Debug, Eq)
 pub(all) enum DataVariant3FormatVariant0Subtype1ParseVariant1Value {
   Variant0(DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant0)
   Variant1(DataVariant3FormatVariant0Subtype1ParseVariant1ValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype1ParseVariant1Value with fn deserialize(d) {
@@ -33678,11 +34076,12 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype1ParseVariant1Value with fn
 
 ///|
 /// `DataVariant3FormatVariant0Subtype1Parse`
+#derive(Debug, Eq)
 pub(all) enum DataVariant3FormatVariant0Subtype1Parse {
   Variant0(DataVariant3FormatVariant0Subtype1ParseVariant0)
   Variant1(Map[String, DataVariant3FormatVariant0Subtype1ParseVariant1Value])
   Variant2(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype1Parse with fn deserialize(d) {
@@ -33735,9 +34134,10 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype1Parse with fn to_json(self
 
 ///|
 /// `DataVariant3FormatVariant0Subtype1Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant3FormatVariant0Subtype1Type {
   Json
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype1Type with fn deserialize(d) {
@@ -33794,12 +34194,13 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype1Type with fn to_json(self)
 
 ///|
 /// `DataVariant3FormatVariant0Subtype1`
+#derive(Debug, Eq)
 pub(all) struct DataVariant3FormatVariant0Subtype1 {
   copy : BooleanOrSignal?
   parse : DataVariant3FormatVariant0Subtype1Parse?
   property : StringOrSignal?
   type_ : DataVariant3FormatVariant0Subtype1Type?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DataVariant3FormatVariant0Subtype1` (fields with defaults are optional).
@@ -33865,9 +34266,10 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype1 with fn to_json(self) {
 
 ///|
 /// `DataVariant3FormatVariant0Subtype2ParseVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant3FormatVariant0Subtype2ParseVariant0 {
   Auto
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype2ParseVariant0 with fn deserialize(d) {
@@ -33924,12 +34326,13 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype2ParseVariant0 with fn to_j
 
 ///|
 /// `DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant0 {
   Boolean
   Number
   Date
   String
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant0 with fn deserialize(d) {
@@ -34001,7 +34404,8 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant0
 
 ///|
 /// `DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant1`
-pub(all) struct DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant1(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant1(String)
 
 ///|
 let data_variant3_format_variant0_subtype2_parse_variant1_value_variant1_pattern : @typify_rt.Regex = @typify_rt.regex("^(date|utc):.*$")
@@ -34041,10 +34445,11 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant1
 
 ///|
 /// `DataVariant3FormatVariant0Subtype2ParseVariant1Value`
+#derive(Debug, Eq)
 pub(all) enum DataVariant3FormatVariant0Subtype2ParseVariant1Value {
   Variant0(DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant0)
   Variant1(DataVariant3FormatVariant0Subtype2ParseVariant1ValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype2ParseVariant1Value with fn deserialize(d) {
@@ -34088,11 +34493,12 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype2ParseVariant1Value with fn
 
 ///|
 /// `DataVariant3FormatVariant0Subtype2Parse`
+#derive(Debug, Eq)
 pub(all) enum DataVariant3FormatVariant0Subtype2Parse {
   Variant0(DataVariant3FormatVariant0Subtype2ParseVariant0)
   Variant1(Map[String, DataVariant3FormatVariant0Subtype2ParseVariant1Value])
   Variant2(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype2Parse with fn deserialize(d) {
@@ -34145,10 +34551,11 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype2Parse with fn to_json(self
 
 ///|
 /// `DataVariant3FormatVariant0Subtype2Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant3FormatVariant0Subtype2Type {
   Csv
   Tsv
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype2Type with fn deserialize(d) {
@@ -34210,11 +34617,12 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype2Type with fn to_json(self)
 
 ///|
 /// `DataVariant3FormatVariant0Subtype2`
+#derive(Debug, Eq)
 pub(all) struct DataVariant3FormatVariant0Subtype2 {
   header : Array[String]
   parse : DataVariant3FormatVariant0Subtype2Parse?
   type_ : DataVariant3FormatVariant0Subtype2Type
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DataVariant3FormatVariant0Subtype2` (fields with defaults are optional).
@@ -34271,9 +34679,10 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype2 with fn to_json(self) {
 
 ///|
 /// `DataVariant3FormatVariant0Subtype3ParseVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant3FormatVariant0Subtype3ParseVariant0 {
   Auto
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype3ParseVariant0 with fn deserialize(d) {
@@ -34330,12 +34739,13 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype3ParseVariant0 with fn to_j
 
 ///|
 /// `DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant0 {
   Boolean
   Number
   Date
   String
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant0 with fn deserialize(d) {
@@ -34407,7 +34817,8 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant0
 
 ///|
 /// `DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant1`
-pub(all) struct DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant1(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant1(String)
 
 ///|
 let data_variant3_format_variant0_subtype3_parse_variant1_value_variant1_pattern : @typify_rt.Regex = @typify_rt.regex("^(date|utc):.*$")
@@ -34447,10 +34858,11 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant1
 
 ///|
 /// `DataVariant3FormatVariant0Subtype3ParseVariant1Value`
+#derive(Debug, Eq)
 pub(all) enum DataVariant3FormatVariant0Subtype3ParseVariant1Value {
   Variant0(DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant0)
   Variant1(DataVariant3FormatVariant0Subtype3ParseVariant1ValueVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype3ParseVariant1Value with fn deserialize(d) {
@@ -34494,11 +34906,12 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype3ParseVariant1Value with fn
 
 ///|
 /// `DataVariant3FormatVariant0Subtype3Parse`
+#derive(Debug, Eq)
 pub(all) enum DataVariant3FormatVariant0Subtype3Parse {
   Variant0(DataVariant3FormatVariant0Subtype3ParseVariant0)
   Variant1(Map[String, DataVariant3FormatVariant0Subtype3ParseVariant1Value])
   Variant2(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype3Parse with fn deserialize(d) {
@@ -34551,9 +34964,10 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype3Parse with fn to_json(self
 
 ///|
 /// `DataVariant3FormatVariant0Subtype3Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant3FormatVariant0Subtype3Type {
   Dsv
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype3Type with fn deserialize(d) {
@@ -34610,12 +35024,13 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype3Type with fn to_json(self)
 
 ///|
 /// `DataVariant3FormatVariant0Subtype3`
+#derive(Debug, Eq)
 pub(all) struct DataVariant3FormatVariant0Subtype3 {
   delimiter : String
   header : Array[String]
   parse : DataVariant3FormatVariant0Subtype3Parse?
   type_ : DataVariant3FormatVariant0Subtype3Type
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DataVariant3FormatVariant0Subtype3` (fields with defaults are optional).
@@ -34677,9 +35092,10 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype3 with fn to_json(self) {
 
 ///|
 /// `DataVariant3FormatVariant0Subtype4Variant0Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant3FormatVariant0Subtype4Variant0Type {
   Topojson
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype4Variant0Type with fn deserialize(d) {
@@ -34736,10 +35152,11 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype4Variant0Type with fn to_js
 
 ///|
 /// `DataVariant3FormatVariant0Subtype4Variant1Filter`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant3FormatVariant0Subtype4Variant1Filter {
   Interior
   Exterior
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype4Variant1Filter with fn deserialize(d) {
@@ -34801,9 +35218,10 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype4Variant1Filter with fn to_
 
 ///|
 /// `DataVariant3FormatVariant0Subtype4Variant1Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum DataVariant3FormatVariant0Subtype4Variant1Type {
   Topojson
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3FormatVariant0Subtype4Variant1Type with fn deserialize(d) {
@@ -34860,10 +35278,11 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype4Variant1Type with fn to_js
 
 ///|
 /// `DataVariant3FormatVariant0Subtype4`
+#derive(Debug, Eq)
 pub(all) enum DataVariant3FormatVariant0Subtype4 {
   Variant0(feature~ : StringOrSignal, property~ : StringOrSignal?, type_~ : DataVariant3FormatVariant0Subtype4Variant0Type)
   Variant1(filter~ : DataVariant3FormatVariant0Subtype4Variant1Filter?, mesh~ : StringOrSignal, property~ : StringOrSignal?, type_~ : DataVariant3FormatVariant0Subtype4Variant1Type)
-} derive(Debug, Eq)
+}
 
 ///|
 let data_variant3_format_variant0_subtype4_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["feature", "property", "type"])
@@ -34963,10 +35382,11 @@ pub impl ToJson for DataVariant3FormatVariant0Subtype4 with fn to_json(self) {
 
 ///|
 /// `DataVariant3Format`
+#derive(Debug, Eq)
 pub(all) enum DataVariant3Format {
   Variant0(subtype_0~ : DataVariant3FormatVariant0Subtype0?, subtype_1~ : DataVariant3FormatVariant0Subtype1?, subtype_2~ : DataVariant3FormatVariant0Subtype2?, subtype_3~ : DataVariant3FormatVariant0Subtype3?, subtype_4~ : DataVariant3FormatVariant0Subtype4?)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let data_variant3_format_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new([])
@@ -35029,10 +35449,11 @@ pub impl ToJson for DataVariant3Format with fn to_json(self) {
 
 ///|
 /// `DataVariant3Values`
+#derive(Debug, Eq)
 pub(all) enum DataVariant3Values {
   Variant0(Json)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DataVariant3Values with fn deserialize(d) {
@@ -35076,10 +35497,11 @@ pub impl ToJson for DataVariant3Values with fn to_json(self) {
 
 ///|
 /// `DensityTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformAsArrayItem with fn deserialize(d) {
@@ -35123,10 +35545,11 @@ pub impl ToJson for DensityTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `DensityTransformAs`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformAs {
   Array(Array[DensityTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformAs with fn deserialize(d) {
@@ -35178,10 +35601,11 @@ pub impl ToJson for DensityTransformAs with fn to_json(self) {
 
 ///|
 /// `DensityTransformDistributionMean`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformDistributionMean {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformDistributionMean with fn deserialize(d) {
@@ -35225,10 +35649,11 @@ pub impl ToJson for DensityTransformDistributionMean with fn to_json(self) {
 
 ///|
 /// `DensityTransformDistributionStdev`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformDistributionStdev {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformDistributionStdev with fn deserialize(d) {
@@ -35280,10 +35705,11 @@ pub impl ToJson for DensityTransformDistributionStdev with fn to_json(self) {
 
 ///|
 /// `DensityTransformDistributionMax`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformDistributionMax {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformDistributionMax with fn deserialize(d) {
@@ -35335,10 +35761,11 @@ pub impl ToJson for DensityTransformDistributionMax with fn to_json(self) {
 
 ///|
 /// `DensityTransformDistributionMin`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformDistributionMin {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformDistributionMin with fn deserialize(d) {
@@ -35382,10 +35809,11 @@ pub impl ToJson for DensityTransformDistributionMin with fn to_json(self) {
 
 ///|
 /// `DensityTransformDistributionBandwidth`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformDistributionBandwidth {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformDistributionBandwidth with fn deserialize(d) {
@@ -35429,11 +35857,12 @@ pub impl ToJson for DensityTransformDistributionBandwidth with fn to_json(self) 
 
 ///|
 /// `DensityTransformDistributionField`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformDistributionField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformDistributionField with fn deserialize(d) {
@@ -35486,10 +35915,11 @@ pub impl ToJson for DensityTransformDistributionField with fn to_json(self) {
 
 ///|
 /// `DensityTransformDistributionDistributions`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformDistributionDistributions {
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformDistributionDistributions with fn deserialize(d) {
@@ -35533,10 +35963,11 @@ pub impl ToJson for DensityTransformDistributionDistributions with fn to_json(se
 
 ///|
 /// `DensityTransformDistributionWeightsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformDistributionWeightsArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformDistributionWeightsArrayItem with fn deserialize(d) {
@@ -35580,10 +36011,11 @@ pub impl ToJson for DensityTransformDistributionWeightsArrayItem with fn to_json
 
 ///|
 /// `DensityTransformDistributionWeights`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformDistributionWeights {
   Array(Array[DensityTransformDistributionWeightsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformDistributionWeights with fn deserialize(d) {
@@ -35627,13 +36059,14 @@ pub impl ToJson for DensityTransformDistributionWeights with fn to_json(self) {
 
 ///|
 /// `DensityTransformDistribution`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformDistribution {
   Normal(mean~ : DensityTransformDistributionMean?, stdev~ : DensityTransformDistributionStdev)
   Lognormal(mean~ : DensityTransformDistributionMean?, stdev~ : DensityTransformDistributionStdev)
   Uniform(max~ : DensityTransformDistributionMax, min~ : DensityTransformDistributionMin?)
   Kde(bandwidth~ : DensityTransformDistributionBandwidth?, field~ : DensityTransformDistributionField, from~ : String?)
   Mixture(distributions~ : DensityTransformDistributionDistributions?, weights~ : DensityTransformDistributionWeights?)
-} derive(Debug, Eq)
+}
 
 ///|
 let density_transform_distribution_normal_fields : @typify_rt.Fields = @typify_rt.Fields::new(["mean", "stdev"])
@@ -35799,10 +36232,11 @@ pub impl ToJson for DensityTransformDistribution with fn to_json(self) {
 
 ///|
 /// `DensityTransformExtentArrayItem`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformExtentArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformExtentArrayItem with fn deserialize(d) {
@@ -35846,10 +36280,11 @@ pub impl ToJson for DensityTransformExtentArrayItem with fn to_json(self) {
 
 ///|
 /// `DensityTransformExtent`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformExtent {
   Array(FixedArray[DensityTransformExtentArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformExtent with fn deserialize(d) {
@@ -35893,10 +36328,11 @@ pub impl ToJson for DensityTransformExtent with fn to_json(self) {
 
 ///|
 /// `DensityTransformMaxsteps`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformMaxsteps {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformMaxsteps with fn deserialize(d) {
@@ -35948,10 +36384,11 @@ pub impl ToJson for DensityTransformMaxsteps with fn to_json(self) {
 
 ///|
 /// `DensityTransformMethod`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformMethod {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformMethod with fn deserialize(d) {
@@ -36003,10 +36440,11 @@ pub impl ToJson for DensityTransformMethod with fn to_json(self) {
 
 ///|
 /// `DensityTransformMinsteps`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformMinsteps {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformMinsteps with fn deserialize(d) {
@@ -36058,10 +36496,11 @@ pub impl ToJson for DensityTransformMinsteps with fn to_json(self) {
 
 ///|
 /// `DensityTransformSteps`
+#derive(Debug, Eq)
 pub(all) enum DensityTransformSteps {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformSteps with fn deserialize(d) {
@@ -36105,9 +36544,10 @@ pub impl ToJson for DensityTransformSteps with fn to_json(self) {
 
 ///|
 /// `DensityTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum DensityTransformType {
   Density
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DensityTransformType with fn deserialize(d) {
@@ -36164,10 +36604,11 @@ pub impl ToJson for DensityTransformType with fn to_json(self) {
 
 ///|
 /// `DirectionValueVariant0ItemVariant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum DirectionValueVariant0ItemVariant0Variant1Value {
   Horizontal
   Vertical
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DirectionValueVariant0ItemVariant0Variant1Value with fn deserialize(d) {
@@ -36229,10 +36670,11 @@ pub impl ToJson for DirectionValueVariant0ItemVariant0Variant1Value with fn to_j
 
 ///|
 /// `DirectionValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum DirectionValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DirectionValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -36276,12 +36718,13 @@ pub impl ToJson for DirectionValueVariant0ItemVariant0Variant3Range with fn to_j
 
 ///|
 /// `DirectionValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum DirectionValueVariant0ItemVariant0 {
   Variant0(scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(scale~ : Field?, test_~ : String?, value~ : DirectionValueVariant0ItemVariant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?, test_~ : String?)
   Variant3(range~ : DirectionValueVariant0ItemVariant0Variant3Range, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let direction_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal", "test"])
@@ -36451,8 +36894,9 @@ pub impl ToJson for DirectionValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `DirectionValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum DirectionValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DirectionValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -36484,8 +36928,9 @@ pub impl ToJson for DirectionValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `DirectionValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum DirectionValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DirectionValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -36517,12 +36962,13 @@ pub impl ToJson for DirectionValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `DirectionValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum DirectionValueVariant0Item {
   Variant0(DirectionValueVariant0ItemVariant0)
   Variant1(DirectionValueVariant0ItemVariant1)
   Variant2(DirectionValueVariant0ItemVariant2)
   Variant3(offset~ : Json, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let direction_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset", "test"])
@@ -36605,10 +37051,11 @@ pub impl ToJson for DirectionValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `DirectionValueVariant1Variant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum DirectionValueVariant1Variant0Variant1Value {
   Horizontal
   Vertical
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DirectionValueVariant1Variant0Variant1Value with fn deserialize(d) {
@@ -36670,10 +37117,11 @@ pub impl ToJson for DirectionValueVariant1Variant0Variant1Value with fn to_json(
 
 ///|
 /// `DirectionValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum DirectionValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DirectionValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -36717,12 +37165,13 @@ pub impl ToJson for DirectionValueVariant1Variant0Variant3Range with fn to_json(
 
 ///|
 /// `DirectionValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum DirectionValueVariant1Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : DirectionValueVariant1Variant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : DirectionValueVariant1Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let direction_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -36868,8 +37317,9 @@ pub impl ToJson for DirectionValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `DirectionValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum DirectionValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DirectionValueVariant1Variant1 with fn deserialize(d) {
@@ -36901,8 +37351,9 @@ pub impl ToJson for DirectionValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `DirectionValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum DirectionValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DirectionValueVariant1Variant2 with fn deserialize(d) {
@@ -36934,12 +37385,13 @@ pub impl ToJson for DirectionValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `DirectionValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum DirectionValueVariant1 {
   Variant0(DirectionValueVariant1Variant0)
   Variant1(DirectionValueVariant1Variant1)
   Variant2(DirectionValueVariant1Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let direction_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -37016,10 +37468,11 @@ pub impl ToJson for DirectionValueVariant1 with fn to_json(self) {
 
 ///|
 /// `DotbinTransformAs`
+#derive(Debug, Eq)
 pub(all) enum DotbinTransformAs {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DotbinTransformAs with fn deserialize(d) {
@@ -37071,11 +37524,12 @@ pub impl ToJson for DotbinTransformAs with fn to_json(self) {
 
 ///|
 /// `DotbinTransformField`
+#derive(Debug, Eq)
 pub(all) enum DotbinTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DotbinTransformField with fn deserialize(d) {
@@ -37128,11 +37582,12 @@ pub impl ToJson for DotbinTransformField with fn to_json(self) {
 
 ///|
 /// `DotbinTransformGroupbyArrayItem`
+#derive(Debug, Eq)
 pub(all) enum DotbinTransformGroupbyArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DotbinTransformGroupbyArrayItem with fn deserialize(d) {
@@ -37185,10 +37640,11 @@ pub impl ToJson for DotbinTransformGroupbyArrayItem with fn to_json(self) {
 
 ///|
 /// `DotbinTransformGroupby`
+#derive(Debug, Eq)
 pub(all) enum DotbinTransformGroupby {
   Array(Array[DotbinTransformGroupbyArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DotbinTransformGroupby with fn deserialize(d) {
@@ -37232,10 +37688,11 @@ pub impl ToJson for DotbinTransformGroupby with fn to_json(self) {
 
 ///|
 /// `DotbinTransformSmooth`
+#derive(Debug, Eq)
 pub(all) enum DotbinTransformSmooth {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DotbinTransformSmooth with fn deserialize(d) {
@@ -37279,10 +37736,11 @@ pub impl ToJson for DotbinTransformSmooth with fn to_json(self) {
 
 ///|
 /// `DotbinTransformStep`
+#derive(Debug, Eq)
 pub(all) enum DotbinTransformStep {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DotbinTransformStep with fn deserialize(d) {
@@ -37326,9 +37784,10 @@ pub impl ToJson for DotbinTransformStep with fn to_json(self) {
 
 ///|
 /// `DotbinTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum DotbinTransformType {
   Dotbin
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DotbinTransformType with fn deserialize(d) {
@@ -37385,7 +37844,8 @@ pub impl ToJson for DotbinTransformType with fn to_json(self) {
 
 ///|
 /// `EncodeKey`
-pub(all) struct EncodeKey(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct EncodeKey(String)
 
 ///|
 let encode_key_pattern : @typify_rt.Regex = @typify_rt.regex("^.+$")
@@ -37425,11 +37885,12 @@ pub impl ToJson for EncodeKey with fn to_json(self) {
 
 ///|
 /// `ExtentTransformField`
+#derive(Debug, Eq)
 pub(all) enum ExtentTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ExtentTransformField with fn deserialize(d) {
@@ -37482,9 +37943,10 @@ pub impl ToJson for ExtentTransformField with fn to_json(self) {
 
 ///|
 /// `ExtentTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum ExtentTransformType {
   Extent
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ExtentTransformType with fn deserialize(d) {
@@ -37541,12 +38003,13 @@ pub impl ToJson for ExtentTransformType with fn to_json(self) {
 
 ///|
 /// `FacetFacetVariant1Aggregate`
+#derive(Debug, Eq)
 pub(all) struct FacetFacetVariant1Aggregate {
   as_ : Array[String]
   cross : Bool?
   fields : Array[String]
   ops : Array[String]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `FacetFacetVariant1Aggregate` (fields with defaults are optional).
@@ -37612,10 +38075,11 @@ pub impl ToJson for FacetFacetVariant1Aggregate with fn to_json(self) {
 
 ///|
 /// `FacetFacetVariant1Groupby`
+#derive(Debug, Eq)
 pub(all) enum FacetFacetVariant1Groupby {
   String(String)
   Array(Array[String])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FacetFacetVariant1Groupby with fn deserialize(d) {
@@ -37659,10 +38123,11 @@ pub impl ToJson for FacetFacetVariant1Groupby with fn to_json(self) {
 
 ///|
 /// `FacetFacet`
+#derive(Debug, Eq)
 pub(all) enum FacetFacet {
   Variant0(data~ : String, field~ : String, name~ : String)
   Variant1(aggregate~ : FacetFacetVariant1Aggregate?, data~ : String, groupby~ : FacetFacetVariant1Groupby, name~ : String)
-} derive(Debug, Eq)
+}
 
 ///|
 let facet_facet_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["data", "field", "name"])
@@ -37758,9 +38223,10 @@ pub impl ToJson for FacetFacet with fn to_json(self) {
 
 ///|
 /// `FilterTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum FilterTransformType {
   Filter
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for FilterTransformType with fn deserialize(d) {
@@ -37817,10 +38283,11 @@ pub impl ToJson for FilterTransformType with fn to_json(self) {
 
 ///|
 /// `FlattenTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum FlattenTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FlattenTransformAsArrayItem with fn deserialize(d) {
@@ -37864,10 +38331,11 @@ pub impl ToJson for FlattenTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `FlattenTransformAs`
+#derive(Debug, Eq)
 pub(all) enum FlattenTransformAs {
   Array(Array[FlattenTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FlattenTransformAs with fn deserialize(d) {
@@ -37911,11 +38379,12 @@ pub impl ToJson for FlattenTransformAs with fn to_json(self) {
 
 ///|
 /// `FlattenTransformFieldsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum FlattenTransformFieldsArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FlattenTransformFieldsArrayItem with fn deserialize(d) {
@@ -37968,10 +38437,11 @@ pub impl ToJson for FlattenTransformFieldsArrayItem with fn to_json(self) {
 
 ///|
 /// `FlattenTransformFields`
+#derive(Debug, Eq)
 pub(all) enum FlattenTransformFields {
   Array(Array[FlattenTransformFieldsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FlattenTransformFields with fn deserialize(d) {
@@ -38015,10 +38485,11 @@ pub impl ToJson for FlattenTransformFields with fn to_json(self) {
 
 ///|
 /// `FlattenTransformIndex`
+#derive(Debug, Eq)
 pub(all) enum FlattenTransformIndex {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FlattenTransformIndex with fn deserialize(d) {
@@ -38062,9 +38533,10 @@ pub impl ToJson for FlattenTransformIndex with fn to_json(self) {
 
 ///|
 /// `FlattenTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum FlattenTransformType {
   Flatten
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for FlattenTransformType with fn deserialize(d) {
@@ -38121,10 +38593,11 @@ pub impl ToJson for FlattenTransformType with fn to_json(self) {
 
 ///|
 /// `FoldTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum FoldTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FoldTransformAsArrayItem with fn deserialize(d) {
@@ -38168,10 +38641,11 @@ pub impl ToJson for FoldTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `FoldTransformAs`
+#derive(Debug, Eq)
 pub(all) enum FoldTransformAs {
   Array(FixedArray[FoldTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FoldTransformAs with fn deserialize(d) {
@@ -38223,11 +38697,12 @@ pub impl ToJson for FoldTransformAs with fn to_json(self) {
 
 ///|
 /// `FoldTransformFieldsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum FoldTransformFieldsArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FoldTransformFieldsArrayItem with fn deserialize(d) {
@@ -38280,10 +38755,11 @@ pub impl ToJson for FoldTransformFieldsArrayItem with fn to_json(self) {
 
 ///|
 /// `FoldTransformFields`
+#derive(Debug, Eq)
 pub(all) enum FoldTransformFields {
   Array(Array[FoldTransformFieldsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FoldTransformFields with fn deserialize(d) {
@@ -38327,9 +38803,10 @@ pub impl ToJson for FoldTransformFields with fn to_json(self) {
 
 ///|
 /// `FoldTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum FoldTransformType {
   Fold
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for FoldTransformType with fn deserialize(d) {
@@ -38386,10 +38863,11 @@ pub impl ToJson for FoldTransformType with fn to_json(self) {
 
 ///|
 /// `FontWeightValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum FontWeightValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FontWeightValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -38433,12 +38911,13 @@ pub impl ToJson for FontWeightValueVariant0ItemVariant0Variant3Range with fn to_
 
 ///|
 /// `FontWeightValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum FontWeightValueVariant0ItemVariant0 {
   Variant0(scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(scale~ : Field?, test_~ : String?, value~ : Json)
   Variant2(field~ : Field, scale~ : Field?, test_~ : String?)
   Variant3(range~ : FontWeightValueVariant0ItemVariant0Variant3Range, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let font_weight_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal", "test"])
@@ -38608,8 +39087,9 @@ pub impl ToJson for FontWeightValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `FontWeightValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum FontWeightValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for FontWeightValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -38641,8 +39121,9 @@ pub impl ToJson for FontWeightValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `FontWeightValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum FontWeightValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for FontWeightValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -38674,12 +39155,13 @@ pub impl ToJson for FontWeightValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `FontWeightValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum FontWeightValueVariant0Item {
   Variant0(FontWeightValueVariant0ItemVariant0)
   Variant1(FontWeightValueVariant0ItemVariant1)
   Variant2(FontWeightValueVariant0ItemVariant2)
   Variant3(offset~ : Json, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let font_weight_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset", "test"])
@@ -38762,10 +39244,11 @@ pub impl ToJson for FontWeightValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `FontWeightValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum FontWeightValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FontWeightValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -38809,12 +39292,13 @@ pub impl ToJson for FontWeightValueVariant1Variant0Variant3Range with fn to_json
 
 ///|
 /// `FontWeightValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum FontWeightValueVariant1Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : Json)
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : FontWeightValueVariant1Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let font_weight_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -38960,8 +39444,9 @@ pub impl ToJson for FontWeightValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `FontWeightValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum FontWeightValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for FontWeightValueVariant1Variant1 with fn deserialize(d) {
@@ -38993,8 +39478,9 @@ pub impl ToJson for FontWeightValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `FontWeightValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum FontWeightValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for FontWeightValueVariant1Variant2 with fn deserialize(d) {
@@ -39026,12 +39512,13 @@ pub impl ToJson for FontWeightValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `FontWeightValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum FontWeightValueVariant1 {
   Variant0(FontWeightValueVariant1Variant0)
   Variant1(FontWeightValueVariant1Variant1)
   Variant2(FontWeightValueVariant1Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let font_weight_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -39108,10 +39595,11 @@ pub impl ToJson for FontWeightValueVariant1 with fn to_json(self) {
 
 ///|
 /// `ForceTransformAlpha`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformAlpha {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformAlpha with fn deserialize(d) {
@@ -39163,10 +39651,11 @@ pub impl ToJson for ForceTransformAlpha with fn to_json(self) {
 
 ///|
 /// `ForceTransformAlphaMin`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformAlphaMin {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformAlphaMin with fn deserialize(d) {
@@ -39218,10 +39707,11 @@ pub impl ToJson for ForceTransformAlphaMin with fn to_json(self) {
 
 ///|
 /// `ForceTransformAlphaTarget`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformAlphaTarget {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformAlphaTarget with fn deserialize(d) {
@@ -39265,10 +39755,11 @@ pub impl ToJson for ForceTransformAlphaTarget with fn to_json(self) {
 
 ///|
 /// `ForceTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformAsArrayItem with fn deserialize(d) {
@@ -39312,10 +39803,11 @@ pub impl ToJson for ForceTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `ForceTransformAs`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformAs {
   Array(Array[ForceTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformAs with fn deserialize(d) {
@@ -39367,10 +39859,11 @@ pub impl ToJson for ForceTransformAs with fn to_json(self) {
 
 ///|
 /// `ForceTransformForcesItemX`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformForcesItemX {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformForcesItemX with fn deserialize(d) {
@@ -39414,10 +39907,11 @@ pub impl ToJson for ForceTransformForcesItemX with fn to_json(self) {
 
 ///|
 /// `ForceTransformForcesItemY`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformForcesItemY {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformForcesItemY with fn deserialize(d) {
@@ -39461,10 +39955,11 @@ pub impl ToJson for ForceTransformForcesItemY with fn to_json(self) {
 
 ///|
 /// `ForceTransformForcesItemIterations`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformForcesItemIterations {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformForcesItemIterations with fn deserialize(d) {
@@ -39516,12 +40011,13 @@ pub impl ToJson for ForceTransformForcesItemIterations with fn to_json(self) {
 
 ///|
 /// `ForceTransformForcesItemRadius`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformForcesItemRadius {
   Number(Double)
   SignalRef(SignalRef)
   Expr(Expr)
   ParamField(ParamField)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformForcesItemRadius with fn deserialize(d) {
@@ -39583,10 +40079,11 @@ pub impl ToJson for ForceTransformForcesItemRadius with fn to_json(self) {
 
 ///|
 /// `ForceTransformForcesItemStrength`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformForcesItemStrength {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformForcesItemStrength with fn deserialize(d) {
@@ -39638,10 +40135,11 @@ pub impl ToJson for ForceTransformForcesItemStrength with fn to_json(self) {
 
 ///|
 /// `ForceTransformForcesItemDistanceMax`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformForcesItemDistanceMax {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformForcesItemDistanceMax with fn deserialize(d) {
@@ -39685,10 +40183,11 @@ pub impl ToJson for ForceTransformForcesItemDistanceMax with fn to_json(self) {
 
 ///|
 /// `ForceTransformForcesItemDistanceMin`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformForcesItemDistanceMin {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformForcesItemDistanceMin with fn deserialize(d) {
@@ -39740,10 +40239,11 @@ pub impl ToJson for ForceTransformForcesItemDistanceMin with fn to_json(self) {
 
 ///|
 /// `ForceTransformForcesItemTheta`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformForcesItemTheta {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformForcesItemTheta with fn deserialize(d) {
@@ -39795,12 +40295,13 @@ pub impl ToJson for ForceTransformForcesItemTheta with fn to_json(self) {
 
 ///|
 /// `ForceTransformForcesItemDistance`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformForcesItemDistance {
   Number(Double)
   SignalRef(SignalRef)
   Expr(Expr)
   ParamField(ParamField)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformForcesItemDistance with fn deserialize(d) {
@@ -39870,11 +40371,12 @@ pub impl ToJson for ForceTransformForcesItemDistance with fn to_json(self) {
 
 ///|
 /// `ForceTransformForcesItemId`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformForcesItemId {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformForcesItemId with fn deserialize(d) {
@@ -39927,6 +40429,7 @@ pub impl ToJson for ForceTransformForcesItemId with fn to_json(self) {
 
 ///|
 /// `ForceTransformForcesItem`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformForcesItem {
   Center(x~ : ForceTransformForcesItemX?, y~ : ForceTransformForcesItemY?)
   Collide(iterations~ : ForceTransformForcesItemIterations, radius~ : ForceTransformForcesItemRadius?, strength~ : ForceTransformForcesItemStrength)
@@ -39934,7 +40437,7 @@ pub(all) enum ForceTransformForcesItem {
   Link(distance~ : ForceTransformForcesItemDistance, id~ : ForceTransformForcesItemId?, iterations~ : ForceTransformForcesItemIterations, links~ : String?, strength~ : ForceTransformForcesItemStrength?)
   X(strength~ : ForceTransformForcesItemStrength, x~ : ForceTransformForcesItemX?)
   Y(strength~ : ForceTransformForcesItemStrength, y~ : ForceTransformForcesItemY?)
-} derive(Debug, Eq)
+}
 
 ///|
 let force_transform_forces_item_center_fields : @typify_rt.Fields = @typify_rt.Fields::new(["x", "y"])
@@ -40175,10 +40678,11 @@ pub impl ToJson for ForceTransformForcesItem with fn to_json(self) {
 
 ///|
 /// `ForceTransformIterations`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformIterations {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformIterations with fn deserialize(d) {
@@ -40230,10 +40734,11 @@ pub impl ToJson for ForceTransformIterations with fn to_json(self) {
 
 ///|
 /// `ForceTransformRestart`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformRestart {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformRestart with fn deserialize(d) {
@@ -40277,10 +40782,11 @@ pub impl ToJson for ForceTransformRestart with fn to_json(self) {
 
 ///|
 /// `ForceTransformStatic`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformStatic {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformStatic with fn deserialize(d) {
@@ -40324,9 +40830,10 @@ pub impl ToJson for ForceTransformStatic with fn to_json(self) {
 
 ///|
 /// `ForceTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum ForceTransformType {
   Force
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformType with fn deserialize(d) {
@@ -40383,10 +40890,11 @@ pub impl ToJson for ForceTransformType with fn to_json(self) {
 
 ///|
 /// `ForceTransformVelocityDecay`
+#derive(Debug, Eq)
 pub(all) enum ForceTransformVelocityDecay {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForceTransformVelocityDecay with fn deserialize(d) {
@@ -40438,10 +40946,11 @@ pub impl ToJson for ForceTransformVelocityDecay with fn to_json(self) {
 
 ///|
 /// `FormulaTransformAs`
+#derive(Debug, Eq)
 pub(all) enum FormulaTransformAs {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FormulaTransformAs with fn deserialize(d) {
@@ -40485,10 +40994,11 @@ pub impl ToJson for FormulaTransformAs with fn to_json(self) {
 
 ///|
 /// `FormulaTransformInitonly`
+#derive(Debug, Eq)
 pub(all) enum FormulaTransformInitonly {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for FormulaTransformInitonly with fn deserialize(d) {
@@ -40532,9 +41042,10 @@ pub impl ToJson for FormulaTransformInitonly with fn to_json(self) {
 
 ///|
 /// `FormulaTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum FormulaTransformType {
   Formula
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for FormulaTransformType with fn deserialize(d) {
@@ -40591,11 +41102,12 @@ pub impl ToJson for FormulaTransformType with fn to_json(self) {
 
 ///|
 /// `GeojsonTransformFieldsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum GeojsonTransformFieldsArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeojsonTransformFieldsArrayItem with fn deserialize(d) {
@@ -40648,10 +41160,11 @@ pub impl ToJson for GeojsonTransformFieldsArrayItem with fn to_json(self) {
 
 ///|
 /// `GeojsonTransformFields`
+#derive(Debug, Eq)
 pub(all) enum GeojsonTransformFields {
   Array(FixedArray[GeojsonTransformFieldsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeojsonTransformFields with fn deserialize(d) {
@@ -40695,11 +41208,12 @@ pub impl ToJson for GeojsonTransformFields with fn to_json(self) {
 
 ///|
 /// `GeojsonTransformGeojson`
+#derive(Debug, Eq)
 pub(all) enum GeojsonTransformGeojson {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeojsonTransformGeojson with fn deserialize(d) {
@@ -40752,9 +41266,10 @@ pub impl ToJson for GeojsonTransformGeojson with fn to_json(self) {
 
 ///|
 /// `GeojsonTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum GeojsonTransformType {
   Geojson
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeojsonTransformType with fn deserialize(d) {
@@ -40811,10 +41326,11 @@ pub impl ToJson for GeojsonTransformType with fn to_json(self) {
 
 ///|
 /// `GeopathTransformAs`
+#derive(Debug, Eq)
 pub(all) enum GeopathTransformAs {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeopathTransformAs with fn deserialize(d) {
@@ -40866,11 +41382,12 @@ pub impl ToJson for GeopathTransformAs with fn to_json(self) {
 
 ///|
 /// `GeopathTransformField`
+#derive(Debug, Eq)
 pub(all) enum GeopathTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeopathTransformField with fn deserialize(d) {
@@ -40923,12 +41440,13 @@ pub impl ToJson for GeopathTransformField with fn to_json(self) {
 
 ///|
 /// `GeopathTransformPointRadius`
+#derive(Debug, Eq)
 pub(all) enum GeopathTransformPointRadius {
   Number(Double)
   SignalRef(SignalRef)
   Expr(Expr)
   ParamField(ParamField)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeopathTransformPointRadius with fn deserialize(d) {
@@ -40990,9 +41508,10 @@ pub impl ToJson for GeopathTransformPointRadius with fn to_json(self) {
 
 ///|
 /// `GeopathTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum GeopathTransformType {
   Geopath
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeopathTransformType with fn deserialize(d) {
@@ -41049,10 +41568,11 @@ pub impl ToJson for GeopathTransformType with fn to_json(self) {
 
 ///|
 /// `GeopointTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum GeopointTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeopointTransformAsArrayItem with fn deserialize(d) {
@@ -41096,10 +41616,11 @@ pub impl ToJson for GeopointTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `GeopointTransformAs`
+#derive(Debug, Eq)
 pub(all) enum GeopointTransformAs {
   Array(FixedArray[GeopointTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeopointTransformAs with fn deserialize(d) {
@@ -41151,11 +41672,12 @@ pub impl ToJson for GeopointTransformAs with fn to_json(self) {
 
 ///|
 /// `GeopointTransformFieldsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum GeopointTransformFieldsArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeopointTransformFieldsArrayItem with fn deserialize(d) {
@@ -41208,10 +41730,11 @@ pub impl ToJson for GeopointTransformFieldsArrayItem with fn to_json(self) {
 
 ///|
 /// `GeopointTransformFields`
+#derive(Debug, Eq)
 pub(all) enum GeopointTransformFields {
   Array(FixedArray[GeopointTransformFieldsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeopointTransformFields with fn deserialize(d) {
@@ -41255,9 +41778,10 @@ pub impl ToJson for GeopointTransformFields with fn to_json(self) {
 
 ///|
 /// `GeopointTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum GeopointTransformType {
   Geopoint
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeopointTransformType with fn deserialize(d) {
@@ -41314,10 +41838,11 @@ pub impl ToJson for GeopointTransformType with fn to_json(self) {
 
 ///|
 /// `GeoshapeTransformAs`
+#derive(Debug, Eq)
 pub(all) enum GeoshapeTransformAs {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeoshapeTransformAs with fn deserialize(d) {
@@ -41369,11 +41894,12 @@ pub impl ToJson for GeoshapeTransformAs with fn to_json(self) {
 
 ///|
 /// `GeoshapeTransformField`
+#derive(Debug, Eq)
 pub(all) enum GeoshapeTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeoshapeTransformField with fn deserialize(d) {
@@ -41434,12 +41960,13 @@ pub impl ToJson for GeoshapeTransformField with fn to_json(self) {
 
 ///|
 /// `GeoshapeTransformPointRadius`
+#derive(Debug, Eq)
 pub(all) enum GeoshapeTransformPointRadius {
   Number(Double)
   SignalRef(SignalRef)
   Expr(Expr)
   ParamField(ParamField)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeoshapeTransformPointRadius with fn deserialize(d) {
@@ -41501,9 +42028,10 @@ pub impl ToJson for GeoshapeTransformPointRadius with fn to_json(self) {
 
 ///|
 /// `GeoshapeTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum GeoshapeTransformType {
   Geoshape
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for GeoshapeTransformType with fn deserialize(d) {
@@ -41560,10 +42088,11 @@ pub impl ToJson for GeoshapeTransformType with fn to_json(self) {
 
 ///|
 /// `GradientStopsItem`
+#derive(Debug, Eq)
 pub(all) struct GradientStopsItem {
   color : String
   offset : Double
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `GradientStopsItem` (fields with defaults are optional).
@@ -41611,10 +42140,11 @@ pub impl ToJson for GradientStopsItem with fn to_json(self) {
 
 ///|
 /// `GraticuleTransformExtent`
+#derive(Debug, Eq)
 pub(all) enum GraticuleTransformExtent {
   Array(FixedArray[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GraticuleTransformExtent with fn deserialize(d) {
@@ -41658,10 +42188,11 @@ pub impl ToJson for GraticuleTransformExtent with fn to_json(self) {
 
 ///|
 /// `GraticuleTransformExtentMajor`
+#derive(Debug, Eq)
 pub(all) enum GraticuleTransformExtentMajor {
   Array(FixedArray[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GraticuleTransformExtentMajor with fn deserialize(d) {
@@ -41705,10 +42236,11 @@ pub impl ToJson for GraticuleTransformExtentMajor with fn to_json(self) {
 
 ///|
 /// `GraticuleTransformExtentMinor`
+#derive(Debug, Eq)
 pub(all) enum GraticuleTransformExtentMinor {
   Array(FixedArray[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GraticuleTransformExtentMinor with fn deserialize(d) {
@@ -41752,10 +42284,11 @@ pub impl ToJson for GraticuleTransformExtentMinor with fn to_json(self) {
 
 ///|
 /// `GraticuleTransformPrecision`
+#derive(Debug, Eq)
 pub(all) enum GraticuleTransformPrecision {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GraticuleTransformPrecision with fn deserialize(d) {
@@ -41807,10 +42340,11 @@ pub impl ToJson for GraticuleTransformPrecision with fn to_json(self) {
 
 ///|
 /// `GraticuleTransformStepArrayItem`
+#derive(Debug, Eq)
 pub(all) enum GraticuleTransformStepArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GraticuleTransformStepArrayItem with fn deserialize(d) {
@@ -41854,10 +42388,11 @@ pub impl ToJson for GraticuleTransformStepArrayItem with fn to_json(self) {
 
 ///|
 /// `GraticuleTransformStep`
+#derive(Debug, Eq)
 pub(all) enum GraticuleTransformStep {
   Array(FixedArray[GraticuleTransformStepArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GraticuleTransformStep with fn deserialize(d) {
@@ -41901,10 +42436,11 @@ pub impl ToJson for GraticuleTransformStep with fn to_json(self) {
 
 ///|
 /// `GraticuleTransformStepMajorArrayItem`
+#derive(Debug, Eq)
 pub(all) enum GraticuleTransformStepMajorArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GraticuleTransformStepMajorArrayItem with fn deserialize(d) {
@@ -41948,10 +42484,11 @@ pub impl ToJson for GraticuleTransformStepMajorArrayItem with fn to_json(self) {
 
 ///|
 /// `GraticuleTransformStepMajor`
+#derive(Debug, Eq)
 pub(all) enum GraticuleTransformStepMajor {
   Array(FixedArray[GraticuleTransformStepMajorArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GraticuleTransformStepMajor with fn deserialize(d) {
@@ -42003,10 +42540,11 @@ pub impl ToJson for GraticuleTransformStepMajor with fn to_json(self) {
 
 ///|
 /// `GraticuleTransformStepMinorArrayItem`
+#derive(Debug, Eq)
 pub(all) enum GraticuleTransformStepMinorArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GraticuleTransformStepMinorArrayItem with fn deserialize(d) {
@@ -42050,10 +42588,11 @@ pub impl ToJson for GraticuleTransformStepMinorArrayItem with fn to_json(self) {
 
 ///|
 /// `GraticuleTransformStepMinor`
+#derive(Debug, Eq)
 pub(all) enum GraticuleTransformStepMinor {
   Array(FixedArray[GraticuleTransformStepMinorArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for GraticuleTransformStepMinor with fn deserialize(d) {
@@ -42105,9 +42644,10 @@ pub impl ToJson for GraticuleTransformStepMinor with fn to_json(self) {
 
 ///|
 /// `GraticuleTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum GraticuleTransformType {
   Graticule
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for GraticuleTransformType with fn deserialize(d) {
@@ -42164,10 +42704,11 @@ pub impl ToJson for GraticuleTransformType with fn to_json(self) {
 
 ///|
 /// `HeatmapTransformAs`
+#derive(Debug, Eq)
 pub(all) enum HeatmapTransformAs {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for HeatmapTransformAs with fn deserialize(d) {
@@ -42219,12 +42760,13 @@ pub impl ToJson for HeatmapTransformAs with fn to_json(self) {
 
 ///|
 /// `HeatmapTransformColor`
+#derive(Debug, Eq)
 pub(all) enum HeatmapTransformColor {
   String(String)
   SignalRef(SignalRef)
   Expr(Expr)
   ParamField(ParamField)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for HeatmapTransformColor with fn deserialize(d) {
@@ -42286,11 +42828,12 @@ pub impl ToJson for HeatmapTransformColor with fn to_json(self) {
 
 ///|
 /// `HeatmapTransformField`
+#derive(Debug, Eq)
 pub(all) enum HeatmapTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for HeatmapTransformField with fn deserialize(d) {
@@ -42343,12 +42886,13 @@ pub impl ToJson for HeatmapTransformField with fn to_json(self) {
 
 ///|
 /// `HeatmapTransformOpacity`
+#derive(Debug, Eq)
 pub(all) enum HeatmapTransformOpacity {
   Number(Double)
   SignalRef(SignalRef)
   Expr(Expr)
   ParamField(ParamField)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for HeatmapTransformOpacity with fn deserialize(d) {
@@ -42410,10 +42954,11 @@ pub impl ToJson for HeatmapTransformOpacity with fn to_json(self) {
 
 ///|
 /// `HeatmapTransformResolveVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum HeatmapTransformResolveVariant0 {
   Shared
   Independent
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for HeatmapTransformResolveVariant0 with fn deserialize(d) {
@@ -42475,10 +43020,11 @@ pub impl ToJson for HeatmapTransformResolveVariant0 with fn to_json(self) {
 
 ///|
 /// `HeatmapTransformResolve`
+#derive(Debug, Eq)
 pub(all) enum HeatmapTransformResolve {
   Variant0(HeatmapTransformResolveVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for HeatmapTransformResolve with fn deserialize(d) {
@@ -42530,9 +43076,10 @@ pub impl ToJson for HeatmapTransformResolve with fn to_json(self) {
 
 ///|
 /// `HeatmapTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum HeatmapTransformType {
   Heatmap
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for HeatmapTransformType with fn deserialize(d) {
@@ -42589,10 +43136,11 @@ pub impl ToJson for HeatmapTransformType with fn to_json(self) {
 
 ///|
 /// `IdentifierTransformAs`
+#derive(Debug, Eq)
 pub(all) enum IdentifierTransformAs {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IdentifierTransformAs with fn deserialize(d) {
@@ -42636,9 +43184,10 @@ pub impl ToJson for IdentifierTransformAs with fn to_json(self) {
 
 ///|
 /// `IdentifierTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum IdentifierTransformType {
   Identifier
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IdentifierTransformType with fn deserialize(d) {
@@ -42695,11 +43244,12 @@ pub impl ToJson for IdentifierTransformType with fn to_json(self) {
 
 ///|
 /// `ImputeTransformField`
+#derive(Debug, Eq)
 pub(all) enum ImputeTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ImputeTransformField with fn deserialize(d) {
@@ -42752,11 +43302,12 @@ pub impl ToJson for ImputeTransformField with fn to_json(self) {
 
 ///|
 /// `ImputeTransformGroupbyArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ImputeTransformGroupbyArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ImputeTransformGroupbyArrayItem with fn deserialize(d) {
@@ -42809,10 +43360,11 @@ pub impl ToJson for ImputeTransformGroupbyArrayItem with fn to_json(self) {
 
 ///|
 /// `ImputeTransformGroupby`
+#derive(Debug, Eq)
 pub(all) enum ImputeTransformGroupby {
   Array(Array[ImputeTransformGroupbyArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ImputeTransformGroupby with fn deserialize(d) {
@@ -42856,11 +43408,12 @@ pub impl ToJson for ImputeTransformGroupby with fn to_json(self) {
 
 ///|
 /// `ImputeTransformKey`
+#derive(Debug, Eq)
 pub(all) enum ImputeTransformKey {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ImputeTransformKey with fn deserialize(d) {
@@ -42913,10 +43466,11 @@ pub impl ToJson for ImputeTransformKey with fn to_json(self) {
 
 ///|
 /// `ImputeTransformKeyvals`
+#derive(Debug, Eq)
 pub(all) enum ImputeTransformKeyvals {
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ImputeTransformKeyvals with fn deserialize(d) {
@@ -42960,13 +43514,14 @@ pub impl ToJson for ImputeTransformKeyvals with fn to_json(self) {
 
 ///|
 /// `ImputeTransformMethodVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum ImputeTransformMethodVariant0 {
   Value
   Mean
   Median
   Max
   Min
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ImputeTransformMethodVariant0 with fn deserialize(d) {
@@ -43043,10 +43598,11 @@ pub impl ToJson for ImputeTransformMethodVariant0 with fn to_json(self) {
 
 ///|
 /// `ImputeTransformMethod`
+#derive(Debug, Eq)
 pub(all) enum ImputeTransformMethod {
   Variant0(ImputeTransformMethodVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ImputeTransformMethod with fn deserialize(d) {
@@ -43098,9 +43654,10 @@ pub impl ToJson for ImputeTransformMethod with fn to_json(self) {
 
 ///|
 /// `ImputeTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum ImputeTransformType {
   Impute
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ImputeTransformType with fn deserialize(d) {
@@ -43157,11 +43714,12 @@ pub impl ToJson for ImputeTransformType with fn to_json(self) {
 
 ///|
 /// `IsocontourTransformAs`
+#derive(Debug, Eq)
 pub(all) enum IsocontourTransformAs {
   String(String)
   SignalRef(SignalRef)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransformAs with fn deserialize(d) {
@@ -43222,11 +43780,12 @@ pub impl ToJson for IsocontourTransformAs with fn to_json(self) {
 
 ///|
 /// `IsocontourTransformField`
+#derive(Debug, Eq)
 pub(all) enum IsocontourTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransformField with fn deserialize(d) {
@@ -43279,10 +43838,11 @@ pub impl ToJson for IsocontourTransformField with fn to_json(self) {
 
 ///|
 /// `IsocontourTransformLevels`
+#derive(Debug, Eq)
 pub(all) enum IsocontourTransformLevels {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransformLevels with fn deserialize(d) {
@@ -43326,10 +43886,11 @@ pub impl ToJson for IsocontourTransformLevels with fn to_json(self) {
 
 ///|
 /// `IsocontourTransformNice`
+#derive(Debug, Eq)
 pub(all) enum IsocontourTransformNice {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransformNice with fn deserialize(d) {
@@ -43373,10 +43934,11 @@ pub impl ToJson for IsocontourTransformNice with fn to_json(self) {
 
 ///|
 /// `IsocontourTransformResolveVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum IsocontourTransformResolveVariant0 {
   Shared
   Independent
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransformResolveVariant0 with fn deserialize(d) {
@@ -43438,10 +44000,11 @@ pub impl ToJson for IsocontourTransformResolveVariant0 with fn to_json(self) {
 
 ///|
 /// `IsocontourTransformResolve`
+#derive(Debug, Eq)
 pub(all) enum IsocontourTransformResolve {
   Variant0(IsocontourTransformResolveVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransformResolve with fn deserialize(d) {
@@ -43493,12 +44056,13 @@ pub impl ToJson for IsocontourTransformResolve with fn to_json(self) {
 
 ///|
 /// `IsocontourTransformScale`
+#derive(Debug, Eq)
 pub(all) enum IsocontourTransformScale {
   Number(Double)
   SignalRef(SignalRef)
   Expr(Expr)
   ParamField(ParamField)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransformScale with fn deserialize(d) {
@@ -43560,10 +44124,11 @@ pub impl ToJson for IsocontourTransformScale with fn to_json(self) {
 
 ///|
 /// `IsocontourTransformSmooth`
+#derive(Debug, Eq)
 pub(all) enum IsocontourTransformSmooth {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransformSmooth with fn deserialize(d) {
@@ -43615,10 +44180,11 @@ pub impl ToJson for IsocontourTransformSmooth with fn to_json(self) {
 
 ///|
 /// `IsocontourTransformThresholdsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum IsocontourTransformThresholdsArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransformThresholdsArrayItem with fn deserialize(d) {
@@ -43662,10 +44228,11 @@ pub impl ToJson for IsocontourTransformThresholdsArrayItem with fn to_json(self)
 
 ///|
 /// `IsocontourTransformThresholds`
+#derive(Debug, Eq)
 pub(all) enum IsocontourTransformThresholds {
   Array(Array[IsocontourTransformThresholdsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransformThresholds with fn deserialize(d) {
@@ -43709,12 +44276,13 @@ pub impl ToJson for IsocontourTransformThresholds with fn to_json(self) {
 
 ///|
 /// `IsocontourTransformTranslateArrayItem`
+#derive(Debug, Eq)
 pub(all) enum IsocontourTransformTranslateArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Expr(Expr)
   ParamField(ParamField)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransformTranslateArrayItem with fn deserialize(d) {
@@ -43776,10 +44344,11 @@ pub impl ToJson for IsocontourTransformTranslateArrayItem with fn to_json(self) 
 
 ///|
 /// `IsocontourTransformTranslate`
+#derive(Debug, Eq)
 pub(all) enum IsocontourTransformTranslate {
   Array(Array[IsocontourTransformTranslateArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransformTranslate with fn deserialize(d) {
@@ -43823,9 +44392,10 @@ pub impl ToJson for IsocontourTransformTranslate with fn to_json(self) {
 
 ///|
 /// `IsocontourTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum IsocontourTransformType {
   Isocontour
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransformType with fn deserialize(d) {
@@ -43882,10 +44452,11 @@ pub impl ToJson for IsocontourTransformType with fn to_json(self) {
 
 ///|
 /// `IsocontourTransformZero`
+#derive(Debug, Eq)
 pub(all) enum IsocontourTransformZero {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IsocontourTransformZero with fn deserialize(d) {
@@ -43937,11 +44508,12 @@ pub impl ToJson for IsocontourTransformZero with fn to_json(self) {
 
 ///|
 /// `JoinaggregateTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum JoinaggregateTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for JoinaggregateTransformAsArrayItem with fn deserialize(d) {
@@ -43994,10 +44566,11 @@ pub impl ToJson for JoinaggregateTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `JoinaggregateTransformAs`
+#derive(Debug, Eq)
 pub(all) enum JoinaggregateTransformAs {
   Array(Array[JoinaggregateTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for JoinaggregateTransformAs with fn deserialize(d) {
@@ -44041,12 +44614,13 @@ pub impl ToJson for JoinaggregateTransformAs with fn to_json(self) {
 
 ///|
 /// `JoinaggregateTransformFieldsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum JoinaggregateTransformFieldsArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for JoinaggregateTransformFieldsArrayItem with fn deserialize(d) {
@@ -44108,10 +44682,11 @@ pub impl ToJson for JoinaggregateTransformFieldsArrayItem with fn to_json(self) 
 
 ///|
 /// `JoinaggregateTransformFields`
+#derive(Debug, Eq)
 pub(all) enum JoinaggregateTransformFields {
   Array(Array[JoinaggregateTransformFieldsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for JoinaggregateTransformFields with fn deserialize(d) {
@@ -44155,11 +44730,12 @@ pub impl ToJson for JoinaggregateTransformFields with fn to_json(self) {
 
 ///|
 /// `JoinaggregateTransformGroupbyArrayItem`
+#derive(Debug, Eq)
 pub(all) enum JoinaggregateTransformGroupbyArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for JoinaggregateTransformGroupbyArrayItem with fn deserialize(d) {
@@ -44212,10 +44788,11 @@ pub impl ToJson for JoinaggregateTransformGroupbyArrayItem with fn to_json(self)
 
 ///|
 /// `JoinaggregateTransformGroupby`
+#derive(Debug, Eq)
 pub(all) enum JoinaggregateTransformGroupby {
   Array(Array[JoinaggregateTransformGroupbyArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for JoinaggregateTransformGroupby with fn deserialize(d) {
@@ -44259,11 +44836,12 @@ pub impl ToJson for JoinaggregateTransformGroupby with fn to_json(self) {
 
 ///|
 /// `JoinaggregateTransformKey`
+#derive(Debug, Eq)
 pub(all) enum JoinaggregateTransformKey {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for JoinaggregateTransformKey with fn deserialize(d) {
@@ -44316,6 +44894,7 @@ pub impl ToJson for JoinaggregateTransformKey with fn to_json(self) {
 
 ///|
 /// `JoinaggregateTransformOpsArrayItemVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum JoinaggregateTransformOpsArrayItemVariant0 {
   Values
   Count
@@ -44341,7 +44920,7 @@ pub(all) enum JoinaggregateTransformOpsArrayItemVariant0 {
   Max
   Argmin
   Argmax
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for JoinaggregateTransformOpsArrayItemVariant0 with fn deserialize(d) {
@@ -44513,10 +45092,11 @@ pub impl ToJson for JoinaggregateTransformOpsArrayItemVariant0 with fn to_json(s
 
 ///|
 /// `JoinaggregateTransformOpsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum JoinaggregateTransformOpsArrayItem {
   Variant0(JoinaggregateTransformOpsArrayItemVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for JoinaggregateTransformOpsArrayItem with fn deserialize(d) {
@@ -44560,10 +45140,11 @@ pub impl ToJson for JoinaggregateTransformOpsArrayItem with fn to_json(self) {
 
 ///|
 /// `JoinaggregateTransformOps`
+#derive(Debug, Eq)
 pub(all) enum JoinaggregateTransformOps {
   Array(Array[JoinaggregateTransformOpsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for JoinaggregateTransformOps with fn deserialize(d) {
@@ -44607,9 +45188,10 @@ pub impl ToJson for JoinaggregateTransformOps with fn to_json(self) {
 
 ///|
 /// `JoinaggregateTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum JoinaggregateTransformType {
   Joinaggregate
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for JoinaggregateTransformType with fn deserialize(d) {
@@ -44666,10 +45248,11 @@ pub impl ToJson for JoinaggregateTransformType with fn to_json(self) {
 
 ///|
 /// `Kde2dTransformAs`
+#derive(Debug, Eq)
 pub(all) enum Kde2dTransformAs {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Kde2dTransformAs with fn deserialize(d) {
@@ -44721,10 +45304,11 @@ pub impl ToJson for Kde2dTransformAs with fn to_json(self) {
 
 ///|
 /// `Kde2dTransformBandwidthArrayItem`
+#derive(Debug, Eq)
 pub(all) enum Kde2dTransformBandwidthArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Kde2dTransformBandwidthArrayItem with fn deserialize(d) {
@@ -44768,10 +45352,11 @@ pub impl ToJson for Kde2dTransformBandwidthArrayItem with fn to_json(self) {
 
 ///|
 /// `Kde2dTransformBandwidth`
+#derive(Debug, Eq)
 pub(all) enum Kde2dTransformBandwidth {
   Array(FixedArray[Kde2dTransformBandwidthArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Kde2dTransformBandwidth with fn deserialize(d) {
@@ -44815,10 +45400,11 @@ pub impl ToJson for Kde2dTransformBandwidth with fn to_json(self) {
 
 ///|
 /// `Kde2dTransformCellSize`
+#derive(Debug, Eq)
 pub(all) enum Kde2dTransformCellSize {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Kde2dTransformCellSize with fn deserialize(d) {
@@ -44862,10 +45448,11 @@ pub impl ToJson for Kde2dTransformCellSize with fn to_json(self) {
 
 ///|
 /// `Kde2dTransformCounts`
+#derive(Debug, Eq)
 pub(all) enum Kde2dTransformCounts {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Kde2dTransformCounts with fn deserialize(d) {
@@ -44909,11 +45496,12 @@ pub impl ToJson for Kde2dTransformCounts with fn to_json(self) {
 
 ///|
 /// `Kde2dTransformGroupbyArrayItem`
+#derive(Debug, Eq)
 pub(all) enum Kde2dTransformGroupbyArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Kde2dTransformGroupbyArrayItem with fn deserialize(d) {
@@ -44966,10 +45554,11 @@ pub impl ToJson for Kde2dTransformGroupbyArrayItem with fn to_json(self) {
 
 ///|
 /// `Kde2dTransformGroupby`
+#derive(Debug, Eq)
 pub(all) enum Kde2dTransformGroupby {
   Array(Array[Kde2dTransformGroupbyArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Kde2dTransformGroupby with fn deserialize(d) {
@@ -45013,10 +45602,11 @@ pub impl ToJson for Kde2dTransformGroupby with fn to_json(self) {
 
 ///|
 /// `Kde2dTransformSizeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum Kde2dTransformSizeArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Kde2dTransformSizeArrayItem with fn deserialize(d) {
@@ -45060,10 +45650,11 @@ pub impl ToJson for Kde2dTransformSizeArrayItem with fn to_json(self) {
 
 ///|
 /// `Kde2dTransformSize`
+#derive(Debug, Eq)
 pub(all) enum Kde2dTransformSize {
   Array(FixedArray[Kde2dTransformSizeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Kde2dTransformSize with fn deserialize(d) {
@@ -45107,9 +45698,10 @@ pub impl ToJson for Kde2dTransformSize with fn to_json(self) {
 
 ///|
 /// `Kde2dTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum Kde2dTransformType {
   Kde2d
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for Kde2dTransformType with fn deserialize(d) {
@@ -45166,11 +45758,12 @@ pub impl ToJson for Kde2dTransformType with fn to_json(self) {
 
 ///|
 /// `Kde2dTransformWeight`
+#derive(Debug, Eq)
 pub(all) enum Kde2dTransformWeight {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Kde2dTransformWeight with fn deserialize(d) {
@@ -45223,11 +45816,12 @@ pub impl ToJson for Kde2dTransformWeight with fn to_json(self) {
 
 ///|
 /// `Kde2dTransformX`
+#derive(Debug, Eq)
 pub(all) enum Kde2dTransformX {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Kde2dTransformX with fn deserialize(d) {
@@ -45280,11 +45874,12 @@ pub impl ToJson for Kde2dTransformX with fn to_json(self) {
 
 ///|
 /// `Kde2dTransformY`
+#derive(Debug, Eq)
 pub(all) enum Kde2dTransformY {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Kde2dTransformY with fn deserialize(d) {
@@ -45337,10 +45932,11 @@ pub impl ToJson for Kde2dTransformY with fn to_json(self) {
 
 ///|
 /// `KdeTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum KdeTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformAsArrayItem with fn deserialize(d) {
@@ -45384,10 +45980,11 @@ pub impl ToJson for KdeTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `KdeTransformAs`
+#derive(Debug, Eq)
 pub(all) enum KdeTransformAs {
   Array(Array[KdeTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformAs with fn deserialize(d) {
@@ -45439,10 +46036,11 @@ pub impl ToJson for KdeTransformAs with fn to_json(self) {
 
 ///|
 /// `KdeTransformBandwidth`
+#derive(Debug, Eq)
 pub(all) enum KdeTransformBandwidth {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformBandwidth with fn deserialize(d) {
@@ -45486,10 +46084,11 @@ pub impl ToJson for KdeTransformBandwidth with fn to_json(self) {
 
 ///|
 /// `KdeTransformCounts`
+#derive(Debug, Eq)
 pub(all) enum KdeTransformCounts {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformCounts with fn deserialize(d) {
@@ -45533,10 +46132,11 @@ pub impl ToJson for KdeTransformCounts with fn to_json(self) {
 
 ///|
 /// `KdeTransformCumulative`
+#derive(Debug, Eq)
 pub(all) enum KdeTransformCumulative {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformCumulative with fn deserialize(d) {
@@ -45580,10 +46180,11 @@ pub impl ToJson for KdeTransformCumulative with fn to_json(self) {
 
 ///|
 /// `KdeTransformExtentArrayItem`
+#derive(Debug, Eq)
 pub(all) enum KdeTransformExtentArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformExtentArrayItem with fn deserialize(d) {
@@ -45627,10 +46228,11 @@ pub impl ToJson for KdeTransformExtentArrayItem with fn to_json(self) {
 
 ///|
 /// `KdeTransformExtent`
+#derive(Debug, Eq)
 pub(all) enum KdeTransformExtent {
   Array(FixedArray[KdeTransformExtentArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformExtent with fn deserialize(d) {
@@ -45674,11 +46276,12 @@ pub impl ToJson for KdeTransformExtent with fn to_json(self) {
 
 ///|
 /// `KdeTransformField`
+#derive(Debug, Eq)
 pub(all) enum KdeTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformField with fn deserialize(d) {
@@ -45731,11 +46334,12 @@ pub impl ToJson for KdeTransformField with fn to_json(self) {
 
 ///|
 /// `KdeTransformGroupbyArrayItem`
+#derive(Debug, Eq)
 pub(all) enum KdeTransformGroupbyArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformGroupbyArrayItem with fn deserialize(d) {
@@ -45788,10 +46392,11 @@ pub impl ToJson for KdeTransformGroupbyArrayItem with fn to_json(self) {
 
 ///|
 /// `KdeTransformGroupby`
+#derive(Debug, Eq)
 pub(all) enum KdeTransformGroupby {
   Array(Array[KdeTransformGroupbyArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformGroupby with fn deserialize(d) {
@@ -45835,10 +46440,11 @@ pub impl ToJson for KdeTransformGroupby with fn to_json(self) {
 
 ///|
 /// `KdeTransformMaxsteps`
+#derive(Debug, Eq)
 pub(all) enum KdeTransformMaxsteps {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformMaxsteps with fn deserialize(d) {
@@ -45890,10 +46496,11 @@ pub impl ToJson for KdeTransformMaxsteps with fn to_json(self) {
 
 ///|
 /// `KdeTransformMinsteps`
+#derive(Debug, Eq)
 pub(all) enum KdeTransformMinsteps {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformMinsteps with fn deserialize(d) {
@@ -45945,10 +46552,11 @@ pub impl ToJson for KdeTransformMinsteps with fn to_json(self) {
 
 ///|
 /// `KdeTransformResolveVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum KdeTransformResolveVariant0 {
   Shared
   Independent
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformResolveVariant0 with fn deserialize(d) {
@@ -46010,10 +46618,11 @@ pub impl ToJson for KdeTransformResolveVariant0 with fn to_json(self) {
 
 ///|
 /// `KdeTransformResolve`
+#derive(Debug, Eq)
 pub(all) enum KdeTransformResolve {
   Variant0(KdeTransformResolveVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformResolve with fn deserialize(d) {
@@ -46065,10 +46674,11 @@ pub impl ToJson for KdeTransformResolve with fn to_json(self) {
 
 ///|
 /// `KdeTransformSteps`
+#derive(Debug, Eq)
 pub(all) enum KdeTransformSteps {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformSteps with fn deserialize(d) {
@@ -46112,9 +46722,10 @@ pub impl ToJson for KdeTransformSteps with fn to_json(self) {
 
 ///|
 /// `KdeTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum KdeTransformType {
   Kde
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for KdeTransformType with fn deserialize(d) {
@@ -46171,10 +46782,11 @@ pub impl ToJson for KdeTransformType with fn to_json(self) {
 
 ///|
 /// `LabelOverlapVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum LabelOverlapVariant1 {
   Parity
   Greedy
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelOverlapVariant1 with fn deserialize(d) {
@@ -46236,10 +46848,11 @@ pub impl ToJson for LabelOverlapVariant1 with fn to_json(self) {
 
 ///|
 /// `LabelTransformAnchorArrayItem`
+#derive(Debug, Eq)
 pub(all) enum LabelTransformAnchorArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformAnchorArrayItem with fn deserialize(d) {
@@ -46283,10 +46896,11 @@ pub impl ToJson for LabelTransformAnchorArrayItem with fn to_json(self) {
 
 ///|
 /// `LabelTransformAnchor`
+#derive(Debug, Eq)
 pub(all) enum LabelTransformAnchor {
   Array(Array[LabelTransformAnchorArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformAnchor with fn deserialize(d) {
@@ -46338,10 +46952,11 @@ pub impl ToJson for LabelTransformAnchor with fn to_json(self) {
 
 ///|
 /// `LabelTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum LabelTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformAsArrayItem with fn deserialize(d) {
@@ -46385,10 +47000,11 @@ pub impl ToJson for LabelTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `LabelTransformAs`
+#derive(Debug, Eq)
 pub(all) enum LabelTransformAs {
   Array(FixedArray[LabelTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformAs with fn deserialize(d) {
@@ -46440,10 +47056,11 @@ pub impl ToJson for LabelTransformAs with fn to_json(self) {
 
 ///|
 /// `LabelTransformAvoidBaseMark`
+#derive(Debug, Eq)
 pub(all) enum LabelTransformAvoidBaseMark {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformAvoidBaseMark with fn deserialize(d) {
@@ -46495,10 +47112,11 @@ pub impl ToJson for LabelTransformAvoidBaseMark with fn to_json(self) {
 
 ///|
 /// `LabelTransformAvoidMarks`
+#derive(Debug, Eq)
 pub(all) enum LabelTransformAvoidMarks {
   Array(Array[String])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformAvoidMarks with fn deserialize(d) {
@@ -46542,10 +47160,11 @@ pub impl ToJson for LabelTransformAvoidMarks with fn to_json(self) {
 
 ///|
 /// `LabelTransformLineAnchor`
+#derive(Debug, Eq)
 pub(all) enum LabelTransformLineAnchor {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformLineAnchor with fn deserialize(d) {
@@ -46597,10 +47216,11 @@ pub impl ToJson for LabelTransformLineAnchor with fn to_json(self) {
 
 ///|
 /// `LabelTransformMarkIndex`
+#derive(Debug, Eq)
 pub(all) enum LabelTransformMarkIndex {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformMarkIndex with fn deserialize(d) {
@@ -46644,10 +47264,11 @@ pub impl ToJson for LabelTransformMarkIndex with fn to_json(self) {
 
 ///|
 /// `LabelTransformMethod`
+#derive(Debug, Eq)
 pub(all) enum LabelTransformMethod {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformMethod with fn deserialize(d) {
@@ -46699,10 +47320,11 @@ pub impl ToJson for LabelTransformMethod with fn to_json(self) {
 
 ///|
 /// `LabelTransformOffsetArrayItem`
+#derive(Debug, Eq)
 pub(all) enum LabelTransformOffsetArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformOffsetArrayItem with fn deserialize(d) {
@@ -46746,10 +47368,11 @@ pub impl ToJson for LabelTransformOffsetArrayItem with fn to_json(self) {
 
 ///|
 /// `LabelTransformOffset`
+#derive(Debug, Eq)
 pub(all) enum LabelTransformOffset {
   Array(Array[LabelTransformOffsetArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformOffset with fn deserialize(d) {
@@ -46801,11 +47424,12 @@ pub impl ToJson for LabelTransformOffset with fn to_json(self) {
 
 ///|
 /// `LabelTransformPadding`
+#derive(Debug, Eq)
 pub(all) enum LabelTransformPadding {
   Number(Double)
   SignalRef(SignalRef)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformPadding with fn deserialize(d) {
@@ -46858,10 +47482,11 @@ pub impl ToJson for LabelTransformPadding with fn to_json(self) {
 
 ///|
 /// `LabelTransformSizeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum LabelTransformSizeArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformSizeArrayItem with fn deserialize(d) {
@@ -46905,10 +47530,11 @@ pub impl ToJson for LabelTransformSizeArrayItem with fn to_json(self) {
 
 ///|
 /// `LabelTransformSize`
+#derive(Debug, Eq)
 pub(all) enum LabelTransformSize {
   Array(FixedArray[LabelTransformSizeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformSize with fn deserialize(d) {
@@ -46952,9 +47578,10 @@ pub impl ToJson for LabelTransformSize with fn to_json(self) {
 
 ///|
 /// `LabelTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum LabelTransformType {
   Label
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelTransformType with fn deserialize(d) {
@@ -47011,11 +47638,12 @@ pub impl ToJson for LabelTransformType with fn to_json(self) {
 
 ///|
 /// `LayoutObjectAlignVariant0Variant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LayoutObjectAlignVariant0Variant0 {
   All
   Each
   None_
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LayoutObjectAlignVariant0Variant0 with fn deserialize(d) {
@@ -47082,10 +47710,11 @@ pub impl ToJson for LayoutObjectAlignVariant0Variant0 with fn to_json(self) {
 
 ///|
 /// `LayoutObjectAlignVariant0`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectAlignVariant0 {
   Variant0(LayoutObjectAlignVariant0Variant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LayoutObjectAlignVariant0 with fn deserialize(d) {
@@ -47129,11 +47758,12 @@ pub impl ToJson for LayoutObjectAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LayoutObjectAlignVariant1ColumnVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LayoutObjectAlignVariant1ColumnVariant0 {
   All
   Each
   None_
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LayoutObjectAlignVariant1ColumnVariant0 with fn deserialize(d) {
@@ -47200,10 +47830,11 @@ pub impl ToJson for LayoutObjectAlignVariant1ColumnVariant0 with fn to_json(self
 
 ///|
 /// `LayoutObjectAlignVariant1Column`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectAlignVariant1Column {
   Variant0(LayoutObjectAlignVariant1ColumnVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LayoutObjectAlignVariant1Column with fn deserialize(d) {
@@ -47247,11 +47878,12 @@ pub impl ToJson for LayoutObjectAlignVariant1Column with fn to_json(self) {
 
 ///|
 /// `LayoutObjectAlignVariant1RowVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LayoutObjectAlignVariant1RowVariant0 {
   All
   Each
   None_
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LayoutObjectAlignVariant1RowVariant0 with fn deserialize(d) {
@@ -47318,10 +47950,11 @@ pub impl ToJson for LayoutObjectAlignVariant1RowVariant0 with fn to_json(self) {
 
 ///|
 /// `LayoutObjectAlignVariant1Row`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectAlignVariant1Row {
   Variant0(LayoutObjectAlignVariant1RowVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LayoutObjectAlignVariant1Row with fn deserialize(d) {
@@ -47365,10 +47998,11 @@ pub impl ToJson for LayoutObjectAlignVariant1Row with fn to_json(self) {
 
 ///|
 /// `LayoutObjectAlign`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectAlign {
   Variant0(LayoutObjectAlignVariant0)
   Variant1(column~ : LayoutObjectAlignVariant1Column?, row~ : LayoutObjectAlignVariant1Row?)
-} derive(Debug, Eq)
+}
 
 ///|
 let layout_object_align_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["column", "row"])
@@ -47435,10 +48069,11 @@ pub impl ToJson for LayoutObjectAlign with fn to_json(self) {
 
 ///|
 /// `LayoutObjectBoundsVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LayoutObjectBoundsVariant0 {
   Full
   Flush
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LayoutObjectBoundsVariant0 with fn deserialize(d) {
@@ -47500,10 +48135,11 @@ pub impl ToJson for LayoutObjectBoundsVariant0 with fn to_json(self) {
 
 ///|
 /// `LayoutObjectBounds`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectBounds {
   Variant0(LayoutObjectBoundsVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LayoutObjectBounds with fn deserialize(d) {
@@ -47547,11 +48183,12 @@ pub impl ToJson for LayoutObjectBounds with fn to_json(self) {
 
 ///|
 /// `LayoutObjectCenter`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectCenter {
   Boolean(Bool)
   SignalRef(SignalRef)
   Object(column~ : BooleanOrSignal?, row~ : BooleanOrSignal?)
-} derive(Debug, Eq)
+}
 
 ///|
 let layout_object_center_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["column", "row"])
@@ -47627,11 +48264,12 @@ pub impl ToJson for LayoutObjectCenter with fn to_json(self) {
 
 ///|
 /// `LayoutObjectFooterBand`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectFooterBand {
   NumberOrSignal(NumberOrSignal)
   Null
   Object(column~ : NumberOrSignal?, row~ : NumberOrSignal?)
-} derive(Debug, Eq)
+}
 
 ///|
 let layout_object_footer_band_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["column", "row"])
@@ -47707,11 +48345,12 @@ pub impl ToJson for LayoutObjectFooterBand with fn to_json(self) {
 
 ///|
 /// `LayoutObjectHeaderBand`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectHeaderBand {
   NumberOrSignal(NumberOrSignal)
   Null
   Object(column~ : NumberOrSignal?, row~ : NumberOrSignal?)
-} derive(Debug, Eq)
+}
 
 ///|
 let layout_object_header_band_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["column", "row"])
@@ -47787,11 +48426,12 @@ pub impl ToJson for LayoutObjectHeaderBand with fn to_json(self) {
 
 ///|
 /// `LayoutObjectOffset`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectOffset {
   Number(Double)
   SignalRef(SignalRef)
   Object(column_footer~ : NumberOrSignal?, column_header~ : NumberOrSignal?, column_title~ : NumberOrSignal?, row_footer~ : NumberOrSignal?, row_header~ : NumberOrSignal?, row_title~ : NumberOrSignal?)
-} derive(Debug, Eq)
+}
 
 ///|
 let layout_object_offset_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["columnFooter", "columnHeader", "columnTitle", "rowFooter", "rowHeader", "rowTitle"])
@@ -47891,11 +48531,12 @@ pub impl ToJson for LayoutObjectOffset with fn to_json(self) {
 
 ///|
 /// `LayoutObjectPadding`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectPadding {
   Number(Double)
   SignalRef(SignalRef)
   Object(column~ : NumberOrSignal?, row~ : NumberOrSignal?)
-} derive(Debug, Eq)
+}
 
 ///|
 let layout_object_padding_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["column", "row"])
@@ -47971,10 +48612,11 @@ pub impl ToJson for LayoutObjectPadding with fn to_json(self) {
 
 ///|
 /// `LayoutObjectTitleAnchorVariant0Variant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LayoutObjectTitleAnchorVariant0Variant0 {
   Start
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LayoutObjectTitleAnchorVariant0Variant0 with fn deserialize(d) {
@@ -48036,10 +48678,11 @@ pub impl ToJson for LayoutObjectTitleAnchorVariant0Variant0 with fn to_json(self
 
 ///|
 /// `LayoutObjectTitleAnchorVariant0`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectTitleAnchorVariant0 {
   Variant0(LayoutObjectTitleAnchorVariant0Variant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LayoutObjectTitleAnchorVariant0 with fn deserialize(d) {
@@ -48083,10 +48726,11 @@ pub impl ToJson for LayoutObjectTitleAnchorVariant0 with fn to_json(self) {
 
 ///|
 /// `LayoutObjectTitleAnchorVariant1ColumnVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LayoutObjectTitleAnchorVariant1ColumnVariant0 {
   Start
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LayoutObjectTitleAnchorVariant1ColumnVariant0 with fn deserialize(d) {
@@ -48148,10 +48792,11 @@ pub impl ToJson for LayoutObjectTitleAnchorVariant1ColumnVariant0 with fn to_jso
 
 ///|
 /// `LayoutObjectTitleAnchorVariant1Column`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectTitleAnchorVariant1Column {
   Variant0(LayoutObjectTitleAnchorVariant1ColumnVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LayoutObjectTitleAnchorVariant1Column with fn deserialize(d) {
@@ -48195,10 +48840,11 @@ pub impl ToJson for LayoutObjectTitleAnchorVariant1Column with fn to_json(self) 
 
 ///|
 /// `LayoutObjectTitleAnchorVariant1RowVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LayoutObjectTitleAnchorVariant1RowVariant0 {
   Start
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LayoutObjectTitleAnchorVariant1RowVariant0 with fn deserialize(d) {
@@ -48260,10 +48906,11 @@ pub impl ToJson for LayoutObjectTitleAnchorVariant1RowVariant0 with fn to_json(s
 
 ///|
 /// `LayoutObjectTitleAnchorVariant1Row`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectTitleAnchorVariant1Row {
   Variant0(LayoutObjectTitleAnchorVariant1RowVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LayoutObjectTitleAnchorVariant1Row with fn deserialize(d) {
@@ -48307,10 +48954,11 @@ pub impl ToJson for LayoutObjectTitleAnchorVariant1Row with fn to_json(self) {
 
 ///|
 /// `LayoutObjectTitleAnchor`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectTitleAnchor {
   Variant0(LayoutObjectTitleAnchorVariant0)
   Variant1(column~ : LayoutObjectTitleAnchorVariant1Column?, row~ : LayoutObjectTitleAnchorVariant1Row?)
-} derive(Debug, Eq)
+}
 
 ///|
 let layout_object_title_anchor_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["column", "row"])
@@ -48377,11 +49025,12 @@ pub impl ToJson for LayoutObjectTitleAnchor with fn to_json(self) {
 
 ///|
 /// `LayoutObjectTitleBand`
+#derive(Debug, Eq)
 pub(all) enum LayoutObjectTitleBand {
   NumberOrSignal(NumberOrSignal)
   Null
   Object(column~ : NumberOrSignal?, row~ : NumberOrSignal?)
-} derive(Debug, Eq)
+}
 
 ///|
 let layout_object_title_band_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["column", "row"])
@@ -48457,10 +49106,11 @@ pub impl ToJson for LayoutObjectTitleBand with fn to_json(self) {
 
 ///|
 /// `LegendVariant0CornerRadius`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0CornerRadius {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0CornerRadius with fn deserialize(d) {
@@ -48504,10 +49154,11 @@ pub impl ToJson for LegendVariant0CornerRadius with fn to_json(self) {
 
 ///|
 /// `LegendVariant0Direction`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant0Direction {
   Vertical
   Horizontal
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0Direction with fn deserialize(d) {
@@ -48569,6 +49220,7 @@ pub impl ToJson for LegendVariant0Direction with fn to_json(self) {
 
 ///|
 /// `LegendVariant0Encode`
+#derive(Debug, Eq)
 pub(all) struct LegendVariant0Encode {
   entries : GuideEncode?
   gradient : GuideEncode?
@@ -48576,7 +49228,7 @@ pub(all) struct LegendVariant0Encode {
   legend : GuideEncode?
   symbols : GuideEncode?
   title : GuideEncode?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LegendVariant0Encode` (fields with defaults are optional).
@@ -48656,11 +49308,12 @@ pub impl ToJson for LegendVariant0Encode with fn to_json(self) {
 
 ///|
 /// `LegendVariant0FillColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0FillColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0FillColor with fn deserialize(d) {
@@ -48713,11 +49366,12 @@ pub impl ToJson for LegendVariant0FillColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant0Format`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0Format {
   String(String)
   Object(date~ : String?, day~ : String?, hours~ : String?, milliseconds~ : String?, minutes~ : String?, month~ : String?, quarter~ : String?, seconds~ : String?, week~ : String?, year~ : String?)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let legend_variant0_format_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["date", "day", "hours", "milliseconds", "minutes", "month", "quarter", "seconds", "week", "year"])
@@ -48841,11 +49495,12 @@ pub impl ToJson for LegendVariant0Format with fn to_json(self) {
 
 ///|
 /// `LegendVariant0FormatTypeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant0FormatTypeVariant0 {
   Number
   Time
   Utc
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0FormatTypeVariant0 with fn deserialize(d) {
@@ -48912,10 +49567,11 @@ pub impl ToJson for LegendVariant0FormatTypeVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant0FormatType`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0FormatType {
   Variant0(LegendVariant0FormatTypeVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0FormatType with fn deserialize(d) {
@@ -48959,10 +49615,11 @@ pub impl ToJson for LegendVariant0FormatType with fn to_json(self) {
 
 ///|
 /// `LegendVariant0GradientOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0GradientOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0GradientOpacity with fn deserialize(d) {
@@ -49006,11 +49663,12 @@ pub impl ToJson for LegendVariant0GradientOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant0GradientStrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0GradientStrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0GradientStrokeColor with fn deserialize(d) {
@@ -49063,10 +49721,11 @@ pub impl ToJson for LegendVariant0GradientStrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant0GradientStrokeWidth`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0GradientStrokeWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0GradientStrokeWidth with fn deserialize(d) {
@@ -49110,11 +49769,12 @@ pub impl ToJson for LegendVariant0GradientStrokeWidth with fn to_json(self) {
 
 ///|
 /// `LegendVariant0GridAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant0GridAlignVariant0 {
   All
   Each
   None_
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0GridAlignVariant0 with fn deserialize(d) {
@@ -49181,10 +49841,11 @@ pub impl ToJson for LegendVariant0GridAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant0GridAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0GridAlign {
   Variant0(LegendVariant0GridAlignVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0GridAlign with fn deserialize(d) {
@@ -49228,11 +49889,12 @@ pub impl ToJson for LegendVariant0GridAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant0LabelAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant0LabelAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0LabelAlignVariant0 with fn deserialize(d) {
@@ -49299,10 +49961,11 @@ pub impl ToJson for LegendVariant0LabelAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant0LabelAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0LabelAlign {
   Variant0(LegendVariant0LabelAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0LabelAlign with fn deserialize(d) {
@@ -49346,6 +50009,7 @@ pub impl ToJson for LegendVariant0LabelAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant0LabelBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant0LabelBaselineVariant0 {
   Top
   Middle
@@ -49353,7 +50017,7 @@ pub(all) enum LegendVariant0LabelBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0LabelBaselineVariant0 with fn deserialize(d) {
@@ -49435,10 +50099,11 @@ pub impl ToJson for LegendVariant0LabelBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant0LabelBaseline`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0LabelBaseline {
   Variant0(LegendVariant0LabelBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0LabelBaseline with fn deserialize(d) {
@@ -49482,11 +50147,12 @@ pub impl ToJson for LegendVariant0LabelBaseline with fn to_json(self) {
 
 ///|
 /// `LegendVariant0LabelColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0LabelColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0LabelColor with fn deserialize(d) {
@@ -49539,10 +50205,11 @@ pub impl ToJson for LegendVariant0LabelColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant0LabelFont`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0LabelFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0LabelFont with fn deserialize(d) {
@@ -49586,10 +50253,11 @@ pub impl ToJson for LegendVariant0LabelFont with fn to_json(self) {
 
 ///|
 /// `LegendVariant0LabelFontSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0LabelFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0LabelFontSize with fn deserialize(d) {
@@ -49633,10 +50301,11 @@ pub impl ToJson for LegendVariant0LabelFontSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant0LabelFontStyle`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0LabelFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0LabelFontStyle with fn deserialize(d) {
@@ -49680,10 +50349,11 @@ pub impl ToJson for LegendVariant0LabelFontStyle with fn to_json(self) {
 
 ///|
 /// `LegendVariant0LabelFontWeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0LabelFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0LabelFontWeight with fn deserialize(d) {
@@ -49727,10 +50397,11 @@ pub impl ToJson for LegendVariant0LabelFontWeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant0LabelLimit`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0LabelLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0LabelLimit with fn deserialize(d) {
@@ -49774,10 +50445,11 @@ pub impl ToJson for LegendVariant0LabelLimit with fn to_json(self) {
 
 ///|
 /// `LegendVariant0LabelOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0LabelOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0LabelOffset with fn deserialize(d) {
@@ -49821,10 +50493,11 @@ pub impl ToJson for LegendVariant0LabelOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant0LabelOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0LabelOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0LabelOpacity with fn deserialize(d) {
@@ -49868,10 +50541,11 @@ pub impl ToJson for LegendVariant0LabelOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant0LegendX`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0LegendX {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0LegendX with fn deserialize(d) {
@@ -49915,10 +50589,11 @@ pub impl ToJson for LegendVariant0LegendX with fn to_json(self) {
 
 ///|
 /// `LegendVariant0LegendY`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0LegendY {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0LegendY with fn deserialize(d) {
@@ -49962,10 +50637,11 @@ pub impl ToJson for LegendVariant0LegendY with fn to_json(self) {
 
 ///|
 /// `LegendVariant0Offset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0Offset with fn deserialize(d) {
@@ -50009,6 +50685,7 @@ pub impl ToJson for LegendVariant0Offset with fn to_json(self) {
 
 ///|
 /// `LegendVariant0OrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant0OrientVariant0 {
   None_
   Left
@@ -50019,7 +50696,7 @@ pub(all) enum LegendVariant0OrientVariant0 {
   TopRight
   BottomLeft
   BottomRight
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0OrientVariant0 with fn deserialize(d) {
@@ -50116,10 +50793,11 @@ pub impl ToJson for LegendVariant0OrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant0Orient`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0Orient {
   Variant0(LegendVariant0OrientVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0Orient with fn deserialize(d) {
@@ -50163,10 +50841,11 @@ pub impl ToJson for LegendVariant0Orient with fn to_json(self) {
 
 ///|
 /// `LegendVariant0Padding`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0Padding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0Padding with fn deserialize(d) {
@@ -50210,11 +50889,12 @@ pub impl ToJson for LegendVariant0Padding with fn to_json(self) {
 
 ///|
 /// `LegendVariant0StrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0StrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0StrokeColor with fn deserialize(d) {
@@ -50267,10 +50947,11 @@ pub impl ToJson for LegendVariant0StrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant0SymbolDash`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0SymbolDash {
   Variant0(Array[Double])
   Variant1(ArrayValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0SymbolDash with fn deserialize(d) {
@@ -50314,10 +50995,11 @@ pub impl ToJson for LegendVariant0SymbolDash with fn to_json(self) {
 
 ///|
 /// `LegendVariant0SymbolDashOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0SymbolDashOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0SymbolDashOffset with fn deserialize(d) {
@@ -50361,11 +51043,12 @@ pub impl ToJson for LegendVariant0SymbolDashOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant0SymbolFillColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0SymbolFillColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0SymbolFillColor with fn deserialize(d) {
@@ -50418,10 +51101,11 @@ pub impl ToJson for LegendVariant0SymbolFillColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant0SymbolOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0SymbolOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0SymbolOffset with fn deserialize(d) {
@@ -50465,10 +51149,11 @@ pub impl ToJson for LegendVariant0SymbolOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant0SymbolOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0SymbolOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0SymbolOpacity with fn deserialize(d) {
@@ -50512,10 +51197,11 @@ pub impl ToJson for LegendVariant0SymbolOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant0SymbolSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0SymbolSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0SymbolSize with fn deserialize(d) {
@@ -50559,11 +51245,12 @@ pub impl ToJson for LegendVariant0SymbolSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant0SymbolStrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0SymbolStrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0SymbolStrokeColor with fn deserialize(d) {
@@ -50616,10 +51303,11 @@ pub impl ToJson for LegendVariant0SymbolStrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant0SymbolStrokeWidth`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0SymbolStrokeWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0SymbolStrokeWidth with fn deserialize(d) {
@@ -50663,10 +51351,11 @@ pub impl ToJson for LegendVariant0SymbolStrokeWidth with fn to_json(self) {
 
 ///|
 /// `LegendVariant0SymbolType`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0SymbolType {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0SymbolType with fn deserialize(d) {
@@ -50710,11 +51399,12 @@ pub impl ToJson for LegendVariant0SymbolType with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant0TitleAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleAlignVariant0 with fn deserialize(d) {
@@ -50781,10 +51471,11 @@ pub impl ToJson for LegendVariant0TitleAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0TitleAlign {
   Variant0(LegendVariant0TitleAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleAlign with fn deserialize(d) {
@@ -50828,11 +51519,12 @@ pub impl ToJson for LegendVariant0TitleAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleAnchorVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant0TitleAnchorVariant0 {
   Start
   Middle
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleAnchorVariant0 with fn deserialize(d) {
@@ -50899,10 +51591,11 @@ pub impl ToJson for LegendVariant0TitleAnchorVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleAnchor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0TitleAnchor {
   Variant0(LegendVariant0TitleAnchorVariant0?)
   Variant1(AnchorValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleAnchor with fn deserialize(d) {
@@ -50946,6 +51639,7 @@ pub impl ToJson for LegendVariant0TitleAnchor with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant0TitleBaselineVariant0 {
   Top
   Middle
@@ -50953,7 +51647,7 @@ pub(all) enum LegendVariant0TitleBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleBaselineVariant0 with fn deserialize(d) {
@@ -51035,10 +51729,11 @@ pub impl ToJson for LegendVariant0TitleBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleBaseline`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0TitleBaseline {
   Variant0(LegendVariant0TitleBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleBaseline with fn deserialize(d) {
@@ -51082,11 +51777,12 @@ pub impl ToJson for LegendVariant0TitleBaseline with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0TitleColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleColor with fn deserialize(d) {
@@ -51139,10 +51835,11 @@ pub impl ToJson for LegendVariant0TitleColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleFont`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0TitleFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleFont with fn deserialize(d) {
@@ -51186,10 +51883,11 @@ pub impl ToJson for LegendVariant0TitleFont with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleFontSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0TitleFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleFontSize with fn deserialize(d) {
@@ -51233,10 +51931,11 @@ pub impl ToJson for LegendVariant0TitleFontSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleFontStyle`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0TitleFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleFontStyle with fn deserialize(d) {
@@ -51280,10 +51979,11 @@ pub impl ToJson for LegendVariant0TitleFontStyle with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleFontWeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0TitleFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleFontWeight with fn deserialize(d) {
@@ -51327,10 +52027,11 @@ pub impl ToJson for LegendVariant0TitleFontWeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleLimit`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0TitleLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleLimit with fn deserialize(d) {
@@ -51374,10 +52075,11 @@ pub impl ToJson for LegendVariant0TitleLimit with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleLineHeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0TitleLineHeight {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleLineHeight with fn deserialize(d) {
@@ -51421,10 +52123,11 @@ pub impl ToJson for LegendVariant0TitleLineHeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0TitleOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleOpacity with fn deserialize(d) {
@@ -51468,12 +52171,13 @@ pub impl ToJson for LegendVariant0TitleOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleOrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant0TitleOrientVariant0 {
   Left
   Right
   Top
   Bottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleOrientVariant0 with fn deserialize(d) {
@@ -51545,10 +52249,11 @@ pub impl ToJson for LegendVariant0TitleOrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitleOrient`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0TitleOrient {
   Variant0(LegendVariant0TitleOrientVariant0)
   Variant1(OrientValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitleOrient with fn deserialize(d) {
@@ -51592,10 +52297,11 @@ pub impl ToJson for LegendVariant0TitleOrient with fn to_json(self) {
 
 ///|
 /// `LegendVariant0TitlePadding`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant0TitlePadding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0TitlePadding with fn deserialize(d) {
@@ -51639,10 +52345,11 @@ pub impl ToJson for LegendVariant0TitlePadding with fn to_json(self) {
 
 ///|
 /// `LegendVariant0Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant0Type {
   Gradient
   Symbol
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant0Type with fn deserialize(d) {
@@ -51704,10 +52411,11 @@ pub impl ToJson for LegendVariant0Type with fn to_json(self) {
 
 ///|
 /// `LegendVariant1CornerRadius`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1CornerRadius {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1CornerRadius with fn deserialize(d) {
@@ -51751,10 +52459,11 @@ pub impl ToJson for LegendVariant1CornerRadius with fn to_json(self) {
 
 ///|
 /// `LegendVariant1Direction`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant1Direction {
   Vertical
   Horizontal
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1Direction with fn deserialize(d) {
@@ -51816,6 +52525,7 @@ pub impl ToJson for LegendVariant1Direction with fn to_json(self) {
 
 ///|
 /// `LegendVariant1Encode`
+#derive(Debug, Eq)
 pub(all) struct LegendVariant1Encode {
   entries : GuideEncode?
   gradient : GuideEncode?
@@ -51823,7 +52533,7 @@ pub(all) struct LegendVariant1Encode {
   legend : GuideEncode?
   symbols : GuideEncode?
   title : GuideEncode?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LegendVariant1Encode` (fields with defaults are optional).
@@ -51903,11 +52613,12 @@ pub impl ToJson for LegendVariant1Encode with fn to_json(self) {
 
 ///|
 /// `LegendVariant1FillColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1FillColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1FillColor with fn deserialize(d) {
@@ -51960,11 +52671,12 @@ pub impl ToJson for LegendVariant1FillColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant1Format`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1Format {
   String(String)
   Object(date~ : String?, day~ : String?, hours~ : String?, milliseconds~ : String?, minutes~ : String?, month~ : String?, quarter~ : String?, seconds~ : String?, week~ : String?, year~ : String?)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let legend_variant1_format_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["date", "day", "hours", "milliseconds", "minutes", "month", "quarter", "seconds", "week", "year"])
@@ -52088,11 +52800,12 @@ pub impl ToJson for LegendVariant1Format with fn to_json(self) {
 
 ///|
 /// `LegendVariant1FormatTypeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant1FormatTypeVariant0 {
   Number
   Time
   Utc
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1FormatTypeVariant0 with fn deserialize(d) {
@@ -52159,10 +52872,11 @@ pub impl ToJson for LegendVariant1FormatTypeVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant1FormatType`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1FormatType {
   Variant0(LegendVariant1FormatTypeVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1FormatType with fn deserialize(d) {
@@ -52206,10 +52920,11 @@ pub impl ToJson for LegendVariant1FormatType with fn to_json(self) {
 
 ///|
 /// `LegendVariant1GradientOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1GradientOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1GradientOpacity with fn deserialize(d) {
@@ -52253,11 +52968,12 @@ pub impl ToJson for LegendVariant1GradientOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant1GradientStrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1GradientStrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1GradientStrokeColor with fn deserialize(d) {
@@ -52310,10 +53026,11 @@ pub impl ToJson for LegendVariant1GradientStrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant1GradientStrokeWidth`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1GradientStrokeWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1GradientStrokeWidth with fn deserialize(d) {
@@ -52357,11 +53074,12 @@ pub impl ToJson for LegendVariant1GradientStrokeWidth with fn to_json(self) {
 
 ///|
 /// `LegendVariant1GridAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant1GridAlignVariant0 {
   All
   Each
   None_
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1GridAlignVariant0 with fn deserialize(d) {
@@ -52428,10 +53146,11 @@ pub impl ToJson for LegendVariant1GridAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant1GridAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1GridAlign {
   Variant0(LegendVariant1GridAlignVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1GridAlign with fn deserialize(d) {
@@ -52475,11 +53194,12 @@ pub impl ToJson for LegendVariant1GridAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant1LabelAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant1LabelAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1LabelAlignVariant0 with fn deserialize(d) {
@@ -52546,10 +53266,11 @@ pub impl ToJson for LegendVariant1LabelAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant1LabelAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1LabelAlign {
   Variant0(LegendVariant1LabelAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1LabelAlign with fn deserialize(d) {
@@ -52593,6 +53314,7 @@ pub impl ToJson for LegendVariant1LabelAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant1LabelBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant1LabelBaselineVariant0 {
   Top
   Middle
@@ -52600,7 +53322,7 @@ pub(all) enum LegendVariant1LabelBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1LabelBaselineVariant0 with fn deserialize(d) {
@@ -52682,10 +53404,11 @@ pub impl ToJson for LegendVariant1LabelBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant1LabelBaseline`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1LabelBaseline {
   Variant0(LegendVariant1LabelBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1LabelBaseline with fn deserialize(d) {
@@ -52729,11 +53452,12 @@ pub impl ToJson for LegendVariant1LabelBaseline with fn to_json(self) {
 
 ///|
 /// `LegendVariant1LabelColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1LabelColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1LabelColor with fn deserialize(d) {
@@ -52786,10 +53510,11 @@ pub impl ToJson for LegendVariant1LabelColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant1LabelFont`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1LabelFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1LabelFont with fn deserialize(d) {
@@ -52833,10 +53558,11 @@ pub impl ToJson for LegendVariant1LabelFont with fn to_json(self) {
 
 ///|
 /// `LegendVariant1LabelFontSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1LabelFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1LabelFontSize with fn deserialize(d) {
@@ -52880,10 +53606,11 @@ pub impl ToJson for LegendVariant1LabelFontSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant1LabelFontStyle`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1LabelFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1LabelFontStyle with fn deserialize(d) {
@@ -52927,10 +53654,11 @@ pub impl ToJson for LegendVariant1LabelFontStyle with fn to_json(self) {
 
 ///|
 /// `LegendVariant1LabelFontWeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1LabelFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1LabelFontWeight with fn deserialize(d) {
@@ -52974,10 +53702,11 @@ pub impl ToJson for LegendVariant1LabelFontWeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant1LabelLimit`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1LabelLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1LabelLimit with fn deserialize(d) {
@@ -53021,10 +53750,11 @@ pub impl ToJson for LegendVariant1LabelLimit with fn to_json(self) {
 
 ///|
 /// `LegendVariant1LabelOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1LabelOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1LabelOffset with fn deserialize(d) {
@@ -53068,10 +53798,11 @@ pub impl ToJson for LegendVariant1LabelOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant1LabelOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1LabelOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1LabelOpacity with fn deserialize(d) {
@@ -53115,10 +53846,11 @@ pub impl ToJson for LegendVariant1LabelOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant1LegendX`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1LegendX {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1LegendX with fn deserialize(d) {
@@ -53162,10 +53894,11 @@ pub impl ToJson for LegendVariant1LegendX with fn to_json(self) {
 
 ///|
 /// `LegendVariant1LegendY`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1LegendY {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1LegendY with fn deserialize(d) {
@@ -53209,10 +53942,11 @@ pub impl ToJson for LegendVariant1LegendY with fn to_json(self) {
 
 ///|
 /// `LegendVariant1Offset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1Offset with fn deserialize(d) {
@@ -53256,6 +53990,7 @@ pub impl ToJson for LegendVariant1Offset with fn to_json(self) {
 
 ///|
 /// `LegendVariant1OrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant1OrientVariant0 {
   None_
   Left
@@ -53266,7 +54001,7 @@ pub(all) enum LegendVariant1OrientVariant0 {
   TopRight
   BottomLeft
   BottomRight
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1OrientVariant0 with fn deserialize(d) {
@@ -53363,10 +54098,11 @@ pub impl ToJson for LegendVariant1OrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant1Orient`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1Orient {
   Variant0(LegendVariant1OrientVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1Orient with fn deserialize(d) {
@@ -53410,10 +54146,11 @@ pub impl ToJson for LegendVariant1Orient with fn to_json(self) {
 
 ///|
 /// `LegendVariant1Padding`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1Padding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1Padding with fn deserialize(d) {
@@ -53457,11 +54194,12 @@ pub impl ToJson for LegendVariant1Padding with fn to_json(self) {
 
 ///|
 /// `LegendVariant1StrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1StrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1StrokeColor with fn deserialize(d) {
@@ -53514,10 +54252,11 @@ pub impl ToJson for LegendVariant1StrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant1SymbolDash`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1SymbolDash {
   Variant0(Array[Double])
   Variant1(ArrayValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1SymbolDash with fn deserialize(d) {
@@ -53561,10 +54300,11 @@ pub impl ToJson for LegendVariant1SymbolDash with fn to_json(self) {
 
 ///|
 /// `LegendVariant1SymbolDashOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1SymbolDashOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1SymbolDashOffset with fn deserialize(d) {
@@ -53608,11 +54348,12 @@ pub impl ToJson for LegendVariant1SymbolDashOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant1SymbolFillColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1SymbolFillColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1SymbolFillColor with fn deserialize(d) {
@@ -53665,10 +54406,11 @@ pub impl ToJson for LegendVariant1SymbolFillColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant1SymbolOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1SymbolOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1SymbolOffset with fn deserialize(d) {
@@ -53712,10 +54454,11 @@ pub impl ToJson for LegendVariant1SymbolOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant1SymbolOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1SymbolOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1SymbolOpacity with fn deserialize(d) {
@@ -53759,10 +54502,11 @@ pub impl ToJson for LegendVariant1SymbolOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant1SymbolSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1SymbolSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1SymbolSize with fn deserialize(d) {
@@ -53806,11 +54550,12 @@ pub impl ToJson for LegendVariant1SymbolSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant1SymbolStrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1SymbolStrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1SymbolStrokeColor with fn deserialize(d) {
@@ -53863,10 +54608,11 @@ pub impl ToJson for LegendVariant1SymbolStrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant1SymbolStrokeWidth`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1SymbolStrokeWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1SymbolStrokeWidth with fn deserialize(d) {
@@ -53910,10 +54656,11 @@ pub impl ToJson for LegendVariant1SymbolStrokeWidth with fn to_json(self) {
 
 ///|
 /// `LegendVariant1SymbolType`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1SymbolType {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1SymbolType with fn deserialize(d) {
@@ -53957,11 +54704,12 @@ pub impl ToJson for LegendVariant1SymbolType with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant1TitleAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleAlignVariant0 with fn deserialize(d) {
@@ -54028,10 +54776,11 @@ pub impl ToJson for LegendVariant1TitleAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1TitleAlign {
   Variant0(LegendVariant1TitleAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleAlign with fn deserialize(d) {
@@ -54075,11 +54824,12 @@ pub impl ToJson for LegendVariant1TitleAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleAnchorVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant1TitleAnchorVariant0 {
   Start
   Middle
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleAnchorVariant0 with fn deserialize(d) {
@@ -54146,10 +54896,11 @@ pub impl ToJson for LegendVariant1TitleAnchorVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleAnchor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1TitleAnchor {
   Variant0(LegendVariant1TitleAnchorVariant0?)
   Variant1(AnchorValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleAnchor with fn deserialize(d) {
@@ -54193,6 +54944,7 @@ pub impl ToJson for LegendVariant1TitleAnchor with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant1TitleBaselineVariant0 {
   Top
   Middle
@@ -54200,7 +54952,7 @@ pub(all) enum LegendVariant1TitleBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleBaselineVariant0 with fn deserialize(d) {
@@ -54282,10 +55034,11 @@ pub impl ToJson for LegendVariant1TitleBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleBaseline`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1TitleBaseline {
   Variant0(LegendVariant1TitleBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleBaseline with fn deserialize(d) {
@@ -54329,11 +55082,12 @@ pub impl ToJson for LegendVariant1TitleBaseline with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1TitleColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleColor with fn deserialize(d) {
@@ -54386,10 +55140,11 @@ pub impl ToJson for LegendVariant1TitleColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleFont`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1TitleFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleFont with fn deserialize(d) {
@@ -54433,10 +55188,11 @@ pub impl ToJson for LegendVariant1TitleFont with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleFontSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1TitleFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleFontSize with fn deserialize(d) {
@@ -54480,10 +55236,11 @@ pub impl ToJson for LegendVariant1TitleFontSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleFontStyle`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1TitleFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleFontStyle with fn deserialize(d) {
@@ -54527,10 +55284,11 @@ pub impl ToJson for LegendVariant1TitleFontStyle with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleFontWeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1TitleFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleFontWeight with fn deserialize(d) {
@@ -54574,10 +55332,11 @@ pub impl ToJson for LegendVariant1TitleFontWeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleLimit`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1TitleLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleLimit with fn deserialize(d) {
@@ -54621,10 +55380,11 @@ pub impl ToJson for LegendVariant1TitleLimit with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleLineHeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1TitleLineHeight {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleLineHeight with fn deserialize(d) {
@@ -54668,10 +55428,11 @@ pub impl ToJson for LegendVariant1TitleLineHeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1TitleOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleOpacity with fn deserialize(d) {
@@ -54715,12 +55476,13 @@ pub impl ToJson for LegendVariant1TitleOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleOrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant1TitleOrientVariant0 {
   Left
   Right
   Top
   Bottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleOrientVariant0 with fn deserialize(d) {
@@ -54792,10 +55554,11 @@ pub impl ToJson for LegendVariant1TitleOrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitleOrient`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1TitleOrient {
   Variant0(LegendVariant1TitleOrientVariant0)
   Variant1(OrientValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitleOrient with fn deserialize(d) {
@@ -54839,10 +55602,11 @@ pub impl ToJson for LegendVariant1TitleOrient with fn to_json(self) {
 
 ///|
 /// `LegendVariant1TitlePadding`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant1TitlePadding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1TitlePadding with fn deserialize(d) {
@@ -54886,10 +55650,11 @@ pub impl ToJson for LegendVariant1TitlePadding with fn to_json(self) {
 
 ///|
 /// `LegendVariant1Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant1Type {
   Gradient
   Symbol
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant1Type with fn deserialize(d) {
@@ -54951,10 +55716,11 @@ pub impl ToJson for LegendVariant1Type with fn to_json(self) {
 
 ///|
 /// `LegendVariant2CornerRadius`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2CornerRadius {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2CornerRadius with fn deserialize(d) {
@@ -54998,10 +55764,11 @@ pub impl ToJson for LegendVariant2CornerRadius with fn to_json(self) {
 
 ///|
 /// `LegendVariant2Direction`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant2Direction {
   Vertical
   Horizontal
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2Direction with fn deserialize(d) {
@@ -55063,6 +55830,7 @@ pub impl ToJson for LegendVariant2Direction with fn to_json(self) {
 
 ///|
 /// `LegendVariant2Encode`
+#derive(Debug, Eq)
 pub(all) struct LegendVariant2Encode {
   entries : GuideEncode?
   gradient : GuideEncode?
@@ -55070,7 +55838,7 @@ pub(all) struct LegendVariant2Encode {
   legend : GuideEncode?
   symbols : GuideEncode?
   title : GuideEncode?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LegendVariant2Encode` (fields with defaults are optional).
@@ -55150,11 +55918,12 @@ pub impl ToJson for LegendVariant2Encode with fn to_json(self) {
 
 ///|
 /// `LegendVariant2FillColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2FillColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2FillColor with fn deserialize(d) {
@@ -55207,11 +55976,12 @@ pub impl ToJson for LegendVariant2FillColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant2Format`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2Format {
   String(String)
   Object(date~ : String?, day~ : String?, hours~ : String?, milliseconds~ : String?, minutes~ : String?, month~ : String?, quarter~ : String?, seconds~ : String?, week~ : String?, year~ : String?)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let legend_variant2_format_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["date", "day", "hours", "milliseconds", "minutes", "month", "quarter", "seconds", "week", "year"])
@@ -55335,11 +56105,12 @@ pub impl ToJson for LegendVariant2Format with fn to_json(self) {
 
 ///|
 /// `LegendVariant2FormatTypeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant2FormatTypeVariant0 {
   Number
   Time
   Utc
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2FormatTypeVariant0 with fn deserialize(d) {
@@ -55406,10 +56177,11 @@ pub impl ToJson for LegendVariant2FormatTypeVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant2FormatType`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2FormatType {
   Variant0(LegendVariant2FormatTypeVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2FormatType with fn deserialize(d) {
@@ -55453,10 +56225,11 @@ pub impl ToJson for LegendVariant2FormatType with fn to_json(self) {
 
 ///|
 /// `LegendVariant2GradientOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2GradientOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2GradientOpacity with fn deserialize(d) {
@@ -55500,11 +56273,12 @@ pub impl ToJson for LegendVariant2GradientOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant2GradientStrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2GradientStrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2GradientStrokeColor with fn deserialize(d) {
@@ -55557,10 +56331,11 @@ pub impl ToJson for LegendVariant2GradientStrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant2GradientStrokeWidth`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2GradientStrokeWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2GradientStrokeWidth with fn deserialize(d) {
@@ -55604,11 +56379,12 @@ pub impl ToJson for LegendVariant2GradientStrokeWidth with fn to_json(self) {
 
 ///|
 /// `LegendVariant2GridAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant2GridAlignVariant0 {
   All
   Each
   None_
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2GridAlignVariant0 with fn deserialize(d) {
@@ -55675,10 +56451,11 @@ pub impl ToJson for LegendVariant2GridAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant2GridAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2GridAlign {
   Variant0(LegendVariant2GridAlignVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2GridAlign with fn deserialize(d) {
@@ -55722,11 +56499,12 @@ pub impl ToJson for LegendVariant2GridAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant2LabelAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant2LabelAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2LabelAlignVariant0 with fn deserialize(d) {
@@ -55793,10 +56571,11 @@ pub impl ToJson for LegendVariant2LabelAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant2LabelAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2LabelAlign {
   Variant0(LegendVariant2LabelAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2LabelAlign with fn deserialize(d) {
@@ -55840,6 +56619,7 @@ pub impl ToJson for LegendVariant2LabelAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant2LabelBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant2LabelBaselineVariant0 {
   Top
   Middle
@@ -55847,7 +56627,7 @@ pub(all) enum LegendVariant2LabelBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2LabelBaselineVariant0 with fn deserialize(d) {
@@ -55929,10 +56709,11 @@ pub impl ToJson for LegendVariant2LabelBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant2LabelBaseline`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2LabelBaseline {
   Variant0(LegendVariant2LabelBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2LabelBaseline with fn deserialize(d) {
@@ -55976,11 +56757,12 @@ pub impl ToJson for LegendVariant2LabelBaseline with fn to_json(self) {
 
 ///|
 /// `LegendVariant2LabelColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2LabelColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2LabelColor with fn deserialize(d) {
@@ -56033,10 +56815,11 @@ pub impl ToJson for LegendVariant2LabelColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant2LabelFont`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2LabelFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2LabelFont with fn deserialize(d) {
@@ -56080,10 +56863,11 @@ pub impl ToJson for LegendVariant2LabelFont with fn to_json(self) {
 
 ///|
 /// `LegendVariant2LabelFontSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2LabelFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2LabelFontSize with fn deserialize(d) {
@@ -56127,10 +56911,11 @@ pub impl ToJson for LegendVariant2LabelFontSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant2LabelFontStyle`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2LabelFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2LabelFontStyle with fn deserialize(d) {
@@ -56174,10 +56959,11 @@ pub impl ToJson for LegendVariant2LabelFontStyle with fn to_json(self) {
 
 ///|
 /// `LegendVariant2LabelFontWeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2LabelFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2LabelFontWeight with fn deserialize(d) {
@@ -56221,10 +57007,11 @@ pub impl ToJson for LegendVariant2LabelFontWeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant2LabelLimit`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2LabelLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2LabelLimit with fn deserialize(d) {
@@ -56268,10 +57055,11 @@ pub impl ToJson for LegendVariant2LabelLimit with fn to_json(self) {
 
 ///|
 /// `LegendVariant2LabelOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2LabelOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2LabelOffset with fn deserialize(d) {
@@ -56315,10 +57103,11 @@ pub impl ToJson for LegendVariant2LabelOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant2LabelOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2LabelOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2LabelOpacity with fn deserialize(d) {
@@ -56362,10 +57151,11 @@ pub impl ToJson for LegendVariant2LabelOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant2LegendX`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2LegendX {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2LegendX with fn deserialize(d) {
@@ -56409,10 +57199,11 @@ pub impl ToJson for LegendVariant2LegendX with fn to_json(self) {
 
 ///|
 /// `LegendVariant2LegendY`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2LegendY {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2LegendY with fn deserialize(d) {
@@ -56456,10 +57247,11 @@ pub impl ToJson for LegendVariant2LegendY with fn to_json(self) {
 
 ///|
 /// `LegendVariant2Offset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2Offset with fn deserialize(d) {
@@ -56503,6 +57295,7 @@ pub impl ToJson for LegendVariant2Offset with fn to_json(self) {
 
 ///|
 /// `LegendVariant2OrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant2OrientVariant0 {
   None_
   Left
@@ -56513,7 +57306,7 @@ pub(all) enum LegendVariant2OrientVariant0 {
   TopRight
   BottomLeft
   BottomRight
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2OrientVariant0 with fn deserialize(d) {
@@ -56610,10 +57403,11 @@ pub impl ToJson for LegendVariant2OrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant2Orient`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2Orient {
   Variant0(LegendVariant2OrientVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2Orient with fn deserialize(d) {
@@ -56657,10 +57451,11 @@ pub impl ToJson for LegendVariant2Orient with fn to_json(self) {
 
 ///|
 /// `LegendVariant2Padding`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2Padding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2Padding with fn deserialize(d) {
@@ -56704,11 +57499,12 @@ pub impl ToJson for LegendVariant2Padding with fn to_json(self) {
 
 ///|
 /// `LegendVariant2StrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2StrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2StrokeColor with fn deserialize(d) {
@@ -56761,10 +57557,11 @@ pub impl ToJson for LegendVariant2StrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant2SymbolDash`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2SymbolDash {
   Variant0(Array[Double])
   Variant1(ArrayValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2SymbolDash with fn deserialize(d) {
@@ -56808,10 +57605,11 @@ pub impl ToJson for LegendVariant2SymbolDash with fn to_json(self) {
 
 ///|
 /// `LegendVariant2SymbolDashOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2SymbolDashOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2SymbolDashOffset with fn deserialize(d) {
@@ -56855,11 +57653,12 @@ pub impl ToJson for LegendVariant2SymbolDashOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant2SymbolFillColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2SymbolFillColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2SymbolFillColor with fn deserialize(d) {
@@ -56912,10 +57711,11 @@ pub impl ToJson for LegendVariant2SymbolFillColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant2SymbolOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2SymbolOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2SymbolOffset with fn deserialize(d) {
@@ -56959,10 +57759,11 @@ pub impl ToJson for LegendVariant2SymbolOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant2SymbolOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2SymbolOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2SymbolOpacity with fn deserialize(d) {
@@ -57006,10 +57807,11 @@ pub impl ToJson for LegendVariant2SymbolOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant2SymbolSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2SymbolSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2SymbolSize with fn deserialize(d) {
@@ -57053,11 +57855,12 @@ pub impl ToJson for LegendVariant2SymbolSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant2SymbolStrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2SymbolStrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2SymbolStrokeColor with fn deserialize(d) {
@@ -57110,10 +57913,11 @@ pub impl ToJson for LegendVariant2SymbolStrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant2SymbolStrokeWidth`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2SymbolStrokeWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2SymbolStrokeWidth with fn deserialize(d) {
@@ -57157,10 +57961,11 @@ pub impl ToJson for LegendVariant2SymbolStrokeWidth with fn to_json(self) {
 
 ///|
 /// `LegendVariant2SymbolType`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2SymbolType {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2SymbolType with fn deserialize(d) {
@@ -57204,11 +58009,12 @@ pub impl ToJson for LegendVariant2SymbolType with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant2TitleAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleAlignVariant0 with fn deserialize(d) {
@@ -57275,10 +58081,11 @@ pub impl ToJson for LegendVariant2TitleAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2TitleAlign {
   Variant0(LegendVariant2TitleAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleAlign with fn deserialize(d) {
@@ -57322,11 +58129,12 @@ pub impl ToJson for LegendVariant2TitleAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleAnchorVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant2TitleAnchorVariant0 {
   Start
   Middle
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleAnchorVariant0 with fn deserialize(d) {
@@ -57393,10 +58201,11 @@ pub impl ToJson for LegendVariant2TitleAnchorVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleAnchor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2TitleAnchor {
   Variant0(LegendVariant2TitleAnchorVariant0?)
   Variant1(AnchorValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleAnchor with fn deserialize(d) {
@@ -57440,6 +58249,7 @@ pub impl ToJson for LegendVariant2TitleAnchor with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant2TitleBaselineVariant0 {
   Top
   Middle
@@ -57447,7 +58257,7 @@ pub(all) enum LegendVariant2TitleBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleBaselineVariant0 with fn deserialize(d) {
@@ -57529,10 +58339,11 @@ pub impl ToJson for LegendVariant2TitleBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleBaseline`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2TitleBaseline {
   Variant0(LegendVariant2TitleBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleBaseline with fn deserialize(d) {
@@ -57576,11 +58387,12 @@ pub impl ToJson for LegendVariant2TitleBaseline with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2TitleColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleColor with fn deserialize(d) {
@@ -57633,10 +58445,11 @@ pub impl ToJson for LegendVariant2TitleColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleFont`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2TitleFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleFont with fn deserialize(d) {
@@ -57680,10 +58493,11 @@ pub impl ToJson for LegendVariant2TitleFont with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleFontSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2TitleFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleFontSize with fn deserialize(d) {
@@ -57727,10 +58541,11 @@ pub impl ToJson for LegendVariant2TitleFontSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleFontStyle`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2TitleFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleFontStyle with fn deserialize(d) {
@@ -57774,10 +58589,11 @@ pub impl ToJson for LegendVariant2TitleFontStyle with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleFontWeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2TitleFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleFontWeight with fn deserialize(d) {
@@ -57821,10 +58637,11 @@ pub impl ToJson for LegendVariant2TitleFontWeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleLimit`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2TitleLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleLimit with fn deserialize(d) {
@@ -57868,10 +58685,11 @@ pub impl ToJson for LegendVariant2TitleLimit with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleLineHeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2TitleLineHeight {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleLineHeight with fn deserialize(d) {
@@ -57915,10 +58733,11 @@ pub impl ToJson for LegendVariant2TitleLineHeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2TitleOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleOpacity with fn deserialize(d) {
@@ -57962,12 +58781,13 @@ pub impl ToJson for LegendVariant2TitleOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleOrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant2TitleOrientVariant0 {
   Left
   Right
   Top
   Bottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleOrientVariant0 with fn deserialize(d) {
@@ -58039,10 +58859,11 @@ pub impl ToJson for LegendVariant2TitleOrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitleOrient`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2TitleOrient {
   Variant0(LegendVariant2TitleOrientVariant0)
   Variant1(OrientValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitleOrient with fn deserialize(d) {
@@ -58086,10 +58907,11 @@ pub impl ToJson for LegendVariant2TitleOrient with fn to_json(self) {
 
 ///|
 /// `LegendVariant2TitlePadding`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant2TitlePadding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2TitlePadding with fn deserialize(d) {
@@ -58133,10 +58955,11 @@ pub impl ToJson for LegendVariant2TitlePadding with fn to_json(self) {
 
 ///|
 /// `LegendVariant2Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant2Type {
   Gradient
   Symbol
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant2Type with fn deserialize(d) {
@@ -58198,10 +59021,11 @@ pub impl ToJson for LegendVariant2Type with fn to_json(self) {
 
 ///|
 /// `LegendVariant3CornerRadius`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3CornerRadius {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3CornerRadius with fn deserialize(d) {
@@ -58245,10 +59069,11 @@ pub impl ToJson for LegendVariant3CornerRadius with fn to_json(self) {
 
 ///|
 /// `LegendVariant3Direction`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant3Direction {
   Vertical
   Horizontal
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3Direction with fn deserialize(d) {
@@ -58310,6 +59135,7 @@ pub impl ToJson for LegendVariant3Direction with fn to_json(self) {
 
 ///|
 /// `LegendVariant3Encode`
+#derive(Debug, Eq)
 pub(all) struct LegendVariant3Encode {
   entries : GuideEncode?
   gradient : GuideEncode?
@@ -58317,7 +59143,7 @@ pub(all) struct LegendVariant3Encode {
   legend : GuideEncode?
   symbols : GuideEncode?
   title : GuideEncode?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LegendVariant3Encode` (fields with defaults are optional).
@@ -58397,11 +59223,12 @@ pub impl ToJson for LegendVariant3Encode with fn to_json(self) {
 
 ///|
 /// `LegendVariant3FillColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3FillColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3FillColor with fn deserialize(d) {
@@ -58454,11 +59281,12 @@ pub impl ToJson for LegendVariant3FillColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant3Format`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3Format {
   String(String)
   Object(date~ : String?, day~ : String?, hours~ : String?, milliseconds~ : String?, minutes~ : String?, month~ : String?, quarter~ : String?, seconds~ : String?, week~ : String?, year~ : String?)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let legend_variant3_format_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["date", "day", "hours", "milliseconds", "minutes", "month", "quarter", "seconds", "week", "year"])
@@ -58582,11 +59410,12 @@ pub impl ToJson for LegendVariant3Format with fn to_json(self) {
 
 ///|
 /// `LegendVariant3FormatTypeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant3FormatTypeVariant0 {
   Number
   Time
   Utc
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3FormatTypeVariant0 with fn deserialize(d) {
@@ -58653,10 +59482,11 @@ pub impl ToJson for LegendVariant3FormatTypeVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant3FormatType`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3FormatType {
   Variant0(LegendVariant3FormatTypeVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3FormatType with fn deserialize(d) {
@@ -58700,10 +59530,11 @@ pub impl ToJson for LegendVariant3FormatType with fn to_json(self) {
 
 ///|
 /// `LegendVariant3GradientOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3GradientOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3GradientOpacity with fn deserialize(d) {
@@ -58747,11 +59578,12 @@ pub impl ToJson for LegendVariant3GradientOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant3GradientStrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3GradientStrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3GradientStrokeColor with fn deserialize(d) {
@@ -58804,10 +59636,11 @@ pub impl ToJson for LegendVariant3GradientStrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant3GradientStrokeWidth`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3GradientStrokeWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3GradientStrokeWidth with fn deserialize(d) {
@@ -58851,11 +59684,12 @@ pub impl ToJson for LegendVariant3GradientStrokeWidth with fn to_json(self) {
 
 ///|
 /// `LegendVariant3GridAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant3GridAlignVariant0 {
   All
   Each
   None_
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3GridAlignVariant0 with fn deserialize(d) {
@@ -58922,10 +59756,11 @@ pub impl ToJson for LegendVariant3GridAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant3GridAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3GridAlign {
   Variant0(LegendVariant3GridAlignVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3GridAlign with fn deserialize(d) {
@@ -58969,11 +59804,12 @@ pub impl ToJson for LegendVariant3GridAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant3LabelAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant3LabelAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3LabelAlignVariant0 with fn deserialize(d) {
@@ -59040,10 +59876,11 @@ pub impl ToJson for LegendVariant3LabelAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant3LabelAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3LabelAlign {
   Variant0(LegendVariant3LabelAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3LabelAlign with fn deserialize(d) {
@@ -59087,6 +59924,7 @@ pub impl ToJson for LegendVariant3LabelAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant3LabelBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant3LabelBaselineVariant0 {
   Top
   Middle
@@ -59094,7 +59932,7 @@ pub(all) enum LegendVariant3LabelBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3LabelBaselineVariant0 with fn deserialize(d) {
@@ -59176,10 +60014,11 @@ pub impl ToJson for LegendVariant3LabelBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant3LabelBaseline`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3LabelBaseline {
   Variant0(LegendVariant3LabelBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3LabelBaseline with fn deserialize(d) {
@@ -59223,11 +60062,12 @@ pub impl ToJson for LegendVariant3LabelBaseline with fn to_json(self) {
 
 ///|
 /// `LegendVariant3LabelColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3LabelColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3LabelColor with fn deserialize(d) {
@@ -59280,10 +60120,11 @@ pub impl ToJson for LegendVariant3LabelColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant3LabelFont`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3LabelFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3LabelFont with fn deserialize(d) {
@@ -59327,10 +60168,11 @@ pub impl ToJson for LegendVariant3LabelFont with fn to_json(self) {
 
 ///|
 /// `LegendVariant3LabelFontSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3LabelFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3LabelFontSize with fn deserialize(d) {
@@ -59374,10 +60216,11 @@ pub impl ToJson for LegendVariant3LabelFontSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant3LabelFontStyle`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3LabelFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3LabelFontStyle with fn deserialize(d) {
@@ -59421,10 +60264,11 @@ pub impl ToJson for LegendVariant3LabelFontStyle with fn to_json(self) {
 
 ///|
 /// `LegendVariant3LabelFontWeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3LabelFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3LabelFontWeight with fn deserialize(d) {
@@ -59468,10 +60312,11 @@ pub impl ToJson for LegendVariant3LabelFontWeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant3LabelLimit`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3LabelLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3LabelLimit with fn deserialize(d) {
@@ -59515,10 +60360,11 @@ pub impl ToJson for LegendVariant3LabelLimit with fn to_json(self) {
 
 ///|
 /// `LegendVariant3LabelOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3LabelOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3LabelOffset with fn deserialize(d) {
@@ -59562,10 +60408,11 @@ pub impl ToJson for LegendVariant3LabelOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant3LabelOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3LabelOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3LabelOpacity with fn deserialize(d) {
@@ -59609,10 +60456,11 @@ pub impl ToJson for LegendVariant3LabelOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant3LegendX`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3LegendX {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3LegendX with fn deserialize(d) {
@@ -59656,10 +60504,11 @@ pub impl ToJson for LegendVariant3LegendX with fn to_json(self) {
 
 ///|
 /// `LegendVariant3LegendY`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3LegendY {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3LegendY with fn deserialize(d) {
@@ -59703,10 +60552,11 @@ pub impl ToJson for LegendVariant3LegendY with fn to_json(self) {
 
 ///|
 /// `LegendVariant3Offset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3Offset with fn deserialize(d) {
@@ -59750,6 +60600,7 @@ pub impl ToJson for LegendVariant3Offset with fn to_json(self) {
 
 ///|
 /// `LegendVariant3OrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant3OrientVariant0 {
   None_
   Left
@@ -59760,7 +60611,7 @@ pub(all) enum LegendVariant3OrientVariant0 {
   TopRight
   BottomLeft
   BottomRight
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3OrientVariant0 with fn deserialize(d) {
@@ -59857,10 +60708,11 @@ pub impl ToJson for LegendVariant3OrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant3Orient`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3Orient {
   Variant0(LegendVariant3OrientVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3Orient with fn deserialize(d) {
@@ -59904,10 +60756,11 @@ pub impl ToJson for LegendVariant3Orient with fn to_json(self) {
 
 ///|
 /// `LegendVariant3Padding`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3Padding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3Padding with fn deserialize(d) {
@@ -59951,11 +60804,12 @@ pub impl ToJson for LegendVariant3Padding with fn to_json(self) {
 
 ///|
 /// `LegendVariant3StrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3StrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3StrokeColor with fn deserialize(d) {
@@ -60008,10 +60862,11 @@ pub impl ToJson for LegendVariant3StrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant3SymbolDash`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3SymbolDash {
   Variant0(Array[Double])
   Variant1(ArrayValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3SymbolDash with fn deserialize(d) {
@@ -60055,10 +60910,11 @@ pub impl ToJson for LegendVariant3SymbolDash with fn to_json(self) {
 
 ///|
 /// `LegendVariant3SymbolDashOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3SymbolDashOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3SymbolDashOffset with fn deserialize(d) {
@@ -60102,11 +60958,12 @@ pub impl ToJson for LegendVariant3SymbolDashOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant3SymbolFillColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3SymbolFillColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3SymbolFillColor with fn deserialize(d) {
@@ -60159,10 +61016,11 @@ pub impl ToJson for LegendVariant3SymbolFillColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant3SymbolOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3SymbolOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3SymbolOffset with fn deserialize(d) {
@@ -60206,10 +61064,11 @@ pub impl ToJson for LegendVariant3SymbolOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant3SymbolOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3SymbolOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3SymbolOpacity with fn deserialize(d) {
@@ -60253,10 +61112,11 @@ pub impl ToJson for LegendVariant3SymbolOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant3SymbolSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3SymbolSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3SymbolSize with fn deserialize(d) {
@@ -60300,11 +61160,12 @@ pub impl ToJson for LegendVariant3SymbolSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant3SymbolStrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3SymbolStrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3SymbolStrokeColor with fn deserialize(d) {
@@ -60357,10 +61218,11 @@ pub impl ToJson for LegendVariant3SymbolStrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant3SymbolStrokeWidth`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3SymbolStrokeWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3SymbolStrokeWidth with fn deserialize(d) {
@@ -60404,10 +61266,11 @@ pub impl ToJson for LegendVariant3SymbolStrokeWidth with fn to_json(self) {
 
 ///|
 /// `LegendVariant3SymbolType`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3SymbolType {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3SymbolType with fn deserialize(d) {
@@ -60451,11 +61314,12 @@ pub impl ToJson for LegendVariant3SymbolType with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant3TitleAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleAlignVariant0 with fn deserialize(d) {
@@ -60522,10 +61386,11 @@ pub impl ToJson for LegendVariant3TitleAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3TitleAlign {
   Variant0(LegendVariant3TitleAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleAlign with fn deserialize(d) {
@@ -60569,11 +61434,12 @@ pub impl ToJson for LegendVariant3TitleAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleAnchorVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant3TitleAnchorVariant0 {
   Start
   Middle
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleAnchorVariant0 with fn deserialize(d) {
@@ -60640,10 +61506,11 @@ pub impl ToJson for LegendVariant3TitleAnchorVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleAnchor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3TitleAnchor {
   Variant0(LegendVariant3TitleAnchorVariant0?)
   Variant1(AnchorValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleAnchor with fn deserialize(d) {
@@ -60687,6 +61554,7 @@ pub impl ToJson for LegendVariant3TitleAnchor with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant3TitleBaselineVariant0 {
   Top
   Middle
@@ -60694,7 +61562,7 @@ pub(all) enum LegendVariant3TitleBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleBaselineVariant0 with fn deserialize(d) {
@@ -60776,10 +61644,11 @@ pub impl ToJson for LegendVariant3TitleBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleBaseline`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3TitleBaseline {
   Variant0(LegendVariant3TitleBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleBaseline with fn deserialize(d) {
@@ -60823,11 +61692,12 @@ pub impl ToJson for LegendVariant3TitleBaseline with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3TitleColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleColor with fn deserialize(d) {
@@ -60880,10 +61750,11 @@ pub impl ToJson for LegendVariant3TitleColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleFont`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3TitleFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleFont with fn deserialize(d) {
@@ -60927,10 +61798,11 @@ pub impl ToJson for LegendVariant3TitleFont with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleFontSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3TitleFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleFontSize with fn deserialize(d) {
@@ -60974,10 +61846,11 @@ pub impl ToJson for LegendVariant3TitleFontSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleFontStyle`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3TitleFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleFontStyle with fn deserialize(d) {
@@ -61021,10 +61894,11 @@ pub impl ToJson for LegendVariant3TitleFontStyle with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleFontWeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3TitleFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleFontWeight with fn deserialize(d) {
@@ -61068,10 +61942,11 @@ pub impl ToJson for LegendVariant3TitleFontWeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleLimit`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3TitleLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleLimit with fn deserialize(d) {
@@ -61115,10 +61990,11 @@ pub impl ToJson for LegendVariant3TitleLimit with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleLineHeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3TitleLineHeight {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleLineHeight with fn deserialize(d) {
@@ -61162,10 +62038,11 @@ pub impl ToJson for LegendVariant3TitleLineHeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3TitleOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleOpacity with fn deserialize(d) {
@@ -61209,12 +62086,13 @@ pub impl ToJson for LegendVariant3TitleOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleOrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant3TitleOrientVariant0 {
   Left
   Right
   Top
   Bottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleOrientVariant0 with fn deserialize(d) {
@@ -61286,10 +62164,11 @@ pub impl ToJson for LegendVariant3TitleOrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitleOrient`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3TitleOrient {
   Variant0(LegendVariant3TitleOrientVariant0)
   Variant1(OrientValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitleOrient with fn deserialize(d) {
@@ -61333,10 +62212,11 @@ pub impl ToJson for LegendVariant3TitleOrient with fn to_json(self) {
 
 ///|
 /// `LegendVariant3TitlePadding`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant3TitlePadding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3TitlePadding with fn deserialize(d) {
@@ -61380,10 +62260,11 @@ pub impl ToJson for LegendVariant3TitlePadding with fn to_json(self) {
 
 ///|
 /// `LegendVariant3Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant3Type {
   Gradient
   Symbol
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant3Type with fn deserialize(d) {
@@ -61445,10 +62326,11 @@ pub impl ToJson for LegendVariant3Type with fn to_json(self) {
 
 ///|
 /// `LegendVariant4CornerRadius`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4CornerRadius {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4CornerRadius with fn deserialize(d) {
@@ -61492,10 +62374,11 @@ pub impl ToJson for LegendVariant4CornerRadius with fn to_json(self) {
 
 ///|
 /// `LegendVariant4Direction`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant4Direction {
   Vertical
   Horizontal
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4Direction with fn deserialize(d) {
@@ -61557,6 +62440,7 @@ pub impl ToJson for LegendVariant4Direction with fn to_json(self) {
 
 ///|
 /// `LegendVariant4Encode`
+#derive(Debug, Eq)
 pub(all) struct LegendVariant4Encode {
   entries : GuideEncode?
   gradient : GuideEncode?
@@ -61564,7 +62448,7 @@ pub(all) struct LegendVariant4Encode {
   legend : GuideEncode?
   symbols : GuideEncode?
   title : GuideEncode?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LegendVariant4Encode` (fields with defaults are optional).
@@ -61644,11 +62528,12 @@ pub impl ToJson for LegendVariant4Encode with fn to_json(self) {
 
 ///|
 /// `LegendVariant4FillColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4FillColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4FillColor with fn deserialize(d) {
@@ -61701,11 +62586,12 @@ pub impl ToJson for LegendVariant4FillColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant4Format`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4Format {
   String(String)
   Object(date~ : String?, day~ : String?, hours~ : String?, milliseconds~ : String?, minutes~ : String?, month~ : String?, quarter~ : String?, seconds~ : String?, week~ : String?, year~ : String?)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let legend_variant4_format_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["date", "day", "hours", "milliseconds", "minutes", "month", "quarter", "seconds", "week", "year"])
@@ -61829,11 +62715,12 @@ pub impl ToJson for LegendVariant4Format with fn to_json(self) {
 
 ///|
 /// `LegendVariant4FormatTypeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant4FormatTypeVariant0 {
   Number
   Time
   Utc
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4FormatTypeVariant0 with fn deserialize(d) {
@@ -61900,10 +62787,11 @@ pub impl ToJson for LegendVariant4FormatTypeVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant4FormatType`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4FormatType {
   Variant0(LegendVariant4FormatTypeVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4FormatType with fn deserialize(d) {
@@ -61947,10 +62835,11 @@ pub impl ToJson for LegendVariant4FormatType with fn to_json(self) {
 
 ///|
 /// `LegendVariant4GradientOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4GradientOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4GradientOpacity with fn deserialize(d) {
@@ -61994,11 +62883,12 @@ pub impl ToJson for LegendVariant4GradientOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant4GradientStrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4GradientStrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4GradientStrokeColor with fn deserialize(d) {
@@ -62051,10 +62941,11 @@ pub impl ToJson for LegendVariant4GradientStrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant4GradientStrokeWidth`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4GradientStrokeWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4GradientStrokeWidth with fn deserialize(d) {
@@ -62098,11 +62989,12 @@ pub impl ToJson for LegendVariant4GradientStrokeWidth with fn to_json(self) {
 
 ///|
 /// `LegendVariant4GridAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant4GridAlignVariant0 {
   All
   Each
   None_
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4GridAlignVariant0 with fn deserialize(d) {
@@ -62169,10 +63061,11 @@ pub impl ToJson for LegendVariant4GridAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant4GridAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4GridAlign {
   Variant0(LegendVariant4GridAlignVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4GridAlign with fn deserialize(d) {
@@ -62216,11 +63109,12 @@ pub impl ToJson for LegendVariant4GridAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant4LabelAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant4LabelAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4LabelAlignVariant0 with fn deserialize(d) {
@@ -62287,10 +63181,11 @@ pub impl ToJson for LegendVariant4LabelAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant4LabelAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4LabelAlign {
   Variant0(LegendVariant4LabelAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4LabelAlign with fn deserialize(d) {
@@ -62334,6 +63229,7 @@ pub impl ToJson for LegendVariant4LabelAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant4LabelBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant4LabelBaselineVariant0 {
   Top
   Middle
@@ -62341,7 +63237,7 @@ pub(all) enum LegendVariant4LabelBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4LabelBaselineVariant0 with fn deserialize(d) {
@@ -62423,10 +63319,11 @@ pub impl ToJson for LegendVariant4LabelBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant4LabelBaseline`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4LabelBaseline {
   Variant0(LegendVariant4LabelBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4LabelBaseline with fn deserialize(d) {
@@ -62470,11 +63367,12 @@ pub impl ToJson for LegendVariant4LabelBaseline with fn to_json(self) {
 
 ///|
 /// `LegendVariant4LabelColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4LabelColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4LabelColor with fn deserialize(d) {
@@ -62527,10 +63425,11 @@ pub impl ToJson for LegendVariant4LabelColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant4LabelFont`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4LabelFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4LabelFont with fn deserialize(d) {
@@ -62574,10 +63473,11 @@ pub impl ToJson for LegendVariant4LabelFont with fn to_json(self) {
 
 ///|
 /// `LegendVariant4LabelFontSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4LabelFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4LabelFontSize with fn deserialize(d) {
@@ -62621,10 +63521,11 @@ pub impl ToJson for LegendVariant4LabelFontSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant4LabelFontStyle`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4LabelFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4LabelFontStyle with fn deserialize(d) {
@@ -62668,10 +63569,11 @@ pub impl ToJson for LegendVariant4LabelFontStyle with fn to_json(self) {
 
 ///|
 /// `LegendVariant4LabelFontWeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4LabelFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4LabelFontWeight with fn deserialize(d) {
@@ -62715,10 +63617,11 @@ pub impl ToJson for LegendVariant4LabelFontWeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant4LabelLimit`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4LabelLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4LabelLimit with fn deserialize(d) {
@@ -62762,10 +63665,11 @@ pub impl ToJson for LegendVariant4LabelLimit with fn to_json(self) {
 
 ///|
 /// `LegendVariant4LabelOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4LabelOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4LabelOffset with fn deserialize(d) {
@@ -62809,10 +63713,11 @@ pub impl ToJson for LegendVariant4LabelOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant4LabelOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4LabelOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4LabelOpacity with fn deserialize(d) {
@@ -62856,10 +63761,11 @@ pub impl ToJson for LegendVariant4LabelOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant4LegendX`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4LegendX {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4LegendX with fn deserialize(d) {
@@ -62903,10 +63809,11 @@ pub impl ToJson for LegendVariant4LegendX with fn to_json(self) {
 
 ///|
 /// `LegendVariant4LegendY`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4LegendY {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4LegendY with fn deserialize(d) {
@@ -62950,10 +63857,11 @@ pub impl ToJson for LegendVariant4LegendY with fn to_json(self) {
 
 ///|
 /// `LegendVariant4Offset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4Offset with fn deserialize(d) {
@@ -62997,6 +63905,7 @@ pub impl ToJson for LegendVariant4Offset with fn to_json(self) {
 
 ///|
 /// `LegendVariant4OrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant4OrientVariant0 {
   None_
   Left
@@ -63007,7 +63916,7 @@ pub(all) enum LegendVariant4OrientVariant0 {
   TopRight
   BottomLeft
   BottomRight
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4OrientVariant0 with fn deserialize(d) {
@@ -63104,10 +64013,11 @@ pub impl ToJson for LegendVariant4OrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant4Orient`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4Orient {
   Variant0(LegendVariant4OrientVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4Orient with fn deserialize(d) {
@@ -63151,10 +64061,11 @@ pub impl ToJson for LegendVariant4Orient with fn to_json(self) {
 
 ///|
 /// `LegendVariant4Padding`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4Padding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4Padding with fn deserialize(d) {
@@ -63198,11 +64109,12 @@ pub impl ToJson for LegendVariant4Padding with fn to_json(self) {
 
 ///|
 /// `LegendVariant4StrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4StrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4StrokeColor with fn deserialize(d) {
@@ -63255,10 +64167,11 @@ pub impl ToJson for LegendVariant4StrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant4SymbolDash`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4SymbolDash {
   Variant0(Array[Double])
   Variant1(ArrayValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4SymbolDash with fn deserialize(d) {
@@ -63302,10 +64215,11 @@ pub impl ToJson for LegendVariant4SymbolDash with fn to_json(self) {
 
 ///|
 /// `LegendVariant4SymbolDashOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4SymbolDashOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4SymbolDashOffset with fn deserialize(d) {
@@ -63349,11 +64263,12 @@ pub impl ToJson for LegendVariant4SymbolDashOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant4SymbolFillColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4SymbolFillColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4SymbolFillColor with fn deserialize(d) {
@@ -63406,10 +64321,11 @@ pub impl ToJson for LegendVariant4SymbolFillColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant4SymbolOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4SymbolOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4SymbolOffset with fn deserialize(d) {
@@ -63453,10 +64369,11 @@ pub impl ToJson for LegendVariant4SymbolOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant4SymbolOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4SymbolOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4SymbolOpacity with fn deserialize(d) {
@@ -63500,10 +64417,11 @@ pub impl ToJson for LegendVariant4SymbolOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant4SymbolSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4SymbolSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4SymbolSize with fn deserialize(d) {
@@ -63547,11 +64465,12 @@ pub impl ToJson for LegendVariant4SymbolSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant4SymbolStrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4SymbolStrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4SymbolStrokeColor with fn deserialize(d) {
@@ -63604,10 +64523,11 @@ pub impl ToJson for LegendVariant4SymbolStrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant4SymbolStrokeWidth`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4SymbolStrokeWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4SymbolStrokeWidth with fn deserialize(d) {
@@ -63651,10 +64571,11 @@ pub impl ToJson for LegendVariant4SymbolStrokeWidth with fn to_json(self) {
 
 ///|
 /// `LegendVariant4SymbolType`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4SymbolType {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4SymbolType with fn deserialize(d) {
@@ -63698,11 +64619,12 @@ pub impl ToJson for LegendVariant4SymbolType with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant4TitleAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleAlignVariant0 with fn deserialize(d) {
@@ -63769,10 +64691,11 @@ pub impl ToJson for LegendVariant4TitleAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4TitleAlign {
   Variant0(LegendVariant4TitleAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleAlign with fn deserialize(d) {
@@ -63816,11 +64739,12 @@ pub impl ToJson for LegendVariant4TitleAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleAnchorVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant4TitleAnchorVariant0 {
   Start
   Middle
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleAnchorVariant0 with fn deserialize(d) {
@@ -63887,10 +64811,11 @@ pub impl ToJson for LegendVariant4TitleAnchorVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleAnchor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4TitleAnchor {
   Variant0(LegendVariant4TitleAnchorVariant0?)
   Variant1(AnchorValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleAnchor with fn deserialize(d) {
@@ -63934,6 +64859,7 @@ pub impl ToJson for LegendVariant4TitleAnchor with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant4TitleBaselineVariant0 {
   Top
   Middle
@@ -63941,7 +64867,7 @@ pub(all) enum LegendVariant4TitleBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleBaselineVariant0 with fn deserialize(d) {
@@ -64023,10 +64949,11 @@ pub impl ToJson for LegendVariant4TitleBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleBaseline`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4TitleBaseline {
   Variant0(LegendVariant4TitleBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleBaseline with fn deserialize(d) {
@@ -64070,11 +64997,12 @@ pub impl ToJson for LegendVariant4TitleBaseline with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4TitleColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleColor with fn deserialize(d) {
@@ -64127,10 +65055,11 @@ pub impl ToJson for LegendVariant4TitleColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleFont`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4TitleFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleFont with fn deserialize(d) {
@@ -64174,10 +65103,11 @@ pub impl ToJson for LegendVariant4TitleFont with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleFontSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4TitleFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleFontSize with fn deserialize(d) {
@@ -64221,10 +65151,11 @@ pub impl ToJson for LegendVariant4TitleFontSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleFontStyle`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4TitleFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleFontStyle with fn deserialize(d) {
@@ -64268,10 +65199,11 @@ pub impl ToJson for LegendVariant4TitleFontStyle with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleFontWeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4TitleFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleFontWeight with fn deserialize(d) {
@@ -64315,10 +65247,11 @@ pub impl ToJson for LegendVariant4TitleFontWeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleLimit`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4TitleLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleLimit with fn deserialize(d) {
@@ -64362,10 +65295,11 @@ pub impl ToJson for LegendVariant4TitleLimit with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleLineHeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4TitleLineHeight {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleLineHeight with fn deserialize(d) {
@@ -64409,10 +65343,11 @@ pub impl ToJson for LegendVariant4TitleLineHeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4TitleOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleOpacity with fn deserialize(d) {
@@ -64456,12 +65391,13 @@ pub impl ToJson for LegendVariant4TitleOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleOrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant4TitleOrientVariant0 {
   Left
   Right
   Top
   Bottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleOrientVariant0 with fn deserialize(d) {
@@ -64533,10 +65469,11 @@ pub impl ToJson for LegendVariant4TitleOrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitleOrient`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4TitleOrient {
   Variant0(LegendVariant4TitleOrientVariant0)
   Variant1(OrientValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitleOrient with fn deserialize(d) {
@@ -64580,10 +65517,11 @@ pub impl ToJson for LegendVariant4TitleOrient with fn to_json(self) {
 
 ///|
 /// `LegendVariant4TitlePadding`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant4TitlePadding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4TitlePadding with fn deserialize(d) {
@@ -64627,10 +65565,11 @@ pub impl ToJson for LegendVariant4TitlePadding with fn to_json(self) {
 
 ///|
 /// `LegendVariant4Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant4Type {
   Gradient
   Symbol
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant4Type with fn deserialize(d) {
@@ -64692,10 +65631,11 @@ pub impl ToJson for LegendVariant4Type with fn to_json(self) {
 
 ///|
 /// `LegendVariant5CornerRadius`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5CornerRadius {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5CornerRadius with fn deserialize(d) {
@@ -64739,10 +65679,11 @@ pub impl ToJson for LegendVariant5CornerRadius with fn to_json(self) {
 
 ///|
 /// `LegendVariant5Direction`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant5Direction {
   Vertical
   Horizontal
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5Direction with fn deserialize(d) {
@@ -64804,6 +65745,7 @@ pub impl ToJson for LegendVariant5Direction with fn to_json(self) {
 
 ///|
 /// `LegendVariant5Encode`
+#derive(Debug, Eq)
 pub(all) struct LegendVariant5Encode {
   entries : GuideEncode?
   gradient : GuideEncode?
@@ -64811,7 +65753,7 @@ pub(all) struct LegendVariant5Encode {
   legend : GuideEncode?
   symbols : GuideEncode?
   title : GuideEncode?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LegendVariant5Encode` (fields with defaults are optional).
@@ -64891,11 +65833,12 @@ pub impl ToJson for LegendVariant5Encode with fn to_json(self) {
 
 ///|
 /// `LegendVariant5FillColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5FillColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5FillColor with fn deserialize(d) {
@@ -64948,11 +65891,12 @@ pub impl ToJson for LegendVariant5FillColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant5Format`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5Format {
   String(String)
   Object(date~ : String?, day~ : String?, hours~ : String?, milliseconds~ : String?, minutes~ : String?, month~ : String?, quarter~ : String?, seconds~ : String?, week~ : String?, year~ : String?)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let legend_variant5_format_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["date", "day", "hours", "milliseconds", "minutes", "month", "quarter", "seconds", "week", "year"])
@@ -65076,11 +66020,12 @@ pub impl ToJson for LegendVariant5Format with fn to_json(self) {
 
 ///|
 /// `LegendVariant5FormatTypeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant5FormatTypeVariant0 {
   Number
   Time
   Utc
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5FormatTypeVariant0 with fn deserialize(d) {
@@ -65147,10 +66092,11 @@ pub impl ToJson for LegendVariant5FormatTypeVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant5FormatType`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5FormatType {
   Variant0(LegendVariant5FormatTypeVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5FormatType with fn deserialize(d) {
@@ -65194,10 +66140,11 @@ pub impl ToJson for LegendVariant5FormatType with fn to_json(self) {
 
 ///|
 /// `LegendVariant5GradientOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5GradientOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5GradientOpacity with fn deserialize(d) {
@@ -65241,11 +66188,12 @@ pub impl ToJson for LegendVariant5GradientOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant5GradientStrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5GradientStrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5GradientStrokeColor with fn deserialize(d) {
@@ -65298,10 +66246,11 @@ pub impl ToJson for LegendVariant5GradientStrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant5GradientStrokeWidth`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5GradientStrokeWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5GradientStrokeWidth with fn deserialize(d) {
@@ -65345,11 +66294,12 @@ pub impl ToJson for LegendVariant5GradientStrokeWidth with fn to_json(self) {
 
 ///|
 /// `LegendVariant5GridAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant5GridAlignVariant0 {
   All
   Each
   None_
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5GridAlignVariant0 with fn deserialize(d) {
@@ -65416,10 +66366,11 @@ pub impl ToJson for LegendVariant5GridAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant5GridAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5GridAlign {
   Variant0(LegendVariant5GridAlignVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5GridAlign with fn deserialize(d) {
@@ -65463,11 +66414,12 @@ pub impl ToJson for LegendVariant5GridAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant5LabelAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant5LabelAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5LabelAlignVariant0 with fn deserialize(d) {
@@ -65534,10 +66486,11 @@ pub impl ToJson for LegendVariant5LabelAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant5LabelAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5LabelAlign {
   Variant0(LegendVariant5LabelAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5LabelAlign with fn deserialize(d) {
@@ -65581,6 +66534,7 @@ pub impl ToJson for LegendVariant5LabelAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant5LabelBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant5LabelBaselineVariant0 {
   Top
   Middle
@@ -65588,7 +66542,7 @@ pub(all) enum LegendVariant5LabelBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5LabelBaselineVariant0 with fn deserialize(d) {
@@ -65670,10 +66624,11 @@ pub impl ToJson for LegendVariant5LabelBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant5LabelBaseline`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5LabelBaseline {
   Variant0(LegendVariant5LabelBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5LabelBaseline with fn deserialize(d) {
@@ -65717,11 +66672,12 @@ pub impl ToJson for LegendVariant5LabelBaseline with fn to_json(self) {
 
 ///|
 /// `LegendVariant5LabelColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5LabelColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5LabelColor with fn deserialize(d) {
@@ -65774,10 +66730,11 @@ pub impl ToJson for LegendVariant5LabelColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant5LabelFont`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5LabelFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5LabelFont with fn deserialize(d) {
@@ -65821,10 +66778,11 @@ pub impl ToJson for LegendVariant5LabelFont with fn to_json(self) {
 
 ///|
 /// `LegendVariant5LabelFontSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5LabelFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5LabelFontSize with fn deserialize(d) {
@@ -65868,10 +66826,11 @@ pub impl ToJson for LegendVariant5LabelFontSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant5LabelFontStyle`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5LabelFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5LabelFontStyle with fn deserialize(d) {
@@ -65915,10 +66874,11 @@ pub impl ToJson for LegendVariant5LabelFontStyle with fn to_json(self) {
 
 ///|
 /// `LegendVariant5LabelFontWeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5LabelFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5LabelFontWeight with fn deserialize(d) {
@@ -65962,10 +66922,11 @@ pub impl ToJson for LegendVariant5LabelFontWeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant5LabelLimit`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5LabelLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5LabelLimit with fn deserialize(d) {
@@ -66009,10 +66970,11 @@ pub impl ToJson for LegendVariant5LabelLimit with fn to_json(self) {
 
 ///|
 /// `LegendVariant5LabelOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5LabelOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5LabelOffset with fn deserialize(d) {
@@ -66056,10 +67018,11 @@ pub impl ToJson for LegendVariant5LabelOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant5LabelOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5LabelOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5LabelOpacity with fn deserialize(d) {
@@ -66103,10 +67066,11 @@ pub impl ToJson for LegendVariant5LabelOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant5LegendX`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5LegendX {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5LegendX with fn deserialize(d) {
@@ -66150,10 +67114,11 @@ pub impl ToJson for LegendVariant5LegendX with fn to_json(self) {
 
 ///|
 /// `LegendVariant5LegendY`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5LegendY {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5LegendY with fn deserialize(d) {
@@ -66197,10 +67162,11 @@ pub impl ToJson for LegendVariant5LegendY with fn to_json(self) {
 
 ///|
 /// `LegendVariant5Offset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5Offset with fn deserialize(d) {
@@ -66244,6 +67210,7 @@ pub impl ToJson for LegendVariant5Offset with fn to_json(self) {
 
 ///|
 /// `LegendVariant5OrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant5OrientVariant0 {
   None_
   Left
@@ -66254,7 +67221,7 @@ pub(all) enum LegendVariant5OrientVariant0 {
   TopRight
   BottomLeft
   BottomRight
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5OrientVariant0 with fn deserialize(d) {
@@ -66351,10 +67318,11 @@ pub impl ToJson for LegendVariant5OrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant5Orient`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5Orient {
   Variant0(LegendVariant5OrientVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5Orient with fn deserialize(d) {
@@ -66398,10 +67366,11 @@ pub impl ToJson for LegendVariant5Orient with fn to_json(self) {
 
 ///|
 /// `LegendVariant5Padding`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5Padding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5Padding with fn deserialize(d) {
@@ -66445,11 +67414,12 @@ pub impl ToJson for LegendVariant5Padding with fn to_json(self) {
 
 ///|
 /// `LegendVariant5StrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5StrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5StrokeColor with fn deserialize(d) {
@@ -66502,10 +67472,11 @@ pub impl ToJson for LegendVariant5StrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant5SymbolDash`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5SymbolDash {
   Variant0(Array[Double])
   Variant1(ArrayValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5SymbolDash with fn deserialize(d) {
@@ -66549,10 +67520,11 @@ pub impl ToJson for LegendVariant5SymbolDash with fn to_json(self) {
 
 ///|
 /// `LegendVariant5SymbolDashOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5SymbolDashOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5SymbolDashOffset with fn deserialize(d) {
@@ -66596,11 +67568,12 @@ pub impl ToJson for LegendVariant5SymbolDashOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant5SymbolFillColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5SymbolFillColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5SymbolFillColor with fn deserialize(d) {
@@ -66653,10 +67626,11 @@ pub impl ToJson for LegendVariant5SymbolFillColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant5SymbolOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5SymbolOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5SymbolOffset with fn deserialize(d) {
@@ -66700,10 +67674,11 @@ pub impl ToJson for LegendVariant5SymbolOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant5SymbolOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5SymbolOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5SymbolOpacity with fn deserialize(d) {
@@ -66747,10 +67722,11 @@ pub impl ToJson for LegendVariant5SymbolOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant5SymbolSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5SymbolSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5SymbolSize with fn deserialize(d) {
@@ -66794,11 +67770,12 @@ pub impl ToJson for LegendVariant5SymbolSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant5SymbolStrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5SymbolStrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5SymbolStrokeColor with fn deserialize(d) {
@@ -66851,10 +67828,11 @@ pub impl ToJson for LegendVariant5SymbolStrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant5SymbolStrokeWidth`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5SymbolStrokeWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5SymbolStrokeWidth with fn deserialize(d) {
@@ -66898,10 +67876,11 @@ pub impl ToJson for LegendVariant5SymbolStrokeWidth with fn to_json(self) {
 
 ///|
 /// `LegendVariant5SymbolType`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5SymbolType {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5SymbolType with fn deserialize(d) {
@@ -66945,11 +67924,12 @@ pub impl ToJson for LegendVariant5SymbolType with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant5TitleAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleAlignVariant0 with fn deserialize(d) {
@@ -67016,10 +67996,11 @@ pub impl ToJson for LegendVariant5TitleAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5TitleAlign {
   Variant0(LegendVariant5TitleAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleAlign with fn deserialize(d) {
@@ -67063,11 +68044,12 @@ pub impl ToJson for LegendVariant5TitleAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleAnchorVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant5TitleAnchorVariant0 {
   Start
   Middle
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleAnchorVariant0 with fn deserialize(d) {
@@ -67134,10 +68116,11 @@ pub impl ToJson for LegendVariant5TitleAnchorVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleAnchor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5TitleAnchor {
   Variant0(LegendVariant5TitleAnchorVariant0?)
   Variant1(AnchorValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleAnchor with fn deserialize(d) {
@@ -67181,6 +68164,7 @@ pub impl ToJson for LegendVariant5TitleAnchor with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant5TitleBaselineVariant0 {
   Top
   Middle
@@ -67188,7 +68172,7 @@ pub(all) enum LegendVariant5TitleBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleBaselineVariant0 with fn deserialize(d) {
@@ -67270,10 +68254,11 @@ pub impl ToJson for LegendVariant5TitleBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleBaseline`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5TitleBaseline {
   Variant0(LegendVariant5TitleBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleBaseline with fn deserialize(d) {
@@ -67317,11 +68302,12 @@ pub impl ToJson for LegendVariant5TitleBaseline with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5TitleColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleColor with fn deserialize(d) {
@@ -67374,10 +68360,11 @@ pub impl ToJson for LegendVariant5TitleColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleFont`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5TitleFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleFont with fn deserialize(d) {
@@ -67421,10 +68408,11 @@ pub impl ToJson for LegendVariant5TitleFont with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleFontSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5TitleFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleFontSize with fn deserialize(d) {
@@ -67468,10 +68456,11 @@ pub impl ToJson for LegendVariant5TitleFontSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleFontStyle`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5TitleFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleFontStyle with fn deserialize(d) {
@@ -67515,10 +68504,11 @@ pub impl ToJson for LegendVariant5TitleFontStyle with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleFontWeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5TitleFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleFontWeight with fn deserialize(d) {
@@ -67562,10 +68552,11 @@ pub impl ToJson for LegendVariant5TitleFontWeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleLimit`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5TitleLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleLimit with fn deserialize(d) {
@@ -67609,10 +68600,11 @@ pub impl ToJson for LegendVariant5TitleLimit with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleLineHeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5TitleLineHeight {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleLineHeight with fn deserialize(d) {
@@ -67656,10 +68648,11 @@ pub impl ToJson for LegendVariant5TitleLineHeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5TitleOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleOpacity with fn deserialize(d) {
@@ -67703,12 +68696,13 @@ pub impl ToJson for LegendVariant5TitleOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleOrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant5TitleOrientVariant0 {
   Left
   Right
   Top
   Bottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleOrientVariant0 with fn deserialize(d) {
@@ -67780,10 +68774,11 @@ pub impl ToJson for LegendVariant5TitleOrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitleOrient`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5TitleOrient {
   Variant0(LegendVariant5TitleOrientVariant0)
   Variant1(OrientValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitleOrient with fn deserialize(d) {
@@ -67827,10 +68822,11 @@ pub impl ToJson for LegendVariant5TitleOrient with fn to_json(self) {
 
 ///|
 /// `LegendVariant5TitlePadding`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant5TitlePadding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5TitlePadding with fn deserialize(d) {
@@ -67874,10 +68870,11 @@ pub impl ToJson for LegendVariant5TitlePadding with fn to_json(self) {
 
 ///|
 /// `LegendVariant5Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant5Type {
   Gradient
   Symbol
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant5Type with fn deserialize(d) {
@@ -67939,10 +68936,11 @@ pub impl ToJson for LegendVariant5Type with fn to_json(self) {
 
 ///|
 /// `LegendVariant6CornerRadius`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6CornerRadius {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6CornerRadius with fn deserialize(d) {
@@ -67986,10 +68984,11 @@ pub impl ToJson for LegendVariant6CornerRadius with fn to_json(self) {
 
 ///|
 /// `LegendVariant6Direction`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant6Direction {
   Vertical
   Horizontal
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6Direction with fn deserialize(d) {
@@ -68051,6 +69050,7 @@ pub impl ToJson for LegendVariant6Direction with fn to_json(self) {
 
 ///|
 /// `LegendVariant6Encode`
+#derive(Debug, Eq)
 pub(all) struct LegendVariant6Encode {
   entries : GuideEncode?
   gradient : GuideEncode?
@@ -68058,7 +69058,7 @@ pub(all) struct LegendVariant6Encode {
   legend : GuideEncode?
   symbols : GuideEncode?
   title : GuideEncode?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LegendVariant6Encode` (fields with defaults are optional).
@@ -68138,11 +69138,12 @@ pub impl ToJson for LegendVariant6Encode with fn to_json(self) {
 
 ///|
 /// `LegendVariant6FillColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6FillColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6FillColor with fn deserialize(d) {
@@ -68195,11 +69196,12 @@ pub impl ToJson for LegendVariant6FillColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant6Format`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6Format {
   String(String)
   Object(date~ : String?, day~ : String?, hours~ : String?, milliseconds~ : String?, minutes~ : String?, month~ : String?, quarter~ : String?, seconds~ : String?, week~ : String?, year~ : String?)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let legend_variant6_format_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["date", "day", "hours", "milliseconds", "minutes", "month", "quarter", "seconds", "week", "year"])
@@ -68323,11 +69325,12 @@ pub impl ToJson for LegendVariant6Format with fn to_json(self) {
 
 ///|
 /// `LegendVariant6FormatTypeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant6FormatTypeVariant0 {
   Number
   Time
   Utc
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6FormatTypeVariant0 with fn deserialize(d) {
@@ -68394,10 +69397,11 @@ pub impl ToJson for LegendVariant6FormatTypeVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant6FormatType`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6FormatType {
   Variant0(LegendVariant6FormatTypeVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6FormatType with fn deserialize(d) {
@@ -68441,10 +69445,11 @@ pub impl ToJson for LegendVariant6FormatType with fn to_json(self) {
 
 ///|
 /// `LegendVariant6GradientOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6GradientOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6GradientOpacity with fn deserialize(d) {
@@ -68488,11 +69493,12 @@ pub impl ToJson for LegendVariant6GradientOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant6GradientStrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6GradientStrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6GradientStrokeColor with fn deserialize(d) {
@@ -68545,10 +69551,11 @@ pub impl ToJson for LegendVariant6GradientStrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant6GradientStrokeWidth`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6GradientStrokeWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6GradientStrokeWidth with fn deserialize(d) {
@@ -68592,11 +69599,12 @@ pub impl ToJson for LegendVariant6GradientStrokeWidth with fn to_json(self) {
 
 ///|
 /// `LegendVariant6GridAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant6GridAlignVariant0 {
   All
   Each
   None_
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6GridAlignVariant0 with fn deserialize(d) {
@@ -68663,10 +69671,11 @@ pub impl ToJson for LegendVariant6GridAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant6GridAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6GridAlign {
   Variant0(LegendVariant6GridAlignVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6GridAlign with fn deserialize(d) {
@@ -68710,11 +69719,12 @@ pub impl ToJson for LegendVariant6GridAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant6LabelAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant6LabelAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6LabelAlignVariant0 with fn deserialize(d) {
@@ -68781,10 +69791,11 @@ pub impl ToJson for LegendVariant6LabelAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant6LabelAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6LabelAlign {
   Variant0(LegendVariant6LabelAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6LabelAlign with fn deserialize(d) {
@@ -68828,6 +69839,7 @@ pub impl ToJson for LegendVariant6LabelAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant6LabelBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant6LabelBaselineVariant0 {
   Top
   Middle
@@ -68835,7 +69847,7 @@ pub(all) enum LegendVariant6LabelBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6LabelBaselineVariant0 with fn deserialize(d) {
@@ -68917,10 +69929,11 @@ pub impl ToJson for LegendVariant6LabelBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant6LabelBaseline`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6LabelBaseline {
   Variant0(LegendVariant6LabelBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6LabelBaseline with fn deserialize(d) {
@@ -68964,11 +69977,12 @@ pub impl ToJson for LegendVariant6LabelBaseline with fn to_json(self) {
 
 ///|
 /// `LegendVariant6LabelColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6LabelColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6LabelColor with fn deserialize(d) {
@@ -69021,10 +70035,11 @@ pub impl ToJson for LegendVariant6LabelColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant6LabelFont`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6LabelFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6LabelFont with fn deserialize(d) {
@@ -69068,10 +70083,11 @@ pub impl ToJson for LegendVariant6LabelFont with fn to_json(self) {
 
 ///|
 /// `LegendVariant6LabelFontSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6LabelFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6LabelFontSize with fn deserialize(d) {
@@ -69115,10 +70131,11 @@ pub impl ToJson for LegendVariant6LabelFontSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant6LabelFontStyle`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6LabelFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6LabelFontStyle with fn deserialize(d) {
@@ -69162,10 +70179,11 @@ pub impl ToJson for LegendVariant6LabelFontStyle with fn to_json(self) {
 
 ///|
 /// `LegendVariant6LabelFontWeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6LabelFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6LabelFontWeight with fn deserialize(d) {
@@ -69209,10 +70227,11 @@ pub impl ToJson for LegendVariant6LabelFontWeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant6LabelLimit`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6LabelLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6LabelLimit with fn deserialize(d) {
@@ -69256,10 +70275,11 @@ pub impl ToJson for LegendVariant6LabelLimit with fn to_json(self) {
 
 ///|
 /// `LegendVariant6LabelOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6LabelOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6LabelOffset with fn deserialize(d) {
@@ -69303,10 +70323,11 @@ pub impl ToJson for LegendVariant6LabelOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant6LabelOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6LabelOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6LabelOpacity with fn deserialize(d) {
@@ -69350,10 +70371,11 @@ pub impl ToJson for LegendVariant6LabelOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant6LegendX`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6LegendX {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6LegendX with fn deserialize(d) {
@@ -69397,10 +70419,11 @@ pub impl ToJson for LegendVariant6LegendX with fn to_json(self) {
 
 ///|
 /// `LegendVariant6LegendY`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6LegendY {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6LegendY with fn deserialize(d) {
@@ -69444,10 +70467,11 @@ pub impl ToJson for LegendVariant6LegendY with fn to_json(self) {
 
 ///|
 /// `LegendVariant6Offset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6Offset with fn deserialize(d) {
@@ -69491,6 +70515,7 @@ pub impl ToJson for LegendVariant6Offset with fn to_json(self) {
 
 ///|
 /// `LegendVariant6OrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant6OrientVariant0 {
   None_
   Left
@@ -69501,7 +70526,7 @@ pub(all) enum LegendVariant6OrientVariant0 {
   TopRight
   BottomLeft
   BottomRight
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6OrientVariant0 with fn deserialize(d) {
@@ -69598,10 +70623,11 @@ pub impl ToJson for LegendVariant6OrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant6Orient`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6Orient {
   Variant0(LegendVariant6OrientVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6Orient with fn deserialize(d) {
@@ -69645,10 +70671,11 @@ pub impl ToJson for LegendVariant6Orient with fn to_json(self) {
 
 ///|
 /// `LegendVariant6Padding`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6Padding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6Padding with fn deserialize(d) {
@@ -69692,11 +70719,12 @@ pub impl ToJson for LegendVariant6Padding with fn to_json(self) {
 
 ///|
 /// `LegendVariant6StrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6StrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6StrokeColor with fn deserialize(d) {
@@ -69749,10 +70777,11 @@ pub impl ToJson for LegendVariant6StrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant6SymbolDash`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6SymbolDash {
   Variant0(Array[Double])
   Variant1(ArrayValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6SymbolDash with fn deserialize(d) {
@@ -69796,10 +70825,11 @@ pub impl ToJson for LegendVariant6SymbolDash with fn to_json(self) {
 
 ///|
 /// `LegendVariant6SymbolDashOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6SymbolDashOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6SymbolDashOffset with fn deserialize(d) {
@@ -69843,11 +70873,12 @@ pub impl ToJson for LegendVariant6SymbolDashOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant6SymbolFillColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6SymbolFillColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6SymbolFillColor with fn deserialize(d) {
@@ -69900,10 +70931,11 @@ pub impl ToJson for LegendVariant6SymbolFillColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant6SymbolOffset`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6SymbolOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6SymbolOffset with fn deserialize(d) {
@@ -69947,10 +70979,11 @@ pub impl ToJson for LegendVariant6SymbolOffset with fn to_json(self) {
 
 ///|
 /// `LegendVariant6SymbolOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6SymbolOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6SymbolOpacity with fn deserialize(d) {
@@ -69994,10 +71027,11 @@ pub impl ToJson for LegendVariant6SymbolOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant6SymbolSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6SymbolSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6SymbolSize with fn deserialize(d) {
@@ -70041,11 +71075,12 @@ pub impl ToJson for LegendVariant6SymbolSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant6SymbolStrokeColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6SymbolStrokeColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6SymbolStrokeColor with fn deserialize(d) {
@@ -70098,10 +71133,11 @@ pub impl ToJson for LegendVariant6SymbolStrokeColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant6SymbolStrokeWidth`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6SymbolStrokeWidth {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6SymbolStrokeWidth with fn deserialize(d) {
@@ -70145,10 +71181,11 @@ pub impl ToJson for LegendVariant6SymbolStrokeWidth with fn to_json(self) {
 
 ///|
 /// `LegendVariant6SymbolType`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6SymbolType {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6SymbolType with fn deserialize(d) {
@@ -70192,11 +71229,12 @@ pub impl ToJson for LegendVariant6SymbolType with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant6TitleAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleAlignVariant0 with fn deserialize(d) {
@@ -70263,10 +71301,11 @@ pub impl ToJson for LegendVariant6TitleAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleAlign`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6TitleAlign {
   Variant0(LegendVariant6TitleAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleAlign with fn deserialize(d) {
@@ -70310,11 +71349,12 @@ pub impl ToJson for LegendVariant6TitleAlign with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleAnchorVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant6TitleAnchorVariant0 {
   Start
   Middle
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleAnchorVariant0 with fn deserialize(d) {
@@ -70381,10 +71421,11 @@ pub impl ToJson for LegendVariant6TitleAnchorVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleAnchor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6TitleAnchor {
   Variant0(LegendVariant6TitleAnchorVariant0?)
   Variant1(AnchorValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleAnchor with fn deserialize(d) {
@@ -70428,6 +71469,7 @@ pub impl ToJson for LegendVariant6TitleAnchor with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant6TitleBaselineVariant0 {
   Top
   Middle
@@ -70435,7 +71477,7 @@ pub(all) enum LegendVariant6TitleBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleBaselineVariant0 with fn deserialize(d) {
@@ -70517,10 +71559,11 @@ pub impl ToJson for LegendVariant6TitleBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleBaseline`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6TitleBaseline {
   Variant0(LegendVariant6TitleBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleBaseline with fn deserialize(d) {
@@ -70564,11 +71607,12 @@ pub impl ToJson for LegendVariant6TitleBaseline with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleColor`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6TitleColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleColor with fn deserialize(d) {
@@ -70621,10 +71665,11 @@ pub impl ToJson for LegendVariant6TitleColor with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleFont`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6TitleFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleFont with fn deserialize(d) {
@@ -70668,10 +71713,11 @@ pub impl ToJson for LegendVariant6TitleFont with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleFontSize`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6TitleFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleFontSize with fn deserialize(d) {
@@ -70715,10 +71761,11 @@ pub impl ToJson for LegendVariant6TitleFontSize with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleFontStyle`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6TitleFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleFontStyle with fn deserialize(d) {
@@ -70762,10 +71809,11 @@ pub impl ToJson for LegendVariant6TitleFontStyle with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleFontWeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6TitleFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleFontWeight with fn deserialize(d) {
@@ -70809,10 +71857,11 @@ pub impl ToJson for LegendVariant6TitleFontWeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleLimit`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6TitleLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleLimit with fn deserialize(d) {
@@ -70856,10 +71905,11 @@ pub impl ToJson for LegendVariant6TitleLimit with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleLineHeight`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6TitleLineHeight {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleLineHeight with fn deserialize(d) {
@@ -70903,10 +71953,11 @@ pub impl ToJson for LegendVariant6TitleLineHeight with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleOpacity`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6TitleOpacity {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleOpacity with fn deserialize(d) {
@@ -70950,12 +72001,13 @@ pub impl ToJson for LegendVariant6TitleOpacity with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleOrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant6TitleOrientVariant0 {
   Left
   Right
   Top
   Bottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleOrientVariant0 with fn deserialize(d) {
@@ -71027,10 +72079,11 @@ pub impl ToJson for LegendVariant6TitleOrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitleOrient`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6TitleOrient {
   Variant0(LegendVariant6TitleOrientVariant0)
   Variant1(OrientValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitleOrient with fn deserialize(d) {
@@ -71074,10 +72127,11 @@ pub impl ToJson for LegendVariant6TitleOrient with fn to_json(self) {
 
 ///|
 /// `LegendVariant6TitlePadding`
+#derive(Debug, Eq)
 pub(all) enum LegendVariant6TitlePadding {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6TitlePadding with fn deserialize(d) {
@@ -71121,10 +72175,11 @@ pub impl ToJson for LegendVariant6TitlePadding with fn to_json(self) {
 
 ///|
 /// `LegendVariant6Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum LegendVariant6Type {
   Gradient
   Symbol
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LegendVariant6Type with fn deserialize(d) {
@@ -71186,9 +72241,10 @@ pub impl ToJson for LegendVariant6Type with fn to_json(self) {
 
 ///|
 /// `LinearGradientGradient`
+#derive(Debug, Eq, Hash)
 pub(all) enum LinearGradientGradient {
   Linear
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LinearGradientGradient with fn deserialize(d) {
@@ -71245,10 +72301,11 @@ pub impl ToJson for LinearGradientGradient with fn to_json(self) {
 
 ///|
 /// `LinkpathTransformAs`
+#derive(Debug, Eq)
 pub(all) enum LinkpathTransformAs {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LinkpathTransformAs with fn deserialize(d) {
@@ -71300,11 +72357,12 @@ pub impl ToJson for LinkpathTransformAs with fn to_json(self) {
 
 ///|
 /// `LinkpathTransformOrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LinkpathTransformOrientVariant0 {
   Horizontal
   Vertical
   Radial
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LinkpathTransformOrientVariant0 with fn deserialize(d) {
@@ -71371,10 +72429,11 @@ pub impl ToJson for LinkpathTransformOrientVariant0 with fn to_json(self) {
 
 ///|
 /// `LinkpathTransformOrient`
+#derive(Debug, Eq)
 pub(all) enum LinkpathTransformOrient {
   Variant0(LinkpathTransformOrientVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LinkpathTransformOrient with fn deserialize(d) {
@@ -71426,13 +72485,14 @@ pub impl ToJson for LinkpathTransformOrient with fn to_json(self) {
 
 ///|
 /// `LinkpathTransformShapeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum LinkpathTransformShapeVariant0 {
   Line
   Arc
   Curve
   Diagonal
   Orthogonal
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LinkpathTransformShapeVariant0 with fn deserialize(d) {
@@ -71509,10 +72569,11 @@ pub impl ToJson for LinkpathTransformShapeVariant0 with fn to_json(self) {
 
 ///|
 /// `LinkpathTransformShape`
+#derive(Debug, Eq)
 pub(all) enum LinkpathTransformShape {
   Variant0(LinkpathTransformShapeVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LinkpathTransformShape with fn deserialize(d) {
@@ -71564,11 +72625,12 @@ pub impl ToJson for LinkpathTransformShape with fn to_json(self) {
 
 ///|
 /// `LinkpathTransformSourceX`
+#derive(Debug, Eq)
 pub(all) enum LinkpathTransformSourceX {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LinkpathTransformSourceX with fn deserialize(d) {
@@ -71629,11 +72691,12 @@ pub impl ToJson for LinkpathTransformSourceX with fn to_json(self) {
 
 ///|
 /// `LinkpathTransformSourceY`
+#derive(Debug, Eq)
 pub(all) enum LinkpathTransformSourceY {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LinkpathTransformSourceY with fn deserialize(d) {
@@ -71694,11 +72757,12 @@ pub impl ToJson for LinkpathTransformSourceY with fn to_json(self) {
 
 ///|
 /// `LinkpathTransformTargetX`
+#derive(Debug, Eq)
 pub(all) enum LinkpathTransformTargetX {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LinkpathTransformTargetX with fn deserialize(d) {
@@ -71759,11 +72823,12 @@ pub impl ToJson for LinkpathTransformTargetX with fn to_json(self) {
 
 ///|
 /// `LinkpathTransformTargetY`
+#derive(Debug, Eq)
 pub(all) enum LinkpathTransformTargetY {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LinkpathTransformTargetY with fn deserialize(d) {
@@ -71824,9 +72889,10 @@ pub impl ToJson for LinkpathTransformTargetY with fn to_json(self) {
 
 ///|
 /// `LinkpathTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum LinkpathTransformType {
   Linkpath
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LinkpathTransformType with fn deserialize(d) {
@@ -71883,10 +72949,11 @@ pub impl ToJson for LinkpathTransformType with fn to_json(self) {
 
 ///|
 /// `LoessTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum LoessTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LoessTransformAsArrayItem with fn deserialize(d) {
@@ -71930,10 +72997,11 @@ pub impl ToJson for LoessTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `LoessTransformAs`
+#derive(Debug, Eq)
 pub(all) enum LoessTransformAs {
   Array(Array[LoessTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LoessTransformAs with fn deserialize(d) {
@@ -71977,10 +73045,11 @@ pub impl ToJson for LoessTransformAs with fn to_json(self) {
 
 ///|
 /// `LoessTransformBandwidth`
+#derive(Debug, Eq)
 pub(all) enum LoessTransformBandwidth {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LoessTransformBandwidth with fn deserialize(d) {
@@ -72032,11 +73101,12 @@ pub impl ToJson for LoessTransformBandwidth with fn to_json(self) {
 
 ///|
 /// `LoessTransformGroupbyArrayItem`
+#derive(Debug, Eq)
 pub(all) enum LoessTransformGroupbyArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LoessTransformGroupbyArrayItem with fn deserialize(d) {
@@ -72089,10 +73159,11 @@ pub impl ToJson for LoessTransformGroupbyArrayItem with fn to_json(self) {
 
 ///|
 /// `LoessTransformGroupby`
+#derive(Debug, Eq)
 pub(all) enum LoessTransformGroupby {
   Array(Array[LoessTransformGroupbyArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LoessTransformGroupby with fn deserialize(d) {
@@ -72136,9 +73207,10 @@ pub impl ToJson for LoessTransformGroupby with fn to_json(self) {
 
 ///|
 /// `LoessTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum LoessTransformType {
   Loess
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LoessTransformType with fn deserialize(d) {
@@ -72195,11 +73267,12 @@ pub impl ToJson for LoessTransformType with fn to_json(self) {
 
 ///|
 /// `LoessTransformX`
+#derive(Debug, Eq)
 pub(all) enum LoessTransformX {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LoessTransformX with fn deserialize(d) {
@@ -72252,11 +73325,12 @@ pub impl ToJson for LoessTransformX with fn to_json(self) {
 
 ///|
 /// `LoessTransformY`
+#derive(Debug, Eq)
 pub(all) enum LoessTransformY {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LoessTransformY with fn deserialize(d) {
@@ -72309,10 +73383,11 @@ pub impl ToJson for LoessTransformY with fn to_json(self) {
 
 ///|
 /// `LookupTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum LookupTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LookupTransformAsArrayItem with fn deserialize(d) {
@@ -72356,10 +73431,11 @@ pub impl ToJson for LookupTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `LookupTransformAs`
+#derive(Debug, Eq)
 pub(all) enum LookupTransformAs {
   Array(Array[LookupTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LookupTransformAs with fn deserialize(d) {
@@ -72403,11 +73479,12 @@ pub impl ToJson for LookupTransformAs with fn to_json(self) {
 
 ///|
 /// `LookupTransformFieldsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum LookupTransformFieldsArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LookupTransformFieldsArrayItem with fn deserialize(d) {
@@ -72460,10 +73537,11 @@ pub impl ToJson for LookupTransformFieldsArrayItem with fn to_json(self) {
 
 ///|
 /// `LookupTransformFields`
+#derive(Debug, Eq)
 pub(all) enum LookupTransformFields {
   Array(Array[LookupTransformFieldsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LookupTransformFields with fn deserialize(d) {
@@ -72507,11 +73585,12 @@ pub impl ToJson for LookupTransformFields with fn to_json(self) {
 
 ///|
 /// `LookupTransformKey`
+#derive(Debug, Eq)
 pub(all) enum LookupTransformKey {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LookupTransformKey with fn deserialize(d) {
@@ -72564,9 +73643,10 @@ pub impl ToJson for LookupTransformKey with fn to_json(self) {
 
 ///|
 /// `LookupTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum LookupTransformType {
   Lookup
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LookupTransformType with fn deserialize(d) {
@@ -72623,11 +73703,12 @@ pub impl ToJson for LookupTransformType with fn to_json(self) {
 
 ///|
 /// `LookupTransformValuesArrayItem`
+#derive(Debug, Eq)
 pub(all) enum LookupTransformValuesArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LookupTransformValuesArrayItem with fn deserialize(d) {
@@ -72680,10 +73761,11 @@ pub impl ToJson for LookupTransformValuesArrayItem with fn to_json(self) {
 
 ///|
 /// `LookupTransformValues`
+#derive(Debug, Eq)
 pub(all) enum LookupTransformValues {
   Array(Array[LookupTransformValuesArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LookupTransformValues with fn deserialize(d) {
@@ -72727,10 +73809,11 @@ pub impl ToJson for LookupTransformValues with fn to_json(self) {
 
 ///|
 /// `MarkGroupFrom`
+#derive(Debug, Eq)
 pub(all) enum MarkGroupFrom {
   From(From)
   Facet(Facet)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for MarkGroupFrom with fn deserialize(d) {
@@ -72774,10 +73857,11 @@ pub impl ToJson for MarkGroupFrom with fn to_json(self) {
 
 ///|
 /// `MarkGroupMarksItem`
+#derive(Debug, Eq)
 pub(all) enum MarkGroupMarksItem {
   Group(MarkGroup)
   Visual(MarkVisual)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for MarkGroupMarksItem with fn deserialize(d) {
@@ -72821,9 +73905,10 @@ pub impl ToJson for MarkGroupMarksItem with fn to_json(self) {
 
 ///|
 /// `MarkGroupType`
+#derive(Debug, Eq, Hash)
 pub(all) enum MarkGroupType {
   Group
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MarkGroupType with fn deserialize(d) {
@@ -72880,10 +73965,11 @@ pub impl ToJson for MarkGroupType with fn to_json(self) {
 
 ///|
 /// `NestTransformGenerate`
+#derive(Debug, Eq)
 pub(all) enum NestTransformGenerate {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NestTransformGenerate with fn deserialize(d) {
@@ -72927,11 +74013,12 @@ pub impl ToJson for NestTransformGenerate with fn to_json(self) {
 
 ///|
 /// `NestTransformKeysArrayItem`
+#derive(Debug, Eq)
 pub(all) enum NestTransformKeysArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NestTransformKeysArrayItem with fn deserialize(d) {
@@ -72984,10 +74071,11 @@ pub impl ToJson for NestTransformKeysArrayItem with fn to_json(self) {
 
 ///|
 /// `NestTransformKeys`
+#derive(Debug, Eq)
 pub(all) enum NestTransformKeys {
   Array(Array[NestTransformKeysArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NestTransformKeys with fn deserialize(d) {
@@ -73031,9 +74119,10 @@ pub impl ToJson for NestTransformKeys with fn to_json(self) {
 
 ///|
 /// `NestTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum NestTransformType {
   Nest
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for NestTransformType with fn deserialize(d) {
@@ -73090,10 +74179,11 @@ pub impl ToJson for NestTransformType with fn to_json(self) {
 
 ///|
 /// `NumberModifiersBand`
+#derive(Debug, Eq)
 pub(all) enum NumberModifiersBand {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberModifiersBand with fn deserialize(d) {
@@ -73137,10 +74227,11 @@ pub impl ToJson for NumberModifiersBand with fn to_json(self) {
 
 ///|
 /// `NumberModifiersExponent`
+#derive(Debug, Eq)
 pub(all) enum NumberModifiersExponent {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberModifiersExponent with fn deserialize(d) {
@@ -73184,10 +74275,11 @@ pub impl ToJson for NumberModifiersExponent with fn to_json(self) {
 
 ///|
 /// `NumberModifiersMult`
+#derive(Debug, Eq)
 pub(all) enum NumberModifiersMult {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberModifiersMult with fn deserialize(d) {
@@ -73231,10 +74323,11 @@ pub impl ToJson for NumberModifiersMult with fn to_json(self) {
 
 ///|
 /// `NumberModifiersOffset`
+#derive(Debug, Eq)
 pub(all) enum NumberModifiersOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberModifiersOffset with fn deserialize(d) {
@@ -73278,10 +74371,11 @@ pub impl ToJson for NumberModifiersOffset with fn to_json(self) {
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant0Band`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant0Band {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant0Band with fn deserialize(d) {
@@ -73325,10 +74419,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant0Band with fn to_json(
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant0Exponent`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant0Exponent {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant0Exponent with fn deserialize(d) {
@@ -73372,10 +74467,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant0Exponent with fn to_j
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant0Mult`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant0Mult {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant0Mult with fn deserialize(d) {
@@ -73419,10 +74515,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant0Mult with fn to_json(
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant0Offset`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant0Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant0Offset with fn deserialize(d) {
@@ -73466,10 +74563,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant0Offset with fn to_jso
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant1Band`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant1Band {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant1Band with fn deserialize(d) {
@@ -73513,10 +74611,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant1Band with fn to_json(
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant1Exponent`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant1Exponent {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant1Exponent with fn deserialize(d) {
@@ -73560,10 +74659,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant1Exponent with fn to_j
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant1Mult`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant1Mult {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant1Mult with fn deserialize(d) {
@@ -73607,10 +74707,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant1Mult with fn to_json(
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant1Offset`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant1Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant1Offset with fn deserialize(d) {
@@ -73654,10 +74755,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant1Offset with fn to_jso
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant2Band`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant2Band {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant2Band with fn deserialize(d) {
@@ -73701,10 +74803,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant2Band with fn to_json(
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant2Exponent`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant2Exponent {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant2Exponent with fn deserialize(d) {
@@ -73748,10 +74851,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant2Exponent with fn to_j
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant2Mult`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant2Mult {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant2Mult with fn deserialize(d) {
@@ -73795,10 +74899,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant2Mult with fn to_json(
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant2Offset`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant2Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant2Offset with fn deserialize(d) {
@@ -73842,10 +74947,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant2Offset with fn to_jso
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant3Band`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant3Band {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant3Band with fn deserialize(d) {
@@ -73889,10 +74995,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant3Band with fn to_json(
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant3Exponent`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant3Exponent {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant3Exponent with fn deserialize(d) {
@@ -73936,10 +75043,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant3Exponent with fn to_j
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant3Mult`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant3Mult {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant3Mult with fn deserialize(d) {
@@ -73983,10 +75091,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant3Mult with fn to_json(
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant3Offset`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant3Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant3Offset with fn deserialize(d) {
@@ -74030,10 +75139,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant3Offset with fn to_jso
 
 ///|
 /// `NumberValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -74077,12 +75187,13 @@ pub impl ToJson for NumberValueVariant0ItemVariant0Variant3Range with fn to_json
 
 ///|
 /// `NumberValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant0 {
   Variant0(band~ : NumberValueVariant0ItemVariant0Variant0Band?, exponent~ : NumberValueVariant0ItemVariant0Variant0Exponent?, extra~ : Bool?, mult~ : NumberValueVariant0ItemVariant0Variant0Mult?, offset~ : NumberValueVariant0ItemVariant0Variant0Offset?, round~ : Bool, scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(band~ : NumberValueVariant0ItemVariant0Variant1Band?, exponent~ : NumberValueVariant0ItemVariant0Variant1Exponent?, extra~ : Bool?, mult~ : NumberValueVariant0ItemVariant0Variant1Mult?, offset~ : NumberValueVariant0ItemVariant0Variant1Offset?, round~ : Bool, scale~ : Field?, test_~ : String?, value~ : Double)
   Variant2(band~ : NumberValueVariant0ItemVariant0Variant2Band?, exponent~ : NumberValueVariant0ItemVariant0Variant2Exponent?, extra~ : Bool?, field~ : Field, mult~ : NumberValueVariant0ItemVariant0Variant2Mult?, offset~ : NumberValueVariant0ItemVariant0Variant2Offset?, round~ : Bool, scale~ : Field?, test_~ : String?)
   Variant3(band~ : NumberValueVariant0ItemVariant0Variant3Band?, exponent~ : NumberValueVariant0ItemVariant0Variant3Exponent?, extra~ : Bool?, mult~ : NumberValueVariant0ItemVariant0Variant3Mult?, offset~ : NumberValueVariant0ItemVariant0Variant3Offset?, range~ : NumberValueVariant0ItemVariant0Variant3Range, round~ : Bool, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let number_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["band", "exponent", "extra", "mult", "offset", "round", "scale", "signal", "test"])
@@ -74388,8 +75499,9 @@ pub impl ToJson for NumberValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `NumberValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum NumberValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -74421,8 +75533,9 @@ pub impl ToJson for NumberValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `NumberValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum NumberValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -74454,10 +75567,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `NumberValueVariant0ItemVariant3Exponent`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant3Exponent {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant3Exponent with fn deserialize(d) {
@@ -74501,10 +75615,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant3Exponent with fn to_json(self
 
 ///|
 /// `NumberValueVariant0ItemVariant3Mult`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant3Mult {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant3Mult with fn deserialize(d) {
@@ -74548,10 +75663,11 @@ pub impl ToJson for NumberValueVariant0ItemVariant3Mult with fn to_json(self) {
 
 ///|
 /// `NumberValueVariant0ItemVariant3Offset`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0ItemVariant3Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant0ItemVariant3Offset with fn deserialize(d) {
@@ -74595,12 +75711,13 @@ pub impl ToJson for NumberValueVariant0ItemVariant3Offset with fn to_json(self) 
 
 ///|
 /// `NumberValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant0Item {
   Variant0(NumberValueVariant0ItemVariant0)
   Variant1(NumberValueVariant0ItemVariant1)
   Variant2(NumberValueVariant0ItemVariant2)
   Variant3(exponent~ : NumberValueVariant0ItemVariant3Exponent?, extra~ : Bool?, mult~ : NumberValueVariant0ItemVariant3Mult?, offset~ : NumberValueVariant0ItemVariant3Offset, round~ : Bool, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let number_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["exponent", "extra", "mult", "offset", "round", "test"])
@@ -74705,10 +75822,11 @@ pub impl ToJson for NumberValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `NumberValueVariant1Variant0Variant0Band`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant0Band {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant0Band with fn deserialize(d) {
@@ -74752,10 +75870,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant0Band with fn to_json(self
 
 ///|
 /// `NumberValueVariant1Variant0Variant0Exponent`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant0Exponent {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant0Exponent with fn deserialize(d) {
@@ -74799,10 +75918,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant0Exponent with fn to_json(
 
 ///|
 /// `NumberValueVariant1Variant0Variant0Mult`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant0Mult {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant0Mult with fn deserialize(d) {
@@ -74846,10 +75966,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant0Mult with fn to_json(self
 
 ///|
 /// `NumberValueVariant1Variant0Variant0Offset`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant0Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant0Offset with fn deserialize(d) {
@@ -74893,10 +76014,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant0Offset with fn to_json(se
 
 ///|
 /// `NumberValueVariant1Variant0Variant1Band`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant1Band {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant1Band with fn deserialize(d) {
@@ -74940,10 +76062,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant1Band with fn to_json(self
 
 ///|
 /// `NumberValueVariant1Variant0Variant1Exponent`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant1Exponent {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant1Exponent with fn deserialize(d) {
@@ -74987,10 +76110,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant1Exponent with fn to_json(
 
 ///|
 /// `NumberValueVariant1Variant0Variant1Mult`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant1Mult {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant1Mult with fn deserialize(d) {
@@ -75034,10 +76158,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant1Mult with fn to_json(self
 
 ///|
 /// `NumberValueVariant1Variant0Variant1Offset`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant1Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant1Offset with fn deserialize(d) {
@@ -75081,10 +76206,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant1Offset with fn to_json(se
 
 ///|
 /// `NumberValueVariant1Variant0Variant2Band`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant2Band {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant2Band with fn deserialize(d) {
@@ -75128,10 +76254,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant2Band with fn to_json(self
 
 ///|
 /// `NumberValueVariant1Variant0Variant2Exponent`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant2Exponent {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant2Exponent with fn deserialize(d) {
@@ -75175,10 +76302,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant2Exponent with fn to_json(
 
 ///|
 /// `NumberValueVariant1Variant0Variant2Mult`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant2Mult {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant2Mult with fn deserialize(d) {
@@ -75222,10 +76350,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant2Mult with fn to_json(self
 
 ///|
 /// `NumberValueVariant1Variant0Variant2Offset`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant2Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant2Offset with fn deserialize(d) {
@@ -75269,10 +76398,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant2Offset with fn to_json(se
 
 ///|
 /// `NumberValueVariant1Variant0Variant3Band`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant3Band {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant3Band with fn deserialize(d) {
@@ -75316,10 +76446,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant3Band with fn to_json(self
 
 ///|
 /// `NumberValueVariant1Variant0Variant3Exponent`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant3Exponent {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant3Exponent with fn deserialize(d) {
@@ -75363,10 +76494,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant3Exponent with fn to_json(
 
 ///|
 /// `NumberValueVariant1Variant0Variant3Mult`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant3Mult {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant3Mult with fn deserialize(d) {
@@ -75410,10 +76542,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant3Mult with fn to_json(self
 
 ///|
 /// `NumberValueVariant1Variant0Variant3Offset`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant3Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant3Offset with fn deserialize(d) {
@@ -75457,10 +76590,11 @@ pub impl ToJson for NumberValueVariant1Variant0Variant3Offset with fn to_json(se
 
 ///|
 /// `NumberValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -75504,12 +76638,13 @@ pub impl ToJson for NumberValueVariant1Variant0Variant3Range with fn to_json(sel
 
 ///|
 /// `NumberValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant0 {
   Variant0(band~ : NumberValueVariant1Variant0Variant0Band?, exponent~ : NumberValueVariant1Variant0Variant0Exponent?, extra~ : Bool?, mult~ : NumberValueVariant1Variant0Variant0Mult?, offset~ : NumberValueVariant1Variant0Variant0Offset?, round~ : Bool, scale~ : Field?, signal~ : String)
   Variant1(band~ : NumberValueVariant1Variant0Variant1Band?, exponent~ : NumberValueVariant1Variant0Variant1Exponent?, extra~ : Bool?, mult~ : NumberValueVariant1Variant0Variant1Mult?, offset~ : NumberValueVariant1Variant0Variant1Offset?, round~ : Bool, scale~ : Field?, value~ : Double)
   Variant2(band~ : NumberValueVariant1Variant0Variant2Band?, exponent~ : NumberValueVariant1Variant0Variant2Exponent?, extra~ : Bool?, field~ : Field, mult~ : NumberValueVariant1Variant0Variant2Mult?, offset~ : NumberValueVariant1Variant0Variant2Offset?, round~ : Bool, scale~ : Field?)
   Variant3(band~ : NumberValueVariant1Variant0Variant3Band?, exponent~ : NumberValueVariant1Variant0Variant3Exponent?, extra~ : Bool?, mult~ : NumberValueVariant1Variant0Variant3Mult?, offset~ : NumberValueVariant1Variant0Variant3Offset?, range~ : NumberValueVariant1Variant0Variant3Range, round~ : Bool, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let number_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["band", "exponent", "extra", "mult", "offset", "round", "scale", "signal"])
@@ -75791,8 +76926,9 @@ pub impl ToJson for NumberValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `NumberValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum NumberValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant1 with fn deserialize(d) {
@@ -75824,8 +76960,9 @@ pub impl ToJson for NumberValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `NumberValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum NumberValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant2 with fn deserialize(d) {
@@ -75857,10 +76994,11 @@ pub impl ToJson for NumberValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `NumberValueVariant1Variant3Exponent`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant3Exponent {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant3Exponent with fn deserialize(d) {
@@ -75904,10 +77042,11 @@ pub impl ToJson for NumberValueVariant1Variant3Exponent with fn to_json(self) {
 
 ///|
 /// `NumberValueVariant1Variant3Mult`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant3Mult {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant3Mult with fn deserialize(d) {
@@ -75951,10 +77090,11 @@ pub impl ToJson for NumberValueVariant1Variant3Mult with fn to_json(self) {
 
 ///|
 /// `NumberValueVariant1Variant3Offset`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1Variant3Offset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for NumberValueVariant1Variant3Offset with fn deserialize(d) {
@@ -75998,12 +77138,13 @@ pub impl ToJson for NumberValueVariant1Variant3Offset with fn to_json(self) {
 
 ///|
 /// `NumberValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum NumberValueVariant1 {
   Variant0(NumberValueVariant1Variant0)
   Variant1(NumberValueVariant1Variant1)
   Variant2(NumberValueVariant1Variant2)
   Variant3(exponent~ : NumberValueVariant1Variant3Exponent?, extra~ : Bool?, mult~ : NumberValueVariant1Variant3Mult?, offset~ : NumberValueVariant1Variant3Offset, round~ : Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 let number_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["exponent", "extra", "mult", "offset", "round"])
@@ -76102,11 +77243,12 @@ pub impl ToJson for NumberValueVariant1 with fn to_json(self) {
 
 ///|
 /// `OnEventsItemVariant0Events`
+#derive(Debug, Eq)
 pub(all) enum OnEventsItemVariant0Events {
   Selector(Selector)
   Listener(Listener)
   Array(Array[Listener])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for OnEventsItemVariant0Events with fn deserialize(d) {
@@ -76159,11 +77301,12 @@ pub impl ToJson for OnEventsItemVariant0Events with fn to_json(self) {
 
 ///|
 /// `OnEventsItemVariant1Events`
+#derive(Debug, Eq)
 pub(all) enum OnEventsItemVariant1Events {
   Selector(Selector)
   Listener(Listener)
   Array(Array[Listener])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for OnEventsItemVariant1Events with fn deserialize(d) {
@@ -76216,12 +77359,13 @@ pub impl ToJson for OnEventsItemVariant1Events with fn to_json(self) {
 
 ///|
 /// `OnEventsItemVariant1Update`
+#derive(Debug, Eq)
 pub(all) enum OnEventsItemVariant1Update {
   ExprString(ExprString)
   Expr(Expr)
   SignalRef(SignalRef)
   Object(value~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let on_events_item_variant1_update_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])
@@ -76298,10 +77442,11 @@ pub impl ToJson for OnEventsItemVariant1Update with fn to_json(self) {
 
 ///|
 /// `OnEventsItem`
+#derive(Debug, Eq)
 pub(all) enum OnEventsItem {
   Variant0(encode~ : String, events~ : OnEventsItemVariant0Events, force~ : Bool?)
   Variant1(events~ : OnEventsItemVariant1Events, force~ : Bool?, update~ : OnEventsItemVariant1Update)
-} derive(Debug, Eq)
+}
 
 ///|
 let on_events_item_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["encode", "events", "force"])
@@ -76395,11 +77540,12 @@ pub impl ToJson for OnEventsItem with fn to_json(self) {
 
 ///|
 /// `OnMarkTriggerItem`
+#derive(Debug, Eq)
 pub(all) struct OnMarkTriggerItem {
   modify : ExprString?
   trigger : ExprString
   values : ExprString?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `OnMarkTriggerItem` (fields with defaults are optional).
@@ -76456,10 +77602,11 @@ pub impl ToJson for OnMarkTriggerItem with fn to_json(self) {
 
 ///|
 /// `OnTriggerItemRemove`
+#derive(Debug, Eq)
 pub(all) enum OnTriggerItemRemove {
   Boolean(Bool)
   ExprString(ExprString)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for OnTriggerItemRemove with fn deserialize(d) {
@@ -76503,6 +77650,7 @@ pub impl ToJson for OnTriggerItemRemove with fn to_json(self) {
 
 ///|
 /// `OnTriggerItem`
+#derive(Debug, Eq)
 pub(all) struct OnTriggerItem {
   insert : ExprString?
   modify : ExprString?
@@ -76510,7 +77658,7 @@ pub(all) struct OnTriggerItem {
   toggle : ExprString?
   trigger : ExprString
   values : ExprString?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `OnTriggerItem` (fields with defaults are optional).
@@ -76588,12 +77736,13 @@ pub impl ToJson for OnTriggerItem with fn to_json(self) {
 
 ///|
 /// `OrientValueVariant0ItemVariant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum OrientValueVariant0ItemVariant0Variant1Value {
   Left
   Right
   Top
   Bottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrientValueVariant0ItemVariant0Variant1Value with fn deserialize(d) {
@@ -76665,10 +77814,11 @@ pub impl ToJson for OrientValueVariant0ItemVariant0Variant1Value with fn to_json
 
 ///|
 /// `OrientValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum OrientValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrientValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -76712,12 +77862,13 @@ pub impl ToJson for OrientValueVariant0ItemVariant0Variant3Range with fn to_json
 
 ///|
 /// `OrientValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum OrientValueVariant0ItemVariant0 {
   Variant0(scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(scale~ : Field?, test_~ : String?, value~ : OrientValueVariant0ItemVariant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?, test_~ : String?)
   Variant3(range~ : OrientValueVariant0ItemVariant0Variant3Range, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let orient_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal", "test"])
@@ -76887,8 +78038,9 @@ pub impl ToJson for OrientValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `OrientValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum OrientValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrientValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -76920,8 +78072,9 @@ pub impl ToJson for OrientValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `OrientValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum OrientValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrientValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -76953,12 +78106,13 @@ pub impl ToJson for OrientValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `OrientValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum OrientValueVariant0Item {
   Variant0(OrientValueVariant0ItemVariant0)
   Variant1(OrientValueVariant0ItemVariant1)
   Variant2(OrientValueVariant0ItemVariant2)
   Variant3(offset~ : Json, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let orient_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset", "test"])
@@ -77041,12 +78195,13 @@ pub impl ToJson for OrientValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `OrientValueVariant1Variant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum OrientValueVariant1Variant0Variant1Value {
   Left
   Right
   Top
   Bottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrientValueVariant1Variant0Variant1Value with fn deserialize(d) {
@@ -77118,10 +78273,11 @@ pub impl ToJson for OrientValueVariant1Variant0Variant1Value with fn to_json(sel
 
 ///|
 /// `OrientValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum OrientValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrientValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -77165,12 +78321,13 @@ pub impl ToJson for OrientValueVariant1Variant0Variant3Range with fn to_json(sel
 
 ///|
 /// `OrientValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum OrientValueVariant1Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : OrientValueVariant1Variant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : OrientValueVariant1Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let orient_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -77316,8 +78473,9 @@ pub impl ToJson for OrientValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `OrientValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum OrientValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrientValueVariant1Variant1 with fn deserialize(d) {
@@ -77349,8 +78507,9 @@ pub impl ToJson for OrientValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `OrientValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum OrientValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrientValueVariant1Variant2 with fn deserialize(d) {
@@ -77382,12 +78541,13 @@ pub impl ToJson for OrientValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `OrientValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum OrientValueVariant1 {
   Variant0(OrientValueVariant1Variant0)
   Variant1(OrientValueVariant1Variant1)
   Variant2(OrientValueVariant1Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let orient_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -77464,10 +78624,11 @@ pub impl ToJson for OrientValueVariant1 with fn to_json(self) {
 
 ///|
 /// `PackTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum PackTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PackTransformAsArrayItem with fn deserialize(d) {
@@ -77511,10 +78672,11 @@ pub impl ToJson for PackTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `PackTransformAs`
+#derive(Debug, Eq)
 pub(all) enum PackTransformAs {
   Array(FixedArray[PackTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PackTransformAs with fn deserialize(d) {
@@ -77566,11 +78728,12 @@ pub impl ToJson for PackTransformAs with fn to_json(self) {
 
 ///|
 /// `PackTransformField`
+#derive(Debug, Eq)
 pub(all) enum PackTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PackTransformField with fn deserialize(d) {
@@ -77623,10 +78786,11 @@ pub impl ToJson for PackTransformField with fn to_json(self) {
 
 ///|
 /// `PackTransformPadding`
+#derive(Debug, Eq)
 pub(all) enum PackTransformPadding {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PackTransformPadding with fn deserialize(d) {
@@ -77670,11 +78834,12 @@ pub impl ToJson for PackTransformPadding with fn to_json(self) {
 
 ///|
 /// `PackTransformRadius`
+#derive(Debug, Eq)
 pub(all) enum PackTransformRadius {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PackTransformRadius with fn deserialize(d) {
@@ -77727,10 +78892,11 @@ pub impl ToJson for PackTransformRadius with fn to_json(self) {
 
 ///|
 /// `PackTransformSizeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum PackTransformSizeArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PackTransformSizeArrayItem with fn deserialize(d) {
@@ -77774,10 +78940,11 @@ pub impl ToJson for PackTransformSizeArrayItem with fn to_json(self) {
 
 ///|
 /// `PackTransformSize`
+#derive(Debug, Eq)
 pub(all) enum PackTransformSize {
   Array(FixedArray[PackTransformSizeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PackTransformSize with fn deserialize(d) {
@@ -77821,9 +78988,10 @@ pub impl ToJson for PackTransformSize with fn to_json(self) {
 
 ///|
 /// `PackTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum PackTransformType {
   Pack
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PackTransformType with fn deserialize(d) {
@@ -77880,10 +79048,11 @@ pub impl ToJson for PackTransformType with fn to_json(self) {
 
 ///|
 /// `PartitionTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum PartitionTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PartitionTransformAsArrayItem with fn deserialize(d) {
@@ -77927,10 +79096,11 @@ pub impl ToJson for PartitionTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `PartitionTransformAs`
+#derive(Debug, Eq)
 pub(all) enum PartitionTransformAs {
   Array(FixedArray[PartitionTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PartitionTransformAs with fn deserialize(d) {
@@ -77982,11 +79152,12 @@ pub impl ToJson for PartitionTransformAs with fn to_json(self) {
 
 ///|
 /// `PartitionTransformField`
+#derive(Debug, Eq)
 pub(all) enum PartitionTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PartitionTransformField with fn deserialize(d) {
@@ -78039,10 +79210,11 @@ pub impl ToJson for PartitionTransformField with fn to_json(self) {
 
 ///|
 /// `PartitionTransformPadding`
+#derive(Debug, Eq)
 pub(all) enum PartitionTransformPadding {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PartitionTransformPadding with fn deserialize(d) {
@@ -78086,10 +79258,11 @@ pub impl ToJson for PartitionTransformPadding with fn to_json(self) {
 
 ///|
 /// `PartitionTransformRound`
+#derive(Debug, Eq)
 pub(all) enum PartitionTransformRound {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PartitionTransformRound with fn deserialize(d) {
@@ -78133,10 +79306,11 @@ pub impl ToJson for PartitionTransformRound with fn to_json(self) {
 
 ///|
 /// `PartitionTransformSizeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum PartitionTransformSizeArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PartitionTransformSizeArrayItem with fn deserialize(d) {
@@ -78180,10 +79354,11 @@ pub impl ToJson for PartitionTransformSizeArrayItem with fn to_json(self) {
 
 ///|
 /// `PartitionTransformSize`
+#derive(Debug, Eq)
 pub(all) enum PartitionTransformSize {
   Array(FixedArray[PartitionTransformSizeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PartitionTransformSize with fn deserialize(d) {
@@ -78227,9 +79402,10 @@ pub impl ToJson for PartitionTransformSize with fn to_json(self) {
 
 ///|
 /// `PartitionTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum PartitionTransformType {
   Partition
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PartitionTransformType with fn deserialize(d) {
@@ -78286,10 +79462,11 @@ pub impl ToJson for PartitionTransformType with fn to_json(self) {
 
 ///|
 /// `PieTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum PieTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PieTransformAsArrayItem with fn deserialize(d) {
@@ -78333,10 +79510,11 @@ pub impl ToJson for PieTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `PieTransformAs`
+#derive(Debug, Eq)
 pub(all) enum PieTransformAs {
   Array(FixedArray[PieTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PieTransformAs with fn deserialize(d) {
@@ -78388,10 +79566,11 @@ pub impl ToJson for PieTransformAs with fn to_json(self) {
 
 ///|
 /// `PieTransformEndAngle`
+#derive(Debug, Eq)
 pub(all) enum PieTransformEndAngle {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PieTransformEndAngle with fn deserialize(d) {
@@ -78443,11 +79622,12 @@ pub impl ToJson for PieTransformEndAngle with fn to_json(self) {
 
 ///|
 /// `PieTransformField`
+#derive(Debug, Eq)
 pub(all) enum PieTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PieTransformField with fn deserialize(d) {
@@ -78500,10 +79680,11 @@ pub impl ToJson for PieTransformField with fn to_json(self) {
 
 ///|
 /// `PieTransformSort`
+#derive(Debug, Eq)
 pub(all) enum PieTransformSort {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PieTransformSort with fn deserialize(d) {
@@ -78547,10 +79728,11 @@ pub impl ToJson for PieTransformSort with fn to_json(self) {
 
 ///|
 /// `PieTransformStartAngle`
+#derive(Debug, Eq)
 pub(all) enum PieTransformStartAngle {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PieTransformStartAngle with fn deserialize(d) {
@@ -78594,9 +79776,10 @@ pub impl ToJson for PieTransformStartAngle with fn to_json(self) {
 
 ///|
 /// `PieTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum PieTransformType {
   Pie
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PieTransformType with fn deserialize(d) {
@@ -78653,11 +79836,12 @@ pub impl ToJson for PieTransformType with fn to_json(self) {
 
 ///|
 /// `PivotTransformField`
+#derive(Debug, Eq)
 pub(all) enum PivotTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PivotTransformField with fn deserialize(d) {
@@ -78710,11 +79894,12 @@ pub impl ToJson for PivotTransformField with fn to_json(self) {
 
 ///|
 /// `PivotTransformGroupbyArrayItem`
+#derive(Debug, Eq)
 pub(all) enum PivotTransformGroupbyArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PivotTransformGroupbyArrayItem with fn deserialize(d) {
@@ -78767,10 +79952,11 @@ pub impl ToJson for PivotTransformGroupbyArrayItem with fn to_json(self) {
 
 ///|
 /// `PivotTransformGroupby`
+#derive(Debug, Eq)
 pub(all) enum PivotTransformGroupby {
   Array(Array[PivotTransformGroupbyArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PivotTransformGroupby with fn deserialize(d) {
@@ -78814,11 +80000,12 @@ pub impl ToJson for PivotTransformGroupby with fn to_json(self) {
 
 ///|
 /// `PivotTransformKey`
+#derive(Debug, Eq)
 pub(all) enum PivotTransformKey {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PivotTransformKey with fn deserialize(d) {
@@ -78871,10 +80058,11 @@ pub impl ToJson for PivotTransformKey with fn to_json(self) {
 
 ///|
 /// `PivotTransformLimit`
+#derive(Debug, Eq)
 pub(all) enum PivotTransformLimit {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PivotTransformLimit with fn deserialize(d) {
@@ -78918,6 +80106,7 @@ pub impl ToJson for PivotTransformLimit with fn to_json(self) {
 
 ///|
 /// `PivotTransformOpVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum PivotTransformOpVariant0 {
   Values
   Count
@@ -78943,7 +80132,7 @@ pub(all) enum PivotTransformOpVariant0 {
   Max
   Argmin
   Argmax
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PivotTransformOpVariant0 with fn deserialize(d) {
@@ -79115,10 +80304,11 @@ pub impl ToJson for PivotTransformOpVariant0 with fn to_json(self) {
 
 ///|
 /// `PivotTransformOp`
+#derive(Debug, Eq)
 pub(all) enum PivotTransformOp {
   Variant0(PivotTransformOpVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PivotTransformOp with fn deserialize(d) {
@@ -79170,9 +80360,10 @@ pub impl ToJson for PivotTransformOp with fn to_json(self) {
 
 ///|
 /// `PivotTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum PivotTransformType {
   Pivot
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PivotTransformType with fn deserialize(d) {
@@ -79229,11 +80420,12 @@ pub impl ToJson for PivotTransformType with fn to_json(self) {
 
 ///|
 /// `PivotTransformValue`
+#derive(Debug, Eq)
 pub(all) enum PivotTransformValue {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PivotTransformValue with fn deserialize(d) {
@@ -79286,11 +80478,12 @@ pub impl ToJson for PivotTransformValue with fn to_json(self) {
 
 ///|
 /// `ProjectTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ProjectTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectTransformAsArrayItem with fn deserialize(d) {
@@ -79343,10 +80536,11 @@ pub impl ToJson for ProjectTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `ProjectTransformAs`
+#derive(Debug, Eq)
 pub(all) enum ProjectTransformAs {
   Array(Array[ProjectTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectTransformAs with fn deserialize(d) {
@@ -79390,11 +80584,12 @@ pub impl ToJson for ProjectTransformAs with fn to_json(self) {
 
 ///|
 /// `ProjectTransformFieldsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ProjectTransformFieldsArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectTransformFieldsArrayItem with fn deserialize(d) {
@@ -79447,10 +80642,11 @@ pub impl ToJson for ProjectTransformFieldsArrayItem with fn to_json(self) {
 
 ///|
 /// `ProjectTransformFields`
+#derive(Debug, Eq)
 pub(all) enum ProjectTransformFields {
   Array(Array[ProjectTransformFieldsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectTransformFields with fn deserialize(d) {
@@ -79494,9 +80690,10 @@ pub impl ToJson for ProjectTransformFields with fn to_json(self) {
 
 ///|
 /// `ProjectTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectTransformType {
   Project
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectTransformType with fn deserialize(d) {
@@ -79553,10 +80750,11 @@ pub impl ToJson for ProjectTransformType with fn to_json(self) {
 
 ///|
 /// `ProjectionCenter`
+#derive(Debug, Eq)
 pub(all) enum ProjectionCenter {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectionCenter with fn deserialize(d) {
@@ -79600,10 +80798,11 @@ pub impl ToJson for ProjectionCenter with fn to_json(self) {
 
 ///|
 /// `ProjectionClipExtentArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ProjectionClipExtentArrayItem {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectionClipExtentArrayItem with fn deserialize(d) {
@@ -79647,10 +80846,11 @@ pub impl ToJson for ProjectionClipExtentArrayItem with fn to_json(self) {
 
 ///|
 /// `ProjectionClipExtent`
+#derive(Debug, Eq)
 pub(all) enum ProjectionClipExtent {
   Array(FixedArray[ProjectionClipExtentArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectionClipExtent with fn deserialize(d) {
@@ -79694,10 +80894,11 @@ pub impl ToJson for ProjectionClipExtent with fn to_json(self) {
 
 ///|
 /// `ProjectionExtentArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ProjectionExtentArrayItem {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectionExtentArrayItem with fn deserialize(d) {
@@ -79741,10 +80942,11 @@ pub impl ToJson for ProjectionExtentArrayItem with fn to_json(self) {
 
 ///|
 /// `ProjectionExtent`
+#derive(Debug, Eq)
 pub(all) enum ProjectionExtent {
   Array(FixedArray[ProjectionExtentArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectionExtent with fn deserialize(d) {
@@ -79788,10 +80990,11 @@ pub impl ToJson for ProjectionExtent with fn to_json(self) {
 
 ///|
 /// `ProjectionFit`
+#derive(Debug, Eq)
 pub(all) enum ProjectionFit {
   Object(Map[String, Json])
   Array(Array[Json])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectionFit with fn deserialize(d) {
@@ -79835,10 +81038,11 @@ pub impl ToJson for ProjectionFit with fn to_json(self) {
 
 ///|
 /// `ProjectionParallels`
+#derive(Debug, Eq)
 pub(all) enum ProjectionParallels {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectionParallels with fn deserialize(d) {
@@ -79882,10 +81086,11 @@ pub impl ToJson for ProjectionParallels with fn to_json(self) {
 
 ///|
 /// `ProjectionRotate`
+#derive(Debug, Eq)
 pub(all) enum ProjectionRotate {
   Array(Array[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectionRotate with fn deserialize(d) {
@@ -79929,10 +81134,11 @@ pub impl ToJson for ProjectionRotate with fn to_json(self) {
 
 ///|
 /// `ProjectionSize`
+#derive(Debug, Eq)
 pub(all) enum ProjectionSize {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectionSize with fn deserialize(d) {
@@ -79976,10 +81182,11 @@ pub impl ToJson for ProjectionSize with fn to_json(self) {
 
 ///|
 /// `ProjectionTranslate`
+#derive(Debug, Eq)
 pub(all) enum ProjectionTranslate {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectionTranslate with fn deserialize(d) {
@@ -80023,10 +81230,11 @@ pub impl ToJson for ProjectionTranslate with fn to_json(self) {
 
 ///|
 /// `QuantileTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum QuantileTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for QuantileTransformAsArrayItem with fn deserialize(d) {
@@ -80070,10 +81278,11 @@ pub impl ToJson for QuantileTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `QuantileTransformAs`
+#derive(Debug, Eq)
 pub(all) enum QuantileTransformAs {
   Array(Array[QuantileTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for QuantileTransformAs with fn deserialize(d) {
@@ -80125,11 +81334,12 @@ pub impl ToJson for QuantileTransformAs with fn to_json(self) {
 
 ///|
 /// `QuantileTransformField`
+#derive(Debug, Eq)
 pub(all) enum QuantileTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for QuantileTransformField with fn deserialize(d) {
@@ -80182,11 +81392,12 @@ pub impl ToJson for QuantileTransformField with fn to_json(self) {
 
 ///|
 /// `QuantileTransformGroupbyArrayItem`
+#derive(Debug, Eq)
 pub(all) enum QuantileTransformGroupbyArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for QuantileTransformGroupbyArrayItem with fn deserialize(d) {
@@ -80239,10 +81450,11 @@ pub impl ToJson for QuantileTransformGroupbyArrayItem with fn to_json(self) {
 
 ///|
 /// `QuantileTransformGroupby`
+#derive(Debug, Eq)
 pub(all) enum QuantileTransformGroupby {
   Array(Array[QuantileTransformGroupbyArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for QuantileTransformGroupby with fn deserialize(d) {
@@ -80286,10 +81498,11 @@ pub impl ToJson for QuantileTransformGroupby with fn to_json(self) {
 
 ///|
 /// `QuantileTransformProbsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum QuantileTransformProbsArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for QuantileTransformProbsArrayItem with fn deserialize(d) {
@@ -80333,10 +81546,11 @@ pub impl ToJson for QuantileTransformProbsArrayItem with fn to_json(self) {
 
 ///|
 /// `QuantileTransformProbs`
+#derive(Debug, Eq)
 pub(all) enum QuantileTransformProbs {
   Array(Array[QuantileTransformProbsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for QuantileTransformProbs with fn deserialize(d) {
@@ -80380,10 +81594,11 @@ pub impl ToJson for QuantileTransformProbs with fn to_json(self) {
 
 ///|
 /// `QuantileTransformStep`
+#derive(Debug, Eq)
 pub(all) enum QuantileTransformStep {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for QuantileTransformStep with fn deserialize(d) {
@@ -80435,9 +81650,10 @@ pub impl ToJson for QuantileTransformStep with fn to_json(self) {
 
 ///|
 /// `QuantileTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum QuantileTransformType {
   Quantile
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for QuantileTransformType with fn deserialize(d) {
@@ -80494,9 +81710,10 @@ pub impl ToJson for QuantileTransformType with fn to_json(self) {
 
 ///|
 /// `RadialGradientGradient`
+#derive(Debug, Eq, Hash)
 pub(all) enum RadialGradientGradient {
   Radial
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RadialGradientGradient with fn deserialize(d) {
@@ -80553,10 +81770,11 @@ pub impl ToJson for RadialGradientGradient with fn to_json(self) {
 
 ///|
 /// `RegressionTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum RegressionTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RegressionTransformAsArrayItem with fn deserialize(d) {
@@ -80600,10 +81818,11 @@ pub impl ToJson for RegressionTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `RegressionTransformAs`
+#derive(Debug, Eq)
 pub(all) enum RegressionTransformAs {
   Array(Array[RegressionTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RegressionTransformAs with fn deserialize(d) {
@@ -80647,10 +81866,11 @@ pub impl ToJson for RegressionTransformAs with fn to_json(self) {
 
 ///|
 /// `RegressionTransformExtentArrayItem`
+#derive(Debug, Eq)
 pub(all) enum RegressionTransformExtentArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RegressionTransformExtentArrayItem with fn deserialize(d) {
@@ -80694,10 +81914,11 @@ pub impl ToJson for RegressionTransformExtentArrayItem with fn to_json(self) {
 
 ///|
 /// `RegressionTransformExtent`
+#derive(Debug, Eq)
 pub(all) enum RegressionTransformExtent {
   Array(FixedArray[RegressionTransformExtentArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RegressionTransformExtent with fn deserialize(d) {
@@ -80741,11 +81962,12 @@ pub impl ToJson for RegressionTransformExtent with fn to_json(self) {
 
 ///|
 /// `RegressionTransformGroupbyArrayItem`
+#derive(Debug, Eq)
 pub(all) enum RegressionTransformGroupbyArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RegressionTransformGroupbyArrayItem with fn deserialize(d) {
@@ -80798,10 +82020,11 @@ pub impl ToJson for RegressionTransformGroupbyArrayItem with fn to_json(self) {
 
 ///|
 /// `RegressionTransformGroupby`
+#derive(Debug, Eq)
 pub(all) enum RegressionTransformGroupby {
   Array(Array[RegressionTransformGroupbyArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RegressionTransformGroupby with fn deserialize(d) {
@@ -80845,10 +82068,11 @@ pub impl ToJson for RegressionTransformGroupby with fn to_json(self) {
 
 ///|
 /// `RegressionTransformMethod`
+#derive(Debug, Eq)
 pub(all) enum RegressionTransformMethod {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RegressionTransformMethod with fn deserialize(d) {
@@ -80900,10 +82124,11 @@ pub impl ToJson for RegressionTransformMethod with fn to_json(self) {
 
 ///|
 /// `RegressionTransformOrder`
+#derive(Debug, Eq)
 pub(all) enum RegressionTransformOrder {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RegressionTransformOrder with fn deserialize(d) {
@@ -80955,10 +82180,11 @@ pub impl ToJson for RegressionTransformOrder with fn to_json(self) {
 
 ///|
 /// `RegressionTransformParams`
+#derive(Debug, Eq)
 pub(all) enum RegressionTransformParams {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RegressionTransformParams with fn deserialize(d) {
@@ -81002,9 +82228,10 @@ pub impl ToJson for RegressionTransformParams with fn to_json(self) {
 
 ///|
 /// `RegressionTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum RegressionTransformType {
   Regression
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RegressionTransformType with fn deserialize(d) {
@@ -81061,11 +82288,12 @@ pub impl ToJson for RegressionTransformType with fn to_json(self) {
 
 ///|
 /// `RegressionTransformX`
+#derive(Debug, Eq)
 pub(all) enum RegressionTransformX {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RegressionTransformX with fn deserialize(d) {
@@ -81118,11 +82346,12 @@ pub impl ToJson for RegressionTransformX with fn to_json(self) {
 
 ///|
 /// `RegressionTransformY`
+#derive(Debug, Eq)
 pub(all) enum RegressionTransformY {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RegressionTransformY with fn deserialize(d) {
@@ -81175,10 +82404,11 @@ pub impl ToJson for RegressionTransformY with fn to_json(self) {
 
 ///|
 /// `ResolvefilterTransformIgnore`
+#derive(Debug, Eq)
 pub(all) enum ResolvefilterTransformIgnore {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ResolvefilterTransformIgnore with fn deserialize(d) {
@@ -81222,9 +82452,10 @@ pub impl ToJson for ResolvefilterTransformIgnore with fn to_json(self) {
 
 ///|
 /// `ResolvefilterTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum ResolvefilterTransformType {
   Resolvefilter
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ResolvefilterTransformType with fn deserialize(d) {
@@ -81281,10 +82512,11 @@ pub impl ToJson for ResolvefilterTransformType with fn to_json(self) {
 
 ///|
 /// `SampleTransformSize`
+#derive(Debug, Eq)
 pub(all) enum SampleTransformSize {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for SampleTransformSize with fn deserialize(d) {
@@ -81336,9 +82568,10 @@ pub impl ToJson for SampleTransformSize with fn to_json(self) {
 
 ///|
 /// `SampleTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum SampleTransformType {
   Sample
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SampleTransformType with fn deserialize(d) {
@@ -81395,6 +82628,7 @@ pub impl ToJson for SampleTransformType with fn to_json(self) {
 
 ///|
 /// `ScaleVariant0DomainArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant0DomainArrayItem {
   Null
   Boolean(Bool)
@@ -81402,7 +82636,7 @@ pub(all) enum ScaleVariant0DomainArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant0DomainArrayItem with fn deserialize(d) {
@@ -81482,11 +82716,12 @@ pub impl ToJson for ScaleVariant0DomainArrayItem with fn to_json(self) {
 
 ///|
 /// `ScaleVariant0Domain`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant0Domain {
   Array(Array[ScaleVariant0DomainArrayItem])
   ScaleData(ScaleData)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant0Domain with fn deserialize(d) {
@@ -81539,11 +82774,12 @@ pub impl ToJson for ScaleVariant0Domain with fn to_json(self) {
 
 ///|
 /// `ScaleVariant0DomainRaw`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant0DomainRaw {
   Null
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant0DomainRaw with fn deserialize(d) {
@@ -81596,9 +82832,10 @@ pub impl ToJson for ScaleVariant0DomainRaw with fn to_json(self) {
 
 ///|
 /// `ScaleVariant0Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant0Type {
   Identity
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant0Type with fn deserialize(d) {
@@ -81655,6 +82892,7 @@ pub impl ToJson for ScaleVariant0Type with fn to_json(self) {
 
 ///|
 /// `ScaleVariant1DomainArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant1DomainArrayItem {
   Null
   Boolean(Bool)
@@ -81662,7 +82900,7 @@ pub(all) enum ScaleVariant1DomainArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant1DomainArrayItem with fn deserialize(d) {
@@ -81742,11 +82980,12 @@ pub impl ToJson for ScaleVariant1DomainArrayItem with fn to_json(self) {
 
 ///|
 /// `ScaleVariant1Domain`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant1Domain {
   Array(Array[ScaleVariant1DomainArrayItem])
   ScaleData(ScaleData)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant1Domain with fn deserialize(d) {
@@ -81799,11 +83038,12 @@ pub impl ToJson for ScaleVariant1Domain with fn to_json(self) {
 
 ///|
 /// `ScaleVariant1DomainRaw`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant1DomainRaw {
   Null
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant1DomainRaw with fn deserialize(d) {
@@ -81856,6 +83096,7 @@ pub impl ToJson for ScaleVariant1DomainRaw with fn to_json(self) {
 
 ///|
 /// `ScaleVariant1RangeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant1RangeVariant0 {
   Width
   Height
@@ -81865,7 +83106,7 @@ pub(all) enum ScaleVariant1RangeVariant0 {
   Ramp
   Diverging
   Heatmap
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant1RangeVariant0 with fn deserialize(d) {
@@ -81957,6 +83198,7 @@ pub impl ToJson for ScaleVariant1RangeVariant0 with fn to_json(self) {
 
 ///|
 /// `ScaleVariant1RangeVariant1Item`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant1RangeVariant1Item {
   Null
   Boolean(Bool)
@@ -81964,7 +83206,7 @@ pub(all) enum ScaleVariant1RangeVariant1Item {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant1RangeVariant1Item with fn deserialize(d) {
@@ -82044,10 +83286,11 @@ pub impl ToJson for ScaleVariant1RangeVariant1Item with fn to_json(self) {
 
 ///|
 /// `ScaleVariant1RangeVariant2Extent`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant1RangeVariant2Extent {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant1RangeVariant2Extent with fn deserialize(d) {
@@ -82091,10 +83334,11 @@ pub impl ToJson for ScaleVariant1RangeVariant2Extent with fn to_json(self) {
 
 ///|
 /// `ScaleVariant1RangeVariant2SchemeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant1RangeVariant2SchemeArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant1RangeVariant2SchemeArrayItem with fn deserialize(d) {
@@ -82138,11 +83382,12 @@ pub impl ToJson for ScaleVariant1RangeVariant2SchemeArrayItem with fn to_json(se
 
 ///|
 /// `ScaleVariant1RangeVariant2Scheme`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant1RangeVariant2Scheme {
   String(String)
   Array(Array[ScaleVariant1RangeVariant2SchemeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant1RangeVariant2Scheme with fn deserialize(d) {
@@ -82195,10 +83440,11 @@ pub impl ToJson for ScaleVariant1RangeVariant2Scheme with fn to_json(self) {
 
 ///|
 /// `ScaleVariant1RangeVariant3Variant0Sort`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant1RangeVariant3Variant0Sort {
   Boolean(Bool)
   Object(field~ : StringOrSignal?, op~ : StringOrSignal?, order~ : SortOrder?)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant1_range_variant3_variant0_sort_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["field", "op", "order"])
@@ -82271,9 +83517,10 @@ pub impl ToJson for ScaleVariant1RangeVariant3Variant0Sort with fn to_json(self)
 
 ///|
 /// `ScaleVariant1RangeVariant3Variant1SortVariant1Op`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant1RangeVariant3Variant1SortVariant1Op {
   Count
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant1RangeVariant3Variant1SortVariant1Op with fn deserialize(d) {
@@ -82330,11 +83577,12 @@ pub impl ToJson for ScaleVariant1RangeVariant3Variant1SortVariant1Op with fn to_
 
 ///|
 /// `ScaleVariant1RangeVariant3Variant1SortVariant2Op`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant1RangeVariant3Variant1SortVariant2Op {
   Count
   Min
   Max
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant1RangeVariant3Variant1SortVariant2Op with fn deserialize(d) {
@@ -82401,11 +83649,12 @@ pub impl ToJson for ScaleVariant1RangeVariant3Variant1SortVariant2Op with fn to_
 
 ///|
 /// `ScaleVariant1RangeVariant3Variant1Sort`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant1RangeVariant3Variant1Sort {
   Variant0(Bool)
   Variant1(op~ : ScaleVariant1RangeVariant3Variant1SortVariant1Op?, order~ : SortOrder?)
   Variant2(field~ : StringOrSignal, op~ : ScaleVariant1RangeVariant3Variant1SortVariant2Op, order~ : SortOrder?)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant1_range_variant3_variant1_sort_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["op", "order"])
@@ -82506,11 +83755,12 @@ pub impl ToJson for ScaleVariant1RangeVariant3Variant1Sort with fn to_json(self)
 
 ///|
 /// `ScaleVariant1RangeVariant3Variant2FieldsItemArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant1RangeVariant3Variant2FieldsItemArrayItem {
   String(String)
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant1RangeVariant3Variant2FieldsItemArrayItem with fn deserialize(d) {
@@ -82563,11 +83813,12 @@ pub impl ToJson for ScaleVariant1RangeVariant3Variant2FieldsItemArrayItem with f
 
 ///|
 /// `ScaleVariant1RangeVariant3Variant2FieldsItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant1RangeVariant3Variant2FieldsItem {
   Object(data~ : String, field~ : StringOrSignal)
   Array(Array[ScaleVariant1RangeVariant3Variant2FieldsItemArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant1_range_variant3_variant2_fields_item_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["data", "field"])
@@ -82639,9 +83890,10 @@ pub impl ToJson for ScaleVariant1RangeVariant3Variant2FieldsItem with fn to_json
 
 ///|
 /// `ScaleVariant1RangeVariant3Variant2SortVariant1Op`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant1RangeVariant3Variant2SortVariant1Op {
   Count
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant1RangeVariant3Variant2SortVariant1Op with fn deserialize(d) {
@@ -82698,11 +83950,12 @@ pub impl ToJson for ScaleVariant1RangeVariant3Variant2SortVariant1Op with fn to_
 
 ///|
 /// `ScaleVariant1RangeVariant3Variant2SortVariant2Op`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant1RangeVariant3Variant2SortVariant2Op {
   Count
   Min
   Max
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant1RangeVariant3Variant2SortVariant2Op with fn deserialize(d) {
@@ -82769,11 +84022,12 @@ pub impl ToJson for ScaleVariant1RangeVariant3Variant2SortVariant2Op with fn to_
 
 ///|
 /// `ScaleVariant1RangeVariant3Variant2Sort`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant1RangeVariant3Variant2Sort {
   Variant0(Bool)
   Variant1(op~ : ScaleVariant1RangeVariant3Variant2SortVariant1Op?, order~ : SortOrder?)
   Variant2(field~ : StringOrSignal, op~ : ScaleVariant1RangeVariant3Variant2SortVariant2Op, order~ : SortOrder?)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant1_range_variant3_variant2_sort_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["op", "order"])
@@ -82874,11 +84128,12 @@ pub impl ToJson for ScaleVariant1RangeVariant3Variant2Sort with fn to_json(self)
 
 ///|
 /// `ScaleVariant1RangeVariant3`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant1RangeVariant3 {
   Variant0(data~ : String, field~ : StringOrSignal, sort~ : ScaleVariant1RangeVariant3Variant0Sort?)
   Variant1(data~ : String, fields~ : Array[StringOrSignal], sort~ : ScaleVariant1RangeVariant3Variant1Sort?)
   Variant2(fields~ : Array[ScaleVariant1RangeVariant3Variant2FieldsItem], sort~ : ScaleVariant1RangeVariant3Variant2Sort?)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant1_range_variant3_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["data", "field", "sort"])
@@ -83002,13 +84257,14 @@ pub impl ToJson for ScaleVariant1RangeVariant3 with fn to_json(self) {
 
 ///|
 /// `ScaleVariant1Range`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant1Range {
   Variant0(ScaleVariant1RangeVariant0)
   Variant1(Array[ScaleVariant1RangeVariant1Item])
   Variant2(count~ : NumberOrSignal?, extent~ : ScaleVariant1RangeVariant2Extent?, scheme~ : ScaleVariant1RangeVariant2Scheme)
   Variant3(ScaleVariant1RangeVariant3)
   Variant4(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant1_range_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["count", "extent", "scheme"])
@@ -83106,9 +84362,10 @@ pub impl ToJson for ScaleVariant1Range with fn to_json(self) {
 
 ///|
 /// `ScaleVariant1Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant1Type {
   Ordinal
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant1Type with fn deserialize(d) {
@@ -83165,6 +84422,7 @@ pub impl ToJson for ScaleVariant1Type with fn to_json(self) {
 
 ///|
 /// `ScaleVariant2DomainArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant2DomainArrayItem {
   Null
   Boolean(Bool)
@@ -83172,7 +84430,7 @@ pub(all) enum ScaleVariant2DomainArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant2DomainArrayItem with fn deserialize(d) {
@@ -83252,11 +84510,12 @@ pub impl ToJson for ScaleVariant2DomainArrayItem with fn to_json(self) {
 
 ///|
 /// `ScaleVariant2Domain`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant2Domain {
   Array(Array[ScaleVariant2DomainArrayItem])
   ScaleData(ScaleData)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant2Domain with fn deserialize(d) {
@@ -83309,11 +84568,12 @@ pub impl ToJson for ScaleVariant2Domain with fn to_json(self) {
 
 ///|
 /// `ScaleVariant2DomainRaw`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant2DomainRaw {
   Null
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant2DomainRaw with fn deserialize(d) {
@@ -83366,6 +84626,7 @@ pub impl ToJson for ScaleVariant2DomainRaw with fn to_json(self) {
 
 ///|
 /// `ScaleVariant2RangeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant2RangeVariant0 {
   Width
   Height
@@ -83375,7 +84636,7 @@ pub(all) enum ScaleVariant2RangeVariant0 {
   Ramp
   Diverging
   Heatmap
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant2RangeVariant0 with fn deserialize(d) {
@@ -83467,6 +84728,7 @@ pub impl ToJson for ScaleVariant2RangeVariant0 with fn to_json(self) {
 
 ///|
 /// `ScaleVariant2RangeVariant1Item`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant2RangeVariant1Item {
   Null
   Boolean(Bool)
@@ -83474,7 +84736,7 @@ pub(all) enum ScaleVariant2RangeVariant1Item {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant2RangeVariant1Item with fn deserialize(d) {
@@ -83554,12 +84816,13 @@ pub impl ToJson for ScaleVariant2RangeVariant1Item with fn to_json(self) {
 
 ///|
 /// `ScaleVariant2Range`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant2Range {
   Variant0(ScaleVariant2RangeVariant0)
   Variant1(Array[ScaleVariant2RangeVariant1Item])
   Variant2(step~ : NumberOrSignal)
   Variant3(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant2_range_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["step"])
@@ -83636,9 +84899,10 @@ pub impl ToJson for ScaleVariant2Range with fn to_json(self) {
 
 ///|
 /// `ScaleVariant2Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant2Type {
   Band
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant2Type with fn deserialize(d) {
@@ -83695,6 +84959,7 @@ pub impl ToJson for ScaleVariant2Type with fn to_json(self) {
 
 ///|
 /// `ScaleVariant3DomainArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant3DomainArrayItem {
   Null
   Boolean(Bool)
@@ -83702,7 +84967,7 @@ pub(all) enum ScaleVariant3DomainArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant3DomainArrayItem with fn deserialize(d) {
@@ -83782,11 +85047,12 @@ pub impl ToJson for ScaleVariant3DomainArrayItem with fn to_json(self) {
 
 ///|
 /// `ScaleVariant3Domain`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant3Domain {
   Array(Array[ScaleVariant3DomainArrayItem])
   ScaleData(ScaleData)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant3Domain with fn deserialize(d) {
@@ -83839,11 +85105,12 @@ pub impl ToJson for ScaleVariant3Domain with fn to_json(self) {
 
 ///|
 /// `ScaleVariant3DomainRaw`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant3DomainRaw {
   Null
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant3DomainRaw with fn deserialize(d) {
@@ -83896,6 +85163,7 @@ pub impl ToJson for ScaleVariant3DomainRaw with fn to_json(self) {
 
 ///|
 /// `ScaleVariant3RangeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant3RangeVariant0 {
   Width
   Height
@@ -83905,7 +85173,7 @@ pub(all) enum ScaleVariant3RangeVariant0 {
   Ramp
   Diverging
   Heatmap
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant3RangeVariant0 with fn deserialize(d) {
@@ -83997,6 +85265,7 @@ pub impl ToJson for ScaleVariant3RangeVariant0 with fn to_json(self) {
 
 ///|
 /// `ScaleVariant3RangeVariant1Item`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant3RangeVariant1Item {
   Null
   Boolean(Bool)
@@ -84004,7 +85273,7 @@ pub(all) enum ScaleVariant3RangeVariant1Item {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant3RangeVariant1Item with fn deserialize(d) {
@@ -84084,12 +85353,13 @@ pub impl ToJson for ScaleVariant3RangeVariant1Item with fn to_json(self) {
 
 ///|
 /// `ScaleVariant3Range`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant3Range {
   Variant0(ScaleVariant3RangeVariant0)
   Variant1(Array[ScaleVariant3RangeVariant1Item])
   Variant2(step~ : NumberOrSignal)
   Variant3(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant3_range_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["step"])
@@ -84166,9 +85436,10 @@ pub impl ToJson for ScaleVariant3Range with fn to_json(self) {
 
 ///|
 /// `ScaleVariant3Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant3Type {
   Point
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant3Type with fn deserialize(d) {
@@ -84225,6 +85496,7 @@ pub impl ToJson for ScaleVariant3Type with fn to_json(self) {
 
 ///|
 /// `ScaleVariant4DomainArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant4DomainArrayItem {
   Null
   Boolean(Bool)
@@ -84232,7 +85504,7 @@ pub(all) enum ScaleVariant4DomainArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant4DomainArrayItem with fn deserialize(d) {
@@ -84312,11 +85584,12 @@ pub impl ToJson for ScaleVariant4DomainArrayItem with fn to_json(self) {
 
 ///|
 /// `ScaleVariant4Domain`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant4Domain {
   Array(Array[ScaleVariant4DomainArrayItem])
   ScaleData(ScaleData)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant4Domain with fn deserialize(d) {
@@ -84369,11 +85642,12 @@ pub impl ToJson for ScaleVariant4Domain with fn to_json(self) {
 
 ///|
 /// `ScaleVariant4DomainRaw`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant4DomainRaw {
   Null
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant4DomainRaw with fn deserialize(d) {
@@ -84426,11 +85700,12 @@ pub impl ToJson for ScaleVariant4DomainRaw with fn to_json(self) {
 
 ///|
 /// `ScaleVariant4Nice`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant4Nice {
   Boolean(Bool)
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant4Nice with fn deserialize(d) {
@@ -84483,6 +85758,7 @@ pub impl ToJson for ScaleVariant4Nice with fn to_json(self) {
 
 ///|
 /// `ScaleVariant4RangeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant4RangeVariant0 {
   Width
   Height
@@ -84492,7 +85768,7 @@ pub(all) enum ScaleVariant4RangeVariant0 {
   Ramp
   Diverging
   Heatmap
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant4RangeVariant0 with fn deserialize(d) {
@@ -84584,6 +85860,7 @@ pub impl ToJson for ScaleVariant4RangeVariant0 with fn to_json(self) {
 
 ///|
 /// `ScaleVariant4RangeVariant1Item`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant4RangeVariant1Item {
   Null
   Boolean(Bool)
@@ -84591,7 +85868,7 @@ pub(all) enum ScaleVariant4RangeVariant1Item {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant4RangeVariant1Item with fn deserialize(d) {
@@ -84671,10 +85948,11 @@ pub impl ToJson for ScaleVariant4RangeVariant1Item with fn to_json(self) {
 
 ///|
 /// `ScaleVariant4RangeVariant2Extent`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant4RangeVariant2Extent {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant4RangeVariant2Extent with fn deserialize(d) {
@@ -84718,10 +85996,11 @@ pub impl ToJson for ScaleVariant4RangeVariant2Extent with fn to_json(self) {
 
 ///|
 /// `ScaleVariant4RangeVariant2SchemeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant4RangeVariant2SchemeArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant4RangeVariant2SchemeArrayItem with fn deserialize(d) {
@@ -84765,11 +86044,12 @@ pub impl ToJson for ScaleVariant4RangeVariant2SchemeArrayItem with fn to_json(se
 
 ///|
 /// `ScaleVariant4RangeVariant2Scheme`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant4RangeVariant2Scheme {
   String(String)
   Array(Array[ScaleVariant4RangeVariant2SchemeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant4RangeVariant2Scheme with fn deserialize(d) {
@@ -84822,12 +86102,13 @@ pub impl ToJson for ScaleVariant4RangeVariant2Scheme with fn to_json(self) {
 
 ///|
 /// `ScaleVariant4Range`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant4Range {
   Variant0(ScaleVariant4RangeVariant0)
   Variant1(Array[ScaleVariant4RangeVariant1Item])
   Variant2(count~ : NumberOrSignal?, extent~ : ScaleVariant4RangeVariant2Extent?, scheme~ : ScaleVariant4RangeVariant2Scheme)
   Variant3(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant4_range_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["count", "extent", "scheme"])
@@ -84916,10 +86197,11 @@ pub impl ToJson for ScaleVariant4Range with fn to_json(self) {
 
 ///|
 /// `ScaleVariant4Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant4Type {
   Quantize
   Threshold
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant4Type with fn deserialize(d) {
@@ -84981,6 +86263,7 @@ pub impl ToJson for ScaleVariant4Type with fn to_json(self) {
 
 ///|
 /// `ScaleVariant5DomainArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant5DomainArrayItem {
   Null
   Boolean(Bool)
@@ -84988,7 +86271,7 @@ pub(all) enum ScaleVariant5DomainArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant5DomainArrayItem with fn deserialize(d) {
@@ -85068,11 +86351,12 @@ pub impl ToJson for ScaleVariant5DomainArrayItem with fn to_json(self) {
 
 ///|
 /// `ScaleVariant5Domain`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant5Domain {
   Array(Array[ScaleVariant5DomainArrayItem])
   ScaleData(ScaleData)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant5Domain with fn deserialize(d) {
@@ -85125,11 +86409,12 @@ pub impl ToJson for ScaleVariant5Domain with fn to_json(self) {
 
 ///|
 /// `ScaleVariant5DomainRaw`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant5DomainRaw {
   Null
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant5DomainRaw with fn deserialize(d) {
@@ -85182,6 +86467,7 @@ pub impl ToJson for ScaleVariant5DomainRaw with fn to_json(self) {
 
 ///|
 /// `ScaleVariant5RangeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant5RangeVariant0 {
   Width
   Height
@@ -85191,7 +86477,7 @@ pub(all) enum ScaleVariant5RangeVariant0 {
   Ramp
   Diverging
   Heatmap
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant5RangeVariant0 with fn deserialize(d) {
@@ -85283,6 +86569,7 @@ pub impl ToJson for ScaleVariant5RangeVariant0 with fn to_json(self) {
 
 ///|
 /// `ScaleVariant5RangeVariant1Item`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant5RangeVariant1Item {
   Null
   Boolean(Bool)
@@ -85290,7 +86577,7 @@ pub(all) enum ScaleVariant5RangeVariant1Item {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant5RangeVariant1Item with fn deserialize(d) {
@@ -85370,10 +86657,11 @@ pub impl ToJson for ScaleVariant5RangeVariant1Item with fn to_json(self) {
 
 ///|
 /// `ScaleVariant5RangeVariant2Extent`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant5RangeVariant2Extent {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant5RangeVariant2Extent with fn deserialize(d) {
@@ -85417,10 +86705,11 @@ pub impl ToJson for ScaleVariant5RangeVariant2Extent with fn to_json(self) {
 
 ///|
 /// `ScaleVariant5RangeVariant2SchemeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant5RangeVariant2SchemeArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant5RangeVariant2SchemeArrayItem with fn deserialize(d) {
@@ -85464,11 +86753,12 @@ pub impl ToJson for ScaleVariant5RangeVariant2SchemeArrayItem with fn to_json(se
 
 ///|
 /// `ScaleVariant5RangeVariant2Scheme`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant5RangeVariant2Scheme {
   String(String)
   Array(Array[ScaleVariant5RangeVariant2SchemeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant5RangeVariant2Scheme with fn deserialize(d) {
@@ -85521,12 +86811,13 @@ pub impl ToJson for ScaleVariant5RangeVariant2Scheme with fn to_json(self) {
 
 ///|
 /// `ScaleVariant5Range`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant5Range {
   Variant0(ScaleVariant5RangeVariant0)
   Variant1(Array[ScaleVariant5RangeVariant1Item])
   Variant2(count~ : NumberOrSignal?, extent~ : ScaleVariant5RangeVariant2Extent?, scheme~ : ScaleVariant5RangeVariant2Scheme)
   Variant3(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant5_range_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["count", "extent", "scheme"])
@@ -85615,9 +86906,10 @@ pub impl ToJson for ScaleVariant5Range with fn to_json(self) {
 
 ///|
 /// `ScaleVariant5Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant5Type {
   Quantile
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant5Type with fn deserialize(d) {
@@ -85674,6 +86966,7 @@ pub impl ToJson for ScaleVariant5Type with fn to_json(self) {
 
 ///|
 /// `ScaleVariant6DomainArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant6DomainArrayItem {
   Null
   Boolean(Bool)
@@ -85681,7 +86974,7 @@ pub(all) enum ScaleVariant6DomainArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant6DomainArrayItem with fn deserialize(d) {
@@ -85761,11 +87054,12 @@ pub impl ToJson for ScaleVariant6DomainArrayItem with fn to_json(self) {
 
 ///|
 /// `ScaleVariant6Domain`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant6Domain {
   Array(Array[ScaleVariant6DomainArrayItem])
   ScaleData(ScaleData)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant6Domain with fn deserialize(d) {
@@ -85818,11 +87112,12 @@ pub impl ToJson for ScaleVariant6Domain with fn to_json(self) {
 
 ///|
 /// `ScaleVariant6DomainRaw`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant6DomainRaw {
   Null
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant6DomainRaw with fn deserialize(d) {
@@ -85875,6 +87170,7 @@ pub impl ToJson for ScaleVariant6DomainRaw with fn to_json(self) {
 
 ///|
 /// `ScaleVariant6RangeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant6RangeVariant0 {
   Width
   Height
@@ -85884,7 +87180,7 @@ pub(all) enum ScaleVariant6RangeVariant0 {
   Ramp
   Diverging
   Heatmap
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant6RangeVariant0 with fn deserialize(d) {
@@ -85976,6 +87272,7 @@ pub impl ToJson for ScaleVariant6RangeVariant0 with fn to_json(self) {
 
 ///|
 /// `ScaleVariant6RangeVariant1Item`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant6RangeVariant1Item {
   Null
   Boolean(Bool)
@@ -85983,7 +87280,7 @@ pub(all) enum ScaleVariant6RangeVariant1Item {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant6RangeVariant1Item with fn deserialize(d) {
@@ -86063,10 +87360,11 @@ pub impl ToJson for ScaleVariant6RangeVariant1Item with fn to_json(self) {
 
 ///|
 /// `ScaleVariant6RangeVariant2Extent`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant6RangeVariant2Extent {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant6RangeVariant2Extent with fn deserialize(d) {
@@ -86110,10 +87408,11 @@ pub impl ToJson for ScaleVariant6RangeVariant2Extent with fn to_json(self) {
 
 ///|
 /// `ScaleVariant6RangeVariant2SchemeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant6RangeVariant2SchemeArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant6RangeVariant2SchemeArrayItem with fn deserialize(d) {
@@ -86157,11 +87456,12 @@ pub impl ToJson for ScaleVariant6RangeVariant2SchemeArrayItem with fn to_json(se
 
 ///|
 /// `ScaleVariant6RangeVariant2Scheme`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant6RangeVariant2Scheme {
   String(String)
   Array(Array[ScaleVariant6RangeVariant2SchemeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant6RangeVariant2Scheme with fn deserialize(d) {
@@ -86214,12 +87514,13 @@ pub impl ToJson for ScaleVariant6RangeVariant2Scheme with fn to_json(self) {
 
 ///|
 /// `ScaleVariant6Range`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant6Range {
   Variant0(ScaleVariant6RangeVariant0)
   Variant1(Array[ScaleVariant6RangeVariant1Item])
   Variant2(count~ : NumberOrSignal?, extent~ : ScaleVariant6RangeVariant2Extent?, scheme~ : ScaleVariant6RangeVariant2Scheme)
   Variant3(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant6_range_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["count", "extent", "scheme"])
@@ -86308,9 +87609,10 @@ pub impl ToJson for ScaleVariant6Range with fn to_json(self) {
 
 ///|
 /// `ScaleVariant6Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant6Type {
   BinOrdinal
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant6Type with fn deserialize(d) {
@@ -86367,6 +87669,7 @@ pub impl ToJson for ScaleVariant6Type with fn to_json(self) {
 
 ///|
 /// `ScaleVariant7DomainArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant7DomainArrayItem {
   Null
   Boolean(Bool)
@@ -86374,7 +87677,7 @@ pub(all) enum ScaleVariant7DomainArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant7DomainArrayItem with fn deserialize(d) {
@@ -86454,11 +87757,12 @@ pub impl ToJson for ScaleVariant7DomainArrayItem with fn to_json(self) {
 
 ///|
 /// `ScaleVariant7Domain`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant7Domain {
   Array(Array[ScaleVariant7DomainArrayItem])
   ScaleData(ScaleData)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant7Domain with fn deserialize(d) {
@@ -86511,11 +87815,12 @@ pub impl ToJson for ScaleVariant7Domain with fn to_json(self) {
 
 ///|
 /// `ScaleVariant7DomainRaw`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant7DomainRaw {
   Null
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant7DomainRaw with fn deserialize(d) {
@@ -86568,6 +87873,7 @@ pub impl ToJson for ScaleVariant7DomainRaw with fn to_json(self) {
 
 ///|
 /// `ScaleVariant7NiceVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant7NiceVariant1 {
   Millisecond
   Second
@@ -86577,7 +87883,7 @@ pub(all) enum ScaleVariant7NiceVariant1 {
   Week
   Month
   Year
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant7NiceVariant1 with fn deserialize(d) {
@@ -86669,6 +87975,7 @@ pub impl ToJson for ScaleVariant7NiceVariant1 with fn to_json(self) {
 
 ///|
 /// `ScaleVariant7NiceVariant2IntervalVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant7NiceVariant2IntervalVariant0 {
   Millisecond
   Second
@@ -86678,7 +87985,7 @@ pub(all) enum ScaleVariant7NiceVariant2IntervalVariant0 {
   Week
   Month
   Year
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant7NiceVariant2IntervalVariant0 with fn deserialize(d) {
@@ -86770,10 +88077,11 @@ pub impl ToJson for ScaleVariant7NiceVariant2IntervalVariant0 with fn to_json(se
 
 ///|
 /// `ScaleVariant7NiceVariant2Interval`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant7NiceVariant2Interval {
   Variant0(ScaleVariant7NiceVariant2IntervalVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant7NiceVariant2Interval with fn deserialize(d) {
@@ -86817,11 +88125,12 @@ pub impl ToJson for ScaleVariant7NiceVariant2Interval with fn to_json(self) {
 
 ///|
 /// `ScaleVariant7Nice`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant7Nice {
   Variant0(Bool)
   Variant1(ScaleVariant7NiceVariant1)
   Variant2(interval~ : ScaleVariant7NiceVariant2Interval, step~ : NumberOrSignal?)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant7_nice_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["interval", "step"])
@@ -86895,6 +88204,7 @@ pub impl ToJson for ScaleVariant7Nice with fn to_json(self) {
 
 ///|
 /// `ScaleVariant7RangeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant7RangeVariant0 {
   Width
   Height
@@ -86904,7 +88214,7 @@ pub(all) enum ScaleVariant7RangeVariant0 {
   Ramp
   Diverging
   Heatmap
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant7RangeVariant0 with fn deserialize(d) {
@@ -86996,6 +88306,7 @@ pub impl ToJson for ScaleVariant7RangeVariant0 with fn to_json(self) {
 
 ///|
 /// `ScaleVariant7RangeVariant1Item`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant7RangeVariant1Item {
   Null
   Boolean(Bool)
@@ -87003,7 +88314,7 @@ pub(all) enum ScaleVariant7RangeVariant1Item {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant7RangeVariant1Item with fn deserialize(d) {
@@ -87083,10 +88394,11 @@ pub impl ToJson for ScaleVariant7RangeVariant1Item with fn to_json(self) {
 
 ///|
 /// `ScaleVariant7RangeVariant2Extent`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant7RangeVariant2Extent {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant7RangeVariant2Extent with fn deserialize(d) {
@@ -87130,10 +88442,11 @@ pub impl ToJson for ScaleVariant7RangeVariant2Extent with fn to_json(self) {
 
 ///|
 /// `ScaleVariant7RangeVariant2SchemeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant7RangeVariant2SchemeArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant7RangeVariant2SchemeArrayItem with fn deserialize(d) {
@@ -87177,11 +88490,12 @@ pub impl ToJson for ScaleVariant7RangeVariant2SchemeArrayItem with fn to_json(se
 
 ///|
 /// `ScaleVariant7RangeVariant2Scheme`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant7RangeVariant2Scheme {
   String(String)
   Array(Array[ScaleVariant7RangeVariant2SchemeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant7RangeVariant2Scheme with fn deserialize(d) {
@@ -87234,12 +88548,13 @@ pub impl ToJson for ScaleVariant7RangeVariant2Scheme with fn to_json(self) {
 
 ///|
 /// `ScaleVariant7Range`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant7Range {
   Variant0(ScaleVariant7RangeVariant0)
   Variant1(Array[ScaleVariant7RangeVariant1Item])
   Variant2(count~ : NumberOrSignal?, extent~ : ScaleVariant7RangeVariant2Extent?, scheme~ : ScaleVariant7RangeVariant2Scheme)
   Variant3(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant7_range_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["count", "extent", "scheme"])
@@ -87328,10 +88643,11 @@ pub impl ToJson for ScaleVariant7Range with fn to_json(self) {
 
 ///|
 /// `ScaleVariant7Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant7Type {
   Time
   Utc
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant7Type with fn deserialize(d) {
@@ -87393,6 +88709,7 @@ pub impl ToJson for ScaleVariant7Type with fn to_json(self) {
 
 ///|
 /// `ScaleVariant8DomainArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant8DomainArrayItem {
   Null
   Boolean(Bool)
@@ -87400,7 +88717,7 @@ pub(all) enum ScaleVariant8DomainArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant8DomainArrayItem with fn deserialize(d) {
@@ -87480,11 +88797,12 @@ pub impl ToJson for ScaleVariant8DomainArrayItem with fn to_json(self) {
 
 ///|
 /// `ScaleVariant8Domain`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant8Domain {
   Array(Array[ScaleVariant8DomainArrayItem])
   ScaleData(ScaleData)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant8Domain with fn deserialize(d) {
@@ -87537,11 +88855,12 @@ pub impl ToJson for ScaleVariant8Domain with fn to_json(self) {
 
 ///|
 /// `ScaleVariant8DomainRaw`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant8DomainRaw {
   Null
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant8DomainRaw with fn deserialize(d) {
@@ -87594,11 +88913,12 @@ pub impl ToJson for ScaleVariant8DomainRaw with fn to_json(self) {
 
 ///|
 /// `ScaleVariant8Nice`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant8Nice {
   Boolean(Bool)
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant8Nice with fn deserialize(d) {
@@ -87651,6 +88971,7 @@ pub impl ToJson for ScaleVariant8Nice with fn to_json(self) {
 
 ///|
 /// `ScaleVariant8RangeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant8RangeVariant0 {
   Width
   Height
@@ -87660,7 +88981,7 @@ pub(all) enum ScaleVariant8RangeVariant0 {
   Ramp
   Diverging
   Heatmap
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant8RangeVariant0 with fn deserialize(d) {
@@ -87752,6 +89073,7 @@ pub impl ToJson for ScaleVariant8RangeVariant0 with fn to_json(self) {
 
 ///|
 /// `ScaleVariant8RangeVariant1Item`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant8RangeVariant1Item {
   Null
   Boolean(Bool)
@@ -87759,7 +89081,7 @@ pub(all) enum ScaleVariant8RangeVariant1Item {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant8RangeVariant1Item with fn deserialize(d) {
@@ -87839,10 +89161,11 @@ pub impl ToJson for ScaleVariant8RangeVariant1Item with fn to_json(self) {
 
 ///|
 /// `ScaleVariant8RangeVariant2Extent`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant8RangeVariant2Extent {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant8RangeVariant2Extent with fn deserialize(d) {
@@ -87886,10 +89209,11 @@ pub impl ToJson for ScaleVariant8RangeVariant2Extent with fn to_json(self) {
 
 ///|
 /// `ScaleVariant8RangeVariant2SchemeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant8RangeVariant2SchemeArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant8RangeVariant2SchemeArrayItem with fn deserialize(d) {
@@ -87933,11 +89257,12 @@ pub impl ToJson for ScaleVariant8RangeVariant2SchemeArrayItem with fn to_json(se
 
 ///|
 /// `ScaleVariant8RangeVariant2Scheme`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant8RangeVariant2Scheme {
   String(String)
   Array(Array[ScaleVariant8RangeVariant2SchemeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant8RangeVariant2Scheme with fn deserialize(d) {
@@ -87990,12 +89315,13 @@ pub impl ToJson for ScaleVariant8RangeVariant2Scheme with fn to_json(self) {
 
 ///|
 /// `ScaleVariant8Range`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant8Range {
   Variant0(ScaleVariant8RangeVariant0)
   Variant1(Array[ScaleVariant8RangeVariant1Item])
   Variant2(count~ : NumberOrSignal?, extent~ : ScaleVariant8RangeVariant2Extent?, scheme~ : ScaleVariant8RangeVariant2Scheme)
   Variant3(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant8_range_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["count", "extent", "scheme"])
@@ -88084,11 +89410,12 @@ pub impl ToJson for ScaleVariant8Range with fn to_json(self) {
 
 ///|
 /// `ScaleVariant8Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant8Type {
   Linear
   Sqrt
   Sequential
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant8Type with fn deserialize(d) {
@@ -88155,6 +89482,7 @@ pub impl ToJson for ScaleVariant8Type with fn to_json(self) {
 
 ///|
 /// `ScaleVariant9DomainArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant9DomainArrayItem {
   Null
   Boolean(Bool)
@@ -88162,7 +89490,7 @@ pub(all) enum ScaleVariant9DomainArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant9DomainArrayItem with fn deserialize(d) {
@@ -88242,11 +89570,12 @@ pub impl ToJson for ScaleVariant9DomainArrayItem with fn to_json(self) {
 
 ///|
 /// `ScaleVariant9Domain`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant9Domain {
   Array(Array[ScaleVariant9DomainArrayItem])
   ScaleData(ScaleData)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant9Domain with fn deserialize(d) {
@@ -88299,11 +89628,12 @@ pub impl ToJson for ScaleVariant9Domain with fn to_json(self) {
 
 ///|
 /// `ScaleVariant9DomainRaw`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant9DomainRaw {
   Null
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant9DomainRaw with fn deserialize(d) {
@@ -88356,11 +89686,12 @@ pub impl ToJson for ScaleVariant9DomainRaw with fn to_json(self) {
 
 ///|
 /// `ScaleVariant9Nice`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant9Nice {
   Boolean(Bool)
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant9Nice with fn deserialize(d) {
@@ -88413,6 +89744,7 @@ pub impl ToJson for ScaleVariant9Nice with fn to_json(self) {
 
 ///|
 /// `ScaleVariant9RangeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant9RangeVariant0 {
   Width
   Height
@@ -88422,7 +89754,7 @@ pub(all) enum ScaleVariant9RangeVariant0 {
   Ramp
   Diverging
   Heatmap
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant9RangeVariant0 with fn deserialize(d) {
@@ -88514,6 +89846,7 @@ pub impl ToJson for ScaleVariant9RangeVariant0 with fn to_json(self) {
 
 ///|
 /// `ScaleVariant9RangeVariant1Item`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant9RangeVariant1Item {
   Null
   Boolean(Bool)
@@ -88521,7 +89854,7 @@ pub(all) enum ScaleVariant9RangeVariant1Item {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant9RangeVariant1Item with fn deserialize(d) {
@@ -88601,10 +89934,11 @@ pub impl ToJson for ScaleVariant9RangeVariant1Item with fn to_json(self) {
 
 ///|
 /// `ScaleVariant9RangeVariant2Extent`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant9RangeVariant2Extent {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant9RangeVariant2Extent with fn deserialize(d) {
@@ -88648,10 +89982,11 @@ pub impl ToJson for ScaleVariant9RangeVariant2Extent with fn to_json(self) {
 
 ///|
 /// `ScaleVariant9RangeVariant2SchemeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant9RangeVariant2SchemeArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant9RangeVariant2SchemeArrayItem with fn deserialize(d) {
@@ -88695,11 +90030,12 @@ pub impl ToJson for ScaleVariant9RangeVariant2SchemeArrayItem with fn to_json(se
 
 ///|
 /// `ScaleVariant9RangeVariant2Scheme`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant9RangeVariant2Scheme {
   String(String)
   Array(Array[ScaleVariant9RangeVariant2SchemeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant9RangeVariant2Scheme with fn deserialize(d) {
@@ -88752,12 +90088,13 @@ pub impl ToJson for ScaleVariant9RangeVariant2Scheme with fn to_json(self) {
 
 ///|
 /// `ScaleVariant9Range`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant9Range {
   Variant0(ScaleVariant9RangeVariant0)
   Variant1(Array[ScaleVariant9RangeVariant1Item])
   Variant2(count~ : NumberOrSignal?, extent~ : ScaleVariant9RangeVariant2Extent?, scheme~ : ScaleVariant9RangeVariant2Scheme)
   Variant3(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant9_range_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["count", "extent", "scheme"])
@@ -88846,9 +90183,10 @@ pub impl ToJson for ScaleVariant9Range with fn to_json(self) {
 
 ///|
 /// `ScaleVariant9Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant9Type {
   Log
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant9Type with fn deserialize(d) {
@@ -88905,6 +90243,7 @@ pub impl ToJson for ScaleVariant9Type with fn to_json(self) {
 
 ///|
 /// `ScaleVariant10DomainArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant10DomainArrayItem {
   Null
   Boolean(Bool)
@@ -88912,7 +90251,7 @@ pub(all) enum ScaleVariant10DomainArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant10DomainArrayItem with fn deserialize(d) {
@@ -88992,11 +90331,12 @@ pub impl ToJson for ScaleVariant10DomainArrayItem with fn to_json(self) {
 
 ///|
 /// `ScaleVariant10Domain`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant10Domain {
   Array(Array[ScaleVariant10DomainArrayItem])
   ScaleData(ScaleData)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant10Domain with fn deserialize(d) {
@@ -89049,11 +90389,12 @@ pub impl ToJson for ScaleVariant10Domain with fn to_json(self) {
 
 ///|
 /// `ScaleVariant10DomainRaw`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant10DomainRaw {
   Null
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant10DomainRaw with fn deserialize(d) {
@@ -89106,11 +90447,12 @@ pub impl ToJson for ScaleVariant10DomainRaw with fn to_json(self) {
 
 ///|
 /// `ScaleVariant10Nice`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant10Nice {
   Boolean(Bool)
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant10Nice with fn deserialize(d) {
@@ -89163,6 +90505,7 @@ pub impl ToJson for ScaleVariant10Nice with fn to_json(self) {
 
 ///|
 /// `ScaleVariant10RangeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant10RangeVariant0 {
   Width
   Height
@@ -89172,7 +90515,7 @@ pub(all) enum ScaleVariant10RangeVariant0 {
   Ramp
   Diverging
   Heatmap
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant10RangeVariant0 with fn deserialize(d) {
@@ -89264,6 +90607,7 @@ pub impl ToJson for ScaleVariant10RangeVariant0 with fn to_json(self) {
 
 ///|
 /// `ScaleVariant10RangeVariant1Item`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant10RangeVariant1Item {
   Null
   Boolean(Bool)
@@ -89271,7 +90615,7 @@ pub(all) enum ScaleVariant10RangeVariant1Item {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant10RangeVariant1Item with fn deserialize(d) {
@@ -89351,10 +90695,11 @@ pub impl ToJson for ScaleVariant10RangeVariant1Item with fn to_json(self) {
 
 ///|
 /// `ScaleVariant10RangeVariant2Extent`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant10RangeVariant2Extent {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant10RangeVariant2Extent with fn deserialize(d) {
@@ -89398,10 +90743,11 @@ pub impl ToJson for ScaleVariant10RangeVariant2Extent with fn to_json(self) {
 
 ///|
 /// `ScaleVariant10RangeVariant2SchemeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant10RangeVariant2SchemeArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant10RangeVariant2SchemeArrayItem with fn deserialize(d) {
@@ -89445,11 +90791,12 @@ pub impl ToJson for ScaleVariant10RangeVariant2SchemeArrayItem with fn to_json(s
 
 ///|
 /// `ScaleVariant10RangeVariant2Scheme`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant10RangeVariant2Scheme {
   String(String)
   Array(Array[ScaleVariant10RangeVariant2SchemeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant10RangeVariant2Scheme with fn deserialize(d) {
@@ -89502,12 +90849,13 @@ pub impl ToJson for ScaleVariant10RangeVariant2Scheme with fn to_json(self) {
 
 ///|
 /// `ScaleVariant10Range`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant10Range {
   Variant0(ScaleVariant10RangeVariant0)
   Variant1(Array[ScaleVariant10RangeVariant1Item])
   Variant2(count~ : NumberOrSignal?, extent~ : ScaleVariant10RangeVariant2Extent?, scheme~ : ScaleVariant10RangeVariant2Scheme)
   Variant3(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant10_range_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["count", "extent", "scheme"])
@@ -89596,9 +90944,10 @@ pub impl ToJson for ScaleVariant10Range with fn to_json(self) {
 
 ///|
 /// `ScaleVariant10Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant10Type {
   Pow
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant10Type with fn deserialize(d) {
@@ -89655,6 +91004,7 @@ pub impl ToJson for ScaleVariant10Type with fn to_json(self) {
 
 ///|
 /// `ScaleVariant11DomainArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant11DomainArrayItem {
   Null
   Boolean(Bool)
@@ -89662,7 +91012,7 @@ pub(all) enum ScaleVariant11DomainArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant11DomainArrayItem with fn deserialize(d) {
@@ -89742,11 +91092,12 @@ pub impl ToJson for ScaleVariant11DomainArrayItem with fn to_json(self) {
 
 ///|
 /// `ScaleVariant11Domain`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant11Domain {
   Array(Array[ScaleVariant11DomainArrayItem])
   ScaleData(ScaleData)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant11Domain with fn deserialize(d) {
@@ -89799,11 +91150,12 @@ pub impl ToJson for ScaleVariant11Domain with fn to_json(self) {
 
 ///|
 /// `ScaleVariant11DomainRaw`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant11DomainRaw {
   Null
   Array(Array[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant11DomainRaw with fn deserialize(d) {
@@ -89856,11 +91208,12 @@ pub impl ToJson for ScaleVariant11DomainRaw with fn to_json(self) {
 
 ///|
 /// `ScaleVariant11Nice`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant11Nice {
   Boolean(Bool)
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant11Nice with fn deserialize(d) {
@@ -89913,6 +91266,7 @@ pub impl ToJson for ScaleVariant11Nice with fn to_json(self) {
 
 ///|
 /// `ScaleVariant11RangeVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant11RangeVariant0 {
   Width
   Height
@@ -89922,7 +91276,7 @@ pub(all) enum ScaleVariant11RangeVariant0 {
   Ramp
   Diverging
   Heatmap
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant11RangeVariant0 with fn deserialize(d) {
@@ -90014,6 +91368,7 @@ pub impl ToJson for ScaleVariant11RangeVariant0 with fn to_json(self) {
 
 ///|
 /// `ScaleVariant11RangeVariant1Item`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant11RangeVariant1Item {
   Null
   Boolean(Bool)
@@ -90021,7 +91376,7 @@ pub(all) enum ScaleVariant11RangeVariant1Item {
   Number(Double)
   SignalRef(SignalRef)
   Array(Array[NumberOrSignal])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant11RangeVariant1Item with fn deserialize(d) {
@@ -90101,10 +91456,11 @@ pub impl ToJson for ScaleVariant11RangeVariant1Item with fn to_json(self) {
 
 ///|
 /// `ScaleVariant11RangeVariant2Extent`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant11RangeVariant2Extent {
   Array(FixedArray[NumberOrSignal])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant11RangeVariant2Extent with fn deserialize(d) {
@@ -90148,10 +91504,11 @@ pub impl ToJson for ScaleVariant11RangeVariant2Extent with fn to_json(self) {
 
 ///|
 /// `ScaleVariant11RangeVariant2SchemeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant11RangeVariant2SchemeArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant11RangeVariant2SchemeArrayItem with fn deserialize(d) {
@@ -90195,11 +91552,12 @@ pub impl ToJson for ScaleVariant11RangeVariant2SchemeArrayItem with fn to_json(s
 
 ///|
 /// `ScaleVariant11RangeVariant2Scheme`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant11RangeVariant2Scheme {
   String(String)
   Array(Array[ScaleVariant11RangeVariant2SchemeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant11RangeVariant2Scheme with fn deserialize(d) {
@@ -90252,12 +91610,13 @@ pub impl ToJson for ScaleVariant11RangeVariant2Scheme with fn to_json(self) {
 
 ///|
 /// `ScaleVariant11Range`
+#derive(Debug, Eq)
 pub(all) enum ScaleVariant11Range {
   Variant0(ScaleVariant11RangeVariant0)
   Variant1(Array[ScaleVariant11RangeVariant1Item])
   Variant2(count~ : NumberOrSignal?, extent~ : ScaleVariant11RangeVariant2Extent?, scheme~ : ScaleVariant11RangeVariant2Scheme)
   Variant3(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_variant11_range_variant2_fields : @typify_rt.Fields = @typify_rt.Fields::new(["count", "extent", "scheme"])
@@ -90346,9 +91705,10 @@ pub impl ToJson for ScaleVariant11Range with fn to_json(self) {
 
 ///|
 /// `ScaleVariant11Type`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleVariant11Type {
   Symlog
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleVariant11Type with fn deserialize(d) {
@@ -90405,10 +91765,11 @@ pub impl ToJson for ScaleVariant11Type with fn to_json(self) {
 
 ///|
 /// `ScaleDataVariant0Sort`
+#derive(Debug, Eq)
 pub(all) enum ScaleDataVariant0Sort {
   Boolean(Bool)
   Object(field~ : StringOrSignal?, op~ : StringOrSignal?, order~ : SortOrder?)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_data_variant0_sort_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["field", "op", "order"])
@@ -90481,9 +91842,10 @@ pub impl ToJson for ScaleDataVariant0Sort with fn to_json(self) {
 
 ///|
 /// `ScaleDataVariant1SortVariant1Op`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleDataVariant1SortVariant1Op {
   Count
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleDataVariant1SortVariant1Op with fn deserialize(d) {
@@ -90540,11 +91902,12 @@ pub impl ToJson for ScaleDataVariant1SortVariant1Op with fn to_json(self) {
 
 ///|
 /// `ScaleDataVariant1SortVariant2Op`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleDataVariant1SortVariant2Op {
   Count
   Min
   Max
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleDataVariant1SortVariant2Op with fn deserialize(d) {
@@ -90611,11 +91974,12 @@ pub impl ToJson for ScaleDataVariant1SortVariant2Op with fn to_json(self) {
 
 ///|
 /// `ScaleDataVariant1Sort`
+#derive(Debug, Eq)
 pub(all) enum ScaleDataVariant1Sort {
   Variant0(Bool)
   Variant1(op~ : ScaleDataVariant1SortVariant1Op?, order~ : SortOrder?)
   Variant2(field~ : StringOrSignal, op~ : ScaleDataVariant1SortVariant2Op, order~ : SortOrder?)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_data_variant1_sort_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["op", "order"])
@@ -90716,11 +92080,12 @@ pub impl ToJson for ScaleDataVariant1Sort with fn to_json(self) {
 
 ///|
 /// `ScaleDataVariant2FieldsItemArrayItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleDataVariant2FieldsItemArrayItem {
   String(String)
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleDataVariant2FieldsItemArrayItem with fn deserialize(d) {
@@ -90773,11 +92138,12 @@ pub impl ToJson for ScaleDataVariant2FieldsItemArrayItem with fn to_json(self) {
 
 ///|
 /// `ScaleDataVariant2FieldsItem`
+#derive(Debug, Eq)
 pub(all) enum ScaleDataVariant2FieldsItem {
   Object(data~ : String, field~ : StringOrSignal)
   Array(Array[ScaleDataVariant2FieldsItemArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_data_variant2_fields_item_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["data", "field"])
@@ -90849,9 +92215,10 @@ pub impl ToJson for ScaleDataVariant2FieldsItem with fn to_json(self) {
 
 ///|
 /// `ScaleDataVariant2SortVariant1Op`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleDataVariant2SortVariant1Op {
   Count
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleDataVariant2SortVariant1Op with fn deserialize(d) {
@@ -90908,11 +92275,12 @@ pub impl ToJson for ScaleDataVariant2SortVariant1Op with fn to_json(self) {
 
 ///|
 /// `ScaleDataVariant2SortVariant2Op`
+#derive(Debug, Eq, Hash)
 pub(all) enum ScaleDataVariant2SortVariant2Op {
   Count
   Min
   Max
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScaleDataVariant2SortVariant2Op with fn deserialize(d) {
@@ -90979,11 +92347,12 @@ pub impl ToJson for ScaleDataVariant2SortVariant2Op with fn to_json(self) {
 
 ///|
 /// `ScaleDataVariant2Sort`
+#derive(Debug, Eq)
 pub(all) enum ScaleDataVariant2Sort {
   Variant0(Bool)
   Variant1(op~ : ScaleDataVariant2SortVariant1Op?, order~ : SortOrder?)
   Variant2(field~ : StringOrSignal, op~ : ScaleDataVariant2SortVariant2Op, order~ : SortOrder?)
-} derive(Debug, Eq)
+}
 
 ///|
 let scale_data_variant2_sort_variant1_fields : @typify_rt.Fields = @typify_rt.Fields::new(["op", "order"])
@@ -91084,10 +92453,11 @@ pub impl ToJson for ScaleDataVariant2Sort with fn to_json(self) {
 
 ///|
 /// `ScopeMarksItem`
+#derive(Debug, Eq)
 pub(all) enum ScopeMarksItem {
   Group(MarkGroup)
   Visual(MarkVisual)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ScopeMarksItem with fn deserialize(d) {
@@ -91131,10 +92501,11 @@ pub impl ToJson for ScopeMarksItem with fn to_json(self) {
 
 ///|
 /// `SequenceTransformAs`
+#derive(Debug, Eq)
 pub(all) enum SequenceTransformAs {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for SequenceTransformAs with fn deserialize(d) {
@@ -91186,10 +92557,11 @@ pub impl ToJson for SequenceTransformAs with fn to_json(self) {
 
 ///|
 /// `SequenceTransformStart`
+#derive(Debug, Eq)
 pub(all) enum SequenceTransformStart {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for SequenceTransformStart with fn deserialize(d) {
@@ -91233,10 +92605,11 @@ pub impl ToJson for SequenceTransformStart with fn to_json(self) {
 
 ///|
 /// `SequenceTransformStep`
+#derive(Debug, Eq)
 pub(all) enum SequenceTransformStep {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for SequenceTransformStep with fn deserialize(d) {
@@ -91288,10 +92661,11 @@ pub impl ToJson for SequenceTransformStep with fn to_json(self) {
 
 ///|
 /// `SequenceTransformStop`
+#derive(Debug, Eq)
 pub(all) enum SequenceTransformStop {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for SequenceTransformStop with fn deserialize(d) {
@@ -91335,9 +92709,10 @@ pub impl ToJson for SequenceTransformStop with fn to_json(self) {
 
 ///|
 /// `SequenceTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum SequenceTransformType {
   Sequence
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SequenceTransformType with fn deserialize(d) {
@@ -91394,9 +92769,10 @@ pub impl ToJson for SequenceTransformType with fn to_json(self) {
 
 ///|
 /// `SignalVariant0Push`
+#derive(Debug, Eq, Hash)
 pub(all) enum SignalVariant0Push {
   Outer
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SignalVariant0Push with fn deserialize(d) {
@@ -91453,10 +92829,11 @@ pub impl ToJson for SignalVariant0Push with fn to_json(self) {
 
 ///|
 /// `SortOrderVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum SortOrderVariant0 {
   Ascending
   Descending
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SortOrderVariant0 with fn deserialize(d) {
@@ -91518,10 +92895,11 @@ pub impl ToJson for SortOrderVariant0 with fn to_json(self) {
 
 ///|
 /// `StackTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum StackTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StackTransformAsArrayItem with fn deserialize(d) {
@@ -91565,10 +92943,11 @@ pub impl ToJson for StackTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `StackTransformAs`
+#derive(Debug, Eq)
 pub(all) enum StackTransformAs {
   Array(FixedArray[StackTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StackTransformAs with fn deserialize(d) {
@@ -91620,11 +92999,12 @@ pub impl ToJson for StackTransformAs with fn to_json(self) {
 
 ///|
 /// `StackTransformField`
+#derive(Debug, Eq)
 pub(all) enum StackTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StackTransformField with fn deserialize(d) {
@@ -91677,11 +93057,12 @@ pub impl ToJson for StackTransformField with fn to_json(self) {
 
 ///|
 /// `StackTransformGroupbyArrayItem`
+#derive(Debug, Eq)
 pub(all) enum StackTransformGroupbyArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StackTransformGroupbyArrayItem with fn deserialize(d) {
@@ -91734,10 +93115,11 @@ pub impl ToJson for StackTransformGroupbyArrayItem with fn to_json(self) {
 
 ///|
 /// `StackTransformGroupby`
+#derive(Debug, Eq)
 pub(all) enum StackTransformGroupby {
   Array(Array[StackTransformGroupbyArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StackTransformGroupby with fn deserialize(d) {
@@ -91781,11 +93163,12 @@ pub impl ToJson for StackTransformGroupby with fn to_json(self) {
 
 ///|
 /// `StackTransformOffsetVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum StackTransformOffsetVariant0 {
   Zero
   Center
   Normalize
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StackTransformOffsetVariant0 with fn deserialize(d) {
@@ -91852,10 +93235,11 @@ pub impl ToJson for StackTransformOffsetVariant0 with fn to_json(self) {
 
 ///|
 /// `StackTransformOffset`
+#derive(Debug, Eq)
 pub(all) enum StackTransformOffset {
   Variant0(StackTransformOffsetVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StackTransformOffset with fn deserialize(d) {
@@ -91907,9 +93291,10 @@ pub impl ToJson for StackTransformOffset with fn to_json(self) {
 
 ///|
 /// `StackTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum StackTransformType {
   Stack
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StackTransformType with fn deserialize(d) {
@@ -91966,11 +93351,12 @@ pub impl ToJson for StackTransformType with fn to_json(self) {
 
 ///|
 /// `StratifyTransformKey`
+#derive(Debug, Eq)
 pub(all) enum StratifyTransformKey {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StratifyTransformKey with fn deserialize(d) {
@@ -92023,11 +93409,12 @@ pub impl ToJson for StratifyTransformKey with fn to_json(self) {
 
 ///|
 /// `StratifyTransformParentKey`
+#derive(Debug, Eq)
 pub(all) enum StratifyTransformParentKey {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StratifyTransformParentKey with fn deserialize(d) {
@@ -92080,9 +93467,10 @@ pub impl ToJson for StratifyTransformParentKey with fn to_json(self) {
 
 ///|
 /// `StratifyTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum StratifyTransformType {
   Stratify
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StratifyTransformType with fn deserialize(d) {
@@ -92139,10 +93527,11 @@ pub impl ToJson for StratifyTransformType with fn to_json(self) {
 
 ///|
 /// `StreamVariant0Filter`
+#derive(Debug, Eq)
 pub(all) enum StreamVariant0Filter {
   ExprString(ExprString)
   Array(Array[ExprString])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StreamVariant0Filter with fn deserialize(d) {
@@ -92186,10 +93575,11 @@ pub impl ToJson for StreamVariant0Filter with fn to_json(self) {
 
 ///|
 /// `StreamVariant1Filter`
+#derive(Debug, Eq)
 pub(all) enum StreamVariant1Filter {
   ExprString(ExprString)
   Array(Array[ExprString])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StreamVariant1Filter with fn deserialize(d) {
@@ -92233,10 +93623,11 @@ pub impl ToJson for StreamVariant1Filter with fn to_json(self) {
 
 ///|
 /// `StreamVariant2Filter`
+#derive(Debug, Eq)
 pub(all) enum StreamVariant2Filter {
   ExprString(ExprString)
   Array(Array[ExprString])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StreamVariant2Filter with fn deserialize(d) {
@@ -92280,10 +93671,11 @@ pub impl ToJson for StreamVariant2Filter with fn to_json(self) {
 
 ///|
 /// `StringValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum StringValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StringValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -92327,12 +93719,13 @@ pub impl ToJson for StringValueVariant0ItemVariant0Variant3Range with fn to_json
 
 ///|
 /// `StringValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum StringValueVariant0ItemVariant0 {
   Variant0(scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(scale~ : Field?, test_~ : String?, value~ : String)
   Variant2(field~ : Field, scale~ : Field?, test_~ : String?)
   Variant3(range~ : StringValueVariant0ItemVariant0Variant3Range, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let string_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal", "test"])
@@ -92502,8 +93895,9 @@ pub impl ToJson for StringValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `StringValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum StringValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StringValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -92535,8 +93929,9 @@ pub impl ToJson for StringValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `StringValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum StringValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StringValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -92568,12 +93963,13 @@ pub impl ToJson for StringValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `StringValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum StringValueVariant0Item {
   Variant0(StringValueVariant0ItemVariant0)
   Variant1(StringValueVariant0ItemVariant1)
   Variant2(StringValueVariant0ItemVariant2)
   Variant3(offset~ : Json, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let string_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset", "test"])
@@ -92656,10 +94052,11 @@ pub impl ToJson for StringValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `StringValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum StringValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StringValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -92703,12 +94100,13 @@ pub impl ToJson for StringValueVariant1Variant0Variant3Range with fn to_json(sel
 
 ///|
 /// `StringValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum StringValueVariant1Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : String)
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : StringValueVariant1Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let string_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -92854,8 +94252,9 @@ pub impl ToJson for StringValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `StringValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum StringValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StringValueVariant1Variant1 with fn deserialize(d) {
@@ -92887,8 +94286,9 @@ pub impl ToJson for StringValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `StringValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum StringValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StringValueVariant1Variant2 with fn deserialize(d) {
@@ -92920,12 +94320,13 @@ pub impl ToJson for StringValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `StringValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum StringValueVariant1 {
   Variant0(StringValueVariant1Variant0)
   Variant1(StringValueVariant1Variant1)
   Variant2(StringValueVariant1Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let string_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -93002,11 +94403,12 @@ pub impl ToJson for StringValueVariant1 with fn to_json(self) {
 
 ///|
 /// `StrokeCapValueVariant0ItemVariant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum StrokeCapValueVariant0ItemVariant0Variant1Value {
   Butt
   Round
   Square
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeCapValueVariant0ItemVariant0Variant1Value with fn deserialize(d) {
@@ -93073,10 +94475,11 @@ pub impl ToJson for StrokeCapValueVariant0ItemVariant0Variant1Value with fn to_j
 
 ///|
 /// `StrokeCapValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum StrokeCapValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeCapValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -93120,12 +94523,13 @@ pub impl ToJson for StrokeCapValueVariant0ItemVariant0Variant3Range with fn to_j
 
 ///|
 /// `StrokeCapValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum StrokeCapValueVariant0ItemVariant0 {
   Variant0(scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(scale~ : Field?, test_~ : String?, value~ : StrokeCapValueVariant0ItemVariant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?, test_~ : String?)
   Variant3(range~ : StrokeCapValueVariant0ItemVariant0Variant3Range, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let stroke_cap_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal", "test"])
@@ -93295,8 +94699,9 @@ pub impl ToJson for StrokeCapValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `StrokeCapValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum StrokeCapValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeCapValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -93328,8 +94733,9 @@ pub impl ToJson for StrokeCapValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `StrokeCapValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum StrokeCapValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeCapValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -93361,12 +94767,13 @@ pub impl ToJson for StrokeCapValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `StrokeCapValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum StrokeCapValueVariant0Item {
   Variant0(StrokeCapValueVariant0ItemVariant0)
   Variant1(StrokeCapValueVariant0ItemVariant1)
   Variant2(StrokeCapValueVariant0ItemVariant2)
   Variant3(offset~ : Json, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let stroke_cap_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset", "test"])
@@ -93449,11 +94856,12 @@ pub impl ToJson for StrokeCapValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `StrokeCapValueVariant1Variant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum StrokeCapValueVariant1Variant0Variant1Value {
   Butt
   Round
   Square
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeCapValueVariant1Variant0Variant1Value with fn deserialize(d) {
@@ -93520,10 +94928,11 @@ pub impl ToJson for StrokeCapValueVariant1Variant0Variant1Value with fn to_json(
 
 ///|
 /// `StrokeCapValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum StrokeCapValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeCapValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -93567,12 +94976,13 @@ pub impl ToJson for StrokeCapValueVariant1Variant0Variant3Range with fn to_json(
 
 ///|
 /// `StrokeCapValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum StrokeCapValueVariant1Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : StrokeCapValueVariant1Variant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : StrokeCapValueVariant1Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let stroke_cap_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -93718,8 +95128,9 @@ pub impl ToJson for StrokeCapValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `StrokeCapValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum StrokeCapValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeCapValueVariant1Variant1 with fn deserialize(d) {
@@ -93751,8 +95162,9 @@ pub impl ToJson for StrokeCapValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `StrokeCapValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum StrokeCapValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeCapValueVariant1Variant2 with fn deserialize(d) {
@@ -93784,12 +95196,13 @@ pub impl ToJson for StrokeCapValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `StrokeCapValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum StrokeCapValueVariant1 {
   Variant0(StrokeCapValueVariant1Variant0)
   Variant1(StrokeCapValueVariant1Variant1)
   Variant2(StrokeCapValueVariant1Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let stroke_cap_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -93866,11 +95279,12 @@ pub impl ToJson for StrokeCapValueVariant1 with fn to_json(self) {
 
 ///|
 /// `StrokeJoinValueVariant0ItemVariant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum StrokeJoinValueVariant0ItemVariant0Variant1Value {
   Miter
   Round
   Bevel
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeJoinValueVariant0ItemVariant0Variant1Value with fn deserialize(d) {
@@ -93937,10 +95351,11 @@ pub impl ToJson for StrokeJoinValueVariant0ItemVariant0Variant1Value with fn to_
 
 ///|
 /// `StrokeJoinValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum StrokeJoinValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeJoinValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -93984,12 +95399,13 @@ pub impl ToJson for StrokeJoinValueVariant0ItemVariant0Variant3Range with fn to_
 
 ///|
 /// `StrokeJoinValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum StrokeJoinValueVariant0ItemVariant0 {
   Variant0(scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(scale~ : Field?, test_~ : String?, value~ : StrokeJoinValueVariant0ItemVariant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?, test_~ : String?)
   Variant3(range~ : StrokeJoinValueVariant0ItemVariant0Variant3Range, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let stroke_join_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal", "test"])
@@ -94159,8 +95575,9 @@ pub impl ToJson for StrokeJoinValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `StrokeJoinValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum StrokeJoinValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeJoinValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -94192,8 +95609,9 @@ pub impl ToJson for StrokeJoinValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `StrokeJoinValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum StrokeJoinValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeJoinValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -94225,12 +95643,13 @@ pub impl ToJson for StrokeJoinValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `StrokeJoinValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum StrokeJoinValueVariant0Item {
   Variant0(StrokeJoinValueVariant0ItemVariant0)
   Variant1(StrokeJoinValueVariant0ItemVariant1)
   Variant2(StrokeJoinValueVariant0ItemVariant2)
   Variant3(offset~ : Json, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let stroke_join_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset", "test"])
@@ -94313,11 +95732,12 @@ pub impl ToJson for StrokeJoinValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `StrokeJoinValueVariant1Variant0Variant1Value`
+#derive(Debug, Eq, Hash)
 pub(all) enum StrokeJoinValueVariant1Variant0Variant1Value {
   Miter
   Round
   Bevel
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeJoinValueVariant1Variant0Variant1Value with fn deserialize(d) {
@@ -94384,10 +95804,11 @@ pub impl ToJson for StrokeJoinValueVariant1Variant0Variant1Value with fn to_json
 
 ///|
 /// `StrokeJoinValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum StrokeJoinValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeJoinValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -94431,12 +95852,13 @@ pub impl ToJson for StrokeJoinValueVariant1Variant0Variant3Range with fn to_json
 
 ///|
 /// `StrokeJoinValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum StrokeJoinValueVariant1Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : StrokeJoinValueVariant1Variant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : StrokeJoinValueVariant1Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let stroke_join_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -94582,8 +96004,9 @@ pub impl ToJson for StrokeJoinValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `StrokeJoinValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum StrokeJoinValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeJoinValueVariant1Variant1 with fn deserialize(d) {
@@ -94615,8 +96038,9 @@ pub impl ToJson for StrokeJoinValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `StrokeJoinValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum StrokeJoinValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StrokeJoinValueVariant1Variant2 with fn deserialize(d) {
@@ -94648,12 +96072,13 @@ pub impl ToJson for StrokeJoinValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `StrokeJoinValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum StrokeJoinValueVariant1 {
   Variant0(StrokeJoinValueVariant1Variant0)
   Variant1(StrokeJoinValueVariant1Variant1)
   Variant2(StrokeJoinValueVariant1Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let stroke_join_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -94730,10 +96155,11 @@ pub impl ToJson for StrokeJoinValueVariant1 with fn to_json(self) {
 
 ///|
 /// `TextOrSignalVariant0`
+#derive(Debug, Eq)
 pub(all) enum TextOrSignalVariant0 {
   String(String)
   Array(Array[String])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TextOrSignalVariant0 with fn deserialize(d) {
@@ -94777,10 +96203,11 @@ pub impl ToJson for TextOrSignalVariant0 with fn to_json(self) {
 
 ///|
 /// `TextValueVariant0ItemVariant0Variant1Value`
+#derive(Debug, Eq)
 pub(all) enum TextValueVariant0ItemVariant0Variant1Value {
   String(String)
   Array(Array[String])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TextValueVariant0ItemVariant0Variant1Value with fn deserialize(d) {
@@ -94824,10 +96251,11 @@ pub impl ToJson for TextValueVariant0ItemVariant0Variant1Value with fn to_json(s
 
 ///|
 /// `TextValueVariant0ItemVariant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum TextValueVariant0ItemVariant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TextValueVariant0ItemVariant0Variant3Range with fn deserialize(d) {
@@ -94871,12 +96299,13 @@ pub impl ToJson for TextValueVariant0ItemVariant0Variant3Range with fn to_json(s
 
 ///|
 /// `TextValueVariant0ItemVariant0`
+#derive(Debug, Eq)
 pub(all) enum TextValueVariant0ItemVariant0 {
   Variant0(scale~ : Field?, signal~ : String, test_~ : String?)
   Variant1(scale~ : Field?, test_~ : String?, value~ : TextValueVariant0ItemVariant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?, test_~ : String?)
   Variant3(range~ : TextValueVariant0ItemVariant0Variant3Range, scale~ : Field?, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let text_value_variant0_item_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal", "test"])
@@ -95046,8 +96475,9 @@ pub impl ToJson for TextValueVariant0ItemVariant0 with fn to_json(self) {
 
 ///|
 /// `TextValueVariant0ItemVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum TextValueVariant0ItemVariant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TextValueVariant0ItemVariant1 with fn deserialize(d) {
@@ -95079,8 +96509,9 @@ pub impl ToJson for TextValueVariant0ItemVariant1 with fn to_json(self) {
 
 ///|
 /// `TextValueVariant0ItemVariant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum TextValueVariant0ItemVariant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TextValueVariant0ItemVariant2 with fn deserialize(d) {
@@ -95112,12 +96543,13 @@ pub impl ToJson for TextValueVariant0ItemVariant2 with fn to_json(self) {
 
 ///|
 /// `TextValueVariant0Item`
+#derive(Debug, Eq)
 pub(all) enum TextValueVariant0Item {
   Variant0(TextValueVariant0ItemVariant0)
   Variant1(TextValueVariant0ItemVariant1)
   Variant2(TextValueVariant0ItemVariant2)
   Variant3(offset~ : Json, test_~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let text_value_variant0_item_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset", "test"])
@@ -95200,10 +96632,11 @@ pub impl ToJson for TextValueVariant0Item with fn to_json(self) {
 
 ///|
 /// `TextValueVariant1Variant0Variant1Value`
+#derive(Debug, Eq)
 pub(all) enum TextValueVariant1Variant0Variant1Value {
   String(String)
   Array(Array[String])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TextValueVariant1Variant0Variant1Value with fn deserialize(d) {
@@ -95247,10 +96680,11 @@ pub impl ToJson for TextValueVariant1Variant0Variant1Value with fn to_json(self)
 
 ///|
 /// `TextValueVariant1Variant0Variant3Range`
+#derive(Debug, Eq)
 pub(all) enum TextValueVariant1Variant0Variant3Range {
   Number(Double)
   Boolean(Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TextValueVariant1Variant0Variant3Range with fn deserialize(d) {
@@ -95294,12 +96728,13 @@ pub impl ToJson for TextValueVariant1Variant0Variant3Range with fn to_json(self)
 
 ///|
 /// `TextValueVariant1Variant0`
+#derive(Debug, Eq)
 pub(all) enum TextValueVariant1Variant0 {
   Variant0(scale~ : Field?, signal~ : String)
   Variant1(scale~ : Field?, value~ : TextValueVariant1Variant0Variant1Value)
   Variant2(field~ : Field, scale~ : Field?)
   Variant3(range~ : TextValueVariant1Variant0Variant3Range, scale~ : Field?)
-} derive(Debug, Eq)
+}
 
 ///|
 let text_value_variant1_variant0_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["scale", "signal"])
@@ -95445,8 +96880,9 @@ pub impl ToJson for TextValueVariant1Variant0 with fn to_json(self) {
 
 ///|
 /// `TextValueVariant1Variant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum TextValueVariant1Variant1 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TextValueVariant1Variant1 with fn deserialize(d) {
@@ -95478,8 +96914,9 @@ pub impl ToJson for TextValueVariant1Variant1 with fn to_json(self) {
 
 ///|
 /// `TextValueVariant1Variant2`
+#derive(Debug, Eq, Hash)
 pub(all) enum TextValueVariant1Variant2 {
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TextValueVariant1Variant2 with fn deserialize(d) {
@@ -95511,12 +96948,13 @@ pub impl ToJson for TextValueVariant1Variant2 with fn to_json(self) {
 
 ///|
 /// `TextValueVariant1`
+#derive(Debug, Eq)
 pub(all) enum TextValueVariant1 {
   Variant0(TextValueVariant1Variant0)
   Variant1(TextValueVariant1Variant1)
   Variant2(TextValueVariant1Variant2)
   Variant3(offset~ : Json)
-} derive(Debug, Eq)
+}
 
 ///|
 let text_value_variant1_variant3_fields : @typify_rt.Fields = @typify_rt.Fields::new(["offset"])
@@ -95593,10 +97031,11 @@ pub impl ToJson for TextValueVariant1 with fn to_json(self) {
 
 ///|
 /// `TickBandVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum TickBandVariant0 {
   Center
   Extent
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TickBandVariant0 with fn deserialize(d) {
@@ -95658,6 +97097,7 @@ pub impl ToJson for TickBandVariant0 with fn to_json(self) {
 
 ///|
 /// `TickCountVariant1`
+#derive(Debug, Eq, Hash)
 pub(all) enum TickCountVariant1 {
   Millisecond
   Second
@@ -95667,7 +97107,7 @@ pub(all) enum TickCountVariant1 {
   Week
   Month
   Year
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TickCountVariant1 with fn deserialize(d) {
@@ -95759,6 +97199,7 @@ pub impl ToJson for TickCountVariant1 with fn to_json(self) {
 
 ///|
 /// `TickCountVariant2IntervalVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum TickCountVariant2IntervalVariant0 {
   Millisecond
   Second
@@ -95768,7 +97209,7 @@ pub(all) enum TickCountVariant2IntervalVariant0 {
   Week
   Month
   Year
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TickCountVariant2IntervalVariant0 with fn deserialize(d) {
@@ -95860,10 +97301,11 @@ pub impl ToJson for TickCountVariant2IntervalVariant0 with fn to_json(self) {
 
 ///|
 /// `TickCountVariant2Interval`
+#derive(Debug, Eq)
 pub(all) enum TickCountVariant2Interval {
   Variant0(TickCountVariant2IntervalVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TickCountVariant2Interval with fn deserialize(d) {
@@ -95907,10 +97349,11 @@ pub impl ToJson for TickCountVariant2Interval with fn to_json(self) {
 
 ///|
 /// `TimeunitTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum TimeunitTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransformAsArrayItem with fn deserialize(d) {
@@ -95954,10 +97397,11 @@ pub impl ToJson for TimeunitTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `TimeunitTransformAs`
+#derive(Debug, Eq)
 pub(all) enum TimeunitTransformAs {
   Array(FixedArray[TimeunitTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransformAs with fn deserialize(d) {
@@ -96009,10 +97453,11 @@ pub impl ToJson for TimeunitTransformAs with fn to_json(self) {
 
 ///|
 /// `TimeunitTransformExtentArrayItem`
+#derive(Debug, Eq)
 pub(all) enum TimeunitTransformExtentArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransformExtentArrayItem with fn deserialize(d) {
@@ -96056,10 +97501,11 @@ pub impl ToJson for TimeunitTransformExtentArrayItem with fn to_json(self) {
 
 ///|
 /// `TimeunitTransformExtent`
+#derive(Debug, Eq)
 pub(all) enum TimeunitTransformExtent {
   Array(Array[TimeunitTransformExtentArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransformExtent with fn deserialize(d) {
@@ -96103,11 +97549,12 @@ pub impl ToJson for TimeunitTransformExtent with fn to_json(self) {
 
 ///|
 /// `TimeunitTransformField`
+#derive(Debug, Eq)
 pub(all) enum TimeunitTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransformField with fn deserialize(d) {
@@ -96160,10 +97607,11 @@ pub impl ToJson for TimeunitTransformField with fn to_json(self) {
 
 ///|
 /// `TimeunitTransformInterval`
+#derive(Debug, Eq)
 pub(all) enum TimeunitTransformInterval {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransformInterval with fn deserialize(d) {
@@ -96215,10 +97663,11 @@ pub impl ToJson for TimeunitTransformInterval with fn to_json(self) {
 
 ///|
 /// `TimeunitTransformMaxbins`
+#derive(Debug, Eq)
 pub(all) enum TimeunitTransformMaxbins {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransformMaxbins with fn deserialize(d) {
@@ -96270,10 +97719,11 @@ pub impl ToJson for TimeunitTransformMaxbins with fn to_json(self) {
 
 ///|
 /// `TimeunitTransformStep`
+#derive(Debug, Eq)
 pub(all) enum TimeunitTransformStep {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransformStep with fn deserialize(d) {
@@ -96325,10 +97775,11 @@ pub impl ToJson for TimeunitTransformStep with fn to_json(self) {
 
 ///|
 /// `TimeunitTransformTimezoneVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum TimeunitTransformTimezoneVariant0 {
   Local
   Utc
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransformTimezoneVariant0 with fn deserialize(d) {
@@ -96390,10 +97841,11 @@ pub impl ToJson for TimeunitTransformTimezoneVariant0 with fn to_json(self) {
 
 ///|
 /// `TimeunitTransformTimezone`
+#derive(Debug, Eq)
 pub(all) enum TimeunitTransformTimezone {
   Variant0(TimeunitTransformTimezoneVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransformTimezone with fn deserialize(d) {
@@ -96445,9 +97897,10 @@ pub impl ToJson for TimeunitTransformTimezone with fn to_json(self) {
 
 ///|
 /// `TimeunitTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum TimeunitTransformType {
   Timeunit
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransformType with fn deserialize(d) {
@@ -96504,6 +97957,7 @@ pub impl ToJson for TimeunitTransformType with fn to_json(self) {
 
 ///|
 /// `TimeunitTransformUnitsArrayItemVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum TimeunitTransformUnitsArrayItemVariant0 {
   Year
   Quarter
@@ -96516,7 +97970,7 @@ pub(all) enum TimeunitTransformUnitsArrayItemVariant0 {
   Minutes
   Seconds
   Milliseconds
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransformUnitsArrayItemVariant0 with fn deserialize(d) {
@@ -96623,10 +98077,11 @@ pub impl ToJson for TimeunitTransformUnitsArrayItemVariant0 with fn to_json(self
 
 ///|
 /// `TimeunitTransformUnitsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum TimeunitTransformUnitsArrayItem {
   Variant0(TimeunitTransformUnitsArrayItemVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransformUnitsArrayItem with fn deserialize(d) {
@@ -96670,10 +98125,11 @@ pub impl ToJson for TimeunitTransformUnitsArrayItem with fn to_json(self) {
 
 ///|
 /// `TimeunitTransformUnits`
+#derive(Debug, Eq)
 pub(all) enum TimeunitTransformUnits {
   Array(Array[TimeunitTransformUnitsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TimeunitTransformUnits with fn deserialize(d) {
@@ -96717,11 +98173,12 @@ pub impl ToJson for TimeunitTransformUnits with fn to_json(self) {
 
 ///|
 /// `TitleObjectAlignVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum TitleObjectAlignVariant0 {
   Left
   Right
   Center
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectAlignVariant0 with fn deserialize(d) {
@@ -96788,10 +98245,11 @@ pub impl ToJson for TitleObjectAlignVariant0 with fn to_json(self) {
 
 ///|
 /// `TitleObjectAlign`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectAlign {
   Variant0(TitleObjectAlignVariant0)
   Variant1(AlignValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectAlign with fn deserialize(d) {
@@ -96835,11 +98293,12 @@ pub impl ToJson for TitleObjectAlign with fn to_json(self) {
 
 ///|
 /// `TitleObjectAnchorVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum TitleObjectAnchorVariant0 {
   Start
   Middle
   End
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectAnchorVariant0 with fn deserialize(d) {
@@ -96906,10 +98365,11 @@ pub impl ToJson for TitleObjectAnchorVariant0 with fn to_json(self) {
 
 ///|
 /// `TitleObjectAnchor`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectAnchor {
   Variant0(TitleObjectAnchorVariant0?)
   Variant1(AnchorValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectAnchor with fn deserialize(d) {
@@ -96953,10 +98413,11 @@ pub impl ToJson for TitleObjectAnchor with fn to_json(self) {
 
 ///|
 /// `TitleObjectAngle`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectAngle {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectAngle with fn deserialize(d) {
@@ -97000,6 +98461,7 @@ pub impl ToJson for TitleObjectAngle with fn to_json(self) {
 
 ///|
 /// `TitleObjectBaselineVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum TitleObjectBaselineVariant0 {
   Top
   Middle
@@ -97007,7 +98469,7 @@ pub(all) enum TitleObjectBaselineVariant0 {
   Alphabetic
   LineTop
   LineBottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectBaselineVariant0 with fn deserialize(d) {
@@ -97089,10 +98551,11 @@ pub impl ToJson for TitleObjectBaselineVariant0 with fn to_json(self) {
 
 ///|
 /// `TitleObjectBaseline`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectBaseline {
   Variant0(TitleObjectBaselineVariant0)
   Variant1(BaselineValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectBaseline with fn deserialize(d) {
@@ -97136,11 +98599,12 @@ pub impl ToJson for TitleObjectBaseline with fn to_json(self) {
 
 ///|
 /// `TitleObjectColor`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectColor with fn deserialize(d) {
@@ -97193,10 +98657,11 @@ pub impl ToJson for TitleObjectColor with fn to_json(self) {
 
 ///|
 /// `TitleObjectDx`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectDx {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectDx with fn deserialize(d) {
@@ -97240,10 +98705,11 @@ pub impl ToJson for TitleObjectDx with fn to_json(self) {
 
 ///|
 /// `TitleObjectDy`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectDy {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectDy with fn deserialize(d) {
@@ -97287,7 +98753,8 @@ pub impl ToJson for TitleObjectDy with fn to_json(self) {
 
 ///|
 /// `TitleObjectEncodeSubtype0Key`
-pub(all) struct TitleObjectEncodeSubtype0Key(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct TitleObjectEncodeSubtype0Key(String)
 
 ///|
 let title_object_encode_subtype0_key_pattern : @typify_rt.Regex = @typify_rt.regex("^(?!interactive|name|style).+$")
@@ -97327,11 +98794,12 @@ pub impl ToJson for TitleObjectEncodeSubtype0Key with fn to_json(self) {
 
 ///|
 /// `TitleObjectEncodeSubtype1`
+#derive(Debug, Eq)
 pub(all) struct TitleObjectEncodeSubtype1 {
   group : GuideEncode?
   subtitle : GuideEncode?
   title : GuideEncode?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TitleObjectEncodeSubtype1` (fields with defaults are optional).
@@ -97390,10 +98858,11 @@ pub impl ToJson for TitleObjectEncodeSubtype1 with fn to_json(self) {
 
 ///|
 /// `TitleObjectEncode`
+#derive(Debug, Eq)
 pub(all) struct TitleObjectEncode {
   subtype_0 : Map[TitleObjectEncodeSubtype0Key, EncodeEntry]?
   subtype_1 : TitleObjectEncodeSubtype1?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TitleObjectEncode` (fields with defaults are optional).
@@ -97435,10 +98904,11 @@ pub impl ToJson for TitleObjectEncode with fn to_json(self) {
 
 ///|
 /// `TitleObjectFont`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectFont with fn deserialize(d) {
@@ -97482,10 +98952,11 @@ pub impl ToJson for TitleObjectFont with fn to_json(self) {
 
 ///|
 /// `TitleObjectFontSize`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectFontSize with fn deserialize(d) {
@@ -97529,10 +99000,11 @@ pub impl ToJson for TitleObjectFontSize with fn to_json(self) {
 
 ///|
 /// `TitleObjectFontStyle`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectFontStyle with fn deserialize(d) {
@@ -97576,10 +99048,11 @@ pub impl ToJson for TitleObjectFontStyle with fn to_json(self) {
 
 ///|
 /// `TitleObjectFontWeight`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectFontWeight with fn deserialize(d) {
@@ -97623,10 +99096,11 @@ pub impl ToJson for TitleObjectFontWeight with fn to_json(self) {
 
 ///|
 /// `TitleObjectFrameVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum TitleObjectFrameVariant0 {
   Group
   Bounds
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectFrameVariant0 with fn deserialize(d) {
@@ -97688,10 +99162,11 @@ pub impl ToJson for TitleObjectFrameVariant0 with fn to_json(self) {
 
 ///|
 /// `TitleObjectFrame`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectFrame {
   Variant0(TitleObjectFrameVariant0)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectFrame with fn deserialize(d) {
@@ -97735,10 +99210,11 @@ pub impl ToJson for TitleObjectFrame with fn to_json(self) {
 
 ///|
 /// `TitleObjectLimit`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectLimit {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectLimit with fn deserialize(d) {
@@ -97782,10 +99258,11 @@ pub impl ToJson for TitleObjectLimit with fn to_json(self) {
 
 ///|
 /// `TitleObjectLineHeight`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectLineHeight {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectLineHeight with fn deserialize(d) {
@@ -97829,10 +99306,11 @@ pub impl ToJson for TitleObjectLineHeight with fn to_json(self) {
 
 ///|
 /// `TitleObjectOffset`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectOffset {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectOffset with fn deserialize(d) {
@@ -97876,13 +99354,14 @@ pub impl ToJson for TitleObjectOffset with fn to_json(self) {
 
 ///|
 /// `TitleObjectOrientVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum TitleObjectOrientVariant0 {
   None_
   Left
   Right
   Top
   Bottom
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectOrientVariant0 with fn deserialize(d) {
@@ -97959,10 +99438,11 @@ pub impl ToJson for TitleObjectOrientVariant0 with fn to_json(self) {
 
 ///|
 /// `TitleObjectOrient`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectOrient {
   Variant0(TitleObjectOrientVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectOrient with fn deserialize(d) {
@@ -98006,11 +99486,12 @@ pub impl ToJson for TitleObjectOrient with fn to_json(self) {
 
 ///|
 /// `TitleObjectSubtitleColor`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectSubtitleColor {
   Null
   String(String)
   ColorValue(Json)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectSubtitleColor with fn deserialize(d) {
@@ -98063,10 +99544,11 @@ pub impl ToJson for TitleObjectSubtitleColor with fn to_json(self) {
 
 ///|
 /// `TitleObjectSubtitleFont`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectSubtitleFont {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectSubtitleFont with fn deserialize(d) {
@@ -98110,10 +99592,11 @@ pub impl ToJson for TitleObjectSubtitleFont with fn to_json(self) {
 
 ///|
 /// `TitleObjectSubtitleFontSize`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectSubtitleFontSize {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectSubtitleFontSize with fn deserialize(d) {
@@ -98157,10 +99640,11 @@ pub impl ToJson for TitleObjectSubtitleFontSize with fn to_json(self) {
 
 ///|
 /// `TitleObjectSubtitleFontStyle`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectSubtitleFontStyle {
   Variant0(String)
   Variant1(StringValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectSubtitleFontStyle with fn deserialize(d) {
@@ -98204,10 +99688,11 @@ pub impl ToJson for TitleObjectSubtitleFontStyle with fn to_json(self) {
 
 ///|
 /// `TitleObjectSubtitleFontWeight`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectSubtitleFontWeight {
   Variant0(Json)
   Variant1(FontWeightValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectSubtitleFontWeight with fn deserialize(d) {
@@ -98251,10 +99736,11 @@ pub impl ToJson for TitleObjectSubtitleFontWeight with fn to_json(self) {
 
 ///|
 /// `TitleObjectSubtitleLineHeight`
+#derive(Debug, Eq)
 pub(all) enum TitleObjectSubtitleLineHeight {
   Variant0(Double)
   Variant1(NumberValue)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TitleObjectSubtitleLineHeight with fn deserialize(d) {
@@ -98298,10 +99784,11 @@ pub impl ToJson for TitleObjectSubtitleLineHeight with fn to_json(self) {
 
 ///|
 /// `TreeTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum TreeTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreeTransformAsArrayItem with fn deserialize(d) {
@@ -98345,10 +99832,11 @@ pub impl ToJson for TreeTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `TreeTransformAs`
+#derive(Debug, Eq)
 pub(all) enum TreeTransformAs {
   Array(FixedArray[TreeTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreeTransformAs with fn deserialize(d) {
@@ -98400,11 +99888,12 @@ pub impl ToJson for TreeTransformAs with fn to_json(self) {
 
 ///|
 /// `TreeTransformField`
+#derive(Debug, Eq)
 pub(all) enum TreeTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreeTransformField with fn deserialize(d) {
@@ -98457,10 +99946,11 @@ pub impl ToJson for TreeTransformField with fn to_json(self) {
 
 ///|
 /// `TreeTransformMethodVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum TreeTransformMethodVariant0 {
   Tidy
   Cluster
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreeTransformMethodVariant0 with fn deserialize(d) {
@@ -98522,10 +100012,11 @@ pub impl ToJson for TreeTransformMethodVariant0 with fn to_json(self) {
 
 ///|
 /// `TreeTransformMethod`
+#derive(Debug, Eq)
 pub(all) enum TreeTransformMethod {
   Variant0(TreeTransformMethodVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreeTransformMethod with fn deserialize(d) {
@@ -98577,10 +100068,11 @@ pub impl ToJson for TreeTransformMethod with fn to_json(self) {
 
 ///|
 /// `TreeTransformNodeSizeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum TreeTransformNodeSizeArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreeTransformNodeSizeArrayItem with fn deserialize(d) {
@@ -98624,10 +100116,11 @@ pub impl ToJson for TreeTransformNodeSizeArrayItem with fn to_json(self) {
 
 ///|
 /// `TreeTransformNodeSize`
+#derive(Debug, Eq)
 pub(all) enum TreeTransformNodeSize {
   Array(FixedArray[TreeTransformNodeSizeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreeTransformNodeSize with fn deserialize(d) {
@@ -98671,10 +100164,11 @@ pub impl ToJson for TreeTransformNodeSize with fn to_json(self) {
 
 ///|
 /// `TreeTransformSeparation`
+#derive(Debug, Eq)
 pub(all) enum TreeTransformSeparation {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreeTransformSeparation with fn deserialize(d) {
@@ -98726,10 +100220,11 @@ pub impl ToJson for TreeTransformSeparation with fn to_json(self) {
 
 ///|
 /// `TreeTransformSizeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum TreeTransformSizeArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreeTransformSizeArrayItem with fn deserialize(d) {
@@ -98773,10 +100268,11 @@ pub impl ToJson for TreeTransformSizeArrayItem with fn to_json(self) {
 
 ///|
 /// `TreeTransformSize`
+#derive(Debug, Eq)
 pub(all) enum TreeTransformSize {
   Array(FixedArray[TreeTransformSizeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreeTransformSize with fn deserialize(d) {
@@ -98820,9 +100316,10 @@ pub impl ToJson for TreeTransformSize with fn to_json(self) {
 
 ///|
 /// `TreeTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum TreeTransformType {
   Tree
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreeTransformType with fn deserialize(d) {
@@ -98879,9 +100376,10 @@ pub impl ToJson for TreeTransformType with fn to_json(self) {
 
 ///|
 /// `TreelinksTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum TreelinksTransformType {
   Treelinks
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreelinksTransformType with fn deserialize(d) {
@@ -98938,10 +100436,11 @@ pub impl ToJson for TreelinksTransformType with fn to_json(self) {
 
 ///|
 /// `TreemapTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformAsArrayItem with fn deserialize(d) {
@@ -98985,10 +100484,11 @@ pub impl ToJson for TreemapTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `TreemapTransformAs`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformAs {
   Array(FixedArray[TreemapTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformAs with fn deserialize(d) {
@@ -99040,11 +100540,12 @@ pub impl ToJson for TreemapTransformAs with fn to_json(self) {
 
 ///|
 /// `TreemapTransformField`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformField {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformField with fn deserialize(d) {
@@ -99097,6 +100598,7 @@ pub impl ToJson for TreemapTransformField with fn to_json(self) {
 
 ///|
 /// `TreemapTransformMethodVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum TreemapTransformMethodVariant0 {
   Squarify
   Resquarify
@@ -99104,7 +100606,7 @@ pub(all) enum TreemapTransformMethodVariant0 {
   Dice
   Slice
   Slicedice
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformMethodVariant0 with fn deserialize(d) {
@@ -99186,10 +100688,11 @@ pub impl ToJson for TreemapTransformMethodVariant0 with fn to_json(self) {
 
 ///|
 /// `TreemapTransformMethod`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformMethod {
   Variant0(TreemapTransformMethodVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformMethod with fn deserialize(d) {
@@ -99241,10 +100744,11 @@ pub impl ToJson for TreemapTransformMethod with fn to_json(self) {
 
 ///|
 /// `TreemapTransformPadding`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformPadding {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformPadding with fn deserialize(d) {
@@ -99288,10 +100792,11 @@ pub impl ToJson for TreemapTransformPadding with fn to_json(self) {
 
 ///|
 /// `TreemapTransformPaddingBottom`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformPaddingBottom {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformPaddingBottom with fn deserialize(d) {
@@ -99335,10 +100840,11 @@ pub impl ToJson for TreemapTransformPaddingBottom with fn to_json(self) {
 
 ///|
 /// `TreemapTransformPaddingInner`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformPaddingInner {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformPaddingInner with fn deserialize(d) {
@@ -99382,10 +100888,11 @@ pub impl ToJson for TreemapTransformPaddingInner with fn to_json(self) {
 
 ///|
 /// `TreemapTransformPaddingLeft`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformPaddingLeft {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformPaddingLeft with fn deserialize(d) {
@@ -99429,10 +100936,11 @@ pub impl ToJson for TreemapTransformPaddingLeft with fn to_json(self) {
 
 ///|
 /// `TreemapTransformPaddingOuter`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformPaddingOuter {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformPaddingOuter with fn deserialize(d) {
@@ -99476,10 +100984,11 @@ pub impl ToJson for TreemapTransformPaddingOuter with fn to_json(self) {
 
 ///|
 /// `TreemapTransformPaddingRight`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformPaddingRight {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformPaddingRight with fn deserialize(d) {
@@ -99523,10 +101032,11 @@ pub impl ToJson for TreemapTransformPaddingRight with fn to_json(self) {
 
 ///|
 /// `TreemapTransformPaddingTop`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformPaddingTop {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformPaddingTop with fn deserialize(d) {
@@ -99570,10 +101080,11 @@ pub impl ToJson for TreemapTransformPaddingTop with fn to_json(self) {
 
 ///|
 /// `TreemapTransformRatio`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformRatio {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformRatio with fn deserialize(d) {
@@ -99625,10 +101136,11 @@ pub impl ToJson for TreemapTransformRatio with fn to_json(self) {
 
 ///|
 /// `TreemapTransformRound`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformRound {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformRound with fn deserialize(d) {
@@ -99672,10 +101184,11 @@ pub impl ToJson for TreemapTransformRound with fn to_json(self) {
 
 ///|
 /// `TreemapTransformSizeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformSizeArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformSizeArrayItem with fn deserialize(d) {
@@ -99719,10 +101232,11 @@ pub impl ToJson for TreemapTransformSizeArrayItem with fn to_json(self) {
 
 ///|
 /// `TreemapTransformSize`
+#derive(Debug, Eq)
 pub(all) enum TreemapTransformSize {
   Array(FixedArray[TreemapTransformSizeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformSize with fn deserialize(d) {
@@ -99766,9 +101280,10 @@ pub impl ToJson for TreemapTransformSize with fn to_json(self) {
 
 ///|
 /// `TreemapTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum TreemapTransformType {
   Treemap
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TreemapTransformType with fn deserialize(d) {
@@ -99825,10 +101340,11 @@ pub impl ToJson for TreemapTransformType with fn to_json(self) {
 
 ///|
 /// `VoronoiTransformAs`
+#derive(Debug, Eq)
 pub(all) enum VoronoiTransformAs {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for VoronoiTransformAs with fn deserialize(d) {
@@ -99880,10 +101396,11 @@ pub impl ToJson for VoronoiTransformAs with fn to_json(self) {
 
 ///|
 /// `VoronoiTransformExtent`
+#derive(Debug, Eq)
 pub(all) enum VoronoiTransformExtent {
   Array(FixedArray[Json])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for VoronoiTransformExtent with fn deserialize(d) {
@@ -99935,10 +101452,11 @@ pub impl ToJson for VoronoiTransformExtent with fn to_json(self) {
 
 ///|
 /// `VoronoiTransformSizeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum VoronoiTransformSizeArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for VoronoiTransformSizeArrayItem with fn deserialize(d) {
@@ -99982,10 +101500,11 @@ pub impl ToJson for VoronoiTransformSizeArrayItem with fn to_json(self) {
 
 ///|
 /// `VoronoiTransformSize`
+#derive(Debug, Eq)
 pub(all) enum VoronoiTransformSize {
   Array(FixedArray[VoronoiTransformSizeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for VoronoiTransformSize with fn deserialize(d) {
@@ -100029,9 +101548,10 @@ pub impl ToJson for VoronoiTransformSize with fn to_json(self) {
 
 ///|
 /// `VoronoiTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum VoronoiTransformType {
   Voronoi
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for VoronoiTransformType with fn deserialize(d) {
@@ -100088,11 +101608,12 @@ pub impl ToJson for VoronoiTransformType with fn to_json(self) {
 
 ///|
 /// `VoronoiTransformX`
+#derive(Debug, Eq)
 pub(all) enum VoronoiTransformX {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for VoronoiTransformX with fn deserialize(d) {
@@ -100145,11 +101666,12 @@ pub impl ToJson for VoronoiTransformX with fn to_json(self) {
 
 ///|
 /// `VoronoiTransformY`
+#derive(Debug, Eq)
 pub(all) enum VoronoiTransformY {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for VoronoiTransformY with fn deserialize(d) {
@@ -100202,11 +101724,12 @@ pub impl ToJson for VoronoiTransformY with fn to_json(self) {
 
 ///|
 /// `WindowTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum WindowTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformAsArrayItem with fn deserialize(d) {
@@ -100259,10 +101782,11 @@ pub impl ToJson for WindowTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `WindowTransformAs`
+#derive(Debug, Eq)
 pub(all) enum WindowTransformAs {
   Array(Array[WindowTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformAs with fn deserialize(d) {
@@ -100306,12 +101830,13 @@ pub impl ToJson for WindowTransformAs with fn to_json(self) {
 
 ///|
 /// `WindowTransformFieldsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum WindowTransformFieldsArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformFieldsArrayItem with fn deserialize(d) {
@@ -100373,10 +101898,11 @@ pub impl ToJson for WindowTransformFieldsArrayItem with fn to_json(self) {
 
 ///|
 /// `WindowTransformFields`
+#derive(Debug, Eq)
 pub(all) enum WindowTransformFields {
   Array(Array[WindowTransformFieldsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformFields with fn deserialize(d) {
@@ -100420,11 +101946,12 @@ pub impl ToJson for WindowTransformFields with fn to_json(self) {
 
 ///|
 /// `WindowTransformFrameArrayItem`
+#derive(Debug, Eq)
 pub(all) enum WindowTransformFrameArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformFrameArrayItem with fn deserialize(d) {
@@ -100477,10 +102004,11 @@ pub impl ToJson for WindowTransformFrameArrayItem with fn to_json(self) {
 
 ///|
 /// `WindowTransformFrame`
+#derive(Debug, Eq)
 pub(all) enum WindowTransformFrame {
   Array(FixedArray[WindowTransformFrameArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformFrame with fn deserialize(d) {
@@ -100532,11 +102060,12 @@ pub impl ToJson for WindowTransformFrame with fn to_json(self) {
 
 ///|
 /// `WindowTransformGroupbyArrayItem`
+#derive(Debug, Eq)
 pub(all) enum WindowTransformGroupbyArrayItem {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformGroupbyArrayItem with fn deserialize(d) {
@@ -100589,10 +102118,11 @@ pub impl ToJson for WindowTransformGroupbyArrayItem with fn to_json(self) {
 
 ///|
 /// `WindowTransformGroupby`
+#derive(Debug, Eq)
 pub(all) enum WindowTransformGroupby {
   Array(Array[WindowTransformGroupbyArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformGroupby with fn deserialize(d) {
@@ -100636,10 +102166,11 @@ pub impl ToJson for WindowTransformGroupby with fn to_json(self) {
 
 ///|
 /// `WindowTransformIgnorePeers`
+#derive(Debug, Eq)
 pub(all) enum WindowTransformIgnorePeers {
   Boolean(Bool)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformIgnorePeers with fn deserialize(d) {
@@ -100683,6 +102214,7 @@ pub impl ToJson for WindowTransformIgnorePeers with fn to_json(self) {
 
 ///|
 /// `WindowTransformOpsArrayItemVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum WindowTransformOpsArrayItemVariant0 {
   RowXnumber
   Rank
@@ -100721,7 +102253,7 @@ pub(all) enum WindowTransformOpsArrayItemVariant0 {
   Max
   Argmin
   Argmax
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformOpsArrayItemVariant0 with fn deserialize(d) {
@@ -100958,10 +102490,11 @@ pub impl ToJson for WindowTransformOpsArrayItemVariant0 with fn to_json(self) {
 
 ///|
 /// `WindowTransformOpsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum WindowTransformOpsArrayItem {
   Variant0(WindowTransformOpsArrayItemVariant0)
   Variant1(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformOpsArrayItem with fn deserialize(d) {
@@ -101005,10 +102538,11 @@ pub impl ToJson for WindowTransformOpsArrayItem with fn to_json(self) {
 
 ///|
 /// `WindowTransformOps`
+#derive(Debug, Eq)
 pub(all) enum WindowTransformOps {
   Array(Array[WindowTransformOpsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformOps with fn deserialize(d) {
@@ -101052,11 +102586,12 @@ pub impl ToJson for WindowTransformOps with fn to_json(self) {
 
 ///|
 /// `WindowTransformParamsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum WindowTransformParamsArrayItem {
   Number(Double)
   SignalRef(SignalRef)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformParamsArrayItem with fn deserialize(d) {
@@ -101109,10 +102644,11 @@ pub impl ToJson for WindowTransformParamsArrayItem with fn to_json(self) {
 
 ///|
 /// `WindowTransformParams`
+#derive(Debug, Eq)
 pub(all) enum WindowTransformParams {
   Array(Array[WindowTransformParamsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformParams with fn deserialize(d) {
@@ -101156,9 +102692,10 @@ pub impl ToJson for WindowTransformParams with fn to_json(self) {
 
 ///|
 /// `WindowTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum WindowTransformType {
   Window
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WindowTransformType with fn deserialize(d) {
@@ -101215,10 +102752,11 @@ pub impl ToJson for WindowTransformType with fn to_json(self) {
 
 ///|
 /// `WordcloudTransformAsArrayItem`
+#derive(Debug, Eq)
 pub(all) enum WordcloudTransformAsArrayItem {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformAsArrayItem with fn deserialize(d) {
@@ -101262,10 +102800,11 @@ pub impl ToJson for WordcloudTransformAsArrayItem with fn to_json(self) {
 
 ///|
 /// `WordcloudTransformAs`
+#derive(Debug, Eq)
 pub(all) enum WordcloudTransformAs {
   Array(FixedArray[WordcloudTransformAsArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformAs with fn deserialize(d) {
@@ -101317,12 +102856,13 @@ pub impl ToJson for WordcloudTransformAs with fn to_json(self) {
 
 ///|
 /// `WordcloudTransformFont`
+#derive(Debug, Eq)
 pub(all) enum WordcloudTransformFont {
   String(String)
   SignalRef(SignalRef)
   Expr(Expr)
   ParamField(ParamField)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformFont with fn deserialize(d) {
@@ -101392,12 +102932,13 @@ pub impl ToJson for WordcloudTransformFont with fn to_json(self) {
 
 ///|
 /// `WordcloudTransformFontSize`
+#derive(Debug, Eq)
 pub(all) enum WordcloudTransformFontSize {
   Number(Double)
   SignalRef(SignalRef)
   Expr(Expr)
   ParamField(ParamField)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformFontSize with fn deserialize(d) {
@@ -101467,10 +103008,11 @@ pub impl ToJson for WordcloudTransformFontSize with fn to_json(self) {
 
 ///|
 /// `WordcloudTransformFontSizeRangeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum WordcloudTransformFontSizeRangeArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformFontSizeRangeArrayItem with fn deserialize(d) {
@@ -101514,11 +103056,12 @@ pub impl ToJson for WordcloudTransformFontSizeRangeArrayItem with fn to_json(sel
 
 ///|
 /// `WordcloudTransformFontSizeRange`
+#derive(Debug, Eq)
 pub(all) enum WordcloudTransformFontSizeRange {
   Array(Array[WordcloudTransformFontSizeRangeArrayItem])
   SignalRef(SignalRef)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformFontSizeRange with fn deserialize(d) {
@@ -101579,12 +103122,13 @@ pub impl ToJson for WordcloudTransformFontSizeRange with fn to_json(self) {
 
 ///|
 /// `WordcloudTransformFontStyle`
+#derive(Debug, Eq)
 pub(all) enum WordcloudTransformFontStyle {
   String(String)
   SignalRef(SignalRef)
   Expr(Expr)
   ParamField(ParamField)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformFontStyle with fn deserialize(d) {
@@ -101654,12 +103198,13 @@ pub impl ToJson for WordcloudTransformFontStyle with fn to_json(self) {
 
 ///|
 /// `WordcloudTransformFontWeight`
+#derive(Debug, Eq)
 pub(all) enum WordcloudTransformFontWeight {
   String(String)
   SignalRef(SignalRef)
   Expr(Expr)
   ParamField(ParamField)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformFontWeight with fn deserialize(d) {
@@ -101729,12 +103274,13 @@ pub impl ToJson for WordcloudTransformFontWeight with fn to_json(self) {
 
 ///|
 /// `WordcloudTransformPadding`
+#derive(Debug, Eq)
 pub(all) enum WordcloudTransformPadding {
   Number(Double)
   SignalRef(SignalRef)
   Expr(Expr)
   ParamField(ParamField)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformPadding with fn deserialize(d) {
@@ -101796,12 +103342,13 @@ pub impl ToJson for WordcloudTransformPadding with fn to_json(self) {
 
 ///|
 /// `WordcloudTransformRotate`
+#derive(Debug, Eq)
 pub(all) enum WordcloudTransformRotate {
   Number(Double)
   SignalRef(SignalRef)
   Expr(Expr)
   ParamField(ParamField)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformRotate with fn deserialize(d) {
@@ -101863,10 +103410,11 @@ pub impl ToJson for WordcloudTransformRotate with fn to_json(self) {
 
 ///|
 /// `WordcloudTransformSizeArrayItem`
+#derive(Debug, Eq)
 pub(all) enum WordcloudTransformSizeArrayItem {
   Number(Double)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformSizeArrayItem with fn deserialize(d) {
@@ -101910,10 +103458,11 @@ pub impl ToJson for WordcloudTransformSizeArrayItem with fn to_json(self) {
 
 ///|
 /// `WordcloudTransformSize`
+#derive(Debug, Eq)
 pub(all) enum WordcloudTransformSize {
   Array(FixedArray[WordcloudTransformSizeArrayItem])
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformSize with fn deserialize(d) {
@@ -101957,10 +103506,11 @@ pub impl ToJson for WordcloudTransformSize with fn to_json(self) {
 
 ///|
 /// `WordcloudTransformSpiral`
+#derive(Debug, Eq)
 pub(all) enum WordcloudTransformSpiral {
   String(String)
   SignalRef(SignalRef)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformSpiral with fn deserialize(d) {
@@ -102004,11 +103554,12 @@ pub impl ToJson for WordcloudTransformSpiral with fn to_json(self) {
 
 ///|
 /// `WordcloudTransformText`
+#derive(Debug, Eq)
 pub(all) enum WordcloudTransformText {
   ScaleField(ScaleField)
   ParamField(ParamField)
   Expr(Expr)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformText with fn deserialize(d) {
@@ -102061,9 +103612,10 @@ pub impl ToJson for WordcloudTransformText with fn to_json(self) {
 
 ///|
 /// `WordcloudTransformType`
+#derive(Debug, Eq, Hash)
 pub(all) enum WordcloudTransformType {
   Wordcloud
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WordcloudTransformType with fn deserialize(d) {
@@ -102120,10 +103672,11 @@ pub impl ToJson for WordcloudTransformType with fn to_json(self) {
 
 ///|
 /// `EverythingMarksItem`
+#derive(Debug, Eq)
 pub(all) enum EverythingMarksItem {
   Group(MarkGroup)
   Visual(MarkVisual)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for EverythingMarksItem with fn deserialize(d) {

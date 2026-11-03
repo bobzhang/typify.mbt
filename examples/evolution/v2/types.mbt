@@ -7,10 +7,11 @@
 
 ///|
 /// `AddOptional`
+#derive(Debug, Eq)
 pub(all) struct AddOptional {
   a : String
   b : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `AddOptional` (fields with defaults are optional).
@@ -60,10 +61,11 @@ pub impl ToJson for AddOptional with fn to_json(self) {
 
 ///|
 /// `AddOptionalClosed`
+#derive(Debug, Eq)
 pub(all) struct AddOptionalClosed {
   a : String
   b : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `AddOptionalClosed` (fields with defaults are optional).
@@ -113,10 +115,11 @@ pub impl ToJson for AddOptionalClosed with fn to_json(self) {
 
 ///|
 /// `AddOptionalDefault`
+#derive(Debug, Eq)
 pub(all) struct AddOptionalDefault {
   a : String
   b : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `AddOptionalDefault` (fields with defaults are optional).
@@ -169,10 +172,11 @@ pub impl ToJson for AddOptionalDefault with fn to_json(self) {
 
 ///|
 /// `AddRequired`
+#derive(Debug, Eq)
 pub(all) struct AddRequired {
   a : String
   b : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `AddRequired` (fields with defaults are optional).
@@ -220,10 +224,11 @@ pub impl ToJson for AddRequired with fn to_json(self) {
 
 ///|
 /// `AddRequiredDefault`
+#derive(Debug, Eq)
 pub(all) struct AddRequiredDefault {
   a : String
   b : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `AddRequiredDefault` (fields with defaults are optional).
@@ -271,10 +276,11 @@ pub impl ToJson for AddRequiredDefault with fn to_json(self) {
 
 ///|
 /// `ChangeDefault`
+#derive(Debug, Eq)
 pub(all) struct ChangeDefault {
   a : String
   b : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ChangeDefault` (fields with defaults are optional).
@@ -327,11 +333,12 @@ pub impl ToJson for ChangeDefault with fn to_json(self) {
 
 ///|
 /// `ClosedEnum`
+#derive(Debug, Eq, Hash)
 pub(all) enum ClosedEnum {
   Pending
   Shipped
   Cancelled
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ClosedEnum with fn deserialize(d) {
@@ -398,9 +405,10 @@ pub impl ToJson for ClosedEnum with fn to_json(self) {
 
 ///|
 /// `FixedLength`
+#derive(Debug, Eq)
 pub(all) struct FixedLength {
   xs : FixedArray[Int64]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `FixedLength` (fields with defaults are optional).
@@ -443,10 +451,11 @@ pub impl ToJson for FixedLength with fn to_json(self) {
 
 ///|
 /// `OpenEnum`
+#derive(Debug, Eq)
 pub(all) enum OpenEnum {
   Variant0(OpenEnumVariant0)
   Variant1(OpenEnumVariant1)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for OpenEnum with fn deserialize(d) {
@@ -490,10 +499,11 @@ pub impl ToJson for OpenEnum with fn to_json(self) {
 
 ///|
 /// `OptionalToRequiredNullable`
+#derive(Debug, Eq)
 pub(all) struct OptionalToRequiredNullable {
   a : String
   b : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `OptionalToRequiredNullable` (fields with defaults are optional).
@@ -541,11 +551,12 @@ pub impl ToJson for OptionalToRequiredNullable with fn to_json(self) {
 
 ///|
 /// `Preserve`
+#derive(Debug, Eq)
 pub(all) struct Preserve {
   a : String
   b : String?
   extra : Map[String, Json]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Preserve` (fields with defaults are optional).
@@ -598,9 +609,10 @@ pub impl ToJson for Preserve with fn to_json(self) {
 
 ///|
 /// `RemoveOptional`
+#derive(Debug, Eq)
 pub(all) struct RemoveOptional {
   a : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RemoveOptional` (fields with defaults are optional).
@@ -643,9 +655,10 @@ pub impl ToJson for RemoveOptional with fn to_json(self) {
 
 ///|
 /// `RemoveRequired`
+#derive(Debug, Eq)
 pub(all) struct RemoveRequired {
   a : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RemoveRequired` (fields with defaults are optional).
@@ -688,9 +701,10 @@ pub impl ToJson for RemoveRequired with fn to_json(self) {
 
 ///|
 /// `Rename`
+#derive(Debug, Eq)
 pub(all) struct Rename {
   full_name : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Rename` (fields with defaults are optional).
@@ -733,9 +747,10 @@ pub impl ToJson for Rename with fn to_json(self) {
 
 ///|
 /// `RenameOptional`
+#derive(Debug, Eq)
 pub(all) struct RenameOptional {
   full_name : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RenameOptional` (fields with defaults are optional).
@@ -780,10 +795,11 @@ pub impl ToJson for RenameOptional with fn to_json(self) {
 
 ///|
 /// `RequiredToDefault`
+#derive(Debug, Eq)
 pub(all) struct RequiredToDefault {
   a : String
   b : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RequiredToDefault` (fields with defaults are optional).
@@ -831,10 +847,11 @@ pub impl ToJson for RequiredToDefault with fn to_json(self) {
 
 ///|
 /// `RequiredToOptional`
+#derive(Debug, Eq)
 pub(all) struct RequiredToOptional {
   a : String
   b : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RequiredToOptional` (fields with defaults are optional).
@@ -884,9 +901,10 @@ pub impl ToJson for RequiredToOptional with fn to_json(self) {
 
 ///|
 /// `Tighten`
+#derive(Debug, Eq)
 pub(all) struct Tighten {
   code : TightenCode
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Tighten` (fields with defaults are optional).
@@ -929,9 +947,10 @@ pub impl ToJson for Tighten with fn to_json(self) {
 
 ///|
 /// `TightenBound`
+#derive(Debug, Eq)
 pub(all) struct TightenBound {
   n : UInt64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TightenBound` (fields with defaults are optional).
@@ -974,9 +993,10 @@ pub impl ToJson for TightenBound with fn to_json(self) {
 
 ///|
 /// `Widen`
+#derive(Debug, Eq)
 pub(all) struct Widen {
   n : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Widen` (fields with defaults are optional).
@@ -1019,7 +1039,8 @@ pub impl ToJson for Widen with fn to_json(self) {
 
 ///|
 /// `Unused`
-pub(all) struct Unused(Map[String, Json]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct Unused(Map[String, Json])
 
 ///|
 pub impl @typify_rt.Serde for Unused with fn deserialize(d) {
@@ -1043,11 +1064,12 @@ pub impl ToJson for Unused with fn to_json(self) {
 
 ///|
 /// `OpenEnumVariant0`
+#derive(Debug, Eq, Hash)
 pub(all) enum OpenEnumVariant0 {
   Pending
   Shipped
   Cancelled
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for OpenEnumVariant0 with fn deserialize(d) {
@@ -1114,7 +1136,8 @@ pub impl ToJson for OpenEnumVariant0 with fn to_json(self) {
 
 ///|
 /// `OpenEnumVariant1`
-pub(all) struct OpenEnumVariant1(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct OpenEnumVariant1(String)
 
 ///|
 let open_enum_variant1_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
@@ -1159,7 +1182,8 @@ pub impl ToJson for OpenEnumVariant1 with fn to_json(self) {
 
 ///|
 /// `TightenCode`
-pub(all) struct TightenCode(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct TightenCode(String)
 
 ///|
 /// Validate and wrap a value (upstream `TryFrom`).

@@ -7,7 +7,8 @@
 
 ///|
 /// `ArrayBs`
-pub(all) struct ArrayBs(Array[Bool]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct ArrayBs(Array[Bool])
 
 ///|
 pub impl @typify_rt.Serde for ArrayBs with fn deserialize(d) {
@@ -31,7 +32,8 @@ pub impl ToJson for ArrayBs with fn to_json(self) {
 
 ///|
 /// `IntegerBs`
-pub(all) struct IntegerBs(UInt64) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct IntegerBs(UInt64)
 
 ///|
 pub impl @typify_rt.Serde for IntegerBs with fn deserialize(d) {
@@ -55,9 +57,10 @@ pub impl ToJson for IntegerBs with fn to_json(self) {
 
 ///|
 /// `ObjectBs`
+#derive(Debug, Eq)
 pub(all) struct ObjectBs {
   ok : Bool?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ObjectBs` (fields with defaults are optional).

@@ -7,10 +7,11 @@
 
 ///|
 /// `Node`
+#derive(Debug, Eq)
 pub(all) struct Node {
   children : Array[Node]
   value : Int64?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Node` (fields with defaults are optional).
