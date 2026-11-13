@@ -3,9 +3,10 @@
 
 ///|
 /// A UUID, serialized as lowercase hyphenated text.
+#derive(Eq, Compare, Hash)
 pub struct Uuid {
   priv bytes : FixedArray[Byte]
-} derive(Eq, Compare, Hash)
+}
 
 ///|
 pub impl Debug for Uuid with fn to_repr(self) {

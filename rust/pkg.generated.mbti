@@ -47,12 +47,13 @@ pub fn type_parameter_ident(@typify.TypeSpace, @typify.TypeEntry, lifetime? : St
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
 pub(all) enum Delim {
   Paren
   Brace
   Bracket
   NoDelim
-} derive(Eq, @debug.Debug)
+}
 
 pub struct OutputSpace {
   // private fields
@@ -62,23 +63,26 @@ pub fn OutputSpace::contains(Self, String) -> Bool
 pub fn OutputSpace::into_stream(Self) -> Tokens
 pub fn OutputSpace::new() -> Self
 
+#derive(Eq, @debug.Debug)
 pub(all) enum OutputSpaceMod {
   Crate
   Builder
   Defaults
   Error
-} derive(Eq, @debug.Debug)
+}
 
+#derive(Eq, @debug.Debug)
 pub(all) enum Token {
   Ident(String)
   Punct(Char, joint~ : Bool)
   Literal(String)
   Group(Delim, Tokens)
-} derive(Eq, @debug.Debug)
+}
 
+#derive(Eq, @debug.Debug)
 pub struct Tokens {
   // private fields
-} derive(Eq, @debug.Debug)
+}
 pub fn Tokens::append(Self, Self) -> Unit
 pub fn Tokens::from_array(Array[Token]) -> Self
 pub fn Tokens::is_empty(Self) -> Bool

@@ -12,11 +12,12 @@
 // - `Missing`: `MissingFieldDeserializer` for an absent field.
 
 ///|
+#derive(Eq, Debug)
 pub(all) enum Mode {
   Direct
   Owned
   Borrowed
-} derive(Eq, Debug)
+}
 
 ///|
 /// Leftover entries of a struct with flattened fields.
@@ -41,9 +42,10 @@ pub(all) enum De {
 
 ///|
 /// A deserialization error with serde's message.
+#derive(Debug, Eq)
 pub(all) suberror DeError {
   DeError(String)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl Show for DeError with fn output(self, logger) {

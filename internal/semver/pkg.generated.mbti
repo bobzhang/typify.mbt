@@ -8,17 +8,19 @@ import {
 // Values
 
 // Errors
+#derive(@debug.Debug)
 pub suberror SemverError {
   SemverError(String)
-} derive(@debug.Debug)
+}
 
 // Types and methods
+#derive(Eq, @debug.Debug)
 pub struct Version {
   major : UInt64
   minor : UInt64
   patch : UInt64
   pre : String
-} derive(Eq, @debug.Debug)
+}
 pub fn Version::parse(String) -> Self raise SemverError
 
 pub struct VersionReq {

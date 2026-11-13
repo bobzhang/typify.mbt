@@ -2,13 +2,15 @@
 // it can be tested.
 
 ///|
+#derive(Eq, Debug)
 pub(all) enum Lang {
   Rust
   MoonBit
-} derive(Eq, Debug)
+}
 
 ///|
 /// Parsed command-line arguments.
+#derive(Debug)
 pub(all) struct CliArgs {
   input : String
   lang : Lang
@@ -24,20 +26,22 @@ pub(all) struct CliArgs {
   preserve_order : Bool
   /// A MoonBit backend config file (`--moonbit-config`).
   moonbit_config : String?
-} derive(Debug)
+}
 
 ///|
 /// What the CLI should do.
+#derive(Debug)
 pub(all) enum Command {
   Run(CliArgs)
   Help
   Version
-} derive(Debug)
+}
 
 ///|
+#derive(Debug)
 pub(all) suberror CliError {
   CliError(String)
-} derive(Debug)
+}
 
 ///|
 pub impl Show for CliError with fn output(self, logger) {

@@ -12,9 +12,10 @@
 ///|
 /// A schema decoding error with serde's message and a JSON pointer to the
 /// offending value.
+#derive(Debug, Eq)
 pub(all) suberror SchemaError {
   SchemaError(message~ : String, path~ : String)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl Show for SchemaError with fn output(self, logger) {

@@ -1,9 +1,10 @@
 ///|
 /// A JSON syntax or range error, mirroring serde_json's error codes and
 /// positions (1-based line, column in UTF-8 bytes).
+#derive(Debug, Eq)
 pub(all) suberror ParseError {
   ParseError(message~ : String, line~ : Int32, column~ : Int32)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl Show for ParseError with fn output(self, logger) {

@@ -2,18 +2,20 @@
 // `Version::parse`, `VersionReq::parse` and `VersionReq::matches`.
 
 ///|
+#derive(Debug)
 pub suberror SemverError {
   SemverError(String)
-} derive(Debug)
+}
 
 ///|
+#derive(Debug, Eq)
 pub struct Version {
   major : UInt64
   minor : UInt64
   patch : UInt64
   /// Dot-separated pre-release identifiers ("" when absent).
   pre : String
-} derive(Debug, Eq)
+}
 
 ///|
 priv enum Op {

@@ -5,13 +5,14 @@
 /// `todo!`, `unimplemented!`, failed `unwrap`s). It is kept distinct so that
 /// code which deliberately ignores ordinary errors (upstream's `.ok()`) does
 /// not swallow what upstream would treat as a crash.
+#derive(Debug)
 pub(all) suberror TypifyError {
   BadValue(String, @serde_json.Value)
   InvalidTypeId
   InvalidValue
   InvalidSchema(type_name~ : String?, reason~ : String)
   Panic(String)
-} derive(Debug)
+}
 
 ///|
 pub impl Show for TypifyError with fn output(self, logger) {

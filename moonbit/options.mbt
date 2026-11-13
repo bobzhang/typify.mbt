@@ -6,6 +6,7 @@
 
 ///|
 /// The visibility of a generated type.
+#derive(Eq, Debug)
 pub(all) enum Visibility {
   /// `pub(all)`: fields and constructors usable everywhere (the default).
   Public
@@ -15,10 +16,11 @@ pub(all) enum Visibility {
   Abstract
   /// `priv`: invisible outside its package.
   Private
-} derive(Eq, Debug)
+}
 
 ///|
 /// How generated code decodes and encodes a replacement type.
+#derive(Eq, Debug)
 pub(all) enum Codec {
   /// The type implements `@typify_rt.Serde` (exact serde semantics).
   Serde
@@ -28,10 +30,11 @@ pub(all) enum Codec {
   /// Named functions `(@typify_rt.De) -> T raise @typify_rt.DeError` and
   /// `(T) -> @typify_rt.Content raise @typify_rt.SerError`.
   Functions(decode~ : String, encode~ : String)
-} derive(Eq, Debug)
+}
 
 ///|
 /// Options for one generated type.
+#derive(Debug)
 pub(all) struct TypeOptions {
   /// The MoonBit name instead of the generated one.
   mut name : String?
@@ -43,7 +46,7 @@ pub(all) struct TypeOptions {
   /// Use an existing MoonBit type (e.g. `@protocol.Content`) instead of
   /// generating one; the schema still describes its JSON form.
   mut replace : (String, Codec)?
-} derive(Debug)
+}
 
 ///|
 pub fn TypeOptions::new() -> TypeOptions {
@@ -58,6 +61,7 @@ pub fn TypeOptions::new() -> TypeOptions {
 
 ///|
 /// Options for the MoonBit backend.
+#derive(Debug)
 pub(all) struct Options {
   /// Per-type options, by typify type name.
   types : Map[String, TypeOptions]
@@ -78,7 +82,7 @@ pub(all) struct Options {
   /// Warning-free output under strict warning settings
   /// (`+implicit_impl_as_method`, `+unnecessary_annotation`).
   mut strict_warnings : Bool
-} derive(Debug)
+}
 
 ///|
 pub fn Options::default() -> Options {
@@ -109,9 +113,10 @@ pub fn Options::for_type(self : Options, type_name : String) -> TypeOptions {
 
 ///|
 /// An error in a MoonBit config file.
+#derive(Debug)
 pub(all) suberror OptionsError {
   OptionsError(String)
-} derive(Debug)
+}
 
 ///|
 pub impl Show for OptionsError with fn output(self, logger) {

@@ -1,12 +1,13 @@
 // Collected output items (upstream output.rs).
 
 ///|
+#derive(Eq, Debug)
 pub(all) enum OutputSpaceMod {
   Crate
   Builder
   Defaults
   Error
-} derive(Eq, Debug)
+}
 
 ///|
 fn OutputSpaceMod::index(self : OutputSpaceMod) -> Int32 {

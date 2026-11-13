@@ -1,8 +1,9 @@
 ///|
 /// A regular expression syntax error; the text matches regress's messages.
+#derive(Debug, Eq)
 pub(all) suberror RegexError {
   RegexError(String)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl Show for RegexError with fn output(self, logger) {
@@ -22,10 +23,11 @@ pub struct Regex {
 
 ///|
 /// A match: `start` and `end` are UTF-16 offsets into the searched string.
+#derive(Debug, Eq)
 pub(all) struct Match {
   start : Int32
   end : Int32
-} derive(Debug, Eq)
+}
 
 ///|
 /// Compile `pattern` (`regress::Regex::new`).

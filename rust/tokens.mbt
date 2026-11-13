@@ -3,14 +3,16 @@
 // output is before rustfmt (and what survives rustfmt inside attributes).
 
 ///|
+#derive(Eq, Debug)
 pub(all) enum Delim {
   Paren
   Brace
   Bracket
   NoDelim
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) enum Token {
   Ident(String)
   /// A punctuation character; `joint` means it is glued to the next token.
@@ -18,13 +20,14 @@ pub(all) enum Token {
   /// A literal with its source representation.
   Literal(String)
   Group(Delim, Tokens)
-} derive(Eq, Debug)
+}
 
 ///|
 /// A token stream.
+#derive(Eq, Debug)
 pub struct Tokens {
   priv toks : Array[Token]
-} derive(Eq, Debug)
+}
 
 ///|
 pub fn Tokens::new() -> Tokens {

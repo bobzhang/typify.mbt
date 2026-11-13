@@ -2,9 +2,10 @@
 
 ///|
 /// A failed conversion (upstream `self::error::ConversionError`).
+#derive(Debug, Eq)
 pub(all) suberror ConversionError {
   ConversionError(String)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl Show for ConversionError with fn output(self, logger) {

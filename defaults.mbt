@@ -2,6 +2,7 @@
 
 ///|
 /// How a default value can be produced.
+#derive(Debug)
 pub(all) enum DefaultKind {
   /// The type's natural default (null, [], {}, false, 0, "").
   Intrinsic
@@ -9,7 +10,7 @@ pub(all) enum DefaultKind {
   Specific
   /// Covered by a shared generic function.
   Generic(DefaultImpl)
-} derive(Debug)
+}
 
 ///|
 pub let std_num_nonzero_prefix : String = "::std::num::NonZero"

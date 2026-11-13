@@ -6,9 +6,10 @@ pub using @serde_json {type Content, type Entry}
 
 ///|
 /// A serialization error (serde_json's `to_string` fails).
+#derive(Debug, Eq)
 pub(all) suberror SerError {
   SerError(String)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl Show for SerError with fn output(self, logger) {
