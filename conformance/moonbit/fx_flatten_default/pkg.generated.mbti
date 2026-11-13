@@ -5,6 +5,7 @@ import {
   "bobzhang/typify/runtime",
   "bobzhang/typify/serde_json",
   "moonbitlang/core/debug",
+  "moonbitlang/core/json",
 }
 
 // Values
@@ -12,31 +13,33 @@ import {
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
 pub(all) struct Container {
   thing : ContainerThing?
-} derive(Eq, @debug.Debug)
+}
 pub fn Container::Container(thing? : ContainerThing) -> Self
 pub fn Container::deserialize(@runtime.De) -> Self raise @runtime.DeError
-pub fn Container::from_json(Json) -> Self raise @runtime.DeError
+pub fn Container::from_json(@json.Json) -> Self raise @runtime.DeError
 pub fn Container::from_json_str(StringView) -> Self raise @runtime.DeError
 pub fn Container::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn Container::to_json_string(Self) -> String raise @runtime.SerError
 pub impl @runtime.Serde for Container
-pub impl ToJson for Container
+pub impl @json.ToJson for Container
 
+#derive(Eq, @debug.Debug)
 pub(all) struct ContainerThing {
   id : String?
   extra : Map[String, String]
-} derive(Eq, @debug.Debug)
+}
 pub fn ContainerThing::ContainerThing(id? : String, extra? : Map[String, String]) -> Self
 pub fn ContainerThing::default() -> Self
 pub fn ContainerThing::deserialize(@runtime.De) -> Self raise @runtime.DeError
-pub fn ContainerThing::from_json(Json) -> Self raise @runtime.DeError
+pub fn ContainerThing::from_json(@json.Json) -> Self raise @runtime.DeError
 pub fn ContainerThing::from_json_str(StringView) -> Self raise @runtime.DeError
 pub fn ContainerThing::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn ContainerThing::to_json_string(Self) -> String raise @runtime.SerError
 pub impl @runtime.Serde for ContainerThing
-pub impl ToJson for ContainerThing
+pub impl @json.ToJson for ContainerThing
 
 // Type aliases
 

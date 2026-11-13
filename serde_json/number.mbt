@@ -6,11 +6,12 @@
 /// `NegInt`, and everything else as a finite `Float`. The classification is
 /// observable: `1` and `1.0` are different values and only the former is an
 /// integer.
+#derive(Debug)
 pub(all) enum Number {
   PosInt(UInt64)
   NegInt(Int64)
   Float(Double)
-} derive(Debug)
+}
 
 ///|
 /// Equality follows serde_json: numbers of different classes are never equal.

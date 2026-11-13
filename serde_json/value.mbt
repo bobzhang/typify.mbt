@@ -2,6 +2,7 @@
 /// A JSON value with serde_json semantics: numbers keep their integer/float
 /// classification and objects iterate in key order (serde_json without the
 /// `preserve_order` feature, as used by typify).
+#derive(Debug, Eq)
 pub(all) enum Value {
   Null
   Bool(Bool)
@@ -9,7 +10,7 @@ pub(all) enum Value {
   String(String)
   Array(Array[Value])
   Object(@collections.StrMap[Value])
-} derive(Debug, Eq)
+}
 
 ///|
 pub fn Value::is_null(self : Value) -> Bool {

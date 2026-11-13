@@ -1,6 +1,7 @@
 ///|
 /// Policy for `x-rust-type` extensions naming crates not configured with
 /// `with_crate`.
+#derive(Eq, Debug)
 pub(all) enum UnknownPolicy {
   /// Generate the type from the schema.
   Generate
@@ -8,15 +9,16 @@ pub(all) enum UnknownPolicy {
   Allow
   /// Currently behaves like `Generate`.
   Deny
-} derive(Eq, Debug)
+}
 
 ///|
 /// A crate version to accept for `x-rust-type`.
+#derive(Debug)
 pub(all) enum CrateVers {
   Version(@semver.Version)
   Any
   Never
-} derive(Debug)
+}
 
 ///|
 /// Parse `!` (never), `*` (any) or a semver version.
@@ -41,11 +43,12 @@ priv struct CrateSpec {
 
 ///|
 /// Modifications applied to a generated type with a given name.
+#derive(Debug)
 pub struct TypeSpacePatch {
   mut rename : String?
   derives : Array[String]
   attrs : Array[String]
-} derive(Debug)
+}
 
 ///|
 pub fn TypeSpacePatch::new() -> TypeSpacePatch {
@@ -81,10 +84,11 @@ pub fn TypeSpacePatch::with_attr(
 
 ///|
 /// A replacement of a named definition by an existing type.
+#derive(Debug)
 pub(all) struct TypeSpaceReplace {
   replace_type : String
   impls : Array[TypeSpaceImpl]
-} derive(Debug)
+}
 
 ///|
 priv struct TypeSpaceConversion {

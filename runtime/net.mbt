@@ -23,9 +23,10 @@ fn hex_val(c : Char) -> Int32 {
 
 ///|
 /// An IPv4 address (`std::net::Ipv4Addr`).
+#derive(Eq, Hash, Debug)
 pub struct Ipv4Addr {
   octets : FixedArray[Int32]
-} derive(Eq, Hash, Debug)
+}
 
 ///|
 fn parse_ipv4_chars(chars : ArrayView[Char]) -> FixedArray[Int32]? {
@@ -86,9 +87,10 @@ pub fn Ipv4Addr::serialize(self : Ipv4Addr) -> Content raise SerError {
 
 ///|
 /// An IPv6 address (`std::net::Ipv6Addr`).
+#derive(Eq, Hash, Debug)
 pub struct Ipv6Addr {
   segments : FixedArray[Int32]
-} derive(Eq, Hash, Debug)
+}
 
 ///|
 fn parse_ipv6_chars(chars : Array[Char]) -> FixedArray[Int32]? {
@@ -227,10 +229,11 @@ pub fn Ipv6Addr::serialize(self : Ipv6Addr) -> Content raise SerError {
 
 ///|
 /// An IP address (`std::net::IpAddr`).
+#derive(Eq, Hash, Debug)
 pub(all) enum IpAddr {
   V4(Ipv4Addr)
   V6(Ipv6Addr)
-} derive(Eq, Hash, Debug)
+}
 
 ///|
 pub fn IpAddr::parse(s : String) -> IpAddr raise ConversionError {

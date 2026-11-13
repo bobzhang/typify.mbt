@@ -18,12 +18,14 @@ pub let rust_intro : String
 pub let version : String
 
 // Errors
+#derive(@debug.Debug)
 pub(all) suberror CliError {
   CliError(String)
-} derive(@debug.Debug)
+}
 pub impl Show for CliError
 
 // Types and methods
+#derive(@debug.Debug)
 pub(all) struct CliArgs {
   input : String
   lang : Lang
@@ -36,20 +38,22 @@ pub(all) struct CliArgs {
   unknown_crates : @typify.UnknownPolicy?
   preserve_order : Bool
   moonbit_config : String?
-} derive(@debug.Debug)
+}
 pub fn CliArgs::output_path(Self) -> String?
 pub fn CliArgs::settings(Self) -> @typify.TypeSpaceSettings
 
+#derive(@debug.Debug)
 pub(all) enum Command {
   Run(CliArgs)
   Help
   Version
-} derive(@debug.Debug)
+}
 
+#derive(Eq, @debug.Debug)
 pub(all) enum Lang {
   Rust
   MoonBit
-} derive(Eq, @debug.Debug)
+}
 
 // Type aliases
 

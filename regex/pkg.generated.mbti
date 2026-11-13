@@ -8,16 +8,18 @@ import {
 // Values
 
 // Errors
+#derive(Eq, @debug.Debug)
 pub(all) suberror RegexError {
   RegexError(String)
-} derive(Eq, @debug.Debug)
+}
 pub impl Show for RegexError
 
 // Types and methods
+#derive(Eq, @debug.Debug)
 pub(all) struct Match {
   start : Int32
   end : Int32
-} derive(Eq, @debug.Debug)
+}
 
 pub struct Regex {
   // private fields

@@ -5,6 +5,7 @@ import {
   "bobzhang/typify/runtime",
   "bobzhang/typify/serde_json",
   "moonbitlang/core/debug",
+  "moonbitlang/core/json",
 }
 
 // Values
@@ -12,38 +13,41 @@ import {
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
 pub(all) struct TestType {
   where_not : TestTypeWhereNot
   why_not : TestTypeWhyNot
-} derive(Eq, @debug.Debug)
+}
 pub fn TestType::TestType(where_not~ : TestTypeWhereNot, why_not~ : TestTypeWhyNot) -> Self
 pub fn TestType::deserialize(@runtime.De) -> Self raise @runtime.DeError
-pub fn TestType::from_json(Json) -> Self raise @runtime.DeError
+pub fn TestType::from_json(@json.Json) -> Self raise @runtime.DeError
 pub fn TestType::from_json_str(StringView) -> Self raise @runtime.DeError
 pub fn TestType::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TestType::to_json_string(Self) -> String raise @runtime.SerError
 pub impl @runtime.Serde for TestType
-pub impl ToJson for TestType
+pub impl @json.ToJson for TestType
 
-pub(all) struct TestTypeWhereNot(String) derive(Eq, Hash, @debug.Debug)
+#derive(Eq, Hash, @debug.Debug)
+pub(all) struct TestTypeWhereNot(String)
 pub fn TestTypeWhereNot::deserialize(@runtime.De) -> Self raise @runtime.DeError
-pub fn TestTypeWhereNot::from_json(Json) -> Self raise @runtime.DeError
+pub fn TestTypeWhereNot::from_json(@json.Json) -> Self raise @runtime.DeError
 pub fn TestTypeWhereNot::from_json_str(StringView) -> Self raise @runtime.DeError
 pub fn TestTypeWhereNot::new(String) -> Self raise @runtime.ConversionError
 pub fn TestTypeWhereNot::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TestTypeWhereNot::to_json_string(Self) -> String raise @runtime.SerError
 pub impl @runtime.Serde for TestTypeWhereNot
-pub impl ToJson for TestTypeWhereNot
+pub impl @json.ToJson for TestTypeWhereNot
 
-pub(all) struct TestTypeWhyNot(String) derive(Eq, Hash, @debug.Debug)
+#derive(Eq, Hash, @debug.Debug)
+pub(all) struct TestTypeWhyNot(String)
 pub fn TestTypeWhyNot::deserialize(@runtime.De) -> Self raise @runtime.DeError
-pub fn TestTypeWhyNot::from_json(Json) -> Self raise @runtime.DeError
+pub fn TestTypeWhyNot::from_json(@json.Json) -> Self raise @runtime.DeError
 pub fn TestTypeWhyNot::from_json_str(StringView) -> Self raise @runtime.DeError
 pub fn TestTypeWhyNot::new(String) -> Self raise @runtime.ConversionError
 pub fn TestTypeWhyNot::serialize(Self) -> @serde_json.Content raise @runtime.SerError
 pub fn TestTypeWhyNot::to_json_string(Self) -> String raise @runtime.SerError
 pub impl @runtime.Serde for TestTypeWhyNot
-pub impl ToJson for TestTypeWhyNot
+pub impl @json.ToJson for TestTypeWhyNot
 
 // Type aliases
 

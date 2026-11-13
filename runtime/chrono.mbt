@@ -197,11 +197,12 @@ fn month_days(y : Int32, m : Int32) -> Int32 {
 ///|
 /// A calendar date (`chrono::NaiveDate`), serialized as `%Y-%m-%d` (years
 /// outside 0..=9999 carry an explicit sign).
+#derive(Eq, Compare, Hash, Debug)
 pub struct NaiveDate {
   year : Int32
   month : Int32
   day : Int32
-} derive(Eq, Compare, Hash, Debug)
+}
 
 ///|
 /// `NaiveDate::from_ymd_opt`.
@@ -341,13 +342,14 @@ pub fn NaiveDate::serialize(self : NaiveDate) -> Content raise SerError {
 ///|
 /// A UTC timestamp (`chrono::DateTime<Utc>`), serialized as RFC 3339 with
 /// chrono's `SecondsFormat::AutoSi` and `Z`.
+#derive(Eq, Compare, Hash, Debug)
 pub struct DateTimeUtc {
   date : NaiveDate
   /// Seconds since midnight (0..86400).
   secs : Int32
   /// Nanoseconds; 10^9 and above denote a leap second.
   frac : Int32
-} derive(Eq, Compare, Hash, Debug)
+}
 
 ///|
 pub fn DateTimeUtc::date(self : DateTimeUtc) -> NaiveDate {

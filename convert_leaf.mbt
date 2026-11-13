@@ -579,7 +579,7 @@ fn TypeSpace::convert_not(
       (entry, metadata)
     }
     Object(
-      { instance_type: Some(Single(_)), enum_values: Some(enum_values), .. } as o
+      { instance_type: Some(Single(_)), enum_values: Some(enum_values), .. } as o,
     ) => {
       let type_schema = { ..o, enum_values: None, }
       let (entry, _) = self.convert_schema_object(

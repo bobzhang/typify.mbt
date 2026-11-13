@@ -13,12 +13,14 @@ pub fn decode_schema(@serde_json.Value, path? : String) -> Schema raise SchemaEr
 pub fn decode_schema_object(@collections.StrMap[@serde_json.Value], path? : String) -> SchemaObject raise SchemaError
 
 // Errors
+#derive(Eq, @debug.Debug)
 pub(all) suberror SchemaError {
   SchemaError(message~ : String, path~ : String)
-} derive(Eq, @debug.Debug)
+}
 pub impl Show for SchemaError
 
 // Types and methods
+#derive(Eq, @debug.Debug)
 pub(all) struct ArrayValidation {
   items : SingleOrVec[Schema]?
   additional_items : Schema?
@@ -26,9 +28,10 @@ pub(all) struct ArrayValidation {
   min_items : UInt32?
   unique_items : Bool?
   contains : Schema?
-} derive(Eq, @debug.Debug)
+}
 pub fn ArrayValidation::default() -> Self
 
+#derive(Compare, Eq, Hash, @debug.Debug)
 pub(all) enum InstanceType {
   Null
   Boolean
@@ -37,9 +40,10 @@ pub(all) enum InstanceType {
   Number
   String
   Integer
-} derive(Compare, Eq, Hash, @debug.Debug)
+}
 pub fn InstanceType::name(Self) -> String
 
+#derive(Eq, @debug.Debug)
 pub(all) struct Metadata {
   id : String?
   title : String?
@@ -49,18 +53,20 @@ pub(all) struct Metadata {
   read_only : Bool
   write_only : Bool
   examples : Array[@serde_json.Value]
-} derive(Eq, @debug.Debug)
+}
 pub fn Metadata::default() -> Self
 
+#derive(Eq, @debug.Debug)
 pub(all) struct NumberValidation {
   multiple_of : Double?
   maximum : Double?
   exclusive_maximum : Double?
   minimum : Double?
   exclusive_minimum : Double?
-} derive(Eq, @debug.Debug)
+}
 pub fn NumberValidation::default() -> Self
 
+#derive(Eq, @debug.Debug)
 pub(all) struct ObjectValidation {
   max_properties : UInt32?
   min_properties : UInt32?
@@ -69,27 +75,30 @@ pub(all) struct ObjectValidation {
   pattern_properties : @collections.StrMap[Schema]
   additional_properties : Schema?
   property_names : Schema?
-} derive(Eq, @debug.Debug)
+}
 pub fn ObjectValidation::default() -> Self
 
+#derive(Eq, @debug.Debug)
 pub(all) struct RootSchema {
   meta_schema : String?
   schema : SchemaObject
   definitions : @collections.StrMap[Schema]
-} derive(Eq, @debug.Debug)
+}
 pub fn RootSchema::from_json_str(StringView, preserve_order? : Bool) -> Self raise
 pub fn RootSchema::from_value(@serde_json.Value) -> Self raise SchemaError
 pub fn RootSchema::to_value(Self) -> @serde_json.Value
 
+#derive(Eq, @debug.Debug)
 pub(all) enum Schema {
   Bool(Bool)
   Object(SchemaObject)
-} derive(Eq, @debug.Debug)
+}
 pub fn Schema::into_object(Self) -> SchemaObject
 pub fn Schema::is_ref(Self) -> Bool
 pub fn Schema::new_ref(String) -> Self
 pub fn Schema::to_value(Self) -> @serde_json.Value
 
+#derive(Eq, @debug.Debug)
 pub(all) struct SchemaObject {
   metadata : Metadata?
   instance_type : SingleOrVec[InstanceType]?
@@ -103,26 +112,29 @@ pub(all) struct SchemaObject {
   object : ObjectValidation?
   reference : String?
   extensions : @collections.StrMap[@serde_json.Value]
-} derive(Eq, @debug.Debug)
+}
 pub fn SchemaObject::default() -> Self
 pub fn SchemaObject::has_type(Self, InstanceType) -> Bool
 pub fn SchemaObject::is_ref(Self) -> Bool
 pub fn SchemaObject::new_ref(String) -> Self
 pub fn SchemaObject::to_value(Self) -> @serde_json.Value
 
+#derive(Eq, @debug.Debug)
 pub(all) enum SingleOrVec[T] {
   Single(T)
   Vec(Array[T])
-} derive(Eq, @debug.Debug)
+}
 pub fn[T : Eq] SingleOrVec::contains(Self[T], T) -> Bool
 
+#derive(Eq, @debug.Debug)
 pub(all) struct StringValidation {
   max_length : UInt32?
   min_length : UInt32?
   pattern : String?
-} derive(Eq, @debug.Debug)
+}
 pub fn StringValidation::default() -> Self
 
+#derive(Eq, @debug.Debug)
 pub(all) struct SubschemaValidation {
   all_of : Array[Schema]?
   any_of : Array[Schema]?
@@ -131,7 +143,7 @@ pub(all) struct SubschemaValidation {
   if_schema : Schema?
   then_schema : Schema?
   else_schema : Schema?
-} derive(Eq, @debug.Debug)
+}
 pub fn SubschemaValidation::default() -> Self
 
 // Type aliases

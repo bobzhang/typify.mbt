@@ -47,7 +47,7 @@ priv enum Node {
     max~ : Int32?,
     greedy~ : Bool,
     first_group~ : Int32,
-    end_group~ : Int32
+    end_group~ : Int32,
   )
 }
 

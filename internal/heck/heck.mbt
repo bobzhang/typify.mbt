@@ -3,11 +3,12 @@
 // because generated identifiers must match upstream output.
 
 ///|
+#derive(Eq)
 priv enum WordMode {
   Boundary
   Lowercase
   Uppercase
-} derive(Eq)
+}
 
 ///|
 /// heck's `transform`: split `s` into words and write each word through

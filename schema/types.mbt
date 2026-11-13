@@ -3,14 +3,16 @@
 
 ///|
 /// A JSON Schema: either a boolean schema or a schema object.
+#derive(Eq, Debug)
 pub(all) enum Schema {
   Bool(Bool)
   Object(SchemaObject)
-} derive(Eq, Debug)
+}
 
 ///|
 /// The type of a JSON value (`type` keyword). The declaration order matters:
 /// it is schemars' derived `Ord`.
+#derive(Eq, Compare, Hash, Debug)
 pub(all) enum InstanceType {
   Null
   Boolean
@@ -19,17 +21,19 @@ pub(all) enum InstanceType {
   Number
   String
   Integer
-} derive(Eq, Compare, Hash, Debug)
+}
 
 ///|
 /// A single value or an array of values (schemars `SingleOrVec`).
+#derive(Eq, Debug)
 pub(all) enum SingleOrVec[T] {
   Single(T)
   Vec(Array[T])
-} derive(Eq, Debug)
+}
 
 ///|
 /// Annotations that do not affect validation.
+#derive(Eq, Debug)
 pub(all) struct Metadata {
   id : String?
   title : String?
@@ -39,9 +43,10 @@ pub(all) struct Metadata {
   read_only : Bool
   write_only : Bool
   examples : Array[@serde_json.Value]
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct SubschemaValidation {
   all_of : Array[Schema]?
   any_of : Array[Schema]?
@@ -50,25 +55,28 @@ pub(all) struct SubschemaValidation {
   if_schema : Schema?
   then_schema : Schema?
   else_schema : Schema?
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct NumberValidation {
   multiple_of : Double?
   maximum : Double?
   exclusive_maximum : Double?
   minimum : Double?
   exclusive_minimum : Double?
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct StringValidation {
   max_length : UInt32?
   min_length : UInt32?
   pattern : String?
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct ArrayValidation {
   items : SingleOrVec[Schema]?
   additional_items : Schema?
@@ -76,9 +84,10 @@ pub(all) struct ArrayValidation {
   min_items : UInt32?
   unique_items : Bool?
   contains : Schema?
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct ObjectValidation {
   max_properties : UInt32?
   min_properties : UInt32?
@@ -87,11 +96,12 @@ pub(all) struct ObjectValidation {
   pattern_properties : @collections.StrMap[Schema]
   additional_properties : Schema?
   property_names : Schema?
-} derive(Eq, Debug)
+}
 
 ///|
 /// A schema object. Each validation group is `None` when it equals its
 /// default, exactly as schemars' `skip_if_default` deserializes it.
+#derive(Eq, Debug)
 pub(all) struct SchemaObject {
   metadata : Metadata?
   instance_type : SingleOrVec[InstanceType]?
@@ -105,15 +115,16 @@ pub(all) struct SchemaObject {
   object : ObjectValidation?
   reference : String?
   extensions : @collections.StrMap[@serde_json.Value]
-} derive(Eq, Debug)
+}
 
 ///|
 /// The root of a schema document.
+#derive(Eq, Debug)
 pub(all) struct RootSchema {
   meta_schema : String?
   schema : SchemaObject
   definitions : @collections.StrMap[Schema]
-} derive(Eq, Debug)
+}
 
 ///|
 pub fn Metadata::default() -> Metadata {

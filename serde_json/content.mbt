@@ -2,6 +2,7 @@
 /// An ordered JSON document: object entries keep their order and duplicates,
 /// numbers keep serde_json's classification. This is the input serde's
 /// derived deserializers observe.
+#derive(Debug, Eq)
 pub(all) enum Content {
   Null
   Bool(Bool)
@@ -16,18 +17,19 @@ pub(all) enum Content {
   /// serde_json's `serialize_f32`. As a `Value` it widens to `f64`, like
   /// `serde_json::to_value`.
   Float32(Float)
-} derive(Debug, Eq)
+}
 
 ///|
 /// An object entry; `key_escaped` records whether the key's source text
 /// contained escape sequences (it matters for serde_json's numeric map keys).
+#derive(Debug, Eq)
 pub(all) struct Entry {
   key : String
   key_escaped : Bool
   /// A deferred error in the key text (lenient parsing).
   key_error : ParseError?
   value : Content
-} derive(Debug, Eq)
+}
 
 ///|
 /// The serde_json `Value` of a document (duplicate keys: the last wins; keys

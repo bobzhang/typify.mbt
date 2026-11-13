@@ -1,6 +1,7 @@
 ///|
 /// Identifier of a type within a `TypeSpace`.
-pub(all) struct TypeId(Int32) derive(Eq, Compare, Hash, Debug)
+#derive(Eq, Compare, Hash, Debug)
+pub(all) struct TypeId(Int32)
 
 ///|
 pub impl Show for TypeId with fn output(self, logger) {
@@ -9,13 +10,14 @@ pub impl Show for TypeId with fn output(self, logger) {
 
 ///|
 /// A name for a type being converted.
+#derive(Eq, Debug)
 pub(all) enum Name {
   /// The name must be used (a named definition).
   Required(String)
   /// A hint for a name; the schema title takes precedence.
   Suggested(String)
   Unknown
-} derive(Eq, Debug)
+}
 
 ///|
 pub fn Name::into_option(self : Name) -> String? {
@@ -36,7 +38,8 @@ pub fn Name::append(self : Name, s : String) -> Name {
 
 ///|
 /// A key for referenceable schemas: the root or a named definition.
+#derive(Eq, Hash, Debug)
 pub(all) enum RefKey {
   Root
   Def(String)
-} derive(Eq, Hash, Debug)
+}

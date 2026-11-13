@@ -4,12 +4,13 @@
 
 ///|
 /// Shared default-value helper functions (`defaults::default_*`).
+#derive(Eq, Compare, Debug)
 pub(all) enum DefaultImpl {
   Boolean
   I64
   U64
   NZU64
-} derive(Eq, Compare, Debug)
+}
 
 ///|
 pub fn DefaultImpl::fn_name(self : DefaultImpl) -> String {
@@ -23,12 +24,13 @@ pub fn DefaultImpl::fn_name(self : DefaultImpl) -> String {
 
 ///|
 /// Traits a type may be known to implement.
+#derive(Eq, Compare, Hash, Debug)
 pub(all) enum TypeSpaceImpl {
   FromStr
   FromStringIrrefutable
   Display
   Default
-} derive(Eq, Compare, Hash, Debug)
+}
 
 ///|
 /// Parse an impl name as accepted in settings ("FromStr", "Display",
@@ -43,59 +45,66 @@ pub fn TypeSpaceImpl::parse(s : String) -> TypeSpaceImpl raise TypifyError {
 }
 
 ///|
+#derive(Eq, Compare, Debug)
 pub(all) enum TypeEntryEnumImpl {
   AllSimpleVariants
   UntaggedFromStr
   UntaggedDisplay
   UntaggedFromStringIrrefutable
-} derive(Eq, Compare, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) enum EnumTagType {
   External
   Internal(tag~ : String)
   Adjacent(tag~ : String, content~ : String)
   Untagged
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) enum StructPropertyRename {
   NoRename
   Rename(String)
   Flatten
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) enum StructPropertyState {
   Required
   Optional
   Default(@serde_json.Value)
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct StructProperty {
   name : String
   rename : StructPropertyRename
   state : StructPropertyState
   description : String?
   type_id : TypeId
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) enum VariantDetails {
   Simple
   Item(TypeId)
   Tuple(Array[TypeId])
   Struct(Array[StructProperty])
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct Variant {
   raw_name : String
   ident_name : String?
   description : String?
   details : VariantDetails
-} derive(Eq, Debug)
+}
 
 ///|
 pub fn Variant::new(
@@ -107,6 +116,7 @@ pub fn Variant::new(
 }
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct TypeEntryEnum {
   name : String
   rename : String?
@@ -117,9 +127,10 @@ pub(all) struct TypeEntryEnum {
   deny_unknown_fields : Bool
   bespoke_impls : Array[TypeEntryEnumImpl]
   schema : @schema.Schema
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct TypeEntryStruct {
   name : String
   rename : String?
@@ -128,17 +139,19 @@ pub(all) struct TypeEntryStruct {
   properties : Array[StructProperty]
   deny_unknown_fields : Bool
   schema : @schema.Schema
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) enum TypeEntryNewtypeConstraints {
   NoConstraints
   EnumValue(Array[@serde_json.Value])
   DenyValue(Array[@serde_json.Value])
   String(max_length~ : UInt32?, min_length~ : UInt32?, pattern~ : String?)
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct TypeEntryNewtype {
   name : String
   rename : String?
@@ -147,14 +160,15 @@ pub(all) struct TypeEntryNewtype {
   type_id : TypeId
   constraints : TypeEntryNewtypeConstraints
   schema : @schema.Schema
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct TypeEntryNative {
   type_name : String
   impls : Array[TypeSpaceImpl]
   parameters : Array[TypeId]
-} derive(Eq, Debug)
+}
 
 ///|
 /// Whether a native type's last path segment matches a required type name.
@@ -169,6 +183,7 @@ pub fn TypeEntryNative::name_match(
 }
 
 ///|
+#derive(Eq, Debug)
 pub(all) enum TypeEntryDetails {
   Enum(TypeEntryEnum)
   Struct(TypeEntryStruct)
@@ -192,14 +207,15 @@ pub(all) enum TypeEntryDetails {
   JsonValue
   /// Only used during conversion for aliases between named definitions.
   Reference(TypeId)
-} derive(Eq, Debug)
+}
 
 ///|
+#derive(Eq, Debug)
 pub(all) struct TypeEntry {
   details : TypeEntryDetails
   extra_derives : @collections.StrSet
   extra_attrs : @collections.StrSet
-} derive(Eq, Debug)
+}
 
 ///|
 pub fn TypeEntry::from_details(details : TypeEntryDetails) -> TypeEntry {
