@@ -73,7 +73,7 @@ test "errors" {
   ]
   let out = cases.map(c => {
     try @serde_json.parse(c) catch {
-      e => e.to_string()
+      e => Show::to_string(e)
     } noraise {
       v => "ok: \{v}"
     }
@@ -173,7 +173,7 @@ test "lenient parsing defers errors serde_json reports only when visited" {
   )
   // Strict parsing (serde_json::from_str::<Value>) rejects the same text.
   let strict = try @serde_json.parse_content("[1e999]") catch {
-    e => e.to_string()
+    e => Show::to_string(e)
   } noraise {
     _ => "ok"
   }
@@ -182,7 +182,7 @@ test "lenient parsing defers errors serde_json reports only when visited" {
   let deep = "[".repeat(200) + "]".repeat(200)
   let d = @serde_json.parse_content(deep, lenient=true)
   let visited = try d.to_value() catch {
-    e => e.to_string()
+    e => Show::to_string(e)
   } noraise {
     _ => "ok"
   }
