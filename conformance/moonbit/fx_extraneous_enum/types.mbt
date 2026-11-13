@@ -7,9 +7,10 @@
 
 ///|
 /// `LetterBox`
+#derive(Debug, Eq)
 pub(all) struct LetterBox {
   letter : LetterBoxLetter?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LetterBox` (fields with defaults are optional).
@@ -54,10 +55,11 @@ pub impl ToJson for LetterBox with fn to_json(self) {
 
 ///|
 /// `LetterBoxLetter`
+#derive(Debug, Eq, Hash)
 pub(all) enum LetterBoxLetter {
   A
   B
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LetterBoxLetter with fn deserialize(d) {

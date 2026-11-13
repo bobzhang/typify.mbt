@@ -462,12 +462,12 @@ fn Gen::output_struct(
   let fields = self.fields.get("\{id.0}/-1").unwrap()
   out.write_string("///|\n")
   out.write_string(doc_comment(Some(d.description.unwrap_or("`\{d.name}`"))))
-  out.write_string("pub(all) struct \{name} {\n")
+  out.write_string("#derive(Debug, Eq)\npub(all) struct \{name} {\n")
   for i, p in d.properties {
     out.write_string(indent(doc_comment(p.description), 2))
     out.write_string("  \{fields[i]} : \{self.mbt_type(p.type_id)}\n")
   }
-  out.write_string("} derive(Debug, Eq)\n\n")
+  out.write_string("}\n\n")
   if self.constructor_enabled(id) {
     self.struct_constructor(out, name, d, fields)
   }
@@ -525,7 +525,7 @@ fn Gen::output_newtype(
   let derives = if is_str { "Debug, Eq, Hash" } else { "Debug, Eq" }
   out.write_string("///|\n")
   out.write_string(doc_comment(Some(d.description.unwrap_or("`\{d.name}`"))))
-  out.write_string("pub(all) struct \{name}(\{inner}) derive(\{derives})\n\n")
+  out.write_string("#derive(\{derives})\npub(all) struct \{name}(\{inner})\n\n")
   // Validation for constrained newtypes (upstream `TryFrom`).
   let check = match d.constraints {
     NoConstraints => ""
@@ -747,12 +747,12 @@ fn Gen::output_enum(
   let raw_names = d.variants.map(v => v.raw_name)
   out.write_string("///|\n")
   out.write_string(doc_comment(Some(d.description.unwrap_or("`\{d.name}`"))))
-  out.write_string("pub(all) enum \{name} {\n")
+  out.write_string("#derive(\{derives})\npub(all) enum \{name} {\n")
   for i, v in d.variants {
     out.write_string(indent(doc_comment(v.description), 2))
     out.write_string("  \{self.variant_decl(id, i, v)}\n")
   }
-  out.write_string("} derive(\{derives})\n\n")
+  out.write_string("}\n\n")
   // Decoding.
   let arms = StringBuilder()
   let body = match d.tag_type {

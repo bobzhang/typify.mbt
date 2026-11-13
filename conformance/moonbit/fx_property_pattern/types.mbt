@@ -7,9 +7,10 @@
 
 ///|
 /// `TestGrammarForPatternProperties`
+#derive(Debug, Eq)
 pub(all) struct TestGrammarForPatternProperties {
   rules : Map[TestGrammarForPatternPropertiesRulesKey, String]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TestGrammarForPatternProperties` (fields with defaults are optional).
@@ -52,7 +53,8 @@ pub impl ToJson for TestGrammarForPatternProperties with fn to_json(self) {
 
 ///|
 /// `TestGrammarForPatternPropertiesRulesKey`
-pub(all) struct TestGrammarForPatternPropertiesRulesKey(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct TestGrammarForPatternPropertiesRulesKey(String)
 
 ///|
 let test_grammar_for_pattern_properties_rules_key_pattern : @typify_rt.Regex = @typify_rt.regex("^[a-zA-Z_]\\w*$")

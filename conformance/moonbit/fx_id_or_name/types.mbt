@@ -7,10 +7,11 @@
 
 ///|
 /// `IdOrName`
+#derive(Debug, Eq)
 pub(all) enum IdOrName {
   Id(@typify_rt.Uuid)
   Name(Name)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IdOrName with fn deserialize(d) {
@@ -54,10 +55,11 @@ pub impl ToJson for IdOrName with fn to_json(self) {
 
 ///|
 /// `IdOrNameRedundant`
+#derive(Debug, Eq)
 pub(all) enum IdOrNameRedundant {
   Uuid(@typify_rt.Uuid)
   String(Name)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IdOrNameRedundant with fn deserialize(d) {
@@ -101,10 +103,11 @@ pub impl ToJson for IdOrNameRedundant with fn to_json(self) {
 
 ///|
 /// `IdOrYolo`
+#derive(Debug, Eq)
 pub(all) enum IdOrYolo {
   Id(@typify_rt.Uuid)
   Yolo(IdOrYoloYolo)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IdOrYolo with fn deserialize(d) {
@@ -148,7 +151,8 @@ pub impl ToJson for IdOrYolo with fn to_json(self) {
 
 ///|
 /// Names must begin with a lower case ASCII letter, be composed exclusively of lowercase ASCII, uppercase ASCII, numbers, and '-', and may not end with a '-'. Names cannot be a UUID though they may contain a UUID.
-pub(all) struct Name(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct Name(String)
 
 ///|
 let name_pattern : @typify_rt.Regex = @typify_rt.regex("^(?![0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)^[a-z][a-z0-9-]*[a-zA-Z0-9]$")
@@ -191,7 +195,8 @@ pub impl ToJson for Name with fn to_json(self) {
 
 ///|
 /// `IdOrYoloYolo`
-pub(all) struct IdOrYoloYolo(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct IdOrYoloYolo(String)
 
 ///|
 let id_or_yolo_yolo_pattern : @typify_rt.Regex = @typify_rt.regex(".*")

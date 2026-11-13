@@ -7,9 +7,10 @@
 
 ///|
 /// `Doodad`
+#derive(Debug, Eq)
 pub(all) struct Doodad {
   when : @typify_rt.DateTimeUtc
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_doodad_when() -> @typify_rt.DateTimeUtc raise @typify_rt.DeError {
@@ -60,11 +61,12 @@ pub impl ToJson for Doodad with fn to_json(self) {
 
 ///|
 /// `MrDefaultNumbers`
+#derive(Debug, Eq)
 pub(all) struct MrDefaultNumbers {
   big_nullable : UInt64?
   little_u16 : UInt16
   little_u8 : Byte
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MrDefaultNumbers` (fields with defaults are optional).
@@ -132,9 +134,10 @@ pub impl ToJson for MrDefaultNumbers with fn to_json(self) {
 
 ///|
 /// `OuterThing`
+#derive(Debug, Eq)
 pub(all) struct OuterThing {
   thing : ThingWithDefaults?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `OuterThing` (fields with defaults are optional).
@@ -179,10 +182,11 @@ pub impl ToJson for OuterThing with fn to_json(self) {
 
 ///|
 /// `TestBed`
+#derive(Debug, Eq)
 pub(all) struct TestBed {
   any : Array[Json]
   id : @typify_rt.Uuid
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_test_bed_any() -> Array[Json] raise @typify_rt.DeError {
@@ -246,7 +250,8 @@ pub impl ToJson for TestBed with fn to_json(self) {
 
 ///|
 /// `UInt`
-pub(all) struct UInt_(Int64) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct UInt_(Int64)
 
 ///|
 pub impl @typify_rt.Serde for UInt_ with fn deserialize(d) {
@@ -270,9 +275,10 @@ pub impl ToJson for UInt_ with fn to_json(self) {
 
 ///|
 /// `UIntContainer`
+#derive(Debug, Eq)
 pub(all) struct UIntContainer {
   max_path : UInt_
-} derive(Debug, Eq)
+}
 
 ///|
 fn default_u_int_container_max_path() -> UInt_ raise @typify_rt.DeError {
@@ -323,10 +329,11 @@ pub impl ToJson for UIntContainer with fn to_json(self) {
 
 ///|
 /// `ThingWithDefaults`
+#derive(Debug, Eq)
 pub(all) struct ThingWithDefaults {
   a : String?
   type_ : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ThingWithDefaults` (fields with defaults are optional).

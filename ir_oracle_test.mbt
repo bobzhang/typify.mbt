@@ -7,7 +7,7 @@ test "IR matches upstream typify (type descriptions)" {
     let space = @typify.TypeSpace::new(settings)
     let expected_error = "tests/oracle/typify/\{name}.error"
     let error = try space.add_root_schema(root) catch {
-      e => Some(e.to_string())
+      e => Some(Show::to_string(e))
     } noraise {
       _ => None
     }

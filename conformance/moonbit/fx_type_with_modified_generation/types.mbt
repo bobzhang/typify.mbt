@@ -7,7 +7,8 @@
 
 ///|
 /// `TypeThatHasMoreDerives`
-pub(all) struct TypeThatHasMoreDerives(Map[String, String]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct TypeThatHasMoreDerives(Map[String, String])
 
 ///|
 pub impl @typify_rt.Serde for TypeThatHasMoreDerives with fn deserialize(d) {
@@ -31,11 +32,12 @@ pub impl ToJson for TypeThatHasMoreDerives with fn to_json(self) {
 
 ///|
 /// `TestType`
+#derive(Debug, Eq)
 pub(all) struct TestType {
   converted_type : Json
   patched_type : TypeThatHasMoreDerives
   replaced_type : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TestType` (fields with defaults are optional).

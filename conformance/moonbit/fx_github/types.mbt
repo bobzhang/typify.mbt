@@ -7,6 +7,7 @@
 
 ///|
 /// `AlertInstance`
+#derive(Debug, Eq)
 pub(all) struct AlertInstance {
   /// Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
   analysis_key : String
@@ -20,7 +21,7 @@ pub(all) struct AlertInstance {
   ref_ : String
   /// State of a code scanning alert.
   state : AlertInstanceState
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `AlertInstance` (fields with defaults are optional).
@@ -106,6 +107,7 @@ pub impl ToJson for AlertInstance with fn to_json(self) {
 
 ///|
 /// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+#derive(Debug, Eq)
 pub(all) struct App {
   created_at : @typify_rt.DateTimeUtc
   description : String?
@@ -123,7 +125,7 @@ pub(all) struct App {
   /// The slug name of the GitHub app
   slug : String?
   updated_at : @typify_rt.DateTimeUtc
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `App` (fields with defaults are optional).
@@ -227,6 +229,7 @@ pub impl ToJson for App with fn to_json(self) {
 
 ///|
 /// How the author is associated with the repository.
+#derive(Debug, Eq, Hash)
 pub(all) enum AuthorAssociation {
   Collaborator
   Contributor
@@ -236,7 +239,7 @@ pub(all) enum AuthorAssociation {
   Member
   None_
   Owner
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AuthorAssociation with fn deserialize(d) {
@@ -328,6 +331,7 @@ pub impl ToJson for AuthorAssociation with fn to_json(self) {
 
 ///|
 /// The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+#derive(Debug, Eq)
 pub(all) struct BranchProtectionRule {
   admin_enforced : Bool
   allow_deletions_enforcement_level : BranchProtectionRuleAllowDeletionsEnforcementLevel
@@ -353,7 +357,7 @@ pub(all) struct BranchProtectionRule {
   signature_requirement_enforcement_level : BranchProtectionRuleSignatureRequirementEnforcementLevel
   strict_required_status_checks_policy : Bool
   updated_at : @typify_rt.DateTimeUtc
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `BranchProtectionRule` (fields with defaults are optional).
@@ -511,6 +515,7 @@ pub impl ToJson for BranchProtectionRule with fn to_json(self) {
 
 ///|
 /// Activity related to a branch protection rule. For more information, see "[About branch protection rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules)."
+#derive(Debug, Eq)
 pub(all) struct BranchProtectionRuleCreated {
   action : BranchProtectionRuleCreatedAction
   installation : InstallationLite?
@@ -518,7 +523,7 @@ pub(all) struct BranchProtectionRuleCreated {
   repository : Repository
   rule : BranchProtectionRule
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `BranchProtectionRuleCreated` (fields with defaults are optional).
@@ -590,6 +595,7 @@ pub impl ToJson for BranchProtectionRuleCreated with fn to_json(self) {
 
 ///|
 /// Activity related to a branch protection rule. For more information, see "[About branch protection rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules)."
+#derive(Debug, Eq)
 pub(all) struct BranchProtectionRuleDeleted {
   action : BranchProtectionRuleDeletedAction
   installation : InstallationLite?
@@ -597,7 +603,7 @@ pub(all) struct BranchProtectionRuleDeleted {
   repository : Repository
   rule : BranchProtectionRule
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `BranchProtectionRuleDeleted` (fields with defaults are optional).
@@ -669,6 +675,7 @@ pub impl ToJson for BranchProtectionRuleDeleted with fn to_json(self) {
 
 ///|
 /// Activity related to a branch protection rule. For more information, see "[About branch protection rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules)."
+#derive(Debug, Eq)
 pub(all) struct BranchProtectionRuleEdited {
   action : BranchProtectionRuleEditedAction
   changes : BranchProtectionRuleEditedChanges
@@ -677,7 +684,7 @@ pub(all) struct BranchProtectionRuleEdited {
   repository : Repository
   rule : BranchProtectionRule
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `BranchProtectionRuleEdited` (fields with defaults are optional).
@@ -754,11 +761,12 @@ pub impl ToJson for BranchProtectionRuleEdited with fn to_json(self) {
 
 ///|
 /// `BranchProtectionRuleEvent`
+#derive(Debug, Eq)
 pub(all) enum BranchProtectionRuleEvent {
   Created(BranchProtectionRuleCreated)
   Deleted(BranchProtectionRuleDeleted)
   Edited(BranchProtectionRuleEdited)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for BranchProtectionRuleEvent with fn deserialize(d) {
@@ -811,6 +819,7 @@ pub impl ToJson for BranchProtectionRuleEvent with fn to_json(self) {
 
 ///|
 /// A deployment to a repository environment. This will only be populated if the check run was created by a GitHub Actions workflow job that references an environment.
+#derive(Debug, Eq)
 pub(all) struct CheckRunDeployment {
   created_at : @typify_rt.DateTimeUtc
   description : String?
@@ -823,7 +832,7 @@ pub(all) struct CheckRunDeployment {
   task : String
   updated_at : @typify_rt.DateTimeUtc
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunDeployment` (fields with defaults are optional).
@@ -916,13 +925,14 @@ pub impl ToJson for CheckRunDeployment with fn to_json(self) {
 
 ///|
 /// `CheckRunPullRequest`
+#derive(Debug, Eq)
 pub(all) struct CheckRunPullRequest {
   base : CheckRunPullRequestBase
   head : CheckRunPullRequestHead
   id : Int64
   number : Int64
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunPullRequest` (fields with defaults are optional).
@@ -985,6 +995,7 @@ pub impl ToJson for CheckRunPullRequest with fn to_json(self) {
 
 ///|
 /// `CheckRunCompleted`
+#derive(Debug, Eq)
 pub(all) struct CheckRunCompleted {
   action : CheckRunCompletedAction
   check_run : CheckRunCompletedCheckRun
@@ -994,7 +1005,7 @@ pub(all) struct CheckRunCompleted {
   /// The action requested by the user.
   requested_action : CheckRunCompletedRequestedAction?
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunCompleted` (fields with defaults are optional).
@@ -1073,6 +1084,7 @@ pub impl ToJson for CheckRunCompleted with fn to_json(self) {
 
 ///|
 /// `CheckRunCreated`
+#derive(Debug, Eq)
 pub(all) struct CheckRunCreated {
   action : CheckRunCreatedAction
   check_run : CheckRunCreatedCheckRun
@@ -1082,7 +1094,7 @@ pub(all) struct CheckRunCreated {
   /// The action requested by the user.
   requested_action : CheckRunCreatedRequestedAction?
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunCreated` (fields with defaults are optional).
@@ -1161,6 +1173,7 @@ pub impl ToJson for CheckRunCreated with fn to_json(self) {
 
 ///|
 /// `CheckRunRequestedAction`
+#derive(Debug, Eq)
 pub(all) struct CheckRunRequestedAction {
   action : CheckRunRequestedActionAction
   check_run : CheckRunRequestedActionCheckRun
@@ -1169,7 +1182,7 @@ pub(all) struct CheckRunRequestedAction {
   repository : Repository
   requested_action : CheckRunRequestedActionRequestedAction
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunRequestedAction` (fields with defaults are optional).
@@ -1246,6 +1259,7 @@ pub impl ToJson for CheckRunRequestedAction with fn to_json(self) {
 
 ///|
 /// `CheckRunRerequested`
+#derive(Debug, Eq)
 pub(all) struct CheckRunRerequested {
   action : CheckRunRerequestedAction
   check_run : CheckRunRerequestedCheckRun
@@ -1255,7 +1269,7 @@ pub(all) struct CheckRunRerequested {
   /// The action requested by the user.
   requested_action : CheckRunRerequestedRequestedAction?
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunRerequested` (fields with defaults are optional).
@@ -1334,12 +1348,13 @@ pub impl ToJson for CheckRunRerequested with fn to_json(self) {
 
 ///|
 /// `CheckRunEvent`
+#derive(Debug, Eq)
 pub(all) enum CheckRunEvent {
   Completed(CheckRunCompleted)
   Created(CheckRunCreated)
   RequestedAction(CheckRunRequestedAction)
   Rerequested(CheckRunRerequested)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunEvent with fn deserialize(d) {
@@ -1401,6 +1416,7 @@ pub impl ToJson for CheckRunEvent with fn to_json(self) {
 
 ///|
 /// `CheckSuiteCompleted`
+#derive(Debug, Eq)
 pub(all) struct CheckSuiteCompleted {
   action : CheckSuiteCompletedAction
   check_suite : CheckSuiteCompletedCheckSuite
@@ -1408,7 +1424,7 @@ pub(all) struct CheckSuiteCompleted {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckSuiteCompleted` (fields with defaults are optional).
@@ -1480,6 +1496,7 @@ pub impl ToJson for CheckSuiteCompleted with fn to_json(self) {
 
 ///|
 /// `CheckSuiteRequested`
+#derive(Debug, Eq)
 pub(all) struct CheckSuiteRequested {
   action : CheckSuiteRequestedAction
   check_suite : CheckSuiteRequestedCheckSuite
@@ -1487,7 +1504,7 @@ pub(all) struct CheckSuiteRequested {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckSuiteRequested` (fields with defaults are optional).
@@ -1559,6 +1576,7 @@ pub impl ToJson for CheckSuiteRequested with fn to_json(self) {
 
 ///|
 /// `CheckSuiteRerequested`
+#derive(Debug, Eq)
 pub(all) struct CheckSuiteRerequested {
   action : CheckSuiteRerequestedAction
   check_suite : CheckSuiteRerequestedCheckSuite
@@ -1566,7 +1584,7 @@ pub(all) struct CheckSuiteRerequested {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckSuiteRerequested` (fields with defaults are optional).
@@ -1638,11 +1656,12 @@ pub impl ToJson for CheckSuiteRerequested with fn to_json(self) {
 
 ///|
 /// `CheckSuiteEvent`
+#derive(Debug, Eq)
 pub(all) enum CheckSuiteEvent {
   Completed(CheckSuiteCompleted)
   Requested(CheckSuiteRequested)
   Rerequested(CheckSuiteRerequested)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckSuiteEvent with fn deserialize(d) {
@@ -1695,6 +1714,7 @@ pub impl ToJson for CheckSuiteEvent with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertAppearedInBranch`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertAppearedInBranch {
   action : CodeScanningAlertAppearedInBranchAction
   alert : CodeScanningAlertAppearedInBranchAlert
@@ -1706,7 +1726,7 @@ pub(all) struct CodeScanningAlertAppearedInBranch {
   ref_ : String
   repository : Repository
   sender : GithubOrg
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertAppearedInBranch` (fields with defaults are optional).
@@ -1788,6 +1808,7 @@ pub impl ToJson for CodeScanningAlertAppearedInBranch with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertClosedByUser`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertClosedByUser {
   action : CodeScanningAlertClosedByUserAction
   alert : CodeScanningAlertClosedByUserAlert
@@ -1799,7 +1820,7 @@ pub(all) struct CodeScanningAlertClosedByUser {
   ref_ : String
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertClosedByUser` (fields with defaults are optional).
@@ -1881,6 +1902,7 @@ pub impl ToJson for CodeScanningAlertClosedByUser with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertCreated`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertCreated {
   action : CodeScanningAlertCreatedAction
   alert : CodeScanningAlertCreatedAlert
@@ -1892,7 +1914,7 @@ pub(all) struct CodeScanningAlertCreated {
   ref_ : String
   repository : Repository
   sender : GithubOrg
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertCreated` (fields with defaults are optional).
@@ -1974,6 +1996,7 @@ pub impl ToJson for CodeScanningAlertCreated with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertFixed`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertFixed {
   action : CodeScanningAlertFixedAction
   alert : CodeScanningAlertFixedAlert
@@ -1985,7 +2008,7 @@ pub(all) struct CodeScanningAlertFixed {
   ref_ : String
   repository : Repository
   sender : GithubOrg
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertFixed` (fields with defaults are optional).
@@ -2067,6 +2090,7 @@ pub impl ToJson for CodeScanningAlertFixed with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertReopened`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertReopened {
   action : CodeScanningAlertReopenedAction
   alert : CodeScanningAlertReopenedAlert
@@ -2078,7 +2102,7 @@ pub(all) struct CodeScanningAlertReopened {
   ref_ : String
   repository : Repository
   sender : GithubOrg
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertReopened` (fields with defaults are optional).
@@ -2160,6 +2184,7 @@ pub impl ToJson for CodeScanningAlertReopened with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertReopenedByUser`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertReopenedByUser {
   action : CodeScanningAlertReopenedByUserAction
   alert : CodeScanningAlertReopenedByUserAlert
@@ -2171,7 +2196,7 @@ pub(all) struct CodeScanningAlertReopenedByUser {
   ref_ : String
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertReopenedByUser` (fields with defaults are optional).
@@ -2253,6 +2278,7 @@ pub impl ToJson for CodeScanningAlertReopenedByUser with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertEvent`
+#derive(Debug, Eq)
 pub(all) enum CodeScanningAlertEvent {
   AppearedInBranch(CodeScanningAlertAppearedInBranch)
   ClosedByUser(CodeScanningAlertClosedByUser)
@@ -2260,7 +2286,7 @@ pub(all) enum CodeScanningAlertEvent {
   Fixed(CodeScanningAlertFixed)
   Reopened(CodeScanningAlertReopened)
   ReopenedByUser(CodeScanningAlertReopenedByUser)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertEvent with fn deserialize(d) {
@@ -2340,6 +2366,7 @@ pub impl ToJson for CodeScanningAlertEvent with fn to_json(self) {
 
 ///|
 /// `Commit`
+#derive(Debug, Eq)
 pub(all) struct Commit {
   /// An array of files added in the commit.
   added : Array[String]
@@ -2359,7 +2386,7 @@ pub(all) struct Commit {
   tree_id : String
   /// URL that points to the commit API resource.
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Commit` (fields with defaults are optional).
@@ -2452,6 +2479,7 @@ pub impl ToJson for Commit with fn to_json(self) {
 
 ///|
 /// `CommitSimple`
+#derive(Debug, Eq)
 pub(all) struct CommitSimple {
   author : Committer
   committer : Committer
@@ -2459,7 +2487,7 @@ pub(all) struct CommitSimple {
   message : String
   timestamp : String
   tree_id : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CommitSimple` (fields with defaults are optional).
@@ -2527,6 +2555,7 @@ pub impl ToJson for CommitSimple with fn to_json(self) {
 
 ///|
 /// A commit comment is created. The type of activity is specified in the `action` property. 
+#derive(Debug, Eq)
 pub(all) struct CommitCommentCreated {
   /// The action performed. Can be `created`.
   action : CommitCommentCreatedAction
@@ -2535,7 +2564,7 @@ pub(all) struct CommitCommentCreated {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CommitCommentCreated` (fields with defaults are optional).
@@ -2607,7 +2636,8 @@ pub impl ToJson for CommitCommentCreated with fn to_json(self) {
 
 ///|
 /// `CommitCommentEvent`
-pub(all) struct CommitCommentEvent(CommitCommentCreated) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct CommitCommentEvent(CommitCommentCreated)
 
 ///|
 pub impl @typify_rt.Serde for CommitCommentEvent with fn deserialize(d) {
@@ -2631,6 +2661,7 @@ pub impl ToJson for CommitCommentEvent with fn to_json(self) {
 
 ///|
 /// Metaproperties for Git author/committer information.
+#derive(Debug, Eq)
 pub(all) struct Committer {
   date : @typify_rt.DateTimeUtc?
   /// The git author's email address.
@@ -2638,7 +2669,7 @@ pub(all) struct Committer {
   /// The git author's name.
   name : String
   username : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Committer` (fields with defaults are optional).
@@ -2700,6 +2731,7 @@ pub impl ToJson for Committer with fn to_json(self) {
 
 ///|
 /// `ContentReferenceCreated`
+#derive(Debug, Eq)
 pub(all) struct ContentReferenceCreated {
   action : ContentReferenceCreatedAction
   content_reference : ContentReferenceCreatedContentReference
@@ -2707,7 +2739,7 @@ pub(all) struct ContentReferenceCreated {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ContentReferenceCreated` (fields with defaults are optional).
@@ -2777,7 +2809,8 @@ pub impl ToJson for ContentReferenceCreated with fn to_json(self) {
 
 ///|
 /// `ContentReferenceEvent`
-pub(all) struct ContentReferenceEvent(ContentReferenceCreated) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct ContentReferenceEvent(ContentReferenceCreated)
 
 ///|
 pub impl @typify_rt.Serde for ContentReferenceEvent with fn deserialize(d) {
@@ -2801,6 +2834,7 @@ pub impl ToJson for ContentReferenceEvent with fn to_json(self) {
 
 ///|
 /// A Git branch or tag is created.
+#derive(Debug, Eq)
 pub(all) struct CreateEvent {
   /// The repository's current description.
   description : String?
@@ -2816,7 +2850,7 @@ pub(all) struct CreateEvent {
   ref_type : CreateEventRefType
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CreateEvent` (fields with defaults are optional).
@@ -2903,6 +2937,7 @@ pub impl ToJson for CreateEvent with fn to_json(self) {
 
 ///|
 /// A Git branch or tag is deleted.
+#derive(Debug, Eq)
 pub(all) struct DeleteEvent {
   installation : InstallationLite?
   organization : Organization?
@@ -2914,7 +2949,7 @@ pub(all) struct DeleteEvent {
   ref_type : DeleteEventRefType
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DeleteEvent` (fields with defaults are optional).
@@ -2991,6 +3026,7 @@ pub impl ToJson for DeleteEvent with fn to_json(self) {
 
 ///|
 /// `DeployKeyCreated`
+#derive(Debug, Eq)
 pub(all) struct DeployKeyCreated {
   action : DeployKeyCreatedAction
   installation : InstallationLite?
@@ -2998,7 +3034,7 @@ pub(all) struct DeployKeyCreated {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DeployKeyCreated` (fields with defaults are optional).
@@ -3070,6 +3106,7 @@ pub impl ToJson for DeployKeyCreated with fn to_json(self) {
 
 ///|
 /// `DeployKeyDeleted`
+#derive(Debug, Eq)
 pub(all) struct DeployKeyDeleted {
   action : DeployKeyDeletedAction
   installation : InstallationLite?
@@ -3077,7 +3114,7 @@ pub(all) struct DeployKeyDeleted {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DeployKeyDeleted` (fields with defaults are optional).
@@ -3149,10 +3186,11 @@ pub impl ToJson for DeployKeyDeleted with fn to_json(self) {
 
 ///|
 /// `DeployKeyEvent`
+#derive(Debug, Eq)
 pub(all) enum DeployKeyEvent {
   Created(DeployKeyCreated)
   Deleted(DeployKeyDeleted)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DeployKeyEvent with fn deserialize(d) {
@@ -3196,6 +3234,7 @@ pub impl ToJson for DeployKeyEvent with fn to_json(self) {
 
 ///|
 /// `DeploymentCreated`
+#derive(Debug, Eq)
 pub(all) struct DeploymentCreated {
   action : DeploymentCreatedAction
   deployment : DeploymentCreatedDeployment
@@ -3205,7 +3244,7 @@ pub(all) struct DeploymentCreated {
   sender : User
   workflow : Unit
   workflow_run : Unit
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DeploymentCreated` (fields with defaults are optional).
@@ -3287,7 +3326,8 @@ pub impl ToJson for DeploymentCreated with fn to_json(self) {
 
 ///|
 /// `DeploymentEvent`
-pub(all) struct DeploymentEvent(DeploymentCreated) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct DeploymentEvent(DeploymentCreated)
 
 ///|
 pub impl @typify_rt.Serde for DeploymentEvent with fn deserialize(d) {
@@ -3311,6 +3351,7 @@ pub impl ToJson for DeploymentEvent with fn to_json(self) {
 
 ///|
 /// `DeploymentStatusCreated`
+#derive(Debug, Eq)
 pub(all) struct DeploymentStatusCreated {
   action : DeploymentStatusCreatedAction
   deployment : DeploymentStatusCreatedDeployment
@@ -3319,7 +3360,7 @@ pub(all) struct DeploymentStatusCreated {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DeploymentStatusCreated` (fields with defaults are optional).
@@ -3396,7 +3437,8 @@ pub impl ToJson for DeploymentStatusCreated with fn to_json(self) {
 
 ///|
 /// `DeploymentStatusEvent`
-pub(all) struct DeploymentStatusEvent(DeploymentStatusCreated) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct DeploymentStatusEvent(DeploymentStatusCreated)
 
 ///|
 pub impl @typify_rt.Serde for DeploymentStatusEvent with fn deserialize(d) {
@@ -3420,6 +3462,7 @@ pub impl ToJson for DeploymentStatusEvent with fn to_json(self) {
 
 ///|
 /// `Discussion`
+#derive(Debug, Eq)
 pub(all) struct Discussion {
   active_lock_reason : String?
   answer_chosen_at : String?
@@ -3440,7 +3483,7 @@ pub(all) struct Discussion {
   title : String
   updated_at : @typify_rt.DateTimeUtc
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Discussion` (fields with defaults are optional).
@@ -3573,6 +3616,7 @@ pub impl ToJson for Discussion with fn to_json(self) {
 
 ///|
 /// `DiscussionAnswered`
+#derive(Debug, Eq)
 pub(all) struct DiscussionAnswered {
   action : DiscussionAnsweredAction
   answer : DiscussionAnsweredAnswer
@@ -3581,7 +3625,7 @@ pub(all) struct DiscussionAnswered {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionAnswered` (fields with defaults are optional).
@@ -3658,6 +3702,7 @@ pub impl ToJson for DiscussionAnswered with fn to_json(self) {
 
 ///|
 /// `DiscussionCategoryChanged`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCategoryChanged {
   action : DiscussionCategoryChangedAction
   changes : DiscussionCategoryChangedChanges
@@ -3666,7 +3711,7 @@ pub(all) struct DiscussionCategoryChanged {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCategoryChanged` (fields with defaults are optional).
@@ -3743,6 +3788,7 @@ pub impl ToJson for DiscussionCategoryChanged with fn to_json(self) {
 
 ///|
 /// `DiscussionCreated`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCreated {
   action : DiscussionCreatedAction
   discussion : DiscussionCreatedDiscussion
@@ -3750,7 +3796,7 @@ pub(all) struct DiscussionCreated {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCreated` (fields with defaults are optional).
@@ -3822,6 +3868,7 @@ pub impl ToJson for DiscussionCreated with fn to_json(self) {
 
 ///|
 /// `DiscussionDeleted`
+#derive(Debug, Eq)
 pub(all) struct DiscussionDeleted {
   action : DiscussionDeletedAction
   discussion : Discussion
@@ -3829,7 +3876,7 @@ pub(all) struct DiscussionDeleted {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionDeleted` (fields with defaults are optional).
@@ -3901,6 +3948,7 @@ pub impl ToJson for DiscussionDeleted with fn to_json(self) {
 
 ///|
 /// `DiscussionEdited`
+#derive(Debug, Eq)
 pub(all) struct DiscussionEdited {
   action : DiscussionEditedAction
   changes : DiscussionEditedChanges?
@@ -3909,7 +3957,7 @@ pub(all) struct DiscussionEdited {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionEdited` (fields with defaults are optional).
@@ -3988,6 +4036,7 @@ pub impl ToJson for DiscussionEdited with fn to_json(self) {
 
 ///|
 /// `DiscussionLabeled`
+#derive(Debug, Eq)
 pub(all) struct DiscussionLabeled {
   action : DiscussionLabeledAction
   discussion : Discussion
@@ -3996,7 +4045,7 @@ pub(all) struct DiscussionLabeled {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionLabeled` (fields with defaults are optional).
@@ -4073,6 +4122,7 @@ pub impl ToJson for DiscussionLabeled with fn to_json(self) {
 
 ///|
 /// `DiscussionLocked`
+#derive(Debug, Eq)
 pub(all) struct DiscussionLocked {
   action : DiscussionLockedAction
   discussion : DiscussionLockedDiscussion
@@ -4080,7 +4130,7 @@ pub(all) struct DiscussionLocked {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionLocked` (fields with defaults are optional).
@@ -4152,6 +4202,7 @@ pub impl ToJson for DiscussionLocked with fn to_json(self) {
 
 ///|
 /// `DiscussionPinned`
+#derive(Debug, Eq)
 pub(all) struct DiscussionPinned {
   action : DiscussionPinnedAction
   discussion : Discussion
@@ -4159,7 +4210,7 @@ pub(all) struct DiscussionPinned {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionPinned` (fields with defaults are optional).
@@ -4231,6 +4282,7 @@ pub impl ToJson for DiscussionPinned with fn to_json(self) {
 
 ///|
 /// `DiscussionTransferred`
+#derive(Debug, Eq)
 pub(all) struct DiscussionTransferred {
   action : DiscussionTransferredAction
   changes : DiscussionTransferredChanges
@@ -4239,7 +4291,7 @@ pub(all) struct DiscussionTransferred {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionTransferred` (fields with defaults are optional).
@@ -4316,6 +4368,7 @@ pub impl ToJson for DiscussionTransferred with fn to_json(self) {
 
 ///|
 /// `DiscussionUnanswered`
+#derive(Debug, Eq)
 pub(all) struct DiscussionUnanswered {
   action : DiscussionUnansweredAction
   discussion : DiscussionUnansweredDiscussion
@@ -4324,7 +4377,7 @@ pub(all) struct DiscussionUnanswered {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionUnanswered` (fields with defaults are optional).
@@ -4401,6 +4454,7 @@ pub impl ToJson for DiscussionUnanswered with fn to_json(self) {
 
 ///|
 /// `DiscussionUnlabeled`
+#derive(Debug, Eq)
 pub(all) struct DiscussionUnlabeled {
   action : DiscussionUnlabeledAction
   discussion : Discussion
@@ -4409,7 +4463,7 @@ pub(all) struct DiscussionUnlabeled {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionUnlabeled` (fields with defaults are optional).
@@ -4486,6 +4540,7 @@ pub impl ToJson for DiscussionUnlabeled with fn to_json(self) {
 
 ///|
 /// `DiscussionUnlocked`
+#derive(Debug, Eq)
 pub(all) struct DiscussionUnlocked {
   action : DiscussionUnlockedAction
   discussion : DiscussionUnlockedDiscussion
@@ -4493,7 +4548,7 @@ pub(all) struct DiscussionUnlocked {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionUnlocked` (fields with defaults are optional).
@@ -4565,6 +4620,7 @@ pub impl ToJson for DiscussionUnlocked with fn to_json(self) {
 
 ///|
 /// `DiscussionUnpinned`
+#derive(Debug, Eq)
 pub(all) struct DiscussionUnpinned {
   action : DiscussionUnpinnedAction
   discussion : Discussion
@@ -4572,7 +4628,7 @@ pub(all) struct DiscussionUnpinned {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionUnpinned` (fields with defaults are optional).
@@ -4644,6 +4700,7 @@ pub impl ToJson for DiscussionUnpinned with fn to_json(self) {
 
 ///|
 /// `DiscussionCommentCreated`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCommentCreated {
   action : DiscussionCommentCreatedAction
   comment : DiscussionCommentCreatedComment
@@ -4652,7 +4709,7 @@ pub(all) struct DiscussionCommentCreated {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCommentCreated` (fields with defaults are optional).
@@ -4727,6 +4784,7 @@ pub impl ToJson for DiscussionCommentCreated with fn to_json(self) {
 
 ///|
 /// `DiscussionCommentDeleted`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCommentDeleted {
   action : DiscussionCommentDeletedAction
   comment : DiscussionCommentDeletedComment
@@ -4735,7 +4793,7 @@ pub(all) struct DiscussionCommentDeleted {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCommentDeleted` (fields with defaults are optional).
@@ -4810,6 +4868,7 @@ pub impl ToJson for DiscussionCommentDeleted with fn to_json(self) {
 
 ///|
 /// `DiscussionCommentEdited`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCommentEdited {
   action : DiscussionCommentEditedAction
   changes : DiscussionCommentEditedChanges
@@ -4819,7 +4878,7 @@ pub(all) struct DiscussionCommentEdited {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCommentEdited` (fields with defaults are optional).
@@ -4899,11 +4958,12 @@ pub impl ToJson for DiscussionCommentEdited with fn to_json(self) {
 
 ///|
 /// `DiscussionCommentEvent`
+#derive(Debug, Eq)
 pub(all) enum DiscussionCommentEvent {
   Created(DiscussionCommentCreated)
   Deleted(DiscussionCommentDeleted)
   Edited(DiscussionCommentEdited)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionCommentEvent with fn deserialize(d) {
@@ -4956,6 +5016,7 @@ pub impl ToJson for DiscussionCommentEvent with fn to_json(self) {
 
 ///|
 /// `DiscussionEvent`
+#derive(Debug, Eq)
 pub(all) enum DiscussionEvent {
   Answered(DiscussionAnswered)
   CategoryChanged(DiscussionCategoryChanged)
@@ -4970,7 +5031,7 @@ pub(all) enum DiscussionEvent {
   Unlabeled(DiscussionUnlabeled)
   Unlocked(DiscussionUnlocked)
   Unpinned(DiscussionUnpinned)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionEvent with fn deserialize(d) {
@@ -5113,13 +5174,14 @@ pub impl ToJson for DiscussionEvent with fn to_json(self) {
 
 ///|
 /// A user forks a repository.
+#derive(Debug, Eq)
 pub(all) struct ForkEvent {
   forkee : ForkEventForkee
   installation : InstallationLite?
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ForkEvent` (fields with defaults are optional).
@@ -5186,6 +5248,7 @@ pub impl ToJson for ForkEvent with fn to_json(self) {
 
 ///|
 /// `GithubOrg`
+#derive(Debug, Eq)
 pub(all) struct GithubOrg {
   avatar_url : String
   email : Unit
@@ -5207,7 +5270,7 @@ pub(all) struct GithubOrg {
   subscriptions_url : String
   type_ : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `GithubOrg` (fields with defaults are optional).
@@ -5347,10 +5410,11 @@ pub impl ToJson for GithubOrg with fn to_json(self) {
 
 ///|
 /// `GithubAppAuthorizationRevoked`
+#derive(Debug, Eq)
 pub(all) struct GithubAppAuthorizationRevoked {
   action : GithubAppAuthorizationRevokedAction
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `GithubAppAuthorizationRevoked` (fields with defaults are optional).
@@ -5398,7 +5462,8 @@ pub impl ToJson for GithubAppAuthorizationRevoked with fn to_json(self) {
 
 ///|
 /// `GithubAppAuthorizationEvent`
-pub(all) struct GithubAppAuthorizationEvent(GithubAppAuthorizationRevoked) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct GithubAppAuthorizationEvent(GithubAppAuthorizationRevoked)
 
 ///|
 pub impl @typify_rt.Serde for GithubAppAuthorizationEvent with fn deserialize(d) {
@@ -5422,6 +5487,7 @@ pub impl ToJson for GithubAppAuthorizationEvent with fn to_json(self) {
 
 ///|
 /// A wiki page is created or updated.
+#derive(Debug, Eq)
 pub(all) struct GollumEvent {
   installation : InstallationLite?
   organization : Organization?
@@ -5429,7 +5495,7 @@ pub(all) struct GollumEvent {
   pages : Array[GollumEventPagesItem]
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `GollumEvent` (fields with defaults are optional).
@@ -5496,6 +5562,7 @@ pub impl ToJson for GollumEvent with fn to_json(self) {
 
 ///|
 /// The GitHub App installation.
+#derive(Debug, Eq)
 pub(all) struct Installation {
   access_tokens_url : String
   account : User
@@ -5519,7 +5586,7 @@ pub(all) struct Installation {
   target_id : Int64
   target_type : InstallationTargetType
   updated_at : InstallationUpdatedAt
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Installation` (fields with defaults are optional).
@@ -5658,6 +5725,7 @@ pub impl ToJson for Installation with fn to_json(self) {
 
 ///|
 /// `InstallationCreated`
+#derive(Debug, Eq)
 pub(all) struct InstallationCreated {
   action : InstallationCreatedAction
   installation : Installation
@@ -5665,7 +5733,7 @@ pub(all) struct InstallationCreated {
   repositories : Array[InstallationCreatedRepositoriesItem]
   requester : User?
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationCreated` (fields with defaults are optional).
@@ -5732,6 +5800,7 @@ pub impl ToJson for InstallationCreated with fn to_json(self) {
 
 ///|
 /// `InstallationDeleted`
+#derive(Debug, Eq)
 pub(all) struct InstallationDeleted {
   action : InstallationDeletedAction
   installation : Installation
@@ -5739,7 +5808,7 @@ pub(all) struct InstallationDeleted {
   repositories : Array[InstallationDeletedRepositoriesItem]
   requester : Unit
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationDeleted` (fields with defaults are optional).
@@ -5804,6 +5873,7 @@ pub impl ToJson for InstallationDeleted with fn to_json(self) {
 
 ///|
 /// `InstallationNewPermissionsAccepted`
+#derive(Debug, Eq)
 pub(all) struct InstallationNewPermissionsAccepted {
   action : InstallationNewPermissionsAcceptedAction
   installation : Installation
@@ -5811,7 +5881,7 @@ pub(all) struct InstallationNewPermissionsAccepted {
   repositories : Array[InstallationNewPermissionsAcceptedRepositoriesItem]
   requester : Unit
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationNewPermissionsAccepted` (fields with defaults are optional).
@@ -5876,6 +5946,7 @@ pub impl ToJson for InstallationNewPermissionsAccepted with fn to_json(self) {
 
 ///|
 /// `InstallationSuspend`
+#derive(Debug, Eq)
 pub(all) struct InstallationSuspend {
   action : InstallationSuspendAction
   installation : InstallationSuspendInstallation
@@ -5883,7 +5954,7 @@ pub(all) struct InstallationSuspend {
   repositories : Array[InstallationSuspendRepositoriesItem]
   requester : Unit
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationSuspend` (fields with defaults are optional).
@@ -5948,6 +6019,7 @@ pub impl ToJson for InstallationSuspend with fn to_json(self) {
 
 ///|
 /// `InstallationUnsuspend`
+#derive(Debug, Eq)
 pub(all) struct InstallationUnsuspend {
   action : InstallationUnsuspendAction
   installation : InstallationUnsuspendInstallation
@@ -5955,7 +6027,7 @@ pub(all) struct InstallationUnsuspend {
   repositories : Array[InstallationUnsuspendRepositoriesItem]
   requester : Unit
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationUnsuspend` (fields with defaults are optional).
@@ -6020,11 +6092,12 @@ pub impl ToJson for InstallationUnsuspend with fn to_json(self) {
 
 ///|
 /// Installation
+#derive(Debug, Eq)
 pub(all) struct InstallationLite {
   /// The ID of the installation.
   id : Int64
   node_id : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationLite` (fields with defaults are optional).
@@ -6072,13 +6145,14 @@ pub impl ToJson for InstallationLite with fn to_json(self) {
 
 ///|
 /// `InstallationEvent`
+#derive(Debug, Eq)
 pub(all) enum InstallationEvent {
   Created(InstallationCreated)
   Deleted(InstallationDeleted)
   NewPermissionsAccepted(InstallationNewPermissionsAccepted)
   Suspend(InstallationSuspend)
   Unsuspend(InstallationUnsuspend)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationEvent with fn deserialize(d) {
@@ -6149,6 +6223,7 @@ pub impl ToJson for InstallationEvent with fn to_json(self) {
 
 ///|
 /// `InstallationRepositoriesAdded`
+#derive(Debug, Eq)
 pub(all) struct InstallationRepositoriesAdded {
   action : InstallationRepositoriesAddedAction
   installation : Installation
@@ -6160,7 +6235,7 @@ pub(all) struct InstallationRepositoriesAdded {
   repository_selection : InstallationRepositoriesAddedRepositorySelection
   requester : User?
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationRepositoriesAdded` (fields with defaults are optional).
@@ -6233,6 +6308,7 @@ pub impl ToJson for InstallationRepositoriesAdded with fn to_json(self) {
 
 ///|
 /// `InstallationRepositoriesRemoved`
+#derive(Debug, Eq)
 pub(all) struct InstallationRepositoriesRemoved {
   action : InstallationRepositoriesRemovedAction
   installation : Installation
@@ -6244,7 +6320,7 @@ pub(all) struct InstallationRepositoriesRemoved {
   repository_selection : InstallationRepositoriesRemovedRepositorySelection
   requester : User?
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationRepositoriesRemoved` (fields with defaults are optional).
@@ -6317,10 +6393,11 @@ pub impl ToJson for InstallationRepositoriesRemoved with fn to_json(self) {
 
 ///|
 /// `InstallationRepositoriesEvent`
+#derive(Debug, Eq)
 pub(all) enum InstallationRepositoriesEvent {
   Added(InstallationRepositoriesAdded)
   Removed(InstallationRepositoriesRemoved)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationRepositoriesEvent with fn deserialize(d) {
@@ -6364,6 +6441,7 @@ pub impl ToJson for InstallationRepositoriesEvent with fn to_json(self) {
 
 ///|
 /// The [issue](https://docs.github.com/en/rest/reference/issues) itself.
+#derive(Debug, Eq)
 pub(all) struct Issue {
   active_lock_reason : IssueActiveLockReason?
   assignee : User?
@@ -6395,7 +6473,7 @@ pub(all) struct Issue {
   /// URL for the issue
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Issue` (fields with defaults are optional).
@@ -6575,6 +6653,7 @@ pub impl ToJson for Issue with fn to_json(self) {
 
 ///|
 /// The [comment](https://docs.github.com/en/rest/reference/issues#comments) itself.
+#derive(Debug, Eq)
 pub(all) struct IssueComment {
   author_association : AuthorAssociation
   /// Contents of the issue comment
@@ -6590,7 +6669,7 @@ pub(all) struct IssueComment {
   /// URL for the issue comment
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueComment` (fields with defaults are optional).
@@ -6683,6 +6762,7 @@ pub impl ToJson for IssueComment with fn to_json(self) {
 
 ///|
 /// `IssueCommentCreated`
+#derive(Debug, Eq)
 pub(all) struct IssueCommentCreated {
   action : IssueCommentCreatedAction
   comment : IssueComment
@@ -6691,7 +6771,7 @@ pub(all) struct IssueCommentCreated {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueCommentCreated` (fields with defaults are optional).
@@ -6768,6 +6848,7 @@ pub impl ToJson for IssueCommentCreated with fn to_json(self) {
 
 ///|
 /// `IssueCommentDeleted`
+#derive(Debug, Eq)
 pub(all) struct IssueCommentDeleted {
   action : IssueCommentDeletedAction
   comment : IssueComment
@@ -6776,7 +6857,7 @@ pub(all) struct IssueCommentDeleted {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueCommentDeleted` (fields with defaults are optional).
@@ -6853,6 +6934,7 @@ pub impl ToJson for IssueCommentDeleted with fn to_json(self) {
 
 ///|
 /// `IssueCommentEdited`
+#derive(Debug, Eq)
 pub(all) struct IssueCommentEdited {
   action : IssueCommentEditedAction
   changes : IssueCommentEditedChanges
@@ -6862,7 +6944,7 @@ pub(all) struct IssueCommentEdited {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueCommentEdited` (fields with defaults are optional).
@@ -6944,11 +7026,12 @@ pub impl ToJson for IssueCommentEdited with fn to_json(self) {
 
 ///|
 /// `IssueCommentEvent`
+#derive(Debug, Eq)
 pub(all) enum IssueCommentEvent {
   Created(IssueCommentCreated)
   Deleted(IssueCommentDeleted)
   Edited(IssueCommentEdited)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueCommentEvent with fn deserialize(d) {
@@ -7001,6 +7084,7 @@ pub impl ToJson for IssueCommentEvent with fn to_json(self) {
 
 ///|
 /// Activity related to an issue. The type of activity is specified in the action property.
+#derive(Debug, Eq)
 pub(all) struct IssuesAssigned {
   /// The action that was performed.
   action : IssuesAssignedAction
@@ -7011,7 +7095,7 @@ pub(all) struct IssuesAssigned {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesAssigned` (fields with defaults are optional).
@@ -7090,6 +7174,7 @@ pub impl ToJson for IssuesAssigned with fn to_json(self) {
 
 ///|
 /// `IssuesClosed`
+#derive(Debug, Eq)
 pub(all) struct IssuesClosed {
   /// The action that was performed.
   action : IssuesClosedAction
@@ -7098,7 +7183,7 @@ pub(all) struct IssuesClosed {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesClosed` (fields with defaults are optional).
@@ -7170,6 +7255,7 @@ pub impl ToJson for IssuesClosed with fn to_json(self) {
 
 ///|
 /// `IssuesDeleted`
+#derive(Debug, Eq)
 pub(all) struct IssuesDeleted {
   action : IssuesDeletedAction
   installation : InstallationLite?
@@ -7177,7 +7263,7 @@ pub(all) struct IssuesDeleted {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesDeleted` (fields with defaults are optional).
@@ -7249,6 +7335,7 @@ pub impl ToJson for IssuesDeleted with fn to_json(self) {
 
 ///|
 /// `IssuesDemilestoned`
+#derive(Debug, Eq)
 pub(all) struct IssuesDemilestoned {
   action : IssuesDemilestonedAction
   installation : InstallationLite?
@@ -7257,7 +7344,7 @@ pub(all) struct IssuesDemilestoned {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesDemilestoned` (fields with defaults are optional).
@@ -7334,6 +7421,7 @@ pub impl ToJson for IssuesDemilestoned with fn to_json(self) {
 
 ///|
 /// `IssuesEdited`
+#derive(Debug, Eq)
 pub(all) struct IssuesEdited {
   action : IssuesEditedAction
   changes : IssuesEditedChanges
@@ -7343,7 +7431,7 @@ pub(all) struct IssuesEdited {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesEdited` (fields with defaults are optional).
@@ -7427,6 +7515,7 @@ pub impl ToJson for IssuesEdited with fn to_json(self) {
 
 ///|
 /// `IssuesLabeled`
+#derive(Debug, Eq)
 pub(all) struct IssuesLabeled {
   action : IssuesLabeledAction
   installation : InstallationLite?
@@ -7436,7 +7525,7 @@ pub(all) struct IssuesLabeled {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesLabeled` (fields with defaults are optional).
@@ -7515,6 +7604,7 @@ pub impl ToJson for IssuesLabeled with fn to_json(self) {
 
 ///|
 /// `IssuesLocked`
+#derive(Debug, Eq)
 pub(all) struct IssuesLocked {
   action : IssuesLockedAction
   installation : InstallationLite?
@@ -7522,7 +7612,7 @@ pub(all) struct IssuesLocked {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesLocked` (fields with defaults are optional).
@@ -7594,6 +7684,7 @@ pub impl ToJson for IssuesLocked with fn to_json(self) {
 
 ///|
 /// `IssuesMilestoned`
+#derive(Debug, Eq)
 pub(all) struct IssuesMilestoned {
   action : IssuesMilestonedAction
   installation : InstallationLite?
@@ -7602,7 +7693,7 @@ pub(all) struct IssuesMilestoned {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesMilestoned` (fields with defaults are optional).
@@ -7679,6 +7770,7 @@ pub impl ToJson for IssuesMilestoned with fn to_json(self) {
 
 ///|
 /// `IssuesOpened`
+#derive(Debug, Eq)
 pub(all) struct IssuesOpened {
   action : IssuesOpenedAction
   changes : IssuesOpenedChanges?
@@ -7687,7 +7779,7 @@ pub(all) struct IssuesOpened {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesOpened` (fields with defaults are optional).
@@ -7766,6 +7858,7 @@ pub impl ToJson for IssuesOpened with fn to_json(self) {
 
 ///|
 /// `IssuesPinned`
+#derive(Debug, Eq)
 pub(all) struct IssuesPinned {
   action : IssuesPinnedAction
   installation : InstallationLite?
@@ -7773,7 +7866,7 @@ pub(all) struct IssuesPinned {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesPinned` (fields with defaults are optional).
@@ -7845,6 +7938,7 @@ pub impl ToJson for IssuesPinned with fn to_json(self) {
 
 ///|
 /// `IssuesReopened`
+#derive(Debug, Eq)
 pub(all) struct IssuesReopened {
   action : IssuesReopenedAction
   installation : InstallationLite?
@@ -7852,7 +7946,7 @@ pub(all) struct IssuesReopened {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesReopened` (fields with defaults are optional).
@@ -7924,6 +8018,7 @@ pub impl ToJson for IssuesReopened with fn to_json(self) {
 
 ///|
 /// `IssuesTransferred`
+#derive(Debug, Eq)
 pub(all) struct IssuesTransferred {
   action : IssuesTransferredAction
   changes : IssuesTransferredChanges
@@ -7932,7 +8027,7 @@ pub(all) struct IssuesTransferred {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesTransferred` (fields with defaults are optional).
@@ -8009,6 +8104,7 @@ pub impl ToJson for IssuesTransferred with fn to_json(self) {
 
 ///|
 /// `IssuesUnassigned`
+#derive(Debug, Eq)
 pub(all) struct IssuesUnassigned {
   /// The action that was performed.
   action : IssuesUnassignedAction
@@ -8019,7 +8115,7 @@ pub(all) struct IssuesUnassigned {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesUnassigned` (fields with defaults are optional).
@@ -8098,6 +8194,7 @@ pub impl ToJson for IssuesUnassigned with fn to_json(self) {
 
 ///|
 /// `IssuesUnlabeled`
+#derive(Debug, Eq)
 pub(all) struct IssuesUnlabeled {
   action : IssuesUnlabeledAction
   installation : InstallationLite?
@@ -8107,7 +8204,7 @@ pub(all) struct IssuesUnlabeled {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesUnlabeled` (fields with defaults are optional).
@@ -8186,6 +8283,7 @@ pub impl ToJson for IssuesUnlabeled with fn to_json(self) {
 
 ///|
 /// `IssuesUnlocked`
+#derive(Debug, Eq)
 pub(all) struct IssuesUnlocked {
   action : IssuesUnlockedAction
   installation : InstallationLite?
@@ -8193,7 +8291,7 @@ pub(all) struct IssuesUnlocked {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesUnlocked` (fields with defaults are optional).
@@ -8265,6 +8363,7 @@ pub impl ToJson for IssuesUnlocked with fn to_json(self) {
 
 ///|
 /// `IssuesUnpinned`
+#derive(Debug, Eq)
 pub(all) struct IssuesUnpinned {
   action : IssuesUnpinnedAction
   installation : InstallationLite?
@@ -8272,7 +8371,7 @@ pub(all) struct IssuesUnpinned {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesUnpinned` (fields with defaults are optional).
@@ -8344,6 +8443,7 @@ pub impl ToJson for IssuesUnpinned with fn to_json(self) {
 
 ///|
 /// `IssuesEvent`
+#derive(Debug, Eq)
 pub(all) enum IssuesEvent {
   Assigned(IssuesAssigned)
   Closed(IssuesClosed)
@@ -8361,7 +8461,7 @@ pub(all) enum IssuesEvent {
   Unlabeled(IssuesUnlabeled)
   Unlocked(IssuesUnlocked)
   Unpinned(IssuesUnpinned)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesEvent with fn deserialize(d) {
@@ -8531,6 +8631,7 @@ pub impl ToJson for IssuesEvent with fn to_json(self) {
 
 ///|
 /// `Label`
+#derive(Debug, Eq)
 pub(all) struct Label {
   /// 6-character hex code, without the leading #, identifying the color
   color : String
@@ -8542,7 +8643,7 @@ pub(all) struct Label {
   node_id : String
   /// URL for the label
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Label` (fields with defaults are optional).
@@ -8615,6 +8716,7 @@ pub impl ToJson for Label with fn to_json(self) {
 
 ///|
 /// `LabelCreated`
+#derive(Debug, Eq)
 pub(all) struct LabelCreated {
   action : LabelCreatedAction
   installation : InstallationLite?
@@ -8623,7 +8725,7 @@ pub(all) struct LabelCreated {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LabelCreated` (fields with defaults are optional).
@@ -8695,6 +8797,7 @@ pub impl ToJson for LabelCreated with fn to_json(self) {
 
 ///|
 /// `LabelDeleted`
+#derive(Debug, Eq)
 pub(all) struct LabelDeleted {
   action : LabelDeletedAction
   installation : InstallationLite?
@@ -8703,7 +8806,7 @@ pub(all) struct LabelDeleted {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LabelDeleted` (fields with defaults are optional).
@@ -8775,6 +8878,7 @@ pub impl ToJson for LabelDeleted with fn to_json(self) {
 
 ///|
 /// `LabelEdited`
+#derive(Debug, Eq)
 pub(all) struct LabelEdited {
   action : LabelEditedAction
   changes : LabelEditedChanges?
@@ -8784,7 +8888,7 @@ pub(all) struct LabelEdited {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LabelEdited` (fields with defaults are optional).
@@ -8863,11 +8967,12 @@ pub impl ToJson for LabelEdited with fn to_json(self) {
 
 ///|
 /// `LabelEvent`
+#derive(Debug, Eq)
 pub(all) enum LabelEvent {
   Created(LabelCreated)
   Deleted(LabelDeleted)
   Edited(LabelEdited)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelEvent with fn deserialize(d) {
@@ -8920,13 +9025,14 @@ pub impl ToJson for LabelEvent with fn to_json(self) {
 
 ///|
 /// `License`
+#derive(Debug, Eq)
 pub(all) struct License {
   key : String
   name : String
   node_id : String
   spdx_id : String
   url : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `License` (fields with defaults are optional).
@@ -8989,9 +9095,10 @@ pub impl ToJson for License with fn to_json(self) {
 
 ///|
 /// `Link`
+#derive(Debug, Eq)
 pub(all) struct Link {
   href : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Link` (fields with defaults are optional).
@@ -9034,6 +9141,7 @@ pub impl ToJson for Link with fn to_json(self) {
 
 ///|
 /// `MarketplacePurchase`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchase {
   account : MarketplacePurchaseAccount
   billing_cycle : String
@@ -9042,7 +9150,7 @@ pub(all) struct MarketplacePurchase {
   on_free_trial : Bool
   plan : MarketplacePurchasePlan
   unit_count : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchase` (fields with defaults are optional).
@@ -9117,13 +9225,14 @@ pub impl ToJson for MarketplacePurchase with fn to_json(self) {
 
 ///|
 /// `MarketplacePurchaseCancelled`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchaseCancelled {
   action : MarketplacePurchaseCancelledAction
   effective_date : String
   marketplace_purchase : MarketplacePurchaseCancelledMarketplacePurchase
   previous_marketplace_purchase : MarketplacePurchase?
   sender : MarketplacePurchaseCancelledSender
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchaseCancelled` (fields with defaults are optional).
@@ -9188,13 +9297,14 @@ pub impl ToJson for MarketplacePurchaseCancelled with fn to_json(self) {
 
 ///|
 /// `MarketplacePurchaseChanged`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchaseChanged {
   action : MarketplacePurchaseChangedAction
   effective_date : String
   marketplace_purchase : MarketplacePurchaseChangedMarketplacePurchase
   previous_marketplace_purchase : MarketplacePurchase?
   sender : MarketplacePurchaseChangedSender
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchaseChanged` (fields with defaults are optional).
@@ -9259,13 +9369,14 @@ pub impl ToJson for MarketplacePurchaseChanged with fn to_json(self) {
 
 ///|
 /// `MarketplacePurchasePendingChange`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePendingChange {
   action : MarketplacePurchasePendingChangeAction
   effective_date : String
   marketplace_purchase : MarketplacePurchasePendingChangeMarketplacePurchase
   previous_marketplace_purchase : MarketplacePurchase?
   sender : MarketplacePurchasePendingChangeSender
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePendingChange` (fields with defaults are optional).
@@ -9330,13 +9441,14 @@ pub impl ToJson for MarketplacePurchasePendingChange with fn to_json(self) {
 
 ///|
 /// `MarketplacePurchasePendingChangeCancelled`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePendingChangeCancelled {
   action : MarketplacePurchasePendingChangeCancelledAction
   effective_date : String
   marketplace_purchase : MarketplacePurchasePendingChangeCancelledMarketplacePurchase
   previous_marketplace_purchase : MarketplacePurchase?
   sender : MarketplacePurchasePendingChangeCancelledSender
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePendingChangeCancelled` (fields with defaults are optional).
@@ -9401,13 +9513,14 @@ pub impl ToJson for MarketplacePurchasePendingChangeCancelled with fn to_json(se
 
 ///|
 /// `MarketplacePurchasePurchased`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePurchased {
   action : MarketplacePurchasePurchasedAction
   effective_date : String
   marketplace_purchase : MarketplacePurchasePurchasedMarketplacePurchase
   previous_marketplace_purchase : MarketplacePurchase?
   sender : MarketplacePurchasePurchasedSender
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePurchased` (fields with defaults are optional).
@@ -9472,13 +9585,14 @@ pub impl ToJson for MarketplacePurchasePurchased with fn to_json(self) {
 
 ///|
 /// `MarketplacePurchaseEvent`
+#derive(Debug, Eq)
 pub(all) enum MarketplacePurchaseEvent {
   Cancelled(MarketplacePurchaseCancelled)
   Changed(MarketplacePurchaseChanged)
   PendingChange(MarketplacePurchasePendingChange)
   PendingChangeCancelled(MarketplacePurchasePendingChangeCancelled)
   Purchased(MarketplacePurchasePurchased)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for MarketplacePurchaseEvent with fn deserialize(d) {
@@ -9549,6 +9663,7 @@ pub impl ToJson for MarketplacePurchaseEvent with fn to_json(self) {
 
 ///|
 /// Activity related to repository collaborators. The type of activity is specified in the action property.
+#derive(Debug, Eq)
 pub(all) struct MemberAdded {
   action : MemberAddedAction
   changes : MemberAddedChanges?
@@ -9557,7 +9672,7 @@ pub(all) struct MemberAdded {
   member_ : User
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MemberAdded` (fields with defaults are optional).
@@ -9629,6 +9744,7 @@ pub impl ToJson for MemberAdded with fn to_json(self) {
 
 ///|
 /// `MemberEdited`
+#derive(Debug, Eq)
 pub(all) struct MemberEdited {
   action : MemberEditedAction
   changes : MemberEditedChanges
@@ -9637,7 +9753,7 @@ pub(all) struct MemberEdited {
   member_ : User
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MemberEdited` (fields with defaults are optional).
@@ -9707,6 +9823,7 @@ pub impl ToJson for MemberEdited with fn to_json(self) {
 
 ///|
 /// `MemberRemoved`
+#derive(Debug, Eq)
 pub(all) struct MemberRemoved {
   action : MemberRemovedAction
   installation : InstallationLite?
@@ -9714,7 +9831,7 @@ pub(all) struct MemberRemoved {
   member_ : User
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MemberRemoved` (fields with defaults are optional).
@@ -9779,11 +9896,12 @@ pub impl ToJson for MemberRemoved with fn to_json(self) {
 
 ///|
 /// `MemberEvent`
+#derive(Debug, Eq)
 pub(all) enum MemberEvent {
   Added(MemberAdded)
   Edited(MemberEdited)
   Removed(MemberRemoved)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for MemberEvent with fn deserialize(d) {
@@ -9836,13 +9954,14 @@ pub impl ToJson for MemberEvent with fn to_json(self) {
 
 ///|
 /// The membership between the user and the organization. Not present when the action is `member_invited`.
+#derive(Debug, Eq)
 pub(all) struct Membership {
   organization_url : String
   role : String
   state : String
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Membership` (fields with defaults are optional).
@@ -9905,6 +10024,7 @@ pub impl ToJson for Membership with fn to_json(self) {
 
 ///|
 /// `MembershipAdded`
+#derive(Debug, Eq)
 pub(all) struct MembershipAdded {
   action : MembershipAddedAction
   installation : InstallationLite?
@@ -9916,7 +10036,7 @@ pub(all) struct MembershipAdded {
   sender : User
   /// The [team](https://docs.github.com/en/rest/reference/teams) for the membership.
   team : Team
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MembershipAdded` (fields with defaults are optional).
@@ -9991,6 +10111,7 @@ pub impl ToJson for MembershipAdded with fn to_json(self) {
 
 ///|
 /// `MembershipRemoved`
+#derive(Debug, Eq)
 pub(all) struct MembershipRemoved {
   action : MembershipRemovedAction
   installation : InstallationLite?
@@ -10002,7 +10123,7 @@ pub(all) struct MembershipRemoved {
   sender : User
   /// The [team](https://docs.github.com/en/rest/reference/teams) for the membership.
   team : MembershipRemovedTeam
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MembershipRemoved` (fields with defaults are optional).
@@ -10077,10 +10198,11 @@ pub impl ToJson for MembershipRemoved with fn to_json(self) {
 
 ///|
 /// `MembershipEvent`
+#derive(Debug, Eq)
 pub(all) enum MembershipEvent {
   Added(MembershipAdded)
   Removed(MembershipRemoved)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for MembershipEvent with fn deserialize(d) {
@@ -10124,6 +10246,7 @@ pub impl ToJson for MembershipEvent with fn to_json(self) {
 
 ///|
 /// `MetaDeleted`
+#derive(Debug, Eq)
 pub(all) struct MetaDeleted {
   action : MetaDeletedAction
   hook : MetaDeletedHook
@@ -10131,7 +10254,7 @@ pub(all) struct MetaDeleted {
   hook_id : Int64
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MetaDeleted` (fields with defaults are optional).
@@ -10194,7 +10317,8 @@ pub impl ToJson for MetaDeleted with fn to_json(self) {
 
 ///|
 /// `MetaEvent`
-pub(all) struct MetaEvent(MetaDeleted) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct MetaEvent(MetaDeleted)
 
 ///|
 pub impl @typify_rt.Serde for MetaEvent with fn deserialize(d) {
@@ -10218,6 +10342,7 @@ pub impl ToJson for MetaEvent with fn to_json(self) {
 
 ///|
 /// A collection of related issues and pull requests.
+#derive(Debug, Eq)
 pub(all) struct Milestone {
   closed_at : @typify_rt.DateTimeUtc?
   closed_issues : Int64
@@ -10238,7 +10363,7 @@ pub(all) struct Milestone {
   title : String
   updated_at : @typify_rt.DateTimeUtc
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Milestone` (fields with defaults are optional).
@@ -10356,6 +10481,7 @@ pub impl ToJson for Milestone with fn to_json(self) {
 
 ///|
 /// `MilestoneClosed`
+#derive(Debug, Eq)
 pub(all) struct MilestoneClosed {
   action : MilestoneClosedAction
   installation : InstallationLite?
@@ -10363,7 +10489,7 @@ pub(all) struct MilestoneClosed {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MilestoneClosed` (fields with defaults are optional).
@@ -10435,6 +10561,7 @@ pub impl ToJson for MilestoneClosed with fn to_json(self) {
 
 ///|
 /// `MilestoneCreated`
+#derive(Debug, Eq)
 pub(all) struct MilestoneCreated {
   action : MilestoneCreatedAction
   installation : InstallationLite?
@@ -10442,7 +10569,7 @@ pub(all) struct MilestoneCreated {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MilestoneCreated` (fields with defaults are optional).
@@ -10514,6 +10641,7 @@ pub impl ToJson for MilestoneCreated with fn to_json(self) {
 
 ///|
 /// `MilestoneDeleted`
+#derive(Debug, Eq)
 pub(all) struct MilestoneDeleted {
   action : MilestoneDeletedAction
   installation : InstallationLite?
@@ -10521,7 +10649,7 @@ pub(all) struct MilestoneDeleted {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MilestoneDeleted` (fields with defaults are optional).
@@ -10593,6 +10721,7 @@ pub impl ToJson for MilestoneDeleted with fn to_json(self) {
 
 ///|
 /// `MilestoneEdited`
+#derive(Debug, Eq)
 pub(all) struct MilestoneEdited {
   action : MilestoneEditedAction
   changes : MilestoneEditedChanges
@@ -10601,7 +10730,7 @@ pub(all) struct MilestoneEdited {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MilestoneEdited` (fields with defaults are optional).
@@ -10678,6 +10807,7 @@ pub impl ToJson for MilestoneEdited with fn to_json(self) {
 
 ///|
 /// `MilestoneOpened`
+#derive(Debug, Eq)
 pub(all) struct MilestoneOpened {
   action : MilestoneOpenedAction
   installation : InstallationLite?
@@ -10685,7 +10815,7 @@ pub(all) struct MilestoneOpened {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MilestoneOpened` (fields with defaults are optional).
@@ -10757,13 +10887,14 @@ pub impl ToJson for MilestoneOpened with fn to_json(self) {
 
 ///|
 /// `MilestoneEvent`
+#derive(Debug, Eq)
 pub(all) enum MilestoneEvent {
   Closed(MilestoneClosed)
   Created(MilestoneCreated)
   Deleted(MilestoneDeleted)
   Edited(MilestoneEdited)
   Opened(MilestoneOpened)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for MilestoneEvent with fn deserialize(d) {
@@ -10834,6 +10965,7 @@ pub impl ToJson for MilestoneEvent with fn to_json(self) {
 
 ///|
 /// `OrgBlockBlocked`
+#derive(Debug, Eq)
 pub(all) struct OrgBlockBlocked {
   action : OrgBlockBlockedAction
   /// Information about the user that was blocked or unblocked.
@@ -10841,7 +10973,7 @@ pub(all) struct OrgBlockBlocked {
   installation : InstallationLite?
   organization : Organization
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `OrgBlockBlocked` (fields with defaults are optional).
@@ -10906,6 +11038,7 @@ pub impl ToJson for OrgBlockBlocked with fn to_json(self) {
 
 ///|
 /// `OrgBlockUnblocked`
+#derive(Debug, Eq)
 pub(all) struct OrgBlockUnblocked {
   action : OrgBlockUnblockedAction
   /// Information about the user that was blocked or unblocked.
@@ -10913,7 +11046,7 @@ pub(all) struct OrgBlockUnblocked {
   installation : InstallationLite?
   organization : Organization
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `OrgBlockUnblocked` (fields with defaults are optional).
@@ -10978,10 +11111,11 @@ pub impl ToJson for OrgBlockUnblocked with fn to_json(self) {
 
 ///|
 /// `OrgBlockEvent`
+#derive(Debug, Eq)
 pub(all) enum OrgBlockEvent {
   Blocked(OrgBlockBlocked)
   Unblocked(OrgBlockUnblocked)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrgBlockEvent with fn deserialize(d) {
@@ -11025,6 +11159,7 @@ pub impl ToJson for OrgBlockEvent with fn to_json(self) {
 
 ///|
 /// `Organization`
+#derive(Debug, Eq)
 pub(all) struct Organization {
   avatar_url : String
   description : String?
@@ -11039,7 +11174,7 @@ pub(all) struct Organization {
   public_members_url : String
   repos_url : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Organization` (fields with defaults are optional).
@@ -11144,13 +11279,14 @@ pub impl ToJson for Organization with fn to_json(self) {
 
 ///|
 /// `OrganizationDeleted`
+#derive(Debug, Eq)
 pub(all) struct OrganizationDeleted {
   action : OrganizationDeletedAction
   installation : InstallationLite?
   membership : Membership
   organization : Organization
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `OrganizationDeleted` (fields with defaults are optional).
@@ -11215,13 +11351,14 @@ pub impl ToJson for OrganizationDeleted with fn to_json(self) {
 
 ///|
 /// `OrganizationMemberAdded`
+#derive(Debug, Eq)
 pub(all) struct OrganizationMemberAdded {
   action : OrganizationMemberAddedAction
   installation : InstallationLite?
   membership : Membership
   organization : Organization
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `OrganizationMemberAdded` (fields with defaults are optional).
@@ -11286,6 +11423,7 @@ pub impl ToJson for OrganizationMemberAdded with fn to_json(self) {
 
 ///|
 /// `OrganizationMemberInvited`
+#derive(Debug, Eq)
 pub(all) struct OrganizationMemberInvited {
   action : OrganizationMemberInvitedAction
   installation : InstallationLite?
@@ -11293,7 +11431,7 @@ pub(all) struct OrganizationMemberInvited {
   organization : Organization
   sender : User
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `OrganizationMemberInvited` (fields with defaults are optional).
@@ -11363,13 +11501,14 @@ pub impl ToJson for OrganizationMemberInvited with fn to_json(self) {
 
 ///|
 /// `OrganizationMemberRemoved`
+#derive(Debug, Eq)
 pub(all) struct OrganizationMemberRemoved {
   action : OrganizationMemberRemovedAction
   installation : InstallationLite?
   membership : Membership
   organization : Organization
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `OrganizationMemberRemoved` (fields with defaults are optional).
@@ -11434,13 +11573,14 @@ pub impl ToJson for OrganizationMemberRemoved with fn to_json(self) {
 
 ///|
 /// `OrganizationRenamed`
+#derive(Debug, Eq)
 pub(all) struct OrganizationRenamed {
   action : OrganizationRenamedAction
   installation : InstallationLite?
   membership : Membership
   organization : Organization
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `OrganizationRenamed` (fields with defaults are optional).
@@ -11505,13 +11645,14 @@ pub impl ToJson for OrganizationRenamed with fn to_json(self) {
 
 ///|
 /// `OrganizationEvent`
+#derive(Debug, Eq)
 pub(all) enum OrganizationEvent {
   Deleted(OrganizationDeleted)
   MemberAdded(OrganizationMemberAdded)
   MemberInvited(OrganizationMemberInvited)
   MemberRemoved(OrganizationMemberRemoved)
   Renamed(OrganizationRenamed)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrganizationEvent with fn deserialize(d) {
@@ -11582,13 +11723,14 @@ pub impl ToJson for OrganizationEvent with fn to_json(self) {
 
 ///|
 /// `PackagePublished`
+#derive(Debug, Eq)
 pub(all) struct PackagePublished {
   action : PackagePublishedAction
   organization : Organization?
   package_ : PackagePublishedPackage
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PackagePublished` (fields with defaults are optional).
@@ -11653,13 +11795,14 @@ pub impl ToJson for PackagePublished with fn to_json(self) {
 
 ///|
 /// `PackageUpdated`
+#derive(Debug, Eq)
 pub(all) struct PackageUpdated {
   action : PackageUpdatedAction
   organization : Organization?
   package_ : PackageUpdatedPackage
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PackageUpdated` (fields with defaults are optional).
@@ -11724,10 +11867,11 @@ pub impl ToJson for PackageUpdated with fn to_json(self) {
 
 ///|
 /// `PackageEvent`
+#derive(Debug, Eq)
 pub(all) enum PackageEvent {
   Published(PackagePublished)
   Updated(PackageUpdated)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PackageEvent with fn deserialize(d) {
@@ -11771,6 +11915,7 @@ pub impl ToJson for PackageEvent with fn to_json(self) {
 
 ///|
 /// Page Build
+#derive(Debug, Eq)
 pub(all) struct PageBuildEvent {
   build : PageBuildEventBuild
   id : Int64
@@ -11778,7 +11923,7 @@ pub(all) struct PageBuildEvent {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PageBuildEvent` (fields with defaults are optional).
@@ -11850,6 +11995,7 @@ pub impl ToJson for PageBuildEvent with fn to_json(self) {
 
 ///|
 /// `PingEvent`
+#derive(Debug, Eq)
 pub(all) struct PingEvent {
   hook : PingEventHook
   /// The ID of the webhook that triggered the ping.
@@ -11858,7 +12004,7 @@ pub(all) struct PingEvent {
   repository : Repository?
   sender : User?
   zen : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PingEvent` (fields with defaults are optional).
@@ -11932,6 +12078,7 @@ pub impl ToJson for PingEvent with fn to_json(self) {
 
 ///|
 /// `Project`
+#derive(Debug, Eq)
 pub(all) struct Project {
   /// Body of the project
   body : String?
@@ -11949,7 +12096,7 @@ pub(all) struct Project {
   state : ProjectState
   updated_at : @typify_rt.DateTimeUtc
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Project` (fields with defaults are optional).
@@ -12052,6 +12199,7 @@ pub impl ToJson for Project with fn to_json(self) {
 
 ///|
 /// `ProjectClosed`
+#derive(Debug, Eq)
 pub(all) struct ProjectClosed {
   action : ProjectClosedAction
   installation : InstallationLite?
@@ -12059,7 +12207,7 @@ pub(all) struct ProjectClosed {
   project : Project
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectClosed` (fields with defaults are optional).
@@ -12131,6 +12279,7 @@ pub impl ToJson for ProjectClosed with fn to_json(self) {
 
 ///|
 /// `ProjectCreated`
+#derive(Debug, Eq)
 pub(all) struct ProjectCreated {
   action : ProjectCreatedAction
   installation : InstallationLite?
@@ -12138,7 +12287,7 @@ pub(all) struct ProjectCreated {
   project : Project
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectCreated` (fields with defaults are optional).
@@ -12210,6 +12359,7 @@ pub impl ToJson for ProjectCreated with fn to_json(self) {
 
 ///|
 /// `ProjectDeleted`
+#derive(Debug, Eq)
 pub(all) struct ProjectDeleted {
   action : ProjectDeletedAction
   installation : InstallationLite?
@@ -12217,7 +12367,7 @@ pub(all) struct ProjectDeleted {
   project : Project
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectDeleted` (fields with defaults are optional).
@@ -12289,6 +12439,7 @@ pub impl ToJson for ProjectDeleted with fn to_json(self) {
 
 ///|
 /// `ProjectEdited`
+#derive(Debug, Eq)
 pub(all) struct ProjectEdited {
   action : ProjectEditedAction
   changes : ProjectEditedChanges
@@ -12297,7 +12448,7 @@ pub(all) struct ProjectEdited {
   project : Project
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectEdited` (fields with defaults are optional).
@@ -12374,6 +12525,7 @@ pub impl ToJson for ProjectEdited with fn to_json(self) {
 
 ///|
 /// `ProjectReopened`
+#derive(Debug, Eq)
 pub(all) struct ProjectReopened {
   action : ProjectReopenedAction
   installation : InstallationLite?
@@ -12381,7 +12533,7 @@ pub(all) struct ProjectReopened {
   project : Project
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectReopened` (fields with defaults are optional).
@@ -12453,6 +12605,7 @@ pub impl ToJson for ProjectReopened with fn to_json(self) {
 
 ///|
 /// `ProjectCard`
+#derive(Debug, Eq)
 pub(all) struct ProjectCard {
   after_id : Unit
   /// Whether or not the card is archived
@@ -12469,7 +12622,7 @@ pub(all) struct ProjectCard {
   project_url : String
   updated_at : @typify_rt.DateTimeUtc
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectCard` (fields with defaults are optional).
@@ -12574,6 +12727,7 @@ pub impl ToJson for ProjectCard with fn to_json(self) {
 
 ///|
 /// `ProjectColumn`
+#derive(Debug, Eq)
 pub(all) struct ProjectColumn {
   cards_url : String
   created_at : @typify_rt.DateTimeUtc
@@ -12585,7 +12739,7 @@ pub(all) struct ProjectColumn {
   project_url : String
   updated_at : @typify_rt.DateTimeUtc
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectColumn` (fields with defaults are optional).
@@ -12663,6 +12817,7 @@ pub impl ToJson for ProjectColumn with fn to_json(self) {
 
 ///|
 /// `ProjectCardConverted`
+#derive(Debug, Eq)
 pub(all) struct ProjectCardConverted {
   action : ProjectCardConvertedAction
   changes : ProjectCardConvertedChanges
@@ -12671,7 +12826,7 @@ pub(all) struct ProjectCardConverted {
   project_card : ProjectCard
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectCardConverted` (fields with defaults are optional).
@@ -12748,6 +12903,7 @@ pub impl ToJson for ProjectCardConverted with fn to_json(self) {
 
 ///|
 /// `ProjectCardCreated`
+#derive(Debug, Eq)
 pub(all) struct ProjectCardCreated {
   action : ProjectCardCreatedAction
   installation : InstallationLite?
@@ -12755,7 +12911,7 @@ pub(all) struct ProjectCardCreated {
   project_card : ProjectCard
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectCardCreated` (fields with defaults are optional).
@@ -12827,6 +12983,7 @@ pub impl ToJson for ProjectCardCreated with fn to_json(self) {
 
 ///|
 /// `ProjectCardDeleted`
+#derive(Debug, Eq)
 pub(all) struct ProjectCardDeleted {
   action : ProjectCardDeletedAction
   installation : InstallationLite?
@@ -12834,7 +12991,7 @@ pub(all) struct ProjectCardDeleted {
   project_card : ProjectCard
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectCardDeleted` (fields with defaults are optional).
@@ -12906,6 +13063,7 @@ pub impl ToJson for ProjectCardDeleted with fn to_json(self) {
 
 ///|
 /// `ProjectCardEdited`
+#derive(Debug, Eq)
 pub(all) struct ProjectCardEdited {
   action : ProjectCardEditedAction
   changes : ProjectCardEditedChanges
@@ -12914,7 +13072,7 @@ pub(all) struct ProjectCardEdited {
   project_card : ProjectCard
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectCardEdited` (fields with defaults are optional).
@@ -12991,6 +13149,7 @@ pub impl ToJson for ProjectCardEdited with fn to_json(self) {
 
 ///|
 /// `ProjectCardMoved`
+#derive(Debug, Eq)
 pub(all) struct ProjectCardMoved {
   action : ProjectCardMovedAction
   changes : ProjectCardMovedChanges
@@ -12999,7 +13158,7 @@ pub(all) struct ProjectCardMoved {
   project_card : ProjectCardMovedProjectCard
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectCardMoved` (fields with defaults are optional).
@@ -13076,13 +13235,14 @@ pub impl ToJson for ProjectCardMoved with fn to_json(self) {
 
 ///|
 /// `ProjectCardEvent`
+#derive(Debug, Eq)
 pub(all) enum ProjectCardEvent {
   Converted(ProjectCardConverted)
   Created(ProjectCardCreated)
   Deleted(ProjectCardDeleted)
   Edited(ProjectCardEdited)
   Moved(ProjectCardMoved)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectCardEvent with fn deserialize(d) {
@@ -13153,6 +13313,7 @@ pub impl ToJson for ProjectCardEvent with fn to_json(self) {
 
 ///|
 /// `ProjectColumnCreated`
+#derive(Debug, Eq)
 pub(all) struct ProjectColumnCreated {
   action : ProjectColumnCreatedAction
   installation : InstallationLite?
@@ -13160,7 +13321,7 @@ pub(all) struct ProjectColumnCreated {
   project_column : ProjectColumn
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectColumnCreated` (fields with defaults are optional).
@@ -13232,6 +13393,7 @@ pub impl ToJson for ProjectColumnCreated with fn to_json(self) {
 
 ///|
 /// `ProjectColumnDeleted`
+#derive(Debug, Eq)
 pub(all) struct ProjectColumnDeleted {
   action : ProjectColumnDeletedAction
   installation : InstallationLite?
@@ -13239,7 +13401,7 @@ pub(all) struct ProjectColumnDeleted {
   project_column : ProjectColumn
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectColumnDeleted` (fields with defaults are optional).
@@ -13311,6 +13473,7 @@ pub impl ToJson for ProjectColumnDeleted with fn to_json(self) {
 
 ///|
 /// `ProjectColumnEdited`
+#derive(Debug, Eq)
 pub(all) struct ProjectColumnEdited {
   action : ProjectColumnEditedAction
   changes : ProjectColumnEditedChanges
@@ -13319,7 +13482,7 @@ pub(all) struct ProjectColumnEdited {
   project_column : ProjectColumn
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectColumnEdited` (fields with defaults are optional).
@@ -13396,6 +13559,7 @@ pub impl ToJson for ProjectColumnEdited with fn to_json(self) {
 
 ///|
 /// `ProjectColumnMoved`
+#derive(Debug, Eq)
 pub(all) struct ProjectColumnMoved {
   action : ProjectColumnMovedAction
   installation : InstallationLite?
@@ -13403,7 +13567,7 @@ pub(all) struct ProjectColumnMoved {
   project_column : ProjectColumn
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectColumnMoved` (fields with defaults are optional).
@@ -13475,12 +13639,13 @@ pub impl ToJson for ProjectColumnMoved with fn to_json(self) {
 
 ///|
 /// `ProjectColumnEvent`
+#derive(Debug, Eq)
 pub(all) enum ProjectColumnEvent {
   Created(ProjectColumnCreated)
   Deleted(ProjectColumnDeleted)
   Edited(ProjectColumnEdited)
   Moved(ProjectColumnMoved)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectColumnEvent with fn deserialize(d) {
@@ -13542,13 +13707,14 @@ pub impl ToJson for ProjectColumnEvent with fn to_json(self) {
 
 ///|
 /// `ProjectEvent`
+#derive(Debug, Eq)
 pub(all) enum ProjectEvent {
   Closed(ProjectClosed)
   Created(ProjectCreated)
   Deleted(ProjectDeleted)
   Edited(ProjectEdited)
   Reopened(ProjectReopened)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectEvent with fn deserialize(d) {
@@ -13619,12 +13785,13 @@ pub impl ToJson for ProjectEvent with fn to_json(self) {
 
 ///|
 /// When a private repository is made public.
+#derive(Debug, Eq)
 pub(all) struct PublicEvent {
   installation : InstallationLite?
   organization : Organization?
   repository : PublicEventRepository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PublicEvent` (fields with defaults are optional).
@@ -13686,6 +13853,7 @@ pub impl ToJson for PublicEvent with fn to_json(self) {
 
 ///|
 /// `PullRequest`
+#derive(Debug, Eq)
 pub(all) struct PullRequest {
   active_lock_reason : PullRequestActiveLockReason?
   additions : Int64
@@ -13740,7 +13908,7 @@ pub(all) struct PullRequest {
   updated_at : @typify_rt.DateTimeUtc
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequest` (fields with defaults are optional).
@@ -14018,6 +14186,7 @@ pub impl ToJson for PullRequest with fn to_json(self) {
 
 ///|
 /// The [comment](https://docs.github.com/en/rest/reference/pulls#comments) itself.
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewComment {
   author_association : AuthorAssociation
   /// The text of the comment.
@@ -14064,7 +14233,7 @@ pub(all) struct PullRequestReviewComment {
   /// URL for the pull request review comment
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewComment` (fields with defaults are optional).
@@ -14229,6 +14398,7 @@ pub impl ToJson for PullRequestReviewComment with fn to_json(self) {
 
 ///|
 /// `PullRequestAssigned`
+#derive(Debug, Eq)
 pub(all) struct PullRequestAssigned {
   action : PullRequestAssignedAction
   assignee : User
@@ -14239,7 +14409,7 @@ pub(all) struct PullRequestAssigned {
   pull_request : PullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestAssigned` (fields with defaults are optional).
@@ -14321,6 +14491,7 @@ pub impl ToJson for PullRequestAssigned with fn to_json(self) {
 
 ///|
 /// `PullRequestAutoMergeDisabled`
+#derive(Debug, Eq)
 pub(all) struct PullRequestAutoMergeDisabled {
   action : PullRequestAutoMergeDisabledAction
   installation : InstallationLite?
@@ -14329,7 +14500,7 @@ pub(all) struct PullRequestAutoMergeDisabled {
   pull_request : PullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestAutoMergeDisabled` (fields with defaults are optional).
@@ -14406,6 +14577,7 @@ pub impl ToJson for PullRequestAutoMergeDisabled with fn to_json(self) {
 
 ///|
 /// `PullRequestAutoMergeEnabled`
+#derive(Debug, Eq)
 pub(all) struct PullRequestAutoMergeEnabled {
   action : PullRequestAutoMergeEnabledAction
   installation : InstallationLite?
@@ -14414,7 +14586,7 @@ pub(all) struct PullRequestAutoMergeEnabled {
   pull_request : PullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestAutoMergeEnabled` (fields with defaults are optional).
@@ -14491,6 +14663,7 @@ pub impl ToJson for PullRequestAutoMergeEnabled with fn to_json(self) {
 
 ///|
 /// `PullRequestClosed`
+#derive(Debug, Eq)
 pub(all) struct PullRequestClosed {
   action : PullRequestClosedAction
   installation : InstallationLite?
@@ -14500,7 +14673,7 @@ pub(all) struct PullRequestClosed {
   pull_request : PullRequestClosedPullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestClosed` (fields with defaults are optional).
@@ -14577,6 +14750,7 @@ pub impl ToJson for PullRequestClosed with fn to_json(self) {
 
 ///|
 /// `PullRequestConvertedToDraft`
+#derive(Debug, Eq)
 pub(all) struct PullRequestConvertedToDraft {
   action : PullRequestConvertedToDraftAction
   installation : InstallationLite?
@@ -14586,7 +14760,7 @@ pub(all) struct PullRequestConvertedToDraft {
   pull_request : PullRequestConvertedToDraftPullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestConvertedToDraft` (fields with defaults are optional).
@@ -14663,6 +14837,7 @@ pub impl ToJson for PullRequestConvertedToDraft with fn to_json(self) {
 
 ///|
 /// `PullRequestEdited`
+#derive(Debug, Eq)
 pub(all) struct PullRequestEdited {
   action : PullRequestEditedAction
   changes : PullRequestEditedChanges
@@ -14673,7 +14848,7 @@ pub(all) struct PullRequestEdited {
   pull_request : PullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestEdited` (fields with defaults are optional).
@@ -14755,6 +14930,7 @@ pub impl ToJson for PullRequestEdited with fn to_json(self) {
 
 ///|
 /// `PullRequestLabeled`
+#derive(Debug, Eq)
 pub(all) struct PullRequestLabeled {
   action : PullRequestLabeledAction
   installation : InstallationLite?
@@ -14765,7 +14941,7 @@ pub(all) struct PullRequestLabeled {
   pull_request : PullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestLabeled` (fields with defaults are optional).
@@ -14847,6 +15023,7 @@ pub impl ToJson for PullRequestLabeled with fn to_json(self) {
 
 ///|
 /// `PullRequestLocked`
+#derive(Debug, Eq)
 pub(all) struct PullRequestLocked {
   action : PullRequestLockedAction
   installation : InstallationLite?
@@ -14856,7 +15033,7 @@ pub(all) struct PullRequestLocked {
   pull_request : PullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestLocked` (fields with defaults are optional).
@@ -14933,6 +15110,7 @@ pub impl ToJson for PullRequestLocked with fn to_json(self) {
 
 ///|
 /// `PullRequestOpened`
+#derive(Debug, Eq)
 pub(all) struct PullRequestOpened {
   action : PullRequestOpenedAction
   installation : InstallationLite?
@@ -14942,7 +15120,7 @@ pub(all) struct PullRequestOpened {
   pull_request : PullRequestOpenedPullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestOpened` (fields with defaults are optional).
@@ -15019,6 +15197,7 @@ pub impl ToJson for PullRequestOpened with fn to_json(self) {
 
 ///|
 /// `PullRequestReadyForReview`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReadyForReview {
   action : PullRequestReadyForReviewAction
   installation : InstallationLite?
@@ -15028,7 +15207,7 @@ pub(all) struct PullRequestReadyForReview {
   pull_request : PullRequestReadyForReviewPullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReadyForReview` (fields with defaults are optional).
@@ -15105,6 +15284,7 @@ pub impl ToJson for PullRequestReadyForReview with fn to_json(self) {
 
 ///|
 /// `PullRequestReopened`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReopened {
   action : PullRequestReopenedAction
   installation : InstallationLite?
@@ -15114,7 +15294,7 @@ pub(all) struct PullRequestReopened {
   pull_request : PullRequestReopenedPullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReopened` (fields with defaults are optional).
@@ -15191,10 +15371,11 @@ pub impl ToJson for PullRequestReopened with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewRequestRemoved`
+#derive(Debug, Eq)
 pub(all) enum PullRequestReviewRequestRemoved {
   Variant0(action~ : PullRequestReviewRequestRemovedVariant0Action, installation~ : InstallationLite?, number~ : Int64, organization~ : Organization?, pull_request~ : PullRequest, repository~ : Repository, requested_reviewer~ : User, sender~ : User)
   Variant1(action~ : PullRequestReviewRequestRemovedVariant1Action, installation~ : InstallationLite?, number~ : Int64, organization~ : Organization?, pull_request~ : PullRequest, repository~ : Repository, requested_team~ : Team, sender~ : User)
-} derive(Debug, Eq)
+}
 
 ///|
 let pull_request_review_request_removed_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "number", "organization", "pull_request", "repository", "requested_reviewer", "sender"])
@@ -15332,10 +15513,11 @@ pub impl ToJson for PullRequestReviewRequestRemoved with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewRequested`
+#derive(Debug, Eq)
 pub(all) enum PullRequestReviewRequested {
   Variant0(action~ : PullRequestReviewRequestedVariant0Action, installation~ : InstallationLite?, number~ : Int64, organization~ : Organization?, pull_request~ : PullRequest, repository~ : Repository, requested_reviewer~ : User, sender~ : User)
   Variant1(action~ : PullRequestReviewRequestedVariant1Action, installation~ : InstallationLite?, number~ : Int64, organization~ : Organization?, pull_request~ : PullRequest, repository~ : Repository, requested_team~ : Team, sender~ : User)
-} derive(Debug, Eq)
+}
 
 ///|
 let pull_request_review_requested_variant0_fields : @typify_rt.Fields = @typify_rt.Fields::new(["action", "installation", "number", "organization", "pull_request", "repository", "requested_reviewer", "sender"])
@@ -15473,6 +15655,7 @@ pub impl ToJson for PullRequestReviewRequested with fn to_json(self) {
 
 ///|
 /// `PullRequestSynchronize`
+#derive(Debug, Eq)
 pub(all) struct PullRequestSynchronize {
   action : PullRequestSynchronizeAction
   after : String
@@ -15484,7 +15667,7 @@ pub(all) struct PullRequestSynchronize {
   pull_request : PullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestSynchronize` (fields with defaults are optional).
@@ -15571,6 +15754,7 @@ pub impl ToJson for PullRequestSynchronize with fn to_json(self) {
 
 ///|
 /// `PullRequestUnassigned`
+#derive(Debug, Eq)
 pub(all) struct PullRequestUnassigned {
   action : PullRequestUnassignedAction
   assignee : User
@@ -15581,7 +15765,7 @@ pub(all) struct PullRequestUnassigned {
   pull_request : PullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestUnassigned` (fields with defaults are optional).
@@ -15663,6 +15847,7 @@ pub impl ToJson for PullRequestUnassigned with fn to_json(self) {
 
 ///|
 /// `PullRequestUnlabeled`
+#derive(Debug, Eq)
 pub(all) struct PullRequestUnlabeled {
   action : PullRequestUnlabeledAction
   installation : InstallationLite?
@@ -15673,7 +15858,7 @@ pub(all) struct PullRequestUnlabeled {
   pull_request : PullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestUnlabeled` (fields with defaults are optional).
@@ -15755,6 +15940,7 @@ pub impl ToJson for PullRequestUnlabeled with fn to_json(self) {
 
 ///|
 /// `PullRequestUnlocked`
+#derive(Debug, Eq)
 pub(all) struct PullRequestUnlocked {
   action : PullRequestUnlockedAction
   installation : InstallationLite?
@@ -15764,7 +15950,7 @@ pub(all) struct PullRequestUnlocked {
   pull_request : PullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestUnlocked` (fields with defaults are optional).
@@ -15841,6 +16027,7 @@ pub impl ToJson for PullRequestUnlocked with fn to_json(self) {
 
 ///|
 /// `PullRequestEvent`
+#derive(Debug, Eq)
 pub(all) enum PullRequestEvent {
   Assigned(PullRequestAssigned)
   AutoMergeDisabled(PullRequestAutoMergeDisabled)
@@ -15859,7 +16046,7 @@ pub(all) enum PullRequestEvent {
   Unassigned(PullRequestUnassigned)
   Unlabeled(PullRequestUnlabeled)
   Unlocked(PullRequestUnlocked)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestEvent with fn deserialize(d) {
@@ -16038,6 +16225,7 @@ pub impl ToJson for PullRequestEvent with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewDismissed`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewDismissed {
   action : PullRequestReviewDismissedAction
   installation : InstallationLite?
@@ -16046,7 +16234,7 @@ pub(all) struct PullRequestReviewDismissed {
   repository : Repository
   review : PullRequestReviewDismissedReview
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewDismissed` (fields with defaults are optional).
@@ -16123,6 +16311,7 @@ pub impl ToJson for PullRequestReviewDismissed with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewEdited`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewEdited {
   action : PullRequestReviewEditedAction
   changes : PullRequestReviewEditedChanges
@@ -16132,7 +16321,7 @@ pub(all) struct PullRequestReviewEdited {
   repository : Repository
   review : PullRequestReviewEditedReview
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewEdited` (fields with defaults are optional).
@@ -16214,6 +16403,7 @@ pub impl ToJson for PullRequestReviewEdited with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewSubmitted`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewSubmitted {
   action : PullRequestReviewSubmittedAction
   installation : InstallationLite?
@@ -16222,7 +16412,7 @@ pub(all) struct PullRequestReviewSubmitted {
   repository : Repository
   review : PullRequestReviewSubmittedReview
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewSubmitted` (fields with defaults are optional).
@@ -16299,6 +16489,7 @@ pub impl ToJson for PullRequestReviewSubmitted with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewCommentCreated`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentCreated {
   action : PullRequestReviewCommentCreatedAction
   comment : PullRequestReviewComment
@@ -16307,7 +16498,7 @@ pub(all) struct PullRequestReviewCommentCreated {
   pull_request : PullRequestReviewCommentCreatedPullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentCreated` (fields with defaults are optional).
@@ -16384,6 +16575,7 @@ pub impl ToJson for PullRequestReviewCommentCreated with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewCommentDeleted`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentDeleted {
   action : PullRequestReviewCommentDeletedAction
   comment : PullRequestReviewComment
@@ -16392,7 +16584,7 @@ pub(all) struct PullRequestReviewCommentDeleted {
   pull_request : PullRequestReviewCommentDeletedPullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentDeleted` (fields with defaults are optional).
@@ -16469,6 +16661,7 @@ pub impl ToJson for PullRequestReviewCommentDeleted with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewCommentEdited`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentEdited {
   action : PullRequestReviewCommentEditedAction
   changes : PullRequestReviewCommentEditedChanges
@@ -16478,7 +16671,7 @@ pub(all) struct PullRequestReviewCommentEdited {
   pull_request : PullRequestReviewCommentEditedPullRequest
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentEdited` (fields with defaults are optional).
@@ -16560,11 +16753,12 @@ pub impl ToJson for PullRequestReviewCommentEdited with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewCommentEvent`
+#derive(Debug, Eq)
 pub(all) enum PullRequestReviewCommentEvent {
   Created(PullRequestReviewCommentCreated)
   Deleted(PullRequestReviewCommentDeleted)
   Edited(PullRequestReviewCommentEdited)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentEvent with fn deserialize(d) {
@@ -16617,11 +16811,12 @@ pub impl ToJson for PullRequestReviewCommentEvent with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewEvent`
+#derive(Debug, Eq)
 pub(all) enum PullRequestReviewEvent {
   Dismissed(PullRequestReviewDismissed)
   Edited(PullRequestReviewEdited)
   Submitted(PullRequestReviewSubmitted)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewEvent with fn deserialize(d) {
@@ -16674,6 +16869,7 @@ pub impl ToJson for PullRequestReviewEvent with fn to_json(self) {
 
 ///|
 /// `PushEvent`
+#derive(Debug, Eq)
 pub(all) struct PushEvent {
   /// The SHA of the most recent commit on `ref` after the push.
   after : String
@@ -16694,7 +16890,7 @@ pub(all) struct PushEvent {
   ref_ : String
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PushEvent` (fields with defaults are optional).
@@ -16811,6 +17007,7 @@ pub impl ToJson for PushEvent with fn to_json(self) {
 
 ///|
 /// The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release) object.
+#derive(Debug, Eq)
 pub(all) struct Release {
   assets : Array[ReleaseAsset]
   assets_url : String
@@ -16834,7 +17031,7 @@ pub(all) struct Release {
   upload_url : String
   url : String
   zipball_url : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Release` (fields with defaults are optional).
@@ -16962,6 +17159,7 @@ pub impl ToJson for Release with fn to_json(self) {
 
 ///|
 /// `ReleaseCreated`
+#derive(Debug, Eq)
 pub(all) struct ReleaseCreated {
   action : ReleaseCreatedAction
   installation : InstallationLite?
@@ -16969,7 +17167,7 @@ pub(all) struct ReleaseCreated {
   release : Release
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ReleaseCreated` (fields with defaults are optional).
@@ -17041,6 +17239,7 @@ pub impl ToJson for ReleaseCreated with fn to_json(self) {
 
 ///|
 /// `ReleaseDeleted`
+#derive(Debug, Eq)
 pub(all) struct ReleaseDeleted {
   action : ReleaseDeletedAction
   installation : InstallationLite?
@@ -17048,7 +17247,7 @@ pub(all) struct ReleaseDeleted {
   release : Release
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ReleaseDeleted` (fields with defaults are optional).
@@ -17120,6 +17319,7 @@ pub impl ToJson for ReleaseDeleted with fn to_json(self) {
 
 ///|
 /// `ReleaseEdited`
+#derive(Debug, Eq)
 pub(all) struct ReleaseEdited {
   action : ReleaseEditedAction
   changes : ReleaseEditedChanges
@@ -17128,7 +17328,7 @@ pub(all) struct ReleaseEdited {
   release : Release
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ReleaseEdited` (fields with defaults are optional).
@@ -17205,6 +17405,7 @@ pub impl ToJson for ReleaseEdited with fn to_json(self) {
 
 ///|
 /// `ReleasePrereleased`
+#derive(Debug, Eq)
 pub(all) struct ReleasePrereleased {
   action : ReleasePrereleasedAction
   installation : InstallationLite?
@@ -17212,7 +17413,7 @@ pub(all) struct ReleasePrereleased {
   release : ReleasePrereleasedRelease
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ReleasePrereleased` (fields with defaults are optional).
@@ -17284,6 +17485,7 @@ pub impl ToJson for ReleasePrereleased with fn to_json(self) {
 
 ///|
 /// `ReleasePublished`
+#derive(Debug, Eq)
 pub(all) struct ReleasePublished {
   action : ReleasePublishedAction
   installation : InstallationLite?
@@ -17291,7 +17493,7 @@ pub(all) struct ReleasePublished {
   release : ReleasePublishedRelease
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ReleasePublished` (fields with defaults are optional).
@@ -17363,6 +17565,7 @@ pub impl ToJson for ReleasePublished with fn to_json(self) {
 
 ///|
 /// `ReleaseReleased`
+#derive(Debug, Eq)
 pub(all) struct ReleaseReleased {
   action : ReleaseReleasedAction
   installation : InstallationLite?
@@ -17370,7 +17573,7 @@ pub(all) struct ReleaseReleased {
   release : Release
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ReleaseReleased` (fields with defaults are optional).
@@ -17442,6 +17645,7 @@ pub impl ToJson for ReleaseReleased with fn to_json(self) {
 
 ///|
 /// `ReleaseUnpublished`
+#derive(Debug, Eq)
 pub(all) struct ReleaseUnpublished {
   action : ReleaseUnpublishedAction
   installation : InstallationLite?
@@ -17449,7 +17653,7 @@ pub(all) struct ReleaseUnpublished {
   release : ReleaseUnpublishedRelease
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ReleaseUnpublished` (fields with defaults are optional).
@@ -17521,6 +17725,7 @@ pub impl ToJson for ReleaseUnpublished with fn to_json(self) {
 
 ///|
 /// Data related to a release.
+#derive(Debug, Eq)
 pub(all) struct ReleaseAsset {
   browser_download_url : String
   content_type : String
@@ -17537,7 +17742,7 @@ pub(all) struct ReleaseAsset {
   updated_at : @typify_rt.DateTimeUtc
   uploader : User?
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ReleaseAsset` (fields with defaults are optional).
@@ -17642,6 +17847,7 @@ pub impl ToJson for ReleaseAsset with fn to_json(self) {
 
 ///|
 /// `ReleaseEvent`
+#derive(Debug, Eq)
 pub(all) enum ReleaseEvent {
   Created(ReleaseCreated)
   Deleted(ReleaseDeleted)
@@ -17650,7 +17856,7 @@ pub(all) enum ReleaseEvent {
   Published(ReleasePublished)
   Released(ReleaseReleased)
   Unpublished(ReleaseUnpublished)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ReleaseEvent with fn deserialize(d) {
@@ -17739,11 +17945,12 @@ pub impl ToJson for ReleaseEvent with fn to_json(self) {
 
 ///|
 /// `RepoRef`
+#derive(Debug, Eq)
 pub(all) struct RepoRef {
   id : Int64
   name : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepoRef` (fields with defaults are optional).
@@ -17796,6 +18003,7 @@ pub impl ToJson for RepoRef with fn to_json(self) {
 
 ///|
 /// A git repository
+#derive(Debug, Eq)
 pub(all) struct Repository {
   /// Whether to allow auto-merge for pull requests.
   allow_auto_merge : Bool
@@ -17897,7 +18105,7 @@ pub(all) struct Repository {
   url : String
   watchers : Int64
   watchers_count : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Repository` (fields with defaults are optional).
@@ -18384,13 +18592,14 @@ pub impl ToJson for Repository with fn to_json(self) {
 
 ///|
 /// `RepositoryArchived`
+#derive(Debug, Eq)
 pub(all) struct RepositoryArchived {
   action : RepositoryArchivedAction
   installation : InstallationLite?
   organization : Organization?
   repository : RepositoryArchivedRepository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryArchived` (fields with defaults are optional).
@@ -18457,13 +18666,14 @@ pub impl ToJson for RepositoryArchived with fn to_json(self) {
 
 ///|
 /// `RepositoryCreated`
+#derive(Debug, Eq)
 pub(all) struct RepositoryCreated {
   action : RepositoryCreatedAction
   installation : InstallationLite?
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryCreated` (fields with defaults are optional).
@@ -18530,13 +18740,14 @@ pub impl ToJson for RepositoryCreated with fn to_json(self) {
 
 ///|
 /// `RepositoryDeleted`
+#derive(Debug, Eq)
 pub(all) struct RepositoryDeleted {
   action : RepositoryDeletedAction
   installation : InstallationLite?
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryDeleted` (fields with defaults are optional).
@@ -18603,6 +18814,7 @@ pub impl ToJson for RepositoryDeleted with fn to_json(self) {
 
 ///|
 /// `RepositoryEdited`
+#derive(Debug, Eq)
 pub(all) struct RepositoryEdited {
   action : RepositoryEditedAction
   changes : RepositoryEditedChanges
@@ -18610,7 +18822,7 @@ pub(all) struct RepositoryEdited {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryEdited` (fields with defaults are optional).
@@ -18682,13 +18894,14 @@ pub impl ToJson for RepositoryEdited with fn to_json(self) {
 
 ///|
 /// `RepositoryPrivatized`
+#derive(Debug, Eq)
 pub(all) struct RepositoryPrivatized {
   action : RepositoryPrivatizedAction
   installation : InstallationLite?
   organization : Organization?
   repository : RepositoryPrivatizedRepository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryPrivatized` (fields with defaults are optional).
@@ -18755,13 +18968,14 @@ pub impl ToJson for RepositoryPrivatized with fn to_json(self) {
 
 ///|
 /// `RepositoryPublicized`
+#derive(Debug, Eq)
 pub(all) struct RepositoryPublicized {
   action : RepositoryPublicizedAction
   installation : InstallationLite?
   organization : Organization?
   repository : RepositoryPublicizedRepository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryPublicized` (fields with defaults are optional).
@@ -18828,6 +19042,7 @@ pub impl ToJson for RepositoryPublicized with fn to_json(self) {
 
 ///|
 /// `RepositoryRenamed`
+#derive(Debug, Eq)
 pub(all) struct RepositoryRenamed {
   action : RepositoryRenamedAction
   changes : RepositoryRenamedChanges
@@ -18835,7 +19050,7 @@ pub(all) struct RepositoryRenamed {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryRenamed` (fields with defaults are optional).
@@ -18907,6 +19122,7 @@ pub impl ToJson for RepositoryRenamed with fn to_json(self) {
 
 ///|
 /// `RepositoryTransferred`
+#derive(Debug, Eq)
 pub(all) struct RepositoryTransferred {
   action : RepositoryTransferredAction
   changes : RepositoryTransferredChanges
@@ -18914,7 +19130,7 @@ pub(all) struct RepositoryTransferred {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryTransferred` (fields with defaults are optional).
@@ -18986,13 +19202,14 @@ pub impl ToJson for RepositoryTransferred with fn to_json(self) {
 
 ///|
 /// `RepositoryUnarchived`
+#derive(Debug, Eq)
 pub(all) struct RepositoryUnarchived {
   action : RepositoryUnarchivedAction
   installation : InstallationLite?
   organization : Organization?
   repository : RepositoryUnarchivedRepository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryUnarchived` (fields with defaults are optional).
@@ -19059,6 +19276,7 @@ pub impl ToJson for RepositoryUnarchived with fn to_json(self) {
 
 ///|
 /// `RepositoryLite`
+#derive(Debug, Eq)
 pub(all) struct RepositoryLite {
   archive_url : String
   assignees_url : String
@@ -19109,7 +19327,7 @@ pub(all) struct RepositoryLite {
   teams_url : String
   trees_url : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryLite` (fields with defaults are optional).
@@ -19377,6 +19595,7 @@ pub impl ToJson for RepositoryLite with fn to_json(self) {
 
 ///|
 /// `RepositoryDispatchOnDemandTest`
+#derive(Debug, Eq)
 pub(all) struct RepositoryDispatchOnDemandTest {
   action : RepositoryDispatchOnDemandTestAction
   branch : String
@@ -19385,7 +19604,7 @@ pub(all) struct RepositoryDispatchOnDemandTest {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryDispatchOnDemandTest` (fields with defaults are optional).
@@ -19460,7 +19679,8 @@ pub impl ToJson for RepositoryDispatchOnDemandTest with fn to_json(self) {
 
 ///|
 /// `RepositoryDispatchEvent`
-pub(all) struct RepositoryDispatchEvent(RepositoryDispatchOnDemandTest) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct RepositoryDispatchEvent(RepositoryDispatchOnDemandTest)
 
 ///|
 pub impl @typify_rt.Serde for RepositoryDispatchEvent with fn deserialize(d) {
@@ -19484,6 +19704,7 @@ pub impl ToJson for RepositoryDispatchEvent with fn to_json(self) {
 
 ///|
 /// `RepositoryEvent`
+#derive(Debug, Eq)
 pub(all) enum RepositoryEvent {
   Archived(RepositoryArchived)
   Created(RepositoryCreated)
@@ -19494,7 +19715,7 @@ pub(all) enum RepositoryEvent {
   Renamed(RepositoryRenamed)
   Transferred(RepositoryTransferred)
   Unarchived(RepositoryUnarchived)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryEvent with fn deserialize(d) {
@@ -19601,13 +19822,14 @@ pub impl ToJson for RepositoryEvent with fn to_json(self) {
 
 ///|
 /// `RepositoryImportEvent`
+#derive(Debug, Eq)
 pub(all) struct RepositoryImportEvent {
   installation : InstallationLite?
   organization : Organization?
   repository : Repository
   sender : User
   status : RepositoryImportEventStatus
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryImportEvent` (fields with defaults are optional).
@@ -19674,13 +19896,14 @@ pub impl ToJson for RepositoryImportEvent with fn to_json(self) {
 
 ///|
 /// `RepositoryVulnerabilityAlertCreate`
+#derive(Debug, Eq)
 pub(all) struct RepositoryVulnerabilityAlertCreate {
   action : RepositoryVulnerabilityAlertCreateAction
   alert : RepositoryVulnerabilityAlertCreateAlert
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryVulnerabilityAlertCreate` (fields with defaults are optional).
@@ -19745,13 +19968,14 @@ pub impl ToJson for RepositoryVulnerabilityAlertCreate with fn to_json(self) {
 
 ///|
 /// `RepositoryVulnerabilityAlertDismiss`
+#derive(Debug, Eq)
 pub(all) struct RepositoryVulnerabilityAlertDismiss {
   action : RepositoryVulnerabilityAlertDismissAction
   alert : RepositoryVulnerabilityAlertDismissAlert
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryVulnerabilityAlertDismiss` (fields with defaults are optional).
@@ -19816,13 +20040,14 @@ pub impl ToJson for RepositoryVulnerabilityAlertDismiss with fn to_json(self) {
 
 ///|
 /// `RepositoryVulnerabilityAlertResolve`
+#derive(Debug, Eq)
 pub(all) struct RepositoryVulnerabilityAlertResolve {
   action : RepositoryVulnerabilityAlertResolveAction
   alert : RepositoryVulnerabilityAlertResolveAlert
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryVulnerabilityAlertResolve` (fields with defaults are optional).
@@ -19887,11 +20112,12 @@ pub impl ToJson for RepositoryVulnerabilityAlertResolve with fn to_json(self) {
 
 ///|
 /// `RepositoryVulnerabilityAlertEvent`
+#derive(Debug, Eq)
 pub(all) enum RepositoryVulnerabilityAlertEvent {
   Create(RepositoryVulnerabilityAlertCreate)
   Dismiss(RepositoryVulnerabilityAlertDismiss)
   Resolve(RepositoryVulnerabilityAlertResolve)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryVulnerabilityAlertEvent with fn deserialize(d) {
@@ -19944,13 +20170,14 @@ pub impl ToJson for RepositoryVulnerabilityAlertEvent with fn to_json(self) {
 
 ///|
 /// `SecretScanningAlertCreated`
+#derive(Debug, Eq)
 pub(all) struct SecretScanningAlertCreated {
   action : SecretScanningAlertCreatedAction
   alert : SecretScanningAlertCreatedAlert
   installation : InstallationLite?
   organization : Organization?
   repository : Repository
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecretScanningAlertCreated` (fields with defaults are optional).
@@ -20017,6 +20244,7 @@ pub impl ToJson for SecretScanningAlertCreated with fn to_json(self) {
 
 ///|
 /// `SecretScanningAlertReopened`
+#derive(Debug, Eq)
 pub(all) struct SecretScanningAlertReopened {
   action : SecretScanningAlertReopenedAction
   alert : SecretScanningAlertReopenedAlert
@@ -20024,7 +20252,7 @@ pub(all) struct SecretScanningAlertReopened {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecretScanningAlertReopened` (fields with defaults are optional).
@@ -20096,6 +20324,7 @@ pub impl ToJson for SecretScanningAlertReopened with fn to_json(self) {
 
 ///|
 /// `SecretScanningAlertResolved`
+#derive(Debug, Eq)
 pub(all) struct SecretScanningAlertResolved {
   action : SecretScanningAlertResolvedAction
   alert : SecretScanningAlertResolvedAlert
@@ -20103,7 +20332,7 @@ pub(all) struct SecretScanningAlertResolved {
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecretScanningAlertResolved` (fields with defaults are optional).
@@ -20175,11 +20404,12 @@ pub impl ToJson for SecretScanningAlertResolved with fn to_json(self) {
 
 ///|
 /// `SecretScanningAlertEvent`
+#derive(Debug, Eq)
 pub(all) enum SecretScanningAlertEvent {
   Created(SecretScanningAlertCreated)
   Reopened(SecretScanningAlertReopened)
   Resolved(SecretScanningAlertResolved)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for SecretScanningAlertEvent with fn deserialize(d) {
@@ -20232,10 +20462,11 @@ pub impl ToJson for SecretScanningAlertEvent with fn to_json(self) {
 
 ///|
 /// `SecurityAdvisoryPerformed`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPerformed {
   action : SecurityAdvisoryPerformedAction
   security_advisory : SecurityAdvisoryPerformedSecurityAdvisory
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPerformed` (fields with defaults are optional).
@@ -20283,10 +20514,11 @@ pub impl ToJson for SecurityAdvisoryPerformed with fn to_json(self) {
 
 ///|
 /// `SecurityAdvisoryPublished`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPublished {
   action : SecurityAdvisoryPublishedAction
   security_advisory : SecurityAdvisoryPublishedSecurityAdvisory
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPublished` (fields with defaults are optional).
@@ -20334,10 +20566,11 @@ pub impl ToJson for SecurityAdvisoryPublished with fn to_json(self) {
 
 ///|
 /// `SecurityAdvisoryUpdated`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryUpdated {
   action : SecurityAdvisoryUpdatedAction
   security_advisory : SecurityAdvisoryUpdatedSecurityAdvisory
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryUpdated` (fields with defaults are optional).
@@ -20385,10 +20618,11 @@ pub impl ToJson for SecurityAdvisoryUpdated with fn to_json(self) {
 
 ///|
 /// `SecurityAdvisoryWithdrawn`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryWithdrawn {
   action : SecurityAdvisoryWithdrawnAction
   security_advisory : SecurityAdvisoryWithdrawnSecurityAdvisory
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryWithdrawn` (fields with defaults are optional).
@@ -20436,12 +20670,13 @@ pub impl ToJson for SecurityAdvisoryWithdrawn with fn to_json(self) {
 
 ///|
 /// `SecurityAdvisoryEvent`
+#derive(Debug, Eq)
 pub(all) enum SecurityAdvisoryEvent {
   Performed(SecurityAdvisoryPerformed)
   Published(SecurityAdvisoryPublished)
   Updated(SecurityAdvisoryUpdated)
   Withdrawn(SecurityAdvisoryWithdrawn)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for SecurityAdvisoryEvent with fn deserialize(d) {
@@ -20503,6 +20738,7 @@ pub impl ToJson for SecurityAdvisoryEvent with fn to_json(self) {
 
 ///|
 /// `SimplePullRequest`
+#derive(Debug, Eq)
 pub(all) struct SimplePullRequest {
   active_lock_reason : SimplePullRequestActiveLockReason?
   assignee : User?
@@ -20540,7 +20776,7 @@ pub(all) struct SimplePullRequest {
   updated_at : String
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SimplePullRequest` (fields with defaults are optional).
@@ -20758,11 +20994,12 @@ pub impl ToJson for SimplePullRequest with fn to_json(self) {
 
 ///|
 /// `SponsorshipCancelled`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipCancelled {
   action : SponsorshipCancelledAction
   sender : User
   sponsorship : SponsorshipCancelledSponsorship
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipCancelled` (fields with defaults are optional).
@@ -20815,11 +21052,12 @@ pub impl ToJson for SponsorshipCancelled with fn to_json(self) {
 
 ///|
 /// `SponsorshipCreated`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipCreated {
   action : SponsorshipCreatedAction
   sender : User
   sponsorship : SponsorshipCreatedSponsorship
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipCreated` (fields with defaults are optional).
@@ -20872,12 +21110,13 @@ pub impl ToJson for SponsorshipCreated with fn to_json(self) {
 
 ///|
 /// `SponsorshipEdited`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipEdited {
   action : SponsorshipEditedAction
   changes : SponsorshipEditedChanges
   sender : User
   sponsorship : SponsorshipEditedSponsorship
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipEdited` (fields with defaults are optional).
@@ -20935,13 +21174,14 @@ pub impl ToJson for SponsorshipEdited with fn to_json(self) {
 
 ///|
 /// `SponsorshipPendingCancellation`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipPendingCancellation {
   action : SponsorshipPendingCancellationAction
   /// The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.
   effective_date : String?
   sender : User
   sponsorship : SponsorshipPendingCancellationSponsorship
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipPendingCancellation` (fields with defaults are optional).
@@ -21001,6 +21241,7 @@ pub impl ToJson for SponsorshipPendingCancellation with fn to_json(self) {
 
 ///|
 /// `SponsorshipPendingTierChange`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipPendingTierChange {
   action : SponsorshipPendingTierChangeAction
   changes : SponsorshipPendingTierChangeChanges
@@ -21008,7 +21249,7 @@ pub(all) struct SponsorshipPendingTierChange {
   effective_date : String?
   sender : User
   sponsorship : SponsorshipPendingTierChangeSponsorship
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipPendingTierChange` (fields with defaults are optional).
@@ -21073,12 +21314,13 @@ pub impl ToJson for SponsorshipPendingTierChange with fn to_json(self) {
 
 ///|
 /// `SponsorshipTierChanged`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipTierChanged {
   action : SponsorshipTierChangedAction
   changes : SponsorshipTierChangedChanges
   sender : User
   sponsorship : SponsorshipTierChangedSponsorship
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipTierChanged` (fields with defaults are optional).
@@ -21136,6 +21378,7 @@ pub impl ToJson for SponsorshipTierChanged with fn to_json(self) {
 
 ///|
 /// The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.
+#derive(Debug, Eq)
 pub(all) struct SponsorshipTier {
   created_at : String
   description : String
@@ -21145,7 +21388,7 @@ pub(all) struct SponsorshipTier {
   monthly_price_in_dollars : Int64
   name : String
   node_id : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipTier` (fields with defaults are optional).
@@ -21223,6 +21466,7 @@ pub impl ToJson for SponsorshipTier with fn to_json(self) {
 
 ///|
 /// `SponsorshipEvent`
+#derive(Debug, Eq)
 pub(all) enum SponsorshipEvent {
   Cancelled(SponsorshipCancelled)
   Created(SponsorshipCreated)
@@ -21230,7 +21474,7 @@ pub(all) enum SponsorshipEvent {
   PendingCancellation(SponsorshipPendingCancellation)
   PendingTierChange(SponsorshipPendingTierChange)
   TierChanged(SponsorshipTierChanged)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for SponsorshipEvent with fn deserialize(d) {
@@ -21310,6 +21554,7 @@ pub impl ToJson for SponsorshipEvent with fn to_json(self) {
 
 ///|
 /// `StarCreated`
+#derive(Debug, Eq)
 pub(all) struct StarCreated {
   action : StarCreatedAction
   installation : InstallationLite?
@@ -21318,7 +21563,7 @@ pub(all) struct StarCreated {
   sender : User
   /// The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action.
   starred_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StarCreated` (fields with defaults are optional).
@@ -21390,6 +21635,7 @@ pub impl ToJson for StarCreated with fn to_json(self) {
 
 ///|
 /// `StarDeleted`
+#derive(Debug, Eq)
 pub(all) struct StarDeleted {
   action : StarDeletedAction
   installation : InstallationLite?
@@ -21398,7 +21644,7 @@ pub(all) struct StarDeleted {
   sender : User
   /// The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action.
   starred_at : Unit
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StarDeleted` (fields with defaults are optional).
@@ -21470,10 +21716,11 @@ pub impl ToJson for StarDeleted with fn to_json(self) {
 
 ///|
 /// `StarEvent`
+#derive(Debug, Eq)
 pub(all) enum StarEvent {
   Created(StarCreated)
   Deleted(StarDeleted)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for StarEvent with fn deserialize(d) {
@@ -21517,6 +21764,7 @@ pub impl ToJson for StarEvent with fn to_json(self) {
 
 ///|
 /// `StatusEvent`
+#derive(Debug, Eq)
 pub(all) struct StatusEvent {
   avatar_url : String?
   /// An array of branch objects containing the status' SHA. Each branch contains the given SHA, but the SHA may or may not be the head of the branch. The array includes a maximum of 10 branches.
@@ -21540,7 +21788,7 @@ pub(all) struct StatusEvent {
   /// The optional link added to the status.
   target_url : String?
   updated_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StatusEvent` (fields with defaults are optional).
@@ -21664,6 +21912,7 @@ pub impl ToJson for StatusEvent with fn to_json(self) {
 
 ///|
 /// Groups of organization members that gives permissions on specified repositories.
+#derive(Debug, Eq)
 pub(all) struct Team {
   /// Description of the team
   description : String?
@@ -21682,7 +21931,7 @@ pub(all) struct Team {
   slug : String
   /// URL for the team
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Team` (fields with defaults are optional).
@@ -21782,6 +22031,7 @@ pub impl ToJson for Team with fn to_json(self) {
 
 ///|
 /// `TeamAddedToRepository`
+#derive(Debug, Eq)
 pub(all) struct TeamAddedToRepository {
   action : TeamAddedToRepositoryAction
   installation : InstallationLite?
@@ -21789,7 +22039,7 @@ pub(all) struct TeamAddedToRepository {
   repository : Repository?
   sender : User
   team : Team
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TeamAddedToRepository` (fields with defaults are optional).
@@ -21861,6 +22111,7 @@ pub impl ToJson for TeamAddedToRepository with fn to_json(self) {
 
 ///|
 /// `TeamCreated`
+#derive(Debug, Eq)
 pub(all) struct TeamCreated {
   action : TeamCreatedAction
   installation : InstallationLite?
@@ -21868,7 +22119,7 @@ pub(all) struct TeamCreated {
   repository : Repository?
   sender : User
   team : Team
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TeamCreated` (fields with defaults are optional).
@@ -21940,6 +22191,7 @@ pub impl ToJson for TeamCreated with fn to_json(self) {
 
 ///|
 /// `TeamDeleted`
+#derive(Debug, Eq)
 pub(all) struct TeamDeleted {
   action : TeamDeletedAction
   installation : InstallationLite?
@@ -21947,7 +22199,7 @@ pub(all) struct TeamDeleted {
   repository : Repository?
   sender : User
   team : Team
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TeamDeleted` (fields with defaults are optional).
@@ -22019,6 +22271,7 @@ pub impl ToJson for TeamDeleted with fn to_json(self) {
 
 ///|
 /// `TeamEdited`
+#derive(Debug, Eq)
 pub(all) struct TeamEdited {
   action : TeamEditedAction
   changes : TeamEditedChanges
@@ -22027,7 +22280,7 @@ pub(all) struct TeamEdited {
   repository : Repository?
   sender : User
   team : Team
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TeamEdited` (fields with defaults are optional).
@@ -22104,6 +22357,7 @@ pub impl ToJson for TeamEdited with fn to_json(self) {
 
 ///|
 /// `TeamRemovedFromRepository`
+#derive(Debug, Eq)
 pub(all) struct TeamRemovedFromRepository {
   action : TeamRemovedFromRepositoryAction
   installation : InstallationLite?
@@ -22111,7 +22365,7 @@ pub(all) struct TeamRemovedFromRepository {
   repository : Repository?
   sender : User
   team : Team
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TeamRemovedFromRepository` (fields with defaults are optional).
@@ -22183,13 +22437,14 @@ pub impl ToJson for TeamRemovedFromRepository with fn to_json(self) {
 
 ///|
 /// `TeamAddEvent`
+#derive(Debug, Eq)
 pub(all) struct TeamAddEvent {
   installation : InstallationLite?
   organization : Organization
   repository : Repository
   sender : User
   team : Team
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TeamAddEvent` (fields with defaults are optional).
@@ -22254,13 +22509,14 @@ pub impl ToJson for TeamAddEvent with fn to_json(self) {
 
 ///|
 /// `TeamEvent`
+#derive(Debug, Eq)
 pub(all) enum TeamEvent {
   AddedToRepository(TeamAddedToRepository)
   Created(TeamCreated)
   Deleted(TeamDeleted)
   Edited(TeamEdited)
   RemovedFromRepository(TeamRemovedFromRepository)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for TeamEvent with fn deserialize(d) {
@@ -22331,6 +22587,7 @@ pub impl ToJson for TeamEvent with fn to_json(self) {
 
 ///|
 /// `User`
+#derive(Debug, Eq)
 pub(all) struct User {
   avatar_url : String
   email : String?
@@ -22352,7 +22609,7 @@ pub(all) struct User {
   subscriptions_url : String
   type_ : UserType
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `User` (fields with defaults are optional).
@@ -22494,13 +22751,14 @@ pub impl ToJson for User with fn to_json(self) {
 
 ///|
 /// `WatchStarted`
+#derive(Debug, Eq)
 pub(all) struct WatchStarted {
   action : WatchStartedAction
   installation : InstallationLite?
   organization : Organization?
   repository : Repository
   sender : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WatchStarted` (fields with defaults are optional).
@@ -22567,7 +22825,8 @@ pub impl ToJson for WatchStarted with fn to_json(self) {
 
 ///|
 /// `WatchEvent`
-pub(all) struct WatchEvent(WatchStarted) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct WatchEvent(WatchStarted)
 
 ///|
 pub impl @typify_rt.Serde for WatchEvent with fn deserialize(d) {
@@ -22591,10 +22850,11 @@ pub impl ToJson for WatchEvent with fn to_json(self) {
 
 ///|
 /// `WebhookEvents`
+#derive(Debug, Eq)
 pub(all) enum WebhookEvents {
   Variant0(Array[WebhookEventsVariant0Item])
   Variant1(FixedArray[String])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WebhookEvents with fn deserialize(d) {
@@ -22638,6 +22898,7 @@ pub impl ToJson for WebhookEvents with fn to_json(self) {
 
 ///|
 /// `Workflow`
+#derive(Debug, Eq)
 pub(all) struct Workflow {
   badge_url : String
   created_at : String
@@ -22649,7 +22910,7 @@ pub(all) struct Workflow {
   state : String
   updated_at : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Workflow` (fields with defaults are optional).
@@ -22737,6 +22998,7 @@ pub impl ToJson for Workflow with fn to_json(self) {
 
 ///|
 /// `WorkflowJob`
+#derive(Debug, Eq)
 pub(all) struct WorkflowJob {
   check_run_url : String
   completed_at : String?
@@ -22753,7 +23015,7 @@ pub(all) struct WorkflowJob {
   status : WorkflowJobStatus
   steps : Array[WorkflowStep]
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowJob` (fields with defaults are optional).
@@ -22866,6 +23128,7 @@ pub impl ToJson for WorkflowJob with fn to_json(self) {
 
 ///|
 /// `WorkflowRun`
+#derive(Debug, Eq)
 pub(all) struct WorkflowRun {
   artifacts_url : String
   cancel_url : String
@@ -22894,7 +23157,7 @@ pub(all) struct WorkflowRun {
   url : String
   workflow_id : Int64
   workflow_url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowRun` (fields with defaults are optional).
@@ -23067,10 +23330,11 @@ pub impl ToJson for WorkflowRun with fn to_json(self) {
 
 ///|
 /// `WorkflowStep`
+#derive(Debug, Eq)
 pub(all) enum WorkflowStep {
   InProgress(WorkflowStepInProgress)
   Completed(WorkflowStepCompleted)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowStep with fn deserialize(d) {
@@ -23114,6 +23378,7 @@ pub impl ToJson for WorkflowStep with fn to_json(self) {
 
 ///|
 /// `WorkflowStepCompleted`
+#derive(Debug, Eq)
 pub(all) struct WorkflowStepCompleted {
   completed_at : String
   conclusion : WorkflowStepCompletedConclusion
@@ -23121,7 +23386,7 @@ pub(all) struct WorkflowStepCompleted {
   number : Int64
   started_at : String
   status : WorkflowStepCompletedStatus
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowStepCompleted` (fields with defaults are optional).
@@ -23189,6 +23454,7 @@ pub impl ToJson for WorkflowStepCompleted with fn to_json(self) {
 
 ///|
 /// `WorkflowStepInProgress`
+#derive(Debug, Eq)
 pub(all) struct WorkflowStepInProgress {
   completed_at : Unit
   conclusion : Unit
@@ -23196,7 +23462,7 @@ pub(all) struct WorkflowStepInProgress {
   number : Int64
   started_at : String
   status : WorkflowStepInProgressStatus
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowStepInProgress` (fields with defaults are optional).
@@ -23264,6 +23530,7 @@ pub impl ToJson for WorkflowStepInProgress with fn to_json(self) {
 
 ///|
 /// `WorkflowDispatchEvent`
+#derive(Debug, Eq)
 pub(all) struct WorkflowDispatchEvent {
   inputs : Map[String, Json]?
   installation : InstallationLite?
@@ -23272,7 +23539,7 @@ pub(all) struct WorkflowDispatchEvent {
   repository : Repository
   sender : User
   workflow : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowDispatchEvent` (fields with defaults are optional).
@@ -23349,6 +23616,7 @@ pub impl ToJson for WorkflowDispatchEvent with fn to_json(self) {
 
 ///|
 /// `WorkflowJobCompleted`
+#derive(Debug, Eq)
 pub(all) struct WorkflowJobCompleted {
   action : WorkflowJobCompletedAction
   installation : InstallationLite?
@@ -23356,7 +23624,7 @@ pub(all) struct WorkflowJobCompleted {
   repository : Repository
   sender : User
   workflow_job : WorkflowJobCompletedWorkflowJob
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowJobCompleted` (fields with defaults are optional).
@@ -23428,6 +23696,7 @@ pub impl ToJson for WorkflowJobCompleted with fn to_json(self) {
 
 ///|
 /// `WorkflowJobQueued`
+#derive(Debug, Eq)
 pub(all) struct WorkflowJobQueued {
   action : WorkflowJobQueuedAction
   installation : InstallationLite?
@@ -23435,7 +23704,7 @@ pub(all) struct WorkflowJobQueued {
   repository : Repository
   sender : User
   workflow_job : WorkflowJobQueuedWorkflowJob
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowJobQueued` (fields with defaults are optional).
@@ -23507,6 +23776,7 @@ pub impl ToJson for WorkflowJobQueued with fn to_json(self) {
 
 ///|
 /// `WorkflowJobStarted`
+#derive(Debug, Eq)
 pub(all) struct WorkflowJobStarted {
   action : WorkflowJobStartedAction
   installation : InstallationLite?
@@ -23514,7 +23784,7 @@ pub(all) struct WorkflowJobStarted {
   repository : Repository
   sender : User
   workflow_job : WorkflowJobStartedWorkflowJob
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowJobStarted` (fields with defaults are optional).
@@ -23586,11 +23856,12 @@ pub impl ToJson for WorkflowJobStarted with fn to_json(self) {
 
 ///|
 /// `WorkflowJobEvent`
+#derive(Debug, Eq)
 pub(all) enum WorkflowJobEvent {
   Completed(WorkflowJobCompleted)
   Queued(WorkflowJobQueued)
   Started(WorkflowJobStarted)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowJobEvent with fn deserialize(d) {
@@ -23643,6 +23914,7 @@ pub impl ToJson for WorkflowJobEvent with fn to_json(self) {
 
 ///|
 /// `WorkflowRunCompleted`
+#derive(Debug, Eq)
 pub(all) struct WorkflowRunCompleted {
   action : WorkflowRunCompletedAction
   installation : InstallationLite?
@@ -23651,7 +23923,7 @@ pub(all) struct WorkflowRunCompleted {
   sender : User
   workflow : Workflow
   workflow_run : WorkflowRunCompletedWorkflowRun
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowRunCompleted` (fields with defaults are optional).
@@ -23728,6 +24000,7 @@ pub impl ToJson for WorkflowRunCompleted with fn to_json(self) {
 
 ///|
 /// `WorkflowRunRequested`
+#derive(Debug, Eq)
 pub(all) struct WorkflowRunRequested {
   action : WorkflowRunRequestedAction
   installation : InstallationLite?
@@ -23736,7 +24009,7 @@ pub(all) struct WorkflowRunRequested {
   sender : User
   workflow : Workflow
   workflow_run : WorkflowRun
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowRunRequested` (fields with defaults are optional).
@@ -23813,10 +24086,11 @@ pub impl ToJson for WorkflowRunRequested with fn to_json(self) {
 
 ///|
 /// `WorkflowRunEvent`
+#derive(Debug, Eq)
 pub(all) enum WorkflowRunEvent {
   Completed(WorkflowRunCompleted)
   Requested(WorkflowRunRequested)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowRunEvent with fn deserialize(d) {
@@ -23860,6 +24134,7 @@ pub impl ToJson for WorkflowRunEvent with fn to_json(self) {
 
 ///|
 /// `Everything`
+#derive(Debug, Eq)
 pub(all) enum Everything {
   BranchProtectionRuleEvent(BranchProtectionRuleEvent)
   CheckRunEvent(CheckRunEvent)
@@ -23916,7 +24191,7 @@ pub(all) enum Everything {
   WorkflowDispatchEvent(WorkflowDispatchEvent)
   WorkflowJobEvent(WorkflowJobEvent)
   WorkflowRunEvent(WorkflowRunEvent)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for Everything with fn deserialize(d) {
@@ -24437,13 +24712,14 @@ pub impl ToJson for Everything with fn to_json(self) {
 
 ///|
 /// `AlertInstanceLocation`
+#derive(Debug, Eq)
 pub(all) struct AlertInstanceLocation {
   end_column : Int64?
   end_line : Int64?
   path : String?
   start_column : Int64?
   start_line : Int64?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `AlertInstanceLocation` (fields with defaults are optional).
@@ -24516,9 +24792,10 @@ pub impl ToJson for AlertInstanceLocation with fn to_json(self) {
 
 ///|
 /// `AlertInstanceMessage`
+#derive(Debug, Eq)
 pub(all) struct AlertInstanceMessage {
   text : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `AlertInstanceMessage` (fields with defaults are optional).
@@ -24563,11 +24840,12 @@ pub impl ToJson for AlertInstanceMessage with fn to_json(self) {
 
 ///|
 /// State of a code scanning alert.
+#derive(Debug, Eq, Hash)
 pub(all) enum AlertInstanceState {
   Open
   Dismissed
   Fixed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AlertInstanceState with fn deserialize(d) {
@@ -24634,6 +24912,7 @@ pub impl ToJson for AlertInstanceState with fn to_json(self) {
 
 ///|
 /// `AppEventsItem`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppEventsItem {
   CheckRun
   CheckSuite
@@ -24679,7 +24958,7 @@ pub(all) enum AppEventsItem {
   Watch
   WorkflowDispatch
   WorkflowRun
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppEventsItem with fn deserialize(d) {
@@ -24951,10 +25230,11 @@ pub impl ToJson for AppEventsItem with fn to_json(self) {
 
 ///|
 /// `AppPermissionsActions`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsActions {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsActions with fn deserialize(d) {
@@ -25016,10 +25296,11 @@ pub impl ToJson for AppPermissionsActions with fn to_json(self) {
 
 ///|
 /// `AppPermissionsAdministration`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsAdministration {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsAdministration with fn deserialize(d) {
@@ -25081,10 +25362,11 @@ pub impl ToJson for AppPermissionsAdministration with fn to_json(self) {
 
 ///|
 /// `AppPermissionsChecks`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsChecks {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsChecks with fn deserialize(d) {
@@ -25146,10 +25428,11 @@ pub impl ToJson for AppPermissionsChecks with fn to_json(self) {
 
 ///|
 /// `AppPermissionsContentReferences`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsContentReferences {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsContentReferences with fn deserialize(d) {
@@ -25211,10 +25494,11 @@ pub impl ToJson for AppPermissionsContentReferences with fn to_json(self) {
 
 ///|
 /// `AppPermissionsContents`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsContents {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsContents with fn deserialize(d) {
@@ -25276,10 +25560,11 @@ pub impl ToJson for AppPermissionsContents with fn to_json(self) {
 
 ///|
 /// `AppPermissionsDeployments`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsDeployments {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsDeployments with fn deserialize(d) {
@@ -25341,10 +25626,11 @@ pub impl ToJson for AppPermissionsDeployments with fn to_json(self) {
 
 ///|
 /// `AppPermissionsDiscussions`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsDiscussions {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsDiscussions with fn deserialize(d) {
@@ -25406,10 +25692,11 @@ pub impl ToJson for AppPermissionsDiscussions with fn to_json(self) {
 
 ///|
 /// `AppPermissionsEmails`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsEmails {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsEmails with fn deserialize(d) {
@@ -25471,10 +25758,11 @@ pub impl ToJson for AppPermissionsEmails with fn to_json(self) {
 
 ///|
 /// `AppPermissionsEnvironments`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsEnvironments {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsEnvironments with fn deserialize(d) {
@@ -25536,10 +25824,11 @@ pub impl ToJson for AppPermissionsEnvironments with fn to_json(self) {
 
 ///|
 /// `AppPermissionsIssues`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsIssues {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsIssues with fn deserialize(d) {
@@ -25601,10 +25890,11 @@ pub impl ToJson for AppPermissionsIssues with fn to_json(self) {
 
 ///|
 /// `AppPermissionsMembers`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsMembers {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsMembers with fn deserialize(d) {
@@ -25666,10 +25956,11 @@ pub impl ToJson for AppPermissionsMembers with fn to_json(self) {
 
 ///|
 /// `AppPermissionsMetadata`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsMetadata {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsMetadata with fn deserialize(d) {
@@ -25731,10 +26022,11 @@ pub impl ToJson for AppPermissionsMetadata with fn to_json(self) {
 
 ///|
 /// `AppPermissionsOrganizationAdministration`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsOrganizationAdministration {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsOrganizationAdministration with fn deserialize(d) {
@@ -25796,10 +26088,11 @@ pub impl ToJson for AppPermissionsOrganizationAdministration with fn to_json(sel
 
 ///|
 /// `AppPermissionsOrganizationHooks`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsOrganizationHooks {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsOrganizationHooks with fn deserialize(d) {
@@ -25861,10 +26154,11 @@ pub impl ToJson for AppPermissionsOrganizationHooks with fn to_json(self) {
 
 ///|
 /// `AppPermissionsOrganizationPackages`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsOrganizationPackages {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsOrganizationPackages with fn deserialize(d) {
@@ -25926,10 +26220,11 @@ pub impl ToJson for AppPermissionsOrganizationPackages with fn to_json(self) {
 
 ///|
 /// `AppPermissionsOrganizationPlan`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsOrganizationPlan {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsOrganizationPlan with fn deserialize(d) {
@@ -25991,10 +26286,11 @@ pub impl ToJson for AppPermissionsOrganizationPlan with fn to_json(self) {
 
 ///|
 /// `AppPermissionsOrganizationProjects`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsOrganizationProjects {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsOrganizationProjects with fn deserialize(d) {
@@ -26056,10 +26352,11 @@ pub impl ToJson for AppPermissionsOrganizationProjects with fn to_json(self) {
 
 ///|
 /// `AppPermissionsOrganizationSecrets`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsOrganizationSecrets {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsOrganizationSecrets with fn deserialize(d) {
@@ -26121,10 +26418,11 @@ pub impl ToJson for AppPermissionsOrganizationSecrets with fn to_json(self) {
 
 ///|
 /// `AppPermissionsOrganizationSelfHostedRunners`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsOrganizationSelfHostedRunners {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsOrganizationSelfHostedRunners with fn deserialize(d) {
@@ -26186,10 +26484,11 @@ pub impl ToJson for AppPermissionsOrganizationSelfHostedRunners with fn to_json(
 
 ///|
 /// `AppPermissionsOrganizationUserBlocking`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsOrganizationUserBlocking {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsOrganizationUserBlocking with fn deserialize(d) {
@@ -26251,10 +26550,11 @@ pub impl ToJson for AppPermissionsOrganizationUserBlocking with fn to_json(self)
 
 ///|
 /// `AppPermissionsPackages`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsPackages {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsPackages with fn deserialize(d) {
@@ -26316,10 +26616,11 @@ pub impl ToJson for AppPermissionsPackages with fn to_json(self) {
 
 ///|
 /// `AppPermissionsPages`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsPages {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsPages with fn deserialize(d) {
@@ -26381,10 +26682,11 @@ pub impl ToJson for AppPermissionsPages with fn to_json(self) {
 
 ///|
 /// `AppPermissionsPullRequests`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsPullRequests {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsPullRequests with fn deserialize(d) {
@@ -26446,10 +26748,11 @@ pub impl ToJson for AppPermissionsPullRequests with fn to_json(self) {
 
 ///|
 /// `AppPermissionsRepositoryHooks`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsRepositoryHooks {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsRepositoryHooks with fn deserialize(d) {
@@ -26511,10 +26814,11 @@ pub impl ToJson for AppPermissionsRepositoryHooks with fn to_json(self) {
 
 ///|
 /// `AppPermissionsRepositoryProjects`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsRepositoryProjects {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsRepositoryProjects with fn deserialize(d) {
@@ -26576,10 +26880,11 @@ pub impl ToJson for AppPermissionsRepositoryProjects with fn to_json(self) {
 
 ///|
 /// `AppPermissionsSecretScanningAlerts`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsSecretScanningAlerts {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsSecretScanningAlerts with fn deserialize(d) {
@@ -26641,10 +26946,11 @@ pub impl ToJson for AppPermissionsSecretScanningAlerts with fn to_json(self) {
 
 ///|
 /// `AppPermissionsSecrets`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsSecrets {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsSecrets with fn deserialize(d) {
@@ -26706,10 +27012,11 @@ pub impl ToJson for AppPermissionsSecrets with fn to_json(self) {
 
 ///|
 /// `AppPermissionsSecurityEvents`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsSecurityEvents {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsSecurityEvents with fn deserialize(d) {
@@ -26771,10 +27078,11 @@ pub impl ToJson for AppPermissionsSecurityEvents with fn to_json(self) {
 
 ///|
 /// `AppPermissionsSecurityScanningAlert`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsSecurityScanningAlert {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsSecurityScanningAlert with fn deserialize(d) {
@@ -26836,10 +27144,11 @@ pub impl ToJson for AppPermissionsSecurityScanningAlert with fn to_json(self) {
 
 ///|
 /// `AppPermissionsSingleFile`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsSingleFile {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsSingleFile with fn deserialize(d) {
@@ -26901,10 +27210,11 @@ pub impl ToJson for AppPermissionsSingleFile with fn to_json(self) {
 
 ///|
 /// `AppPermissionsStatuses`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsStatuses {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsStatuses with fn deserialize(d) {
@@ -26966,10 +27276,11 @@ pub impl ToJson for AppPermissionsStatuses with fn to_json(self) {
 
 ///|
 /// `AppPermissionsTeamDiscussions`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsTeamDiscussions {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsTeamDiscussions with fn deserialize(d) {
@@ -27031,10 +27342,11 @@ pub impl ToJson for AppPermissionsTeamDiscussions with fn to_json(self) {
 
 ///|
 /// `AppPermissionsVulnerabilityAlerts`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsVulnerabilityAlerts {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsVulnerabilityAlerts with fn deserialize(d) {
@@ -27096,10 +27408,11 @@ pub impl ToJson for AppPermissionsVulnerabilityAlerts with fn to_json(self) {
 
 ///|
 /// `AppPermissionsWorkflows`
+#derive(Debug, Eq, Hash)
 pub(all) enum AppPermissionsWorkflows {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for AppPermissionsWorkflows with fn deserialize(d) {
@@ -27161,6 +27474,7 @@ pub impl ToJson for AppPermissionsWorkflows with fn to_json(self) {
 
 ///|
 /// The set of permissions for the GitHub app
+#derive(Debug, Eq)
 pub(all) struct AppPermissions {
   actions : AppPermissionsActions?
   administration : AppPermissionsAdministration?
@@ -27196,7 +27510,7 @@ pub(all) struct AppPermissions {
   team_discussions : AppPermissionsTeamDiscussions?
   vulnerability_alerts : AppPermissionsVulnerabilityAlerts?
   workflows : AppPermissionsWorkflows?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `AppPermissions` (fields with defaults are optional).
@@ -27472,11 +27786,12 @@ pub impl ToJson for AppPermissions with fn to_json(self) {
 
 ///|
 /// `BranchProtectionRuleAllowDeletionsEnforcementLevel`
+#derive(Debug, Eq, Hash)
 pub(all) enum BranchProtectionRuleAllowDeletionsEnforcementLevel {
   Off
   NonAdmins
   Everyone
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BranchProtectionRuleAllowDeletionsEnforcementLevel with fn deserialize(d) {
@@ -27543,11 +27858,12 @@ pub impl ToJson for BranchProtectionRuleAllowDeletionsEnforcementLevel with fn t
 
 ///|
 /// `BranchProtectionRuleAllowForcePushesEnforcementLevel`
+#derive(Debug, Eq, Hash)
 pub(all) enum BranchProtectionRuleAllowForcePushesEnforcementLevel {
   Off
   NonAdmins
   Everyone
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BranchProtectionRuleAllowForcePushesEnforcementLevel with fn deserialize(d) {
@@ -27614,11 +27930,12 @@ pub impl ToJson for BranchProtectionRuleAllowForcePushesEnforcementLevel with fn
 
 ///|
 /// `BranchProtectionRuleLinearHistoryRequirementEnforcementLevel`
+#derive(Debug, Eq, Hash)
 pub(all) enum BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
   Off
   NonAdmins
   Everyone
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BranchProtectionRuleLinearHistoryRequirementEnforcementLevel with fn deserialize(d) {
@@ -27685,11 +28002,12 @@ pub impl ToJson for BranchProtectionRuleLinearHistoryRequirementEnforcementLevel
 
 ///|
 /// `BranchProtectionRuleMergeQueueEnforcementLevel`
+#derive(Debug, Eq, Hash)
 pub(all) enum BranchProtectionRuleMergeQueueEnforcementLevel {
   Off
   NonAdmins
   Everyone
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BranchProtectionRuleMergeQueueEnforcementLevel with fn deserialize(d) {
@@ -27756,11 +28074,12 @@ pub impl ToJson for BranchProtectionRuleMergeQueueEnforcementLevel with fn to_js
 
 ///|
 /// `BranchProtectionRulePullRequestReviewsEnforcementLevel`
+#derive(Debug, Eq, Hash)
 pub(all) enum BranchProtectionRulePullRequestReviewsEnforcementLevel {
   Off
   NonAdmins
   Everyone
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BranchProtectionRulePullRequestReviewsEnforcementLevel with fn deserialize(d) {
@@ -27827,11 +28146,12 @@ pub impl ToJson for BranchProtectionRulePullRequestReviewsEnforcementLevel with 
 
 ///|
 /// `BranchProtectionRuleRequiredConversationResolutionLevel`
+#derive(Debug, Eq, Hash)
 pub(all) enum BranchProtectionRuleRequiredConversationResolutionLevel {
   Off
   NonAdmins
   Everyone
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BranchProtectionRuleRequiredConversationResolutionLevel with fn deserialize(d) {
@@ -27898,11 +28218,12 @@ pub impl ToJson for BranchProtectionRuleRequiredConversationResolutionLevel with
 
 ///|
 /// `BranchProtectionRuleRequiredDeploymentsEnforcementLevel`
+#derive(Debug, Eq, Hash)
 pub(all) enum BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
   Off
   NonAdmins
   Everyone
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BranchProtectionRuleRequiredDeploymentsEnforcementLevel with fn deserialize(d) {
@@ -27969,11 +28290,12 @@ pub impl ToJson for BranchProtectionRuleRequiredDeploymentsEnforcementLevel with
 
 ///|
 /// `BranchProtectionRuleRequiredStatusChecksEnforcementLevel`
+#derive(Debug, Eq, Hash)
 pub(all) enum BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
   Off
   NonAdmins
   Everyone
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BranchProtectionRuleRequiredStatusChecksEnforcementLevel with fn deserialize(d) {
@@ -28040,11 +28362,12 @@ pub impl ToJson for BranchProtectionRuleRequiredStatusChecksEnforcementLevel wit
 
 ///|
 /// `BranchProtectionRuleSignatureRequirementEnforcementLevel`
+#derive(Debug, Eq, Hash)
 pub(all) enum BranchProtectionRuleSignatureRequirementEnforcementLevel {
   Off
   NonAdmins
   Everyone
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BranchProtectionRuleSignatureRequirementEnforcementLevel with fn deserialize(d) {
@@ -28111,9 +28434,10 @@ pub impl ToJson for BranchProtectionRuleSignatureRequirementEnforcementLevel wit
 
 ///|
 /// `BranchProtectionRuleCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum BranchProtectionRuleCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BranchProtectionRuleCreatedAction with fn deserialize(d) {
@@ -28170,9 +28494,10 @@ pub impl ToJson for BranchProtectionRuleCreatedAction with fn to_json(self) {
 
 ///|
 /// `BranchProtectionRuleDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum BranchProtectionRuleDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BranchProtectionRuleDeletedAction with fn deserialize(d) {
@@ -28229,9 +28554,10 @@ pub impl ToJson for BranchProtectionRuleDeletedAction with fn to_json(self) {
 
 ///|
 /// `BranchProtectionRuleEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum BranchProtectionRuleEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for BranchProtectionRuleEditedAction with fn deserialize(d) {
@@ -28288,9 +28614,10 @@ pub impl ToJson for BranchProtectionRuleEditedAction with fn to_json(self) {
 
 ///|
 /// `BranchProtectionRuleEditedChangesAuthorizedActorNames`
+#derive(Debug, Eq)
 pub(all) struct BranchProtectionRuleEditedChangesAuthorizedActorNames {
   from : Array[String]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `BranchProtectionRuleEditedChangesAuthorizedActorNames` (fields with defaults are optional).
@@ -28333,9 +28660,10 @@ pub impl ToJson for BranchProtectionRuleEditedChangesAuthorizedActorNames with f
 
 ///|
 /// `BranchProtectionRuleEditedChangesAuthorizedActorsOnly`
+#derive(Debug, Eq)
 pub(all) struct BranchProtectionRuleEditedChangesAuthorizedActorsOnly {
   from : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `BranchProtectionRuleEditedChangesAuthorizedActorsOnly` (fields with defaults are optional).
@@ -28378,10 +28706,11 @@ pub impl ToJson for BranchProtectionRuleEditedChangesAuthorizedActorsOnly with f
 
 ///|
 /// If the action was `edited`, the changes to the rule.
+#derive(Debug, Eq)
 pub(all) struct BranchProtectionRuleEditedChanges {
   authorized_actor_names : BranchProtectionRuleEditedChangesAuthorizedActorNames?
   authorized_actors_only : BranchProtectionRuleEditedChangesAuthorizedActorsOnly?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `BranchProtectionRuleEditedChanges` (fields with defaults are optional).
@@ -28433,11 +28762,12 @@ pub impl ToJson for BranchProtectionRuleEditedChanges with fn to_json(self) {
 
 ///|
 /// `CheckRunPullRequestBase`
+#derive(Debug, Eq)
 pub(all) struct CheckRunPullRequestBase {
   ref_ : String
   repo : RepoRef
   sha : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunPullRequestBase` (fields with defaults are optional).
@@ -28490,11 +28820,12 @@ pub impl ToJson for CheckRunPullRequestBase with fn to_json(self) {
 
 ///|
 /// `CheckRunPullRequestHead`
+#derive(Debug, Eq)
 pub(all) struct CheckRunPullRequestHead {
   ref_ : String
   repo : RepoRef
   sha : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunPullRequestHead` (fields with defaults are optional).
@@ -28547,9 +28878,10 @@ pub impl ToJson for CheckRunPullRequestHead with fn to_json(self) {
 
 ///|
 /// `CheckRunCompletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunCompletedAction {
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunCompletedAction with fn deserialize(d) {
@@ -28606,6 +28938,7 @@ pub impl ToJson for CheckRunCompletedAction with fn to_json(self) {
 
 ///|
 /// `CheckRunCompletedCheckRunCheckSuiteConclusion`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunCompletedCheckRunCheckSuiteConclusion {
   Success
   Failure
@@ -28614,7 +28947,7 @@ pub(all) enum CheckRunCompletedCheckRunCheckSuiteConclusion {
   TimedOut
   ActionRequired
   Stale
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunCompletedCheckRunCheckSuiteConclusion with fn deserialize(d) {
@@ -28701,11 +29034,12 @@ pub impl ToJson for CheckRunCompletedCheckRunCheckSuiteConclusion with fn to_jso
 
 ///|
 /// `CheckRunCompletedCheckRunCheckSuiteStatus`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunCompletedCheckRunCheckSuiteStatus {
   InProgress
   Completed
   Queued
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunCompletedCheckRunCheckSuiteStatus with fn deserialize(d) {
@@ -28772,6 +29106,7 @@ pub impl ToJson for CheckRunCompletedCheckRunCheckSuiteStatus with fn to_json(se
 
 ///|
 /// `CheckRunCompletedCheckRunCheckSuite`
+#derive(Debug, Eq)
 pub(all) struct CheckRunCompletedCheckRunCheckSuite {
   after : String?
   app : App
@@ -28790,7 +29125,7 @@ pub(all) struct CheckRunCompletedCheckRunCheckSuite {
   status : CheckRunCompletedCheckRunCheckSuiteStatus
   updated_at : @typify_rt.DateTimeUtc
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunCompletedCheckRunCheckSuite` (fields with defaults are optional).
@@ -28902,6 +29237,7 @@ pub impl ToJson for CheckRunCompletedCheckRunCheckSuite with fn to_json(self) {
 
 ///|
 /// The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunCompletedCheckRunConclusion {
   Success
   Failure
@@ -28911,7 +29247,7 @@ pub(all) enum CheckRunCompletedCheckRunConclusion {
   ActionRequired
   Stale
   Skipped
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunCompletedCheckRunConclusion with fn deserialize(d) {
@@ -29003,13 +29339,14 @@ pub impl ToJson for CheckRunCompletedCheckRunConclusion with fn to_json(self) {
 
 ///|
 /// `CheckRunCompletedCheckRunOutput`
+#derive(Debug, Eq)
 pub(all) struct CheckRunCompletedCheckRunOutput {
   annotations_count : Int64
   annotations_url : String
   summary : String?
   text : String?
   title : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunCompletedCheckRunOutput` (fields with defaults are optional).
@@ -29074,9 +29411,10 @@ pub impl ToJson for CheckRunCompletedCheckRunOutput with fn to_json(self) {
 
 ///|
 /// The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunCompletedCheckRunStatus {
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunCompletedCheckRunStatus with fn deserialize(d) {
@@ -29133,6 +29471,7 @@ pub impl ToJson for CheckRunCompletedCheckRunStatus with fn to_json(self) {
 
 ///|
 /// The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-run).
+#derive(Debug, Eq)
 pub(all) struct CheckRunCompletedCheckRun {
   app : App
   check_suite : CheckRunCompletedCheckRunCheckSuite
@@ -29157,7 +29496,7 @@ pub(all) struct CheckRunCompletedCheckRun {
   /// The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
   status : CheckRunCompletedCheckRunStatus
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunCompletedCheckRun` (fields with defaults are optional).
@@ -29279,10 +29618,11 @@ pub impl ToJson for CheckRunCompletedCheckRun with fn to_json(self) {
 
 ///|
 /// The action requested by the user.
+#derive(Debug, Eq)
 pub(all) struct CheckRunCompletedRequestedAction {
   /// The integrator reference of the action requested by the user.
   identifier : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunCompletedRequestedAction` (fields with defaults are optional).
@@ -29327,9 +29667,10 @@ pub impl ToJson for CheckRunCompletedRequestedAction with fn to_json(self) {
 
 ///|
 /// `CheckRunCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunCreatedAction with fn deserialize(d) {
@@ -29386,6 +29727,7 @@ pub impl ToJson for CheckRunCreatedAction with fn to_json(self) {
 
 ///|
 /// `CheckRunCreatedCheckRunCheckSuiteConclusion`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunCreatedCheckRunCheckSuiteConclusion {
   Success
   Failure
@@ -29394,7 +29736,7 @@ pub(all) enum CheckRunCreatedCheckRunCheckSuiteConclusion {
   TimedOut
   ActionRequired
   Stale
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunCreatedCheckRunCheckSuiteConclusion with fn deserialize(d) {
@@ -29481,11 +29823,12 @@ pub impl ToJson for CheckRunCreatedCheckRunCheckSuiteConclusion with fn to_json(
 
 ///|
 /// `CheckRunCreatedCheckRunCheckSuiteStatus`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunCreatedCheckRunCheckSuiteStatus {
   Queued
   InProgress
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunCreatedCheckRunCheckSuiteStatus with fn deserialize(d) {
@@ -29552,6 +29895,7 @@ pub impl ToJson for CheckRunCreatedCheckRunCheckSuiteStatus with fn to_json(self
 
 ///|
 /// `CheckRunCreatedCheckRunCheckSuite`
+#derive(Debug, Eq)
 pub(all) struct CheckRunCreatedCheckRunCheckSuite {
   after : String?
   app : App
@@ -29570,7 +29914,7 @@ pub(all) struct CheckRunCreatedCheckRunCheckSuite {
   status : CheckRunCreatedCheckRunCheckSuiteStatus
   updated_at : @typify_rt.DateTimeUtc
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunCreatedCheckRunCheckSuite` (fields with defaults are optional).
@@ -29682,6 +30026,7 @@ pub impl ToJson for CheckRunCreatedCheckRunCheckSuite with fn to_json(self) {
 
 ///|
 /// The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunCreatedCheckRunConclusion {
   Success
   Failure
@@ -29691,7 +30036,7 @@ pub(all) enum CheckRunCreatedCheckRunConclusion {
   ActionRequired
   Stale
   Skipped
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunCreatedCheckRunConclusion with fn deserialize(d) {
@@ -29783,13 +30128,14 @@ pub impl ToJson for CheckRunCreatedCheckRunConclusion with fn to_json(self) {
 
 ///|
 /// `CheckRunCreatedCheckRunOutput`
+#derive(Debug, Eq)
 pub(all) struct CheckRunCreatedCheckRunOutput {
   annotations_count : Int64
   annotations_url : String
   summary : String?
   text : String?
   title : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunCreatedCheckRunOutput` (fields with defaults are optional).
@@ -29854,11 +30200,12 @@ pub impl ToJson for CheckRunCreatedCheckRunOutput with fn to_json(self) {
 
 ///|
 /// The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunCreatedCheckRunStatus {
   Queued
   InProgress
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunCreatedCheckRunStatus with fn deserialize(d) {
@@ -29925,6 +30272,7 @@ pub impl ToJson for CheckRunCreatedCheckRunStatus with fn to_json(self) {
 
 ///|
 /// The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-run).
+#derive(Debug, Eq)
 pub(all) struct CheckRunCreatedCheckRun {
   app : App
   check_suite : CheckRunCreatedCheckRunCheckSuite
@@ -29949,7 +30297,7 @@ pub(all) struct CheckRunCreatedCheckRun {
   /// The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
   status : CheckRunCreatedCheckRunStatus
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunCreatedCheckRun` (fields with defaults are optional).
@@ -30071,10 +30419,11 @@ pub impl ToJson for CheckRunCreatedCheckRun with fn to_json(self) {
 
 ///|
 /// The action requested by the user.
+#derive(Debug, Eq)
 pub(all) struct CheckRunCreatedRequestedAction {
   /// The integrator reference of the action requested by the user.
   identifier : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunCreatedRequestedAction` (fields with defaults are optional).
@@ -30119,9 +30468,10 @@ pub impl ToJson for CheckRunCreatedRequestedAction with fn to_json(self) {
 
 ///|
 /// `CheckRunRequestedActionAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunRequestedActionAction {
   RequestedAction
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunRequestedActionAction with fn deserialize(d) {
@@ -30178,6 +30528,7 @@ pub impl ToJson for CheckRunRequestedActionAction with fn to_json(self) {
 
 ///|
 /// `CheckRunRequestedActionCheckRunCheckSuiteConclusion`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunRequestedActionCheckRunCheckSuiteConclusion {
   Success
   Failure
@@ -30186,7 +30537,7 @@ pub(all) enum CheckRunRequestedActionCheckRunCheckSuiteConclusion {
   TimedOut
   ActionRequired
   Stale
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunRequestedActionCheckRunCheckSuiteConclusion with fn deserialize(d) {
@@ -30273,11 +30624,12 @@ pub impl ToJson for CheckRunRequestedActionCheckRunCheckSuiteConclusion with fn 
 
 ///|
 /// `CheckRunRequestedActionCheckRunCheckSuiteStatus`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunRequestedActionCheckRunCheckSuiteStatus {
   Queued
   InProgress
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunRequestedActionCheckRunCheckSuiteStatus with fn deserialize(d) {
@@ -30344,6 +30696,7 @@ pub impl ToJson for CheckRunRequestedActionCheckRunCheckSuiteStatus with fn to_j
 
 ///|
 /// `CheckRunRequestedActionCheckRunCheckSuite`
+#derive(Debug, Eq)
 pub(all) struct CheckRunRequestedActionCheckRunCheckSuite {
   after : String?
   app : App
@@ -30362,7 +30715,7 @@ pub(all) struct CheckRunRequestedActionCheckRunCheckSuite {
   status : CheckRunRequestedActionCheckRunCheckSuiteStatus
   updated_at : @typify_rt.DateTimeUtc
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunRequestedActionCheckRunCheckSuite` (fields with defaults are optional).
@@ -30474,6 +30827,7 @@ pub impl ToJson for CheckRunRequestedActionCheckRunCheckSuite with fn to_json(se
 
 ///|
 /// The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunRequestedActionCheckRunConclusion {
   Success
   Failure
@@ -30483,7 +30837,7 @@ pub(all) enum CheckRunRequestedActionCheckRunConclusion {
   ActionRequired
   Stale
   Skipped
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunRequestedActionCheckRunConclusion with fn deserialize(d) {
@@ -30575,13 +30929,14 @@ pub impl ToJson for CheckRunRequestedActionCheckRunConclusion with fn to_json(se
 
 ///|
 /// `CheckRunRequestedActionCheckRunOutput`
+#derive(Debug, Eq)
 pub(all) struct CheckRunRequestedActionCheckRunOutput {
   annotations_count : Int64
   annotations_url : String
   summary : String?
   text : String?
   title : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunRequestedActionCheckRunOutput` (fields with defaults are optional).
@@ -30646,11 +31001,12 @@ pub impl ToJson for CheckRunRequestedActionCheckRunOutput with fn to_json(self) 
 
 ///|
 /// The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunRequestedActionCheckRunStatus {
   Queued
   InProgress
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunRequestedActionCheckRunStatus with fn deserialize(d) {
@@ -30717,6 +31073,7 @@ pub impl ToJson for CheckRunRequestedActionCheckRunStatus with fn to_json(self) 
 
 ///|
 /// The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-run).
+#derive(Debug, Eq)
 pub(all) struct CheckRunRequestedActionCheckRun {
   app : App
   check_suite : CheckRunRequestedActionCheckRunCheckSuite
@@ -30741,7 +31098,7 @@ pub(all) struct CheckRunRequestedActionCheckRun {
   /// The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
   status : CheckRunRequestedActionCheckRunStatus
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunRequestedActionCheckRun` (fields with defaults are optional).
@@ -30863,10 +31220,11 @@ pub impl ToJson for CheckRunRequestedActionCheckRun with fn to_json(self) {
 
 ///|
 /// The action requested by the user.
+#derive(Debug, Eq)
 pub(all) struct CheckRunRequestedActionRequestedAction {
   /// The integrator reference of the action requested by the user.
   identifier : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunRequestedActionRequestedAction` (fields with defaults are optional).
@@ -30911,9 +31269,10 @@ pub impl ToJson for CheckRunRequestedActionRequestedAction with fn to_json(self)
 
 ///|
 /// `CheckRunRerequestedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunRerequestedAction {
   Rerequested
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunRerequestedAction with fn deserialize(d) {
@@ -30970,6 +31329,7 @@ pub impl ToJson for CheckRunRerequestedAction with fn to_json(self) {
 
 ///|
 /// `CheckRunRerequestedCheckRunCheckSuiteConclusion`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunRerequestedCheckRunCheckSuiteConclusion {
   Success
   Failure
@@ -30978,7 +31338,7 @@ pub(all) enum CheckRunRerequestedCheckRunCheckSuiteConclusion {
   TimedOut
   ActionRequired
   Stale
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunRerequestedCheckRunCheckSuiteConclusion with fn deserialize(d) {
@@ -31065,9 +31425,10 @@ pub impl ToJson for CheckRunRerequestedCheckRunCheckSuiteConclusion with fn to_j
 
 ///|
 /// `CheckRunRerequestedCheckRunCheckSuiteStatus`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunRerequestedCheckRunCheckSuiteStatus {
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunRerequestedCheckRunCheckSuiteStatus with fn deserialize(d) {
@@ -31124,6 +31485,7 @@ pub impl ToJson for CheckRunRerequestedCheckRunCheckSuiteStatus with fn to_json(
 
 ///|
 /// `CheckRunRerequestedCheckRunCheckSuite`
+#derive(Debug, Eq)
 pub(all) struct CheckRunRerequestedCheckRunCheckSuite {
   after : String?
   app : App
@@ -31142,7 +31504,7 @@ pub(all) struct CheckRunRerequestedCheckRunCheckSuite {
   status : CheckRunRerequestedCheckRunCheckSuiteStatus
   updated_at : @typify_rt.DateTimeUtc
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunRerequestedCheckRunCheckSuite` (fields with defaults are optional).
@@ -31254,6 +31616,7 @@ pub impl ToJson for CheckRunRerequestedCheckRunCheckSuite with fn to_json(self) 
 
 ///|
 /// The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has `completed`.
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunRerequestedCheckRunConclusion {
   Success
   Failure
@@ -31263,7 +31626,7 @@ pub(all) enum CheckRunRerequestedCheckRunConclusion {
   ActionRequired
   Stale
   Skipped
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunRerequestedCheckRunConclusion with fn deserialize(d) {
@@ -31355,13 +31718,14 @@ pub impl ToJson for CheckRunRerequestedCheckRunConclusion with fn to_json(self) 
 
 ///|
 /// `CheckRunRerequestedCheckRunOutput`
+#derive(Debug, Eq)
 pub(all) struct CheckRunRerequestedCheckRunOutput {
   annotations_count : Int64
   annotations_url : String
   summary : String?
   text : String?
   title : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunRerequestedCheckRunOutput` (fields with defaults are optional).
@@ -31426,9 +31790,10 @@ pub impl ToJson for CheckRunRerequestedCheckRunOutput with fn to_json(self) {
 
 ///|
 /// The phase of the lifecycle that the check is currently in.
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckRunRerequestedCheckRunStatus {
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckRunRerequestedCheckRunStatus with fn deserialize(d) {
@@ -31485,6 +31850,7 @@ pub impl ToJson for CheckRunRerequestedCheckRunStatus with fn to_json(self) {
 
 ///|
 /// The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-run).
+#derive(Debug, Eq)
 pub(all) struct CheckRunRerequestedCheckRun {
   app : App
   check_suite : CheckRunRerequestedCheckRunCheckSuite
@@ -31509,7 +31875,7 @@ pub(all) struct CheckRunRerequestedCheckRun {
   /// The phase of the lifecycle that the check is currently in.
   status : CheckRunRerequestedCheckRunStatus
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunRerequestedCheckRun` (fields with defaults are optional).
@@ -31631,10 +31997,11 @@ pub impl ToJson for CheckRunRerequestedCheckRun with fn to_json(self) {
 
 ///|
 /// The action requested by the user.
+#derive(Debug, Eq)
 pub(all) struct CheckRunRerequestedRequestedAction {
   /// The integrator reference of the action requested by the user.
   identifier : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckRunRerequestedRequestedAction` (fields with defaults are optional).
@@ -31679,9 +32046,10 @@ pub impl ToJson for CheckRunRerequestedRequestedAction with fn to_json(self) {
 
 ///|
 /// `CheckSuiteCompletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckSuiteCompletedAction {
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckSuiteCompletedAction with fn deserialize(d) {
@@ -31738,6 +32106,7 @@ pub impl ToJson for CheckSuiteCompletedAction with fn to_json(self) {
 
 ///|
 /// The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has `completed`.
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckSuiteCompletedCheckSuiteConclusion {
   Success
   Failure
@@ -31746,7 +32115,7 @@ pub(all) enum CheckSuiteCompletedCheckSuiteConclusion {
   TimedOut
   ActionRequired
   Stale
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckSuiteCompletedCheckSuiteConclusion with fn deserialize(d) {
@@ -31833,12 +32202,13 @@ pub impl ToJson for CheckSuiteCompletedCheckSuiteConclusion with fn to_json(self
 
 ///|
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckSuiteCompletedCheckSuiteStatus {
   Requested
   InProgress
   Completed
   Queued
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckSuiteCompletedCheckSuiteStatus with fn deserialize(d) {
@@ -31910,6 +32280,7 @@ pub impl ToJson for CheckSuiteCompletedCheckSuiteStatus with fn to_json(self) {
 
 ///|
 /// The [check_suite](https://docs.github.com/en/rest/reference/checks#suites).
+#derive(Debug, Eq)
 pub(all) struct CheckSuiteCompletedCheckSuite {
   after : String
   app : App
@@ -31933,7 +32304,7 @@ pub(all) struct CheckSuiteCompletedCheckSuite {
   updated_at : @typify_rt.DateTimeUtc
   /// URL that points to the check suite API resource.
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckSuiteCompletedCheckSuite` (fields with defaults are optional).
@@ -32051,9 +32422,10 @@ pub impl ToJson for CheckSuiteCompletedCheckSuite with fn to_json(self) {
 
 ///|
 /// `CheckSuiteRequestedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckSuiteRequestedAction {
   Requested
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckSuiteRequestedAction with fn deserialize(d) {
@@ -32110,6 +32482,7 @@ pub impl ToJson for CheckSuiteRequestedAction with fn to_json(self) {
 
 ///|
 /// The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`,` neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckSuiteRequestedCheckSuiteConclusion {
   Success
   Failure
@@ -32118,7 +32491,7 @@ pub(all) enum CheckSuiteRequestedCheckSuiteConclusion {
   TimedOut
   ActionRequired
   Stale
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckSuiteRequestedCheckSuiteConclusion with fn deserialize(d) {
@@ -32205,12 +32578,13 @@ pub impl ToJson for CheckSuiteRequestedCheckSuiteConclusion with fn to_json(self
 
 ///|
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckSuiteRequestedCheckSuiteStatus {
   Requested
   InProgress
   Completed
   Queued
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckSuiteRequestedCheckSuiteStatus with fn deserialize(d) {
@@ -32282,6 +32656,7 @@ pub impl ToJson for CheckSuiteRequestedCheckSuiteStatus with fn to_json(self) {
 
 ///|
 /// The [check_suite](https://docs.github.com/en/rest/reference/checks#suites).
+#derive(Debug, Eq)
 pub(all) struct CheckSuiteRequestedCheckSuite {
   after : String
   app : App
@@ -32305,7 +32680,7 @@ pub(all) struct CheckSuiteRequestedCheckSuite {
   updated_at : @typify_rt.DateTimeUtc
   /// URL that points to the check suite API resource.
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckSuiteRequestedCheckSuite` (fields with defaults are optional).
@@ -32423,9 +32798,10 @@ pub impl ToJson for CheckSuiteRequestedCheckSuite with fn to_json(self) {
 
 ///|
 /// `CheckSuiteRerequestedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckSuiteRerequestedAction {
   Rerequested
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckSuiteRerequestedAction with fn deserialize(d) {
@@ -32482,6 +32858,7 @@ pub impl ToJson for CheckSuiteRerequestedAction with fn to_json(self) {
 
 ///|
 /// The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`,` neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckSuiteRerequestedCheckSuiteConclusion {
   Success
   Failure
@@ -32490,7 +32867,7 @@ pub(all) enum CheckSuiteRerequestedCheckSuiteConclusion {
   TimedOut
   ActionRequired
   Stale
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckSuiteRerequestedCheckSuiteConclusion with fn deserialize(d) {
@@ -32577,12 +32954,13 @@ pub impl ToJson for CheckSuiteRerequestedCheckSuiteConclusion with fn to_json(se
 
 ///|
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
+#derive(Debug, Eq, Hash)
 pub(all) enum CheckSuiteRerequestedCheckSuiteStatus {
   Requested
   InProgress
   Completed
   Queued
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CheckSuiteRerequestedCheckSuiteStatus with fn deserialize(d) {
@@ -32654,6 +33032,7 @@ pub impl ToJson for CheckSuiteRerequestedCheckSuiteStatus with fn to_json(self) 
 
 ///|
 /// The [check_suite](https://docs.github.com/en/rest/reference/checks#suites).
+#derive(Debug, Eq)
 pub(all) struct CheckSuiteRerequestedCheckSuite {
   after : String
   app : App
@@ -32677,7 +33056,7 @@ pub(all) struct CheckSuiteRerequestedCheckSuite {
   updated_at : @typify_rt.DateTimeUtc
   /// URL that points to the check suite API resource.
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CheckSuiteRerequestedCheckSuite` (fields with defaults are optional).
@@ -32795,9 +33174,10 @@ pub impl ToJson for CheckSuiteRerequestedCheckSuite with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertAppearedInBranchAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertAppearedInBranchAction {
   AppearedInBranch
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertAppearedInBranchAction with fn deserialize(d) {
@@ -32854,11 +33234,12 @@ pub impl ToJson for CodeScanningAlertAppearedInBranchAction with fn to_json(self
 
 ///|
 /// The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertAppearedInBranchAlertDismissedReason {
   FalsePositive
   WontFix
   UsedInTests
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertAppearedInBranchAlertDismissedReason with fn deserialize(d) {
@@ -32925,12 +33306,13 @@ pub impl ToJson for CodeScanningAlertAppearedInBranchAlertDismissedReason with f
 
 ///|
 /// The severity of the alert.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertAppearedInBranchAlertRuleSeverity {
   None_
   Note
   Warning
   Error
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertAppearedInBranchAlertRuleSeverity with fn deserialize(d) {
@@ -33002,6 +33384,7 @@ pub impl ToJson for CodeScanningAlertAppearedInBranchAlertRuleSeverity with fn t
 
 ///|
 /// `CodeScanningAlertAppearedInBranchAlertRule`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertAppearedInBranchAlertRule {
   /// A short description of the rule used to detect the alert.
   description : String
@@ -33009,7 +33392,7 @@ pub(all) struct CodeScanningAlertAppearedInBranchAlertRule {
   id : String
   /// The severity of the alert.
   severity : CodeScanningAlertAppearedInBranchAlertRuleSeverity?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertAppearedInBranchAlertRule` (fields with defaults are optional).
@@ -33062,11 +33445,12 @@ pub impl ToJson for CodeScanningAlertAppearedInBranchAlertRule with fn to_json(s
 
 ///|
 /// State of a code scanning alert.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertAppearedInBranchAlertState {
   Open
   Dismissed
   Fixed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertAppearedInBranchAlertState with fn deserialize(d) {
@@ -33133,12 +33517,13 @@ pub impl ToJson for CodeScanningAlertAppearedInBranchAlertState with fn to_json(
 
 ///|
 /// `CodeScanningAlertAppearedInBranchAlertTool`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertAppearedInBranchAlertTool {
   /// The name of the tool used to generate the code scanning analysis alert.
   name : String
   /// The version of the tool used to detect the alert.
   version : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertAppearedInBranchAlertTool` (fields with defaults are optional).
@@ -33186,6 +33571,7 @@ pub impl ToJson for CodeScanningAlertAppearedInBranchAlertTool with fn to_json(s
 
 ///|
 /// The code scanning alert involved in the event.
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertAppearedInBranchAlert {
   /// The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
   created_at : @typify_rt.DateTimeUtc
@@ -33205,7 +33591,7 @@ pub(all) struct CodeScanningAlertAppearedInBranchAlert {
   state : CodeScanningAlertAppearedInBranchAlertState
   tool : CodeScanningAlertAppearedInBranchAlertTool
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertAppearedInBranchAlert` (fields with defaults are optional).
@@ -33305,9 +33691,10 @@ pub impl ToJson for CodeScanningAlertAppearedInBranchAlert with fn to_json(self)
 
 ///|
 /// `CodeScanningAlertClosedByUserAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertClosedByUserAction {
   ClosedByUser
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertClosedByUserAction with fn deserialize(d) {
@@ -33364,11 +33751,12 @@ pub impl ToJson for CodeScanningAlertClosedByUserAction with fn to_json(self) {
 
 ///|
 /// The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertClosedByUserAlertDismissedReason {
   FalsePositive
   WontFix
   UsedInTests
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertClosedByUserAlertDismissedReason with fn deserialize(d) {
@@ -33435,13 +33823,14 @@ pub impl ToJson for CodeScanningAlertClosedByUserAlertDismissedReason with fn to
 
 ///|
 /// `CodeScanningAlertClosedByUserAlertInstancesItemLocation`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertClosedByUserAlertInstancesItemLocation {
   end_column : Int64?
   end_line : Int64?
   path : String?
   start_column : Int64?
   start_line : Int64?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertClosedByUserAlertInstancesItemLocation` (fields with defaults are optional).
@@ -33514,9 +33903,10 @@ pub impl ToJson for CodeScanningAlertClosedByUserAlertInstancesItemLocation with
 
 ///|
 /// `CodeScanningAlertClosedByUserAlertInstancesItemMessage`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertClosedByUserAlertInstancesItemMessage {
   text : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertClosedByUserAlertInstancesItemMessage` (fields with defaults are optional).
@@ -33561,9 +33951,10 @@ pub impl ToJson for CodeScanningAlertClosedByUserAlertInstancesItemMessage with 
 
 ///|
 /// `CodeScanningAlertClosedByUserAlertInstancesItemState`
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertClosedByUserAlertInstancesItemState {
   Dismissed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertClosedByUserAlertInstancesItemState with fn deserialize(d) {
@@ -33620,6 +34011,7 @@ pub impl ToJson for CodeScanningAlertClosedByUserAlertInstancesItemState with fn
 
 ///|
 /// `CodeScanningAlertClosedByUserAlertInstancesItem`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertClosedByUserAlertInstancesItem {
   /// Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
   analysis_key : String
@@ -33632,7 +34024,7 @@ pub(all) struct CodeScanningAlertClosedByUserAlertInstancesItem {
   /// The full Git reference, formatted as `refs/heads/<branch name>`.
   ref_ : String
   state : CodeScanningAlertClosedByUserAlertInstancesItemState
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertClosedByUserAlertInstancesItem` (fields with defaults are optional).
@@ -33718,12 +34110,13 @@ pub impl ToJson for CodeScanningAlertClosedByUserAlertInstancesItem with fn to_j
 
 ///|
 /// The severity of the alert.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertClosedByUserAlertRuleSeverity {
   None_
   Note
   Warning
   Error
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertClosedByUserAlertRuleSeverity with fn deserialize(d) {
@@ -33795,6 +34188,7 @@ pub impl ToJson for CodeScanningAlertClosedByUserAlertRuleSeverity with fn to_js
 
 ///|
 /// `CodeScanningAlertClosedByUserAlertRule`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertClosedByUserAlertRule {
   /// A short description of the rule used to detect the alert.
   description : String
@@ -33806,7 +34200,7 @@ pub(all) struct CodeScanningAlertClosedByUserAlertRule {
   /// The severity of the alert.
   severity : CodeScanningAlertClosedByUserAlertRuleSeverity?
   tags : Unit
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertClosedByUserAlertRule` (fields with defaults are optional).
@@ -33883,9 +34277,10 @@ pub impl ToJson for CodeScanningAlertClosedByUserAlertRule with fn to_json(self)
 
 ///|
 /// State of a code scanning alert.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertClosedByUserAlertState {
   Dismissed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertClosedByUserAlertState with fn deserialize(d) {
@@ -33942,13 +34337,14 @@ pub impl ToJson for CodeScanningAlertClosedByUserAlertState with fn to_json(self
 
 ///|
 /// `CodeScanningAlertClosedByUserAlertTool`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertClosedByUserAlertTool {
   guid : String?
   /// The name of the tool used to generate the code scanning analysis alert.
   name : String
   /// The version of the tool used to detect the alert.
   version : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertClosedByUserAlertTool` (fields with defaults are optional).
@@ -34003,6 +34399,7 @@ pub impl ToJson for CodeScanningAlertClosedByUserAlertTool with fn to_json(self)
 
 ///|
 /// The code scanning alert involved in the event.
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertClosedByUserAlert {
   /// The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
   created_at : @typify_rt.DateTimeUtc
@@ -34022,7 +34419,7 @@ pub(all) struct CodeScanningAlertClosedByUserAlert {
   state : CodeScanningAlertClosedByUserAlertState
   tool : CodeScanningAlertClosedByUserAlertTool
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertClosedByUserAlert` (fields with defaults are optional).
@@ -34122,9 +34519,10 @@ pub impl ToJson for CodeScanningAlertClosedByUserAlert with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertCreatedAction with fn deserialize(d) {
@@ -34181,13 +34579,14 @@ pub impl ToJson for CodeScanningAlertCreatedAction with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertCreatedAlertInstancesItemLocation`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertCreatedAlertInstancesItemLocation {
   end_column : Int64?
   end_line : Int64?
   path : String?
   start_column : Int64?
   start_line : Int64?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertCreatedAlertInstancesItemLocation` (fields with defaults are optional).
@@ -34260,9 +34659,10 @@ pub impl ToJson for CodeScanningAlertCreatedAlertInstancesItemLocation with fn t
 
 ///|
 /// `CodeScanningAlertCreatedAlertInstancesItemMessage`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertCreatedAlertInstancesItemMessage {
   text : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertCreatedAlertInstancesItemMessage` (fields with defaults are optional).
@@ -34307,10 +34707,11 @@ pub impl ToJson for CodeScanningAlertCreatedAlertInstancesItemMessage with fn to
 
 ///|
 /// `CodeScanningAlertCreatedAlertInstancesItemState`
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertCreatedAlertInstancesItemState {
   Open
   Dismissed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertCreatedAlertInstancesItemState with fn deserialize(d) {
@@ -34372,6 +34773,7 @@ pub impl ToJson for CodeScanningAlertCreatedAlertInstancesItemState with fn to_j
 
 ///|
 /// `CodeScanningAlertCreatedAlertInstancesItem`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertCreatedAlertInstancesItem {
   /// Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
   analysis_key : String
@@ -34384,7 +34786,7 @@ pub(all) struct CodeScanningAlertCreatedAlertInstancesItem {
   /// The full Git reference, formatted as `refs/heads/<branch name>`.
   ref_ : String
   state : CodeScanningAlertCreatedAlertInstancesItemState
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertCreatedAlertInstancesItem` (fields with defaults are optional).
@@ -34470,12 +34872,13 @@ pub impl ToJson for CodeScanningAlertCreatedAlertInstancesItem with fn to_json(s
 
 ///|
 /// The severity of the alert.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertCreatedAlertRuleSeverity {
   None_
   Note
   Warning
   Error
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertCreatedAlertRuleSeverity with fn deserialize(d) {
@@ -34547,6 +34950,7 @@ pub impl ToJson for CodeScanningAlertCreatedAlertRuleSeverity with fn to_json(se
 
 ///|
 /// `CodeScanningAlertCreatedAlertRule`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertCreatedAlertRule {
   /// A short description of the rule used to detect the alert.
   description : String
@@ -34558,7 +34962,7 @@ pub(all) struct CodeScanningAlertCreatedAlertRule {
   /// The severity of the alert.
   severity : CodeScanningAlertCreatedAlertRuleSeverity?
   tags : Unit
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertCreatedAlertRule` (fields with defaults are optional).
@@ -34635,10 +35039,11 @@ pub impl ToJson for CodeScanningAlertCreatedAlertRule with fn to_json(self) {
 
 ///|
 /// State of a code scanning alert.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertCreatedAlertState {
   Open
   Dismissed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertCreatedAlertState with fn deserialize(d) {
@@ -34700,13 +35105,14 @@ pub impl ToJson for CodeScanningAlertCreatedAlertState with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertCreatedAlertTool`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertCreatedAlertTool {
   guid : String?
   /// The name of the tool used to generate the code scanning analysis alert.
   name : String
   /// The version of the tool used to detect the alert.
   version : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertCreatedAlertTool` (fields with defaults are optional).
@@ -34761,6 +35167,7 @@ pub impl ToJson for CodeScanningAlertCreatedAlertTool with fn to_json(self) {
 
 ///|
 /// The code scanning alert involved in the event.
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertCreatedAlert {
   /// The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
   created_at : @typify_rt.DateTimeUtc
@@ -34780,7 +35187,7 @@ pub(all) struct CodeScanningAlertCreatedAlert {
   state : CodeScanningAlertCreatedAlertState
   tool : CodeScanningAlertCreatedAlertTool
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertCreatedAlert` (fields with defaults are optional).
@@ -34880,9 +35287,10 @@ pub impl ToJson for CodeScanningAlertCreatedAlert with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertFixedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertFixedAction {
   Fixed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertFixedAction with fn deserialize(d) {
@@ -34939,11 +35347,12 @@ pub impl ToJson for CodeScanningAlertFixedAction with fn to_json(self) {
 
 ///|
 /// The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertFixedAlertDismissedReason {
   FalsePositive
   WontFix
   UsedInTests
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertFixedAlertDismissedReason with fn deserialize(d) {
@@ -35010,13 +35419,14 @@ pub impl ToJson for CodeScanningAlertFixedAlertDismissedReason with fn to_json(s
 
 ///|
 /// `CodeScanningAlertFixedAlertInstancesItemLocation`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertFixedAlertInstancesItemLocation {
   end_column : Int64?
   end_line : Int64?
   path : String?
   start_column : Int64?
   start_line : Int64?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertFixedAlertInstancesItemLocation` (fields with defaults are optional).
@@ -35089,9 +35499,10 @@ pub impl ToJson for CodeScanningAlertFixedAlertInstancesItemLocation with fn to_
 
 ///|
 /// `CodeScanningAlertFixedAlertInstancesItemMessage`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertFixedAlertInstancesItemMessage {
   text : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertFixedAlertInstancesItemMessage` (fields with defaults are optional).
@@ -35136,9 +35547,10 @@ pub impl ToJson for CodeScanningAlertFixedAlertInstancesItemMessage with fn to_j
 
 ///|
 /// `CodeScanningAlertFixedAlertInstancesItemState`
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertFixedAlertInstancesItemState {
   Fixed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertFixedAlertInstancesItemState with fn deserialize(d) {
@@ -35195,6 +35607,7 @@ pub impl ToJson for CodeScanningAlertFixedAlertInstancesItemState with fn to_jso
 
 ///|
 /// `CodeScanningAlertFixedAlertInstancesItem`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertFixedAlertInstancesItem {
   /// Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
   analysis_key : String
@@ -35207,7 +35620,7 @@ pub(all) struct CodeScanningAlertFixedAlertInstancesItem {
   /// The full Git reference, formatted as `refs/heads/<branch name>`.
   ref_ : String
   state : CodeScanningAlertFixedAlertInstancesItemState
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertFixedAlertInstancesItem` (fields with defaults are optional).
@@ -35293,12 +35706,13 @@ pub impl ToJson for CodeScanningAlertFixedAlertInstancesItem with fn to_json(sel
 
 ///|
 /// The severity of the alert.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertFixedAlertRuleSeverity {
   None_
   Note
   Warning
   Error
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertFixedAlertRuleSeverity with fn deserialize(d) {
@@ -35370,6 +35784,7 @@ pub impl ToJson for CodeScanningAlertFixedAlertRuleSeverity with fn to_json(self
 
 ///|
 /// `CodeScanningAlertFixedAlertRule`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertFixedAlertRule {
   /// A short description of the rule used to detect the alert.
   description : String
@@ -35381,7 +35796,7 @@ pub(all) struct CodeScanningAlertFixedAlertRule {
   /// The severity of the alert.
   severity : CodeScanningAlertFixedAlertRuleSeverity?
   tags : Unit
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertFixedAlertRule` (fields with defaults are optional).
@@ -35458,9 +35873,10 @@ pub impl ToJson for CodeScanningAlertFixedAlertRule with fn to_json(self) {
 
 ///|
 /// State of a code scanning alert.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertFixedAlertState {
   Fixed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertFixedAlertState with fn deserialize(d) {
@@ -35517,13 +35933,14 @@ pub impl ToJson for CodeScanningAlertFixedAlertState with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertFixedAlertTool`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertFixedAlertTool {
   guid : String?
   /// The name of the tool used to generate the code scanning analysis alert.
   name : String
   /// The version of the tool used to detect the alert.
   version : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertFixedAlertTool` (fields with defaults are optional).
@@ -35578,6 +35995,7 @@ pub impl ToJson for CodeScanningAlertFixedAlertTool with fn to_json(self) {
 
 ///|
 /// The code scanning alert involved in the event.
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertFixedAlert {
   /// The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
   created_at : @typify_rt.DateTimeUtc
@@ -35598,7 +36016,7 @@ pub(all) struct CodeScanningAlertFixedAlert {
   state : CodeScanningAlertFixedAlertState
   tool : CodeScanningAlertFixedAlertTool
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertFixedAlert` (fields with defaults are optional).
@@ -35705,9 +36123,10 @@ pub impl ToJson for CodeScanningAlertFixedAlert with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertReopenedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertReopenedAction {
   Reopened
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertReopenedAction with fn deserialize(d) {
@@ -35764,13 +36183,14 @@ pub impl ToJson for CodeScanningAlertReopenedAction with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertReopenedAlertInstancesItemLocation`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertReopenedAlertInstancesItemLocation {
   end_column : Int64?
   end_line : Int64?
   path : String?
   start_column : Int64?
   start_line : Int64?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertReopenedAlertInstancesItemLocation` (fields with defaults are optional).
@@ -35843,9 +36263,10 @@ pub impl ToJson for CodeScanningAlertReopenedAlertInstancesItemLocation with fn 
 
 ///|
 /// `CodeScanningAlertReopenedAlertInstancesItemMessage`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertReopenedAlertInstancesItemMessage {
   text : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertReopenedAlertInstancesItemMessage` (fields with defaults are optional).
@@ -35890,9 +36311,10 @@ pub impl ToJson for CodeScanningAlertReopenedAlertInstancesItemMessage with fn t
 
 ///|
 /// `CodeScanningAlertReopenedAlertInstancesItemState`
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertReopenedAlertInstancesItemState {
   Open
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertReopenedAlertInstancesItemState with fn deserialize(d) {
@@ -35949,6 +36371,7 @@ pub impl ToJson for CodeScanningAlertReopenedAlertInstancesItemState with fn to_
 
 ///|
 /// `CodeScanningAlertReopenedAlertInstancesItem`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertReopenedAlertInstancesItem {
   /// Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
   analysis_key : String
@@ -35961,7 +36384,7 @@ pub(all) struct CodeScanningAlertReopenedAlertInstancesItem {
   /// The full Git reference, formatted as `refs/heads/<branch name>`.
   ref_ : String
   state : CodeScanningAlertReopenedAlertInstancesItemState
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertReopenedAlertInstancesItem` (fields with defaults are optional).
@@ -36047,12 +36470,13 @@ pub impl ToJson for CodeScanningAlertReopenedAlertInstancesItem with fn to_json(
 
 ///|
 /// The severity of the alert.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertReopenedAlertRuleSeverity {
   None_
   Note
   Warning
   Error
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertReopenedAlertRuleSeverity with fn deserialize(d) {
@@ -36124,6 +36548,7 @@ pub impl ToJson for CodeScanningAlertReopenedAlertRuleSeverity with fn to_json(s
 
 ///|
 /// `CodeScanningAlertReopenedAlertRule`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertReopenedAlertRule {
   /// A short description of the rule used to detect the alert.
   description : String
@@ -36135,7 +36560,7 @@ pub(all) struct CodeScanningAlertReopenedAlertRule {
   /// The severity of the alert.
   severity : CodeScanningAlertReopenedAlertRuleSeverity?
   tags : Unit
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertReopenedAlertRule` (fields with defaults are optional).
@@ -36212,11 +36637,12 @@ pub impl ToJson for CodeScanningAlertReopenedAlertRule with fn to_json(self) {
 
 ///|
 /// State of a code scanning alert.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertReopenedAlertState {
   Open
   Dismissed
   Fixed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertReopenedAlertState with fn deserialize(d) {
@@ -36283,13 +36709,14 @@ pub impl ToJson for CodeScanningAlertReopenedAlertState with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertReopenedAlertTool`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertReopenedAlertTool {
   guid : String?
   /// The name of the tool used to generate the code scanning analysis alert.
   name : String
   /// The version of the tool used to detect the alert.
   version : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertReopenedAlertTool` (fields with defaults are optional).
@@ -36344,6 +36771,7 @@ pub impl ToJson for CodeScanningAlertReopenedAlertTool with fn to_json(self) {
 
 ///|
 /// The code scanning alert involved in the event.
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertReopenedAlert {
   /// The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
   created_at : @typify_rt.DateTimeUtc
@@ -36363,7 +36791,7 @@ pub(all) struct CodeScanningAlertReopenedAlert {
   state : CodeScanningAlertReopenedAlertState
   tool : CodeScanningAlertReopenedAlertTool
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertReopenedAlert` (fields with defaults are optional).
@@ -36463,9 +36891,10 @@ pub impl ToJson for CodeScanningAlertReopenedAlert with fn to_json(self) {
 
 ///|
 /// `CodeScanningAlertReopenedByUserAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertReopenedByUserAction {
   ReopenedByUser
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertReopenedByUserAction with fn deserialize(d) {
@@ -36522,13 +36951,14 @@ pub impl ToJson for CodeScanningAlertReopenedByUserAction with fn to_json(self) 
 
 ///|
 /// `CodeScanningAlertReopenedByUserAlertInstancesItemLocation`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertReopenedByUserAlertInstancesItemLocation {
   end_column : Int64?
   end_line : Int64?
   path : String?
   start_column : Int64?
   start_line : Int64?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertReopenedByUserAlertInstancesItemLocation` (fields with defaults are optional).
@@ -36601,9 +37031,10 @@ pub impl ToJson for CodeScanningAlertReopenedByUserAlertInstancesItemLocation wi
 
 ///|
 /// `CodeScanningAlertReopenedByUserAlertInstancesItemMessage`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertReopenedByUserAlertInstancesItemMessage {
   text : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertReopenedByUserAlertInstancesItemMessage` (fields with defaults are optional).
@@ -36648,9 +37079,10 @@ pub impl ToJson for CodeScanningAlertReopenedByUserAlertInstancesItemMessage wit
 
 ///|
 /// `CodeScanningAlertReopenedByUserAlertInstancesItemState`
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertReopenedByUserAlertInstancesItemState {
   Open
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertReopenedByUserAlertInstancesItemState with fn deserialize(d) {
@@ -36707,6 +37139,7 @@ pub impl ToJson for CodeScanningAlertReopenedByUserAlertInstancesItemState with 
 
 ///|
 /// `CodeScanningAlertReopenedByUserAlertInstancesItem`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertReopenedByUserAlertInstancesItem {
   /// Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
   analysis_key : String
@@ -36719,7 +37152,7 @@ pub(all) struct CodeScanningAlertReopenedByUserAlertInstancesItem {
   /// The full Git reference, formatted as `refs/heads/<branch name>`.
   ref_ : String
   state : CodeScanningAlertReopenedByUserAlertInstancesItemState
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertReopenedByUserAlertInstancesItem` (fields with defaults are optional).
@@ -36805,12 +37238,13 @@ pub impl ToJson for CodeScanningAlertReopenedByUserAlertInstancesItem with fn to
 
 ///|
 /// The severity of the alert.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertReopenedByUserAlertRuleSeverity {
   None_
   Note
   Warning
   Error
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertReopenedByUserAlertRuleSeverity with fn deserialize(d) {
@@ -36882,6 +37316,7 @@ pub impl ToJson for CodeScanningAlertReopenedByUserAlertRuleSeverity with fn to_
 
 ///|
 /// `CodeScanningAlertReopenedByUserAlertRule`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertReopenedByUserAlertRule {
   /// A short description of the rule used to detect the alert.
   description : String
@@ -36889,7 +37324,7 @@ pub(all) struct CodeScanningAlertReopenedByUserAlertRule {
   id : String
   /// The severity of the alert.
   severity : CodeScanningAlertReopenedByUserAlertRuleSeverity?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertReopenedByUserAlertRule` (fields with defaults are optional).
@@ -36942,9 +37377,10 @@ pub impl ToJson for CodeScanningAlertReopenedByUserAlertRule with fn to_json(sel
 
 ///|
 /// State of a code scanning alert.
+#derive(Debug, Eq, Hash)
 pub(all) enum CodeScanningAlertReopenedByUserAlertState {
   Open
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CodeScanningAlertReopenedByUserAlertState with fn deserialize(d) {
@@ -37001,12 +37437,13 @@ pub impl ToJson for CodeScanningAlertReopenedByUserAlertState with fn to_json(se
 
 ///|
 /// `CodeScanningAlertReopenedByUserAlertTool`
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertReopenedByUserAlertTool {
   /// The name of the tool used to generate the code scanning analysis alert.
   name : String
   /// The version of the tool used to detect the alert.
   version : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertReopenedByUserAlertTool` (fields with defaults are optional).
@@ -37054,6 +37491,7 @@ pub impl ToJson for CodeScanningAlertReopenedByUserAlertTool with fn to_json(sel
 
 ///|
 /// The code scanning alert involved in the event.
+#derive(Debug, Eq)
 pub(all) struct CodeScanningAlertReopenedByUserAlert {
   /// The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
   created_at : @typify_rt.DateTimeUtc
@@ -37073,7 +37511,7 @@ pub(all) struct CodeScanningAlertReopenedByUserAlert {
   state : CodeScanningAlertReopenedByUserAlertState
   tool : CodeScanningAlertReopenedByUserAlertTool
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CodeScanningAlertReopenedByUserAlert` (fields with defaults are optional).
@@ -37173,9 +37611,10 @@ pub impl ToJson for CodeScanningAlertReopenedByUserAlert with fn to_json(self) {
 
 ///|
 /// The action performed. Can be `created`.
+#derive(Debug, Eq, Hash)
 pub(all) enum CommitCommentCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CommitCommentCreatedAction with fn deserialize(d) {
@@ -37232,6 +37671,7 @@ pub impl ToJson for CommitCommentCreatedAction with fn to_json(self) {
 
 ///|
 /// The [commit comment](https://docs.github.com/en/rest/reference/repos#get-a-commit-comment) resource.
+#derive(Debug, Eq)
 pub(all) struct CommitCommentCreatedComment {
   author_association : AuthorAssociation
   /// The text of the comment.
@@ -37253,7 +37693,7 @@ pub(all) struct CommitCommentCreatedComment {
   updated_at : String
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `CommitCommentCreatedComment` (fields with defaults are optional).
@@ -37356,9 +37796,10 @@ pub impl ToJson for CommitCommentCreatedComment with fn to_json(self) {
 
 ///|
 /// `ContentReferenceCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ContentReferenceCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ContentReferenceCreatedAction with fn deserialize(d) {
@@ -37415,11 +37856,12 @@ pub impl ToJson for ContentReferenceCreatedAction with fn to_json(self) {
 
 ///|
 /// `ContentReferenceCreatedContentReference`
+#derive(Debug, Eq)
 pub(all) struct ContentReferenceCreatedContentReference {
   id : Int64
   node_id : String
   reference : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ContentReferenceCreatedContentReference` (fields with defaults are optional).
@@ -37472,10 +37914,11 @@ pub impl ToJson for ContentReferenceCreatedContentReference with fn to_json(self
 
 ///|
 /// The type of Git ref object created in the repository. Can be either `branch` or `tag`.
+#derive(Debug, Eq, Hash)
 pub(all) enum CreateEventRefType {
   Tag
   Branch
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for CreateEventRefType with fn deserialize(d) {
@@ -37537,10 +37980,11 @@ pub impl ToJson for CreateEventRefType with fn to_json(self) {
 
 ///|
 /// The type of Git ref object deleted in the repository. Can be either `branch` or `tag`.
+#derive(Debug, Eq, Hash)
 pub(all) enum DeleteEventRefType {
   Tag
   Branch
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DeleteEventRefType with fn deserialize(d) {
@@ -37602,9 +38046,10 @@ pub impl ToJson for DeleteEventRefType with fn to_json(self) {
 
 ///|
 /// `DeployKeyCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DeployKeyCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DeployKeyCreatedAction with fn deserialize(d) {
@@ -37661,6 +38106,7 @@ pub impl ToJson for DeployKeyCreatedAction with fn to_json(self) {
 
 ///|
 /// The [`deploy key`](https://docs.github.com/en/rest/reference/repos#get-a-deploy-key) resource.
+#derive(Debug, Eq)
 pub(all) struct DeployKeyCreatedKey {
   created_at : String
   id : Int64
@@ -37669,7 +38115,7 @@ pub(all) struct DeployKeyCreatedKey {
   title : String
   url : String
   verified : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DeployKeyCreatedKey` (fields with defaults are optional).
@@ -37742,9 +38188,10 @@ pub impl ToJson for DeployKeyCreatedKey with fn to_json(self) {
 
 ///|
 /// `DeployKeyDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DeployKeyDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DeployKeyDeletedAction with fn deserialize(d) {
@@ -37801,6 +38248,7 @@ pub impl ToJson for DeployKeyDeletedAction with fn to_json(self) {
 
 ///|
 /// The [`deploy key`](https://docs.github.com/en/rest/reference/repos#get-a-deploy-key) resource.
+#derive(Debug, Eq)
 pub(all) struct DeployKeyDeletedKey {
   created_at : String
   id : Int64
@@ -37809,7 +38257,7 @@ pub(all) struct DeployKeyDeletedKey {
   title : String
   url : String
   verified : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DeployKeyDeletedKey` (fields with defaults are optional).
@@ -37882,9 +38330,10 @@ pub impl ToJson for DeployKeyDeletedKey with fn to_json(self) {
 
 ///|
 /// `DeploymentCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DeploymentCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DeploymentCreatedAction with fn deserialize(d) {
@@ -37941,8 +38390,9 @@ pub impl ToJson for DeploymentCreatedAction with fn to_json(self) {
 
 ///|
 /// `DeploymentCreatedDeploymentPayload`
+#derive(Debug, Eq)
 pub(all) struct DeploymentCreatedDeploymentPayload {
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DeploymentCreatedDeploymentPayload` (fields with defaults are optional).
@@ -37978,6 +38428,7 @@ pub impl ToJson for DeploymentCreatedDeploymentPayload with fn to_json(self) {
 
 ///|
 /// The [deployment](https://docs.github.com/en/rest/reference/repos#list-deployments).
+#derive(Debug, Eq)
 pub(all) struct DeploymentCreatedDeployment {
   created_at : String
   creator : User
@@ -37995,7 +38446,7 @@ pub(all) struct DeploymentCreatedDeployment {
   task : String
   updated_at : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DeploymentCreatedDeployment` (fields with defaults are optional).
@@ -38115,9 +38566,10 @@ pub impl ToJson for DeploymentCreatedDeployment with fn to_json(self) {
 
 ///|
 /// `DeploymentStatusCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DeploymentStatusCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DeploymentStatusCreatedAction with fn deserialize(d) {
@@ -38174,8 +38626,9 @@ pub impl ToJson for DeploymentStatusCreatedAction with fn to_json(self) {
 
 ///|
 /// `DeploymentStatusCreatedDeploymentPayload`
+#derive(Debug, Eq)
 pub(all) struct DeploymentStatusCreatedDeploymentPayload {
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DeploymentStatusCreatedDeploymentPayload` (fields with defaults are optional).
@@ -38211,6 +38664,7 @@ pub impl ToJson for DeploymentStatusCreatedDeploymentPayload with fn to_json(sel
 
 ///|
 /// The [deployment](https://docs.github.com/en/rest/reference/repos#list-deployments) that this status is associated with.
+#derive(Debug, Eq)
 pub(all) struct DeploymentStatusCreatedDeployment {
   created_at : String
   creator : User
@@ -38228,7 +38682,7 @@ pub(all) struct DeploymentStatusCreatedDeployment {
   task : String
   updated_at : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DeploymentStatusCreatedDeployment` (fields with defaults are optional).
@@ -38346,6 +38800,7 @@ pub impl ToJson for DeploymentStatusCreatedDeployment with fn to_json(self) {
 
 ///|
 /// The [deployment status](https://docs.github.com/en/rest/reference/repos#list-deployment-statuses).
+#derive(Debug, Eq)
 pub(all) struct DeploymentStatusCreatedDeploymentStatus {
   created_at : String
   creator : User
@@ -38363,7 +38818,7 @@ pub(all) struct DeploymentStatusCreatedDeploymentStatus {
   target_url : String
   updated_at : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DeploymentStatusCreatedDeploymentStatus` (fields with defaults are optional).
@@ -38468,6 +38923,7 @@ pub impl ToJson for DeploymentStatusCreatedDeploymentStatus with fn to_json(self
 
 ///|
 /// `DiscussionCategory`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCategory {
   created_at : @typify_rt.DateTimeUtc
   description : String
@@ -38478,7 +38934,7 @@ pub(all) struct DiscussionCategory {
   repository_id : Int64
   slug : String
   updated_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCategory` (fields with defaults are optional).
@@ -38561,11 +39017,12 @@ pub impl ToJson for DiscussionCategory with fn to_json(self) {
 
 ///|
 /// `DiscussionState`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionState {
   Open
   Locked
   Converting
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionState with fn deserialize(d) {
@@ -38632,9 +39089,10 @@ pub impl ToJson for DiscussionState with fn to_json(self) {
 
 ///|
 /// `DiscussionAnsweredAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionAnsweredAction {
   Answered
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionAnsweredAction with fn deserialize(d) {
@@ -38691,6 +39149,7 @@ pub impl ToJson for DiscussionAnsweredAction with fn to_json(self) {
 
 ///|
 /// `DiscussionAnsweredAnswer`
+#derive(Debug, Eq)
 pub(all) struct DiscussionAnsweredAnswer {
   author_association : AuthorAssociation
   body : String
@@ -38704,7 +39163,7 @@ pub(all) struct DiscussionAnsweredAnswer {
   repository_url : String
   updated_at : @typify_rt.DateTimeUtc
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionAnsweredAnswer` (fields with defaults are optional).
@@ -38802,11 +39261,12 @@ pub impl ToJson for DiscussionAnsweredAnswer with fn to_json(self) {
 
 ///|
 /// `DiscussionAnsweredDiscussionAnswerChosenByType`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionAnsweredDiscussionAnswerChosenByType {
   Bot
   User
   Organization
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionAnsweredDiscussionAnswerChosenByType with fn deserialize(d) {
@@ -38873,6 +39333,7 @@ pub impl ToJson for DiscussionAnsweredDiscussionAnswerChosenByType with fn to_js
 
 ///|
 /// `DiscussionAnsweredDiscussionAnswerChosenBy`
+#derive(Debug, Eq)
 pub(all) struct DiscussionAnsweredDiscussionAnswerChosenBy {
   avatar_url : String
   email : String?
@@ -38894,7 +39355,7 @@ pub(all) struct DiscussionAnsweredDiscussionAnswerChosenBy {
   subscriptions_url : String
   type_ : DiscussionAnsweredDiscussionAnswerChosenByType
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionAnsweredDiscussionAnswerChosenBy` (fields with defaults are optional).
@@ -39036,6 +39497,7 @@ pub impl ToJson for DiscussionAnsweredDiscussionAnswerChosenBy with fn to_json(s
 
 ///|
 /// `DiscussionAnsweredDiscussionCategory`
+#derive(Debug, Eq)
 pub(all) struct DiscussionAnsweredDiscussionCategory {
   created_at : @typify_rt.DateTimeUtc
   description : String
@@ -39046,7 +39508,7 @@ pub(all) struct DiscussionAnsweredDiscussionCategory {
   repository_id : Int64
   slug : String
   updated_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionAnsweredDiscussionCategory` (fields with defaults are optional).
@@ -39129,11 +39591,12 @@ pub impl ToJson for DiscussionAnsweredDiscussionCategory with fn to_json(self) {
 
 ///|
 /// `DiscussionAnsweredDiscussionState`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionAnsweredDiscussionState {
   Open
   Locked
   Converting
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionAnsweredDiscussionState with fn deserialize(d) {
@@ -39200,6 +39663,7 @@ pub impl ToJson for DiscussionAnsweredDiscussionState with fn to_json(self) {
 
 ///|
 /// `DiscussionAnsweredDiscussion`
+#derive(Debug, Eq)
 pub(all) struct DiscussionAnsweredDiscussion {
   active_lock_reason : String?
   answer_chosen_at : @typify_rt.DateTimeUtc
@@ -39220,7 +39684,7 @@ pub(all) struct DiscussionAnsweredDiscussion {
   title : String
   updated_at : @typify_rt.DateTimeUtc
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionAnsweredDiscussion` (fields with defaults are optional).
@@ -39353,9 +39817,10 @@ pub impl ToJson for DiscussionAnsweredDiscussion with fn to_json(self) {
 
 ///|
 /// `DiscussionCategoryChangedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionCategoryChangedAction {
   CategoryChanged
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionCategoryChangedAction with fn deserialize(d) {
@@ -39412,6 +39877,7 @@ pub impl ToJson for DiscussionCategoryChangedAction with fn to_json(self) {
 
 ///|
 /// `DiscussionCategoryChangedChangesCategoryFrom`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCategoryChangedChangesCategoryFrom {
   created_at : @typify_rt.DateTimeUtc
   description : String
@@ -39422,7 +39888,7 @@ pub(all) struct DiscussionCategoryChangedChangesCategoryFrom {
   repository_id : Int64
   slug : String
   updated_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCategoryChangedChangesCategoryFrom` (fields with defaults are optional).
@@ -39505,9 +39971,10 @@ pub impl ToJson for DiscussionCategoryChangedChangesCategoryFrom with fn to_json
 
 ///|
 /// `DiscussionCategoryChangedChangesCategory`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCategoryChangedChangesCategory {
   from : DiscussionCategoryChangedChangesCategoryFrom
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCategoryChangedChangesCategory` (fields with defaults are optional).
@@ -39550,9 +40017,10 @@ pub impl ToJson for DiscussionCategoryChangedChangesCategory with fn to_json(sel
 
 ///|
 /// `DiscussionCategoryChangedChanges`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCategoryChangedChanges {
   category : DiscussionCategoryChangedChangesCategory
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCategoryChangedChanges` (fields with defaults are optional).
@@ -39595,9 +40063,10 @@ pub impl ToJson for DiscussionCategoryChangedChanges with fn to_json(self) {
 
 ///|
 /// `DiscussionCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionCreatedAction with fn deserialize(d) {
@@ -39654,6 +40123,7 @@ pub impl ToJson for DiscussionCreatedAction with fn to_json(self) {
 
 ///|
 /// `DiscussionCreatedDiscussionCategory`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCreatedDiscussionCategory {
   created_at : @typify_rt.DateTimeUtc
   description : String
@@ -39664,7 +40134,7 @@ pub(all) struct DiscussionCreatedDiscussionCategory {
   repository_id : Int64
   slug : String
   updated_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCreatedDiscussionCategory` (fields with defaults are optional).
@@ -39747,10 +40217,11 @@ pub impl ToJson for DiscussionCreatedDiscussionCategory with fn to_json(self) {
 
 ///|
 /// `DiscussionCreatedDiscussionState`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionCreatedDiscussionState {
   Open
   Converting
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionCreatedDiscussionState with fn deserialize(d) {
@@ -39812,6 +40283,7 @@ pub impl ToJson for DiscussionCreatedDiscussionState with fn to_json(self) {
 
 ///|
 /// `DiscussionCreatedDiscussion`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCreatedDiscussion {
   active_lock_reason : String?
   answer_chosen_at : Unit
@@ -39832,7 +40304,7 @@ pub(all) struct DiscussionCreatedDiscussion {
   title : String
   updated_at : @typify_rt.DateTimeUtc
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCreatedDiscussion` (fields with defaults are optional).
@@ -39965,9 +40437,10 @@ pub impl ToJson for DiscussionCreatedDiscussion with fn to_json(self) {
 
 ///|
 /// `DiscussionDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionDeletedAction with fn deserialize(d) {
@@ -40024,9 +40497,10 @@ pub impl ToJson for DiscussionDeletedAction with fn to_json(self) {
 
 ///|
 /// `DiscussionEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionEditedAction with fn deserialize(d) {
@@ -40083,9 +40557,10 @@ pub impl ToJson for DiscussionEditedAction with fn to_json(self) {
 
 ///|
 /// `DiscussionEditedChangesBody`
+#derive(Debug, Eq)
 pub(all) struct DiscussionEditedChangesBody {
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionEditedChangesBody` (fields with defaults are optional).
@@ -40128,9 +40603,10 @@ pub impl ToJson for DiscussionEditedChangesBody with fn to_json(self) {
 
 ///|
 /// `DiscussionEditedChangesTitle`
+#derive(Debug, Eq)
 pub(all) struct DiscussionEditedChangesTitle {
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionEditedChangesTitle` (fields with defaults are optional).
@@ -40173,10 +40649,11 @@ pub impl ToJson for DiscussionEditedChangesTitle with fn to_json(self) {
 
 ///|
 /// `DiscussionEditedChanges`
+#derive(Debug, Eq)
 pub(all) struct DiscussionEditedChanges {
   body : DiscussionEditedChangesBody?
   title : DiscussionEditedChangesTitle?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionEditedChanges` (fields with defaults are optional).
@@ -40228,9 +40705,10 @@ pub impl ToJson for DiscussionEditedChanges with fn to_json(self) {
 
 ///|
 /// `DiscussionLabeledAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionLabeledAction {
   Labeled
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionLabeledAction with fn deserialize(d) {
@@ -40287,9 +40765,10 @@ pub impl ToJson for DiscussionLabeledAction with fn to_json(self) {
 
 ///|
 /// `DiscussionLockedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionLockedAction {
   Locked
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionLockedAction with fn deserialize(d) {
@@ -40346,6 +40825,7 @@ pub impl ToJson for DiscussionLockedAction with fn to_json(self) {
 
 ///|
 /// `DiscussionLockedDiscussionCategory`
+#derive(Debug, Eq)
 pub(all) struct DiscussionLockedDiscussionCategory {
   created_at : @typify_rt.DateTimeUtc
   description : String
@@ -40356,7 +40836,7 @@ pub(all) struct DiscussionLockedDiscussionCategory {
   repository_id : Int64
   slug : String
   updated_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionLockedDiscussionCategory` (fields with defaults are optional).
@@ -40439,9 +40919,10 @@ pub impl ToJson for DiscussionLockedDiscussionCategory with fn to_json(self) {
 
 ///|
 /// `DiscussionLockedDiscussionState`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionLockedDiscussionState {
   Locked
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionLockedDiscussionState with fn deserialize(d) {
@@ -40498,6 +40979,7 @@ pub impl ToJson for DiscussionLockedDiscussionState with fn to_json(self) {
 
 ///|
 /// `DiscussionLockedDiscussion`
+#derive(Debug, Eq)
 pub(all) struct DiscussionLockedDiscussion {
   active_lock_reason : String?
   answer_chosen_at : String?
@@ -40518,7 +41000,7 @@ pub(all) struct DiscussionLockedDiscussion {
   title : String
   updated_at : @typify_rt.DateTimeUtc
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionLockedDiscussion` (fields with defaults are optional).
@@ -40651,9 +41133,10 @@ pub impl ToJson for DiscussionLockedDiscussion with fn to_json(self) {
 
 ///|
 /// `DiscussionPinnedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionPinnedAction {
   Pinned
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionPinnedAction with fn deserialize(d) {
@@ -40710,9 +41193,10 @@ pub impl ToJson for DiscussionPinnedAction with fn to_json(self) {
 
 ///|
 /// `DiscussionTransferredAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionTransferredAction {
   Transferred
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionTransferredAction with fn deserialize(d) {
@@ -40769,10 +41253,11 @@ pub impl ToJson for DiscussionTransferredAction with fn to_json(self) {
 
 ///|
 /// `DiscussionTransferredChanges`
+#derive(Debug, Eq)
 pub(all) struct DiscussionTransferredChanges {
   new_discussion : Discussion
   new_repository : Repository
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionTransferredChanges` (fields with defaults are optional).
@@ -40820,9 +41305,10 @@ pub impl ToJson for DiscussionTransferredChanges with fn to_json(self) {
 
 ///|
 /// `DiscussionUnansweredAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionUnansweredAction {
   Unanswered
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionUnansweredAction with fn deserialize(d) {
@@ -40879,6 +41365,7 @@ pub impl ToJson for DiscussionUnansweredAction with fn to_json(self) {
 
 ///|
 /// `DiscussionUnansweredDiscussionCategory`
+#derive(Debug, Eq)
 pub(all) struct DiscussionUnansweredDiscussionCategory {
   created_at : @typify_rt.DateTimeUtc
   description : String
@@ -40889,7 +41376,7 @@ pub(all) struct DiscussionUnansweredDiscussionCategory {
   repository_id : Int64
   slug : String
   updated_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionUnansweredDiscussionCategory` (fields with defaults are optional).
@@ -40972,11 +41459,12 @@ pub impl ToJson for DiscussionUnansweredDiscussionCategory with fn to_json(self)
 
 ///|
 /// `DiscussionUnansweredDiscussionState`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionUnansweredDiscussionState {
   Open
   Locked
   Converting
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionUnansweredDiscussionState with fn deserialize(d) {
@@ -41043,6 +41531,7 @@ pub impl ToJson for DiscussionUnansweredDiscussionState with fn to_json(self) {
 
 ///|
 /// `DiscussionUnansweredDiscussion`
+#derive(Debug, Eq)
 pub(all) struct DiscussionUnansweredDiscussion {
   active_lock_reason : String?
   answer_chosen_at : Unit
@@ -41063,7 +41552,7 @@ pub(all) struct DiscussionUnansweredDiscussion {
   title : String
   updated_at : @typify_rt.DateTimeUtc
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionUnansweredDiscussion` (fields with defaults are optional).
@@ -41196,6 +41685,7 @@ pub impl ToJson for DiscussionUnansweredDiscussion with fn to_json(self) {
 
 ///|
 /// `DiscussionUnansweredOldAnswer`
+#derive(Debug, Eq)
 pub(all) struct DiscussionUnansweredOldAnswer {
   author_association : AuthorAssociation
   body : String
@@ -41209,7 +41699,7 @@ pub(all) struct DiscussionUnansweredOldAnswer {
   repository_url : String
   updated_at : @typify_rt.DateTimeUtc
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionUnansweredOldAnswer` (fields with defaults are optional).
@@ -41307,9 +41797,10 @@ pub impl ToJson for DiscussionUnansweredOldAnswer with fn to_json(self) {
 
 ///|
 /// `DiscussionUnlabeledAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionUnlabeledAction {
   Unlabeled
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionUnlabeledAction with fn deserialize(d) {
@@ -41366,9 +41857,10 @@ pub impl ToJson for DiscussionUnlabeledAction with fn to_json(self) {
 
 ///|
 /// `DiscussionUnlockedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionUnlockedAction {
   Unlocked
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionUnlockedAction with fn deserialize(d) {
@@ -41425,6 +41917,7 @@ pub impl ToJson for DiscussionUnlockedAction with fn to_json(self) {
 
 ///|
 /// `DiscussionUnlockedDiscussionCategory`
+#derive(Debug, Eq)
 pub(all) struct DiscussionUnlockedDiscussionCategory {
   created_at : @typify_rt.DateTimeUtc
   description : String
@@ -41435,7 +41928,7 @@ pub(all) struct DiscussionUnlockedDiscussionCategory {
   repository_id : Int64
   slug : String
   updated_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionUnlockedDiscussionCategory` (fields with defaults are optional).
@@ -41518,9 +42011,10 @@ pub impl ToJson for DiscussionUnlockedDiscussionCategory with fn to_json(self) {
 
 ///|
 /// `DiscussionUnlockedDiscussionState`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionUnlockedDiscussionState {
   Open
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionUnlockedDiscussionState with fn deserialize(d) {
@@ -41577,6 +42071,7 @@ pub impl ToJson for DiscussionUnlockedDiscussionState with fn to_json(self) {
 
 ///|
 /// `DiscussionUnlockedDiscussion`
+#derive(Debug, Eq)
 pub(all) struct DiscussionUnlockedDiscussion {
   active_lock_reason : String?
   answer_chosen_at : String?
@@ -41597,7 +42092,7 @@ pub(all) struct DiscussionUnlockedDiscussion {
   title : String
   updated_at : @typify_rt.DateTimeUtc
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionUnlockedDiscussion` (fields with defaults are optional).
@@ -41730,9 +42225,10 @@ pub impl ToJson for DiscussionUnlockedDiscussion with fn to_json(self) {
 
 ///|
 /// `DiscussionUnpinnedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionUnpinnedAction {
   Unpinned
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionUnpinnedAction with fn deserialize(d) {
@@ -41789,9 +42285,10 @@ pub impl ToJson for DiscussionUnpinnedAction with fn to_json(self) {
 
 ///|
 /// `DiscussionCommentCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionCommentCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionCommentCreatedAction with fn deserialize(d) {
@@ -41848,6 +42345,7 @@ pub impl ToJson for DiscussionCommentCreatedAction with fn to_json(self) {
 
 ///|
 /// `DiscussionCommentCreatedComment`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCommentCreatedComment {
   author_association : AuthorAssociation
   body : String
@@ -41861,7 +42359,7 @@ pub(all) struct DiscussionCommentCreatedComment {
   repository_url : String
   updated_at : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCommentCreatedComment` (fields with defaults are optional).
@@ -41959,9 +42457,10 @@ pub impl ToJson for DiscussionCommentCreatedComment with fn to_json(self) {
 
 ///|
 /// `DiscussionCommentDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionCommentDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionCommentDeletedAction with fn deserialize(d) {
@@ -42018,6 +42517,7 @@ pub impl ToJson for DiscussionCommentDeletedAction with fn to_json(self) {
 
 ///|
 /// `DiscussionCommentDeletedComment`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCommentDeletedComment {
   author_association : AuthorAssociation
   body : String
@@ -42031,7 +42531,7 @@ pub(all) struct DiscussionCommentDeletedComment {
   repository_url : String
   updated_at : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCommentDeletedComment` (fields with defaults are optional).
@@ -42129,9 +42629,10 @@ pub impl ToJson for DiscussionCommentDeletedComment with fn to_json(self) {
 
 ///|
 /// `DiscussionCommentEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum DiscussionCommentEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for DiscussionCommentEditedAction with fn deserialize(d) {
@@ -42188,9 +42689,10 @@ pub impl ToJson for DiscussionCommentEditedAction with fn to_json(self) {
 
 ///|
 /// `DiscussionCommentEditedChangesBody`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCommentEditedChangesBody {
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCommentEditedChangesBody` (fields with defaults are optional).
@@ -42233,9 +42735,10 @@ pub impl ToJson for DiscussionCommentEditedChangesBody with fn to_json(self) {
 
 ///|
 /// `DiscussionCommentEditedChanges`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCommentEditedChanges {
   body : DiscussionCommentEditedChangesBody
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCommentEditedChanges` (fields with defaults are optional).
@@ -42278,6 +42781,7 @@ pub impl ToJson for DiscussionCommentEditedChanges with fn to_json(self) {
 
 ///|
 /// `DiscussionCommentEditedComment`
+#derive(Debug, Eq)
 pub(all) struct DiscussionCommentEditedComment {
   author_association : AuthorAssociation
   body : String
@@ -42291,7 +42795,7 @@ pub(all) struct DiscussionCommentEditedComment {
   repository_url : String
   updated_at : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `DiscussionCommentEditedComment` (fields with defaults are optional).
@@ -42389,10 +42893,11 @@ pub impl ToJson for DiscussionCommentEditedComment with fn to_json(self) {
 
 ///|
 /// `ForkEventForkeeCreatedAt`
+#derive(Debug, Eq)
 pub(all) enum ForkEventForkeeCreatedAt {
   Integer(Int64)
   DateTime(@typify_rt.DateTimeUtc)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForkEventForkeeCreatedAt with fn deserialize(d) {
@@ -42436,13 +42941,14 @@ pub impl ToJson for ForkEventForkeeCreatedAt with fn to_json(self) {
 
 ///|
 /// `ForkEventForkeePermissions`
+#derive(Debug, Eq)
 pub(all) struct ForkEventForkeePermissions {
   admin : Bool
   maintain : Bool?
   pull : Bool
   push : Bool
   triage : Bool?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ForkEventForkeePermissions` (fields with defaults are optional).
@@ -42509,11 +43015,12 @@ pub impl ToJson for ForkEventForkeePermissions with fn to_json(self) {
 
 ///|
 /// `ForkEventForkeePushedAt`
+#derive(Debug, Eq)
 pub(all) enum ForkEventForkeePushedAt {
   Integer(Int64)
   DateTime(@typify_rt.DateTimeUtc)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for ForkEventForkeePushedAt with fn deserialize(d) {
@@ -42566,6 +43073,7 @@ pub impl ToJson for ForkEventForkeePushedAt with fn to_json(self) {
 
 ///|
 /// The created [`repository`](https://docs.github.com/en/rest/reference/repos#get-a-repository) resource.
+#derive(Debug, Eq)
 pub(all) struct ForkEventForkee {
   /// Whether to allow auto-merge for pull requests.
   allow_auto_merge : Bool
@@ -42667,7 +43175,7 @@ pub(all) struct ForkEventForkee {
   url : String
   watchers : Int64
   watchers_count : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ForkEventForkee` (fields with defaults are optional).
@@ -43154,9 +43662,10 @@ pub impl ToJson for ForkEventForkee with fn to_json(self) {
 
 ///|
 /// `GithubAppAuthorizationRevokedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum GithubAppAuthorizationRevokedAction {
   Revoked
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for GithubAppAuthorizationRevokedAction with fn deserialize(d) {
@@ -43213,10 +43722,11 @@ pub impl ToJson for GithubAppAuthorizationRevokedAction with fn to_json(self) {
 
 ///|
 /// The action that was performed on the page. Can be `created` or `edited`.
+#derive(Debug, Eq, Hash)
 pub(all) enum GollumEventPagesItemAction {
   Created
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for GollumEventPagesItemAction with fn deserialize(d) {
@@ -43278,6 +43788,7 @@ pub impl ToJson for GollumEventPagesItemAction with fn to_json(self) {
 
 ///|
 /// `GollumEventPagesItem`
+#derive(Debug, Eq)
 pub(all) struct GollumEventPagesItem {
   /// The action that was performed on the page. Can be `created` or `edited`.
   action : GollumEventPagesItemAction
@@ -43290,7 +43801,7 @@ pub(all) struct GollumEventPagesItem {
   summary : Unit
   /// The current page title.
   title : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `GollumEventPagesItem` (fields with defaults are optional).
@@ -43358,10 +43869,11 @@ pub impl ToJson for GollumEventPagesItem with fn to_json(self) {
 
 ///|
 /// `InstallationCreatedAt`
+#derive(Debug, Eq)
 pub(all) enum InstallationCreatedAt {
   DateTime(@typify_rt.DateTimeUtc)
   Integer(Int64)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationCreatedAt with fn deserialize(d) {
@@ -43405,6 +43917,7 @@ pub impl ToJson for InstallationCreatedAt with fn to_json(self) {
 
 ///|
 /// `InstallationEventsItem`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationEventsItem {
   CheckRun
   CheckSuite
@@ -43451,7 +43964,7 @@ pub(all) enum InstallationEventsItem {
   Watch
   WorkflowDispatch
   WorkflowRun
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationEventsItem with fn deserialize(d) {
@@ -43728,10 +44241,11 @@ pub impl ToJson for InstallationEventsItem with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsActions`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsActions {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsActions with fn deserialize(d) {
@@ -43793,10 +44307,11 @@ pub impl ToJson for InstallationPermissionsActions with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsAdministration`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsAdministration {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsAdministration with fn deserialize(d) {
@@ -43858,10 +44373,11 @@ pub impl ToJson for InstallationPermissionsAdministration with fn to_json(self) 
 
 ///|
 /// `InstallationPermissionsChecks`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsChecks {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsChecks with fn deserialize(d) {
@@ -43923,10 +44439,11 @@ pub impl ToJson for InstallationPermissionsChecks with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsContentReferences`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsContentReferences {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsContentReferences with fn deserialize(d) {
@@ -43988,10 +44505,11 @@ pub impl ToJson for InstallationPermissionsContentReferences with fn to_json(sel
 
 ///|
 /// `InstallationPermissionsContents`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsContents {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsContents with fn deserialize(d) {
@@ -44053,10 +44571,11 @@ pub impl ToJson for InstallationPermissionsContents with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsDeployments`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsDeployments {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsDeployments with fn deserialize(d) {
@@ -44118,10 +44637,11 @@ pub impl ToJson for InstallationPermissionsDeployments with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsDiscussions`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsDiscussions {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsDiscussions with fn deserialize(d) {
@@ -44183,10 +44703,11 @@ pub impl ToJson for InstallationPermissionsDiscussions with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsEmails`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsEmails {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsEmails with fn deserialize(d) {
@@ -44248,10 +44769,11 @@ pub impl ToJson for InstallationPermissionsEmails with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsEnvironments`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsEnvironments {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsEnvironments with fn deserialize(d) {
@@ -44313,10 +44835,11 @@ pub impl ToJson for InstallationPermissionsEnvironments with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsIssues`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsIssues {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsIssues with fn deserialize(d) {
@@ -44378,10 +44901,11 @@ pub impl ToJson for InstallationPermissionsIssues with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsMembers`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsMembers {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsMembers with fn deserialize(d) {
@@ -44443,10 +44967,11 @@ pub impl ToJson for InstallationPermissionsMembers with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsMetadata`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsMetadata {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsMetadata with fn deserialize(d) {
@@ -44508,10 +45033,11 @@ pub impl ToJson for InstallationPermissionsMetadata with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsOrganizationAdministration`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsOrganizationAdministration {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsOrganizationAdministration with fn deserialize(d) {
@@ -44573,10 +45099,11 @@ pub impl ToJson for InstallationPermissionsOrganizationAdministration with fn to
 
 ///|
 /// `InstallationPermissionsOrganizationEvents`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsOrganizationEvents {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsOrganizationEvents with fn deserialize(d) {
@@ -44638,10 +45165,11 @@ pub impl ToJson for InstallationPermissionsOrganizationEvents with fn to_json(se
 
 ///|
 /// `InstallationPermissionsOrganizationHooks`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsOrganizationHooks {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsOrganizationHooks with fn deserialize(d) {
@@ -44703,10 +45231,11 @@ pub impl ToJson for InstallationPermissionsOrganizationHooks with fn to_json(sel
 
 ///|
 /// `InstallationPermissionsOrganizationPackages`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsOrganizationPackages {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsOrganizationPackages with fn deserialize(d) {
@@ -44768,10 +45297,11 @@ pub impl ToJson for InstallationPermissionsOrganizationPackages with fn to_json(
 
 ///|
 /// `InstallationPermissionsOrganizationPlan`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsOrganizationPlan {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsOrganizationPlan with fn deserialize(d) {
@@ -44833,10 +45363,11 @@ pub impl ToJson for InstallationPermissionsOrganizationPlan with fn to_json(self
 
 ///|
 /// `InstallationPermissionsOrganizationProjects`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsOrganizationProjects {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsOrganizationProjects with fn deserialize(d) {
@@ -44898,10 +45429,11 @@ pub impl ToJson for InstallationPermissionsOrganizationProjects with fn to_json(
 
 ///|
 /// `InstallationPermissionsOrganizationSecrets`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsOrganizationSecrets {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsOrganizationSecrets with fn deserialize(d) {
@@ -44963,10 +45495,11 @@ pub impl ToJson for InstallationPermissionsOrganizationSecrets with fn to_json(s
 
 ///|
 /// `InstallationPermissionsOrganizationSelfHostedRunners`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsOrganizationSelfHostedRunners {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsOrganizationSelfHostedRunners with fn deserialize(d) {
@@ -45028,10 +45561,11 @@ pub impl ToJson for InstallationPermissionsOrganizationSelfHostedRunners with fn
 
 ///|
 /// `InstallationPermissionsOrganizationUserBlocking`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsOrganizationUserBlocking {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsOrganizationUserBlocking with fn deserialize(d) {
@@ -45093,10 +45627,11 @@ pub impl ToJson for InstallationPermissionsOrganizationUserBlocking with fn to_j
 
 ///|
 /// `InstallationPermissionsPackages`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsPackages {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsPackages with fn deserialize(d) {
@@ -45158,10 +45693,11 @@ pub impl ToJson for InstallationPermissionsPackages with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsPages`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsPages {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsPages with fn deserialize(d) {
@@ -45223,10 +45759,11 @@ pub impl ToJson for InstallationPermissionsPages with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsPullRequests`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsPullRequests {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsPullRequests with fn deserialize(d) {
@@ -45288,10 +45825,11 @@ pub impl ToJson for InstallationPermissionsPullRequests with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsRepositoryHooks`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsRepositoryHooks {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsRepositoryHooks with fn deserialize(d) {
@@ -45353,10 +45891,11 @@ pub impl ToJson for InstallationPermissionsRepositoryHooks with fn to_json(self)
 
 ///|
 /// `InstallationPermissionsRepositoryProjects`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsRepositoryProjects {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsRepositoryProjects with fn deserialize(d) {
@@ -45418,10 +45957,11 @@ pub impl ToJson for InstallationPermissionsRepositoryProjects with fn to_json(se
 
 ///|
 /// `InstallationPermissionsSecretScanningAlerts`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsSecretScanningAlerts {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsSecretScanningAlerts with fn deserialize(d) {
@@ -45483,10 +46023,11 @@ pub impl ToJson for InstallationPermissionsSecretScanningAlerts with fn to_json(
 
 ///|
 /// `InstallationPermissionsSecrets`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsSecrets {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsSecrets with fn deserialize(d) {
@@ -45548,10 +46089,11 @@ pub impl ToJson for InstallationPermissionsSecrets with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsSecurityEvents`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsSecurityEvents {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsSecurityEvents with fn deserialize(d) {
@@ -45613,10 +46155,11 @@ pub impl ToJson for InstallationPermissionsSecurityEvents with fn to_json(self) 
 
 ///|
 /// `InstallationPermissionsSecurityScanningAlert`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsSecurityScanningAlert {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsSecurityScanningAlert with fn deserialize(d) {
@@ -45678,10 +46221,11 @@ pub impl ToJson for InstallationPermissionsSecurityScanningAlert with fn to_json
 
 ///|
 /// `InstallationPermissionsSingleFile`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsSingleFile {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsSingleFile with fn deserialize(d) {
@@ -45743,10 +46287,11 @@ pub impl ToJson for InstallationPermissionsSingleFile with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsStatuses`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsStatuses {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsStatuses with fn deserialize(d) {
@@ -45808,10 +46353,11 @@ pub impl ToJson for InstallationPermissionsStatuses with fn to_json(self) {
 
 ///|
 /// `InstallationPermissionsTeamDiscussions`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsTeamDiscussions {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsTeamDiscussions with fn deserialize(d) {
@@ -45873,10 +46419,11 @@ pub impl ToJson for InstallationPermissionsTeamDiscussions with fn to_json(self)
 
 ///|
 /// `InstallationPermissionsVulnerabilityAlerts`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsVulnerabilityAlerts {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsVulnerabilityAlerts with fn deserialize(d) {
@@ -45938,10 +46485,11 @@ pub impl ToJson for InstallationPermissionsVulnerabilityAlerts with fn to_json(s
 
 ///|
 /// `InstallationPermissionsWorkflows`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationPermissionsWorkflows {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationPermissionsWorkflows with fn deserialize(d) {
@@ -46003,6 +46551,7 @@ pub impl ToJson for InstallationPermissionsWorkflows with fn to_json(self) {
 
 ///|
 /// `InstallationPermissions`
+#derive(Debug, Eq)
 pub(all) struct InstallationPermissions {
   actions : InstallationPermissionsActions?
   administration : InstallationPermissionsAdministration?
@@ -46039,7 +46588,7 @@ pub(all) struct InstallationPermissions {
   team_discussions : InstallationPermissionsTeamDiscussions?
   vulnerability_alerts : InstallationPermissionsVulnerabilityAlerts?
   workflows : InstallationPermissionsWorkflows?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationPermissions` (fields with defaults are optional).
@@ -46322,10 +46871,11 @@ pub impl ToJson for InstallationPermissions with fn to_json(self) {
 
 ///|
 /// Describe whether all repositories have been selected or there's a selection involved
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationRepositorySelection {
   All
   Selected
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationRepositorySelection with fn deserialize(d) {
@@ -46387,10 +46937,11 @@ pub impl ToJson for InstallationRepositorySelection with fn to_json(self) {
 
 ///|
 /// `InstallationTargetType`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationTargetType {
   User
   Organization
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationTargetType with fn deserialize(d) {
@@ -46452,10 +47003,11 @@ pub impl ToJson for InstallationTargetType with fn to_json(self) {
 
 ///|
 /// `InstallationUpdatedAt`
+#derive(Debug, Eq)
 pub(all) enum InstallationUpdatedAt {
   DateTime(@typify_rt.DateTimeUtc)
   Integer(Int64)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUpdatedAt with fn deserialize(d) {
@@ -46499,9 +47051,10 @@ pub impl ToJson for InstallationUpdatedAt with fn to_json(self) {
 
 ///|
 /// `InstallationCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationCreatedAction with fn deserialize(d) {
@@ -46558,6 +47111,7 @@ pub impl ToJson for InstallationCreatedAction with fn to_json(self) {
 
 ///|
 /// `InstallationCreatedRepositoriesItem`
+#derive(Debug, Eq)
 pub(all) struct InstallationCreatedRepositoriesItem {
   full_name : String
   /// Unique identifier of the repository
@@ -46567,7 +47121,7 @@ pub(all) struct InstallationCreatedRepositoriesItem {
   node_id : String
   /// Whether the repository is private or public.
   private : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationCreatedRepositoriesItem` (fields with defaults are optional).
@@ -46630,9 +47184,10 @@ pub impl ToJson for InstallationCreatedRepositoriesItem with fn to_json(self) {
 
 ///|
 /// `InstallationDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationDeletedAction with fn deserialize(d) {
@@ -46689,6 +47244,7 @@ pub impl ToJson for InstallationDeletedAction with fn to_json(self) {
 
 ///|
 /// `InstallationDeletedRepositoriesItem`
+#derive(Debug, Eq)
 pub(all) struct InstallationDeletedRepositoriesItem {
   full_name : String
   /// Unique identifier of the repository
@@ -46698,7 +47254,7 @@ pub(all) struct InstallationDeletedRepositoriesItem {
   node_id : String
   /// Whether the repository is private or public.
   private : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationDeletedRepositoriesItem` (fields with defaults are optional).
@@ -46761,9 +47317,10 @@ pub impl ToJson for InstallationDeletedRepositoriesItem with fn to_json(self) {
 
 ///|
 /// `InstallationNewPermissionsAcceptedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationNewPermissionsAcceptedAction {
   NewPermissionsAccepted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationNewPermissionsAcceptedAction with fn deserialize(d) {
@@ -46820,6 +47377,7 @@ pub impl ToJson for InstallationNewPermissionsAcceptedAction with fn to_json(sel
 
 ///|
 /// `InstallationNewPermissionsAcceptedRepositoriesItem`
+#derive(Debug, Eq)
 pub(all) struct InstallationNewPermissionsAcceptedRepositoriesItem {
   full_name : String
   /// Unique identifier of the repository
@@ -46829,7 +47387,7 @@ pub(all) struct InstallationNewPermissionsAcceptedRepositoriesItem {
   node_id : String
   /// Whether the repository is private or public.
   private : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationNewPermissionsAcceptedRepositoriesItem` (fields with defaults are optional).
@@ -46892,9 +47450,10 @@ pub impl ToJson for InstallationNewPermissionsAcceptedRepositoriesItem with fn t
 
 ///|
 /// `InstallationSuspendAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendAction {
   Suspend
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendAction with fn deserialize(d) {
@@ -46951,10 +47510,11 @@ pub impl ToJson for InstallationSuspendAction with fn to_json(self) {
 
 ///|
 /// `InstallationSuspendInstallationCreatedAt`
+#derive(Debug, Eq)
 pub(all) enum InstallationSuspendInstallationCreatedAt {
   DateTime(@typify_rt.DateTimeUtc)
   Integer(Int64)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationCreatedAt with fn deserialize(d) {
@@ -46998,6 +47558,7 @@ pub impl ToJson for InstallationSuspendInstallationCreatedAt with fn to_json(sel
 
 ///|
 /// `InstallationSuspendInstallationEventsItem`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationEventsItem {
   CheckRun
   CheckSuite
@@ -47044,7 +47605,7 @@ pub(all) enum InstallationSuspendInstallationEventsItem {
   Watch
   WorkflowDispatch
   WorkflowRun
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationEventsItem with fn deserialize(d) {
@@ -47321,10 +47882,11 @@ pub impl ToJson for InstallationSuspendInstallationEventsItem with fn to_json(se
 
 ///|
 /// `InstallationSuspendInstallationPermissionsActions`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsActions {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsActions with fn deserialize(d) {
@@ -47386,10 +47948,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsActions with fn to
 
 ///|
 /// `InstallationSuspendInstallationPermissionsAdministration`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsAdministration {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsAdministration with fn deserialize(d) {
@@ -47451,10 +48014,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsAdministration wit
 
 ///|
 /// `InstallationSuspendInstallationPermissionsChecks`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsChecks {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsChecks with fn deserialize(d) {
@@ -47516,10 +48080,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsChecks with fn to_
 
 ///|
 /// `InstallationSuspendInstallationPermissionsContentReferences`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsContentReferences {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsContentReferences with fn deserialize(d) {
@@ -47581,10 +48146,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsContentReferences 
 
 ///|
 /// `InstallationSuspendInstallationPermissionsContents`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsContents {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsContents with fn deserialize(d) {
@@ -47646,10 +48212,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsContents with fn t
 
 ///|
 /// `InstallationSuspendInstallationPermissionsDeployments`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsDeployments {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsDeployments with fn deserialize(d) {
@@ -47711,10 +48278,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsDeployments with f
 
 ///|
 /// `InstallationSuspendInstallationPermissionsDiscussions`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsDiscussions {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsDiscussions with fn deserialize(d) {
@@ -47776,10 +48344,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsDiscussions with f
 
 ///|
 /// `InstallationSuspendInstallationPermissionsEmails`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsEmails {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsEmails with fn deserialize(d) {
@@ -47841,10 +48410,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsEmails with fn to_
 
 ///|
 /// `InstallationSuspendInstallationPermissionsEnvironments`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsEnvironments {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsEnvironments with fn deserialize(d) {
@@ -47906,10 +48476,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsEnvironments with 
 
 ///|
 /// `InstallationSuspendInstallationPermissionsIssues`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsIssues {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsIssues with fn deserialize(d) {
@@ -47971,10 +48542,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsIssues with fn to_
 
 ///|
 /// `InstallationSuspendInstallationPermissionsMembers`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsMembers {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsMembers with fn deserialize(d) {
@@ -48036,10 +48608,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsMembers with fn to
 
 ///|
 /// `InstallationSuspendInstallationPermissionsMetadata`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsMetadata {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsMetadata with fn deserialize(d) {
@@ -48101,10 +48674,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsMetadata with fn t
 
 ///|
 /// `InstallationSuspendInstallationPermissionsOrganizationAdministration`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsOrganizationAdministration {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsOrganizationAdministration with fn deserialize(d) {
@@ -48166,10 +48740,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsOrganizationAdmini
 
 ///|
 /// `InstallationSuspendInstallationPermissionsOrganizationEvents`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsOrganizationEvents {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsOrganizationEvents with fn deserialize(d) {
@@ -48231,10 +48806,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsOrganizationEvents
 
 ///|
 /// `InstallationSuspendInstallationPermissionsOrganizationHooks`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsOrganizationHooks {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsOrganizationHooks with fn deserialize(d) {
@@ -48296,10 +48872,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsOrganizationHooks 
 
 ///|
 /// `InstallationSuspendInstallationPermissionsOrganizationPackages`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsOrganizationPackages {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsOrganizationPackages with fn deserialize(d) {
@@ -48361,10 +48938,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsOrganizationPackag
 
 ///|
 /// `InstallationSuspendInstallationPermissionsOrganizationPlan`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsOrganizationPlan {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsOrganizationPlan with fn deserialize(d) {
@@ -48426,10 +49004,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsOrganizationPlan w
 
 ///|
 /// `InstallationSuspendInstallationPermissionsOrganizationProjects`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsOrganizationProjects {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsOrganizationProjects with fn deserialize(d) {
@@ -48491,10 +49070,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsOrganizationProjec
 
 ///|
 /// `InstallationSuspendInstallationPermissionsOrganizationSecrets`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsOrganizationSecrets {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsOrganizationSecrets with fn deserialize(d) {
@@ -48556,10 +49136,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsOrganizationSecret
 
 ///|
 /// `InstallationSuspendInstallationPermissionsOrganizationSelfHostedRunners`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsOrganizationSelfHostedRunners {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsOrganizationSelfHostedRunners with fn deserialize(d) {
@@ -48621,10 +49202,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsOrganizationSelfHo
 
 ///|
 /// `InstallationSuspendInstallationPermissionsOrganizationUserBlocking`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsOrganizationUserBlocking {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsOrganizationUserBlocking with fn deserialize(d) {
@@ -48686,10 +49268,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsOrganizationUserBl
 
 ///|
 /// `InstallationSuspendInstallationPermissionsPackages`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsPackages {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsPackages with fn deserialize(d) {
@@ -48751,10 +49334,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsPackages with fn t
 
 ///|
 /// `InstallationSuspendInstallationPermissionsPages`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsPages {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsPages with fn deserialize(d) {
@@ -48816,10 +49400,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsPages with fn to_j
 
 ///|
 /// `InstallationSuspendInstallationPermissionsPullRequests`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsPullRequests {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsPullRequests with fn deserialize(d) {
@@ -48881,10 +49466,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsPullRequests with 
 
 ///|
 /// `InstallationSuspendInstallationPermissionsRepositoryHooks`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsRepositoryHooks {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsRepositoryHooks with fn deserialize(d) {
@@ -48946,10 +49532,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsRepositoryHooks wi
 
 ///|
 /// `InstallationSuspendInstallationPermissionsRepositoryProjects`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsRepositoryProjects {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsRepositoryProjects with fn deserialize(d) {
@@ -49011,10 +49598,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsRepositoryProjects
 
 ///|
 /// `InstallationSuspendInstallationPermissionsSecretScanningAlerts`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsSecretScanningAlerts {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsSecretScanningAlerts with fn deserialize(d) {
@@ -49076,10 +49664,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsSecretScanningAler
 
 ///|
 /// `InstallationSuspendInstallationPermissionsSecrets`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsSecrets {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsSecrets with fn deserialize(d) {
@@ -49141,10 +49730,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsSecrets with fn to
 
 ///|
 /// `InstallationSuspendInstallationPermissionsSecurityEvents`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsSecurityEvents {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsSecurityEvents with fn deserialize(d) {
@@ -49206,10 +49796,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsSecurityEvents wit
 
 ///|
 /// `InstallationSuspendInstallationPermissionsSecurityScanningAlert`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsSecurityScanningAlert {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsSecurityScanningAlert with fn deserialize(d) {
@@ -49271,10 +49862,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsSecurityScanningAl
 
 ///|
 /// `InstallationSuspendInstallationPermissionsSingleFile`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsSingleFile {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsSingleFile with fn deserialize(d) {
@@ -49336,10 +49928,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsSingleFile with fn
 
 ///|
 /// `InstallationSuspendInstallationPermissionsStatuses`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsStatuses {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsStatuses with fn deserialize(d) {
@@ -49401,10 +49994,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsStatuses with fn t
 
 ///|
 /// `InstallationSuspendInstallationPermissionsTeamDiscussions`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsTeamDiscussions {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsTeamDiscussions with fn deserialize(d) {
@@ -49466,10 +50060,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsTeamDiscussions wi
 
 ///|
 /// `InstallationSuspendInstallationPermissionsVulnerabilityAlerts`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsVulnerabilityAlerts {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsVulnerabilityAlerts with fn deserialize(d) {
@@ -49531,10 +50126,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsVulnerabilityAlert
 
 ///|
 /// `InstallationSuspendInstallationPermissionsWorkflows`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationPermissionsWorkflows {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationPermissionsWorkflows with fn deserialize(d) {
@@ -49596,6 +50192,7 @@ pub impl ToJson for InstallationSuspendInstallationPermissionsWorkflows with fn 
 
 ///|
 /// `InstallationSuspendInstallationPermissions`
+#derive(Debug, Eq)
 pub(all) struct InstallationSuspendInstallationPermissions {
   actions : InstallationSuspendInstallationPermissionsActions?
   administration : InstallationSuspendInstallationPermissionsAdministration?
@@ -49632,7 +50229,7 @@ pub(all) struct InstallationSuspendInstallationPermissions {
   team_discussions : InstallationSuspendInstallationPermissionsTeamDiscussions?
   vulnerability_alerts : InstallationSuspendInstallationPermissionsVulnerabilityAlerts?
   workflows : InstallationSuspendInstallationPermissionsWorkflows?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationSuspendInstallationPermissions` (fields with defaults are optional).
@@ -49915,10 +50512,11 @@ pub impl ToJson for InstallationSuspendInstallationPermissions with fn to_json(s
 
 ///|
 /// Describe whether all repositories have been selected or there's a selection involved
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationRepositorySelection {
   All
   Selected
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationRepositorySelection with fn deserialize(d) {
@@ -49980,11 +50578,12 @@ pub impl ToJson for InstallationSuspendInstallationRepositorySelection with fn t
 
 ///|
 /// `InstallationSuspendInstallationSuspendedByType`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationSuspendedByType {
   Bot
   User
   Organization
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationSuspendedByType with fn deserialize(d) {
@@ -50051,6 +50650,7 @@ pub impl ToJson for InstallationSuspendInstallationSuspendedByType with fn to_js
 
 ///|
 /// `InstallationSuspendInstallationSuspendedBy`
+#derive(Debug, Eq)
 pub(all) struct InstallationSuspendInstallationSuspendedBy {
   avatar_url : String
   email : String?
@@ -50072,7 +50672,7 @@ pub(all) struct InstallationSuspendInstallationSuspendedBy {
   subscriptions_url : String
   type_ : InstallationSuspendInstallationSuspendedByType
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationSuspendInstallationSuspendedBy` (fields with defaults are optional).
@@ -50214,10 +50814,11 @@ pub impl ToJson for InstallationSuspendInstallationSuspendedBy with fn to_json(s
 
 ///|
 /// `InstallationSuspendInstallationTargetType`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationSuspendInstallationTargetType {
   User
   Organization
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationTargetType with fn deserialize(d) {
@@ -50279,10 +50880,11 @@ pub impl ToJson for InstallationSuspendInstallationTargetType with fn to_json(se
 
 ///|
 /// `InstallationSuspendInstallationUpdatedAt`
+#derive(Debug, Eq)
 pub(all) enum InstallationSuspendInstallationUpdatedAt {
   DateTime(@typify_rt.DateTimeUtc)
   Integer(Int64)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationSuspendInstallationUpdatedAt with fn deserialize(d) {
@@ -50326,6 +50928,7 @@ pub impl ToJson for InstallationSuspendInstallationUpdatedAt with fn to_json(sel
 
 ///|
 /// `InstallationSuspendInstallation`
+#derive(Debug, Eq)
 pub(all) struct InstallationSuspendInstallation {
   access_tokens_url : String
   account : User
@@ -50349,7 +50952,7 @@ pub(all) struct InstallationSuspendInstallation {
   target_id : Int64
   target_type : InstallationSuspendInstallationTargetType
   updated_at : InstallationSuspendInstallationUpdatedAt
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationSuspendInstallation` (fields with defaults are optional).
@@ -50488,6 +51091,7 @@ pub impl ToJson for InstallationSuspendInstallation with fn to_json(self) {
 
 ///|
 /// `InstallationSuspendRepositoriesItem`
+#derive(Debug, Eq)
 pub(all) struct InstallationSuspendRepositoriesItem {
   full_name : String
   /// Unique identifier of the repository
@@ -50497,7 +51101,7 @@ pub(all) struct InstallationSuspendRepositoriesItem {
   node_id : String
   /// Whether the repository is private or public.
   private : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationSuspendRepositoriesItem` (fields with defaults are optional).
@@ -50560,9 +51164,10 @@ pub impl ToJson for InstallationSuspendRepositoriesItem with fn to_json(self) {
 
 ///|
 /// `InstallationUnsuspendAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendAction {
   Unsuspend
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendAction with fn deserialize(d) {
@@ -50619,10 +51224,11 @@ pub impl ToJson for InstallationUnsuspendAction with fn to_json(self) {
 
 ///|
 /// `InstallationUnsuspendInstallationCreatedAt`
+#derive(Debug, Eq)
 pub(all) enum InstallationUnsuspendInstallationCreatedAt {
   DateTime(@typify_rt.DateTimeUtc)
   Integer(Int64)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationCreatedAt with fn deserialize(d) {
@@ -50666,6 +51272,7 @@ pub impl ToJson for InstallationUnsuspendInstallationCreatedAt with fn to_json(s
 
 ///|
 /// `InstallationUnsuspendInstallationEventsItem`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationEventsItem {
   CheckRun
   CheckSuite
@@ -50712,7 +51319,7 @@ pub(all) enum InstallationUnsuspendInstallationEventsItem {
   Watch
   WorkflowDispatch
   WorkflowRun
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationEventsItem with fn deserialize(d) {
@@ -50989,10 +51596,11 @@ pub impl ToJson for InstallationUnsuspendInstallationEventsItem with fn to_json(
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsActions`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsActions {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsActions with fn deserialize(d) {
@@ -51054,10 +51662,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsActions with fn 
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsAdministration`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsAdministration {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsAdministration with fn deserialize(d) {
@@ -51119,10 +51728,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsAdministration w
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsChecks`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsChecks {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsChecks with fn deserialize(d) {
@@ -51184,10 +51794,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsChecks with fn t
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsContentReferences`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsContentReferences {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsContentReferences with fn deserialize(d) {
@@ -51249,10 +51860,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsContentReference
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsContents`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsContents {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsContents with fn deserialize(d) {
@@ -51314,10 +51926,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsContents with fn
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsDeployments`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsDeployments {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsDeployments with fn deserialize(d) {
@@ -51379,10 +51992,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsDeployments with
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsDiscussions`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsDiscussions {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsDiscussions with fn deserialize(d) {
@@ -51444,10 +52058,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsDiscussions with
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsEmails`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsEmails {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsEmails with fn deserialize(d) {
@@ -51509,10 +52124,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsEmails with fn t
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsEnvironments`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsEnvironments {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsEnvironments with fn deserialize(d) {
@@ -51574,10 +52190,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsEnvironments wit
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsIssues`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsIssues {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsIssues with fn deserialize(d) {
@@ -51639,10 +52256,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsIssues with fn t
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsMembers`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsMembers {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsMembers with fn deserialize(d) {
@@ -51704,10 +52322,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsMembers with fn 
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsMetadata`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsMetadata {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsMetadata with fn deserialize(d) {
@@ -51769,10 +52388,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsMetadata with fn
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsOrganizationAdministration`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsOrganizationAdministration {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsOrganizationAdministration with fn deserialize(d) {
@@ -51834,10 +52454,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsOrganizationAdmi
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsOrganizationEvents`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsOrganizationEvents {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsOrganizationEvents with fn deserialize(d) {
@@ -51899,10 +52520,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsOrganizationEven
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsOrganizationHooks`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsOrganizationHooks {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsOrganizationHooks with fn deserialize(d) {
@@ -51964,10 +52586,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsOrganizationHook
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsOrganizationPackages`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsOrganizationPackages {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsOrganizationPackages with fn deserialize(d) {
@@ -52029,10 +52652,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsOrganizationPack
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsOrganizationPlan`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsOrganizationPlan {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsOrganizationPlan with fn deserialize(d) {
@@ -52094,10 +52718,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsOrganizationPlan
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsOrganizationProjects`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsOrganizationProjects {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsOrganizationProjects with fn deserialize(d) {
@@ -52159,10 +52784,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsOrganizationProj
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsOrganizationSecrets`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsOrganizationSecrets {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsOrganizationSecrets with fn deserialize(d) {
@@ -52224,10 +52850,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsOrganizationSecr
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsOrganizationSelfHostedRunners`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsOrganizationSelfHostedRunners {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsOrganizationSelfHostedRunners with fn deserialize(d) {
@@ -52289,10 +52916,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsOrganizationSelf
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsOrganizationUserBlocking`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsOrganizationUserBlocking {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsOrganizationUserBlocking with fn deserialize(d) {
@@ -52354,10 +52982,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsOrganizationUser
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsPackages`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsPackages {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsPackages with fn deserialize(d) {
@@ -52419,10 +53048,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsPackages with fn
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsPages`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsPages {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsPages with fn deserialize(d) {
@@ -52484,10 +53114,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsPages with fn to
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsPullRequests`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsPullRequests {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsPullRequests with fn deserialize(d) {
@@ -52549,10 +53180,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsPullRequests wit
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsRepositoryHooks`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsRepositoryHooks {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsRepositoryHooks with fn deserialize(d) {
@@ -52614,10 +53246,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsRepositoryHooks 
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsRepositoryProjects`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsRepositoryProjects {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsRepositoryProjects with fn deserialize(d) {
@@ -52679,10 +53312,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsRepositoryProjec
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsSecretScanningAlerts`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsSecretScanningAlerts {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsSecretScanningAlerts with fn deserialize(d) {
@@ -52744,10 +53378,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsSecretScanningAl
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsSecrets`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsSecrets {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsSecrets with fn deserialize(d) {
@@ -52809,10 +53444,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsSecrets with fn 
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsSecurityEvents`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsSecurityEvents {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsSecurityEvents with fn deserialize(d) {
@@ -52874,10 +53510,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsSecurityEvents w
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsSecurityScanningAlert`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsSecurityScanningAlert {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsSecurityScanningAlert with fn deserialize(d) {
@@ -52939,10 +53576,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsSecurityScanning
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsSingleFile`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsSingleFile {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsSingleFile with fn deserialize(d) {
@@ -53004,10 +53642,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsSingleFile with 
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsStatuses`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsStatuses {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsStatuses with fn deserialize(d) {
@@ -53069,10 +53708,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsStatuses with fn
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsTeamDiscussions`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsTeamDiscussions {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsTeamDiscussions with fn deserialize(d) {
@@ -53134,10 +53774,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsTeamDiscussions 
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsVulnerabilityAlerts`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsVulnerabilityAlerts {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsVulnerabilityAlerts with fn deserialize(d) {
@@ -53199,10 +53840,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsVulnerabilityAle
 
 ///|
 /// `InstallationUnsuspendInstallationPermissionsWorkflows`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationPermissionsWorkflows {
   Read
   Write
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationPermissionsWorkflows with fn deserialize(d) {
@@ -53264,6 +53906,7 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissionsWorkflows with f
 
 ///|
 /// `InstallationUnsuspendInstallationPermissions`
+#derive(Debug, Eq)
 pub(all) struct InstallationUnsuspendInstallationPermissions {
   actions : InstallationUnsuspendInstallationPermissionsActions?
   administration : InstallationUnsuspendInstallationPermissionsAdministration?
@@ -53300,7 +53943,7 @@ pub(all) struct InstallationUnsuspendInstallationPermissions {
   team_discussions : InstallationUnsuspendInstallationPermissionsTeamDiscussions?
   vulnerability_alerts : InstallationUnsuspendInstallationPermissionsVulnerabilityAlerts?
   workflows : InstallationUnsuspendInstallationPermissionsWorkflows?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationUnsuspendInstallationPermissions` (fields with defaults are optional).
@@ -53583,10 +54226,11 @@ pub impl ToJson for InstallationUnsuspendInstallationPermissions with fn to_json
 
 ///|
 /// Describe whether all repositories have been selected or there's a selection involved
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationRepositorySelection {
   All
   Selected
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationRepositorySelection with fn deserialize(d) {
@@ -53648,10 +54292,11 @@ pub impl ToJson for InstallationUnsuspendInstallationRepositorySelection with fn
 
 ///|
 /// `InstallationUnsuspendInstallationTargetType`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationUnsuspendInstallationTargetType {
   User
   Organization
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationTargetType with fn deserialize(d) {
@@ -53713,10 +54358,11 @@ pub impl ToJson for InstallationUnsuspendInstallationTargetType with fn to_json(
 
 ///|
 /// `InstallationUnsuspendInstallationUpdatedAt`
+#derive(Debug, Eq)
 pub(all) enum InstallationUnsuspendInstallationUpdatedAt {
   DateTime(@typify_rt.DateTimeUtc)
   Integer(Int64)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationUnsuspendInstallationUpdatedAt with fn deserialize(d) {
@@ -53760,6 +54406,7 @@ pub impl ToJson for InstallationUnsuspendInstallationUpdatedAt with fn to_json(s
 
 ///|
 /// `InstallationUnsuspendInstallation`
+#derive(Debug, Eq)
 pub(all) struct InstallationUnsuspendInstallation {
   access_tokens_url : String
   account : User
@@ -53783,7 +54430,7 @@ pub(all) struct InstallationUnsuspendInstallation {
   target_id : Int64
   target_type : InstallationUnsuspendInstallationTargetType
   updated_at : InstallationUnsuspendInstallationUpdatedAt
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationUnsuspendInstallation` (fields with defaults are optional).
@@ -53922,6 +54569,7 @@ pub impl ToJson for InstallationUnsuspendInstallation with fn to_json(self) {
 
 ///|
 /// `InstallationUnsuspendRepositoriesItem`
+#derive(Debug, Eq)
 pub(all) struct InstallationUnsuspendRepositoriesItem {
   full_name : String
   /// Unique identifier of the repository
@@ -53931,7 +54579,7 @@ pub(all) struct InstallationUnsuspendRepositoriesItem {
   node_id : String
   /// Whether the repository is private or public.
   private : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationUnsuspendRepositoriesItem` (fields with defaults are optional).
@@ -53994,9 +54642,10 @@ pub impl ToJson for InstallationUnsuspendRepositoriesItem with fn to_json(self) 
 
 ///|
 /// `InstallationRepositoriesAddedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationRepositoriesAddedAction {
   Added
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationRepositoriesAddedAction with fn deserialize(d) {
@@ -54053,6 +54702,7 @@ pub impl ToJson for InstallationRepositoriesAddedAction with fn to_json(self) {
 
 ///|
 /// `InstallationRepositoriesAddedRepositoriesAddedItem`
+#derive(Debug, Eq)
 pub(all) struct InstallationRepositoriesAddedRepositoriesAddedItem {
   full_name : String
   /// Unique identifier of the repository
@@ -54062,7 +54712,7 @@ pub(all) struct InstallationRepositoriesAddedRepositoriesAddedItem {
   node_id : String
   /// Whether the repository is private or public.
   private : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationRepositoriesAddedRepositoriesAddedItem` (fields with defaults are optional).
@@ -54125,6 +54775,7 @@ pub impl ToJson for InstallationRepositoriesAddedRepositoriesAddedItem with fn t
 
 ///|
 /// `InstallationRepositoriesAddedRepositoriesRemovedItem`
+#derive(Debug, Eq)
 pub(all) struct InstallationRepositoriesAddedRepositoriesRemovedItem {
   full_name : String?
   /// Unique identifier of the repository
@@ -54134,7 +54785,7 @@ pub(all) struct InstallationRepositoriesAddedRepositoriesRemovedItem {
   node_id : String?
   /// Whether the repository is private or public.
   private : Bool?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationRepositoriesAddedRepositoriesRemovedItem` (fields with defaults are optional).
@@ -54207,10 +54858,11 @@ pub impl ToJson for InstallationRepositoriesAddedRepositoriesRemovedItem with fn
 
 ///|
 /// Describe whether all repositories have been selected or there's a selection involved
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationRepositoriesAddedRepositorySelection {
   All
   Selected
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationRepositoriesAddedRepositorySelection with fn deserialize(d) {
@@ -54272,9 +54924,10 @@ pub impl ToJson for InstallationRepositoriesAddedRepositorySelection with fn to_
 
 ///|
 /// `InstallationRepositoriesRemovedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationRepositoriesRemovedAction {
   Removed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationRepositoriesRemovedAction with fn deserialize(d) {
@@ -54331,6 +54984,7 @@ pub impl ToJson for InstallationRepositoriesRemovedAction with fn to_json(self) 
 
 ///|
 /// `InstallationRepositoriesRemovedRepositoriesAddedItem`
+#derive(Debug, Eq)
 pub(all) struct InstallationRepositoriesRemovedRepositoriesAddedItem {
   full_name : String
   /// Unique identifier of the repository
@@ -54340,7 +54994,7 @@ pub(all) struct InstallationRepositoriesRemovedRepositoriesAddedItem {
   node_id : String
   /// Whether the repository is private or public.
   private : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationRepositoriesRemovedRepositoriesAddedItem` (fields with defaults are optional).
@@ -54403,6 +55057,7 @@ pub impl ToJson for InstallationRepositoriesRemovedRepositoriesAddedItem with fn
 
 ///|
 /// `InstallationRepositoriesRemovedRepositoriesRemovedItem`
+#derive(Debug, Eq)
 pub(all) struct InstallationRepositoriesRemovedRepositoriesRemovedItem {
   full_name : String
   /// Unique identifier of the repository
@@ -54412,7 +55067,7 @@ pub(all) struct InstallationRepositoriesRemovedRepositoriesRemovedItem {
   node_id : String
   /// Whether the repository is private or public.
   private : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `InstallationRepositoriesRemovedRepositoriesRemovedItem` (fields with defaults are optional).
@@ -54475,10 +55130,11 @@ pub impl ToJson for InstallationRepositoriesRemovedRepositoriesRemovedItem with 
 
 ///|
 /// Describe whether all repositories have been selected or there's a selection involved
+#derive(Debug, Eq, Hash)
 pub(all) enum InstallationRepositoriesRemovedRepositorySelection {
   All
   Selected
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for InstallationRepositoriesRemovedRepositorySelection with fn deserialize(d) {
@@ -54540,12 +55196,13 @@ pub impl ToJson for InstallationRepositoriesRemovedRepositorySelection with fn t
 
 ///|
 /// `IssueActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssueActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueActiveLockReason with fn deserialize(d) {
@@ -54617,12 +55274,13 @@ pub impl ToJson for IssueActiveLockReason with fn to_json(self) {
 
 ///|
 /// `IssuePullRequest`
+#derive(Debug, Eq)
 pub(all) struct IssuePullRequest {
   diff_url : String?
   html_url : String?
   patch_url : String?
   url : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuePullRequest` (fields with defaults are optional).
@@ -54688,10 +55346,11 @@ pub impl ToJson for IssuePullRequest with fn to_json(self) {
 
 ///|
 /// State of the issue; either 'open' or 'closed'
+#derive(Debug, Eq, Hash)
 pub(all) enum IssueState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueState with fn deserialize(d) {
@@ -54753,9 +55412,10 @@ pub impl ToJson for IssueState with fn to_json(self) {
 
 ///|
 /// `IssueCommentCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssueCommentCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueCommentCreatedAction with fn deserialize(d) {
@@ -54812,12 +55472,13 @@ pub impl ToJson for IssueCommentCreatedAction with fn to_json(self) {
 
 ///|
 /// `IssueCommentCreatedIssueActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssueCommentCreatedIssueActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueCommentCreatedIssueActiveLockReason with fn deserialize(d) {
@@ -54889,11 +55550,12 @@ pub impl ToJson for IssueCommentCreatedIssueActiveLockReason with fn to_json(sel
 
 ///|
 /// `IssueCommentCreatedIssueAssigneeType`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssueCommentCreatedIssueAssigneeType {
   Bot
   User
   Organization
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueCommentCreatedIssueAssigneeType with fn deserialize(d) {
@@ -54960,6 +55622,7 @@ pub impl ToJson for IssueCommentCreatedIssueAssigneeType with fn to_json(self) {
 
 ///|
 /// `IssueCommentCreatedIssueAssignee`
+#derive(Debug, Eq)
 pub(all) struct IssueCommentCreatedIssueAssignee {
   avatar_url : String
   email : String?
@@ -54981,7 +55644,7 @@ pub(all) struct IssueCommentCreatedIssueAssignee {
   subscriptions_url : String
   type_ : IssueCommentCreatedIssueAssigneeType
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueCommentCreatedIssueAssignee` (fields with defaults are optional).
@@ -55123,12 +55786,13 @@ pub impl ToJson for IssueCommentCreatedIssueAssignee with fn to_json(self) {
 
 ///|
 /// `IssueCommentCreatedIssuePullRequest`
+#derive(Debug, Eq)
 pub(all) struct IssueCommentCreatedIssuePullRequest {
   diff_url : String
   html_url : String
   patch_url : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueCommentCreatedIssuePullRequest` (fields with defaults are optional).
@@ -55186,10 +55850,11 @@ pub impl ToJson for IssueCommentCreatedIssuePullRequest with fn to_json(self) {
 
 ///|
 /// `IssueCommentCreatedIssueState`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssueCommentCreatedIssueState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueCommentCreatedIssueState with fn deserialize(d) {
@@ -55251,6 +55916,7 @@ pub impl ToJson for IssueCommentCreatedIssueState with fn to_json(self) {
 
 ///|
 /// The [issue](https://docs.github.com/en/rest/reference/issues) the comment belongs to.
+#derive(Debug, Eq)
 pub(all) struct IssueCommentCreatedIssue {
   active_lock_reason : IssueCommentCreatedIssueActiveLockReason?
   assignee : IssueCommentCreatedIssueAssignee?
@@ -55281,7 +55947,7 @@ pub(all) struct IssueCommentCreatedIssue {
   /// URL for the issue
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueCommentCreatedIssue` (fields with defaults are optional).
@@ -55453,9 +56119,10 @@ pub impl ToJson for IssueCommentCreatedIssue with fn to_json(self) {
 
 ///|
 /// `IssueCommentDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssueCommentDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueCommentDeletedAction with fn deserialize(d) {
@@ -55512,12 +56179,13 @@ pub impl ToJson for IssueCommentDeletedAction with fn to_json(self) {
 
 ///|
 /// `IssueCommentDeletedIssueActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssueCommentDeletedIssueActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueCommentDeletedIssueActiveLockReason with fn deserialize(d) {
@@ -55589,11 +56257,12 @@ pub impl ToJson for IssueCommentDeletedIssueActiveLockReason with fn to_json(sel
 
 ///|
 /// `IssueCommentDeletedIssueAssigneeType`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssueCommentDeletedIssueAssigneeType {
   Bot
   User
   Organization
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueCommentDeletedIssueAssigneeType with fn deserialize(d) {
@@ -55660,6 +56329,7 @@ pub impl ToJson for IssueCommentDeletedIssueAssigneeType with fn to_json(self) {
 
 ///|
 /// `IssueCommentDeletedIssueAssignee`
+#derive(Debug, Eq)
 pub(all) struct IssueCommentDeletedIssueAssignee {
   avatar_url : String
   email : String?
@@ -55681,7 +56351,7 @@ pub(all) struct IssueCommentDeletedIssueAssignee {
   subscriptions_url : String
   type_ : IssueCommentDeletedIssueAssigneeType
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueCommentDeletedIssueAssignee` (fields with defaults are optional).
@@ -55823,12 +56493,13 @@ pub impl ToJson for IssueCommentDeletedIssueAssignee with fn to_json(self) {
 
 ///|
 /// `IssueCommentDeletedIssuePullRequest`
+#derive(Debug, Eq)
 pub(all) struct IssueCommentDeletedIssuePullRequest {
   diff_url : String
   html_url : String
   patch_url : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueCommentDeletedIssuePullRequest` (fields with defaults are optional).
@@ -55886,10 +56557,11 @@ pub impl ToJson for IssueCommentDeletedIssuePullRequest with fn to_json(self) {
 
 ///|
 /// `IssueCommentDeletedIssueState`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssueCommentDeletedIssueState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueCommentDeletedIssueState with fn deserialize(d) {
@@ -55951,6 +56623,7 @@ pub impl ToJson for IssueCommentDeletedIssueState with fn to_json(self) {
 
 ///|
 /// The [issue](https://docs.github.com/en/rest/reference/issues) the comment belongs to.
+#derive(Debug, Eq)
 pub(all) struct IssueCommentDeletedIssue {
   active_lock_reason : IssueCommentDeletedIssueActiveLockReason?
   assignee : IssueCommentDeletedIssueAssignee?
@@ -55981,7 +56654,7 @@ pub(all) struct IssueCommentDeletedIssue {
   /// URL for the issue
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueCommentDeletedIssue` (fields with defaults are optional).
@@ -56153,9 +56826,10 @@ pub impl ToJson for IssueCommentDeletedIssue with fn to_json(self) {
 
 ///|
 /// `IssueCommentEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssueCommentEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueCommentEditedAction with fn deserialize(d) {
@@ -56212,10 +56886,11 @@ pub impl ToJson for IssueCommentEditedAction with fn to_json(self) {
 
 ///|
 /// `IssueCommentEditedChangesBody`
+#derive(Debug, Eq)
 pub(all) struct IssueCommentEditedChangesBody {
   /// The previous version of the body.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueCommentEditedChangesBody` (fields with defaults are optional).
@@ -56258,9 +56933,10 @@ pub impl ToJson for IssueCommentEditedChangesBody with fn to_json(self) {
 
 ///|
 /// The changes to the comment.
+#derive(Debug, Eq)
 pub(all) struct IssueCommentEditedChanges {
   body : IssueCommentEditedChangesBody?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueCommentEditedChanges` (fields with defaults are optional).
@@ -56305,12 +56981,13 @@ pub impl ToJson for IssueCommentEditedChanges with fn to_json(self) {
 
 ///|
 /// `IssueCommentEditedIssueActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssueCommentEditedIssueActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueCommentEditedIssueActiveLockReason with fn deserialize(d) {
@@ -56382,11 +57059,12 @@ pub impl ToJson for IssueCommentEditedIssueActiveLockReason with fn to_json(self
 
 ///|
 /// `IssueCommentEditedIssueAssigneeType`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssueCommentEditedIssueAssigneeType {
   Bot
   User
   Organization
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueCommentEditedIssueAssigneeType with fn deserialize(d) {
@@ -56453,6 +57131,7 @@ pub impl ToJson for IssueCommentEditedIssueAssigneeType with fn to_json(self) {
 
 ///|
 /// `IssueCommentEditedIssueAssignee`
+#derive(Debug, Eq)
 pub(all) struct IssueCommentEditedIssueAssignee {
   avatar_url : String
   email : String?
@@ -56474,7 +57153,7 @@ pub(all) struct IssueCommentEditedIssueAssignee {
   subscriptions_url : String
   type_ : IssueCommentEditedIssueAssigneeType
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueCommentEditedIssueAssignee` (fields with defaults are optional).
@@ -56616,12 +57295,13 @@ pub impl ToJson for IssueCommentEditedIssueAssignee with fn to_json(self) {
 
 ///|
 /// `IssueCommentEditedIssuePullRequest`
+#derive(Debug, Eq)
 pub(all) struct IssueCommentEditedIssuePullRequest {
   diff_url : String
   html_url : String
   patch_url : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueCommentEditedIssuePullRequest` (fields with defaults are optional).
@@ -56679,10 +57359,11 @@ pub impl ToJson for IssueCommentEditedIssuePullRequest with fn to_json(self) {
 
 ///|
 /// `IssueCommentEditedIssueState`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssueCommentEditedIssueState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssueCommentEditedIssueState with fn deserialize(d) {
@@ -56744,6 +57425,7 @@ pub impl ToJson for IssueCommentEditedIssueState with fn to_json(self) {
 
 ///|
 /// The [issue](https://docs.github.com/en/rest/reference/issues) the comment belongs to.
+#derive(Debug, Eq)
 pub(all) struct IssueCommentEditedIssue {
   active_lock_reason : IssueCommentEditedIssueActiveLockReason?
   assignee : IssueCommentEditedIssueAssignee?
@@ -56774,7 +57456,7 @@ pub(all) struct IssueCommentEditedIssue {
   /// URL for the issue
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssueCommentEditedIssue` (fields with defaults are optional).
@@ -56946,9 +57628,10 @@ pub impl ToJson for IssueCommentEditedIssue with fn to_json(self) {
 
 ///|
 /// The action that was performed.
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesAssignedAction {
   Assigned
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesAssignedAction with fn deserialize(d) {
@@ -57005,9 +57688,10 @@ pub impl ToJson for IssuesAssignedAction with fn to_json(self) {
 
 ///|
 /// The action that was performed.
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesClosedAction {
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesClosedAction with fn deserialize(d) {
@@ -57064,12 +57748,13 @@ pub impl ToJson for IssuesClosedAction with fn to_json(self) {
 
 ///|
 /// `IssuesClosedIssueActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesClosedIssueActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesClosedIssueActiveLockReason with fn deserialize(d) {
@@ -57141,12 +57826,13 @@ pub impl ToJson for IssuesClosedIssueActiveLockReason with fn to_json(self) {
 
 ///|
 /// `IssuesClosedIssuePullRequest`
+#derive(Debug, Eq)
 pub(all) struct IssuesClosedIssuePullRequest {
   diff_url : String?
   html_url : String?
   patch_url : String?
   url : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesClosedIssuePullRequest` (fields with defaults are optional).
@@ -57212,9 +57898,10 @@ pub impl ToJson for IssuesClosedIssuePullRequest with fn to_json(self) {
 
 ///|
 /// `IssuesClosedIssueState`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesClosedIssueState {
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesClosedIssueState with fn deserialize(d) {
@@ -57271,6 +57958,7 @@ pub impl ToJson for IssuesClosedIssueState with fn to_json(self) {
 
 ///|
 /// The [issue](https://docs.github.com/en/rest/reference/issues) itself.
+#derive(Debug, Eq)
 pub(all) struct IssuesClosedIssue {
   active_lock_reason : IssuesClosedIssueActiveLockReason?
   assignee : User?
@@ -57301,7 +57989,7 @@ pub(all) struct IssuesClosedIssue {
   /// URL for the issue
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesClosedIssue` (fields with defaults are optional).
@@ -57479,9 +58167,10 @@ pub impl ToJson for IssuesClosedIssue with fn to_json(self) {
 
 ///|
 /// `IssuesDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesDeletedAction with fn deserialize(d) {
@@ -57538,9 +58227,10 @@ pub impl ToJson for IssuesDeletedAction with fn to_json(self) {
 
 ///|
 /// `IssuesDemilestonedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesDemilestonedAction {
   Demilestoned
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesDemilestonedAction with fn deserialize(d) {
@@ -57597,12 +58287,13 @@ pub impl ToJson for IssuesDemilestonedAction with fn to_json(self) {
 
 ///|
 /// `IssuesDemilestonedIssueActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesDemilestonedIssueActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesDemilestonedIssueActiveLockReason with fn deserialize(d) {
@@ -57674,12 +58365,13 @@ pub impl ToJson for IssuesDemilestonedIssueActiveLockReason with fn to_json(self
 
 ///|
 /// `IssuesDemilestonedIssuePullRequest`
+#derive(Debug, Eq)
 pub(all) struct IssuesDemilestonedIssuePullRequest {
   diff_url : String?
   html_url : String?
   patch_url : String?
   url : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesDemilestonedIssuePullRequest` (fields with defaults are optional).
@@ -57745,10 +58437,11 @@ pub impl ToJson for IssuesDemilestonedIssuePullRequest with fn to_json(self) {
 
 ///|
 /// State of the issue; either 'open' or 'closed'
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesDemilestonedIssueState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesDemilestonedIssueState with fn deserialize(d) {
@@ -57810,6 +58503,7 @@ pub impl ToJson for IssuesDemilestonedIssueState with fn to_json(self) {
 
 ///|
 /// `IssuesDemilestonedIssue`
+#derive(Debug, Eq)
 pub(all) struct IssuesDemilestonedIssue {
   active_lock_reason : IssuesDemilestonedIssueActiveLockReason?
   assignee : User?
@@ -57841,7 +58535,7 @@ pub(all) struct IssuesDemilestonedIssue {
   /// URL for the issue
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesDemilestonedIssue` (fields with defaults are optional).
@@ -58021,9 +58715,10 @@ pub impl ToJson for IssuesDemilestonedIssue with fn to_json(self) {
 
 ///|
 /// `IssuesEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesEditedAction with fn deserialize(d) {
@@ -58080,10 +58775,11 @@ pub impl ToJson for IssuesEditedAction with fn to_json(self) {
 
 ///|
 /// `IssuesEditedChangesBody`
+#derive(Debug, Eq)
 pub(all) struct IssuesEditedChangesBody {
   /// The previous version of the body.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesEditedChangesBody` (fields with defaults are optional).
@@ -58126,10 +58822,11 @@ pub impl ToJson for IssuesEditedChangesBody with fn to_json(self) {
 
 ///|
 /// `IssuesEditedChangesTitle`
+#derive(Debug, Eq)
 pub(all) struct IssuesEditedChangesTitle {
   /// The previous version of the title.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesEditedChangesTitle` (fields with defaults are optional).
@@ -58172,10 +58869,11 @@ pub impl ToJson for IssuesEditedChangesTitle with fn to_json(self) {
 
 ///|
 /// The changes to the issue.
+#derive(Debug, Eq)
 pub(all) struct IssuesEditedChanges {
   body : IssuesEditedChangesBody?
   title : IssuesEditedChangesTitle?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesEditedChanges` (fields with defaults are optional).
@@ -58227,9 +58925,10 @@ pub impl ToJson for IssuesEditedChanges with fn to_json(self) {
 
 ///|
 /// `IssuesLabeledAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesLabeledAction {
   Labeled
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesLabeledAction with fn deserialize(d) {
@@ -58286,9 +58985,10 @@ pub impl ToJson for IssuesLabeledAction with fn to_json(self) {
 
 ///|
 /// `IssuesLockedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesLockedAction {
   Locked
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesLockedAction with fn deserialize(d) {
@@ -58345,12 +59045,13 @@ pub impl ToJson for IssuesLockedAction with fn to_json(self) {
 
 ///|
 /// `IssuesLockedIssueActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesLockedIssueActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesLockedIssueActiveLockReason with fn deserialize(d) {
@@ -58422,12 +59123,13 @@ pub impl ToJson for IssuesLockedIssueActiveLockReason with fn to_json(self) {
 
 ///|
 /// `IssuesLockedIssuePullRequest`
+#derive(Debug, Eq)
 pub(all) struct IssuesLockedIssuePullRequest {
   diff_url : String?
   html_url : String?
   patch_url : String?
   url : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesLockedIssuePullRequest` (fields with defaults are optional).
@@ -58493,10 +59195,11 @@ pub impl ToJson for IssuesLockedIssuePullRequest with fn to_json(self) {
 
 ///|
 /// State of the issue; either 'open' or 'closed'
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesLockedIssueState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesLockedIssueState with fn deserialize(d) {
@@ -58558,6 +59261,7 @@ pub impl ToJson for IssuesLockedIssueState with fn to_json(self) {
 
 ///|
 /// `IssuesLockedIssue`
+#derive(Debug, Eq)
 pub(all) struct IssuesLockedIssue {
   active_lock_reason : IssuesLockedIssueActiveLockReason?
   assignee : User?
@@ -58589,7 +59293,7 @@ pub(all) struct IssuesLockedIssue {
   /// URL for the issue
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesLockedIssue` (fields with defaults are optional).
@@ -58767,9 +59471,10 @@ pub impl ToJson for IssuesLockedIssue with fn to_json(self) {
 
 ///|
 /// `IssuesMilestonedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesMilestonedAction {
   Milestoned
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesMilestonedAction with fn deserialize(d) {
@@ -58826,12 +59531,13 @@ pub impl ToJson for IssuesMilestonedAction with fn to_json(self) {
 
 ///|
 /// `IssuesMilestonedIssueActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesMilestonedIssueActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesMilestonedIssueActiveLockReason with fn deserialize(d) {
@@ -58903,10 +59609,11 @@ pub impl ToJson for IssuesMilestonedIssueActiveLockReason with fn to_json(self) 
 
 ///|
 /// `IssuesMilestonedIssueMilestoneState`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesMilestonedIssueMilestoneState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesMilestonedIssueMilestoneState with fn deserialize(d) {
@@ -58968,6 +59675,7 @@ pub impl ToJson for IssuesMilestonedIssueMilestoneState with fn to_json(self) {
 
 ///|
 /// `IssuesMilestonedIssueMilestone`
+#derive(Debug, Eq)
 pub(all) struct IssuesMilestonedIssueMilestone {
   closed_at : @typify_rt.DateTimeUtc?
   closed_issues : Int64
@@ -58985,7 +59693,7 @@ pub(all) struct IssuesMilestonedIssueMilestone {
   title : String
   updated_at : @typify_rt.DateTimeUtc
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesMilestonedIssueMilestone` (fields with defaults are optional).
@@ -59103,12 +59811,13 @@ pub impl ToJson for IssuesMilestonedIssueMilestone with fn to_json(self) {
 
 ///|
 /// `IssuesMilestonedIssuePullRequest`
+#derive(Debug, Eq)
 pub(all) struct IssuesMilestonedIssuePullRequest {
   diff_url : String?
   html_url : String?
   patch_url : String?
   url : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesMilestonedIssuePullRequest` (fields with defaults are optional).
@@ -59174,10 +59883,11 @@ pub impl ToJson for IssuesMilestonedIssuePullRequest with fn to_json(self) {
 
 ///|
 /// State of the issue; either 'open' or 'closed'
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesMilestonedIssueState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesMilestonedIssueState with fn deserialize(d) {
@@ -59239,6 +59949,7 @@ pub impl ToJson for IssuesMilestonedIssueState with fn to_json(self) {
 
 ///|
 /// `IssuesMilestonedIssue`
+#derive(Debug, Eq)
 pub(all) struct IssuesMilestonedIssue {
   active_lock_reason : IssuesMilestonedIssueActiveLockReason?
   assignee : User?
@@ -59270,7 +59981,7 @@ pub(all) struct IssuesMilestonedIssue {
   /// URL for the issue
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesMilestonedIssue` (fields with defaults are optional).
@@ -59450,9 +60161,10 @@ pub impl ToJson for IssuesMilestonedIssue with fn to_json(self) {
 
 ///|
 /// `IssuesOpenedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesOpenedAction {
   Opened
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesOpenedAction with fn deserialize(d) {
@@ -59509,10 +60221,11 @@ pub impl ToJson for IssuesOpenedAction with fn to_json(self) {
 
 ///|
 /// `IssuesOpenedChanges`
+#derive(Debug, Eq)
 pub(all) struct IssuesOpenedChanges {
   old_issue : Issue
   old_repository : Repository
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesOpenedChanges` (fields with defaults are optional).
@@ -59560,12 +60273,13 @@ pub impl ToJson for IssuesOpenedChanges with fn to_json(self) {
 
 ///|
 /// `IssuesOpenedIssueActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesOpenedIssueActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesOpenedIssueActiveLockReason with fn deserialize(d) {
@@ -59637,12 +60351,13 @@ pub impl ToJson for IssuesOpenedIssueActiveLockReason with fn to_json(self) {
 
 ///|
 /// `IssuesOpenedIssuePullRequest`
+#derive(Debug, Eq)
 pub(all) struct IssuesOpenedIssuePullRequest {
   diff_url : String?
   html_url : String?
   patch_url : String?
   url : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesOpenedIssuePullRequest` (fields with defaults are optional).
@@ -59708,9 +60423,10 @@ pub impl ToJson for IssuesOpenedIssuePullRequest with fn to_json(self) {
 
 ///|
 /// `IssuesOpenedIssueState`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesOpenedIssueState {
   Open
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesOpenedIssueState with fn deserialize(d) {
@@ -59767,6 +60483,7 @@ pub impl ToJson for IssuesOpenedIssueState with fn to_json(self) {
 
 ///|
 /// `IssuesOpenedIssue`
+#derive(Debug, Eq)
 pub(all) struct IssuesOpenedIssue {
   active_lock_reason : IssuesOpenedIssueActiveLockReason?
   assignee : User?
@@ -59797,7 +60514,7 @@ pub(all) struct IssuesOpenedIssue {
   /// URL for the issue
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesOpenedIssue` (fields with defaults are optional).
@@ -59975,9 +60692,10 @@ pub impl ToJson for IssuesOpenedIssue with fn to_json(self) {
 
 ///|
 /// `IssuesPinnedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesPinnedAction {
   Pinned
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesPinnedAction with fn deserialize(d) {
@@ -60034,9 +60752,10 @@ pub impl ToJson for IssuesPinnedAction with fn to_json(self) {
 
 ///|
 /// `IssuesReopenedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesReopenedAction {
   Reopened
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesReopenedAction with fn deserialize(d) {
@@ -60093,12 +60812,13 @@ pub impl ToJson for IssuesReopenedAction with fn to_json(self) {
 
 ///|
 /// `IssuesReopenedIssueActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesReopenedIssueActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesReopenedIssueActiveLockReason with fn deserialize(d) {
@@ -60170,12 +60890,13 @@ pub impl ToJson for IssuesReopenedIssueActiveLockReason with fn to_json(self) {
 
 ///|
 /// `IssuesReopenedIssuePullRequest`
+#derive(Debug, Eq)
 pub(all) struct IssuesReopenedIssuePullRequest {
   diff_url : String?
   html_url : String?
   patch_url : String?
   url : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesReopenedIssuePullRequest` (fields with defaults are optional).
@@ -60241,9 +60962,10 @@ pub impl ToJson for IssuesReopenedIssuePullRequest with fn to_json(self) {
 
 ///|
 /// `IssuesReopenedIssueState`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesReopenedIssueState {
   Open
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesReopenedIssueState with fn deserialize(d) {
@@ -60300,6 +61022,7 @@ pub impl ToJson for IssuesReopenedIssueState with fn to_json(self) {
 
 ///|
 /// `IssuesReopenedIssue`
+#derive(Debug, Eq)
 pub(all) struct IssuesReopenedIssue {
   active_lock_reason : IssuesReopenedIssueActiveLockReason?
   assignee : User?
@@ -60330,7 +61053,7 @@ pub(all) struct IssuesReopenedIssue {
   /// URL for the issue
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesReopenedIssue` (fields with defaults are optional).
@@ -60508,9 +61231,10 @@ pub impl ToJson for IssuesReopenedIssue with fn to_json(self) {
 
 ///|
 /// `IssuesTransferredAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesTransferredAction {
   Transferred
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesTransferredAction with fn deserialize(d) {
@@ -60567,10 +61291,11 @@ pub impl ToJson for IssuesTransferredAction with fn to_json(self) {
 
 ///|
 /// `IssuesTransferredChanges`
+#derive(Debug, Eq)
 pub(all) struct IssuesTransferredChanges {
   new_issue : Issue
   new_repository : Repository
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesTransferredChanges` (fields with defaults are optional).
@@ -60618,9 +61343,10 @@ pub impl ToJson for IssuesTransferredChanges with fn to_json(self) {
 
 ///|
 /// The action that was performed.
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesUnassignedAction {
   Unassigned
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesUnassignedAction with fn deserialize(d) {
@@ -60677,9 +61403,10 @@ pub impl ToJson for IssuesUnassignedAction with fn to_json(self) {
 
 ///|
 /// `IssuesUnlabeledAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesUnlabeledAction {
   Unlabeled
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesUnlabeledAction with fn deserialize(d) {
@@ -60736,9 +61463,10 @@ pub impl ToJson for IssuesUnlabeledAction with fn to_json(self) {
 
 ///|
 /// `IssuesUnlockedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesUnlockedAction {
   Unlocked
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesUnlockedAction with fn deserialize(d) {
@@ -60795,7 +61523,8 @@ pub impl ToJson for IssuesUnlockedAction with fn to_json(self) {
 
 ///|
 /// `IssuesUnlockedIssueActiveLockReason`
-pub(all) struct IssuesUnlockedIssueActiveLockReason(Unit) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct IssuesUnlockedIssueActiveLockReason(Unit)
 
 ///|
 let issues_unlocked_issue_active_lock_reason_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
@@ -60840,12 +61569,13 @@ pub impl ToJson for IssuesUnlockedIssueActiveLockReason with fn to_json(self) {
 
 ///|
 /// `IssuesUnlockedIssuePullRequest`
+#derive(Debug, Eq)
 pub(all) struct IssuesUnlockedIssuePullRequest {
   diff_url : String?
   html_url : String?
   patch_url : String?
   url : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesUnlockedIssuePullRequest` (fields with defaults are optional).
@@ -60911,10 +61641,11 @@ pub impl ToJson for IssuesUnlockedIssuePullRequest with fn to_json(self) {
 
 ///|
 /// State of the issue; either 'open' or 'closed'
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesUnlockedIssueState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesUnlockedIssueState with fn deserialize(d) {
@@ -60976,6 +61707,7 @@ pub impl ToJson for IssuesUnlockedIssueState with fn to_json(self) {
 
 ///|
 /// `IssuesUnlockedIssue`
+#derive(Debug, Eq)
 pub(all) struct IssuesUnlockedIssue {
   active_lock_reason : IssuesUnlockedIssueActiveLockReason
   assignee : User?
@@ -61007,7 +61739,7 @@ pub(all) struct IssuesUnlockedIssue {
   /// URL for the issue
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `IssuesUnlockedIssue` (fields with defaults are optional).
@@ -61185,9 +61917,10 @@ pub impl ToJson for IssuesUnlockedIssue with fn to_json(self) {
 
 ///|
 /// `IssuesUnpinnedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum IssuesUnpinnedAction {
   Unpinned
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for IssuesUnpinnedAction with fn deserialize(d) {
@@ -61244,9 +61977,10 @@ pub impl ToJson for IssuesUnpinnedAction with fn to_json(self) {
 
 ///|
 /// `LabelCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum LabelCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelCreatedAction with fn deserialize(d) {
@@ -61303,9 +62037,10 @@ pub impl ToJson for LabelCreatedAction with fn to_json(self) {
 
 ///|
 /// `LabelDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum LabelDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelDeletedAction with fn deserialize(d) {
@@ -61362,9 +62097,10 @@ pub impl ToJson for LabelDeletedAction with fn to_json(self) {
 
 ///|
 /// `LabelEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum LabelEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for LabelEditedAction with fn deserialize(d) {
@@ -61421,10 +62157,11 @@ pub impl ToJson for LabelEditedAction with fn to_json(self) {
 
 ///|
 /// `LabelEditedChangesColor`
+#derive(Debug, Eq)
 pub(all) struct LabelEditedChangesColor {
   /// The previous version of the color if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LabelEditedChangesColor` (fields with defaults are optional).
@@ -61467,10 +62204,11 @@ pub impl ToJson for LabelEditedChangesColor with fn to_json(self) {
 
 ///|
 /// `LabelEditedChangesDescription`
+#derive(Debug, Eq)
 pub(all) struct LabelEditedChangesDescription {
   /// The previous version of the description if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LabelEditedChangesDescription` (fields with defaults are optional).
@@ -61513,10 +62251,11 @@ pub impl ToJson for LabelEditedChangesDescription with fn to_json(self) {
 
 ///|
 /// `LabelEditedChangesName`
+#derive(Debug, Eq)
 pub(all) struct LabelEditedChangesName {
   /// The previous version of the name if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LabelEditedChangesName` (fields with defaults are optional).
@@ -61559,11 +62298,12 @@ pub impl ToJson for LabelEditedChangesName with fn to_json(self) {
 
 ///|
 /// The changes to the label if the action was `edited`.
+#derive(Debug, Eq)
 pub(all) struct LabelEditedChanges {
   color : LabelEditedChangesColor?
   description : LabelEditedChangesDescription?
   name : LabelEditedChangesName?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `LabelEditedChanges` (fields with defaults are optional).
@@ -61622,13 +62362,14 @@ pub impl ToJson for LabelEditedChanges with fn to_json(self) {
 
 ///|
 /// `MarketplacePurchaseAccount`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchaseAccount {
   id : Int64
   login : String
   node_id : String
   organization_billing_email : String
   type_ : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchaseAccount` (fields with defaults are optional).
@@ -61691,6 +62432,7 @@ pub impl ToJson for MarketplacePurchaseAccount with fn to_json(self) {
 
 ///|
 /// `MarketplacePurchasePlan`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePlan {
   bullets : Array[String]
   description : String
@@ -61701,7 +62443,7 @@ pub(all) struct MarketplacePurchasePlan {
   price_model : String
   unit_name : String?
   yearly_price_in_cents : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePlan` (fields with defaults are optional).
@@ -61784,9 +62526,10 @@ pub impl ToJson for MarketplacePurchasePlan with fn to_json(self) {
 
 ///|
 /// `MarketplacePurchaseCancelledAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MarketplacePurchaseCancelledAction {
   Cancelled
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MarketplacePurchaseCancelledAction with fn deserialize(d) {
@@ -61843,13 +62586,14 @@ pub impl ToJson for MarketplacePurchaseCancelledAction with fn to_json(self) {
 
 ///|
 /// `MarketplacePurchaseCancelledMarketplacePurchaseAccount`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchaseCancelledMarketplacePurchaseAccount {
   id : Int64
   login : String
   node_id : String
   organization_billing_email : String
   type_ : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchaseCancelledMarketplacePurchaseAccount` (fields with defaults are optional).
@@ -61912,6 +62656,7 @@ pub impl ToJson for MarketplacePurchaseCancelledMarketplacePurchaseAccount with 
 
 ///|
 /// `MarketplacePurchaseCancelledMarketplacePurchasePlan`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchaseCancelledMarketplacePurchasePlan {
   bullets : Array[String]
   description : String
@@ -61922,7 +62667,7 @@ pub(all) struct MarketplacePurchaseCancelledMarketplacePurchasePlan {
   price_model : String
   unit_name : String?
   yearly_price_in_cents : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchaseCancelledMarketplacePurchasePlan` (fields with defaults are optional).
@@ -62005,6 +62750,7 @@ pub impl ToJson for MarketplacePurchaseCancelledMarketplacePurchasePlan with fn 
 
 ///|
 /// `MarketplacePurchaseCancelledMarketplacePurchase`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchaseCancelledMarketplacePurchase {
   account : MarketplacePurchaseCancelledMarketplacePurchaseAccount
   billing_cycle : String
@@ -62013,7 +62759,7 @@ pub(all) struct MarketplacePurchaseCancelledMarketplacePurchase {
   on_free_trial : Bool
   plan : MarketplacePurchaseCancelledMarketplacePurchasePlan
   unit_count : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchaseCancelledMarketplacePurchase` (fields with defaults are optional).
@@ -62086,6 +62832,7 @@ pub impl ToJson for MarketplacePurchaseCancelledMarketplacePurchase with fn to_j
 
 ///|
 /// `MarketplacePurchaseCancelledSender`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchaseCancelledSender {
   avatar_url : String
   email : String
@@ -62105,7 +62852,7 @@ pub(all) struct MarketplacePurchaseCancelledSender {
   subscriptions_url : String
   type_ : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchaseCancelledSender` (fields with defaults are optional).
@@ -62233,9 +62980,10 @@ pub impl ToJson for MarketplacePurchaseCancelledSender with fn to_json(self) {
 
 ///|
 /// `MarketplacePurchaseChangedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MarketplacePurchaseChangedAction {
   Changed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MarketplacePurchaseChangedAction with fn deserialize(d) {
@@ -62292,13 +63040,14 @@ pub impl ToJson for MarketplacePurchaseChangedAction with fn to_json(self) {
 
 ///|
 /// `MarketplacePurchaseChangedMarketplacePurchaseAccount`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchaseChangedMarketplacePurchaseAccount {
   id : Int64
   login : String
   node_id : String
   organization_billing_email : String
   type_ : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchaseChangedMarketplacePurchaseAccount` (fields with defaults are optional).
@@ -62361,6 +63110,7 @@ pub impl ToJson for MarketplacePurchaseChangedMarketplacePurchaseAccount with fn
 
 ///|
 /// `MarketplacePurchaseChangedMarketplacePurchasePlan`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchaseChangedMarketplacePurchasePlan {
   bullets : Array[String]
   description : String
@@ -62371,7 +63121,7 @@ pub(all) struct MarketplacePurchaseChangedMarketplacePurchasePlan {
   price_model : String
   unit_name : String?
   yearly_price_in_cents : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchaseChangedMarketplacePurchasePlan` (fields with defaults are optional).
@@ -62454,6 +63204,7 @@ pub impl ToJson for MarketplacePurchaseChangedMarketplacePurchasePlan with fn to
 
 ///|
 /// `MarketplacePurchaseChangedMarketplacePurchase`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchaseChangedMarketplacePurchase {
   account : MarketplacePurchaseChangedMarketplacePurchaseAccount
   billing_cycle : String
@@ -62462,7 +63213,7 @@ pub(all) struct MarketplacePurchaseChangedMarketplacePurchase {
   on_free_trial : Bool
   plan : MarketplacePurchaseChangedMarketplacePurchasePlan
   unit_count : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchaseChangedMarketplacePurchase` (fields with defaults are optional).
@@ -62535,6 +63286,7 @@ pub impl ToJson for MarketplacePurchaseChangedMarketplacePurchase with fn to_jso
 
 ///|
 /// `MarketplacePurchaseChangedSender`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchaseChangedSender {
   avatar_url : String
   email : String
@@ -62554,7 +63306,7 @@ pub(all) struct MarketplacePurchaseChangedSender {
   subscriptions_url : String
   type_ : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchaseChangedSender` (fields with defaults are optional).
@@ -62682,9 +63434,10 @@ pub impl ToJson for MarketplacePurchaseChangedSender with fn to_json(self) {
 
 ///|
 /// `MarketplacePurchasePendingChangeAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MarketplacePurchasePendingChangeAction {
   PendingChange
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MarketplacePurchasePendingChangeAction with fn deserialize(d) {
@@ -62741,13 +63494,14 @@ pub impl ToJson for MarketplacePurchasePendingChangeAction with fn to_json(self)
 
 ///|
 /// `MarketplacePurchasePendingChangeMarketplacePurchaseAccount`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePendingChangeMarketplacePurchaseAccount {
   id : Int64
   login : String
   node_id : String
   organization_billing_email : String
   type_ : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePendingChangeMarketplacePurchaseAccount` (fields with defaults are optional).
@@ -62810,6 +63564,7 @@ pub impl ToJson for MarketplacePurchasePendingChangeMarketplacePurchaseAccount w
 
 ///|
 /// `MarketplacePurchasePendingChangeMarketplacePurchasePlan`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePendingChangeMarketplacePurchasePlan {
   bullets : Array[String]
   description : String
@@ -62820,7 +63575,7 @@ pub(all) struct MarketplacePurchasePendingChangeMarketplacePurchasePlan {
   price_model : String
   unit_name : String?
   yearly_price_in_cents : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePendingChangeMarketplacePurchasePlan` (fields with defaults are optional).
@@ -62903,6 +63658,7 @@ pub impl ToJson for MarketplacePurchasePendingChangeMarketplacePurchasePlan with
 
 ///|
 /// `MarketplacePurchasePendingChangeMarketplacePurchase`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePendingChangeMarketplacePurchase {
   account : MarketplacePurchasePendingChangeMarketplacePurchaseAccount
   billing_cycle : String
@@ -62911,7 +63667,7 @@ pub(all) struct MarketplacePurchasePendingChangeMarketplacePurchase {
   on_free_trial : Bool
   plan : MarketplacePurchasePendingChangeMarketplacePurchasePlan
   unit_count : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePendingChangeMarketplacePurchase` (fields with defaults are optional).
@@ -62984,6 +63740,7 @@ pub impl ToJson for MarketplacePurchasePendingChangeMarketplacePurchase with fn 
 
 ///|
 /// `MarketplacePurchasePendingChangeSender`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePendingChangeSender {
   avatar_url : String
   email : String
@@ -63003,7 +63760,7 @@ pub(all) struct MarketplacePurchasePendingChangeSender {
   subscriptions_url : String
   type_ : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePendingChangeSender` (fields with defaults are optional).
@@ -63131,9 +63888,10 @@ pub impl ToJson for MarketplacePurchasePendingChangeSender with fn to_json(self)
 
 ///|
 /// `MarketplacePurchasePendingChangeCancelledAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MarketplacePurchasePendingChangeCancelledAction {
   PendingChangeCancelled
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MarketplacePurchasePendingChangeCancelledAction with fn deserialize(d) {
@@ -63190,13 +63948,14 @@ pub impl ToJson for MarketplacePurchasePendingChangeCancelledAction with fn to_j
 
 ///|
 /// `MarketplacePurchasePendingChangeCancelledMarketplacePurchaseAccount`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePendingChangeCancelledMarketplacePurchaseAccount {
   id : Int64
   login : String
   node_id : String
   organization_billing_email : String
   type_ : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePendingChangeCancelledMarketplacePurchaseAccount` (fields with defaults are optional).
@@ -63259,6 +64018,7 @@ pub impl ToJson for MarketplacePurchasePendingChangeCancelledMarketplacePurchase
 
 ///|
 /// `MarketplacePurchasePendingChangeCancelledMarketplacePurchasePlan`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePendingChangeCancelledMarketplacePurchasePlan {
   bullets : Array[String]
   description : String
@@ -63269,7 +64029,7 @@ pub(all) struct MarketplacePurchasePendingChangeCancelledMarketplacePurchasePlan
   price_model : String
   unit_name : String?
   yearly_price_in_cents : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePendingChangeCancelledMarketplacePurchasePlan` (fields with defaults are optional).
@@ -63352,6 +64112,7 @@ pub impl ToJson for MarketplacePurchasePendingChangeCancelledMarketplacePurchase
 
 ///|
 /// `MarketplacePurchasePendingChangeCancelledMarketplacePurchase`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePendingChangeCancelledMarketplacePurchase {
   account : MarketplacePurchasePendingChangeCancelledMarketplacePurchaseAccount
   billing_cycle : String
@@ -63360,7 +64121,7 @@ pub(all) struct MarketplacePurchasePendingChangeCancelledMarketplacePurchase {
   on_free_trial : Bool
   plan : MarketplacePurchasePendingChangeCancelledMarketplacePurchasePlan
   unit_count : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePendingChangeCancelledMarketplacePurchase` (fields with defaults are optional).
@@ -63433,6 +64194,7 @@ pub impl ToJson for MarketplacePurchasePendingChangeCancelledMarketplacePurchase
 
 ///|
 /// `MarketplacePurchasePendingChangeCancelledSender`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePendingChangeCancelledSender {
   avatar_url : String
   email : String
@@ -63452,7 +64214,7 @@ pub(all) struct MarketplacePurchasePendingChangeCancelledSender {
   subscriptions_url : String
   type_ : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePendingChangeCancelledSender` (fields with defaults are optional).
@@ -63580,9 +64342,10 @@ pub impl ToJson for MarketplacePurchasePendingChangeCancelledSender with fn to_j
 
 ///|
 /// `MarketplacePurchasePurchasedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MarketplacePurchasePurchasedAction {
   Purchased
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MarketplacePurchasePurchasedAction with fn deserialize(d) {
@@ -63639,13 +64402,14 @@ pub impl ToJson for MarketplacePurchasePurchasedAction with fn to_json(self) {
 
 ///|
 /// `MarketplacePurchasePurchasedMarketplacePurchaseAccount`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePurchasedMarketplacePurchaseAccount {
   id : Int64
   login : String
   node_id : String
   organization_billing_email : String
   type_ : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePurchasedMarketplacePurchaseAccount` (fields with defaults are optional).
@@ -63708,6 +64472,7 @@ pub impl ToJson for MarketplacePurchasePurchasedMarketplacePurchaseAccount with 
 
 ///|
 /// `MarketplacePurchasePurchasedMarketplacePurchasePlan`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePurchasedMarketplacePurchasePlan {
   bullets : Array[String]
   description : String
@@ -63718,7 +64483,7 @@ pub(all) struct MarketplacePurchasePurchasedMarketplacePurchasePlan {
   price_model : String
   unit_name : String?
   yearly_price_in_cents : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePurchasedMarketplacePurchasePlan` (fields with defaults are optional).
@@ -63801,6 +64566,7 @@ pub impl ToJson for MarketplacePurchasePurchasedMarketplacePurchasePlan with fn 
 
 ///|
 /// `MarketplacePurchasePurchasedMarketplacePurchase`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePurchasedMarketplacePurchase {
   account : MarketplacePurchasePurchasedMarketplacePurchaseAccount
   billing_cycle : String
@@ -63809,7 +64575,7 @@ pub(all) struct MarketplacePurchasePurchasedMarketplacePurchase {
   on_free_trial : Bool
   plan : MarketplacePurchasePurchasedMarketplacePurchasePlan
   unit_count : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePurchasedMarketplacePurchase` (fields with defaults are optional).
@@ -63882,6 +64648,7 @@ pub impl ToJson for MarketplacePurchasePurchasedMarketplacePurchase with fn to_j
 
 ///|
 /// `MarketplacePurchasePurchasedSender`
+#derive(Debug, Eq)
 pub(all) struct MarketplacePurchasePurchasedSender {
   avatar_url : String
   email : String
@@ -63901,7 +64668,7 @@ pub(all) struct MarketplacePurchasePurchasedSender {
   subscriptions_url : String
   type_ : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MarketplacePurchasePurchasedSender` (fields with defaults are optional).
@@ -64029,9 +64796,10 @@ pub impl ToJson for MarketplacePurchasePurchasedSender with fn to_json(self) {
 
 ///|
 /// `MemberAddedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MemberAddedAction {
   Added
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MemberAddedAction with fn deserialize(d) {
@@ -64088,10 +64856,11 @@ pub impl ToJson for MemberAddedAction with fn to_json(self) {
 
 ///|
 /// `MemberAddedChangesPermissionTo`
+#derive(Debug, Eq, Hash)
 pub(all) enum MemberAddedChangesPermissionTo {
   Write
   Admin
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MemberAddedChangesPermissionTo with fn deserialize(d) {
@@ -64153,9 +64922,10 @@ pub impl ToJson for MemberAddedChangesPermissionTo with fn to_json(self) {
 
 ///|
 /// `MemberAddedChangesPermission`
+#derive(Debug, Eq)
 pub(all) struct MemberAddedChangesPermission {
   to : MemberAddedChangesPermissionTo
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MemberAddedChangesPermission` (fields with defaults are optional).
@@ -64198,9 +64968,10 @@ pub impl ToJson for MemberAddedChangesPermission with fn to_json(self) {
 
 ///|
 /// `MemberAddedChanges`
+#derive(Debug, Eq)
 pub(all) struct MemberAddedChanges {
   permission : MemberAddedChangesPermission?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MemberAddedChanges` (fields with defaults are optional).
@@ -64245,9 +65016,10 @@ pub impl ToJson for MemberAddedChanges with fn to_json(self) {
 
 ///|
 /// `MemberEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MemberEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MemberEditedAction with fn deserialize(d) {
@@ -64304,10 +65076,11 @@ pub impl ToJson for MemberEditedAction with fn to_json(self) {
 
 ///|
 /// `MemberEditedChangesOldPermission`
+#derive(Debug, Eq)
 pub(all) struct MemberEditedChangesOldPermission {
   /// The previous permissions of the collaborator if the action was edited.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MemberEditedChangesOldPermission` (fields with defaults are optional).
@@ -64350,9 +65123,10 @@ pub impl ToJson for MemberEditedChangesOldPermission with fn to_json(self) {
 
 ///|
 /// The changes to the collaborator permissions
+#derive(Debug, Eq)
 pub(all) struct MemberEditedChanges {
   old_permission : MemberEditedChangesOldPermission
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MemberEditedChanges` (fields with defaults are optional).
@@ -64395,9 +65169,10 @@ pub impl ToJson for MemberEditedChanges with fn to_json(self) {
 
 ///|
 /// `MemberRemovedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MemberRemovedAction {
   Removed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MemberRemovedAction with fn deserialize(d) {
@@ -64454,9 +65229,10 @@ pub impl ToJson for MemberRemovedAction with fn to_json(self) {
 
 ///|
 /// `MembershipAddedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MembershipAddedAction {
   Added
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MembershipAddedAction with fn deserialize(d) {
@@ -64513,9 +65289,10 @@ pub impl ToJson for MembershipAddedAction with fn to_json(self) {
 
 ///|
 /// The scope of the membership. Currently, can only be `team`.
+#derive(Debug, Eq, Hash)
 pub(all) enum MembershipAddedScope {
   Team
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MembershipAddedScope with fn deserialize(d) {
@@ -64572,9 +65349,10 @@ pub impl ToJson for MembershipAddedScope with fn to_json(self) {
 
 ///|
 /// `MembershipRemovedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MembershipRemovedAction {
   Removed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MembershipRemovedAction with fn deserialize(d) {
@@ -64631,10 +65409,11 @@ pub impl ToJson for MembershipRemovedAction with fn to_json(self) {
 
 ///|
 /// The scope of the membership. Currently, can only be `team`.
+#derive(Debug, Eq, Hash)
 pub(all) enum MembershipRemovedScope {
   Team
   Organization
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MembershipRemovedScope with fn deserialize(d) {
@@ -64696,10 +65475,11 @@ pub impl ToJson for MembershipRemovedScope with fn to_json(self) {
 
 ///|
 /// The [team](https://docs.github.com/en/rest/reference/teams) for the membership.
+#derive(Debug, Eq)
 pub(all) enum MembershipRemovedTeam {
   Team(Team)
   Object(deleted~ : Bool?, id~ : Int64, name~ : String)
-} derive(Debug, Eq)
+}
 
 ///|
 let membership_removed_team_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["deleted", "id", "name"])
@@ -64768,9 +65548,10 @@ pub impl ToJson for MembershipRemovedTeam with fn to_json(self) {
 
 ///|
 /// `MetaDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MetaDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MetaDeletedAction with fn deserialize(d) {
@@ -64827,10 +65608,11 @@ pub impl ToJson for MetaDeletedAction with fn to_json(self) {
 
 ///|
 /// `MetaDeletedHookConfigContentType`
+#derive(Debug, Eq, Hash)
 pub(all) enum MetaDeletedHookConfigContentType {
   Json
   Form
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MetaDeletedHookConfigContentType with fn deserialize(d) {
@@ -64892,11 +65674,12 @@ pub impl ToJson for MetaDeletedHookConfigContentType with fn to_json(self) {
 
 ///|
 /// `MetaDeletedHookConfig`
+#derive(Debug, Eq)
 pub(all) struct MetaDeletedHookConfig {
   content_type : MetaDeletedHookConfigContentType
   insecure_ssl : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MetaDeletedHookConfig` (fields with defaults are optional).
@@ -64949,6 +65732,7 @@ pub impl ToJson for MetaDeletedHookConfig with fn to_json(self) {
 
 ///|
 /// The modified webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace.
+#derive(Debug, Eq)
 pub(all) struct MetaDeletedHook {
   active : Bool
   config : MetaDeletedHookConfig
@@ -64958,7 +65742,7 @@ pub(all) struct MetaDeletedHook {
   name : String
   type_ : String
   updated_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MetaDeletedHook` (fields with defaults are optional).
@@ -65036,10 +65820,11 @@ pub impl ToJson for MetaDeletedHook with fn to_json(self) {
 
 ///|
 /// The state of the milestone.
+#derive(Debug, Eq, Hash)
 pub(all) enum MilestoneState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MilestoneState with fn deserialize(d) {
@@ -65101,9 +65886,10 @@ pub impl ToJson for MilestoneState with fn to_json(self) {
 
 ///|
 /// `MilestoneClosedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MilestoneClosedAction {
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MilestoneClosedAction with fn deserialize(d) {
@@ -65160,9 +65946,10 @@ pub impl ToJson for MilestoneClosedAction with fn to_json(self) {
 
 ///|
 /// `MilestoneClosedMilestoneState`
+#derive(Debug, Eq, Hash)
 pub(all) enum MilestoneClosedMilestoneState {
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MilestoneClosedMilestoneState with fn deserialize(d) {
@@ -65219,6 +66006,7 @@ pub impl ToJson for MilestoneClosedMilestoneState with fn to_json(self) {
 
 ///|
 /// `MilestoneClosedMilestone`
+#derive(Debug, Eq)
 pub(all) struct MilestoneClosedMilestone {
   closed_at : @typify_rt.DateTimeUtc
   closed_issues : Int64
@@ -65238,7 +66026,7 @@ pub(all) struct MilestoneClosedMilestone {
   title : String
   updated_at : @typify_rt.DateTimeUtc
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MilestoneClosedMilestone` (fields with defaults are optional).
@@ -65356,9 +66144,10 @@ pub impl ToJson for MilestoneClosedMilestone with fn to_json(self) {
 
 ///|
 /// `MilestoneCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MilestoneCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MilestoneCreatedAction with fn deserialize(d) {
@@ -65415,9 +66204,10 @@ pub impl ToJson for MilestoneCreatedAction with fn to_json(self) {
 
 ///|
 /// `MilestoneCreatedMilestoneState`
+#derive(Debug, Eq, Hash)
 pub(all) enum MilestoneCreatedMilestoneState {
   Open
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MilestoneCreatedMilestoneState with fn deserialize(d) {
@@ -65474,6 +66264,7 @@ pub impl ToJson for MilestoneCreatedMilestoneState with fn to_json(self) {
 
 ///|
 /// `MilestoneCreatedMilestone`
+#derive(Debug, Eq)
 pub(all) struct MilestoneCreatedMilestone {
   closed_at : Unit
   closed_issues : Int64
@@ -65493,7 +66284,7 @@ pub(all) struct MilestoneCreatedMilestone {
   title : String
   updated_at : @typify_rt.DateTimeUtc
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MilestoneCreatedMilestone` (fields with defaults are optional).
@@ -65611,9 +66402,10 @@ pub impl ToJson for MilestoneCreatedMilestone with fn to_json(self) {
 
 ///|
 /// `MilestoneDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MilestoneDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MilestoneDeletedAction with fn deserialize(d) {
@@ -65670,9 +66462,10 @@ pub impl ToJson for MilestoneDeletedAction with fn to_json(self) {
 
 ///|
 /// `MilestoneEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MilestoneEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MilestoneEditedAction with fn deserialize(d) {
@@ -65729,10 +66522,11 @@ pub impl ToJson for MilestoneEditedAction with fn to_json(self) {
 
 ///|
 /// `MilestoneEditedChangesDescription`
+#derive(Debug, Eq)
 pub(all) struct MilestoneEditedChangesDescription {
   /// The previous version of the description if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MilestoneEditedChangesDescription` (fields with defaults are optional).
@@ -65775,10 +66569,11 @@ pub impl ToJson for MilestoneEditedChangesDescription with fn to_json(self) {
 
 ///|
 /// `MilestoneEditedChangesDueOn`
+#derive(Debug, Eq)
 pub(all) struct MilestoneEditedChangesDueOn {
   /// The previous version of the due date if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MilestoneEditedChangesDueOn` (fields with defaults are optional).
@@ -65821,10 +66616,11 @@ pub impl ToJson for MilestoneEditedChangesDueOn with fn to_json(self) {
 
 ///|
 /// `MilestoneEditedChangesTitle`
+#derive(Debug, Eq)
 pub(all) struct MilestoneEditedChangesTitle {
   /// The previous version of the title if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MilestoneEditedChangesTitle` (fields with defaults are optional).
@@ -65867,11 +66663,12 @@ pub impl ToJson for MilestoneEditedChangesTitle with fn to_json(self) {
 
 ///|
 /// The changes to the milestone if the action was `edited`.
+#derive(Debug, Eq)
 pub(all) struct MilestoneEditedChanges {
   description : MilestoneEditedChangesDescription?
   due_on : MilestoneEditedChangesDueOn?
   title : MilestoneEditedChangesTitle?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MilestoneEditedChanges` (fields with defaults are optional).
@@ -65930,9 +66727,10 @@ pub impl ToJson for MilestoneEditedChanges with fn to_json(self) {
 
 ///|
 /// `MilestoneOpenedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum MilestoneOpenedAction {
   Opened
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MilestoneOpenedAction with fn deserialize(d) {
@@ -65989,9 +66787,10 @@ pub impl ToJson for MilestoneOpenedAction with fn to_json(self) {
 
 ///|
 /// `MilestoneOpenedMilestoneState`
+#derive(Debug, Eq, Hash)
 pub(all) enum MilestoneOpenedMilestoneState {
   Open
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for MilestoneOpenedMilestoneState with fn deserialize(d) {
@@ -66048,6 +66847,7 @@ pub impl ToJson for MilestoneOpenedMilestoneState with fn to_json(self) {
 
 ///|
 /// `MilestoneOpenedMilestone`
+#derive(Debug, Eq)
 pub(all) struct MilestoneOpenedMilestone {
   closed_at : Unit
   closed_issues : Int64
@@ -66067,7 +66867,7 @@ pub(all) struct MilestoneOpenedMilestone {
   title : String
   updated_at : @typify_rt.DateTimeUtc
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `MilestoneOpenedMilestone` (fields with defaults are optional).
@@ -66185,9 +66985,10 @@ pub impl ToJson for MilestoneOpenedMilestone with fn to_json(self) {
 
 ///|
 /// `OrgBlockBlockedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum OrgBlockBlockedAction {
   Blocked
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrgBlockBlockedAction with fn deserialize(d) {
@@ -66244,9 +67045,10 @@ pub impl ToJson for OrgBlockBlockedAction with fn to_json(self) {
 
 ///|
 /// `OrgBlockUnblockedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum OrgBlockUnblockedAction {
   Unblocked
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrgBlockUnblockedAction with fn deserialize(d) {
@@ -66303,9 +67105,10 @@ pub impl ToJson for OrgBlockUnblockedAction with fn to_json(self) {
 
 ///|
 /// `OrganizationDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum OrganizationDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrganizationDeletedAction with fn deserialize(d) {
@@ -66362,9 +67165,10 @@ pub impl ToJson for OrganizationDeletedAction with fn to_json(self) {
 
 ///|
 /// `OrganizationMemberAddedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum OrganizationMemberAddedAction {
   MemberAdded
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrganizationMemberAddedAction with fn deserialize(d) {
@@ -66421,9 +67225,10 @@ pub impl ToJson for OrganizationMemberAddedAction with fn to_json(self) {
 
 ///|
 /// `OrganizationMemberInvitedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum OrganizationMemberInvitedAction {
   MemberInvited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrganizationMemberInvitedAction with fn deserialize(d) {
@@ -66480,6 +67285,7 @@ pub impl ToJson for OrganizationMemberInvitedAction with fn to_json(self) {
 
 ///|
 /// The invitation for the user or email if the action is `member_invited`.
+#derive(Debug, Eq)
 pub(all) struct OrganizationMemberInvitedInvitation {
   created_at : @typify_rt.DateTimeUtc
   email : String?
@@ -66492,7 +67298,7 @@ pub(all) struct OrganizationMemberInvitedInvitation {
   node_id : String
   role : String
   team_count : Double
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `OrganizationMemberInvitedInvitation` (fields with defaults are optional).
@@ -66585,9 +67391,10 @@ pub impl ToJson for OrganizationMemberInvitedInvitation with fn to_json(self) {
 
 ///|
 /// `OrganizationMemberRemovedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum OrganizationMemberRemovedAction {
   MemberRemoved
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrganizationMemberRemovedAction with fn deserialize(d) {
@@ -66644,9 +67451,10 @@ pub impl ToJson for OrganizationMemberRemovedAction with fn to_json(self) {
 
 ///|
 /// `OrganizationRenamedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum OrganizationRenamedAction {
   Renamed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for OrganizationRenamedAction with fn deserialize(d) {
@@ -66703,9 +67511,10 @@ pub impl ToJson for OrganizationRenamedAction with fn to_json(self) {
 
 ///|
 /// `PackagePublishedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PackagePublishedAction {
   Published
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PackagePublishedAction with fn deserialize(d) {
@@ -66762,6 +67571,7 @@ pub impl ToJson for PackagePublishedAction with fn to_json(self) {
 
 ///|
 /// `PackagePublishedPackagePackageVersionPackageFilesItem`
+#derive(Debug, Eq)
 pub(all) struct PackagePublishedPackagePackageVersionPackageFilesItem {
   content_type : String
   created_at : String
@@ -66774,7 +67584,7 @@ pub(all) struct PackagePublishedPackagePackageVersionPackageFilesItem {
   size : Int64
   state : String
   updated_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PackagePublishedPackagePackageVersionPackageFilesItem` (fields with defaults are optional).
@@ -66867,6 +67677,7 @@ pub impl ToJson for PackagePublishedPackagePackageVersionPackageFilesItem with f
 
 ///|
 /// `PackagePublishedPackagePackageVersionRelease`
+#derive(Debug, Eq)
 pub(all) struct PackagePublishedPackagePackageVersionRelease {
   author : User
   created_at : String
@@ -66879,7 +67690,7 @@ pub(all) struct PackagePublishedPackagePackageVersionRelease {
   tag_name : String
   target_commitish : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PackagePublishedPackagePackageVersionRelease` (fields with defaults are optional).
@@ -66972,6 +67783,7 @@ pub impl ToJson for PackagePublishedPackagePackageVersionRelease with fn to_json
 
 ///|
 /// `PackagePublishedPackagePackageVersion`
+#derive(Debug, Eq)
 pub(all) struct PackagePublishedPackagePackageVersion {
   author : User
   body : String
@@ -66996,7 +67808,7 @@ pub(all) struct PackagePublishedPackagePackageVersion {
   target_oid : String
   updated_at : String
   version : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PackagePublishedPackagePackageVersion` (fields with defaults are optional).
@@ -67149,13 +67961,14 @@ pub impl ToJson for PackagePublishedPackagePackageVersion with fn to_json(self) 
 
 ///|
 /// `PackagePublishedPackageRegistry`
+#derive(Debug, Eq)
 pub(all) struct PackagePublishedPackageRegistry {
   about_url : String
   name : String
   type_ : String
   url : String
   vendor : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PackagePublishedPackageRegistry` (fields with defaults are optional).
@@ -67218,6 +68031,7 @@ pub impl ToJson for PackagePublishedPackageRegistry with fn to_json(self) {
 
 ///|
 /// Information about the package.
+#derive(Debug, Eq)
 pub(all) struct PackagePublishedPackage {
   created_at : String
   description : String?
@@ -67231,7 +68045,7 @@ pub(all) struct PackagePublishedPackage {
   package_version : PackagePublishedPackagePackageVersion
   registry : PackagePublishedPackageRegistry
   updated_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PackagePublishedPackage` (fields with defaults are optional).
@@ -67329,9 +68143,10 @@ pub impl ToJson for PackagePublishedPackage with fn to_json(self) {
 
 ///|
 /// `PackageUpdatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PackageUpdatedAction {
   Updated
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PackageUpdatedAction with fn deserialize(d) {
@@ -67388,6 +68203,7 @@ pub impl ToJson for PackageUpdatedAction with fn to_json(self) {
 
 ///|
 /// `PackageUpdatedPackagePackageVersionPackageFilesItem`
+#derive(Debug, Eq)
 pub(all) struct PackageUpdatedPackagePackageVersionPackageFilesItem {
   content_type : String
   created_at : String
@@ -67400,7 +68216,7 @@ pub(all) struct PackageUpdatedPackagePackageVersionPackageFilesItem {
   size : Int64
   state : String
   updated_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PackageUpdatedPackagePackageVersionPackageFilesItem` (fields with defaults are optional).
@@ -67493,6 +68309,7 @@ pub impl ToJson for PackageUpdatedPackagePackageVersionPackageFilesItem with fn 
 
 ///|
 /// `PackageUpdatedPackagePackageVersionRelease`
+#derive(Debug, Eq)
 pub(all) struct PackageUpdatedPackagePackageVersionRelease {
   author : User
   created_at : String
@@ -67505,7 +68322,7 @@ pub(all) struct PackageUpdatedPackagePackageVersionRelease {
   tag_name : String
   target_commitish : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PackageUpdatedPackagePackageVersionRelease` (fields with defaults are optional).
@@ -67598,6 +68415,7 @@ pub impl ToJson for PackageUpdatedPackagePackageVersionRelease with fn to_json(s
 
 ///|
 /// `PackageUpdatedPackagePackageVersion`
+#derive(Debug, Eq)
 pub(all) struct PackageUpdatedPackagePackageVersion {
   author : User
   body : String
@@ -67622,7 +68440,7 @@ pub(all) struct PackageUpdatedPackagePackageVersion {
   target_oid : String
   updated_at : String
   version : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PackageUpdatedPackagePackageVersion` (fields with defaults are optional).
@@ -67775,13 +68593,14 @@ pub impl ToJson for PackageUpdatedPackagePackageVersion with fn to_json(self) {
 
 ///|
 /// `PackageUpdatedPackageRegistry`
+#derive(Debug, Eq)
 pub(all) struct PackageUpdatedPackageRegistry {
   about_url : String
   name : String
   type_ : String
   url : String
   vendor : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PackageUpdatedPackageRegistry` (fields with defaults are optional).
@@ -67844,6 +68663,7 @@ pub impl ToJson for PackageUpdatedPackageRegistry with fn to_json(self) {
 
 ///|
 /// Information about the package.
+#derive(Debug, Eq)
 pub(all) struct PackageUpdatedPackage {
   created_at : String
   description : String?
@@ -67857,7 +68677,7 @@ pub(all) struct PackageUpdatedPackage {
   package_version : PackageUpdatedPackagePackageVersion
   registry : PackageUpdatedPackageRegistry
   updated_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PackageUpdatedPackage` (fields with defaults are optional).
@@ -67955,9 +68775,10 @@ pub impl ToJson for PackageUpdatedPackage with fn to_json(self) {
 
 ///|
 /// `PageBuildEventBuildError`
+#derive(Debug, Eq)
 pub(all) struct PageBuildEventBuildError {
   message : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PageBuildEventBuildError` (fields with defaults are optional).
@@ -68000,6 +68821,7 @@ pub impl ToJson for PageBuildEventBuildError with fn to_json(self) {
 
 ///|
 /// The [List GitHub Pages builds](https://docs.github.com/en/rest/reference/repos#list-github-pages-builds) itself.
+#derive(Debug, Eq)
 pub(all) struct PageBuildEventBuild {
   commit : String
   created_at : String
@@ -68009,7 +68831,7 @@ pub(all) struct PageBuildEventBuild {
   status : String
   updated_at : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PageBuildEventBuild` (fields with defaults are optional).
@@ -68087,10 +68909,11 @@ pub impl ToJson for PageBuildEventBuild with fn to_json(self) {
 
 ///|
 /// `PingEventHookConfigContentType`
+#derive(Debug, Eq, Hash)
 pub(all) enum PingEventHookConfigContentType {
   Json
   Form
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PingEventHookConfigContentType with fn deserialize(d) {
@@ -68152,12 +68975,13 @@ pub impl ToJson for PingEventHookConfigContentType with fn to_json(self) {
 
 ///|
 /// `PingEventHookConfig`
+#derive(Debug, Eq)
 pub(all) struct PingEventHookConfig {
   content_type : PingEventHookConfigContentType
   insecure_ssl : String
   secret : String?
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PingEventHookConfig` (fields with defaults are optional).
@@ -68217,11 +69041,12 @@ pub impl ToJson for PingEventHookConfig with fn to_json(self) {
 
 ///|
 /// `PingEventHookLastResponse`
+#derive(Debug, Eq)
 pub(all) struct PingEventHookLastResponse {
   code : Unit
   message : Unit
   status : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PingEventHookLastResponse` (fields with defaults are optional).
@@ -68274,6 +69099,7 @@ pub impl ToJson for PingEventHookLastResponse with fn to_json(self) {
 
 ///|
 /// The [webhook configuration](https://docs.github.com/en/rest/reference/repos#get-a-repository-webhook).
+#derive(Debug, Eq)
 pub(all) struct PingEventHook {
   active : Bool
   /// When you register a new GitHub App, GitHub sends a ping event to the **webhook URL** you specified during registration. The event contains the `app_id`, which is required for [authenticating](https://docs.github.com/en/apps/building-integrations/setting-up-and-registering-github-apps/about-authentication-options-for-github-apps) an app.
@@ -68289,7 +69115,7 @@ pub(all) struct PingEventHook {
   type_ : String
   updated_at : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PingEventHook` (fields with defaults are optional).
@@ -68398,10 +69224,11 @@ pub impl ToJson for PingEventHook with fn to_json(self) {
 
 ///|
 /// State of the project; either 'open' or 'closed'
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectState with fn deserialize(d) {
@@ -68463,9 +69290,10 @@ pub impl ToJson for ProjectState with fn to_json(self) {
 
 ///|
 /// `ProjectClosedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectClosedAction {
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectClosedAction with fn deserialize(d) {
@@ -68522,9 +69350,10 @@ pub impl ToJson for ProjectClosedAction with fn to_json(self) {
 
 ///|
 /// `ProjectCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectCreatedAction with fn deserialize(d) {
@@ -68581,9 +69410,10 @@ pub impl ToJson for ProjectCreatedAction with fn to_json(self) {
 
 ///|
 /// `ProjectDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectDeletedAction with fn deserialize(d) {
@@ -68640,9 +69470,10 @@ pub impl ToJson for ProjectDeletedAction with fn to_json(self) {
 
 ///|
 /// `ProjectEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectEditedAction with fn deserialize(d) {
@@ -68699,10 +69530,11 @@ pub impl ToJson for ProjectEditedAction with fn to_json(self) {
 
 ///|
 /// `ProjectEditedChangesBody`
+#derive(Debug, Eq)
 pub(all) struct ProjectEditedChangesBody {
   /// The previous version of the body if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectEditedChangesBody` (fields with defaults are optional).
@@ -68745,10 +69577,11 @@ pub impl ToJson for ProjectEditedChangesBody with fn to_json(self) {
 
 ///|
 /// `ProjectEditedChangesName`
+#derive(Debug, Eq)
 pub(all) struct ProjectEditedChangesName {
   /// The changes to the project if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectEditedChangesName` (fields with defaults are optional).
@@ -68791,10 +69624,11 @@ pub impl ToJson for ProjectEditedChangesName with fn to_json(self) {
 
 ///|
 /// The changes to the project if the action was `edited`.
+#derive(Debug, Eq)
 pub(all) struct ProjectEditedChanges {
   body : ProjectEditedChangesBody?
   name : ProjectEditedChangesName?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectEditedChanges` (fields with defaults are optional).
@@ -68846,9 +69680,10 @@ pub impl ToJson for ProjectEditedChanges with fn to_json(self) {
 
 ///|
 /// `ProjectReopenedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectReopenedAction {
   Reopened
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectReopenedAction with fn deserialize(d) {
@@ -68905,9 +69740,10 @@ pub impl ToJson for ProjectReopenedAction with fn to_json(self) {
 
 ///|
 /// `ProjectCardConvertedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectCardConvertedAction {
   Converted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectCardConvertedAction with fn deserialize(d) {
@@ -68964,9 +69800,10 @@ pub impl ToJson for ProjectCardConvertedAction with fn to_json(self) {
 
 ///|
 /// `ProjectCardConvertedChangesNote`
+#derive(Debug, Eq)
 pub(all) struct ProjectCardConvertedChangesNote {
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectCardConvertedChangesNote` (fields with defaults are optional).
@@ -69009,9 +69846,10 @@ pub impl ToJson for ProjectCardConvertedChangesNote with fn to_json(self) {
 
 ///|
 /// `ProjectCardConvertedChanges`
+#derive(Debug, Eq)
 pub(all) struct ProjectCardConvertedChanges {
   note : ProjectCardConvertedChangesNote
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectCardConvertedChanges` (fields with defaults are optional).
@@ -69054,9 +69892,10 @@ pub impl ToJson for ProjectCardConvertedChanges with fn to_json(self) {
 
 ///|
 /// `ProjectCardCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectCardCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectCardCreatedAction with fn deserialize(d) {
@@ -69113,9 +69952,10 @@ pub impl ToJson for ProjectCardCreatedAction with fn to_json(self) {
 
 ///|
 /// `ProjectCardDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectCardDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectCardDeletedAction with fn deserialize(d) {
@@ -69172,9 +70012,10 @@ pub impl ToJson for ProjectCardDeletedAction with fn to_json(self) {
 
 ///|
 /// `ProjectCardEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectCardEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectCardEditedAction with fn deserialize(d) {
@@ -69231,9 +70072,10 @@ pub impl ToJson for ProjectCardEditedAction with fn to_json(self) {
 
 ///|
 /// `ProjectCardEditedChangesNote`
+#derive(Debug, Eq)
 pub(all) struct ProjectCardEditedChangesNote {
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectCardEditedChangesNote` (fields with defaults are optional).
@@ -69276,9 +70118,10 @@ pub impl ToJson for ProjectCardEditedChangesNote with fn to_json(self) {
 
 ///|
 /// `ProjectCardEditedChanges`
+#derive(Debug, Eq)
 pub(all) struct ProjectCardEditedChanges {
   note : ProjectCardEditedChangesNote
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectCardEditedChanges` (fields with defaults are optional).
@@ -69321,9 +70164,10 @@ pub impl ToJson for ProjectCardEditedChanges with fn to_json(self) {
 
 ///|
 /// `ProjectCardMovedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectCardMovedAction {
   Moved
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectCardMovedAction with fn deserialize(d) {
@@ -69380,9 +70224,10 @@ pub impl ToJson for ProjectCardMovedAction with fn to_json(self) {
 
 ///|
 /// `ProjectCardMovedChangesColumnId`
+#derive(Debug, Eq)
 pub(all) struct ProjectCardMovedChangesColumnId {
   from : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectCardMovedChangesColumnId` (fields with defaults are optional).
@@ -69425,9 +70270,10 @@ pub impl ToJson for ProjectCardMovedChangesColumnId with fn to_json(self) {
 
 ///|
 /// `ProjectCardMovedChanges`
+#derive(Debug, Eq)
 pub(all) struct ProjectCardMovedChanges {
   column_id : ProjectCardMovedChangesColumnId
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectCardMovedChanges` (fields with defaults are optional).
@@ -69470,6 +70316,7 @@ pub impl ToJson for ProjectCardMovedChanges with fn to_json(self) {
 
 ///|
 /// `ProjectCardMovedProjectCard`
+#derive(Debug, Eq)
 pub(all) struct ProjectCardMovedProjectCard {
   after_id : Unit
   /// Whether or not the card is archived
@@ -69486,7 +70333,7 @@ pub(all) struct ProjectCardMovedProjectCard {
   project_url : String
   updated_at : @typify_rt.DateTimeUtc
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectCardMovedProjectCard` (fields with defaults are optional).
@@ -69591,9 +70438,10 @@ pub impl ToJson for ProjectCardMovedProjectCard with fn to_json(self) {
 
 ///|
 /// `ProjectColumnCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectColumnCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectColumnCreatedAction with fn deserialize(d) {
@@ -69650,9 +70498,10 @@ pub impl ToJson for ProjectColumnCreatedAction with fn to_json(self) {
 
 ///|
 /// `ProjectColumnDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectColumnDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectColumnDeletedAction with fn deserialize(d) {
@@ -69709,9 +70558,10 @@ pub impl ToJson for ProjectColumnDeletedAction with fn to_json(self) {
 
 ///|
 /// `ProjectColumnEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectColumnEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectColumnEditedAction with fn deserialize(d) {
@@ -69768,9 +70618,10 @@ pub impl ToJson for ProjectColumnEditedAction with fn to_json(self) {
 
 ///|
 /// `ProjectColumnEditedChangesName`
+#derive(Debug, Eq)
 pub(all) struct ProjectColumnEditedChangesName {
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectColumnEditedChangesName` (fields with defaults are optional).
@@ -69813,9 +70664,10 @@ pub impl ToJson for ProjectColumnEditedChangesName with fn to_json(self) {
 
 ///|
 /// `ProjectColumnEditedChanges`
+#derive(Debug, Eq)
 pub(all) struct ProjectColumnEditedChanges {
   name : ProjectColumnEditedChangesName?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ProjectColumnEditedChanges` (fields with defaults are optional).
@@ -69860,9 +70712,10 @@ pub impl ToJson for ProjectColumnEditedChanges with fn to_json(self) {
 
 ///|
 /// `ProjectColumnMovedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ProjectColumnMovedAction {
   Moved
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ProjectColumnMovedAction with fn deserialize(d) {
@@ -69919,10 +70772,11 @@ pub impl ToJson for ProjectColumnMovedAction with fn to_json(self) {
 
 ///|
 /// `PublicEventRepositoryCreatedAt`
+#derive(Debug, Eq)
 pub(all) enum PublicEventRepositoryCreatedAt {
   Integer(Int64)
   DateTime(@typify_rt.DateTimeUtc)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PublicEventRepositoryCreatedAt with fn deserialize(d) {
@@ -69966,13 +70820,14 @@ pub impl ToJson for PublicEventRepositoryCreatedAt with fn to_json(self) {
 
 ///|
 /// `PublicEventRepositoryPermissions`
+#derive(Debug, Eq)
 pub(all) struct PublicEventRepositoryPermissions {
   admin : Bool
   maintain : Bool?
   pull : Bool
   push : Bool
   triage : Bool?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PublicEventRepositoryPermissions` (fields with defaults are optional).
@@ -70039,11 +70894,12 @@ pub impl ToJson for PublicEventRepositoryPermissions with fn to_json(self) {
 
 ///|
 /// `PublicEventRepositoryPushedAt`
+#derive(Debug, Eq)
 pub(all) enum PublicEventRepositoryPushedAt {
   Integer(Int64)
   DateTime(@typify_rt.DateTimeUtc)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PublicEventRepositoryPushedAt with fn deserialize(d) {
@@ -70096,6 +70952,7 @@ pub impl ToJson for PublicEventRepositoryPushedAt with fn to_json(self) {
 
 ///|
 /// `PublicEventRepository`
+#derive(Debug, Eq)
 pub(all) struct PublicEventRepository {
   /// Whether to allow auto-merge for pull requests.
   allow_auto_merge : Bool
@@ -70196,7 +71053,7 @@ pub(all) struct PublicEventRepository {
   url : String
   watchers : Int64
   watchers_count : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PublicEventRepository` (fields with defaults are optional).
@@ -70683,6 +71540,7 @@ pub impl ToJson for PublicEventRepository with fn to_json(self) {
 
 ///|
 /// `PullRequestLinks`
+#derive(Debug, Eq)
 pub(all) struct PullRequestLinks {
   comments : Link
   commits : Link
@@ -70692,7 +71550,7 @@ pub(all) struct PullRequestLinks {
   review_comments : Link
   self_ : Link
   statuses : Link
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestLinks` (fields with defaults are optional).
@@ -70770,12 +71628,13 @@ pub impl ToJson for PullRequestLinks with fn to_json(self) {
 
 ///|
 /// `PullRequestActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestActiveLockReason with fn deserialize(d) {
@@ -70847,13 +71706,14 @@ pub impl ToJson for PullRequestActiveLockReason with fn to_json(self) {
 
 ///|
 /// `PullRequestBase`
+#derive(Debug, Eq)
 pub(all) struct PullRequestBase {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestBase` (fields with defaults are optional).
@@ -70916,13 +71776,14 @@ pub impl ToJson for PullRequestBase with fn to_json(self) {
 
 ///|
 /// `PullRequestHead`
+#derive(Debug, Eq)
 pub(all) struct PullRequestHead {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestHead` (fields with defaults are optional).
@@ -70985,10 +71846,11 @@ pub impl ToJson for PullRequestHead with fn to_json(self) {
 
 ///|
 /// `PullRequestRequestedReviewersItem`
+#derive(Debug, Eq)
 pub(all) enum PullRequestRequestedReviewersItem {
   User(User)
   Team(Team)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestRequestedReviewersItem with fn deserialize(d) {
@@ -71032,10 +71894,11 @@ pub impl ToJson for PullRequestRequestedReviewersItem with fn to_json(self) {
 
 ///|
 /// State of this Pull Request. Either `open` or `closed`.
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestState with fn deserialize(d) {
@@ -71097,11 +71960,12 @@ pub impl ToJson for PullRequestState with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewCommentLinks`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentLinks {
   html : Link
   pull_request : Link
   self_ : Link
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentLinks` (fields with defaults are optional).
@@ -71154,10 +72018,11 @@ pub impl ToJson for PullRequestReviewCommentLinks with fn to_json(self) {
 
 ///|
 /// The side of the first line of the range for a multi-line comment.
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewCommentSide {
   Left
   Right
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentSide with fn deserialize(d) {
@@ -71219,10 +72084,11 @@ pub impl ToJson for PullRequestReviewCommentSide with fn to_json(self) {
 
 ///|
 /// The side of the first line of the range for a multi-line comment.
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewCommentStartSide {
   Left
   Right
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentStartSide with fn deserialize(d) {
@@ -71284,9 +72150,10 @@ pub impl ToJson for PullRequestReviewCommentStartSide with fn to_json(self) {
 
 ///|
 /// `PullRequestAssignedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestAssignedAction {
   Assigned
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestAssignedAction with fn deserialize(d) {
@@ -71343,9 +72210,10 @@ pub impl ToJson for PullRequestAssignedAction with fn to_json(self) {
 
 ///|
 /// `PullRequestAutoMergeDisabledAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestAutoMergeDisabledAction {
   AutoMergeDisabled
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestAutoMergeDisabledAction with fn deserialize(d) {
@@ -71402,9 +72270,10 @@ pub impl ToJson for PullRequestAutoMergeDisabledAction with fn to_json(self) {
 
 ///|
 /// `PullRequestAutoMergeEnabledAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestAutoMergeEnabledAction {
   AutoMergeEnabled
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestAutoMergeEnabledAction with fn deserialize(d) {
@@ -71461,9 +72330,10 @@ pub impl ToJson for PullRequestAutoMergeEnabledAction with fn to_json(self) {
 
 ///|
 /// `PullRequestClosedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestClosedAction {
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestClosedAction with fn deserialize(d) {
@@ -71520,6 +72390,7 @@ pub impl ToJson for PullRequestClosedAction with fn to_json(self) {
 
 ///|
 /// `PullRequestClosedPullRequestLinks`
+#derive(Debug, Eq)
 pub(all) struct PullRequestClosedPullRequestLinks {
   comments : Link
   commits : Link
@@ -71529,7 +72400,7 @@ pub(all) struct PullRequestClosedPullRequestLinks {
   review_comments : Link
   self_ : Link
   statuses : Link
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestClosedPullRequestLinks` (fields with defaults are optional).
@@ -71607,12 +72478,13 @@ pub impl ToJson for PullRequestClosedPullRequestLinks with fn to_json(self) {
 
 ///|
 /// `PullRequestClosedPullRequestActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestClosedPullRequestActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestClosedPullRequestActiveLockReason with fn deserialize(d) {
@@ -71684,13 +72556,14 @@ pub impl ToJson for PullRequestClosedPullRequestActiveLockReason with fn to_json
 
 ///|
 /// `PullRequestClosedPullRequestBase`
+#derive(Debug, Eq)
 pub(all) struct PullRequestClosedPullRequestBase {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestClosedPullRequestBase` (fields with defaults are optional).
@@ -71753,13 +72626,14 @@ pub impl ToJson for PullRequestClosedPullRequestBase with fn to_json(self) {
 
 ///|
 /// `PullRequestClosedPullRequestHead`
+#derive(Debug, Eq)
 pub(all) struct PullRequestClosedPullRequestHead {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestClosedPullRequestHead` (fields with defaults are optional).
@@ -71822,10 +72696,11 @@ pub impl ToJson for PullRequestClosedPullRequestHead with fn to_json(self) {
 
 ///|
 /// `PullRequestClosedPullRequestRequestedReviewersItem`
+#derive(Debug, Eq)
 pub(all) enum PullRequestClosedPullRequestRequestedReviewersItem {
   User(User)
   Team(Team)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestClosedPullRequestRequestedReviewersItem with fn deserialize(d) {
@@ -71869,9 +72744,10 @@ pub impl ToJson for PullRequestClosedPullRequestRequestedReviewersItem with fn t
 
 ///|
 /// `PullRequestClosedPullRequestState`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestClosedPullRequestState {
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestClosedPullRequestState with fn deserialize(d) {
@@ -71928,6 +72804,7 @@ pub impl ToJson for PullRequestClosedPullRequestState with fn to_json(self) {
 
 ///|
 /// `PullRequestClosedPullRequest`
+#derive(Debug, Eq)
 pub(all) struct PullRequestClosedPullRequest {
   active_lock_reason : PullRequestClosedPullRequestActiveLockReason?
   additions : Int64
@@ -71981,7 +72858,7 @@ pub(all) struct PullRequestClosedPullRequest {
   updated_at : @typify_rt.DateTimeUtc
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestClosedPullRequest` (fields with defaults are optional).
@@ -72259,9 +73136,10 @@ pub impl ToJson for PullRequestClosedPullRequest with fn to_json(self) {
 
 ///|
 /// `PullRequestConvertedToDraftAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestConvertedToDraftAction {
   ConvertedToDraft
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestConvertedToDraftAction with fn deserialize(d) {
@@ -72318,6 +73196,7 @@ pub impl ToJson for PullRequestConvertedToDraftAction with fn to_json(self) {
 
 ///|
 /// `PullRequestConvertedToDraftPullRequestLinks`
+#derive(Debug, Eq)
 pub(all) struct PullRequestConvertedToDraftPullRequestLinks {
   comments : Link
   commits : Link
@@ -72327,7 +73206,7 @@ pub(all) struct PullRequestConvertedToDraftPullRequestLinks {
   review_comments : Link
   self_ : Link
   statuses : Link
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestConvertedToDraftPullRequestLinks` (fields with defaults are optional).
@@ -72405,12 +73284,13 @@ pub impl ToJson for PullRequestConvertedToDraftPullRequestLinks with fn to_json(
 
 ///|
 /// `PullRequestConvertedToDraftPullRequestActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestConvertedToDraftPullRequestActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestConvertedToDraftPullRequestActiveLockReason with fn deserialize(d) {
@@ -72482,13 +73362,14 @@ pub impl ToJson for PullRequestConvertedToDraftPullRequestActiveLockReason with 
 
 ///|
 /// `PullRequestConvertedToDraftPullRequestBase`
+#derive(Debug, Eq)
 pub(all) struct PullRequestConvertedToDraftPullRequestBase {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestConvertedToDraftPullRequestBase` (fields with defaults are optional).
@@ -72551,13 +73432,14 @@ pub impl ToJson for PullRequestConvertedToDraftPullRequestBase with fn to_json(s
 
 ///|
 /// `PullRequestConvertedToDraftPullRequestHead`
+#derive(Debug, Eq)
 pub(all) struct PullRequestConvertedToDraftPullRequestHead {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestConvertedToDraftPullRequestHead` (fields with defaults are optional).
@@ -72620,10 +73502,11 @@ pub impl ToJson for PullRequestConvertedToDraftPullRequestHead with fn to_json(s
 
 ///|
 /// `PullRequestConvertedToDraftPullRequestRequestedReviewersItem`
+#derive(Debug, Eq)
 pub(all) enum PullRequestConvertedToDraftPullRequestRequestedReviewersItem {
   User(User)
   Team(Team)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestConvertedToDraftPullRequestRequestedReviewersItem with fn deserialize(d) {
@@ -72667,10 +73550,11 @@ pub impl ToJson for PullRequestConvertedToDraftPullRequestRequestedReviewersItem
 
 ///|
 /// State of this Pull Request. Either `open` or `closed`.
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestConvertedToDraftPullRequestState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestConvertedToDraftPullRequestState with fn deserialize(d) {
@@ -72732,6 +73616,7 @@ pub impl ToJson for PullRequestConvertedToDraftPullRequestState with fn to_json(
 
 ///|
 /// `PullRequestConvertedToDraftPullRequest`
+#derive(Debug, Eq)
 pub(all) struct PullRequestConvertedToDraftPullRequest {
   active_lock_reason : PullRequestConvertedToDraftPullRequestActiveLockReason?
   additions : Int64
@@ -72785,7 +73670,7 @@ pub(all) struct PullRequestConvertedToDraftPullRequest {
   updated_at : @typify_rt.DateTimeUtc
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestConvertedToDraftPullRequest` (fields with defaults are optional).
@@ -73063,9 +73948,10 @@ pub impl ToJson for PullRequestConvertedToDraftPullRequest with fn to_json(self)
 
 ///|
 /// `PullRequestEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestEditedAction with fn deserialize(d) {
@@ -73122,10 +74008,11 @@ pub impl ToJson for PullRequestEditedAction with fn to_json(self) {
 
 ///|
 /// `PullRequestEditedChangesBody`
+#derive(Debug, Eq)
 pub(all) struct PullRequestEditedChangesBody {
   /// The previous version of the body if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestEditedChangesBody` (fields with defaults are optional).
@@ -73168,10 +74055,11 @@ pub impl ToJson for PullRequestEditedChangesBody with fn to_json(self) {
 
 ///|
 /// `PullRequestEditedChangesTitle`
+#derive(Debug, Eq)
 pub(all) struct PullRequestEditedChangesTitle {
   /// The previous version of the title if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestEditedChangesTitle` (fields with defaults are optional).
@@ -73214,10 +74102,11 @@ pub impl ToJson for PullRequestEditedChangesTitle with fn to_json(self) {
 
 ///|
 /// The changes to the comment if the action was `edited`.
+#derive(Debug, Eq)
 pub(all) struct PullRequestEditedChanges {
   body : PullRequestEditedChangesBody?
   title : PullRequestEditedChangesTitle?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestEditedChanges` (fields with defaults are optional).
@@ -73269,9 +74158,10 @@ pub impl ToJson for PullRequestEditedChanges with fn to_json(self) {
 
 ///|
 /// `PullRequestLabeledAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestLabeledAction {
   Labeled
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestLabeledAction with fn deserialize(d) {
@@ -73328,9 +74218,10 @@ pub impl ToJson for PullRequestLabeledAction with fn to_json(self) {
 
 ///|
 /// `PullRequestLockedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestLockedAction {
   Locked
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestLockedAction with fn deserialize(d) {
@@ -73387,9 +74278,10 @@ pub impl ToJson for PullRequestLockedAction with fn to_json(self) {
 
 ///|
 /// `PullRequestOpenedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestOpenedAction {
   Opened
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestOpenedAction with fn deserialize(d) {
@@ -73446,6 +74338,7 @@ pub impl ToJson for PullRequestOpenedAction with fn to_json(self) {
 
 ///|
 /// `PullRequestOpenedPullRequestLinks`
+#derive(Debug, Eq)
 pub(all) struct PullRequestOpenedPullRequestLinks {
   comments : Link
   commits : Link
@@ -73455,7 +74348,7 @@ pub(all) struct PullRequestOpenedPullRequestLinks {
   review_comments : Link
   self_ : Link
   statuses : Link
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestOpenedPullRequestLinks` (fields with defaults are optional).
@@ -73533,7 +74426,8 @@ pub impl ToJson for PullRequestOpenedPullRequestLinks with fn to_json(self) {
 
 ///|
 /// `PullRequestOpenedPullRequestActiveLockReason`
-pub(all) struct PullRequestOpenedPullRequestActiveLockReason(Unit) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct PullRequestOpenedPullRequestActiveLockReason(Unit)
 
 ///|
 let pull_request_opened_pull_request_active_lock_reason_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
@@ -73578,13 +74472,14 @@ pub impl ToJson for PullRequestOpenedPullRequestActiveLockReason with fn to_json
 
 ///|
 /// `PullRequestOpenedPullRequestBase`
+#derive(Debug, Eq)
 pub(all) struct PullRequestOpenedPullRequestBase {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestOpenedPullRequestBase` (fields with defaults are optional).
@@ -73647,13 +74542,14 @@ pub impl ToJson for PullRequestOpenedPullRequestBase with fn to_json(self) {
 
 ///|
 /// `PullRequestOpenedPullRequestHead`
+#derive(Debug, Eq)
 pub(all) struct PullRequestOpenedPullRequestHead {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestOpenedPullRequestHead` (fields with defaults are optional).
@@ -73716,10 +74612,11 @@ pub impl ToJson for PullRequestOpenedPullRequestHead with fn to_json(self) {
 
 ///|
 /// `PullRequestOpenedPullRequestRequestedReviewersItem`
+#derive(Debug, Eq)
 pub(all) enum PullRequestOpenedPullRequestRequestedReviewersItem {
   User(User)
   Team(Team)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestOpenedPullRequestRequestedReviewersItem with fn deserialize(d) {
@@ -73763,9 +74660,10 @@ pub impl ToJson for PullRequestOpenedPullRequestRequestedReviewersItem with fn t
 
 ///|
 /// `PullRequestOpenedPullRequestState`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestOpenedPullRequestState {
   Open
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestOpenedPullRequestState with fn deserialize(d) {
@@ -73822,6 +74720,7 @@ pub impl ToJson for PullRequestOpenedPullRequestState with fn to_json(self) {
 
 ///|
 /// `PullRequestOpenedPullRequest`
+#derive(Debug, Eq)
 pub(all) struct PullRequestOpenedPullRequest {
   active_lock_reason : PullRequestOpenedPullRequestActiveLockReason
   additions : Int64
@@ -73875,7 +74774,7 @@ pub(all) struct PullRequestOpenedPullRequest {
   updated_at : @typify_rt.DateTimeUtc
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestOpenedPullRequest` (fields with defaults are optional).
@@ -74153,9 +75052,10 @@ pub impl ToJson for PullRequestOpenedPullRequest with fn to_json(self) {
 
 ///|
 /// `PullRequestReadyForReviewAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReadyForReviewAction {
   ReadyForReview
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReadyForReviewAction with fn deserialize(d) {
@@ -74212,6 +75112,7 @@ pub impl ToJson for PullRequestReadyForReviewAction with fn to_json(self) {
 
 ///|
 /// `PullRequestReadyForReviewPullRequestLinks`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReadyForReviewPullRequestLinks {
   comments : Link
   commits : Link
@@ -74221,7 +75122,7 @@ pub(all) struct PullRequestReadyForReviewPullRequestLinks {
   review_comments : Link
   self_ : Link
   statuses : Link
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReadyForReviewPullRequestLinks` (fields with defaults are optional).
@@ -74299,12 +75200,13 @@ pub impl ToJson for PullRequestReadyForReviewPullRequestLinks with fn to_json(se
 
 ///|
 /// `PullRequestReadyForReviewPullRequestActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReadyForReviewPullRequestActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReadyForReviewPullRequestActiveLockReason with fn deserialize(d) {
@@ -74376,13 +75278,14 @@ pub impl ToJson for PullRequestReadyForReviewPullRequestActiveLockReason with fn
 
 ///|
 /// `PullRequestReadyForReviewPullRequestBase`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReadyForReviewPullRequestBase {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReadyForReviewPullRequestBase` (fields with defaults are optional).
@@ -74445,13 +75348,14 @@ pub impl ToJson for PullRequestReadyForReviewPullRequestBase with fn to_json(sel
 
 ///|
 /// `PullRequestReadyForReviewPullRequestHead`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReadyForReviewPullRequestHead {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReadyForReviewPullRequestHead` (fields with defaults are optional).
@@ -74514,10 +75418,11 @@ pub impl ToJson for PullRequestReadyForReviewPullRequestHead with fn to_json(sel
 
 ///|
 /// `PullRequestReadyForReviewPullRequestRequestedReviewersItem`
+#derive(Debug, Eq)
 pub(all) enum PullRequestReadyForReviewPullRequestRequestedReviewersItem {
   User(User)
   Team(Team)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReadyForReviewPullRequestRequestedReviewersItem with fn deserialize(d) {
@@ -74561,9 +75466,10 @@ pub impl ToJson for PullRequestReadyForReviewPullRequestRequestedReviewersItem w
 
 ///|
 /// `PullRequestReadyForReviewPullRequestState`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReadyForReviewPullRequestState {
   Open
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReadyForReviewPullRequestState with fn deserialize(d) {
@@ -74620,6 +75526,7 @@ pub impl ToJson for PullRequestReadyForReviewPullRequestState with fn to_json(se
 
 ///|
 /// `PullRequestReadyForReviewPullRequest`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReadyForReviewPullRequest {
   active_lock_reason : PullRequestReadyForReviewPullRequestActiveLockReason?
   additions : Int64
@@ -74672,7 +75579,7 @@ pub(all) struct PullRequestReadyForReviewPullRequest {
   updated_at : @typify_rt.DateTimeUtc
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReadyForReviewPullRequest` (fields with defaults are optional).
@@ -74950,9 +75857,10 @@ pub impl ToJson for PullRequestReadyForReviewPullRequest with fn to_json(self) {
 
 ///|
 /// `PullRequestReopenedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReopenedAction {
   Reopened
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReopenedAction with fn deserialize(d) {
@@ -75009,6 +75917,7 @@ pub impl ToJson for PullRequestReopenedAction with fn to_json(self) {
 
 ///|
 /// `PullRequestReopenedPullRequestLinks`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReopenedPullRequestLinks {
   comments : Link
   commits : Link
@@ -75018,7 +75927,7 @@ pub(all) struct PullRequestReopenedPullRequestLinks {
   review_comments : Link
   self_ : Link
   statuses : Link
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReopenedPullRequestLinks` (fields with defaults are optional).
@@ -75096,12 +76005,13 @@ pub impl ToJson for PullRequestReopenedPullRequestLinks with fn to_json(self) {
 
 ///|
 /// `PullRequestReopenedPullRequestActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReopenedPullRequestActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReopenedPullRequestActiveLockReason with fn deserialize(d) {
@@ -75173,13 +76083,14 @@ pub impl ToJson for PullRequestReopenedPullRequestActiveLockReason with fn to_js
 
 ///|
 /// `PullRequestReopenedPullRequestBase`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReopenedPullRequestBase {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReopenedPullRequestBase` (fields with defaults are optional).
@@ -75242,13 +76153,14 @@ pub impl ToJson for PullRequestReopenedPullRequestBase with fn to_json(self) {
 
 ///|
 /// `PullRequestReopenedPullRequestHead`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReopenedPullRequestHead {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReopenedPullRequestHead` (fields with defaults are optional).
@@ -75311,10 +76223,11 @@ pub impl ToJson for PullRequestReopenedPullRequestHead with fn to_json(self) {
 
 ///|
 /// `PullRequestReopenedPullRequestRequestedReviewersItem`
+#derive(Debug, Eq)
 pub(all) enum PullRequestReopenedPullRequestRequestedReviewersItem {
   User(User)
   Team(Team)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReopenedPullRequestRequestedReviewersItem with fn deserialize(d) {
@@ -75358,9 +76271,10 @@ pub impl ToJson for PullRequestReopenedPullRequestRequestedReviewersItem with fn
 
 ///|
 /// `PullRequestReopenedPullRequestState`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReopenedPullRequestState {
   Open
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReopenedPullRequestState with fn deserialize(d) {
@@ -75417,6 +76331,7 @@ pub impl ToJson for PullRequestReopenedPullRequestState with fn to_json(self) {
 
 ///|
 /// `PullRequestReopenedPullRequest`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReopenedPullRequest {
   active_lock_reason : PullRequestReopenedPullRequestActiveLockReason?
   additions : Int64
@@ -75470,7 +76385,7 @@ pub(all) struct PullRequestReopenedPullRequest {
   updated_at : @typify_rt.DateTimeUtc
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReopenedPullRequest` (fields with defaults are optional).
@@ -75748,9 +76663,10 @@ pub impl ToJson for PullRequestReopenedPullRequest with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewRequestRemovedVariant0Action`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewRequestRemovedVariant0Action {
   ReviewRequestRemoved
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewRequestRemovedVariant0Action with fn deserialize(d) {
@@ -75807,9 +76723,10 @@ pub impl ToJson for PullRequestReviewRequestRemovedVariant0Action with fn to_jso
 
 ///|
 /// `PullRequestReviewRequestRemovedVariant1Action`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewRequestRemovedVariant1Action {
   ReviewRequestRemoved
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewRequestRemovedVariant1Action with fn deserialize(d) {
@@ -75866,9 +76783,10 @@ pub impl ToJson for PullRequestReviewRequestRemovedVariant1Action with fn to_jso
 
 ///|
 /// `PullRequestReviewRequestedVariant0Action`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewRequestedVariant0Action {
   ReviewRequested
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewRequestedVariant0Action with fn deserialize(d) {
@@ -75925,9 +76843,10 @@ pub impl ToJson for PullRequestReviewRequestedVariant0Action with fn to_json(sel
 
 ///|
 /// `PullRequestReviewRequestedVariant1Action`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewRequestedVariant1Action {
   ReviewRequested
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewRequestedVariant1Action with fn deserialize(d) {
@@ -75984,9 +76903,10 @@ pub impl ToJson for PullRequestReviewRequestedVariant1Action with fn to_json(sel
 
 ///|
 /// `PullRequestSynchronizeAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestSynchronizeAction {
   Synchronize
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestSynchronizeAction with fn deserialize(d) {
@@ -76043,9 +76963,10 @@ pub impl ToJson for PullRequestSynchronizeAction with fn to_json(self) {
 
 ///|
 /// `PullRequestUnassignedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestUnassignedAction {
   Unassigned
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestUnassignedAction with fn deserialize(d) {
@@ -76102,9 +77023,10 @@ pub impl ToJson for PullRequestUnassignedAction with fn to_json(self) {
 
 ///|
 /// `PullRequestUnlabeledAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestUnlabeledAction {
   Unlabeled
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestUnlabeledAction with fn deserialize(d) {
@@ -76161,9 +77083,10 @@ pub impl ToJson for PullRequestUnlabeledAction with fn to_json(self) {
 
 ///|
 /// `PullRequestUnlockedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestUnlockedAction {
   Unlocked
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestUnlockedAction with fn deserialize(d) {
@@ -76220,9 +77143,10 @@ pub impl ToJson for PullRequestUnlockedAction with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewDismissedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewDismissedAction {
   Dismissed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewDismissedAction with fn deserialize(d) {
@@ -76279,10 +77203,11 @@ pub impl ToJson for PullRequestReviewDismissedAction with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewDismissedReviewLinks`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewDismissedReviewLinks {
   html : Link
   pull_request : Link
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewDismissedReviewLinks` (fields with defaults are optional).
@@ -76330,9 +77255,10 @@ pub impl ToJson for PullRequestReviewDismissedReviewLinks with fn to_json(self) 
 
 ///|
 /// `PullRequestReviewDismissedReviewState`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewDismissedReviewState {
   Dismissed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewDismissedReviewState with fn deserialize(d) {
@@ -76389,6 +77315,7 @@ pub impl ToJson for PullRequestReviewDismissedReviewState with fn to_json(self) 
 
 ///|
 /// The review that was affected.
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewDismissedReview {
   author_association : AuthorAssociation
   /// The text of the review.
@@ -76404,7 +77331,7 @@ pub(all) struct PullRequestReviewDismissedReview {
   state : PullRequestReviewDismissedReviewState
   submitted_at : @typify_rt.DateTimeUtc
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewDismissedReview` (fields with defaults are optional).
@@ -76497,9 +77424,10 @@ pub impl ToJson for PullRequestReviewDismissedReview with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewEditedAction with fn deserialize(d) {
@@ -76556,10 +77484,11 @@ pub impl ToJson for PullRequestReviewEditedAction with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewEditedChangesBody`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewEditedChangesBody {
   /// The previous version of the body if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewEditedChangesBody` (fields with defaults are optional).
@@ -76602,9 +77531,10 @@ pub impl ToJson for PullRequestReviewEditedChangesBody with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewEditedChanges`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewEditedChanges {
   body : PullRequestReviewEditedChangesBody?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewEditedChanges` (fields with defaults are optional).
@@ -76649,10 +77579,11 @@ pub impl ToJson for PullRequestReviewEditedChanges with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewEditedReviewLinks`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewEditedReviewLinks {
   html : Link
   pull_request : Link
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewEditedReviewLinks` (fields with defaults are optional).
@@ -76700,6 +77631,7 @@ pub impl ToJson for PullRequestReviewEditedReviewLinks with fn to_json(self) {
 
 ///|
 /// The review that was affected.
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewEditedReview {
   author_association : AuthorAssociation
   /// The text of the review.
@@ -76715,7 +77647,7 @@ pub(all) struct PullRequestReviewEditedReview {
   state : String
   submitted_at : @typify_rt.DateTimeUtc
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewEditedReview` (fields with defaults are optional).
@@ -76808,9 +77740,10 @@ pub impl ToJson for PullRequestReviewEditedReview with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewSubmittedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewSubmittedAction {
   Submitted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewSubmittedAction with fn deserialize(d) {
@@ -76867,10 +77800,11 @@ pub impl ToJson for PullRequestReviewSubmittedAction with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewSubmittedReviewLinks`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewSubmittedReviewLinks {
   html : Link
   pull_request : Link
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewSubmittedReviewLinks` (fields with defaults are optional).
@@ -76918,6 +77852,7 @@ pub impl ToJson for PullRequestReviewSubmittedReviewLinks with fn to_json(self) 
 
 ///|
 /// The review that was affected.
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewSubmittedReview {
   author_association : AuthorAssociation
   /// The text of the review.
@@ -76933,7 +77868,7 @@ pub(all) struct PullRequestReviewSubmittedReview {
   state : String
   submitted_at : @typify_rt.DateTimeUtc
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewSubmittedReview` (fields with defaults are optional).
@@ -77026,9 +77961,10 @@ pub impl ToJson for PullRequestReviewSubmittedReview with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewCommentCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewCommentCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentCreatedAction with fn deserialize(d) {
@@ -77085,6 +78021,7 @@ pub impl ToJson for PullRequestReviewCommentCreatedAction with fn to_json(self) 
 
 ///|
 /// `PullRequestReviewCommentCreatedPullRequestLinks`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentCreatedPullRequestLinks {
   comments : Link
   commits : Link
@@ -77094,7 +78031,7 @@ pub(all) struct PullRequestReviewCommentCreatedPullRequestLinks {
   review_comments : Link
   self_ : Link
   statuses : Link
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentCreatedPullRequestLinks` (fields with defaults are optional).
@@ -77172,12 +78109,13 @@ pub impl ToJson for PullRequestReviewCommentCreatedPullRequestLinks with fn to_j
 
 ///|
 /// `PullRequestReviewCommentCreatedPullRequestActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewCommentCreatedPullRequestActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentCreatedPullRequestActiveLockReason with fn deserialize(d) {
@@ -77249,13 +78187,14 @@ pub impl ToJson for PullRequestReviewCommentCreatedPullRequestActiveLockReason w
 
 ///|
 /// `PullRequestReviewCommentCreatedPullRequestBase`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentCreatedPullRequestBase {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentCreatedPullRequestBase` (fields with defaults are optional).
@@ -77318,13 +78257,14 @@ pub impl ToJson for PullRequestReviewCommentCreatedPullRequestBase with fn to_js
 
 ///|
 /// `PullRequestReviewCommentCreatedPullRequestHead`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentCreatedPullRequestHead {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentCreatedPullRequestHead` (fields with defaults are optional).
@@ -77387,10 +78327,11 @@ pub impl ToJson for PullRequestReviewCommentCreatedPullRequestHead with fn to_js
 
 ///|
 /// `PullRequestReviewCommentCreatedPullRequestRequestedReviewersItem`
+#derive(Debug, Eq)
 pub(all) enum PullRequestReviewCommentCreatedPullRequestRequestedReviewersItem {
   User(User)
   Team(Team)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentCreatedPullRequestRequestedReviewersItem with fn deserialize(d) {
@@ -77434,10 +78375,11 @@ pub impl ToJson for PullRequestReviewCommentCreatedPullRequestRequestedReviewers
 
 ///|
 /// `PullRequestReviewCommentCreatedPullRequestState`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewCommentCreatedPullRequestState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentCreatedPullRequestState with fn deserialize(d) {
@@ -77499,6 +78441,7 @@ pub impl ToJson for PullRequestReviewCommentCreatedPullRequestState with fn to_j
 
 ///|
 /// `PullRequestReviewCommentCreatedPullRequest`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentCreatedPullRequest {
   active_lock_reason : PullRequestReviewCommentCreatedPullRequestActiveLockReason?
   assignee : User?
@@ -77536,7 +78479,7 @@ pub(all) struct PullRequestReviewCommentCreatedPullRequest {
   updated_at : String
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentCreatedPullRequest` (fields with defaults are optional).
@@ -77756,9 +78699,10 @@ pub impl ToJson for PullRequestReviewCommentCreatedPullRequest with fn to_json(s
 
 ///|
 /// `PullRequestReviewCommentDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewCommentDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentDeletedAction with fn deserialize(d) {
@@ -77815,6 +78759,7 @@ pub impl ToJson for PullRequestReviewCommentDeletedAction with fn to_json(self) 
 
 ///|
 /// `PullRequestReviewCommentDeletedPullRequestLinks`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentDeletedPullRequestLinks {
   comments : Link
   commits : Link
@@ -77824,7 +78769,7 @@ pub(all) struct PullRequestReviewCommentDeletedPullRequestLinks {
   review_comments : Link
   self_ : Link
   statuses : Link
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentDeletedPullRequestLinks` (fields with defaults are optional).
@@ -77902,12 +78847,13 @@ pub impl ToJson for PullRequestReviewCommentDeletedPullRequestLinks with fn to_j
 
 ///|
 /// `PullRequestReviewCommentDeletedPullRequestActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewCommentDeletedPullRequestActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentDeletedPullRequestActiveLockReason with fn deserialize(d) {
@@ -77979,13 +78925,14 @@ pub impl ToJson for PullRequestReviewCommentDeletedPullRequestActiveLockReason w
 
 ///|
 /// `PullRequestReviewCommentDeletedPullRequestBase`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentDeletedPullRequestBase {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentDeletedPullRequestBase` (fields with defaults are optional).
@@ -78048,13 +78995,14 @@ pub impl ToJson for PullRequestReviewCommentDeletedPullRequestBase with fn to_js
 
 ///|
 /// `PullRequestReviewCommentDeletedPullRequestHead`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentDeletedPullRequestHead {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentDeletedPullRequestHead` (fields with defaults are optional).
@@ -78117,10 +79065,11 @@ pub impl ToJson for PullRequestReviewCommentDeletedPullRequestHead with fn to_js
 
 ///|
 /// `PullRequestReviewCommentDeletedPullRequestRequestedReviewersItem`
+#derive(Debug, Eq)
 pub(all) enum PullRequestReviewCommentDeletedPullRequestRequestedReviewersItem {
   User(User)
   Team(Team)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentDeletedPullRequestRequestedReviewersItem with fn deserialize(d) {
@@ -78164,10 +79113,11 @@ pub impl ToJson for PullRequestReviewCommentDeletedPullRequestRequestedReviewers
 
 ///|
 /// `PullRequestReviewCommentDeletedPullRequestState`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewCommentDeletedPullRequestState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentDeletedPullRequestState with fn deserialize(d) {
@@ -78229,6 +79179,7 @@ pub impl ToJson for PullRequestReviewCommentDeletedPullRequestState with fn to_j
 
 ///|
 /// `PullRequestReviewCommentDeletedPullRequest`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentDeletedPullRequest {
   active_lock_reason : PullRequestReviewCommentDeletedPullRequestActiveLockReason?
   assignee : User?
@@ -78266,7 +79217,7 @@ pub(all) struct PullRequestReviewCommentDeletedPullRequest {
   updated_at : String
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentDeletedPullRequest` (fields with defaults are optional).
@@ -78486,9 +79437,10 @@ pub impl ToJson for PullRequestReviewCommentDeletedPullRequest with fn to_json(s
 
 ///|
 /// `PullRequestReviewCommentEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewCommentEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentEditedAction with fn deserialize(d) {
@@ -78545,10 +79497,11 @@ pub impl ToJson for PullRequestReviewCommentEditedAction with fn to_json(self) {
 
 ///|
 /// `PullRequestReviewCommentEditedChangesBody`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentEditedChangesBody {
   /// The previous version of the body.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentEditedChangesBody` (fields with defaults are optional).
@@ -78591,9 +79544,10 @@ pub impl ToJson for PullRequestReviewCommentEditedChangesBody with fn to_json(se
 
 ///|
 /// The changes to the comment.
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentEditedChanges {
   body : PullRequestReviewCommentEditedChangesBody?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentEditedChanges` (fields with defaults are optional).
@@ -78638,6 +79592,7 @@ pub impl ToJson for PullRequestReviewCommentEditedChanges with fn to_json(self) 
 
 ///|
 /// `PullRequestReviewCommentEditedPullRequestLinks`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentEditedPullRequestLinks {
   comments : Link
   commits : Link
@@ -78647,7 +79602,7 @@ pub(all) struct PullRequestReviewCommentEditedPullRequestLinks {
   review_comments : Link
   self_ : Link
   statuses : Link
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentEditedPullRequestLinks` (fields with defaults are optional).
@@ -78725,12 +79680,13 @@ pub impl ToJson for PullRequestReviewCommentEditedPullRequestLinks with fn to_js
 
 ///|
 /// `PullRequestReviewCommentEditedPullRequestActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewCommentEditedPullRequestActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentEditedPullRequestActiveLockReason with fn deserialize(d) {
@@ -78802,13 +79758,14 @@ pub impl ToJson for PullRequestReviewCommentEditedPullRequestActiveLockReason wi
 
 ///|
 /// `PullRequestReviewCommentEditedPullRequestBase`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentEditedPullRequestBase {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentEditedPullRequestBase` (fields with defaults are optional).
@@ -78871,13 +79828,14 @@ pub impl ToJson for PullRequestReviewCommentEditedPullRequestBase with fn to_jso
 
 ///|
 /// `PullRequestReviewCommentEditedPullRequestHead`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentEditedPullRequestHead {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentEditedPullRequestHead` (fields with defaults are optional).
@@ -78940,10 +79898,11 @@ pub impl ToJson for PullRequestReviewCommentEditedPullRequestHead with fn to_jso
 
 ///|
 /// `PullRequestReviewCommentEditedPullRequestRequestedReviewersItem`
+#derive(Debug, Eq)
 pub(all) enum PullRequestReviewCommentEditedPullRequestRequestedReviewersItem {
   User(User)
   Team(Team)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentEditedPullRequestRequestedReviewersItem with fn deserialize(d) {
@@ -78987,10 +79946,11 @@ pub impl ToJson for PullRequestReviewCommentEditedPullRequestRequestedReviewersI
 
 ///|
 /// `PullRequestReviewCommentEditedPullRequestState`
+#derive(Debug, Eq, Hash)
 pub(all) enum PullRequestReviewCommentEditedPullRequestState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for PullRequestReviewCommentEditedPullRequestState with fn deserialize(d) {
@@ -79052,6 +80012,7 @@ pub impl ToJson for PullRequestReviewCommentEditedPullRequestState with fn to_js
 
 ///|
 /// `PullRequestReviewCommentEditedPullRequest`
+#derive(Debug, Eq)
 pub(all) struct PullRequestReviewCommentEditedPullRequest {
   active_lock_reason : PullRequestReviewCommentEditedPullRequestActiveLockReason?
   assignee : User?
@@ -79089,7 +80050,7 @@ pub(all) struct PullRequestReviewCommentEditedPullRequest {
   updated_at : String
   url : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `PullRequestReviewCommentEditedPullRequest` (fields with defaults are optional).
@@ -79309,9 +80270,10 @@ pub impl ToJson for PullRequestReviewCommentEditedPullRequest with fn to_json(se
 
 ///|
 /// `ReleaseCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ReleaseCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ReleaseCreatedAction with fn deserialize(d) {
@@ -79368,9 +80330,10 @@ pub impl ToJson for ReleaseCreatedAction with fn to_json(self) {
 
 ///|
 /// `ReleaseDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ReleaseDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ReleaseDeletedAction with fn deserialize(d) {
@@ -79427,9 +80390,10 @@ pub impl ToJson for ReleaseDeletedAction with fn to_json(self) {
 
 ///|
 /// `ReleaseEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ReleaseEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ReleaseEditedAction with fn deserialize(d) {
@@ -79486,10 +80450,11 @@ pub impl ToJson for ReleaseEditedAction with fn to_json(self) {
 
 ///|
 /// `ReleaseEditedChangesBody`
+#derive(Debug, Eq)
 pub(all) struct ReleaseEditedChangesBody {
   /// The previous version of the body if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ReleaseEditedChangesBody` (fields with defaults are optional).
@@ -79532,10 +80497,11 @@ pub impl ToJson for ReleaseEditedChangesBody with fn to_json(self) {
 
 ///|
 /// `ReleaseEditedChangesName`
+#derive(Debug, Eq)
 pub(all) struct ReleaseEditedChangesName {
   /// The previous version of the name if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ReleaseEditedChangesName` (fields with defaults are optional).
@@ -79578,10 +80544,11 @@ pub impl ToJson for ReleaseEditedChangesName with fn to_json(self) {
 
 ///|
 /// `ReleaseEditedChanges`
+#derive(Debug, Eq)
 pub(all) struct ReleaseEditedChanges {
   body : ReleaseEditedChangesBody?
   name : ReleaseEditedChangesName?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ReleaseEditedChanges` (fields with defaults are optional).
@@ -79633,9 +80600,10 @@ pub impl ToJson for ReleaseEditedChanges with fn to_json(self) {
 
 ///|
 /// `ReleasePrereleasedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ReleasePrereleasedAction {
   Prereleased
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ReleasePrereleasedAction with fn deserialize(d) {
@@ -79692,6 +80660,7 @@ pub impl ToJson for ReleasePrereleasedAction with fn to_json(self) {
 
 ///|
 /// `ReleasePrereleasedRelease`
+#derive(Debug, Eq)
 pub(all) struct ReleasePrereleasedRelease {
   assets : Array[ReleaseAsset]
   assets_url : String
@@ -79714,7 +80683,7 @@ pub(all) struct ReleasePrereleasedRelease {
   upload_url : String
   url : String
   zipball_url : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ReleasePrereleasedRelease` (fields with defaults are optional).
@@ -79842,9 +80811,10 @@ pub impl ToJson for ReleasePrereleasedRelease with fn to_json(self) {
 
 ///|
 /// `ReleasePublishedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ReleasePublishedAction {
   Published
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ReleasePublishedAction with fn deserialize(d) {
@@ -79901,6 +80871,7 @@ pub impl ToJson for ReleasePublishedAction with fn to_json(self) {
 
 ///|
 /// `ReleasePublishedRelease`
+#derive(Debug, Eq)
 pub(all) struct ReleasePublishedRelease {
   assets : Array[ReleaseAsset]
   assets_url : String
@@ -79924,7 +80895,7 @@ pub(all) struct ReleasePublishedRelease {
   upload_url : String
   url : String
   zipball_url : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ReleasePublishedRelease` (fields with defaults are optional).
@@ -80052,9 +81023,10 @@ pub impl ToJson for ReleasePublishedRelease with fn to_json(self) {
 
 ///|
 /// `ReleaseReleasedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ReleaseReleasedAction {
   Released
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ReleaseReleasedAction with fn deserialize(d) {
@@ -80111,9 +81083,10 @@ pub impl ToJson for ReleaseReleasedAction with fn to_json(self) {
 
 ///|
 /// `ReleaseUnpublishedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum ReleaseUnpublishedAction {
   Unpublished
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ReleaseUnpublishedAction with fn deserialize(d) {
@@ -80170,6 +81143,7 @@ pub impl ToJson for ReleaseUnpublishedAction with fn to_json(self) {
 
 ///|
 /// `ReleaseUnpublishedRelease`
+#derive(Debug, Eq)
 pub(all) struct ReleaseUnpublishedRelease {
   assets : Array[ReleaseAsset]
   assets_url : String
@@ -80193,7 +81167,7 @@ pub(all) struct ReleaseUnpublishedRelease {
   upload_url : String
   url : String
   zipball_url : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ReleaseUnpublishedRelease` (fields with defaults are optional).
@@ -80321,9 +81295,10 @@ pub impl ToJson for ReleaseUnpublishedRelease with fn to_json(self) {
 
 ///|
 /// State of the release asset.
+#derive(Debug, Eq, Hash)
 pub(all) enum ReleaseAssetState {
   Uploaded
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for ReleaseAssetState with fn deserialize(d) {
@@ -80380,10 +81355,11 @@ pub impl ToJson for ReleaseAssetState with fn to_json(self) {
 
 ///|
 /// `RepositoryCreatedAt`
+#derive(Debug, Eq)
 pub(all) enum RepositoryCreatedAt {
   Integer(Int64)
   DateTime(@typify_rt.DateTimeUtc)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryCreatedAt with fn deserialize(d) {
@@ -80427,13 +81403,14 @@ pub impl ToJson for RepositoryCreatedAt with fn to_json(self) {
 
 ///|
 /// `RepositoryPermissions`
+#derive(Debug, Eq)
 pub(all) struct RepositoryPermissions {
   admin : Bool
   maintain : Bool?
   pull : Bool
   push : Bool
   triage : Bool?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryPermissions` (fields with defaults are optional).
@@ -80500,11 +81477,12 @@ pub impl ToJson for RepositoryPermissions with fn to_json(self) {
 
 ///|
 /// `RepositoryPushedAt`
+#derive(Debug, Eq)
 pub(all) enum RepositoryPushedAt {
   Integer(Int64)
   DateTime(@typify_rt.DateTimeUtc)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryPushedAt with fn deserialize(d) {
@@ -80557,9 +81535,10 @@ pub impl ToJson for RepositoryPushedAt with fn to_json(self) {
 
 ///|
 /// `RepositoryArchivedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum RepositoryArchivedAction {
   Archived
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryArchivedAction with fn deserialize(d) {
@@ -80616,10 +81595,11 @@ pub impl ToJson for RepositoryArchivedAction with fn to_json(self) {
 
 ///|
 /// `RepositoryArchivedRepositoryCreatedAt`
+#derive(Debug, Eq)
 pub(all) enum RepositoryArchivedRepositoryCreatedAt {
   Integer(Int64)
   DateTime(@typify_rt.DateTimeUtc)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryArchivedRepositoryCreatedAt with fn deserialize(d) {
@@ -80663,13 +81643,14 @@ pub impl ToJson for RepositoryArchivedRepositoryCreatedAt with fn to_json(self) 
 
 ///|
 /// `RepositoryArchivedRepositoryPermissions`
+#derive(Debug, Eq)
 pub(all) struct RepositoryArchivedRepositoryPermissions {
   admin : Bool
   maintain : Bool?
   pull : Bool
   push : Bool
   triage : Bool?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryArchivedRepositoryPermissions` (fields with defaults are optional).
@@ -80736,11 +81717,12 @@ pub impl ToJson for RepositoryArchivedRepositoryPermissions with fn to_json(self
 
 ///|
 /// `RepositoryArchivedRepositoryPushedAt`
+#derive(Debug, Eq)
 pub(all) enum RepositoryArchivedRepositoryPushedAt {
   Integer(Int64)
   DateTime(@typify_rt.DateTimeUtc)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryArchivedRepositoryPushedAt with fn deserialize(d) {
@@ -80793,6 +81775,7 @@ pub impl ToJson for RepositoryArchivedRepositoryPushedAt with fn to_json(self) {
 
 ///|
 /// `RepositoryArchivedRepository`
+#derive(Debug, Eq)
 pub(all) struct RepositoryArchivedRepository {
   /// Whether to allow auto-merge for pull requests.
   allow_auto_merge : Bool
@@ -80893,7 +81876,7 @@ pub(all) struct RepositoryArchivedRepository {
   url : String
   watchers : Int64
   watchers_count : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryArchivedRepository` (fields with defaults are optional).
@@ -81380,9 +82363,10 @@ pub impl ToJson for RepositoryArchivedRepository with fn to_json(self) {
 
 ///|
 /// `RepositoryCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum RepositoryCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryCreatedAction with fn deserialize(d) {
@@ -81439,9 +82423,10 @@ pub impl ToJson for RepositoryCreatedAction with fn to_json(self) {
 
 ///|
 /// `RepositoryDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum RepositoryDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryDeletedAction with fn deserialize(d) {
@@ -81498,9 +82483,10 @@ pub impl ToJson for RepositoryDeletedAction with fn to_json(self) {
 
 ///|
 /// `RepositoryEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum RepositoryEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryEditedAction with fn deserialize(d) {
@@ -81557,9 +82543,10 @@ pub impl ToJson for RepositoryEditedAction with fn to_json(self) {
 
 ///|
 /// `RepositoryEditedChangesDefaultBranch`
+#derive(Debug, Eq)
 pub(all) struct RepositoryEditedChangesDefaultBranch {
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryEditedChangesDefaultBranch` (fields with defaults are optional).
@@ -81602,9 +82589,10 @@ pub impl ToJson for RepositoryEditedChangesDefaultBranch with fn to_json(self) {
 
 ///|
 /// `RepositoryEditedChangesDescription`
+#derive(Debug, Eq)
 pub(all) struct RepositoryEditedChangesDescription {
   from : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryEditedChangesDescription` (fields with defaults are optional).
@@ -81647,9 +82635,10 @@ pub impl ToJson for RepositoryEditedChangesDescription with fn to_json(self) {
 
 ///|
 /// `RepositoryEditedChangesHomepage`
+#derive(Debug, Eq)
 pub(all) struct RepositoryEditedChangesHomepage {
   from : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryEditedChangesHomepage` (fields with defaults are optional).
@@ -81692,11 +82681,12 @@ pub impl ToJson for RepositoryEditedChangesHomepage with fn to_json(self) {
 
 ///|
 /// `RepositoryEditedChanges`
+#derive(Debug, Eq)
 pub(all) struct RepositoryEditedChanges {
   default_branch : RepositoryEditedChangesDefaultBranch?
   description : RepositoryEditedChangesDescription?
   homepage : RepositoryEditedChangesHomepage?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryEditedChanges` (fields with defaults are optional).
@@ -81755,9 +82745,10 @@ pub impl ToJson for RepositoryEditedChanges with fn to_json(self) {
 
 ///|
 /// `RepositoryPrivatizedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum RepositoryPrivatizedAction {
   Privatized
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryPrivatizedAction with fn deserialize(d) {
@@ -81814,10 +82805,11 @@ pub impl ToJson for RepositoryPrivatizedAction with fn to_json(self) {
 
 ///|
 /// `RepositoryPrivatizedRepositoryCreatedAt`
+#derive(Debug, Eq)
 pub(all) enum RepositoryPrivatizedRepositoryCreatedAt {
   Integer(Int64)
   DateTime(@typify_rt.DateTimeUtc)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryPrivatizedRepositoryCreatedAt with fn deserialize(d) {
@@ -81861,13 +82853,14 @@ pub impl ToJson for RepositoryPrivatizedRepositoryCreatedAt with fn to_json(self
 
 ///|
 /// `RepositoryPrivatizedRepositoryPermissions`
+#derive(Debug, Eq)
 pub(all) struct RepositoryPrivatizedRepositoryPermissions {
   admin : Bool
   maintain : Bool?
   pull : Bool
   push : Bool
   triage : Bool?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryPrivatizedRepositoryPermissions` (fields with defaults are optional).
@@ -81934,11 +82927,12 @@ pub impl ToJson for RepositoryPrivatizedRepositoryPermissions with fn to_json(se
 
 ///|
 /// `RepositoryPrivatizedRepositoryPushedAt`
+#derive(Debug, Eq)
 pub(all) enum RepositoryPrivatizedRepositoryPushedAt {
   Integer(Int64)
   DateTime(@typify_rt.DateTimeUtc)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryPrivatizedRepositoryPushedAt with fn deserialize(d) {
@@ -81991,6 +82985,7 @@ pub impl ToJson for RepositoryPrivatizedRepositoryPushedAt with fn to_json(self)
 
 ///|
 /// `RepositoryPrivatizedRepository`
+#derive(Debug, Eq)
 pub(all) struct RepositoryPrivatizedRepository {
   /// Whether to allow auto-merge for pull requests.
   allow_auto_merge : Bool
@@ -82091,7 +83086,7 @@ pub(all) struct RepositoryPrivatizedRepository {
   url : String
   watchers : Int64
   watchers_count : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryPrivatizedRepository` (fields with defaults are optional).
@@ -82578,9 +83573,10 @@ pub impl ToJson for RepositoryPrivatizedRepository with fn to_json(self) {
 
 ///|
 /// `RepositoryPublicizedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum RepositoryPublicizedAction {
   Publicized
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryPublicizedAction with fn deserialize(d) {
@@ -82637,10 +83633,11 @@ pub impl ToJson for RepositoryPublicizedAction with fn to_json(self) {
 
 ///|
 /// `RepositoryPublicizedRepositoryCreatedAt`
+#derive(Debug, Eq)
 pub(all) enum RepositoryPublicizedRepositoryCreatedAt {
   Integer(Int64)
   DateTime(@typify_rt.DateTimeUtc)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryPublicizedRepositoryCreatedAt with fn deserialize(d) {
@@ -82684,13 +83681,14 @@ pub impl ToJson for RepositoryPublicizedRepositoryCreatedAt with fn to_json(self
 
 ///|
 /// `RepositoryPublicizedRepositoryPermissions`
+#derive(Debug, Eq)
 pub(all) struct RepositoryPublicizedRepositoryPermissions {
   admin : Bool
   maintain : Bool?
   pull : Bool
   push : Bool
   triage : Bool?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryPublicizedRepositoryPermissions` (fields with defaults are optional).
@@ -82757,11 +83755,12 @@ pub impl ToJson for RepositoryPublicizedRepositoryPermissions with fn to_json(se
 
 ///|
 /// `RepositoryPublicizedRepositoryPushedAt`
+#derive(Debug, Eq)
 pub(all) enum RepositoryPublicizedRepositoryPushedAt {
   Integer(Int64)
   DateTime(@typify_rt.DateTimeUtc)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryPublicizedRepositoryPushedAt with fn deserialize(d) {
@@ -82814,6 +83813,7 @@ pub impl ToJson for RepositoryPublicizedRepositoryPushedAt with fn to_json(self)
 
 ///|
 /// `RepositoryPublicizedRepository`
+#derive(Debug, Eq)
 pub(all) struct RepositoryPublicizedRepository {
   /// Whether to allow auto-merge for pull requests.
   allow_auto_merge : Bool
@@ -82914,7 +83914,7 @@ pub(all) struct RepositoryPublicizedRepository {
   url : String
   watchers : Int64
   watchers_count : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryPublicizedRepository` (fields with defaults are optional).
@@ -83401,9 +84401,10 @@ pub impl ToJson for RepositoryPublicizedRepository with fn to_json(self) {
 
 ///|
 /// `RepositoryRenamedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum RepositoryRenamedAction {
   Renamed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryRenamedAction with fn deserialize(d) {
@@ -83460,9 +84461,10 @@ pub impl ToJson for RepositoryRenamedAction with fn to_json(self) {
 
 ///|
 /// `RepositoryRenamedChangesRepositoryName`
+#derive(Debug, Eq)
 pub(all) struct RepositoryRenamedChangesRepositoryName {
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryRenamedChangesRepositoryName` (fields with defaults are optional).
@@ -83505,9 +84507,10 @@ pub impl ToJson for RepositoryRenamedChangesRepositoryName with fn to_json(self)
 
 ///|
 /// `RepositoryRenamedChangesRepository`
+#derive(Debug, Eq)
 pub(all) struct RepositoryRenamedChangesRepository {
   name : RepositoryRenamedChangesRepositoryName
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryRenamedChangesRepository` (fields with defaults are optional).
@@ -83550,9 +84553,10 @@ pub impl ToJson for RepositoryRenamedChangesRepository with fn to_json(self) {
 
 ///|
 /// `RepositoryRenamedChanges`
+#derive(Debug, Eq)
 pub(all) struct RepositoryRenamedChanges {
   repository : RepositoryRenamedChangesRepository
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryRenamedChanges` (fields with defaults are optional).
@@ -83595,9 +84599,10 @@ pub impl ToJson for RepositoryRenamedChanges with fn to_json(self) {
 
 ///|
 /// `RepositoryTransferredAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum RepositoryTransferredAction {
   Transferred
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryTransferredAction with fn deserialize(d) {
@@ -83654,9 +84659,10 @@ pub impl ToJson for RepositoryTransferredAction with fn to_json(self) {
 
 ///|
 /// `RepositoryTransferredChangesOwnerFrom`
+#derive(Debug, Eq)
 pub(all) struct RepositoryTransferredChangesOwnerFrom {
   user : User?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryTransferredChangesOwnerFrom` (fields with defaults are optional).
@@ -83701,9 +84707,10 @@ pub impl ToJson for RepositoryTransferredChangesOwnerFrom with fn to_json(self) 
 
 ///|
 /// `RepositoryTransferredChangesOwner`
+#derive(Debug, Eq)
 pub(all) struct RepositoryTransferredChangesOwner {
   from : RepositoryTransferredChangesOwnerFrom
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryTransferredChangesOwner` (fields with defaults are optional).
@@ -83746,9 +84753,10 @@ pub impl ToJson for RepositoryTransferredChangesOwner with fn to_json(self) {
 
 ///|
 /// `RepositoryTransferredChanges`
+#derive(Debug, Eq)
 pub(all) struct RepositoryTransferredChanges {
   owner : RepositoryTransferredChangesOwner
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryTransferredChanges` (fields with defaults are optional).
@@ -83791,9 +84799,10 @@ pub impl ToJson for RepositoryTransferredChanges with fn to_json(self) {
 
 ///|
 /// `RepositoryUnarchivedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum RepositoryUnarchivedAction {
   Unarchived
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryUnarchivedAction with fn deserialize(d) {
@@ -83850,10 +84859,11 @@ pub impl ToJson for RepositoryUnarchivedAction with fn to_json(self) {
 
 ///|
 /// `RepositoryUnarchivedRepositoryCreatedAt`
+#derive(Debug, Eq)
 pub(all) enum RepositoryUnarchivedRepositoryCreatedAt {
   Integer(Int64)
   DateTime(@typify_rt.DateTimeUtc)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryUnarchivedRepositoryCreatedAt with fn deserialize(d) {
@@ -83897,13 +84907,14 @@ pub impl ToJson for RepositoryUnarchivedRepositoryCreatedAt with fn to_json(self
 
 ///|
 /// `RepositoryUnarchivedRepositoryPermissions`
+#derive(Debug, Eq)
 pub(all) struct RepositoryUnarchivedRepositoryPermissions {
   admin : Bool
   maintain : Bool?
   pull : Bool
   push : Bool
   triage : Bool?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryUnarchivedRepositoryPermissions` (fields with defaults are optional).
@@ -83970,11 +84981,12 @@ pub impl ToJson for RepositoryUnarchivedRepositoryPermissions with fn to_json(se
 
 ///|
 /// `RepositoryUnarchivedRepositoryPushedAt`
+#derive(Debug, Eq)
 pub(all) enum RepositoryUnarchivedRepositoryPushedAt {
   Integer(Int64)
   DateTime(@typify_rt.DateTimeUtc)
   Null
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryUnarchivedRepositoryPushedAt with fn deserialize(d) {
@@ -84027,6 +85039,7 @@ pub impl ToJson for RepositoryUnarchivedRepositoryPushedAt with fn to_json(self)
 
 ///|
 /// `RepositoryUnarchivedRepository`
+#derive(Debug, Eq)
 pub(all) struct RepositoryUnarchivedRepository {
   /// Whether to allow auto-merge for pull requests.
   allow_auto_merge : Bool
@@ -84127,7 +85140,7 @@ pub(all) struct RepositoryUnarchivedRepository {
   url : String
   watchers : Int64
   watchers_count : Int64
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryUnarchivedRepository` (fields with defaults are optional).
@@ -84614,9 +85627,10 @@ pub impl ToJson for RepositoryUnarchivedRepository with fn to_json(self) {
 
 ///|
 /// `RepositoryDispatchOnDemandTestAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum RepositoryDispatchOnDemandTestAction {
   OnDemandTest
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryDispatchOnDemandTestAction with fn deserialize(d) {
@@ -84673,11 +85687,12 @@ pub impl ToJson for RepositoryDispatchOnDemandTestAction with fn to_json(self) {
 
 ///|
 /// `RepositoryImportEventStatus`
+#derive(Debug, Eq, Hash)
 pub(all) enum RepositoryImportEventStatus {
   Success
   Cancelled
   Failure
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryImportEventStatus with fn deserialize(d) {
@@ -84744,9 +85759,10 @@ pub impl ToJson for RepositoryImportEventStatus with fn to_json(self) {
 
 ///|
 /// `RepositoryVulnerabilityAlertCreateAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum RepositoryVulnerabilityAlertCreateAction {
   Create
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryVulnerabilityAlertCreateAction with fn deserialize(d) {
@@ -84803,6 +85819,7 @@ pub impl ToJson for RepositoryVulnerabilityAlertCreateAction with fn to_json(sel
 
 ///|
 /// The security alert of the vulnerable dependency.
+#derive(Debug, Eq)
 pub(all) struct RepositoryVulnerabilityAlertCreateAlert {
   affected_package_name : String
   affected_range : String
@@ -84816,7 +85833,7 @@ pub(all) struct RepositoryVulnerabilityAlertCreateAlert {
   ghsa_id : String?
   id : Int64
   severity : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryVulnerabilityAlertCreateAlert` (fields with defaults are optional).
@@ -84926,9 +85943,10 @@ pub impl ToJson for RepositoryVulnerabilityAlertCreateAlert with fn to_json(self
 
 ///|
 /// `RepositoryVulnerabilityAlertDismissAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum RepositoryVulnerabilityAlertDismissAction {
   Dismiss
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryVulnerabilityAlertDismissAction with fn deserialize(d) {
@@ -84985,6 +86003,7 @@ pub impl ToJson for RepositoryVulnerabilityAlertDismissAction with fn to_json(se
 
 ///|
 /// The security alert of the vulnerable dependency.
+#derive(Debug, Eq)
 pub(all) struct RepositoryVulnerabilityAlertDismissAlert {
   affected_package_name : String
   affected_range : String
@@ -84998,7 +86017,7 @@ pub(all) struct RepositoryVulnerabilityAlertDismissAlert {
   ghsa_id : String?
   id : Int64
   severity : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryVulnerabilityAlertDismissAlert` (fields with defaults are optional).
@@ -85102,9 +86121,10 @@ pub impl ToJson for RepositoryVulnerabilityAlertDismissAlert with fn to_json(sel
 
 ///|
 /// `RepositoryVulnerabilityAlertResolveAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum RepositoryVulnerabilityAlertResolveAction {
   Resolve
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for RepositoryVulnerabilityAlertResolveAction with fn deserialize(d) {
@@ -85161,6 +86181,7 @@ pub impl ToJson for RepositoryVulnerabilityAlertResolveAction with fn to_json(se
 
 ///|
 /// The security alert of the vulnerable dependency.
+#derive(Debug, Eq)
 pub(all) struct RepositoryVulnerabilityAlertResolveAlert {
   affected_package_name : String
   affected_range : String
@@ -85174,7 +86195,7 @@ pub(all) struct RepositoryVulnerabilityAlertResolveAlert {
   ghsa_id : String?
   id : Int64
   severity : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `RepositoryVulnerabilityAlertResolveAlert` (fields with defaults are optional).
@@ -85284,9 +86305,10 @@ pub impl ToJson for RepositoryVulnerabilityAlertResolveAlert with fn to_json(sel
 
 ///|
 /// `SecretScanningAlertCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum SecretScanningAlertCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SecretScanningAlertCreatedAction with fn deserialize(d) {
@@ -85343,13 +86365,14 @@ pub impl ToJson for SecretScanningAlertCreatedAction with fn to_json(self) {
 
 ///|
 /// The secret scanning alert involved in the event.
+#derive(Debug, Eq)
 pub(all) struct SecretScanningAlertCreatedAlert {
   number : Int64
   resolution : Unit
   resolved_at : Unit
   resolved_by : Unit
   secret_type : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecretScanningAlertCreatedAlert` (fields with defaults are optional).
@@ -85412,9 +86435,10 @@ pub impl ToJson for SecretScanningAlertCreatedAlert with fn to_json(self) {
 
 ///|
 /// `SecretScanningAlertReopenedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum SecretScanningAlertReopenedAction {
   Reopened
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SecretScanningAlertReopenedAction with fn deserialize(d) {
@@ -85471,13 +86495,14 @@ pub impl ToJson for SecretScanningAlertReopenedAction with fn to_json(self) {
 
 ///|
 /// The secret scanning alert involved in the event.
+#derive(Debug, Eq)
 pub(all) struct SecretScanningAlertReopenedAlert {
   number : Int64
   resolution : Unit
   resolved_at : Unit
   resolved_by : Unit
   secret_type : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecretScanningAlertReopenedAlert` (fields with defaults are optional).
@@ -85540,9 +86565,10 @@ pub impl ToJson for SecretScanningAlertReopenedAlert with fn to_json(self) {
 
 ///|
 /// `SecretScanningAlertResolvedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum SecretScanningAlertResolvedAction {
   Resolved
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SecretScanningAlertResolvedAction with fn deserialize(d) {
@@ -85599,12 +86625,13 @@ pub impl ToJson for SecretScanningAlertResolvedAction with fn to_json(self) {
 
 ///|
 /// `SecretScanningAlertResolvedAlertResolution`
+#derive(Debug, Eq, Hash)
 pub(all) enum SecretScanningAlertResolvedAlertResolution {
   FalsePositive
   Wontfix
   Revoked
   UsedInTests
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SecretScanningAlertResolvedAlertResolution with fn deserialize(d) {
@@ -85676,13 +86703,14 @@ pub impl ToJson for SecretScanningAlertResolvedAlertResolution with fn to_json(s
 
 ///|
 /// The secret scanning alert involved in the event.
+#derive(Debug, Eq)
 pub(all) struct SecretScanningAlertResolvedAlert {
   number : Int64
   resolution : SecretScanningAlertResolvedAlertResolution
   resolved_at : String
   resolved_by : User
   secret_type : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecretScanningAlertResolvedAlert` (fields with defaults are optional).
@@ -85745,9 +86773,10 @@ pub impl ToJson for SecretScanningAlertResolvedAlert with fn to_json(self) {
 
 ///|
 /// `SecurityAdvisoryPerformedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum SecurityAdvisoryPerformedAction {
   Performed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SecurityAdvisoryPerformedAction with fn deserialize(d) {
@@ -85804,10 +86833,11 @@ pub impl ToJson for SecurityAdvisoryPerformedAction with fn to_json(self) {
 
 ///|
 /// `SecurityAdvisoryPerformedSecurityAdvisoryCvss`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPerformedSecurityAdvisoryCvss {
   score : Double
   vector_string : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPerformedSecurityAdvisoryCvss` (fields with defaults are optional).
@@ -85855,10 +86885,11 @@ pub impl ToJson for SecurityAdvisoryPerformedSecurityAdvisoryCvss with fn to_jso
 
 ///|
 /// `SecurityAdvisoryPerformedSecurityAdvisoryCwesItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPerformedSecurityAdvisoryCwesItem {
   cwe_id : String
   name : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPerformedSecurityAdvisoryCwesItem` (fields with defaults are optional).
@@ -85906,10 +86937,11 @@ pub impl ToJson for SecurityAdvisoryPerformedSecurityAdvisoryCwesItem with fn to
 
 ///|
 /// `SecurityAdvisoryPerformedSecurityAdvisoryIdentifiersItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPerformedSecurityAdvisoryIdentifiersItem {
   type_ : String
   value : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPerformedSecurityAdvisoryIdentifiersItem` (fields with defaults are optional).
@@ -85957,9 +86989,10 @@ pub impl ToJson for SecurityAdvisoryPerformedSecurityAdvisoryIdentifiersItem wit
 
 ///|
 /// `SecurityAdvisoryPerformedSecurityAdvisoryReferencesItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPerformedSecurityAdvisoryReferencesItem {
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPerformedSecurityAdvisoryReferencesItem` (fields with defaults are optional).
@@ -86002,9 +87035,10 @@ pub impl ToJson for SecurityAdvisoryPerformedSecurityAdvisoryReferencesItem with
 
 ///|
 /// `SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion {
   identifier : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion` (fields with defaults are optional).
@@ -86047,10 +87081,11 @@ pub impl ToJson for SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem
 
 ///|
 /// `SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemPackage`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemPackage {
   ecosystem : String
   name : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemPackage` (fields with defaults are optional).
@@ -86098,12 +87133,13 @@ pub impl ToJson for SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem
 
 ///|
 /// `SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem {
   first_patched_version : SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion?
   package_ : SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItemPackage
   severity : String
   vulnerable_version_range : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem` (fields with defaults are optional).
@@ -86161,6 +87197,7 @@ pub impl ToJson for SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem
 
 ///|
 /// The details of the security advisory, including summary, description, and severity.
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPerformedSecurityAdvisory {
   cvss : SecurityAdvisoryPerformedSecurityAdvisoryCvss
   cwes : Array[SecurityAdvisoryPerformedSecurityAdvisoryCwesItem]
@@ -86174,7 +87211,7 @@ pub(all) struct SecurityAdvisoryPerformedSecurityAdvisory {
   updated_at : String
   vulnerabilities : Array[SecurityAdvisoryPerformedSecurityAdvisoryVulnerabilitiesItem]
   withdrawn_at : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPerformedSecurityAdvisory` (fields with defaults are optional).
@@ -86272,9 +87309,10 @@ pub impl ToJson for SecurityAdvisoryPerformedSecurityAdvisory with fn to_json(se
 
 ///|
 /// `SecurityAdvisoryPublishedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum SecurityAdvisoryPublishedAction {
   Published
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SecurityAdvisoryPublishedAction with fn deserialize(d) {
@@ -86331,10 +87369,11 @@ pub impl ToJson for SecurityAdvisoryPublishedAction with fn to_json(self) {
 
 ///|
 /// `SecurityAdvisoryPublishedSecurityAdvisoryCvss`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPublishedSecurityAdvisoryCvss {
   score : Double
   vector_string : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPublishedSecurityAdvisoryCvss` (fields with defaults are optional).
@@ -86382,10 +87421,11 @@ pub impl ToJson for SecurityAdvisoryPublishedSecurityAdvisoryCvss with fn to_jso
 
 ///|
 /// `SecurityAdvisoryPublishedSecurityAdvisoryCwesItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPublishedSecurityAdvisoryCwesItem {
   cwe_id : String
   name : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPublishedSecurityAdvisoryCwesItem` (fields with defaults are optional).
@@ -86433,10 +87473,11 @@ pub impl ToJson for SecurityAdvisoryPublishedSecurityAdvisoryCwesItem with fn to
 
 ///|
 /// `SecurityAdvisoryPublishedSecurityAdvisoryIdentifiersItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPublishedSecurityAdvisoryIdentifiersItem {
   type_ : String
   value : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPublishedSecurityAdvisoryIdentifiersItem` (fields with defaults are optional).
@@ -86484,9 +87525,10 @@ pub impl ToJson for SecurityAdvisoryPublishedSecurityAdvisoryIdentifiersItem wit
 
 ///|
 /// `SecurityAdvisoryPublishedSecurityAdvisoryReferencesItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPublishedSecurityAdvisoryReferencesItem {
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPublishedSecurityAdvisoryReferencesItem` (fields with defaults are optional).
@@ -86529,9 +87571,10 @@ pub impl ToJson for SecurityAdvisoryPublishedSecurityAdvisoryReferencesItem with
 
 ///|
 /// `SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion {
   identifier : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion` (fields with defaults are optional).
@@ -86574,10 +87617,11 @@ pub impl ToJson for SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem
 
 ///|
 /// `SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemPackage`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemPackage {
   ecosystem : String
   name : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemPackage` (fields with defaults are optional).
@@ -86625,12 +87669,13 @@ pub impl ToJson for SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem
 
 ///|
 /// `SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem {
   first_patched_version : SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion?
   package_ : SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItemPackage
   severity : String
   vulnerable_version_range : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem` (fields with defaults are optional).
@@ -86688,6 +87733,7 @@ pub impl ToJson for SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem
 
 ///|
 /// The details of the security advisory, including summary, description, and severity.
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryPublishedSecurityAdvisory {
   cvss : SecurityAdvisoryPublishedSecurityAdvisoryCvss
   cwes : Array[SecurityAdvisoryPublishedSecurityAdvisoryCwesItem]
@@ -86701,7 +87747,7 @@ pub(all) struct SecurityAdvisoryPublishedSecurityAdvisory {
   updated_at : String
   vulnerabilities : Array[SecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesItem]
   withdrawn_at : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryPublishedSecurityAdvisory` (fields with defaults are optional).
@@ -86799,9 +87845,10 @@ pub impl ToJson for SecurityAdvisoryPublishedSecurityAdvisory with fn to_json(se
 
 ///|
 /// `SecurityAdvisoryUpdatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum SecurityAdvisoryUpdatedAction {
   Updated
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SecurityAdvisoryUpdatedAction with fn deserialize(d) {
@@ -86858,10 +87905,11 @@ pub impl ToJson for SecurityAdvisoryUpdatedAction with fn to_json(self) {
 
 ///|
 /// `SecurityAdvisoryUpdatedSecurityAdvisoryCvss`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisoryCvss {
   score : Double
   vector_string : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryUpdatedSecurityAdvisoryCvss` (fields with defaults are optional).
@@ -86909,10 +87957,11 @@ pub impl ToJson for SecurityAdvisoryUpdatedSecurityAdvisoryCvss with fn to_json(
 
 ///|
 /// `SecurityAdvisoryUpdatedSecurityAdvisoryCwesItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisoryCwesItem {
   cwe_id : String
   name : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryUpdatedSecurityAdvisoryCwesItem` (fields with defaults are optional).
@@ -86960,10 +88009,11 @@ pub impl ToJson for SecurityAdvisoryUpdatedSecurityAdvisoryCwesItem with fn to_j
 
 ///|
 /// `SecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersItem {
   type_ : String
   value : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersItem` (fields with defaults are optional).
@@ -87011,9 +88061,10 @@ pub impl ToJson for SecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersItem with 
 
 ///|
 /// `SecurityAdvisoryUpdatedSecurityAdvisoryReferencesItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisoryReferencesItem {
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryUpdatedSecurityAdvisoryReferencesItem` (fields with defaults are optional).
@@ -87056,9 +88107,10 @@ pub impl ToJson for SecurityAdvisoryUpdatedSecurityAdvisoryReferencesItem with f
 
 ///|
 /// `SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion {
   identifier : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion` (fields with defaults are optional).
@@ -87101,10 +88153,11 @@ pub impl ToJson for SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemFi
 
 ///|
 /// `SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemPackage`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemPackage {
   ecosystem : String
   name : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemPackage` (fields with defaults are optional).
@@ -87152,12 +88205,13 @@ pub impl ToJson for SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemPa
 
 ///|
 /// `SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItem {
   first_patched_version : SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion?
   package_ : SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItemPackage
   severity : String
   vulnerable_version_range : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItem` (fields with defaults are optional).
@@ -87215,6 +88269,7 @@ pub impl ToJson for SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItem w
 
 ///|
 /// The details of the security advisory, including summary, description, and severity.
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisory {
   cvss : SecurityAdvisoryUpdatedSecurityAdvisoryCvss
   cwes : Array[SecurityAdvisoryUpdatedSecurityAdvisoryCwesItem]
@@ -87228,7 +88283,7 @@ pub(all) struct SecurityAdvisoryUpdatedSecurityAdvisory {
   updated_at : String
   vulnerabilities : Array[SecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesItem]
   withdrawn_at : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryUpdatedSecurityAdvisory` (fields with defaults are optional).
@@ -87326,9 +88381,10 @@ pub impl ToJson for SecurityAdvisoryUpdatedSecurityAdvisory with fn to_json(self
 
 ///|
 /// `SecurityAdvisoryWithdrawnAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum SecurityAdvisoryWithdrawnAction {
   Withdrawn
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SecurityAdvisoryWithdrawnAction with fn deserialize(d) {
@@ -87385,10 +88441,11 @@ pub impl ToJson for SecurityAdvisoryWithdrawnAction with fn to_json(self) {
 
 ///|
 /// `SecurityAdvisoryWithdrawnSecurityAdvisoryCvss`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisoryCvss {
   score : Double
   vector_string : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisoryCvss` (fields with defaults are optional).
@@ -87436,10 +88493,11 @@ pub impl ToJson for SecurityAdvisoryWithdrawnSecurityAdvisoryCvss with fn to_jso
 
 ///|
 /// `SecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem {
   cwe_id : String
   name : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem` (fields with defaults are optional).
@@ -87487,10 +88545,11 @@ pub impl ToJson for SecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem with fn to
 
 ///|
 /// `SecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem {
   type_ : String
   value : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem` (fields with defaults are optional).
@@ -87538,9 +88597,10 @@ pub impl ToJson for SecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem wit
 
 ///|
 /// `SecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem {
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem` (fields with defaults are optional).
@@ -87583,9 +88643,10 @@ pub impl ToJson for SecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem with
 
 ///|
 /// `SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion {
   identifier : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion` (fields with defaults are optional).
@@ -87628,10 +88689,11 @@ pub impl ToJson for SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem
 
 ///|
 /// `SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPackage`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPackage {
   ecosystem : String
   name : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPackage` (fields with defaults are optional).
@@ -87679,12 +88741,13 @@ pub impl ToJson for SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem
 
 ///|
 /// `SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem`
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem {
   first_patched_version : SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion?
   package_ : SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPackage
   severity : String
   vulnerable_version_range : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem` (fields with defaults are optional).
@@ -87742,6 +88805,7 @@ pub impl ToJson for SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem
 
 ///|
 /// The details of the security advisory, including summary, description, and severity.
+#derive(Debug, Eq)
 pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisory {
   cvss : SecurityAdvisoryWithdrawnSecurityAdvisoryCvss
   cwes : Array[SecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem]
@@ -87755,7 +88819,7 @@ pub(all) struct SecurityAdvisoryWithdrawnSecurityAdvisory {
   updated_at : String
   vulnerabilities : Array[SecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem]
   withdrawn_at : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SecurityAdvisoryWithdrawnSecurityAdvisory` (fields with defaults are optional).
@@ -87853,6 +88917,7 @@ pub impl ToJson for SecurityAdvisoryWithdrawnSecurityAdvisory with fn to_json(se
 
 ///|
 /// `SimplePullRequestLinks`
+#derive(Debug, Eq)
 pub(all) struct SimplePullRequestLinks {
   comments : Link
   commits : Link
@@ -87862,7 +88927,7 @@ pub(all) struct SimplePullRequestLinks {
   review_comments : Link
   self_ : Link
   statuses : Link
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SimplePullRequestLinks` (fields with defaults are optional).
@@ -87940,12 +89005,13 @@ pub impl ToJson for SimplePullRequestLinks with fn to_json(self) {
 
 ///|
 /// `SimplePullRequestActiveLockReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum SimplePullRequestActiveLockReason {
   Resolved
   OffTopic
   TooHeated
   Spam
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SimplePullRequestActiveLockReason with fn deserialize(d) {
@@ -88017,13 +89083,14 @@ pub impl ToJson for SimplePullRequestActiveLockReason with fn to_json(self) {
 
 ///|
 /// `SimplePullRequestBase`
+#derive(Debug, Eq)
 pub(all) struct SimplePullRequestBase {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SimplePullRequestBase` (fields with defaults are optional).
@@ -88086,13 +89153,14 @@ pub impl ToJson for SimplePullRequestBase with fn to_json(self) {
 
 ///|
 /// `SimplePullRequestHead`
+#derive(Debug, Eq)
 pub(all) struct SimplePullRequestHead {
   label : String
   ref_ : String
   repo : Repository
   sha : String
   user : User
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SimplePullRequestHead` (fields with defaults are optional).
@@ -88155,10 +89223,11 @@ pub impl ToJson for SimplePullRequestHead with fn to_json(self) {
 
 ///|
 /// `SimplePullRequestRequestedReviewersItem`
+#derive(Debug, Eq)
 pub(all) enum SimplePullRequestRequestedReviewersItem {
   User(User)
   Team(Team)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for SimplePullRequestRequestedReviewersItem with fn deserialize(d) {
@@ -88202,10 +89271,11 @@ pub impl ToJson for SimplePullRequestRequestedReviewersItem with fn to_json(self
 
 ///|
 /// `SimplePullRequestState`
+#derive(Debug, Eq, Hash)
 pub(all) enum SimplePullRequestState {
   Open
   Closed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SimplePullRequestState with fn deserialize(d) {
@@ -88267,9 +89337,10 @@ pub impl ToJson for SimplePullRequestState with fn to_json(self) {
 
 ///|
 /// `SponsorshipCancelledAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum SponsorshipCancelledAction {
   Cancelled
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SponsorshipCancelledAction with fn deserialize(d) {
@@ -88326,6 +89397,7 @@ pub impl ToJson for SponsorshipCancelledAction with fn to_json(self) {
 
 ///|
 /// `SponsorshipCancelledSponsorship`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipCancelledSponsorship {
   created_at : String
   node_id : String
@@ -88333,7 +89405,7 @@ pub(all) struct SponsorshipCancelledSponsorship {
   sponsor : User
   sponsorable : User
   tier : SponsorshipTier
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipCancelledSponsorship` (fields with defaults are optional).
@@ -88401,9 +89473,10 @@ pub impl ToJson for SponsorshipCancelledSponsorship with fn to_json(self) {
 
 ///|
 /// `SponsorshipCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum SponsorshipCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SponsorshipCreatedAction with fn deserialize(d) {
@@ -88460,6 +89533,7 @@ pub impl ToJson for SponsorshipCreatedAction with fn to_json(self) {
 
 ///|
 /// `SponsorshipCreatedSponsorship`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipCreatedSponsorship {
   created_at : String
   node_id : String
@@ -88467,7 +89541,7 @@ pub(all) struct SponsorshipCreatedSponsorship {
   sponsor : User
   sponsorable : User
   tier : SponsorshipTier
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipCreatedSponsorship` (fields with defaults are optional).
@@ -88535,9 +89609,10 @@ pub impl ToJson for SponsorshipCreatedSponsorship with fn to_json(self) {
 
 ///|
 /// `SponsorshipEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum SponsorshipEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SponsorshipEditedAction with fn deserialize(d) {
@@ -88594,10 +89669,11 @@ pub impl ToJson for SponsorshipEditedAction with fn to_json(self) {
 
 ///|
 /// `SponsorshipEditedChangesPrivacyLevel`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipEditedChangesPrivacyLevel {
   /// The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipEditedChangesPrivacyLevel` (fields with defaults are optional).
@@ -88640,9 +89716,10 @@ pub impl ToJson for SponsorshipEditedChangesPrivacyLevel with fn to_json(self) {
 
 ///|
 /// `SponsorshipEditedChanges`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipEditedChanges {
   privacy_level : SponsorshipEditedChangesPrivacyLevel?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipEditedChanges` (fields with defaults are optional).
@@ -88687,6 +89764,7 @@ pub impl ToJson for SponsorshipEditedChanges with fn to_json(self) {
 
 ///|
 /// `SponsorshipEditedSponsorship`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipEditedSponsorship {
   created_at : String
   node_id : String
@@ -88694,7 +89772,7 @@ pub(all) struct SponsorshipEditedSponsorship {
   sponsor : User
   sponsorable : User
   tier : SponsorshipTier
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipEditedSponsorship` (fields with defaults are optional).
@@ -88762,9 +89840,10 @@ pub impl ToJson for SponsorshipEditedSponsorship with fn to_json(self) {
 
 ///|
 /// `SponsorshipPendingCancellationAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum SponsorshipPendingCancellationAction {
   PendingCancellation
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SponsorshipPendingCancellationAction with fn deserialize(d) {
@@ -88821,6 +89900,7 @@ pub impl ToJson for SponsorshipPendingCancellationAction with fn to_json(self) {
 
 ///|
 /// `SponsorshipPendingCancellationSponsorship`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipPendingCancellationSponsorship {
   created_at : String
   node_id : String
@@ -88828,7 +89908,7 @@ pub(all) struct SponsorshipPendingCancellationSponsorship {
   sponsor : User
   sponsorable : User
   tier : SponsorshipTier
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipPendingCancellationSponsorship` (fields with defaults are optional).
@@ -88896,9 +89976,10 @@ pub impl ToJson for SponsorshipPendingCancellationSponsorship with fn to_json(se
 
 ///|
 /// `SponsorshipPendingTierChangeAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum SponsorshipPendingTierChangeAction {
   PendingTierChange
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SponsorshipPendingTierChangeAction with fn deserialize(d) {
@@ -88955,9 +90036,10 @@ pub impl ToJson for SponsorshipPendingTierChangeAction with fn to_json(self) {
 
 ///|
 /// `SponsorshipPendingTierChangeChangesTier`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipPendingTierChangeChangesTier {
   from : SponsorshipTier
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipPendingTierChangeChangesTier` (fields with defaults are optional).
@@ -89000,9 +90082,10 @@ pub impl ToJson for SponsorshipPendingTierChangeChangesTier with fn to_json(self
 
 ///|
 /// `SponsorshipPendingTierChangeChanges`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipPendingTierChangeChanges {
   tier : SponsorshipPendingTierChangeChangesTier
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipPendingTierChangeChanges` (fields with defaults are optional).
@@ -89045,6 +90128,7 @@ pub impl ToJson for SponsorshipPendingTierChangeChanges with fn to_json(self) {
 
 ///|
 /// `SponsorshipPendingTierChangeSponsorship`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipPendingTierChangeSponsorship {
   created_at : String
   node_id : String
@@ -89052,7 +90136,7 @@ pub(all) struct SponsorshipPendingTierChangeSponsorship {
   sponsor : User
   sponsorable : User
   tier : SponsorshipTier
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipPendingTierChangeSponsorship` (fields with defaults are optional).
@@ -89120,9 +90204,10 @@ pub impl ToJson for SponsorshipPendingTierChangeSponsorship with fn to_json(self
 
 ///|
 /// `SponsorshipTierChangedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum SponsorshipTierChangedAction {
   TierChanged
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for SponsorshipTierChangedAction with fn deserialize(d) {
@@ -89179,9 +90264,10 @@ pub impl ToJson for SponsorshipTierChangedAction with fn to_json(self) {
 
 ///|
 /// `SponsorshipTierChangedChangesTier`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipTierChangedChangesTier {
   from : SponsorshipTier
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipTierChangedChangesTier` (fields with defaults are optional).
@@ -89224,9 +90310,10 @@ pub impl ToJson for SponsorshipTierChangedChangesTier with fn to_json(self) {
 
 ///|
 /// `SponsorshipTierChangedChanges`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipTierChangedChanges {
   tier : SponsorshipTierChangedChangesTier
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipTierChangedChanges` (fields with defaults are optional).
@@ -89269,6 +90356,7 @@ pub impl ToJson for SponsorshipTierChangedChanges with fn to_json(self) {
 
 ///|
 /// `SponsorshipTierChangedSponsorship`
+#derive(Debug, Eq)
 pub(all) struct SponsorshipTierChangedSponsorship {
   created_at : String
   node_id : String
@@ -89276,7 +90364,7 @@ pub(all) struct SponsorshipTierChangedSponsorship {
   sponsor : User
   sponsorable : User
   tier : SponsorshipTier
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `SponsorshipTierChangedSponsorship` (fields with defaults are optional).
@@ -89344,9 +90432,10 @@ pub impl ToJson for SponsorshipTierChangedSponsorship with fn to_json(self) {
 
 ///|
 /// `StarCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum StarCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StarCreatedAction with fn deserialize(d) {
@@ -89403,9 +90492,10 @@ pub impl ToJson for StarCreatedAction with fn to_json(self) {
 
 ///|
 /// `StarDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum StarDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StarDeletedAction with fn deserialize(d) {
@@ -89462,10 +90552,11 @@ pub impl ToJson for StarDeletedAction with fn to_json(self) {
 
 ///|
 /// `StatusEventBranchesItemCommit`
+#derive(Debug, Eq)
 pub(all) struct StatusEventBranchesItemCommit {
   sha : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StatusEventBranchesItemCommit` (fields with defaults are optional).
@@ -89513,11 +90604,12 @@ pub impl ToJson for StatusEventBranchesItemCommit with fn to_json(self) {
 
 ///|
 /// `StatusEventBranchesItem`
+#derive(Debug, Eq)
 pub(all) struct StatusEventBranchesItem {
   commit : StatusEventBranchesItemCommit
   name : String
   protected_ : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StatusEventBranchesItem` (fields with defaults are optional).
@@ -89570,6 +90662,7 @@ pub impl ToJson for StatusEventBranchesItem with fn to_json(self) {
 
 ///|
 /// `StatusEventCommitCommitAuthor`
+#derive(Debug, Eq)
 pub(all) struct StatusEventCommitCommitAuthor {
   date : @typify_rt.DateTimeUtc
   /// The git author's email address.
@@ -89577,7 +90670,7 @@ pub(all) struct StatusEventCommitCommitAuthor {
   /// The git author's name.
   name : String
   username : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StatusEventCommitCommitAuthor` (fields with defaults are optional).
@@ -89637,6 +90730,7 @@ pub impl ToJson for StatusEventCommitCommitAuthor with fn to_json(self) {
 
 ///|
 /// `StatusEventCommitCommitCommitter`
+#derive(Debug, Eq)
 pub(all) struct StatusEventCommitCommitCommitter {
   date : @typify_rt.DateTimeUtc
   /// The git author's email address.
@@ -89644,7 +90738,7 @@ pub(all) struct StatusEventCommitCommitCommitter {
   /// The git author's name.
   name : String
   username : String?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StatusEventCommitCommitCommitter` (fields with defaults are optional).
@@ -89704,10 +90798,11 @@ pub impl ToJson for StatusEventCommitCommitCommitter with fn to_json(self) {
 
 ///|
 /// `StatusEventCommitCommitTree`
+#derive(Debug, Eq)
 pub(all) struct StatusEventCommitCommitTree {
   sha : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StatusEventCommitCommitTree` (fields with defaults are optional).
@@ -89755,6 +90850,7 @@ pub impl ToJson for StatusEventCommitCommitTree with fn to_json(self) {
 
 ///|
 /// `StatusEventCommitCommitVerificationReason`
+#derive(Debug, Eq, Hash)
 pub(all) enum StatusEventCommitCommitVerificationReason {
   ExpiredKey
   NotSigningKey
@@ -89769,7 +90865,7 @@ pub(all) enum StatusEventCommitCommitVerificationReason {
   MalformedSignature
   Invalid
   Valid
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StatusEventCommitCommitVerificationReason with fn deserialize(d) {
@@ -89886,12 +90982,13 @@ pub impl ToJson for StatusEventCommitCommitVerificationReason with fn to_json(se
 
 ///|
 /// `StatusEventCommitCommitVerification`
+#derive(Debug, Eq)
 pub(all) struct StatusEventCommitCommitVerification {
   payload : String?
   reason : StatusEventCommitCommitVerificationReason
   signature : String?
   verified : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StatusEventCommitCommitVerification` (fields with defaults are optional).
@@ -89949,6 +91046,7 @@ pub impl ToJson for StatusEventCommitCommitVerification with fn to_json(self) {
 
 ///|
 /// `StatusEventCommitCommit`
+#derive(Debug, Eq)
 pub(all) struct StatusEventCommitCommit {
   author : StatusEventCommitCommitAuthor
   comment_count : Int64
@@ -89957,7 +91055,7 @@ pub(all) struct StatusEventCommitCommit {
   tree : StatusEventCommitCommitTree
   url : String
   verification : StatusEventCommitCommitVerification
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StatusEventCommitCommit` (fields with defaults are optional).
@@ -90030,11 +91128,12 @@ pub impl ToJson for StatusEventCommitCommit with fn to_json(self) {
 
 ///|
 /// `StatusEventCommitParentsItem`
+#derive(Debug, Eq)
 pub(all) struct StatusEventCommitParentsItem {
   html_url : String
   sha : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StatusEventCommitParentsItem` (fields with defaults are optional).
@@ -90087,6 +91186,7 @@ pub impl ToJson for StatusEventCommitParentsItem with fn to_json(self) {
 
 ///|
 /// `StatusEventCommit`
+#derive(Debug, Eq)
 pub(all) struct StatusEventCommit {
   author : User?
   comments_url : String
@@ -90097,7 +91197,7 @@ pub(all) struct StatusEventCommit {
   parents : Array[StatusEventCommitParentsItem]
   sha : String
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `StatusEventCommit` (fields with defaults are optional).
@@ -90180,12 +91280,13 @@ pub impl ToJson for StatusEventCommit with fn to_json(self) {
 
 ///|
 /// The new state. Can be `pending`, `success`, `failure`, or `error`.
+#derive(Debug, Eq, Hash)
 pub(all) enum StatusEventState {
   Pending
   Success
   Failure
   Error
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for StatusEventState with fn deserialize(d) {
@@ -90257,11 +91358,12 @@ pub impl ToJson for StatusEventState with fn to_json(self) {
 
 ///|
 /// `TeamParentPrivacy`
+#derive(Debug, Eq, Hash)
 pub(all) enum TeamParentPrivacy {
   Open
   Closed
   Secret
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TeamParentPrivacy with fn deserialize(d) {
@@ -90328,6 +91430,7 @@ pub impl ToJson for TeamParentPrivacy with fn to_json(self) {
 
 ///|
 /// `TeamParent`
+#derive(Debug, Eq)
 pub(all) struct TeamParent {
   /// Description of the team
   description : String?
@@ -90345,7 +91448,7 @@ pub(all) struct TeamParent {
   slug : String
   /// URL for the team
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TeamParent` (fields with defaults are optional).
@@ -90438,11 +91541,12 @@ pub impl ToJson for TeamParent with fn to_json(self) {
 
 ///|
 /// `TeamPrivacy`
+#derive(Debug, Eq, Hash)
 pub(all) enum TeamPrivacy {
   Open
   Closed
   Secret
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TeamPrivacy with fn deserialize(d) {
@@ -90509,9 +91613,10 @@ pub impl ToJson for TeamPrivacy with fn to_json(self) {
 
 ///|
 /// `TeamAddedToRepositoryAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum TeamAddedToRepositoryAction {
   AddedToRepository
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TeamAddedToRepositoryAction with fn deserialize(d) {
@@ -90568,9 +91673,10 @@ pub impl ToJson for TeamAddedToRepositoryAction with fn to_json(self) {
 
 ///|
 /// `TeamCreatedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum TeamCreatedAction {
   Created
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TeamCreatedAction with fn deserialize(d) {
@@ -90627,9 +91733,10 @@ pub impl ToJson for TeamCreatedAction with fn to_json(self) {
 
 ///|
 /// `TeamDeletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum TeamDeletedAction {
   Deleted
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TeamDeletedAction with fn deserialize(d) {
@@ -90686,9 +91793,10 @@ pub impl ToJson for TeamDeletedAction with fn to_json(self) {
 
 ///|
 /// `TeamEditedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum TeamEditedAction {
   Edited
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TeamEditedAction with fn deserialize(d) {
@@ -90745,10 +91853,11 @@ pub impl ToJson for TeamEditedAction with fn to_json(self) {
 
 ///|
 /// `TeamEditedChangesDescription`
+#derive(Debug, Eq)
 pub(all) struct TeamEditedChangesDescription {
   /// The previous version of the description if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TeamEditedChangesDescription` (fields with defaults are optional).
@@ -90791,10 +91900,11 @@ pub impl ToJson for TeamEditedChangesDescription with fn to_json(self) {
 
 ///|
 /// `TeamEditedChangesName`
+#derive(Debug, Eq)
 pub(all) struct TeamEditedChangesName {
   /// The previous version of the name if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TeamEditedChangesName` (fields with defaults are optional).
@@ -90837,10 +91947,11 @@ pub impl ToJson for TeamEditedChangesName with fn to_json(self) {
 
 ///|
 /// `TeamEditedChangesPrivacy`
+#derive(Debug, Eq)
 pub(all) struct TeamEditedChangesPrivacy {
   /// The previous version of the team's privacy if the action was `edited`.
   from : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TeamEditedChangesPrivacy` (fields with defaults are optional).
@@ -90883,6 +91994,7 @@ pub impl ToJson for TeamEditedChangesPrivacy with fn to_json(self) {
 
 ///|
 /// `TeamEditedChangesRepositoryPermissionsFrom`
+#derive(Debug, Eq)
 pub(all) struct TeamEditedChangesRepositoryPermissionsFrom {
   /// The previous version of the team member's `admin` permission on a repository, if the action was `edited`.
   admin : Bool?
@@ -90890,7 +92002,7 @@ pub(all) struct TeamEditedChangesRepositoryPermissionsFrom {
   pull : Bool?
   /// The previous version of the team member's `push` permission on a repository, if the action was `edited`.
   push : Bool?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TeamEditedChangesRepositoryPermissionsFrom` (fields with defaults are optional).
@@ -90949,9 +92061,10 @@ pub impl ToJson for TeamEditedChangesRepositoryPermissionsFrom with fn to_json(s
 
 ///|
 /// `TeamEditedChangesRepositoryPermissions`
+#derive(Debug, Eq)
 pub(all) struct TeamEditedChangesRepositoryPermissions {
   from : TeamEditedChangesRepositoryPermissionsFrom
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TeamEditedChangesRepositoryPermissions` (fields with defaults are optional).
@@ -90994,9 +92107,10 @@ pub impl ToJson for TeamEditedChangesRepositoryPermissions with fn to_json(self)
 
 ///|
 /// `TeamEditedChangesRepository`
+#derive(Debug, Eq)
 pub(all) struct TeamEditedChangesRepository {
   permissions : TeamEditedChangesRepositoryPermissions
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TeamEditedChangesRepository` (fields with defaults are optional).
@@ -91039,12 +92153,13 @@ pub impl ToJson for TeamEditedChangesRepository with fn to_json(self) {
 
 ///|
 /// The changes to the team if the action was `edited`.
+#derive(Debug, Eq)
 pub(all) struct TeamEditedChanges {
   description : TeamEditedChangesDescription?
   name : TeamEditedChangesName?
   privacy : TeamEditedChangesPrivacy?
   repository : TeamEditedChangesRepository?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `TeamEditedChanges` (fields with defaults are optional).
@@ -91110,9 +92225,10 @@ pub impl ToJson for TeamEditedChanges with fn to_json(self) {
 
 ///|
 /// `TeamRemovedFromRepositoryAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum TeamRemovedFromRepositoryAction {
   RemovedFromRepository
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for TeamRemovedFromRepositoryAction with fn deserialize(d) {
@@ -91169,11 +92285,12 @@ pub impl ToJson for TeamRemovedFromRepositoryAction with fn to_json(self) {
 
 ///|
 /// `UserType`
+#derive(Debug, Eq, Hash)
 pub(all) enum UserType {
   Bot
   User
   Organization
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for UserType with fn deserialize(d) {
@@ -91240,9 +92357,10 @@ pub impl ToJson for UserType with fn to_json(self) {
 
 ///|
 /// `WatchStartedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum WatchStartedAction {
   Started
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WatchStartedAction with fn deserialize(d) {
@@ -91299,6 +92417,7 @@ pub impl ToJson for WatchStartedAction with fn to_json(self) {
 
 ///|
 /// `WebhookEventsVariant0Item`
+#derive(Debug, Eq, Hash)
 pub(all) enum WebhookEventsVariant0Item {
   CheckRun
   CheckSuite
@@ -91347,7 +92466,7 @@ pub(all) enum WebhookEventsVariant0Item {
   Watch
   WorkflowDispatch
   WorkflowRun
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WebhookEventsVariant0Item with fn deserialize(d) {
@@ -91634,10 +92753,11 @@ pub impl ToJson for WebhookEventsVariant0Item with fn to_json(self) {
 
 ///|
 /// `WorkflowJobConclusion`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowJobConclusion {
   Success
   Failure
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowJobConclusion with fn deserialize(d) {
@@ -91699,11 +92819,12 @@ pub impl ToJson for WorkflowJobConclusion with fn to_json(self) {
 
 ///|
 /// `WorkflowJobStatus`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowJobStatus {
   Queued
   InProgress
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowJobStatus with fn deserialize(d) {
@@ -91770,6 +92891,7 @@ pub impl ToJson for WorkflowJobStatus with fn to_json(self) {
 
 ///|
 /// `WorkflowRunConclusion`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowRunConclusion {
   Success
   Failure
@@ -91778,7 +92900,7 @@ pub(all) enum WorkflowRunConclusion {
   TimedOut
   ActionRequired
   Stale
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowRunConclusion with fn deserialize(d) {
@@ -91865,11 +92987,12 @@ pub impl ToJson for WorkflowRunConclusion with fn to_json(self) {
 
 ///|
 /// `WorkflowRunPullRequestsItemBase`
+#derive(Debug, Eq)
 pub(all) struct WorkflowRunPullRequestsItemBase {
   ref_ : String
   repo : RepoRef
   sha : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowRunPullRequestsItemBase` (fields with defaults are optional).
@@ -91922,11 +93045,12 @@ pub impl ToJson for WorkflowRunPullRequestsItemBase with fn to_json(self) {
 
 ///|
 /// `WorkflowRunPullRequestsItemHead`
+#derive(Debug, Eq)
 pub(all) struct WorkflowRunPullRequestsItemHead {
   ref_ : String
   repo : RepoRef
   sha : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowRunPullRequestsItemHead` (fields with defaults are optional).
@@ -91979,13 +93103,14 @@ pub impl ToJson for WorkflowRunPullRequestsItemHead with fn to_json(self) {
 
 ///|
 /// `WorkflowRunPullRequestsItem`
+#derive(Debug, Eq)
 pub(all) struct WorkflowRunPullRequestsItem {
   base : WorkflowRunPullRequestsItemBase
   head : WorkflowRunPullRequestsItemHead
   id : Double
   number : Double
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowRunPullRequestsItem` (fields with defaults are optional).
@@ -92048,12 +93173,13 @@ pub impl ToJson for WorkflowRunPullRequestsItem with fn to_json(self) {
 
 ///|
 /// `WorkflowRunStatus`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowRunStatus {
   Requested
   InProgress
   Completed
   Queued
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowRunStatus with fn deserialize(d) {
@@ -92125,11 +93251,12 @@ pub impl ToJson for WorkflowRunStatus with fn to_json(self) {
 
 ///|
 /// `WorkflowStepCompletedConclusion`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowStepCompletedConclusion {
   Failure
   Skipped
   Success
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowStepCompletedConclusion with fn deserialize(d) {
@@ -92196,9 +93323,10 @@ pub impl ToJson for WorkflowStepCompletedConclusion with fn to_json(self) {
 
 ///|
 /// `WorkflowStepCompletedStatus`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowStepCompletedStatus {
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowStepCompletedStatus with fn deserialize(d) {
@@ -92255,9 +93383,10 @@ pub impl ToJson for WorkflowStepCompletedStatus with fn to_json(self) {
 
 ///|
 /// `WorkflowStepInProgressStatus`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowStepInProgressStatus {
   InProgress
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowStepInProgressStatus with fn deserialize(d) {
@@ -92314,9 +93443,10 @@ pub impl ToJson for WorkflowStepInProgressStatus with fn to_json(self) {
 
 ///|
 /// `WorkflowJobCompletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowJobCompletedAction {
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowJobCompletedAction with fn deserialize(d) {
@@ -92373,10 +93503,11 @@ pub impl ToJson for WorkflowJobCompletedAction with fn to_json(self) {
 
 ///|
 /// `WorkflowJobCompletedWorkflowJobConclusion`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowJobCompletedWorkflowJobConclusion {
   Success
   Failure
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowJobCompletedWorkflowJobConclusion with fn deserialize(d) {
@@ -92438,11 +93569,12 @@ pub impl ToJson for WorkflowJobCompletedWorkflowJobConclusion with fn to_json(se
 
 ///|
 /// `WorkflowJobCompletedWorkflowJobStatus`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowJobCompletedWorkflowJobStatus {
   Queued
   InProgress
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowJobCompletedWorkflowJobStatus with fn deserialize(d) {
@@ -92509,6 +93641,7 @@ pub impl ToJson for WorkflowJobCompletedWorkflowJobStatus with fn to_json(self) 
 
 ///|
 /// `WorkflowJobCompletedWorkflowJob`
+#derive(Debug, Eq)
 pub(all) struct WorkflowJobCompletedWorkflowJob {
   check_run_url : String
   completed_at : String?
@@ -92525,7 +93658,7 @@ pub(all) struct WorkflowJobCompletedWorkflowJob {
   status : WorkflowJobCompletedWorkflowJobStatus
   steps : Array[WorkflowStep]
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowJobCompletedWorkflowJob` (fields with defaults are optional).
@@ -92638,9 +93771,10 @@ pub impl ToJson for WorkflowJobCompletedWorkflowJob with fn to_json(self) {
 
 ///|
 /// `WorkflowJobQueuedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowJobQueuedAction {
   Queued
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowJobQueuedAction with fn deserialize(d) {
@@ -92697,9 +93831,10 @@ pub impl ToJson for WorkflowJobQueuedAction with fn to_json(self) {
 
 ///|
 /// `WorkflowJobQueuedWorkflowJobStatus`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowJobQueuedWorkflowJobStatus {
   Queued
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowJobQueuedWorkflowJobStatus with fn deserialize(d) {
@@ -92756,6 +93891,7 @@ pub impl ToJson for WorkflowJobQueuedWorkflowJobStatus with fn to_json(self) {
 
 ///|
 /// `WorkflowJobQueuedWorkflowJob`
+#derive(Debug, Eq)
 pub(all) struct WorkflowJobQueuedWorkflowJob {
   check_run_url : String
   completed_at : Unit
@@ -92772,7 +93908,7 @@ pub(all) struct WorkflowJobQueuedWorkflowJob {
   status : WorkflowJobQueuedWorkflowJobStatus
   steps : Array[WorkflowStep]
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowJobQueuedWorkflowJob` (fields with defaults are optional).
@@ -92885,9 +94021,10 @@ pub impl ToJson for WorkflowJobQueuedWorkflowJob with fn to_json(self) {
 
 ///|
 /// `WorkflowJobStartedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowJobStartedAction {
   Started
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowJobStartedAction with fn deserialize(d) {
@@ -92944,7 +94081,8 @@ pub impl ToJson for WorkflowJobStartedAction with fn to_json(self) {
 
 ///|
 /// `WorkflowJobStartedWorkflowJobConclusion`
-pub(all) struct WorkflowJobStartedWorkflowJobConclusion(Unit) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct WorkflowJobStartedWorkflowJobConclusion(Unit)
 
 ///|
 let workflow_job_started_workflow_job_conclusion_values : Array[@typify_rt.Content] = @typify_rt.enum_values(
@@ -92989,11 +94127,12 @@ pub impl ToJson for WorkflowJobStartedWorkflowJobConclusion with fn to_json(self
 
 ///|
 /// `WorkflowJobStartedWorkflowJobStatus`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowJobStartedWorkflowJobStatus {
   Queued
   InProgress
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowJobStartedWorkflowJobStatus with fn deserialize(d) {
@@ -93060,6 +94199,7 @@ pub impl ToJson for WorkflowJobStartedWorkflowJobStatus with fn to_json(self) {
 
 ///|
 /// `WorkflowJobStartedWorkflowJob`
+#derive(Debug, Eq)
 pub(all) struct WorkflowJobStartedWorkflowJob {
   check_run_url : String
   completed_at : Unit
@@ -93076,7 +94216,7 @@ pub(all) struct WorkflowJobStartedWorkflowJob {
   status : WorkflowJobStartedWorkflowJobStatus
   steps : FixedArray[WorkflowStepInProgress]
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowJobStartedWorkflowJob` (fields with defaults are optional).
@@ -93189,9 +94329,10 @@ pub impl ToJson for WorkflowJobStartedWorkflowJob with fn to_json(self) {
 
 ///|
 /// `WorkflowRunCompletedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowRunCompletedAction {
   Completed
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowRunCompletedAction with fn deserialize(d) {
@@ -93248,6 +94389,7 @@ pub impl ToJson for WorkflowRunCompletedAction with fn to_json(self) {
 
 ///|
 /// `WorkflowRunCompletedWorkflowRunConclusion`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowRunCompletedWorkflowRunConclusion {
   Success
   Failure
@@ -93256,7 +94398,7 @@ pub(all) enum WorkflowRunCompletedWorkflowRunConclusion {
   TimedOut
   ActionRequired
   Stale
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowRunCompletedWorkflowRunConclusion with fn deserialize(d) {
@@ -93343,11 +94485,12 @@ pub impl ToJson for WorkflowRunCompletedWorkflowRunConclusion with fn to_json(se
 
 ///|
 /// `WorkflowRunCompletedWorkflowRunPullRequestsItemBase`
+#derive(Debug, Eq)
 pub(all) struct WorkflowRunCompletedWorkflowRunPullRequestsItemBase {
   ref_ : String
   repo : RepoRef
   sha : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowRunCompletedWorkflowRunPullRequestsItemBase` (fields with defaults are optional).
@@ -93400,11 +94543,12 @@ pub impl ToJson for WorkflowRunCompletedWorkflowRunPullRequestsItemBase with fn 
 
 ///|
 /// `WorkflowRunCompletedWorkflowRunPullRequestsItemHead`
+#derive(Debug, Eq)
 pub(all) struct WorkflowRunCompletedWorkflowRunPullRequestsItemHead {
   ref_ : String
   repo : RepoRef
   sha : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowRunCompletedWorkflowRunPullRequestsItemHead` (fields with defaults are optional).
@@ -93457,13 +94601,14 @@ pub impl ToJson for WorkflowRunCompletedWorkflowRunPullRequestsItemHead with fn 
 
 ///|
 /// `WorkflowRunCompletedWorkflowRunPullRequestsItem`
+#derive(Debug, Eq)
 pub(all) struct WorkflowRunCompletedWorkflowRunPullRequestsItem {
   base : WorkflowRunCompletedWorkflowRunPullRequestsItemBase
   head : WorkflowRunCompletedWorkflowRunPullRequestsItemHead
   id : Double
   number : Double
   url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowRunCompletedWorkflowRunPullRequestsItem` (fields with defaults are optional).
@@ -93526,12 +94671,13 @@ pub impl ToJson for WorkflowRunCompletedWorkflowRunPullRequestsItem with fn to_j
 
 ///|
 /// `WorkflowRunCompletedWorkflowRunStatus`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowRunCompletedWorkflowRunStatus {
   Requested
   InProgress
   Completed
   Queued
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowRunCompletedWorkflowRunStatus with fn deserialize(d) {
@@ -93603,6 +94749,7 @@ pub impl ToJson for WorkflowRunCompletedWorkflowRunStatus with fn to_json(self) 
 
 ///|
 /// `WorkflowRunCompletedWorkflowRun`
+#derive(Debug, Eq)
 pub(all) struct WorkflowRunCompletedWorkflowRun {
   artifacts_url : String
   cancel_url : String
@@ -93631,7 +94778,7 @@ pub(all) struct WorkflowRunCompletedWorkflowRun {
   url : String
   workflow_id : Int64
   workflow_url : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `WorkflowRunCompletedWorkflowRun` (fields with defaults are optional).
@@ -93804,9 +94951,10 @@ pub impl ToJson for WorkflowRunCompletedWorkflowRun with fn to_json(self) {
 
 ///|
 /// `WorkflowRunRequestedAction`
+#derive(Debug, Eq, Hash)
 pub(all) enum WorkflowRunRequestedAction {
   Requested
-} derive(Debug, Eq, Hash)
+}
 
 ///|
 pub impl @typify_rt.Serde for WorkflowRunRequestedAction with fn deserialize(d) {

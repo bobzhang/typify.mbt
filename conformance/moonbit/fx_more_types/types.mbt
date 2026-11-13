@@ -7,9 +7,10 @@
 
 ///|
 /// `ObjectWithNoExtra`
+#derive(Debug, Eq)
 pub(all) struct ObjectWithNoExtra {
   foo : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ObjectWithNoExtra` (fields with defaults are optional).
@@ -52,9 +53,10 @@ pub impl ToJson for ObjectWithNoExtra with fn to_json(self) {
 
 ///|
 /// `ObjectWithOkExtra`
+#derive(Debug, Eq)
 pub(all) struct ObjectWithOkExtra {
   foo : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ObjectWithOkExtra` (fields with defaults are optional).
@@ -97,10 +99,11 @@ pub impl ToJson for ObjectWithOkExtra with fn to_json(self) {
 
 ///|
 /// `ObjectWithStringExtra`
+#derive(Debug, Eq)
 pub(all) struct ObjectWithStringExtra {
   foo : String
   extra : Map[String, String]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ObjectWithStringExtra` (fields with defaults are optional).
@@ -146,10 +149,11 @@ pub impl ToJson for ObjectWithStringExtra with fn to_json(self) {
 
 ///|
 /// `ObjectWithWhichExtra`
+#derive(Debug, Eq)
 pub(all) struct ObjectWithWhichExtra {
   foo : String
   extra : Map[String, Json]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ObjectWithWhichExtra` (fields with defaults are optional).
@@ -195,9 +199,10 @@ pub impl ToJson for ObjectWithWhichExtra with fn to_json(self) {
 
 ///|
 /// `ObjectWithYesExtra`
+#derive(Debug, Eq)
 pub(all) struct ObjectWithYesExtra {
   foo : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ObjectWithYesExtra` (fields with defaults are optional).

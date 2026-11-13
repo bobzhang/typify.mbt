@@ -7,9 +7,10 @@
 
 ///|
 /// `Container`
+#derive(Debug, Eq)
 pub(all) struct Container {
   thing : ContainerThing?
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Container` (fields with defaults are optional).
@@ -54,10 +55,11 @@ pub impl ToJson for Container with fn to_json(self) {
 
 ///|
 /// `ContainerThing`
+#derive(Debug, Eq)
 pub(all) struct ContainerThing {
   id : String?
   extra : Map[String, String]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `ContainerThing` (fields with defaults are optional).

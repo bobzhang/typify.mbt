@@ -7,10 +7,11 @@
 
 ///|
 /// `IntOrStr`
+#derive(Debug, Eq)
 pub(all) enum IntOrStr {
   Integer(Int64)
   String(String)
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for IntOrStr with fn deserialize(d) {
@@ -54,6 +55,7 @@ pub impl ToJson for IntOrStr with fn to_json(self) {
 
 ///|
 /// `OneOfSeveral`
+#derive(Debug, Eq)
 pub(all) enum OneOfSeveral {
   Null
   Boolean(Bool)
@@ -61,7 +63,7 @@ pub(all) enum OneOfSeveral {
   String(String)
   Array(Array[Json])
   Object(Map[String, Json])
-} derive(Debug, Eq)
+}
 
 ///|
 pub impl @typify_rt.Serde for OneOfSeveral with fn deserialize(d) {
@@ -141,7 +143,8 @@ pub impl ToJson for OneOfSeveral with fn to_json(self) {
 
 ///|
 /// `ReallyJustNull`
-pub(all) struct ReallyJustNull(Unit) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct ReallyJustNull(Unit)
 
 ///|
 pub impl @typify_rt.Serde for ReallyJustNull with fn deserialize(d) {
@@ -165,7 +168,8 @@ pub impl ToJson for ReallyJustNull with fn to_json(self) {
 
 ///|
 /// `SeriouslyAnything`
-pub(all) struct SeriouslyAnything(Json) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct SeriouslyAnything(Json)
 
 ///|
 pub impl @typify_rt.Serde for SeriouslyAnything with fn deserialize(d) {
@@ -189,10 +193,11 @@ pub impl ToJson for SeriouslyAnything with fn to_json(self) {
 
 ///|
 /// `YesNoMaybe`
+#derive(Debug, Eq)
 pub(all) enum YesNoMaybe {
   Boolean(Bool)
   Object(value~ : String?)
-} derive(Debug, Eq)
+}
 
 ///|
 let yes_no_maybe_object_fields : @typify_rt.Fields = @typify_rt.Fields::new(["value"])

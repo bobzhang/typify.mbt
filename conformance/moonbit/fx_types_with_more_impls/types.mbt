@@ -7,7 +7,8 @@
 
 ///|
 /// `PatternString`
-pub(all) struct PatternString(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct PatternString(String)
 
 ///|
 let pattern_string_pattern : @typify_rt.Regex = @typify_rt.regex("xx")
@@ -47,7 +48,8 @@ pub impl ToJson for PatternString with fn to_json(self) {
 
 ///|
 /// `Sub10Primes`
-pub(all) struct Sub10Primes(UInt) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct Sub10Primes(UInt)
 
 ///|
 let sub10_primes_values : Array[@typify_rt.Content] = @typify_rt.enum_values(

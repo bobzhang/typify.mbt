@@ -7,10 +7,11 @@
 
 ///|
 /// `Veggie`
+#derive(Debug, Eq)
 pub(all) struct Veggie {
   veggie_like : Bool
   veggie_name : String
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Veggie` (fields with defaults are optional).
@@ -58,10 +59,11 @@ pub impl ToJson for Veggie with fn to_json(self) {
 
 ///|
 /// `Veggies`
+#derive(Debug, Eq)
 pub(all) struct Veggies {
   fruits : Array[String]
   vegetables : Array[Veggie]
-} derive(Debug, Eq)
+}
 
 ///|
 /// Construct a `Veggies` (fields with defaults are optional).

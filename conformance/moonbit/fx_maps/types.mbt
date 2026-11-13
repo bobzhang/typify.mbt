@@ -7,7 +7,8 @@
 
 ///|
 /// `Eh`
-pub(all) struct Eh(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct Eh(String)
 
 ///|
 pub impl @typify_rt.Serde for Eh with fn deserialize(d) {
@@ -31,7 +32,8 @@ pub impl ToJson for Eh with fn to_json(self) {
 
 ///|
 /// `MapWithDateKeys`
-pub(all) struct MapWithDateKeys(Map[@typify_rt.NaiveDate, Value]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct MapWithDateKeys(Map[@typify_rt.NaiveDate, Value])
 
 ///|
 pub impl @typify_rt.Serde for MapWithDateKeys with fn deserialize(d) {
@@ -55,7 +57,8 @@ pub impl ToJson for MapWithDateKeys with fn to_json(self) {
 
 ///|
 /// `MapWithDateTimeKeys`
-pub(all) struct MapWithDateTimeKeys(Map[@typify_rt.DateTimeUtc, Value]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct MapWithDateTimeKeys(Map[@typify_rt.DateTimeUtc, Value])
 
 ///|
 pub impl @typify_rt.Serde for MapWithDateTimeKeys with fn deserialize(d) {
@@ -79,7 +82,8 @@ pub impl ToJson for MapWithDateTimeKeys with fn to_json(self) {
 
 ///|
 /// `MapWithKeys`
-pub(all) struct MapWithKeys(Map[Eh, Value]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct MapWithKeys(Map[Eh, Value])
 
 ///|
 pub impl @typify_rt.Serde for MapWithKeys with fn deserialize(d) {
@@ -103,7 +107,8 @@ pub impl ToJson for MapWithKeys with fn to_json(self) {
 
 ///|
 /// `Value`
-pub(all) struct Value(String) derive(Debug, Eq, Hash)
+#derive(Debug, Eq, Hash)
+pub(all) struct Value(String)
 
 ///|
 pub impl @typify_rt.Serde for Value with fn deserialize(d) {
@@ -127,7 +132,8 @@ pub impl ToJson for Value with fn to_json(self) {
 
 ///|
 /// `DeadSimple`
-pub(all) struct DeadSimple(Map[String, Json]) derive(Debug, Eq)
+#derive(Debug, Eq)
+pub(all) struct DeadSimple(Map[String, Json])
 
 ///|
 pub impl @typify_rt.Serde for DeadSimple with fn deserialize(d) {

@@ -103,7 +103,9 @@ fn write(path : String, text : String) -> Unit {
 ///|
 /// Generate one MoonBit package per schema under `base` (import path
 /// `bobzhang/typify/<base>/<pkg>`), plus `base/dispatch_wbtest.mbt` and
-/// `base/moon.pkg`. `compile_only` schemas get no dispatch entries.
+/// `base/moon.pkg`. The harness in `base` is test-only, so its imports are
+/// `wbtest` imports. `compile_only` schemas get no dispatch entries and are
+/// not imported (`moon check` still compiles them).
 fn generate_suite(
   base : String,
   suite : Array[(String, @schema.RootSchema, @typify.TypeSpaceSettings, Bool)],
