@@ -119,10 +119,10 @@ fn gen_value(depth : Int32) -> @quickcheck.Generator[@serde_json.Value] {
     return @quickcheck.one_of(leaves)
   }
   let inner = gen_value(depth - 1)
-  let arrays = @quickcheck.int_range(0, 4).flat_map(n => {
+  let arrays = @quickcheck.int_range(inclusive=false, 0, 4).flat_map(n => {
     inner.array_with_size(n).map(xs => @serde_json.Value::Array(xs))
   })
-  let objects = @quickcheck.int_range(0, 4).flat_map(n => {
+  let objects = @quickcheck.int_range(inclusive=false, 0, 4).flat_map(n => {
     @quickcheck.spawn()
     .array_with_size(n)
     .zip(inner.array_with_size(n))
