@@ -50,7 +50,7 @@ pub impl Show for CliError with fn output(self, logger) {
 }
 
 ///|
-pub let version : String = "0.2.2"
+pub let version : String = "0.2.4"
 
 ///|
 pub let help : String =
