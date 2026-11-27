@@ -5,7 +5,7 @@ fn main {
   let command = @cli.parse_args(args) catch {
     e => {
       println("error: \{e}\n\nFor more information, try '--help'.")
-      @sys.exit(1)
+      @env.exit(1)
       return
     }
   }
@@ -16,7 +16,7 @@ fn main {
       let text = @fs.read_file_to_string(args.input) catch {
         e => {
           println("Error: Failed to open input file: \{args.input}: \{Repr(e)}")
-          @sys.exit(1)
+          @env.exit(1)
           return
         }
       }
@@ -28,7 +28,7 @@ fn main {
                 println(
                   "Error: Failed to open MoonBit config: \{path}: \{Repr(e)}",
                 )
-                @sys.exit(1)
+                @env.exit(1)
                 return
               }
             },
@@ -38,7 +38,7 @@ fn main {
       let code = @cli.convert(args, text, moonbit_config?) catch {
         e => {
           println("Error: \{e}")
-          @sys.exit(1)
+          @env.exit(1)
           return
         }
       }
@@ -49,7 +49,7 @@ fn main {
               println(
                 "Error: Failed to write output to file: \{path}: \{Repr(e)}",
               )
-              @sys.exit(1)
+              @env.exit(1)
               return
             }
           }

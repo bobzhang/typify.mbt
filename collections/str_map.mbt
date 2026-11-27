@@ -135,7 +135,7 @@ pub fn[V] StrMap::iter(self : StrMap[V]) -> Iter[(String, V)] {
 /// Entries in key order (insertion order for ordered maps).
 pub fn[V] StrMap::iter2(self : StrMap[V]) -> Iter2[String, V] {
   let it = self.entries.iter()
-  Iter2::new(() => it.next())
+  Iter2(Iter(() => it.next()))
 }
 
 ///|

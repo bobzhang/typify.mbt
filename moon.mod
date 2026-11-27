@@ -13,7 +13,7 @@ keywords = [ "json-schema", "codegen", "rust", "moonbit" ]
 description = "Generate Rust and MoonBit types from JSON Schema (port of oxidecomputer/typify)"
 
 import {
-  "moonbitlang/x@0.5.5",
+  "moonbitlang/x@0.5.9",
 }
 
 preferred_target = "wasm"
